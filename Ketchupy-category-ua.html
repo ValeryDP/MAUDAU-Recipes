@@ -1,0 +1,984 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Кетчуп — класична приправа з кисло-солодким смаком. Його переважно подають із гарячими стравами: картоплею фрі, хот-догами, пастою, піцою, гамбургерами, м'ясними пирогами. Томатний кетчуп традиційно супроводжує шашлик або курку,
+                    приготовану на грилі. Продукт також використовують у соусах і маринадах, змішуючи з майонезом, гірчицею, соєвим соусом, медом.
+                </p>
+                <p>Сучасна назва викликає асоціацію з томатним кетчупом. Раніше так називали приправу, яку готували з грибів, устриць, мідій, яєчних білків, винограду, волоських горіхів.</p>
+                <h2>Як з'явився кетчуп</h2>
+                <p>
+                    Першу схожу столову приправу виробляли в Британії, але з використанням грибів. Вважається, що рецепт привезли в рідну країну англійські колонізатори після відвідин Малайзії. Саме тому, за однією з версій, назва походить від
+                    індонезійсько-малайського слова kechap.
+                </p>
+                <p>
+                    Перший грибний кетчуп у США датований 1770 роком. Нині країну представляє культова торгова марка — Heinz. Оскільки приправу готували переважно в домашніх умовах, пляшку придумали пізніше. Спершу кетчуп продавали в одноразових
+                    паперових стаканчиках, доки альтернативне рішення не запропонував американець Джонас Йеркс.
+                </p>
+                <p>Томатний кетчуп виник приблизно через 100 років. Початковий рецепт містив анчоуси. Від компонента відмовилися в 1850-х роках. До кінця XIX століття до рецептури включили цукор, який приховав кислинку від незрілих помідорів.</p>
+                <p>
+                    Сучасну назву використовують із 1682 року. Перший записаний рецепт належить Джеймсу Мізу. Кулінар опублікував його 1812 року. Однак на той час кетчуп готували переважно за записами з кулінарної книги «Домогосподарки Вірджинії» за
+                    авторством Мері Рендольф — двоюрідної сестри Томаса Джефферсона.
+                </p>
+                <p>Поки на ринок не вийшла компанія Heinz, кетчуп був рідким і водянистим. Це пов'язано з тим, що виробники використовували незрілі плоди, в яких було недостатньо пектину.</p>
+                <h2>Що входить до складу кетчупів</h2>
+                <p>Класичну приправу готують із помідорів, солі, цукру та оцту. Рецептуру нерідко доповнюють цибулею та часником, а також спеціями:</p>
+                <ul>
+                    <li>чорним меленим перцем;</li>
+                    <li>паприкою;</li>
+                    <li>гвоздикою;</li>
+                    <li>коріандром;</li>
+                    <li>кмином;</li>
+                    <li>гірчицею.</li>
+                </ul>
+                <p>Рідше до складу кетчупів включають корицю, селеру, імбир. Важливий компонент — ксантанова камедь. Це полісахарид, який використовують як стабілізатор — саме він надає продукту в'язкої текстури.</p>
+                <h2>Різновиди кетчупів</h2>
+                <p>Класифікація заснована на відмінностях у складі та смакових якостях. Кетчуп, купити який можна в інтернет-магазині MAUDAU, розділений на кілька категорій:</p>
+                <ol>
+                    <li>Класичний. Соус, приготований за традиційним рецептом з томатного пюре, солі, цукру й оцту. Смак — збалансований.</li>
+                    <li>Чилі. До складу входить перець чилі, який надає гостроти на фініші. Що вищий відсоток добавки, то пікантніший післясмак.</li>
+                    <li>Ніжний. М'яка версія класичного томатного кетчупу. У процесі виготовлення знижують показники кислотності, а також використовують мінімум спецій.</li>
+                    <li>Дитячий. У такий продукт часто додають бананове пюре. Це робить кетчуп солодшим, відповідно — привабливішим для малюків. Банан також надає гладкої однорідної консистенції.</li>
+                    <li>До шашлику. Рецептуру збагачують кислуватими томатами, а також сумішшю пряних спецій. Такий кетчуп томатний також можна купити до іншого м'яса: ковбасок, курячих крилець, люля-кебабу.</li>
+                    <li>До барбекю. Соус із насиченим димним шлейфом. До складу входять патока, чорнослив, копчена паприка.</li>
+                </ol>
+                <h3>Який кетчуп найкорисніший</h3>
+                <p>
+                    Соус, який маркують як «дитячий». Він не містить крохмалю. Кількість солі знижено. Також зверніть увагу на позиції з добавками: фруктовими пюре або травами. Деякі виробники пропонують приправу без доданого цукру, наприклад,
+                    Daumantu.
+                </p>
+                <h2>Як вибрати кетчуп в асортименті інтернет-магазину MAUDAU</h2>
+                <p>Щоб швидше зорієнтуватися, скористайтеся фільтрами:</p>
+                <ol>
+                    <li>Бренд. Серед українських виробників на увагу заслуговують «Торчин», «Королівський смак», «Оліс», «Томатіно». Смачну продукцію також постачають з-за кордону: Pudliszki (Польща), Daumantu (Литва), Belberry (Бельгія).</li>
+                    <li>Добавки. За бажанням виробника рецептуру кетчупів доповнюють часником, жовтим перцем, буряком. Наприклад, соус із халапеньйо — найгостріший на ринку. Буряк надає елегантної солодкої нотки.</li>
+                    <li>Смак. Залежить від подачі. Наприклад, пряний кетчуп вигідно доповнить м'ясо. Кисло-солодкий стане гармонійною заправкою, а солодко-гострий впишеться в маринад.</li>
+                    <li>Упаковка. Кетчупи продають у скляних або пластикових пляшках, а також у дой-паках. Останній варіант підходить для пікніка.</li>
+                    <li>Вага. Соус добре зберігається, тому його можна купити із запасом. Стандартна вага маленької упаковки — 200–250 г. Велика важить 400–600 г. Бренд «Томатіно» пропонує набір із 28 дой-паків загальною вагою 7 кг.</li>
+                </ol>
+                <p>Якщо поки що не знайшли улюблений кетчуп, зупиніться на лідерах продажів. Також на сторінці конкретного соусу можна знайти відгуки покупців.</p>
+                <h3>Скільки коштує кетчуп</h3>
+                <p>
+                    Цінник залежить від використаних компонентів, виробника, а також вибраного обсягу. Класичний кетчуп томатний «Торчин» продають за ціною 37 грн за 380 г. Пляшка культового Heinz обійдеться у 200 грн за 1 кг. Ще один український
+                    виробник «Руна» пропонує дитячий кетчуп вартістю 50 грн за 230 г. Його реалізують у скляних ємностях — це підвищує ціну. Щоб заощадити, замовляйте товар за акцією — список актуальних пропозицій постійно змінюється.
+                </p>
+                <h2>Чому вигідно купити кетчуп в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет важливих штук MAUDAU поставляє продукцію безпосередньо, гарантуючи оригінальне походження і відмінну якість. Асортимент також регулярно поповнюється новинками, які не знайти в іншому місці. На український кетчуп завжди
+                    конкурентна ціна, оскільки його закуповують гуртом безпосередньо у виробника. Доставку здійснює кур'єр по Києву. В інших містах України можна скористатися послугами поштових служб. За бажання забирайте замовлення самостійно в
+                    супермаркетах «Сільпо». Оплатити покупку можна на сайті або в момент отримання.
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Запечені реберця з томатно-гірчичним соусом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Zapecheni_rebertsia_z_tomatno_hirchychnym_sousom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Запечені реберця з томатно-гірчичним соусом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свинячі реберця</li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/product/pryprava-kamis-papryka-kopchena-melena-20-h-811285">Копчена паприка</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor/vyd_61=trostnykovyi">Коричневий цукор</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець чорний мелений</a></li><li>Часник</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий соус і ніжне м'ясо — ідеальна комбінація і для звичайної, і для святкової вечері. Комбінація приправ створює пікантний післясмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Запечені реберця з томатно-гірчичним соусом</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 кг свинячих реберець</li><li>200 г кетчупу</li><li>1 ст. л. діжонської гірчиці</li><li>½ ч. л. копченої паприки</li><li>1 ст. л. коричневого цукру</li><li>½ ч. л. солі</li><li>перець чорний мелений на смак</li><li>2-3 зубчики часнику</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте 200 грамів кетчупу, 1 ст. л. діжонської гірчиці, ½ ч. л. копченої паприки, 1 ст. л. коричневого цукру, ½ ч. л. солі, трохи чорного меленого перцю.</li><li>Пропустіть через прес 2-3 зубчики часнику і натріть реберця.</li><li>Викладіть реберця у форму і полийте соусом.</li><li>Накрийте фольгою і відправте в духовку, розігріту до 180 °С приблизно на годину.</li><li>Зніміть фольгу. Полийте реберця соусом, що залишився, і запікайте ще пів години.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Соус барбекю з ананасовим соком" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sous_barbekiu_z_ananasovym_sokom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Соус барбекю з ананасовим соком</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Часник</li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor/vyd_61=trostnykovyi">Коричневий цукор</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li>Ананасовий сік</li><li>Тертий свіжий імбир</li><li><a href="https://maudau.com.ua/category/otset/typ_211=rysovyi">Рисовий оцет</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=kunzhutna-2">Кунжутна олія</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=shriracha">Шрирача</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей соус стане ідеальним доповненням до свинини та курки. Жодна приправа, куплена в магазині, не зрівняється зі стравою, приготованою в домашніх умовах.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Соус барбекю з ананасовим соком</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>6 зубчиків часнику</li><li>1 ст. кетчупу</li><li>1 ст. коричневого цукру</li><li>2⁄₃ ст. соєвого соусу</li><li>¹⁄₂ ст. ананасового соку</li><li>2 ст. л. тертого свіжого імбиру</li><li>2 ст. л. рисового оцту</li><li>2 ст. л. кунжутної олії</li><li>2 ч. л. шрирачі або іншого гострого соусу</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Пропустіть через прес 6 зубчиків часнику.</li><li>Змішайте в кастюлі 1 ст. кетчупу, 1 ст. коричневого цукру, 2⁄3 ст. соєвого соусу, ¹⁄₂ ст. ананасового соку, 2 ст. л. тертого свіжого імбиру, 2 ст. л. рисового оцту, 2 ст. л. кунжутної олії, 2 ч. л. шрирачі або іншого гострого соусу і сіль до смаку.</li><li>Постійно помішуючи, доведіть до кипіння.</li><li>Зробіть слабкий вогонь, прикрийте кришкою і варіть 25 хвилин.</li><li>Остудіть соус перед подачею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Смажені креветки до пива" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Smazheni_krevetky_do_pyva.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Смажені креветки до пива</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Креветки</li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Дуже проста і швидка, а головне — нереально смачна закуска до пива для великої компанії, друзів і сім'ї. Цей рецепт підійде для любителів оригінальних і пікантних закусок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Смажені креветки до пива</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 г креветок</li><li>2 ст. л. соєвого соусу</li><li>100 г кетчупу (томатного)</li><li>2 зубчики часнику</li><li>10 г рослинної олії</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В окремій мисці змішайте 2 ст. л. соєвого соусу та 100 г томатного кетчупу.</li><li>Пропустіть через прес 2 зубчики часнику і додайте до суміші.</li><li>Перемішайте отриману масу.</li><li>Викладіть 500 грамів креветок на розігріту сковороду з рослинною олією.</li><li>Через кілька хвилин залийте креветки соусом і залиште їх підрум'янюватися.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Куряче філе з ананасами та кетчупом у духовці" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kuriache_file_z_ananasamy_ta_ketchupom_u_dukhovtsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Куряче філе з ананасами та кетчупом у духовці</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Куряче філе</li><li><a href="https://maudau.com.ua/category/fruktova-konservatsiia/typ_281=ananasy-2">Ананаси</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy">Спеції сухі</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Дієтична, дуже ніжна та соковита страва, до того ж швидка в приготуванні. З'їдається курочка з ананасами з великим задоволенням, має пікантний ніжний смак і приємний аромат.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Куряче філе з ананасами та кетчупом у духовці</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 кг курячого філе</li><li>500 г ананасів (свіжих або консервованих)</li><li>3 ст. л. соєвого соусу</li><li>3 ст. л. кетчупу</li><li>1 ч. л. оливкової олії</li><li>спеції сухі до смаку</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте 1 кг курячого філе великими шматками.</li><li>Складіть шматочки філе в глибоку ємність, додайте сухі спеції та сіль до смаку.</li><li>Додайте 3 ст. л. соєвого соусу, кетчупу і 1 ч. л. оливкової олії.</li><li>Приберіть каструлю з філе в холодильник на годину.</li><li>Перемішайте куряче філе зі шматочками ананаса і викладіть у форму.</li><li>Відправте страву в розігріту до 180 градусів духовку на 40 хвилин.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Скумбрія шматочками в духовці запечена" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Skumbriia_shmatochkamy_v_dukhovtsi_zapechena.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Скумбрія шматочками в духовці запечена</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Скумбрія</li><li>Цибуля</li><li><a href="https://maudau.com.ua/category/sousy-maionez-hirchytsia-khrin">Майонез</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Риба, запечена в духовці — не тільки смачна страва, але ще й дуже корисна. Скумбрія шматочками в духовці виходить соковитою і з хрусткою скоринкою.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Скумбрія шматочками в духовці запечена</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 шт. скумбрії</li><li>2 шт. цибулі</li><li>3 ст. л. майонезу</li><li>3 ст. л. кетчупу</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Поріжте 1 скумбрію на невеликі шматочки.</li><li>Змастіть рибу всередині та зовні 3 ст. л. майонезу та кетчупу.</li><li>Наріжте 2 цибулі кільцями і на два шари фольги викладіть із неї «подушку».</li><li>Запікайте скумбрію в духовці, попередньо розігрітій до 200 градусів, протягом 30 хвилин.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мармурова яловичина у фользі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Marmurova_yalovychyna_u_folzi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мармурова яловичина у фользі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Мармурова яловичина</li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/otset/typ_211=yabluchnyi-2">Яблучний оцет</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor/vyd_61=trostnykovyi">Коричневий цукор</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=vustershyrskyi">Вустерський соус</a></li><li><a href="https://maudau.com.ua/category/hirchytsia">Гірчиця</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=imbyr-5">Порошок імбиру</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=chasnyk-3">Часниковий порошок</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Мармурова яловичина — безпрограшний варіант для святкової вечері. Вона запікається в пікантному соусі і завдяки цьому стає м'якою, ніжною та ароматною.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мармурова яловичина у фользі</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1.5 кг мармурової яловичини</li><li>125 мл кетчупу</li><li>60 мл яблучного оцту</li><li>50 г коричневого цукру</li><li>30 мл соєвого соусу</li><li>15 мл вустерського соусу</li><li>15 г гірчиці</li><li>2.5 г порошку імбиру</li><li>2.5 г часникового порошку</li><li>10 мл рослинної олії</li><li>125 мл води</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте в каструльці 125 мл кетчупу, 60 мл яблучного оцту, 50 г коричневого цукру, 30 мл соєвого соусу, 15 мл вустерського соусу і 15 г гірчиці.</li><li>Додайте 10 мл рослинної олії та по 2.5 г порошку імбиру і часникового порошку.</li><li>Перемішайте суміш вінчиком або виделкою.</li><li>Доведіть соус до кипіння на середньому вогні.</li><li>Проварюйте соус 5 хвилин, періодично помішуючи.</li><li>Викладіть промиту яловичину на центр аркуша фольги.</li><li>Трохи загорніть краї, щоб рідина не витекла, і полийте яловичину соусом.</li><li>Щільно загорніть фольгу з яловичиною і відправте в духовку.</li><li>Пропікайте яловичину 3-3,5 години за 150 градусів.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Крильця по-канадськи" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kryltsia_po_kanadsky.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Крильця по-канадськи</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Курячі крильця</li><li><a href="https://maudau.com.ua/product/piure-fruktove-frulla-bio-yabluko-100-h-583584">Яблучне пюре</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=papryka-5">Паприка</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець чорний мелений</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Кориця</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматні та соковиті крильця із золотистою скоринкою оцінить будь-який гурман. Вони стануть чудовим доповненням до гарніру, салату або ж просто до келиха холодного пива.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Крильця по-канадськи</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 кг курячих крилець</li><li>100 г яблучного пюре</li><li>100 г кетчупу</li><li>2 ст. л. лимонного соку</li><li>2 ст. л. соєвого соусу</li><li>1 ст. л. меду</li><li>1 ч. л. паприки</li><li>0.5 ч. л. перцю чорного меленого</li><li>1 зубчик часнику</li><li>0.25 ч. л. кориці</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для маринаду змішайте 100 г яблучного пюре, 100 г кетчупу, 2 ст. л. лимонного соку, 2 ст. л. соєвого соусу, 1 ст. л. меду, 1 ч. л. паприки, 0.5 ч. л. перцю чорного меленого, 1 зубчик часнику і 0.25 ч. л. кориці.</li><li>Додайте маринад до курячих крилець і ретельно перемішайте.</li><li>Залиште м'ясо на 1 годину в холодильнику просочитися смачним маринадом.</li><li>Промариновані крильця викладіть на деко і запікайте до готовності за температури 200 градусів.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бургери на грилі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Burhery_na_hryli.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бургери на грилі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Булочка (бургерна)</li><li>Фарш мʼясний</li><li>Листя салата</li><li>Цибуля</li><li>Помідори</li><li>Огірки (мариновані)</li><li><a href="https://maudau.com.ua/category/sousy-maionez-hirchytsia-khrin">Майонез</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/hirchytsia">Горчиця</a></li><li>Будь-який твердий сир</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматний і дуже смачний бургер можна приготувати як на пікніку, так і вдома — для сімейних посиденьок. Страву можна готувати на будь-якому грилі: електричному, вугільному, газовому, на сковорідці та на мангалі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бургери на грилі</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>5 шт. булочок (бургерних)</li><li>500 г фаршу м'ясного</li><li>5 шт. листя салату</li><li>1 цибулина</li><li>3 шт. помідорів</li><li>2 шт. огірків (маринованих)</li><li>3 ст. л. майонезу</li><li>3 ст. л. кетчупу</li><li>гірчиця до смаку</li><li>5 шт. будь-якого твердого сиру</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У 500 грамів фаршу додайте сіль, спеції до смаку і сформуйте плоскі круглі котлети.</li><li>Підсмажте їх на грилі до готовності, час від часу перевертаючи.</li><li>Наріжте 1 цибулину півкільцями, а 3 помідори та 2 мариновані огірки — кружечками.</li><li>Злегка обсмажте 5 булочок.</li><li>Змастіть нижню частину кожної булочки невеликою кількістю майонезу.</li><li>Покладіть лист салату, на нього котлету, твердий сир, цибулю, огірки та помідори.</li><li>Верхні частини змащуйте невеликою кількістю кетчупу і накривайте вгорі бургери.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Курка в томатному соусі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kurka_v_tomatnomu_sousi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Курка в томатному соусі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Курячі стегна</li><li>Курячі грудки</li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рецепт приготування дуже простий, але не менш смачний — попередньо обсмажена курка тушкується з часником у соусі на основі кетчупу. Куряче м'ясо, просочене соусом, виходить дуже ніжним і соковитим.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Курка в томатному соусі</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 шт. курячих стегенець</li><li>1 куряча грудка</li><li>250 мл води</li><li>50 г кетчупу</li><li>2 зубчики часнику</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте 1 курячу грудку невеликими шматочками.</li><li>Обсмажте її та 2 курячих стегенця на помірному вогні 5–7 хвилин.</li><li>Додайте 50 грамів кетчупу і перемішайте.</li><li>Дрібно наріжте 2 зубчики часнику і додайте до курки.</li><li>Влийте 250 мл води і доведіть вміст до кипіння.</li><li>Тушкуйте курку в соусі приблизно 10 хвилин на невеликому вогні.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Капуста в тісті в духовці" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kapusta_v_tisti_v_dukhovtsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Капуста в тісті в духовці</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Цвітна капуста</li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=chasnyk-3">Часник</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=papryka-5">Паприка</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пікантна й апетитна капуста з дивовижною скоринкою готується в духовці. Така проста, але смачна страва сподобається всім.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Капуста в тісті в духовці</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1.5 кг цвітної капусти</li><li>250 г пшеничного борошна</li><li>250 мл кетчупу</li><li>0.25 ч. л. часнику (в порошку)</li><li>0.25 ч. л. солі</li><li>0.25 ч. л. паприки</li><li>250 мл води</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У мисці змішайте 250 г пшеничного борошна, по 0.25 ч. л. часникового порошку, солі, паприки і влийте 250 мл води.</li><li>Розділіть цвітну капусту на суцвіття.</li><li>Вмочіть їх у борошно і викладіть на деко.</li><li>Запікайте капусту за 200 градусів протягом 20 хвилин.</li><li>Дістаньте капусту з духовки.</li><li>Вмочіть кожне суцвіття в кетчуп і поверніть на деко.</li><li>Запечіть капусту в тісті з кетчупом ще 5 хвилин за 200 градусів.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">101 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">27.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">68.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

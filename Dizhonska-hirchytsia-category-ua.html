@@ -1,0 +1,994 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Діжонська гірчиця — традиційна приправа, яка походить із Франції. Консистенція нагадує крем. Гірчицю назвали на честь міста Діжон, що в Бургундії. На батьківщині приправу називають Moutarde de Dijon, а страви, куди її додають, — a
+                    la Dijonnaise.
+                </p>
+                <h2>Як виникла діжонська гірчиця</h2>
+                <p>
+                    Бургундію, особливо місто Діжон, вважають гірчичною столицею світу. Історія приправи сягає часів Середньовіччя. Першу діжонську гірчицю подали до столу короля Філіпа VI 1336 року. Комерційне виробництво налагодили 500 років потому,
+                    коли Жан Нейжон запропонував унікальну рецептуру, в якій оцет замінили вержусом (verjus) — кислим соком на основі незрілого винограду.
+                </p>
+                <p>
+                    Перший відомий бренд — Grey Poupon. Він виник 1866 року. Біля витоків — Моріс Грей. Незабаром до нього приєднався мутардьє Огюст Пупон. Під торговою маркою досі виготовляють діжонську гірчицю на потужностях інноваційного заводу в
+                    США. Виробництво перенесли з Франції 1946 року, коли торгову марку викупила корпорація Heublein.
+                </p>
+                <p>Колись діжонську гірчицю виробляли тільки в Діжоні. Сьогодні найменування вважають прозивним для цілої категорії.</p>
+                <h2>Що входить до складу гірчиці по-діжонськи</h2>
+                <p>Приправу готують із насіння коричневої гірчиці — Brassica juncea. Рослину вирощують на виноградниках як покривну культуру. Гірчицю розташовують під виноградними лозами, забезпечуючи їх поживними речовинами під час оранки.</p>
+                <p>
+                    Найважливіший інгредієнт — вержус. Терпка напівпрозора рідина надає продукту пікантного аромату. Якщо виробництво зосереджене в Діжоні, гірчицю змішують із білим сухим вином. В основному використовують шаблі або бургундія блан. Його
+                    готують із винограду «шардоне».
+                </p>
+                <p>
+                    Кожен виробник зберігає точний рецепт у секреті, але склад завжди вказують на етикетці. Наприклад, це важливо для веганів, які вибирають приправу на вержусі, але не на вині. Крім стандартних компонентів, діжонська гірчиця також може
+                    містити:
+                </p>
+                <ul>
+                    <li>модифікований харчовий крохмаль;</li>
+                    <li>сіль;</li>
+                    <li>цукор;</li>
+                    <li>яєчний жовток;</li>
+                    <li>часник;</li>
+                    <li>цибулю.</li>
+                </ul>
+                <h3>У чому різниця між гірчицею по-діжонськи та звичайною</h3>
+                <p>Виділяють кілька важливих відмінностей:</p>
+                <ol>
+                    <li>Колір. Звичайну гірчицю впізнають за яскраво-жовтим кольором. Вона походить зі США, тому нерідко її називають американською. Діжонська гірчиця відрізняється блідо-солом'яним кольором із коричневим підтоном.</li>
+                    <li>Смак. Класичну гірчицю готують на основі суміші ароматних спецій. Оцет нерідко замінюють водою. Це робить її м'якою, але що найголовніше — без пікантної гостроти. Діжон виробляє гірчицю з динамічним і складним смаком.</li>
+                    <li>Якість емульгації. Звичайну гірчицю здебільшого використовують як приправу, оскільки вона погано змішується з іншими компонентами.</li>
+                </ol>
+                <h3>Яка на смак гірчиця по-діжонськи</h3>
+                <p>
+                    Приправа вирізняється гострим і насиченим смаком. Поступово в роті розвивається пікантний акцент. У носі може відчуватися кислий аромат, але в смаку його немає, оскільки сучасні виробники використовують компоненти з низькими
+                    показниками кислотності. Це роблять для того, щоб смак і аромат насіння коричневої гірчиці сповна розкрився.
+                </p>
+                <h2>Різновиди діжонської гірчиці</h2>
+                <p>Класифікація спирається на консистенцію. Існує:</p>
+                <ol>
+                    <li>
+                        Гладка діжонська гірчиця. Приправу виготовляють із подрібнених зерен коричневої або чорної гірчиці, що призводить до однорідної кремової консистенції. Після змішування обраних інгредієнтів діжонську гірчицю пропускають через
+                        сито, щоб позбутися твердих залишків. Процес тонкого подрібнення дає змогу ароматам ретельно змішуватися, забезпечуючи виразний і послідовний смак.
+                    </li>
+                    <li>
+                        Діжонська гірчиця в зернах. Продукт містить частково подрібнене або ціле насіння гірчиці, що надає йому грубого і текстурованого вигляду. Спочатку смак зернистої гірчиці по-діжонськи м'який. Після розкушування зерен розвивається
+                        пікантний шлейф.
+                    </li>
+                </ol>
+                <p>
+                    В інтернет-магазині MAUDAU представлена продукція українських виробників, таких як «Торчин» і «Руна». Також можна замовити приправу від відомих французьких торгових марок Clovis і Edmond Fallot. Остання сімейна компанія пропонує
+                    діжонську гірчицю, приготовану за стандартним рецептом. Родзинку асортименту складають позиції з цікавими добавками: медом, зеленим перцем, імбирним хлібом, волоським горіхом.
+                </p>
+                <p>Діжонську гірчицю можна купити в банках або дой-паках. Вага коливається в межах 130–250 г. Вибирайте обсяг виходячи з частоти використання. Після відкриття банки приправу зберігають у холодильнику. Термін — 12 місяців.</p>
+                <h2>Куди додають діжонську гірчицю</h2>
+                <p>
+                    Продукт використовують як інгредієнт у рецептах, але найчастіше — як приправу. Іноді гірчицю просто намазують на хліб. Також вона гармонійно доповнить хот-дог, сендвіч з індичкою, ростбіф. Гірчицю по-діжонськи використовують у
+                    класичному рецепті бутерброда з пастрами та солонощами. Гострий шлейф чудово відтіняє пікантний житній хліб.
+                </p>
+                <p>
+                    Діжонську гірчицю додають у маринади, соуси, заправки. Вона надає не тільки легкий і пікантний присмак, а й необхідну консистенцію, згущуючи масу. Класика жанру — вінегретна салатна заправка, яка виникла у Франції. У США, наприклад,
+                    популярний соус на основі гірчиці по-діжонськи та солодкого кленового сиропу. Його додають у салати.
+                </p>
+                <p>Культовий рецепт — «Яйця Бенедикт». Голландський соус, яким поливають ситний сніданок, нерідко включає діжонську гірчицю. Якщо готуєте маринад до м'яса, поєднуйте приправу з грибним бульйоном.</p>
+                <h2>Чому вигідно купити діжонську гірчицю в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет важливих штук MAUDAU налагодив власний імпорт, щоб надати покупцям оригінальну продукцію з самого Діжона. Знайти смачну приправу зможе навіть веган, купуючи, наприклад, органічну продукцію від Munchner Kindl. На гірчицю
+                    діжонську ціна доступна, враховуючи простоту виготовлення. При цьому на окремі позиції з онлайн-каталогу поширюються додаткові знижки. Доставка можлива кур'єром або поштовими службами. Забрати замовлення самостійно можна в
+                    супермаркетах «Сільпо».
+                </p>
+            </div>
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тартар із яловичини класичний" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tartar_iz_yalovychyny_klasychnyi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тартар із яловичини класичний</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яловича вирізка</li><li>Каперси</li><li>Цибуля (Ріпчаста, шніт або шалот)</li><li>Зелень (Петрушка, цибуля, шпинат)</li><li>Корнішони</li><li>Перепелині яйця (Жовтки)</li><li>Лимони</li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська грічиця</a></li><li><a href="https://maudau.com.ua/category/sousy/product_brand=tabasco">Табаско</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=vustershyrskyi">Вустерський соус</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець чорний мелений</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тартар із яловичини — делікатес, який оцінить кожен. Інтернаціональна вишукана закуска, на приготування якої не знадобиться багато часу, головне — дотримуватися рецептури, тоді смак вийде ідеальним.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Тартар із яловичини класичний</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 г яловичої вирізки</li><li>20 г каперсів (10 штук)</li><li>0.25 шт. цибулі (ріпчастої, шніта або шалота)</li><li>10 г зелені (петрушки, цибулі, шпинату)</li><li>0.5 шт. корнішона</li><li>2 шт. перепелиних яєць (жовтків)</li><li>⅓ лимона</li><li>0.5 ч. л. діжонської гірчиці</li><li>0.25 ч. л. табаско</li><li>0.5 ч. л. вустерського соусу</li><li>сіль</li><li>перець чорний мелений</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>З яловичої вирізки видаліть вени, жили та жир, наріжте її тонкими (по 5 мм) шматками впоперек волокон, а потім наріжте дрібними кубиками.</li><li>Наріжте кубиками цибулю.</li><li>Дрібно порубайте 10 грамів петрушки та шпинату.</li><li>Наріжте половину корнішона і подрібніть 10 штук каперсів.</li><li>Перекладіть рубане м'ясо в глибоку миску і по черзі вмішайте 2 жовтки, сік лимона, 0.5 ч. л. гірчиці, 0.25 ч. л. табаско, 0.5 ч. л. вустерського соусу, сіль, перець, цибулю, каперси, корнішон, петрушку і шпинат.</li><li>Добре розмішайте, щоб усі інгредієнти рівномірно розподілилися.</li><li>Викладіть на тарілку гіркою, прикрасьте зеленню, каперсами.</li><li>Подавайте страву зі шматочками підсмаженого на сухій сковороді багета.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ковбаски на грилі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kovbasky_na_hryli.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ковбаски на грилі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Ковбаса (ковбаски для грилю)</li><li>Цибуля</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/typ_284=povydla">Повидло</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/osoblyvosti_258=v-zernakh">Гірчиця зерниста</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий і швидкий рецепт приготування ковбасок для смаження на грилі. Чудово підійде і для початківців, і для досвідчених кулінарів, оскільки готові ковбаски потрібно просто замаринувати і посмажити.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ковбаски на грилі</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>6 шт. ковбасок (ковбасок для гриля)</li><li>2 шт. цибулини (або 1 велика)</li><li>1 ст. л. цукру</li><li>2 ст. л. повидла</li><li>2 ст. л. гірчиці зернистої</li><li>2 ст. л. діжонської гірчиці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Підготуйте 6 ковбасок для гриля.</li><li>Для маринаду наріжте 2 цибулини, додайте 1 ст. л. цукру, 2 ст. л. повидла, 2 ст. л. зернистої та діжонської гірчиці.</li><li>Помістіть ковбаски в маринад на кілька годин.</li><li>Розігрійте гриль до 150 градусів.</li><li>Викладіть ковбаски і залиште їх готуватися на 20 хвилин.</li><li>Подавайте страву до столу в гарячому вигляді, доповнивши своїм улюбленим соусом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Соковита форель у духовці стейки у фользі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sokovyta_forel_u dukhovtsi_steiky_u_folzi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Соковита форель у духовці стейки у фользі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Стейк із форелі</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=kontsentraty-3">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець чорний мелений</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Форель, запечена у фользі, стане чудовим доповненням як святкового столу, так і повсякденного меню. Корисно, смачно та вишукано — такий соковитий стейк можна приготувати менш, ніж за годину.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Соковита форель у духовці стейки у фользі</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г стейка з форелі</li><li>2 ст. л. лимонного соку</li><li>2 ст. л. рослинної олії</li><li>перець чорний мелений</li><li>сіль</li><li>2 ст. л. діжонської гірчиці</li><li>1 ст. л. меду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть стейк форелі середнього розміру 400 грамів, очистіть його від луски, промийте і промокніть від надлишків води паперовим рушником.</li><li>Натріть сумішшю з 2 ст. л. діжонської гірчиці та 1 ст. л. меду, посоліть, поперчіть, полийте соком лимона і змастіть олією.</li><li>Дайте рибі полежати в цьому маринаді в холодильнику 2 години.</li><li>Потім викладіть підготовлений стейк на фольгу, щільно загорніть його конвертиком.</li><li>Конвертик із рибою помістіть на деко або у форму для запікання і поставте на пів години в нагріту духовку на 180 градусів.</li><li>Хвилин за 5 до готовності прочиніть фольгу і знову поставте стейк у духовку до легкого зарум'янювання.</li><li>Подавайте страву в човнику з фольги, у якому вона запікалася — у ньому утворюється дуже смачна заливка.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Крильця до пива" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kryltsia_do_pyva.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Крильця до пива</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Курячі крильця</li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li>Часник</li><li><a href="https://maudau.com.ua/product/perets-chyli-cannamela-hostryi-melenyi-25-h">Перець гострий мелений</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=imbyr-5">Порошок імбиру</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Дуже смачні та соковиті крильця для дружніх посиденьок — пікантний рецепт із мінімумів інгредієнтів. Така закуска чудово пасує до прохолодного пива в літній вечір.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Крильця до пива</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 г курячих крилець</li><li>100 мл соєвого соусу</li><li>3 зубчики часнику</li><li>0.25 ч. л. перцю гострого меленого</li><li>2 ст. л. діжонської гірчиці</li><li>0.25 ч. л. порошку імбиру</li><li>10 мл рослинної олії</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Промийте 500 грамів крилець під проточною водою і промокніть паперовим рушником.</li><li>Гострим ножем розріжте крильця на три частини по суглобу.</li><li>Очистіть 3 зубчики часнику і пропустіть через прес.</li><li>В окремій мисці змішайте 100 мл. соєвого соусу, 2 ст. л. діжонської гірчиці, подрібнений часник, 0.25 ч. л. перцю і меленого імбиру.</li><li>Спробуйте маринад, у разі нестачі гостроти слід додати ще перець або часник.</li><li>Залийте крильця маринадом, поставте миску в холодильник на 2 години і періодично перемішуйте.</li><li>Потім відкиньте крильця на друшляк, щоб стекла зайва рідина.</li><li>Застеліть деко папером для випічки або просто змастіть його олією, розкладіть крильця не надто щільно.</li><li>Поставте деко в попередньо розігріту духовку до 200 градусів на 35–40 хвилин.</li><li>Готові крильця потрібно трошки охолодити і подавати до столу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Фрикасе з кролика у винному соусі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Frykase_z_krolyka_u_vynnomu_sousi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Фрикасе з кролика у винному соусі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Кролик</li><li>Масло</li><li>Цибуля-шалот</li><li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=bile">Вино біле</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=chebrets-4">Чебрець сушений</a></li><li><a href="https://maudau.com.ua/product/vershky-ultrapasteryzyrovani-yahotynski-15-tet-br">Вершки</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=petrushka-3">Петрушка</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фрикасе з кролика у винному соусі — це класика французької кухні. Є безліч варіантів його приготування, але саме тушкування дає змогу м'ясу бути настільки ніжним і м'яким. Готова страва ідеально поєднується з червоним вином і хрустким білим хлібом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Фрикасе з кролика у винному соусі</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>0.6 кг кролика</li><li>40 г масла</li><li>60 г цибулі-шалот</li><li>60 мл вина білого</li><li>60 мл води</li><li>50 г діжонської гірчиці</li><li>2.5 г чебрецю (сушеного)</li><li>60 мл вершків</li><li>15 г петрушки</li><li>сіль</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 600 грамів кролика і розділіть його на порційні шматки.</li><li>У мисці посоліть м'ясо, перемішайте його і залиште на 30–45 хвилин.</li><li>У пательні розігрійте 60 г масла та обсмажте всі шматочки кролика.</li><li>Наріжте 60 грамів цибулі-шалот і обсмажте на тій самій сковороді.</li><li>Додайте 60 мл білого вина, розмішайте вміст лопаткою і тушкуйте на повільному вогні 5 хвилин.</li><li>Додайте до соусу 50 г діжонської гірчиці, чебрець, влийте 600 мл води і доведіть до кипіння.</li><li>Шматочки кролика помістіть назад у сковорідку і тушкуйте протягом 45 хвилин.</li><li>Коли м'ясо повністю готове, дістаньте його і викладіть на тарілку.</li><li>До соусу, що залишився, додайте 60 мл вершків і 15 г петрушки.</li><li>Тушкуйте соус доти, доки його кількість не зменшиться вдвічі та не загусне.</li><li>Полийте соусом кролика, приправте петрушкою і подавайте в гарячому вигляді.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Маринад дижонська гірчиця соєвий соус мед" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Marynad_dyzhonska_hirchytsia_soievyi_sous_med.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Маринад дижонська гірчиця соєвий соус мед</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатний горіх</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/sumish-pertsiv-eko-melena-20-h">Суміш меленого перцю</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Маринад із діжонської гірчиці, соєвого соусу та меду, приготований за цим рецептом, зробить будь-яку страву м'якою та ніжною. Поєднання меду і солоного соусу додасть стравам пікантного гостро-солодкого смаку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Маринад дижонська гірчиця соєвий соус мед</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>5 г меду</li><li>60 мл соєвого соусу</li><li>20 г діжонської гірчиці</li><li>5 г мускатного горіха</li><li>сіль</li><li>суміш мелених перців</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для приготування маринаду змішайте 5 грамів меду, 60 мл соєвого соусу, 20 грамів діжонської гірчиці та 5 грамів мускатного горіха.</li><li>Додайте сіль і суміш мелених перців на смак.</li><li>Перемішайте складові маринаду протягом кількох хвилин, довівши інгредієнти до однорідного стану.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ростбіф антрекот" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rostbif_antrekot.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ростбіф антрекот</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яловича вирізка (Антрекот)</li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=lavrovyi-lyst">Лавровий лист</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets">Перець</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            У чому ж секрет смачного ростбіфу? М'ясо, градуси та час! Ніжний і соковитий англійський ростбіф з тонким ароматом і смаком, доповнений свіжим хрустким салатом і картоплею з апетитною скоринкою золотистого відтінку — це завжди чудова ідея.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ростбіф антрекот</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>750 г яловичої вирізки (антрекота)</li><li>50 г діжонської гірчиці</li><li>10 шт. лаврового листя</li><li>1 зубчик часнику</li><li>сіль</li><li>перець</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте 1 зубчик часнику, змішайте з 50 г діжонської гірчиці, сіллю і перцем.</li><li>Викладіть 750 грамів яловичої вирізки на отриману суміш.</li><li>Зверху на м'ясо викладіть 10 штук лаврового листя так, щоб не залишалося просвітів.</li><li>Розігрійте духовку до максимальної температури.</li><li>Поставте ростбіф у розігріту духовку, через 15 хвилин знизьте температуру до 150 градусів і тримайте в духовці ще пів години.</li><li>Після того як ростбіф охолоне — зніміть лаврове листя і наріжте на порційні шматки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шашлик з індички в духовці" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shashlyk_z_indychky_v_dukhovtsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шашлик з індички в духовці</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Філе індички</li><li><a href="https://maudau.com.ua/category/sukhofrukty/vyd_106=kuraha-2">Курага</a></li><li><a href="https://maudau.com.ua/category/sukhofrukty/vyd_106=chornoslyv-2">Чорнослив</a></li><li>Яблуко</li><li><a href="https://maudau.com.ua/category/sousy-maionez-hirchytsia-khrin">Майонез</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/product/pryprava-premiia-do-shashlyku-20-h-320508">Спеції для шашлику</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шашлик з індички в духовці — доволі швидка в приготуванні, проста та поживна страва.
+        А індичка, попередньо замаринована із сухофруктами — нереально смачне оригінальне поєднання.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шашлик з індички в духовці</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>450 г філе індички</li><li>25 г кураги</li><li>25 г чорносливу</li><li>½ яблука (велике кисло-солодке)</li><li>37.5 г майонезу</li><li>37.5 г меду (рідкого)</li><li>5 г діжонської гірчиці</li><li>0.5 ст. л. спецій сухих для шашлику</li><li>сіль</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У мисці з'єднайте 37.5 г рідкого меду і майонезу, 5 г діжонської гірчиці, 0.5 ст. л. спецій для шашлику і сіль.</li><li>Усе ретельно перемішайте до однорідності.</li><li>Наріжте 450 г філе індички на медальйони завтовшки близько 1,5 см.</li><li>Залийте м'ясо маринадом і ретельно перемішайте.</li><li>Поставте м'ясо маринуватися в холодильник на 2 години.</li><li>Промийте 25 г кураги і 25 г чорносливу, залийте гарячою водою і залиште на 20 хвилин для набухання.</li><li>Наріжте половину яблука середніми скибочками.</li><li>На шпажки по черзі нанизуйте філе індички, шматочки яблук, курагу та чорнослив.</li><li>Випікайте шашлички в розігрітій до 190°С духовці близько 40 хвилин до повної готовності м'яса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Реберця свинячі в гірчичному соусі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rebertsia_svyniachi_v_hirchychnomu_sousi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Реберця свинячі в гірчичному соусі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свинячі реберця</li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/hirchytsia">Гірчиця готова</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=bazylik-3">Базилік</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинная олія</a></li><li><a href="https://maudau.com.ua/product/sumish-pertsiv-eko-melena-20-h">Суміш перців мелених</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Такі апетитні реберця легко зможе приготувати кожен — потрібно лише взяти всі інгредієнти та гарненько замаринувати м'ясо! Реберця виходять соковитими, рум'яними, ароматними та неймовірно смачними.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Реберця свинячі в гірчичному соусі</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>0.5 кг свинячих реберець</li><li>0.8 ст. л. діжонської гірчиці</li><li>0.8 ст. л. меду</li><li>0.5 ч. л. гірчиці готової</li><li>1 ст. л. соєвого соусу</li><li>0.5 ч. л. базиліка</li><li>0.5 ст. л. рослинної олії</li><li>0.3 ч. л. суміші перців мелених</li><li>сіль</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розріжте 0.5 кг реберець на порційні шматочки.</li><li>Для гірчичного соусу змішайте 0.8 ст. л. меду і 0.8 ст. л. діжонської гірчиці.</li><li>Додайте 0.5 ч. л. готової гірчиці.</li><li>Додайте 0.5 ч. л. базиліку і 0.3 ч. л. суміші мелених перців і сіль.</li><li>Перемішайте всі складові соусу.</li><li>Натріть реберця отриманою сумішшю і залиште маринуватися мінімум на 3 години.</li><li>Запікайте реберця в духовці за 180 градусів мінімум 40 хвилин.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат із копченою куркою, чері та діжонською гірчицею" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat_iz_kopchenoiu_kurkoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат із копченою куркою, чері та діжонською гірчицею</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Копчена курка</li><li>Салат латук</li><li>Помідори чері</li><li>Болгарський перець</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=kunzhut-6">Кунжут</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Страва з копченою куркою та діжонською гірчицею — чудовий вибір для тих, хто цінує кулінарні рецепти з вишуканим смаком. Салат ідеально поєднує смак і простоту в приготуванні, а рецепт підходить як для повсякденного обіду, так і для святкового столу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Салат із копченою куркою, чері та діжонською гірчицею</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г копченої курки</li><li>1 пучок салату латук</li><li>300 г помідорів чері</li><li>1 шт. болгарського перцю</li><li>2 ст. л. оливкової олії</li><li>1 ст. л. діжонської гірчиці</li><li>1 ст. л. кунжуту</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте 300 г копченої курки кубиками, а 1 болгарський перець — тонкими смужками.</li><li>300 грамів чері розріжте навпіл.</li><li>У мисці змішайте 1 ст. л. діжонської гірчиці та 2 ст. л. оливкової олії.</li><li>Приправте сіллю і перцем на смак, добре перемішайте.</li><li>На велику тарілку викладіть 1 пучок салату-латук.</li><li>Рівномірно розподіліть на салатному листі курку, болгарський перець і помідори чері.</li><li>Полийте салат приготованим соусом, присипте 1 ст. л. кунжуту і перемішайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">149 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">7.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">11.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

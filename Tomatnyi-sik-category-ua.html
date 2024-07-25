@@ -1,0 +1,1033 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Томатний сік — рідкий харчовий продукт, який готують із помідорів (томатів). В основному його подають як самостійний напій. Він також входить до рецепта безлічі коктейлів, включно з «Кривавою Мері» і «Сангрітою».</p>
+                <h2>Історія появи та поширення томатного соку</h2>
+                <p>
+                    Рецепт приписують шеф-кухарю Луї Перрену. Раннього літнього дня 1917 року він увійшов на кухню готелю French Lick Springs у південній Індіані (США). Шеф-кухар готувався до приходу гостей на пізній сніданок, як раптом виявив, що в
+                    запасі немає апельсинів. Винахідливий Луї Перрен взяв кілька стиглих помідорів і вичавив із них сік. Концентрат він доповнив цукром і авторським соусом. Так з'явився перший томатний сік. Новину про незвичайний напій швидко поширили
+                    по США бізнесмени, які регулярно відвідували готель. Через кілька років у Чикаго презентували перший коктейль на основі помідорного соку.
+                </p>
+                <p>У 1920-х роках продукт запустили в масовий продаж. У той час його позиціювали як напій для сніданку.</p>
+                <h2>Як виготовляють томатний сік</h2>
+                <p>Виробництво складається з кількох етапів:</p>
+                <ol>
+                    <li>
+                        Підготовка сировини. В основі — свіжий сік. Томати сортують, миють і очищають від насіння, яке нерідко сушать і повторно використовують при посіві. Потім помідори подрібнюють. Далі м'яку масу пропускають через сито,
+                        відокремлюючи тверді залишки, наприклад, незрілі зелені частини.
+                    </li>
+                    <li>
+                        Варіння. Підготовлену однорідну масу поміщають у металевий резервуар для нагрівання. Варіння перешкоджає зараженню томатних соків шкідливими мікроорганізмами і полегшує подальше оброблення. Температура в місткостях при
+                        нагріванні досягає +75–80 ⁰C. Нагрівання здійснюють доволі швидко, інакше пектин руйнується, а готовий помідорний сік розшаровується. Нарешті, гарячу масу повторно протирають.
+                    </li>
+                    <li>Розлив. Готовий напій розливають у скляні або пластикові пляшки. Останнім часом не менш активно використовують ергономічні упаковки Tetra Pak.</li>
+                    <li>
+                        Стерилізація та пастеризація. Після розливу томатні соки стерилізують, оскільки через низьку кислотність у рідині нерідко розвиваються спори. Закриту пляшку відправляють на пастеризацію, після чого харчовий продукт готовий до
+                        продажу.
+                    </li>
+                </ol>
+                <p>
+                    У США томатний сік здебільшого виготовляють із пасти, а не з цільних плодів, як це роблять у Канаді. Рецептура нерідко містить сіль і спеції, серед яких поширені цибулевий порошок і сухий часник. Для підкислення дозволено
+                    використання лимонної кислоти.
+                </p>
+                <h2>Чому корисно пити помідорний сік</h2>
+                <p>Рідкий харчовий продукт містить безліч корисних речовин:</p>
+                <ol>
+                    <li>Лікопін. Потужний антиоксидант, який надає томатним сокам червоного кольору. Компонент захищає від деяких видів раку, пригнічуючи запальні інфільтрати та мінімізуючи вплив стресу на клітини.</li>
+                    <li>Магній. Важливий мінерал, що підтримує функції м'язів і нервів. Він також залучений під час вироблення енергії.</li>
+                    <li>Фолати. Це вітамін B9. Саме через його високий вміст натуральний томатний сік радять купити майбутнім мамам, оскільки фолати відповідають за синтез і формування ДНК.</li>
+                    <li>Вітамін C. Речовина зміцнює імунну систему і сприяє засвоєнню заліза.</li>
+                    <li>Вітамін A. Жиророзчинний вітамін, який важливий для зору і здорової шкіри.</li>
+                    <li>Вітамін K. Компонент, необхідний для активного згортання крові та здоров'я кісток.</li>
+                    <li>Калій. Сік томатний варто купити також тим, хто піклується про стан серцево-судинної системи. Калій відповідає за регулювання кров'яного тиску.</li>
+                </ol>
+                <p>Помідорний сік також містить клітковину. Харчові волокна сприяють травленню та відчуттю ситості, допомагаючи позбуватися зайвої ваги. Група фітонутрієнтів, що міститься в томатах, виявляє протизапальні властивості.</p>
+                <h3>Коли пити томатний сік — вранці чи ввечері</h3>
+                <p>
+                    Вибір часу вживання зводиться до того, який варіант вписується в розпорядок дня і як на це реагує організм. Наприклад, сік із томатів на сніданок прискорює метаболізм. Вживання напою натщесерце підвищує засвоюваність лікопіну і
+                    жиророзчинних вітамінів. Багатий поживний склад наповнює організм енергією.
+                </p>
+                <p>Склянку томатного соку можна випити і ввечері — це хороша профілактика закрепів. Магній, який присутній у складі, сприяє розслабленню і міцному сну.</p>
+                <h2>Кому не можна пити сік із томатів</h2>
+                <p>
+                    Напій — доволі кислий. Тому він протипоказаний людям, які регулярно стикаються з печією. Високий вміст калію негативно впливає на організм при захворюваннях нирок. Клітковина підвищує дискомфорт за синдрому надмірного бактеріального
+                    росту. Томатний сік також не можна пити в разі подагри, оскільки пурини підвищують показники сечової кислоти. Покупцям із гіпертонією оптимально зупинитися на варіантах без натрію.
+                </p>
+                <p>Враховуйте індивідуальну реакцію організму на томатні соки. Наприклад, у деяких людей напій викликає алергію або контактний дерматит, а також посилює розацеа.</p>
+                <h2>Де застосовують томатний сік</h2>
+                <p>Здебільшого рідкий харчовий продукт підносять як самостійний освіжальний напій, особливо в спекотну пору. На його основі також готують смузі, додаючи селеру, яблука, огірки.</p>
+                <p>
+                    Купити томатний сік у банках можна і в кулінарних цілях, наприклад, для приготування супу або рагу. Він також стане хорошою основою для приготування соусу або заправки. Якщо плануєте поїздку на природу, змішайте м'ясо із соком із
+                    томатів — маринад додасть пікантності та розм'якшить шашлик.
+                </p>
+                <p>Варіант подачі багато в чому залежить від конкретної країни:</p>
+                <ol>
+                    <li>
+                        Канада. У місцевих пабах подають мікс на основі пива — Calgary Red-Eye. Другий варіант — коктейль Bloody Caesar, рецепт якого передбачає змішування томатного соку з горілкою. Секретний інгредієнт — бульйон на основі мідій під
+                        назвою «Кламато».
+                    </li>
+                    <li>Мексика. У країні помідорний сік також змішують із пивом, але коктейль представляють як Cerveza Preparada. Не менш відомий напій родом із Мексики — «Сангріта». Це безалкогольний мікс, яким супроводжують текілу.</li>
+                    <li>Велика Британія. Англійці традиційно поєднують сік із томатів із вустерським соусом.</li>
+                </ol>
+                <p>
+                    Доведено, що помідорний сік — лідер за замовленням на бортах літаків. За однією з версій, завдяки інтенсивному смаку напій підкреслює смак їжі, яка в повітрі здається більш прісною. Дослідники з Німеччини також вважають, що продукт
+                    сприяє поповненню організму життєво важливими солями та мінералами в момент зневоднення.
+                </p>
+                <h2>Як вибрати томатний сік</h2>
+                <p>Коли замовляєте напій онлайн, найважливіше — оцінки та відгуки інших покупців. Шукайте їх на сторінці конкретного товару. Система фільтрів допоможе вибрати варіант без солі або цукру.</p>
+                <p>Уважно читайте опис до товару. Якщо продукт відновлений, це обов'язково вказують на етикетці.</p>
+                <h3>Асортимент томатних соків у MAUDAU</h3>
+                <p>Інтернет-магазин MAUDAU пропонує продукцію від виробників з Вірменії, Латвії, Польщі, України. Лідери продажів:</p>
+                <ul>
+                    <li>Galicia;</li>
+                    <li>Jaffa;</li>
+                    <li>Сандора;</li>
+                    <li>Давтона.</li>
+                </ul>
+                <p>Томатний сік у трилітрових банках можна купити на велику родину. Варіант обсягом 200–500 мл розрахований на знайомство з торговою маркою. Таку кількість також можна порівняти з рекомендованою добовою дозою.</p>
+                <h3>Скільки коштує помідорний сік</h3>
+                <p>
+                    Вартість залежить від виробника, складу, упаковки. У середньому на томатний сік за 1 л ціна становить 65–90 грн. Для додаткової економії відстежуйте акції. Найвигідніше — купити томатний сік гуртом. Таку опцію пропонує
+                    інтернет-магазин MAUDAU, а список доступних пропозицій постійно змінюється.
+                </p>
+                <h2>Як правильно зберігати томатний сік</h2>
+                <p>
+                    Невідкритий продукт зберігається 12–18 місяців у темному і сухому місці. Його можна помістити в холодильник, особливо якщо віддаєте перевагу подачі в охолодженому вигляді. На томатний сік ціна формується виходячи з обсягу.
+                    Враховуйте цей момент після відкриття банки або пляшки, оскільки термін зберігання після цього скорочується до 5–7 днів.
+                </p>
+                <h2>Чому вигідно купити томатний сік у банках в інтернет-магазині MAUDAU</h2>
+                <p>
+                    В онлайн-каталозі представлена оригінальна продукція від перевірених виробників. Завдяки власному налагодженому імпорту покупці отримують доступ до продукції від культових торгових марок Granini, Van Nahmen, Le Coq Toque. Крім
+                    купівлі томатного соку гуртом, у замовлення в маркеті важливих штук MAUDAU маса переваг, включно з безплатним доставленням кур'єром або поштовими службами від певної суми і швидкою оплатою онлайн або при отриманні.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Антрекот у томатному соці" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Antrekot-u-tomatnomu-sotsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Антрекот у томатному соці</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li>Свинина</li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ніжний і соковитий антрекот, приготований в ароматному томатному соку, подарує вам справжню насолоду завдяки насиченому смаку та приємній текстурі м'яса.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Антрекот у томатному соці</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 г свинини</li><li>1 склянка томатного соку</li><li>сіль до смаку</li><li>мелений чорний перець до смаку</li><li>рослинна олія до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Свинину промийте під холодною водою та обсушіть паперовими рушниками. Наріжте антрекот порційними шматками.</li><li>Приправте м'ясо сіллю та меленим чорним перцем з обох боків.</li><li>У сковороді розігрійте олію на середньому вогні.</li><li>Обсмажте шматки свинини до золотистої скоринки з обох боків, приблизно по 2-3 хвилини з кожного боку.</li><li>Влийте томатний сік у сковорідку, зменшіть вогонь до слабкого і накрийте кришкою.</li><li>Тушкуйте антрекот у томатному соку приблизно 20–25 хвилин, періодично перевертаючи шматки м'яса.</li><li>Подавайте гарячим, полив зверху томатним соусом, що залишився зі сковороди.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Томатний коктейль із крабами та креветками" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tomatnyi-kokteil-iz-krabamy-ta-krevetkamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Томатний коктейль із крабами та креветками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li>Сок лайма</li><li>Соус Tabasco</li><li>Ріпчаста цибуля</li><li>Кінза</li><li>Авокадо</li><li>Мʼясо краба</li><li>Очищені варені креветки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний коктейль поєднує насичений томатний смак, пікантність лайма та гостроту Tabasco, створюючи ідеальну літню страву з соковитими шматочками краба та креветок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Томатний коктейль із крабами та креветками</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1.5 склянки томатного соку</li><li>¼ ст. кетчупу</li><li>¼ ст. л. соку лайма</li><li>1 ч. л. соусу Tabasco</li><li>120 г ріпчастої цибулі</li><li>20 г кінзи</li><li>1 авокадо</li><li>250 г м'яса краба</li><li>125 г очищених варених креветок</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте ріпчасту цибулю дрібними кубиками.</li><li>Наріжте авокадо кубиками.</li><li>У великій мисці змішайте томатний сік, кетчуп, сік лайма і соус Tabasco.</li><li>Додайте в миску нарізану цибулю, кінзу, шматочки авокадо, м'ясо краба і креветки.</li><li>Акуратно перемішайте всі інгредієнти.</li><li>Поставте в холодильник на 30 хвилин для настоювання.</li><li>Подавайте охолодженим у келихах, прикрашаючи гілочкою кінзи.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Квасоля в томатному соусі з імбиром" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kvasolia-v-tomatnomu-sousi-z-imbyrom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Квасоля в томатному соусі з імбиром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Стручкова квасоля</li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li>Цибуля</li><li>Часник</li><li>Натертий імбир</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=kmyn-4">Кмин</a></li><li>Кінза</li><li>Петрушка</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий рецепт ароматної та ніжної стручкової квасолі, тушкованої в насиченому томатному соусі з пряним імбиром і ароматними травами, ідеально підходить для приготування літнього обіду або вечері.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Квасоля в томатному соусі з імбиром</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г стручкової квасолі</li><li>0.7 л томатного соку</li><li>1 цибулина</li><li>3 зубчики часнику</li><li>1 ст. л. тертого імбиру</li><li>2 ст. л. лимонного соку</li><li>½ ч. л. кмину</li><li>30 г кінзи</li><li>30 г петрушки</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте цибулю дрібними кубиками. Часник та імбир подрібніть.</li><li>У великій сковороді або каструлі розігрійте трохи олії на середньому вогні. Додайте цибулю й обсмажуйте до прозорості близько 5 хвилин.</li><li>Додайте подрібнені часник та імбир, готуйте ще 1-2 хвилини, поки вони не розкриють свій аромат.</li><li>Влийте томатний сік і доведіть до кипіння.</li><li>Додайте стручкову квасолю, кмин і лимонний сік. Зменшіть вогонь і тушкуйте близько 20 хвилин, поки квасоля не стане м'якою.</li><li>Дрібно наріжте кінзу та петрушку. Додайте їх у страву за 5 хвилин до готовності, ретельно перемішайте.</li><li>Подавайте гарячою, прикрасивши свіжою зеленню за бажанням.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тефтелі в томатному соку" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tefteli-v-tomatnomu-soku.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тефтелі в томатному соку</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Фарш мʼясний</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=paniruvalni-sukhari">Панірувальні сухарі</a></li><li>Яйця курячі</li><li>Цибуля ріпчаста</li><li><a href="https://maudau.com.ua/product/pryprava-eko-travy-italiiski-10-h-188580">Італійські трави</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=lavrovyi-lyst">Лавровий лист</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/boroshno">Борошно</a></li><li>Петрушка</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Соковиті м'ясні тефтелі, приготовані з додаванням італійських трав, створюють ідеальне поєднання ароматів і смаків. Вони подаються в насиченому томатному соусі, приправленому лавровим листом і часником, що надає страві особливої пікантності.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Тефтелі в томатному соку</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>450 г фаршу м'ясного</li><li>50 г панірувальних сухарів</li><li>1 яйце куряче</li><li>1 цибулина ріпчаста</li><li>0.5 ч. л. італійських трав</li><li>500 мл томатного соку</li><li>2-3 шт. лаврового листа</li><li>1 зубчик часнику</li><li>1 ст. л. борошна</li><li>0.5 пучка петрушки</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Цибулю очистіть і дрібно наріжте.</li><li>У мисці змішайте м'ясний фарш, панірувальні сухарі, яйце, нарізану цибулю та італійські трави. Добре перемішайте, щоб маса стала однорідною.</li><li>З отриманої маси сформуйте невеликі тефтелі.</li><li>У сковороді розігрійте трохи олії та обсмажте тефтелі до золотистої скоринки з усіх боків. Потім перекладіть їх на тарілку.</li><li>У тій самій сковороді обсмажте подрібнений часник до появи аромату, потім додайте борошно і добре перемішайте.</li><li>Влийте томатний сік, додайте лаврове листя, доведіть до кипіння, постійно помішуючи, щоб соус загус.</li><li>Поверніть тефтелі в сковорідку з соусом, зменшіть вогонь і тушкуйте під кришкою близько 20–25 хвилин. За кілька хвилин до готовності додайте дрібно нарізану петрушку.</li><li>Подавайте тефтелі гарячими, полив їх томатним соусом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Паста з куркою в томатному соусі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pasta-z-kurkoiu-v-tomatnomu-sousi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Паста з куркою в томатному соусі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/makaronni-vyroby">Макарони</a></li><li>Курячі стегна</li><li>Цибуля</li><li>Морква</li><li>Печериці</li><li>Болгарський перець</li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li>Зелень</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Паста з куркою в насиченому томатному соусі — ідеальна вечеря для всієї родини. Поєднання ніжних стегенець, свіжих овочів і ароматного часнику в густому соусі створює неповторний смак, який ідеально доповнює макаронні вироби.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Паста з куркою в томатному соусі</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>220 г макаронів</li><li>3 шт. курячих стегенець (курячих стегон)</li><li>1 шт. цибулі</li><li>1 шт. моркви</li><li>250 г печериць</li><li>0.5 шт. болгарського перцю</li><li>400 мл томатного соку</li><li>3 зубчики часнику</li><li>2 ст. л. рослинної олії</li><li>20 г зелені</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Закип'ятіть підсолену воду і відваріть макарони до готовності, злийте воду і відставте в сторону.</li><li>Нагрійте рослинну олію в глибокій сковороді. Обсмажте курячі стегна до золотистої скоринки з обох боків, потім викладіть їх і відставте.</li><li>У тій самій сковороді обсмажте дрібно нарізану цибулю і натерту моркву до м'якості.</li><li>Додайте нарізані гриби та болгарський перець, продовжуйте готувати, поки гриби не підрум'яняться.</li><li>Введіть подрібнений часник і готуйте ще 1-2 хвилини до появи аромату.</li><li>Поверніть курячі стегна в сковороду, залийте томатним соком і доведіть до кипіння. Зменшіть вогонь і тушкуйте під кришкою близько 30 хвилин, поки курка повністю приготується.</li><li>Наріжте курячі стегна на шматочки, вийнявши кістки, і поверніть їх у соус, ретельно перемішайте.</li><li>Додайте готові макарони в сковорідку і перемішайте, щоб паста просочилася соусом.</li><li>Подавайте пасту, посипавши її свіжою зеленню.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Томатна підлива з грибами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tomatna-pidlyva-z-hrybamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Томатна підлива з грибами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/boroshno">Борошно</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li>Цибуля ріпчаста</li><li>Морква</li><li>Свіжі печериці або інші гриби</li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець чорний мелений</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Страва поєднує насичений смак томатного соку та аромат свіжих грибів. Ніжна текстура підливи ідеально підходить для подачі з м'ясними стравами або гарнірами з картоплі та рису.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Томатна підлива з грибами</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 г борошна</li><li>2 ст. л. рослинної олії</li><li>2 шт. цибулі ріпчастої</li><li>1 морква</li><li>200 г свіжих печериць або інших грибів</li><li>1 л томатного соку</li><li>сіль до смаку</li><li>перець чорний мелений до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Дрібно наріжте цибулю і натріть моркву на крупній тертці.</li><li>У глибокій сковорідці розігрійте олію та обсмажте цибулю до прозорості.</li><li>Додайте моркву і продовжуйте обсмажувати, поки вона не стане м'якою.</li><li>Гриби наріжте тонкими скибочками і додайте до овочів, смажте, помішуючи, поки вони не випустять сік і не підрум'яняться.</li><li>Всипте борошно і ретельно перемішайте, щоб не було грудок. Обсмажуйте суміш 1-2 хвилини.</li><li>Поступово влийте томатний сік, постійно помішуючи, щоб борошно повністю розчинилося.</li><li>Доведіть підливу до кипіння, потім зменшіть вогонь і варіть на повільному вогні 15–20 хвилин, поки вона не загусне. Посоліть і поперчіть до смаку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Томатний суп з індичкою та рисом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tomatnyi-sup-z-indychkoiu-ta-rysom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Томатний суп з індичкою та рисом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Гомілка індички</li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li>Ріпчаста цибуля</li><li>Селера</li><li>Солодкий перець</li><li>Помідори</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li><a href="https://maudau.com.ua/category/rys">Рис</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець чорний мелений</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насичений і ароматний суп поєднує ніжне м'ясо індички, солодкість помідорів і насиченість томатного соку. Додавання рису надає страві ситності, а велика кількість овочів — легкості та свіжості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Томатний суп з індичкою та рисом</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 шт. гомілки індички</li><li>2-2½ л води</li><li>1 ріпчаста цибуля</li><li>2 стебла селери</li><li>1 шт. солодкого перцю</li><li>2 шт. помідорів</li><li>1-2 ст. л. рослинної олії</li><li>150–200 г рису</li><li>200–250 мл томатного соку</li><li>сіль до смаку</li><li>перець чорний мелений до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У великій каструлі доведіть до кипіння 2-2,5 л води. Додайте гомілку індички і варіть на середньому вогні близько 1 години, знімаючи піну в міру потреби.</li><li>Дрібно наріжте ріпчасту цибулю, селеру і солодкий перець. Обсмажте овочі в рослинній олії до м'якості, приблизно 5–7 хвилин.</li><li>Наріжте помідори кубиками та додайте до обсмажених овочів. Готуйте ще 5 хвилин.</li><li>Дістаньте гомілку індички з бульйону і відокремте м'ясо від кістки. Наріжте його невеликими шматочками.</li><li>Додайте до бульйону рис і варіть близько 15 хвилин до готовності крупи.</li><li>Влийте томатний сік, додайте обсмажені овочі та нарізану індичку. Посоліть і поперчіть до смаку.</li><li>Доведіть суп до кипіння і варіть 5 хвилин, щоб смаки змішалися.</li><li>Подавайте суп гарячим, прикрасивши свіжою зеленню за бажанням.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Класичний гаспачо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Klasychnyi-haspacho.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Класичний гаспачо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Помідори</li><li>Цибуля ріпчаста</li><li>Огірки</li><li>Гострий червоний перець</li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li>Табаско</li><li><a href="https://maudau.com.ua/category/otset/typ_211=vynnyi-2">Винний оцет</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li>Базилік</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний холодний суп родом з Іспанії ідеально підходить для спекотних літніх днів. Його багатий смак і яскраві аромати створюються зі свіжих овочів і спецій, що надають страві неповторної пікантності.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Класичний гаспачо</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г помідорів</li><li>2 шт. цибулі ріпчастої</li><li>2 шт. огірків</li><li>1 стручок гострого червоного перцю</li><li>2 ст. томатного соку</li><li>2 краплі Табаско</li><li>1 с. л. винного оцту</li><li>2 ст. л. оливкової олії</li><li>сіль до смаку</li><li>мелений чорний перець до смаку</li><li>2 гілочки базиліку (для подачі)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Помідори, цибулю та огірки наріжте великими шматками.</li><li>У блендері змішайте нарізані овочі та гострий червоний перець до однорідної консистенції.</li><li>Додайте томатний сік, Табаско, винний оцет і оливкову олію і знову збийте до отримання гладкої маси.</li><li>Посоліть і поперчіть до смаку, ще раз перемішайте.</li><li>Перелийте гаспачо у велику миску і поставте в холодильник мінімум на 1 годину для охолодження. Перед подачею прикрасьте гілочками базиліку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пісне печиво на томатному соці" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pisne-pechyvo-na-tomatnomu-sotsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пісне печиво на томатному соці</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Кориця</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li><a href="https://maudau.com.ua/category/boroshno">Борошно</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Дієтичне печиво на томатному соку — ідеальний вибір для тих, хто дотримується посту. Поєднання томатного соку та кориці надає їм неповторного смаку й аромату. Печиво виходить м'яким, з легкою кислинкою та пряним відтінком.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Пісне печиво на томатному соці</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>10 ст. л. томатного соку</li><li>10 ст. л. рослинної олії</li><li>10 ст. л. цукру</li><li>1 ч. л. кориці</li><li>1 ч. л. соди</li><li>500 г борошна</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У великій мисці змішайте томатний сік, рослинну олію та цукор до повного розчинення останнього.</li><li>Додайте корицю і соду, ретельно перемішайте.</li><li>Поступово всипайте борошно, продовжуючи замішувати тісто. Воно має вийти м'яким і не липнути до рук.</li><li>Розігрійте духовку до 180°C.</li><li>Розкачайте тісто на присипаній борошном поверхні до товщини близько 0,5 см і виріжте печиво формочками.</li><li>Викладіть печиво на деко, застелене пергаментним папером. Випікайте 12–15 хвилин до золотистого кольору.</li><li>Остудіть печиво на решітці перед подачею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Овочі в томатному соці" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ovochi-v-tomatnomu-sotsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Овочі в томатному соці</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rys">Рис</a></li><li>Перець солодкий</li><li>Броколі</li><li>Цибуля</li><li>Морква</li><li>Кабачок</li><li>Часник</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy">Спеції</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Сік томатний</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматна і легка страва, що поєднує мікс овочів і кисло-солодкий смак томатного соку. Чудовий вибір для легкої вечері або гарніру до основних страв.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Овочі в томатному соці</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 склянка рису</li><li>1 шт. перцю солодкого</li><li>200 г броколі</li><li>1 цибулину</li><li>1 моркву</li><li>200 г кабачка</li><li>2 зубчики часнику</li><li>3 ст. л. оливкової олії</li><li>1 ч. л. спецій</li><li>200 мл соку томатного</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Промийте рис холодною водою і відваріть його до готовності згідно з інструкцією на упаковці.</li><li>Очистіть і наріжте овочі: цибулю — півкільцями, моркву — тонкими кружечками, кабачок — кубиками, солодкий перець — смужками, броколі розберіть на невеликі суцвіття, часник подрібніть.</li><li>У великій сковороді розігрійте оливкову олію на середньому вогні. Додайте цибулю і моркву, обсмажуйте до м'якості, приблизно 5 хвилин.</li><li>Потім додайте солодкий перець, броколі, кабачок і часник. Обсмажуйте овочі ще 5–7 хвилин, періодично помішуючи.</li><li>Влийте томатний сік у сковороду з овочами, додайте спеції та сіль до смаку. Тушкуйте все разом на середньому вогні під кришкою близько 10 хвилин, щоб овочі стали м'якими і просочилися томатним соком.</li><li>Коли овочі будуть готові, додайте до них зварений рис. Перемішайте всі інгредієнти та прогрійте ще 2-3 хвилини.</li><li>Подавайте страву гарячою, прикрасивши за бажанням свіжою зеленню.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">18 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">2.9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0.7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">94.3 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

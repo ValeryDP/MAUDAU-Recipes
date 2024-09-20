@@ -1,0 +1,1033 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Масло холодного отжима — пищевой жир, который производят посредством гидравлического или экспеллерного прессования масличных культур, фруктов, овощей, орехов или семян. Такой продукт считают самым полезным, так как в нем сохраняется
+                    высокая концентрация питательных веществ. Его нередко маркируют как Extra Virgin. Холодная экстракция также способствует «консервированию» землистых и травянистых ноток, присущих растительному маслу первого холодного отжима.
+                </p>
+                <p>В процессе очистки не используют химикаты. Количество свободных кислот, формирующих вкусо-ароматическую композицию, снижают посредством осаждения.</p>
+                <h3>Что известно о составе масла холодного отжима</h3>
+                <p>
+                    Несмотря на тип исходного сырья, продукт зачастую содержит высокую дозу антиоксидантов. Масло растительное холодного отжима практически всегда включает витамин E, который обладает противовоспалительными свойствами и особенно полезен
+                    для кожи. Олеиновая кислота, также присутствующая в составе, повышает иммунитет.
+                </p>
+                <h2>Технология изготовления масел холодного отжима</h2>
+                <p>Продукт производят механическим способом. Краткий обзор основных этапов:</p>
+                <ol>
+                    <li>Подготовка сырья. Фрукты и овощи моют. Злаки, семена и орехи очищают от защитной оболочки.</li>
+                    <li>Прессование. Выбранный компонент помещают под пресс. Механизм оказывает давление, выжимая масло без выделения тепла. Зачастую температура не превышает +49 °C.</li>
+                    <li>Фильтрация. Масло холодного отжима можно купить только после очистки. Фильтрацию проводят вручную, удаляя твердые остатки. Это приводит к светлому цвету и однородной консистенции.</li>
+                    <li>Розлив. Растительный жир разливают по стеклянным или пластиковым бутылкам в контролируемой среде, что предотвращает загрязнение.</li>
+                </ol>
+                <p>При необходимости продукт рафинируют. Это дополнительный процесс очистки, в ходе которого удаляют летучие ароматические компоненты (дезодорация) и осветляют жир.</p>
+                <h2>Ключевые разновидности масла холодного отжима</h2>
+                <p>Классификация опирается на главный компонент. Существует ряд растений, из которых можно получить жир естественным образом, не влияя на их питательный профиль. Это:</p>
+                <ul>
+                    <li>авокадо;</li>
+                    <li>амарант;</li>
+                    <li>оливки;</li>
+                    <li>конопля;</li>
+                    <li>расторопша;</li>
+                    <li>лен;</li>
+                    <li>шиповник.</li>
+                </ul>
+                <p>Растительное масло первого холодного отжима также производят из семян, включая семя подсолнуха и тыквы, виноградные косточки, горчицу, кунжут. Что касается орехов, то в основном используют:</p>
+                <ul>
+                    <li>кокос;</li>
+                    <li>фундук;</li>
+                    <li>арахис;</li>
+                    <li>миндаль;</li>
+                    <li>грецкий орех.</li>
+                </ul>
+                <p>Растительный жир также относят к определенному классу. Самый качественный продукт — Extra Virgin. Масло Pomace, то есть приготовленное из жмыха, стоит дешевле, зато предназначено для высокотемпературных методов обработки.</p>
+                <h2>Какая польза от масла холодного отжима</h2>
+                <p>Естественный процесс экстракции приводит к ряду преимуществ:</p>
+                <ol>
+                    <li>Разнообразие питательных веществ. Холодная обработка способствует сохранению витаминов, минералов, полифенолов.</li>
+                    <li>Сниженный риск возникновения аллергических реакций. Для очистки не используют химикаты.</li>
+                    <li>
+                        Более полезный жировой состав. Например, подсолнечное масло холодного отжима содержит олеиновую кислоту, поддерживающую здоровье сердца и сосудов и уменьшающую воспаления. Жирные кислоты также отвечают за здоровье кожи и волос.
+                    </li>
+                </ol>
+                <h3>Суточная норма масла холодного отжима</h3>
+                <p>Учитывайте, что продукт достаточно калорийный. Поэтому его количество в дневном рационе советуют ограничить 1–2 столовыми ложками, что сопоставимо с 15–30 мл. Рекомендация касается любого жира.</p>
+                <h2>Где применяют растительное масло первого холодного отжима</h2>
+                <p>
+                    Продукт идеально подходит для придания вкуса и аромата холодным закускам, салатам, супам. Его используют как завершающий штрих при подаче пасты, пиццы, жареных овощей. Растительный жир также выступает связующим компонент в рецептах
+                    тортов, кексов, пирожных.
+                </p>
+                <p>
+                    Единственный недостаток заключается в том, что масло подсолнечное первого холодного отжима, например, не подходит для жарки на сильном огне. Продукт не отличается стойкостью к высоким температурам, поэтому в ходе обработки быстрее
+                    выделяются вредные вещества. При этом его можно использовать для тушения или запекания.
+                </p>
+                <h2>Как выбрать масло холодного отжима</h2>
+                <p>Учитывайте:</p>
+                <ol>
+                    <li>Бренд. Выбирайте проверенную торговую марку из Украины или из-за границы — в онлайн-каталоге MAUDAU представлено свыше 150 предложений.</li>
+                    <li>Тип. Если ищете универсальный продукт, остановитесь на варианте из семян подсолнуха. К тому же на подсолнечное масло холодного отжима цена самая низкая. Растительный жир на основе кокоса, например, привнесет сладкую нотку.</li>
+                    <li>Вид. Рафинированный продукт подходит для жарки, а нерафинированный — для полива готовых блюд.</li>
+                    <li>Формат. Стекло предотвращает химическое выщелачивание. Пластик — более компактный, а низкая себестоимость упаковки снижает цену самой продукции.</li>
+                    <li>Объем. Маленькая бутылка на 300 мл подходит для периодического использования, а большая — для регулярной готовки.</li>
+                </ol>
+                <h3>Масло холодного отжима: цена в Украине</h3>
+                <p>
+                    Стоимость во многом зависит от состава. В среднем цена за 1 л составляет 80 грн для подсолнечного масла, 400 грн — для оливкового, 600 грн — для кокосового, 900 грн — для амарантового. Если хотите сэкономить, покупайте по акции или
+                    следите за распродажами.
+                </p>
+                <h2>Как правильно хранить масло холодного отжима</h2>
+                <p>
+                    Не оставляйте растительный жир на кухонной поверхности, даже если это удобно. Храните продукт в сухом и темном месте вдали от естественных и искусственных источников света. Масло подсолнечное холодного отжима разумно купить, если в
+                    холодильнике нет свободного места. Льняное, например, рекомендовано хранить исключительно в холоде. Плотно закрывайте бутылку после каждого использования.
+                </p>
+                <h2>Почему выгодно купить масло холодного отжима в интернет-магазине MAUDAU</h2>
+                <p>
+                    Команда маркета повседневных штук MAUDAU гарантирует оригинальное происхождение каждого товара. Растительное масло холодного отжима можно купить с доставкой курьером по Киеву. Заказ по Украине доставит одна из логистических
+                    компаний. При достижении определенной суммы заказа — отправку осуществляют бесплатно.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Винегрет с изюминкой" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vinehret-iz-rodzynkoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Винегрет с изюминкой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свекла</li><li>Морковь</li><li>Картофель</li><li><a href="https://maudau.com.ua/ru/category/konservovani-hryby/tekhnolohiia_pryhotuvannia=u-marynadi-3">Маринованные грибы</a></li><li>Репчатый лук</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li><a href="https://maudau.com.ua/ru/category/otset/kyslotnist_3=3-70">Уксус 3%</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/typ_268=chornyi-43">Черный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Винегрет с изюминкой — это классический холодный салат из вареных овощей, в этом рецепте дополненный маринованными грибами. Заправка из уксуса и масла холодного отжима добавляет блюду пикантности.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Винегрет с изюминкой</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 свеклы</li><li>2 моркови</li><li>2 картофеля</li><li>500 г маринованных грибов</li><li>1 головка репчатого лука</li><li>100 мл масла холодного отжима</li><li>2-3 ст. л. уксуса 3%</li><li>2 ч. л. сахара</li><li>соль по вкусу</li><li>черный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Вымойте и отварите 2 свеклы, 2 моркови, 2 картофеля в кожуре до мягкости. Это займет около 30–40 минут в зависимости от размера овощей.</li><li>Остудите готовые овощи, очистите от кожуры и нарежьте небольшими кубиками.</li><li>Нарежьте 500 г маринованных грибов на небольшие кусочки.</li><li>Очистите и мелко нарежьте одну головку репчатого лука.</li><li>В большой миске смешайте нарезанные овощи, грибы и лук.</li><li>В отдельной мисочке смешайте 2-3 ст. л. уксуса 3%, 2 ч. л. сахара, соль и черный перец.</li><li>Постепенно добавляйте 100 мл масла холодного отжима, взбивая смесь венчиком до однородного состояния.</li><li>Полейте овощи заправкой и аккуратно перемешайте, чтобы все ингредиенты пропитались вкусной заливкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Постные бутерброды с хумусом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pisni-buterbrody-z-khumusom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Постные бутерброды с хумусом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/bobovi/typ_262=nut-7">Нут</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=kunzhutna">Кунжутная паста тахини</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li>Чеснок</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/typ_268=chornyi-43">Черный перец</a></li><li>Хлеб</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Постные бутерброды с хумусом — это легкая и полезная закуска. Хрустящий хлеб, намазанный густым, ароматным хумусом, украшают свежими овощами: огурцами, помидорами и зеленью. Идеально для легкого перекуса.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Постные бутерброды с хумусом</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г нута</li><li>1 ч. л. соды</li><li>1 ст. л. кунжутной пасты тахини</li><li>2-3 ст. л. масла холодного отжима</li><li>2 зубчика чеснока</li><li>соль по вкусу</li><li>черный перец по вкусу</li><li>ломтики хлеба</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Промойте 200 г нута и замочите его в воде на ночь.</li><li>На следующий день слейте воду, добавьте новую, затем добавьте 1 ч. л. соды и варите нут до мягкости (около 1,5 часа).</li><li>В блендер или кухонный комбайн добавьте вареный нут, 2 зубчика чеснока, 1 ст. л. кунжутной пасты тахини, 2-3 ст. л. масла холодного отжима, соль и перец. Взбейте все до получения однородной кремовой массы.</li><li>Поджарьте ломтики хлеба на сухой сковороде или в тостере до золотистой корочки.</li><li>Нанесите хумус на хлеб. По желанию добавьте свежие овощи.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пирог с капустой для всей семьи" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pyrih-iz-kapustoiu-dlia-vsiiei-rodyny.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пирог с капустой для всей семьи</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=drizhdzhi-2">Сухие дрожжи</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/boroshno">Мука</a></li><li>Морковь</li><li>Капуста</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пирог с капустой — это сочетание нежного теста с сочной начинкой из тушеных овощей. Сытное и простое блюдо подходит для уютного семейного обеда или ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Пирог с капустой для всей семьи</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 мл теплой воды</li><li>7 г сухих дрожжей</li><li>2 ст. л. сахара</li><li>600 г муки</li><li>2 тертых моркови</li><li>500 г нашинкованной капусты</li><li>50 мл масла холодного отжима</li><li>щепотка соли</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В 250 мл теплой воды добавьте 2 ст. л. сахара и 7 г сухих дрожжей, хорошо перемешайте и оставьте на 10 минут.</li><li>В большую миску просейте 600 г муки и добавьте щепотку соли.</li><li>Влейте дрожжевую смесь в муку, добавьте 50 мл масла холодного отжима и замесите тесто. Оно должно получиться мягким и эластичным.</li><li>Накройте тесто полотенцем и оставьте в теплом месте на 1 час, чтобы оно подошло и увеличилось в объеме.</li><li>В сковороде разогрейте 1 ст. л. масла и обжарьте 2 тертых моркови до мягкости.</li><li>Добавьте 500 г нашинкованной капусты, соль, перец по вкусу и продолжайте жарить на среднем огне, помешивая.</li><li>Разделите подошедшее тесто на две части: одну чуть больше другой.</li><li>Большую часть раскатайте и выложите в смазанную маслом форму, формируя бортики.</li><li>Выложите остывшую капустно-морковную начинку на тесто.</li><li>Раскатайте оставшееся тесто и накройте им начинку. Защипните края.</li><li>Сделайте несколько проколов вилкой на поверхности пирога, чтобы выходил пар.</li><li>Разогрейте духовку до 180°C.</li><li>Выпекайте пирог около 30–40 минут до золотистой корочки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лакомые блинчики на десерт" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Lasi-mlyntsi-na-desert.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лакомые блинчики на десерт</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/boroshno">Мука</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=lymonna-kyslota">Лимонная кислота</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Традиционное лакомство на десерт — это тонкие, воздушные блинчики, поданные со свежими ягодами и сиропом. Их легкая текстура и сладкий вкус понравятся и взрослым, и детям.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Лакомые блинчики на десерт</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 мл теплой воды</li><li>1 ст. л. сахара</li><li>¼ ч. л. соли</li><li>200 г муки</li><li>1 ч. л. соды</li><li>щепотка лимонной кислоты</li><li>50 мл масла холодного отжима</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В большой миске смешайте 200 г муки, 1 ст. л. сахара, ¼ ч. л. соли, 1 ч. л. соды и щепотку лимонной кислоты.</li><li>Хорошо перемешайте, чтобы все сухие ингредиенты равномерно распределились.</li><li>Постепенно вливайте 400 мл теплой воды в сухую смесь, постоянно помешивая венчиком, чтобы избежать образования комков.</li><li>Добавьте 50 мл масла холодного отжима в тесто и снова перемешайте, чтобы оно равномерно распределилось по всей массе.</li><li>Дайте тесту настояться 10–15 минут.</li><li>Разогрейте сковороду на среднем огне.</li><li>Отмеривайте ложкой небольшое количество теста и выпекайте блинчики.</li><li>Обжаривайте изделия с обеих сторон до золотистого цвета.</li><li>Готовую выпечку подавайте с медом, вареньем, сгущенкой или свежими ягодами по вкусу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Маринованный перец с горчичным маслом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Marynovanyi-perets-iz-hirchychnoiu-oliieiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Маринованный перец с горчичным маслом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Болгарский перец</li><li>Чеснок</li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li><a href="https://maudau.com.ua/ru/category/otset/kyslotnist_3=9-47">Уксус 9%</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=lavrovyi-lyst">Лавровый лист</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Маринованный перец с горчичным маслом — это яркое и ароматное блюдо, сочетающее сладость с пикантностью и горчинкой. Используют как самостоятельную закуску или как дополнение к основным блюдам.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Маринованный перец с горчичным маслом</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 кг чищеного болгарского перца</li><li>2 головки чеснока (средние)</li><li>800 г воды</li><li>200 г масла холодного отжима</li><li>150 г уксуса 9%</li><li>200 г сахара</li><li>60 г соли</li><li>0.5 ч. л. молотого черного перца</li><li>3 лавровых листка</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>2 кг болгарского перца очистите от семян и нарежьте крупными дольками или полосками.</li><li>Очистите 2 головки чеснока и нарежьте зубчики на тонкие пластинки.</li><li>В кастрюле смешайте 800 г воды, 150 г уксуса 9%, 200 г сахара, 60 г соли, 0.5 ч. л. молотого черного перца и 3 лавровых листка.</li><li>Доведите смесь до кипения на среднем огне, помешивая, чтобы сахар и соль полностью растворились.</li><li>Добавьте нарезанный чеснок в кипящий маринад и готовьте еще 2-3 минуты.</li><li>Снимите кастрюлю с огня и аккуратно влейте 200 г масла холодного отжима в маринад. Тщательно перемешайте смесь.</li><li>Выложите нарезанный болгарский перец в стерилизованные банки, плотно укладывая кусочки.</li><li>Залейте перец горячим маринадом доверху и закройте банки стерилизованными крышками.</li><li>Перед подачей перцу нужно настояться минимум 2 недели, чтобы он полностью пропитался вкусами маринада.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Киноа с миндалем и рукколой" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kinoa-z-myhdalem-i-rukoloi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Киноа с миндалем и рукколой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/kinoa">Киноа</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Миндаль</a></li><li>Рукола</li><li>Морковь</li><li>Огурцы</li><li>Лимон</li><li>Редис</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Киноа с миндалем и рукколой — это легкий и полезный салат на каждый день. Крупа хорошо сочетается с орехами, а свежая зелень придает блюду яркости. Идеальный выбор для семейного обеда или ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Киноа с миндалем и рукколой</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>½ ст. киноа</li><li>50 г миндаля</li><li>1 пучок руколы</li><li>1 морковь</li><li>2 шт. огурцов</li><li>1/3 лимона</li><li>4 шт. редиса</li><li>соль по вкусу</li><li>масло холодного отжима по вкусу</li><li>молотый черный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите ½ ст. киноа. Добавьте соль и специи по вкусу.</li><li>Вымойте овощи и натрите на крупной терке одну морковь.</li><li>Нарежьте 4 редиса и 2 огурца некрупно.</li><li>Руками порвите 1 пучок рукколы.</li><li>Добавьте киноа и 50 г миндаля к овощам.</li><li>Выдавите сок из 1/3 лимона.</li><li>Добавьте немного масла холодного отжима, соль и перец. Перемешайте блюдо.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Миндальное молоко с корицей" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdaleve-moloko-z-korytsei.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Миндальное молоко с корицей</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Миндаль</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=kokosova-struzhka-2">Кокосовая стружка</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Корица</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Миндальное молоко с корицей — это ароматный напиток на основе орехов, обогащенный теплыми нотами специй. Нежный и сладкий, он отлично подходит для уютного утра или вечернего релакса.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Миндальное молоко с корицей</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>160 г миндаля</li><li>3 ст. л. кокосовой стружки</li><li>щепотка корицы</li><li>5 ст. воды</li><li>2 ст. молока</li><li>50 г меда</li><li>1 ст. л. масла холодного отжима (льняного)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Замочите 160 г сырого миндаля на 5-6 часов.</li><li>Слейте воду и промойте орехи.</li><li>Взбейте миндаль, 3 ст. л. кокосовой стружки, щепотку корицы, 5 ст. воды, 2 ст. молока, 50 г меда и 1 ст. л. льняного масла в блендере.</li><li>Процедите смесь через марлю или плотную сетку.</li><li>Охладите напиток в холодильнике.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Жареная фасоль с огурцами с кабачками" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Smazhena-kvasolia-z-ohirkamy-z-kabachkamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Жареная фасоль с огурцами с кабачками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Цукини</li><li>Огурцы</li><li>Стручковая фасоль</li><li>Зелень</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li><a href="https://maudau.com.ua/ru/category/olyvky-ta-maslyny">Оливки</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=kurkuma-4">Куркума</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Жареная фасоль с огурцами и цукини — это не просто вкусно, но и полезно. Хрустящие овощи обжаривают с фасолью, создавая гармоничное сочетание вкусов и текстур. Лучший выбор для легкого обеда или ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Жареная фасоль с огурцами с кабачками</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 шт. цукини</li><li>3 шт. огурцов</li><li>400 г стручковой фасоли</li><li>1 пучок зелени</li><li>3 ст. л. масла холодного отжима (льняного)</li><li>1 банка оливок</li><li>1 ст. л. куркумы</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Поставьте сковородку на огонь и налейте немного подсолнечного масла.</li><li>Насыпьте 1 ст. л. куркумы после того, как масло нагреется, и перемешивайте минуту.</li><li>Добавьте 400 г стручковой фасоли, перемешайте и накройте крышкой. Снимите сковороду с огня через 10 минут.</li><li>Нарежьте 3 огурца и 2 цукини и нашинкуйте пучок зелени.</li><li>Порежьте оливки (одну банку) на половинки.</li><li>Соедините ингредиенты в большой салатнице.</li><li>Заправьте блюдо 3 ст. л. льняного масла холодного отжима.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кисло-сладкий салат из брокколи" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kyslo-solodkyi-salat-iz-brokoli.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кисло-сладкий салат из брокколи</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=kyslo-solodkyi-2">Кисло-сладкий соус</a></li><li>Капуста брокколи</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li><a href="https://maudau.com.ua/ru/product/nasinnia-kunzhut-chornyi-tm-akura-30-h">Черные кунжутные семечки</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=keshiu-2">Кешью</a></li><li>Лук-шалот</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кисло-сладкий салат из брокколи — необычное блюдо с цельными кусочками капусты, луком-шалот и кунжутным маслом. Для гармоничного вкусового баланса добавлены орехи и зелень.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Кисло-сладкий салат из брокколи</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г кисло-сладкого соуса</li><li>200 г капусты брокколи</li><li>1 ст. л. масла холодного отжима (кунжутного)</li><li>черные кунжутные семечки по вкусу</li><li>кешью по вкусу</li><li>2 шт. лука-шалот</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Порежьте 200 г капусты брокколи.</li><li>Вылейте 50 г кисло-сладкого соуса в чашу, положите брокколи и перемешайте.</li><li>Сбрызните смесь столовой ложкой кунжутного масла.</li><li>Добавьте черные кунжутные семечки и остальные 50 г кисло-сладкого соуса.</li><li>Добавьте кешью по вкусу и 2 шт. лука-шалот. Перемешайте.</li><li>Выложите салат на большую тарелку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тушеная капуста с имбирем и медом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tushkovana-kapusta-z-imbyrom-i-medom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тушеная капуста с имбирем и медом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Белокочанная капуста</li><li>Имбирь</li><li>Морковь</li><li><a href="https://maudau.com.ua/ru/product/rodzynky-svitli-dzhambo-vidbirni">Светлый изюм</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Масло холодного отжима</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=kedrovi-2">Кедровые орехи</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тушеную капусту по этому рецепту можно подавать в качестве гарнира или соло. Нежные ломтики капусты органично сочетаются с пряностью имбиря и и сладостью меда. Понравится любителям легких и вкусных вегетарианских блюд.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Тушеная капуста с имбирем и медом</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 кг белокочанной капусты</li><li>80 г имбиря</li><li>120 г моркови</li><li>100 г светлого изюма</li><li>2 ст. л. масла холодного отжима (кунжутного)</li><li>150 мл воды</li><li>2 ст. л. меда</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li><li>кедровые орехи по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Помойте 1 кг белокочанной капусты. Нашинкуйте вдоль и поперек тонкой соломкой.</li><li>Выложите соломку в блюдо и помните.</li><li>Помойте и почистите 120 г моркови и 80 г имбиря.</li><li>Замочите 100 г светлого изюма в 100 мл воды.</li><li>Потрите морковь на средней терке и выложите в блюдо.</li><li>Пропустите имбирь через пресс. Добавьте в смесь капусты и морковки.</li><li>Добавьте размоченный изюм, 2 ст. л. кунжутного масла, соль и перец по вкусу.</li><li>Налейте немного кунжутного масла на разогретую сковородку.</li><li>Выложите овощи и влейте 50 мл воды.</li><li>Тушите на слабом огне до готовности (около получаса).</li><li>Подавайте с медом и кедровыми орешками.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">884 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.11 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">99.98 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0.12 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

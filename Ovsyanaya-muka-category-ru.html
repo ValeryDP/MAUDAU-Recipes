@@ -1,0 +1,1033 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Овсяная мука — пищевой продукт, который готовят посредством измельчения овса в мелкий порошок. Растение выращивают со времен древних цивилизаций. Овес особенно распространен в Германии и Шотландии, где его поначалу культивировали
+                    как корм для животных. Сегодня ведущими производителями муки из овсянки считают США, Канаду и Австралию. Продукт не менее распространен в Украине, так как хорошо растет в умеренном континентальном климате.
+                </p>
+                <h3>Ключевые свойства муки из овса</h3>
+                <p>Краткий обзор:</p>
+                <ol>
+                    <li>Цвет. Овсяную муку характеризует бледно-кремовый цвет, который объясняется использованием всех частей злака.</li>
+                    <li>Аромат. Мягкий и ненавязчивый, со слегка выраженной ореховостью.</li>
+                    <li>Вкус. Нейтральный, с умеренными сладко-землистыми нотками, что делает муку из зерен овса прекрасным ингредиентом для выпечки.</li>
+                    <li>Содержание глютена. Продукт не включает растительный белок, который не переносит организм некоторых людей.</li>
+                </ol>
+                <h2>Как изготавливают овсяную муку</h2>
+                <p>Производство объединяет несколько этапов:</p>
+                <ol>
+                    <li>Подготовка сырья. Сырой овес сначала очищают от пыли, камней, мелкого мусора. Его также перебирают, оставляя злаки примерно одинакового размера.</li>
+                    <li>Шелушение. Овес просеивают, удаляя несъедобную внешнюю оболочку. На дальнейшую обработку отправляют овсянку — мягкую слегка сплющенную сердцевину.</li>
+                    <li>Термическая обработка. Овес нередко пропаривают или запекают, что стабилизирует основной компонент. Это предотвращает преждевременное прогоркание муки из геркулеса.</li>
+                    <li>Помол. Крупу измельчают с помощью валковых мельниц. Интенсивность определяют исходя из выпускаемой разновидности.</li>
+                    <li>Просеивание. Готовую овсяную муку повторно просеивают, удаляя слишком крупные остатки. После достижения желаемой консистенции продукт упаковывают и готовят к распространению.</li>
+                </ol>
+                <h2>Польза для здоровья от муки из овсянки</h2>
+                <p>Продукт содержит высокую концентрацию углеводов и белков, а также растворимые и нерастворимые пищевые волокна. Питательный профиль включает:</p>
+                <ul>
+                    <li>витамины A и E, а также тиамин, рибофлавин, фолиевую кислоту;</li>
+                    <li>калий, кальций, магний, марганец, цинк и фтор;</li>
+                    <li>аминокислоты, в частности — тирозин и холин.</li>
+                </ul>
+                <p>Мука из геркулеса — хороший вариант, если надоело каждый день завтракать овсянкой, при этом не хочется отказываться от полезного влияния на здоровье. Доказано, что продукт:</p>
+                <ol>
+                    <li>Поддерживает здоровый вес. Клетчатка быстро насыщает, ускоряет метаболизм и способствует регулярному опорожнению кишечника.</li>
+                    <li>Снижает запасы плохого холестерина. Высокие показатели ЛПНП — ключевой фактор, повышающий риск развития сердечно-сосудистых заболеваний. Бета-глюканы, которые содержит овсяная мука, блокируют усвоение холестерина.</li>
+                    <li>Не повышает показатели сахара в крови. Это особенно важно при сахарном диабете.</li>
+                    <li>Борется с некоторыми видами рака. Антиоксиданты эффективно защищают клетки от мутаций, снижая риск развития рака кишечника и молочных желез.</li>
+                </ol>
+                <h2>Кому противопоказана геркулесовая мука</h2>
+                <p>
+                    Продукт, как правило, безопасен и полезен, но рекомендуют употреблять его в умеренных количествах. В редких случаях возникает аллергия на овес. Продукт противопоказан людям на кетогенных диетах, так как содержит высокую дозу
+                    углеводов. Клетчатка также может повысить пищеварительный дискомфорт при синдроме раздраженного кишечника (СРК).
+                </p>
+                <p>Людям с целиакией не запрещена мука из овса, но важно убедиться в отсутствии перекрестных контактов на предприятии, где ее производят. Для этого ищите маркировку Gluten Free.</p>
+                <h2>Как применяют муку из зерен овса в кулинарии</h2>
+                <p>
+                    Продукт обычно используют при выпекании. Он придает тесту плотную текстуру. Овсяную муку также используют в рецептах хлеба, кексов, тортов, печенья и блинов. На ее основе можно приготовить полезный десерт, например, сырники или
+                    пудинг. Овсяную муку нельзя использоваться как полноценную замену пшеничной, поэтому ее смешивают с другими видами — кукурузной, рисовой, ячменной, льняной. Так как в составе нет глютена, в рецептуру обязательно вводят связующий
+                    компонент — яйца, сливки, молоко. Особенно выгодно муку из геркулеса подчеркивают:
+                </p>
+                <ul>
+                    <li>орехи;</li>
+                    <li>кокос;</li>
+                    <li>яблоки;</li>
+                    <li>бананы;</li>
+                    <li>сухофрукты;</li>
+                    <li>кленовый сироп;</li>
+                    <li>коричневый сахар;</li>
+                    <li>корица;</li>
+                    <li>мускатный орех;</li>
+                    <li>кофе;</li>
+                    <li>шоколад.</li>
+                </ul>
+                <p>Муку из овсянки также можно использовать для приготовления панировки к мясу или сыру. Она подходит для загущения соусов, супов и овощного рагу.</p>
+                <h3>Мука из овса: место в косметологии</h3>
+                <p>
+                    Специалисты в области красоты ценят продукт за успокаивающие и отшелушивающие свойства. Компонент часто внедряют в рецепт скрабов и масок для лица, поскольку овсяная мука уменьшает воспаления, впитывает излишки жира и мягко удаляет
+                    омертвевшие клетки кожи.
+                </p>
+                <p>Продукт также можно найти в средствах для волос, где ему отводят смягчающую, разглаживающую и питательную функции.</p>
+                <h2>Как выбрать муку из овса онлайн</h2>
+                <p>Когда заказываете продукт в интернет-магазине MAUDAU, обращайте внимание на:</p>
+                <ol>
+                    <li>Бренд. Проверенные торговые марки из Украины — «Альта Віста», «Козуб» і «Сто пудів». Продукцию Elovena выпускают в Финляндии.</li>
+                    <li>Состав. Проверьте, нет ли в списке добавленного сахара или консервантов.</li>
+                    <li>Отзывы других покупателей. Их можно найти на странице конкретного товара вместе с оценками.</li>
+                    <li>Упаковку. Бумажный пакет — экологичный вариант, эффективно впитывающий конденсат.</li>
+                    <li>Вес. Овсяную муку можно купить по 1 кг. Пачка весом 500 г пригодится для редкого использования.</li>
+                    <li>Назначение. Если для панкейков важна однородная консистенция теста, то для хлеба — грубый помол.</li>
+                </ol>
+                <h3>Овсяная мука: цена в Украине</h3>
+                <p>На цену влияют происхождение производителя, условия выращивания овса, а также выбранная фасовка. В среднем 1 кг муки из овса стоит 40 грн.</p>
+                <h2>Как правильно хранить муку из овсянки в домашних условиях</h2>
+                <p>
+                    Продукт следует поместить в герметичную тару, накрытую крышкой, в сухое и темное место. Не менее важно убедится в отсутствии чрезмерной влажности. При комнатной температуре продукт хранят до шести месяцев. В холодильнике или
+                    морозильной камере — около года.
+                </p>
+                <h2>Почему выгодно купить овсяную муку в интернет-магазине MAUDAU</h2>
+                <p>
+                    Маркет повседневных штук MAUDAU предлагает оригинальную продукцию с доставкой курьером или логистической компанией. Товар также можно забрать самостоятельно. Овсяную муку можно купить в розницу или оптом — так дешевле. Для
+                    дополнительной экономии отслеживайте акции и распродажи. Собирайте заказ на определенную сумму, чтобы доставку оплатил интернет-магазин MAUDAU. Рассчитаться за покупку можно разными способами — наличными или банковской картой.
+                    Сделать это можно в комфортное время — в момент оформления заказа или постфактум. На цену муки из овса это не влияет.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Жареные патиссоны в кляре со сметанным соусом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Smazheni-patysony-v-kliari-zi-smetannym-sousom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Жареные патиссоны в кляре со сметанным соусом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Патиссоны</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li>Куриное яйцо</li><li>Чеснок</li><li>Твердый сыр</li><li>Сметана</li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/vyd_111=plastivtsi-6">Перец чили хлопьями</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустящие снаружи и нежные внутри патиссоны в сочетании с пикантным соусом – это настоящее наслаждение для гурманов и поклонников здоровой пищи.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Жареные патиссоны в кляре со сметанным соусом</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 патиссона</li><li>10 ст. л. овсяной муки</li><li>1 крупное куриное яйцо</li><li>2 зубчика чеснока</li><li>50 г твердого сыра</li><li>200 г сметаны</li><li>½ ч. л. перца чили в хлопьях</li><li>молотый черный перец по вкусу</li><li>соль по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте 2 патиссона кольцами толщиной 1 см.</li><li>Посолите нарезанные патиссоны и оставьте их на 10 минут.</li><li>Взбейте 1 яйцо в глубокой миске, добавьте 10 столовых ложек овсяной муки и щепотку соли. Хорошо перемешайте смесь, чтобы она стала однородной.</li><li>Разогрейте сковороду на среднем огне и добавьте масло.</li><li>Обмакните каждый ломтик патиссона в кляр, тщательно покрывая его со всех сторон, и аккуратно выложите на сковороду.</li><li>Обжаривайте патиссоны с обеих сторон.</li><li>Готовые патиссоны выкладывайте на бумажное полотенце.</li><li>Для соуса натрите 50 г твердого сыра, добавьте 200 г сметаны, измельченные 2 зубчика чеснока, перец чили, черный перец и соль по вкусу, перемешайте.</li><li>Подавайте патиссоны с соусом, посыпав зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Апельсиновое бискотти с белым шоколадом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Apelsynove-biskotti-z-bilym-shokoladom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Апельсиновое бискотти с белым шоколадом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/boroshno">Пшеничная мука</a></li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li>Апельсины</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li><a href="https://maudau.com.ua/ru/category/shokolad/vyd_shokoladu=bilyi-8">Белый шоколад</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Это изысканное итальянское печенье, которое сочетает хрустящую текстуру с нежным ароматом апельсина и сладостью белого шоколада. Оно идеально подойдет к утреннему кофе или чаю.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Апельсиновое бискотти с белым шоколадом</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г сливочного масла</li><li>2 ст. пшеничной муки</li><li>2 шт. куриных яиц</li><li>½ ст. сахара</li><li>1½ ст. л. гашеной соды</li><li>1апельсин</li><li>¼ ст. овсяной муки</li><li>½ шт. белого шоколада</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В глубокой миске взбейте 100 г мягкого сливочного масла с ½ стакана сахара до получения пышной и светлой массы.</li><li>К масляной смеси добавьте по одному 2 яйца, продолжая взбивать после каждого добавления.</li><li>Затем добавьте цедру 1 апельсина.</li><li>Также добавьте 1½ ст. л. гашеной соды.</li><li>Тщательно перемешайте смесь до однородности.</li><li>Постепенно введите 2 стакана пшеничной муки и ¼ стакана овсяной муки.</li><li>Замесите тесто.</li><li>Вмешайте в тесто нарезанный белый шоколад.</li><li>Разделите тесто на две части и сформируйте из каждой длинные и плоские «колбаски» толщиной около 1,5 см.</li><li>Разогрейте духовку до 180°C и выпекайте бискотти около 25 минут.</li><li>Дайте остыть, нарежьте и подавайте!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Постный рождественский кекс" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pisnyi-rizdvianyi-keks.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Постный рождественский кекс</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li><a href="https://maudau.com.ua/ru/category/dytiachi-piure/smak=garbuz">Тыквенное пюре</a></li><li><a href="https://maudau.com.ua/ru/category/sukhofrukty">Сухофрукты</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=hretski">Грецкие орехи</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=rozpushuvach">Разрыхлитель</a></li><li><a href="https://maudau.com.ua/ru/product/pryprava-eko-korytsia-melena-20-h-2169">Молотая корица</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=vanilin-2">Ванилин</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кекс по этому рецепту сочетает сладость меда и тыквенного пюре, насыщенность сухофруктов и орехов, пряный аромат корицы, муската и легкость овсяной муки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Постный рождественский кекс</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>¾ ст. овсяной муки</li><li>¾ ст. тыквенного пюре</li><li>300 г сухофруктов</li><li>130 г грецких орехов</li><li>¼ ст. воды</li><li>1 ст. л. меда</li><li>¼ ч. л. разрыхлителя</li><li>½ ч. л. молотой корицы</li><li>¼ ч. л. соды</li><li>ванилин на кончике ножа</li><li>мускатный орех на кончике ножа</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В глубокой миске соедините овсяную муку, соду и разрыхлитель.</li><li>Добавьте молотую корицу, мускатный орех и ванилин</li><li>Тщательно перемешайте, чтобы все ингредиенты равномерно распределились.</li><li>В отдельной миске смешайте тыквенное пюре, воду и мед.</li><li>Перемешивайте смесь до однородности.</li><li>Постепенно введите жидкую смесь в сухую, аккуратно помешивая ложкой или лопаткой.</li><li>Заранее разогрейте духовку до 180°C. Подготовьте форму для выпекания, смазав ее маслом или застелив пекарской бумагой.</li><li>Выложите тесто в форму, разровняйте поверхность и отправьте в разогретую духовку. Выпекайте кекс около 50 минут.</li><li>Дайте кексу полностью остыть, порежьте и подавайте!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Нутовый омлет" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Nutovyi-omlet.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Нутовый омлет</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/podribneni-nasinnia-lonu-golden-pharm-100-h-473740">Молотые семена льна</a></li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=nutove">Нутовая мука</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/pryprava-eko-chasnyk-sushenyi-melenyi-15-h-1362">Молотый сушеный чеснок</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=kurkuma-4">Куркума</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=rozpushuvach">Разрыхлитель</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li>Шпинат</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нутовый омлет — это питательное блюдо с богатым вкусом и пользой нутовой муки. Идеальный завтрак для здорового начала дня.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Нутовый омлет</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 ст. л. молотых семян льна</li><li>1 ст. л. овсяной муки</li><li>0,3 ст. нутовой муки</li><li>½ ст. воды</li><li>¼ ч. л. соли</li><li>молотый сушеный чеснок по вкусу</li><li>щепотка куркумы</li><li>½ ч. л. разрыхлителя</li><li>½ ч. л. молотого черного перца</li><li>20 г шпината</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Смешайте 1 ст. л. молотых семян льна с ¼ ст. воды и дайте постоять 5 минут.</li><li>В другой миске соедините 0,3 ст. нутовой муки, 1 ст. л. овсяной муки, ½ ч. л. разрыхлителя, щепотку куркумы, молотый сушеный чеснок, черный перец и соль по вкусу.</li><li>Добавьте смесь семян льна и ½ ст. воды. Перемешайте до получения однородного теста.</li><li>Введите мелко нарезанный шпинат в тесто и аккуратно перемешайте.</li><li>Разогрейте сковороду на среднем огне и добавьте немного растительного масла.</li><li>Жарьте омлет до золотистой корочки с одной стороны, затем переверните его и готовьте до золотистого цвета с другой стороны.</li><li>Готовый омлет можно подавать горячим, с любимым соусом, украсив зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Форель по-шотландски" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Forel-po-shotlandsky.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Форель по-шотландски</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Форель</li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li>Жир</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li>Лимон</li><li>Зелень</li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рецепт традиционного блюда, который позволяет сохранить сочность форели, одновременно добавляя ей хрустящую корочку за счет овсяной муки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Форель по-шотландски</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 шт. форель</li><li>20 мл молока</li><li>10 г жира</li><li>30 г овсяной муки</li><li>1 лимон</li><li>зелень по вкусу</li><li>молотый черный перец по вкусу</li><li>соль по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистите и вымойте одну форель, затем приправьте ее солью и черным перцем по вкусу.</li><li>Мелко нарежьте зелень (петрушку или укроп).</li><li>Натрите на мелкой терке цедру одного лимона.</li><li>В отдельной миске смешайте 30 грамм овсяной муки с мелко нарезанной зеленью.</li><li>Добавьте туда цедру лимона и тщательно все перемешайте.</li><li>Обмакните рыбу в молоке, чтобы овсяная смесь лучше держалась на ней, и обваляйте в подготовленной смеси.</li><li>Разогрейте 10 граммов жира на сковороде на среднем огне.</li><li>Начните обжаривать форель. Жарьте, пока обе стороны не станут золотистого цвета и хрустящими.</li><li>Переложите на бумажные полотенца, а потом — на тарелку.</li><li>Подавайте рыбу горячей, украсив ломтиками лимона и свежей зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Оладьи из овсяной муки с кленовым сиропом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Oladky-z-vivsianoho-boroshna-z-klenovym-syropom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Оладьи из овсяной муки с кленовым сиропом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor/vyd_61=trostnykovyi">Тростниковый сахар</a></li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2">Кленовый сироп</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкие и воздушные оладьи из овсяной муки с кленовым сиропом станут неизменным и питательный завтраком, который зарядит вас энергией на целый день!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Оладьи из овсяной муки с кленовым сиропом</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г овсяной муки</li><li>180 мл молока</li><li>2 ст. л. тростникового сахара</li><li>1 куриное яйцо</li><li>½ ч. л. соли</li><li>½ ч. л. соды</li><li>3 ст. л. оливкового масла</li><li>кленовый сироп по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В миске смешайте 200 г овсяной муки, 2 столовые ложки тростникового сахара, по ½ чайной ложки соли и соды.</li><li>В отдельной емкости взбейте 1 яйцо с 180 мл молока и 3 столовыми ложками оливкового масла, затем добавьте эту смесь к сухим ингредиентам.</li><li>Перемешайте тесто до однородной консистенции и дайте ему постоять 10 минут, чтобы все ингредиенты лучше соединились.</li><li>Разогрейте сковороду на маленьком огне.</li><li>Медленно вливайте небольшие порции теста на сковородку.</li><li>Обжаривайте оладьи с обеих сторон до золотистого цвета.</li><li>Если для обжарки использовали подсолнечное масло, после снятия оладий промокните их на бумажном полотенце.</li><li>Подавайте горячими, полив кленовым сиропом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Овсяные блины" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vivsiani-mlyntsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Овсяные блины</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкое и полезное блюдо, идеально подходящее для завтрака или полдника. Отлично сочетаются с различными добавками, такими как мед, свежие ягоды, йогурт или сметана.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Овсяные блины</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>450 г овсяной муки</li><li>500 мл воды</li><li>2 шт. куриных яиц</li><li>½ ч. л. соды</li><li>щепотка соли</li><li>1½ ст. л. сахара</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В миске смешайте 450 г овсяной муки, ½ чайной ложки соды, щепотку соли и 1½ столовой ложки сахара. Хорошо перемешайте сухие ингредиенты, чтобы они равномерно распределились.</li><li>Добавьте 500 мл воды и 2 яйца к сухой смеси.</li><li>Взбейте венчиком до получения однородного, гладкого теста. Тесто должно быть достаточно жидким, чтобы легко распределяться по сковороде.</li><li>Разогрейте сковороду на среднем огне и слегка смажьте ее маслом.</li><li>Вылейте порцию теста на сковороду и быстро распределите его тонким слоем, вращая сковороду.</li><li>Обжарьте блин с одной стороны до румяности, затем переверните и готовьте до золотистого цвета с другой стороны.</li><li>Подавайте горячими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Палочки из трески в овсяном кляре и лимонно-горчичном соусе" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Palychky-z-trisky-u-vivsianomu-kliari-ta-lymonno-hirchychnomu-sousi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Палочки из трески в овсяном кляре и лимонно-горчичном соусе</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Филе трески</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li>Лимон</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=soievyi">Соевый соус</a></li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/product/hirchytsia-torchyn-dizhonska-130-h-550267">Зернистая дижонская горчица</a></li><li><a href="https://maudau.com.ua/ru/product/sil-morska-casa-rinaldi-100-italiano-krupna-1-kh-699053">Крупная морская соль</a></li><li><a href="https://maudau.com.ua/ru/product/sumish-pertsiv-melena-tm-akura-15-h">Смесь молотых перцев</a></li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/vyd_111=plastivtsi-6">Перец чили хлопьями</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустящая и ароматная закуска, дополненная пикантным лимонно-горчичным соусом. Это блюдо понравится всем любителям морепродуктов и станет отличным выбором для легкого ужина или закуски на вечеринке.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Палочки из трески в овсяном кляре и лимонно-горчичном соусе</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>750 г филе трески</li><li>10 ст. л. овсяной муки</li><li>1 кусок лимона</li><li>4 ст. л. оливкового масла</li><li>1 ст. л. соевого соуса</li><li>3 шт. куриных яиц</li><li>1 ст. л. зернистой дижонской горчицы</li><li>щепотка крупной морской соли</li><li>смесь молотых перцев по вкусу</li><li>перец чили хлопьями по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте 750 г филе трески на палочки одинакового размера. Посыпьте их смесью свежемолотых перцев и морской солью.</li><li>В миске смешайте 10 столовых ложек овсяной муки с 1 столовой ложкой соевого соуса и 4 столовыми ложками оливкового масла.</li><li>В отдельной миске взбейте 3 яйца.</li><li>Обмакните каждую палочку трески в яйцо, затем обваляйте в овсяной смеси.</li><li>Разогрейте сковороду на среднем огне и обжарьте палочки до золотистой корочки со всех сторон.</li><li>Готовые палочки выложите на бумажное полотенце.</li><li>Для соуса смешайте сок 1 лимона с 1 столовой ложкой зернистой дижонской горчицы и щепоткой хлопьев чили.</li><li>Подавайте, украсив свежей зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мягкий овсяный хлеб" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Miakyi-vivsianyi-khlib.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мягкий овсяный хлеб</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/boroshno">Пшеничная мука</a></li><li>Свежие дрожжи</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li>Йогурт</li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сытный и ароматный хлеб с нежной текстурой на основе овсяной муки, который идеально подходит для бутербродов или в качестве дополнения к основным блюдам.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Мягкий овсяный хлеб</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г пшеничной муки</li><li>1¼ ч. л. свежих дрожжей</li><li>75 г непросеянной муки</li><li>100 г овсяной муки</li><li>1 ч. л. соли</li><li>3 ст. л. меда</li><li>150 мл йогурта</li><li>25 г сливочного масла</li><li>200 мл воды</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В большой миске смешайте 300 г пшеничной муки, 75 г непросеянной муки, 100 г овсяной муки, 1 чайную ложку соли и 1¼ чайной ложки свежих дрожжей.</li><li>Влейте 200 мл воды, 150 мл йогурта и добавьте 3 столовые ложки меда и 25 г размягченного сливочного масла, перемешайте.</li><li>Выложите тесто на присыпанную мукой поверхность и месите его 10 минут.</li><li>Поместите тесто в миску, накройте полотенцем и оставьте подниматься в теплом месте на 1 час.</li><li>После этого аккуратно обомните его и переложите в смазанную маслом форму для выпекания. Дайте ему подняться еще раз в течение 30 минут.</li><li>В это время разогрейте духовку до 200°C. Выпекайте хлеб около 30–35 минут до золотистой корочки.</li><li>Нарежьте и подавайте теплым.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Овсяный креп" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vivsianyi-krep.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Овсяный креп</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=vivsiane">Овсяная мука</a></li><li><a href="https://maudau.com.ua/ru/product/pryprava-eko-korytsia-melena-20-h-2169">Молотая корица</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=rozpushuvach">Разрыхлитель</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и питательный вариант традиционного французского блинчика. Идеально подходит для сладкого завтрака или легкого перекуса, особенно в сочетании с медом, ягодами или йогуртом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Овсяный креп</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 куриное яйцо</li><li>50 г овсяной муки</li><li>1 ч. л. молотой корицы</li><li>1 ст. л. сахара</li><li>¼ ч. л. разрыхлителя</li><li>60 мл молока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В миске взбейте 1 куриное яйцо с 1 столовой ложкой сахара до однородности.</li><li>Добавьте 50 г овсяной муки, 1 чайную ложку молотой корицы и ¼ чайной ложки разрыхлителя. Хорошо перемешайте, чтобы все ингредиенты равномерно распределились.</li><li>Влейте 60 мл молока, продолжая взбивать до получения теста без комочков. Тесто должно быть достаточно жидким, чтобы легко распределяться по сковороде.</li><li>Разогрейте сковороду на среднем огне и смажьте ее небольшим количеством масла.</li><li>Вылейте небольшое количество теста на сковороду, распределяя его тонким слоем.</li><li>Жарьте креп с обеих сторон до золотистого цвета.</li><li>Подавайте горячим с любимыми топпингами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">369 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">13 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">6.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">64.9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">4.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">9 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

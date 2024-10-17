@@ -1,0 +1,996 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Рожки — короткие изогнутые макаронные изделия в виде полых скрученных трубочек. По форме традиционная паста повторяет локтевой изгиб, поэтому итальянцы называют ее Elbow. Скрученный вариант напоминает рог, что объясняет название.
+                    Лапша и рожки — самые распространенные формы макарон в США, так как на поверхности плотно оседает соус.
+                </p>
+                <h2>Как производят макароны рожки</h2>
+                <p>
+                    Тесто зачастую готовят из твердых сортов пшеницы. Дурум содержит клейковину, которая поддерживает форму макаронных изделий как при изготовлении, так и после варки. Второй важный компонент — вода. Обычно на этом список составляющих
+                    заканчивается, но для окрашивания нередко используют овощной сок.
+                </p>
+                <p>
+                    Рожки изготавливают методом экструзии — продавливания теста через матрицу, которая придает макаронным изделиям нужную форму. После формирования пасту отправляют на сушку в дегидратор, где из нее удаляют влагу, продлевая срок
+                    годности. После сушки макароны рожки отправляют на фасовку, распределяя продукт по полиэтиленовым пачкам или бумажным коробкам.
+                </p>
+                <h2>Какая польза для здоровья от рожек</h2>
+                <p>
+                    Паста содержит много белка, что способствует формированию и восстановлению мышц. Углеводы насыщают организм энергией, что важно при повышенных умственных и физических нагрузках. Дурум содержит клетчатку, которая положительно влияет
+                    на ЖКТ, параллельно регулируя показатели сахара в крови. К тому же у твердой пшеницы низкий гликемический индекс, по сравнению с мягкими сортами.
+                </p>
+                <p>
+                    Рожки — макаронные изделия с высоким содержанием витаминов группы B, особенно фолиевой кислоты и тиамина. Первый важен для женщин во время беременности, тогда как второй задействован в обменных процессах в организме. Дурум также
+                    служит источником важных минералов, включая железо, магний и цинк. Они отвечают за транспортировку кислорода по крови, выработку эритроцитов, функционирование ЦНС.
+                </p>
+                <h2>Как правильно готовить рожки</h2>
+                <p>Процесс простой, но важно придерживаться рекомендаций по времени приготовления, предоставляемых каждым отдельным производителем. Инструкция:</p>
+                <ol>
+                    <li>Вскипятите воду. Для 400-500 граммов макаронных изделий подготовьте 4-6 литров воды.</li>
+                    <li>Посолите воду. Добавьте приправу с расчета одна столовая ложка на два литра жидкости. По желанию добавьте каплю оливкового масла, которое предотвратит слипание.</li>
+                    <li>Всыпьте рожки. Параллельно перемешайте содержимое кастрюли, чтобы паста не прилипла ко дну.</li>
+                    <li>Варите до готовности. Время приготовления составляет 7-9 минут до состояния аль-денте. Рожки мелкие варятся быстрее — 5-7 минут. Если предпочитаете мягкие макароны, варите еще 1-2 минуты.</li>
+                    <li>
+                        Слейте воду. Когда макароны станут плотными, но не жесткими, откиньте их на дуршлаг. Остатки жидкости можно использовать для загущения соуса или бульона. Если готовите холодное блюдо, промойте рожки под проточной водой. Когда
+                        смешиваете пасту с соусом, не смывайте остатки крахмала с поверхности — так заправка лучше пристанет к поверхности.
+                    </li>
+                </ol>
+                <h2>Как выбрать макароны рожки онлайн</h2>
+                <p>Учитывайте личные предпочтения, цель покупки, частоту готовки. Большинство товаров в категории получили оценки и отзывы других покупателей, что упрощает выбор.</p>
+                <p>
+                    Макароны в виде мелких рожек нравятся детям. Они быстро варятся, что позволяет мамам экономить время в процессе ежедневной готовки. Малыши также любят разноцветную пасту — такую предлагает торговая марка «Хуторок». В составе нет
+                    искусственных красителей — только сок шпината, свеклы и моркови. Маленькие рожки-макароны представлены в ассортименте «Повна Чаша», «Ярка», «КМФ».
+                </p>
+                <p>Вес макарон колеблется в пределах 250-900 г. Маленькая пачка подходит для знакомства с новой торговой маркой. Большая — выгодна с точки зрения стоимости.</p>
+                <p>
+                    Вермишель также может напоминать рожки. Тонкая паста — хорошее дополнение к бульону или рамену. Продукт, изготовленный из твердых сортов пшеницы, отличается светло-золотистым цветом — это результат содержания каротиноидов. Такой
+                    вариант рожек предпочитают производители из Италии: Riscossa, Divella, Del Castello. Светлый оттенок свидетельствует о том, что в процессе использовали пшеницу мягких сортов, которая содержит меньше питательных веществ.
+                </p>
+                <h3>Макароны рожки: цена в интернет-магазине MAUDAU</h3>
+                <p>
+                    Elbow — один из самых доступных по стоимости вариантов макарон. Цена стартует от 31 грн. Самый дорогой товар в категории — продукт от Bella Italia. На рожки цена составляет 349 грн за 500 грамм. Это объясняется практичным
+                    металлическим тубусом.
+                </p>
+                <h2>Почему выгодно купить рожки в интернет-магазине MAUDAU</h2>
+                <p>
+                    Продукция попадает в онлайн-каталог MAUDAU напрямую, что гарантирует качество и оригинальное происхождение. Оформить заказ можно за 5-7 минут. Для дополнительной выгоды покупайте по акции. Цена также снижается во время распродаж.
+                    Макароны рожки можно купить с курьерской доставкой к дому по Киеву. Отправка товара возможна почтовыми службами — «Новой Почтой» и «Укрпочтой». Расчет — банковской картой или наличными в момент получения.
+                </p>
+            </div>
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рожки с фаршем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rizhky-z-farshem.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рожки с фаршем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li>Мясной фарш</li><li>Репчатый лук</li><li>Морковь</li><li>Помидоры</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=soniashnykova">Подсолнечное масло</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рожки с фаршем — один из многочисленных вариантов всеми любимых макарон по-флотски. Готовить их очень легко, в результате получается сытное и вкусное блюдо на ужин для всей семьи.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Рожки с фаршем</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г рожек</li><li>150 г мясного фарша</li><li>30 г репчатого лука</li><li>25 г моркови</li><li>0,5 шт. помидора</li><li>3 столовые ложки подсолнечного масла</li><li>перец черный молотый по вкусу</li><li>соль по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте на сковороду масло, выложите измельченные 30 г лука и 25 г моркови.</li><li>Обжарьте овощи на небольшом огне в течение 5 минут.</li><li>Отварите 100 г рожек согласно инструкции на упаковке.</li><li>Добавьте 150 г мясного фарша на сковороду к овощам и продолжите обжарку в течение 5 минут.</li><li>Промойте и натрите на терке половину помидора, добавьте его на сковороду к фаршу.</li><li>Посолите и поперчите по вкусу.</li><li>Перемешайте и жарьте фарш еще несколько минут.</li><li>Добавьте приготовленные рожки к обжаренному фаршу с овощами.</li><li>Хорошо перемешайте и прогрейте все вместе.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рожки в духовке" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rizhky-v-dukhovtsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рожки в духовке</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li>Твердый сыр</li><li>Яйцо</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li><li><a href="https://maudau.com.ua/ru/product/sumish-prianoshchiv-mriia-italiiski-travy-10-h-444263">Итальянские травы</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны — продукт простой и привычный. Но из них можно приготовить что-то оригинальное, например, рожки в духовке. Получается небанальное, запоминающееся и вкусное блюдо!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Рожки в духовке</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г рожков</li><li>200 мл молока</li><li>15 г сливочного масла</li><li>15 г пшеничной муки</li><li>80 г твердого сыра</li><li>1 яйцо</li><li>соль по вкусу</li><li>мускатный орех (на кончике ножа) по вкусу</li><li>0,5 чайной ложки итальянских трав</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Сварите 200 г рожков в подсоленной воде в соответствии с инструкцией на упаковке.</li><li>Взбейте яйцо, добавьте к нему 200 мл молока и 15 г растопленного сливочного масла.</li><li>Хорошо взбейте смесь.</li><li>Смешайте 15 г пшеничной муки с солью, мускатным орехом и 0,5 ч. л. итальянских трав.</li><li>Окуните рожки сначала в жидкую смесь, потом — в сухую.</li><li>Натрите 80 сыра на крупной терке и посыпьте им рожки.</li><li>Выложите блюдо в форму и запекайте в духовке 15–20 минут при 200 градусах.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рожки с сыром" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rizhky-z-syrom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рожки с сыром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li>Твердый сыр</li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легендарные мак энд чиз доказывают, что и макароны можно приготовить оригинально. Рожки с сыром получаются сытными и ароматными. Также эти нежные макароны отлично впишутся в детский рацион.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Рожки с сыром</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г рожков</li><li>2,5 л воды</li><li>100 г твердого сыра</li><li>25 г сливочного масла</li><li>1 столовая ложка соли</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 250 г рожков в 2,5 л подсоленной воды примерно 20–30 минут.</li><li>Сваренные макароны откиньте на сито, дайте стечь воде.</li><li>Добавьте 25 г сливочного масла в посуду с готовыми рожками.</li><li>Натрите на крупной терке 100 г сыра и посыпьте им блюдо.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рожки с тушенкой на сковороде" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rizhky-z-tushonkoiu-na-skovorodi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рожки с тушенкой на сковороде</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li><a href="https://maudau.com.ua/ru/category/miasni-konservy/typ_274=tushonka">Тушенка</a></li><li>Лук</li><li>Помидоры</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Одно из простых, быстрых и вкусных блюд — рожки с тушенкой на сковороде. Подходит для случая, когда нужно накормить всю семью чем-то сытным, потратив минимум усилий.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Рожки с тушенкой на сковороде</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г рожков</li><li>200 г тушенки</li><li>1 шт. лука</li><li>1 шт. помидора</li><li>30 мл растительного масла</li><li>перец черный молотый по вкусу</li><li>соль по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистите лук и нарежьте его небольшими кубиками.</li><li>В сковороду налейте 30 мл растительного масла и добавьте лук.</li><li>Положите жариться 200 г сухих рожков и периодически помешивайте.</li><li>Нарежьте помидор мелкими кубиками и добавьте их к макаронам.</li><li>Нарежьте 200 г тушенки кусочками и вместе с жиром положите в сковороду.</li><li>Потушите блюдо 7–10 минут, посолите и поперчите по вкусу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рожки с мясом в сковороде" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rizhky-z-miasom-u-skovorodi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рожки с мясом в сковороде</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li>Мясо (свинина, курица или индейка)</li><li>Лук</li><li>Морковь</li><li><a href="https://maudau.com.ua/ru/category/tomatna-pasta">Томатная паста</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Несложное и сытное блюдо, которое сможет приготовить каждый! Все компоненты готовятся в одной сковороде, макароны при этом не нужно отваривать в отдельной кастрюле, и они отлично пропитываются мясным соусом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Рожки с мясом в сковороде</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г рожков</li><li>500 г мяса (свинина, курица или индейка)</li><li>1 шт. лука</li><li>1 шт. моркови</li><li>50 г томатной пасты</li><li>500 мл воды (примерное количество, может потребоваться больше или меньше)</li><li>50 мл растительного масла</li><li>перец черный молотый по вкусу</li><li>соль по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте 500 г мяса небольшими кусочками, лук — более мелкими.</li><li>Натрите морковь на крупной терке.</li><li>Разогрейте в сковороде 50 мл растительного масла.</li><li>Обжарьте мясо 5-7 минут, затем добавьте лук.</li><li>Закиньте морковь и готовьте пару минут.</li><li>Посолите, поперчите, введите 50 г томатной пасты.</li><li>Готовьте еще несколько минут под крышкой.</li><li>Всыпьте 250 г рожков, перемешайте, залейте водой и посолите.</li><li>Тушите блюдо около 15 минут под крышкой, иногда помешивайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рожки с курицей" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rizhky-z-kurkoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рожки с курицей</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Куриное филе</li><li>Репчатый лук</li><li>Чеснок</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Универсальный рецепт рожек с курицей на каждый день. За полчаса, без особых усилий, используя только один сотейник или кастрюлю, вы сможете приготовить очень вкусное и сытное блюдо.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Рожки с курицей</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г куриного филе</li><li>150 г репчатого лука</li><li>5 г чеснока</li><li>40 мл растительного масла</li><li>600 г рожков</li><li>500 мл воды</li><li>соль по вкусу</li><li>перец черный молотый по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте кубиками 250 г куриного филе.</li><li>В сотейнике или кастрюле обжарьте мясо в разогретом растительном масле до золотистой корочки.</li><li>Нарежьте кубиками 150 г репчатого лука.</li><li>Добавьте к курице и обжарьте вместе примерно 3-5 минут.</li><li>Посолите и поперчите мясо по вкусу, добавьте измельченные 5 г чеснока.</li><li>Готовьте куриное филе 5 минут, постоянно помешивая и затем снимите с огня.</li><li>Выложите на курицу 600 г рожков ровным слоем и залейте водой так, чтобы вода их слегка покрыла.</li><li>Закройте сотейник крышкой, доведите воду до кипения, уменьшите огонь и тушите блюдо 10-12 минут.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Запеканка с рожками" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Zapikanka-z-rizhkamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Запеканка с рожками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Мясной фарш</li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li>Помидоры</li><li>Твердый сыр</li><li>Лук</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li>Зелень</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматная и сочная запеканка под нежными помидорами и сыром! Рецепт с рожками — простое в приготовлении блюдо, по вкусу очень напоминающее лазанью. Вкусное и сытное, оно является полноценным ужином и не требует дополнений.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Запеканка с рожками</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 кг мясного фарша</li><li>400 г рожков</li><li>400 г помидоров</li><li>300 г твердого сыра</li><li>200 г лука</li><li>30 мл растительного масла</li><li>соль по вкусу</li><li>перец черный молотый по вкусу</li><li>3 л воды (для варки макарон)</li><li>зелень по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистите и нарежьте мелким кубиком 200 г лука.</li><li>Разогрейте сковороду, добавьте 30 мл растительного масла и обжарьте лук.</li><li>Снимите шкурку и разомните вилкой 400 г помидоров.</li><li>Добавьте к луку 1 кг мясного фарша, измельчите лопаткой и обжарьте до готовности.</li><li>В процессе посолите и поперчите по вкусу.</li><li>Добавьте размятые помидоры, перемешайте, накройте крышкой и тушите 15-20 минут.</li><li>Отварите 400 г рожек в 3 л воды до готовности в подсоленной воде.</li><li>Готовые макароны отбросьте на дуршлаг и промойте.</li><li>Натрите 300 г твердого сыра на крупной терке.</li><li>На дно формы выложите рожки и покройте слоем фарша.</li><li>Присыпьте запеканку сыром и отправьте в духовку на 180 градусов на 25 минут.</li><li>Готовую запеканку украсьте зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Суп с рожками и картофелем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sup-z-rizhkamy-ta-kartopleiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Суп с рожками и картофелем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Бекон</li><li>Морковь</li><li>Стебель сельдерея</li><li>Репчатый лук</li><li>Чеснок</li><li><a href="https://maudau.com.ua/ru/product/bazylik-sushenyi-12-21-3-h">Базилик (сушеный)</a></li><li><a href="https://maudau.com.ua/ru/product/orehano-premiia-10-h-320485">Орегано сухой</a></li><li>Помидоры</li><li>Куриный бульон</li><li><a href="https://maudau.com.ua/ru/category/ovochevi-ta-fruktovi-konservy/typ_280=kvasolia-8">Бобы (консервированные)</a></li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li>Картофель</li><li>Пармезан</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Суп с рожками и картофелем будет уместен и в обед, и на ужин. Он получается наваристым, ароматным и очень аппетитно выглядит. Вместе с тем, это довольно диетическое блюдо, так как варится на бульоне из курицы.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Суп с рожками и картофелем</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 г бекона</li><li>100 г моркови</li><li>70 г стебля сельдерея</li><li>80 г репчатого лука</li><li>10 г чеснока</li><li>5 г базилика (сушеного)</li><li>2,5 г орегано сухого</li><li>700 г помидоров</li><li>1 л куриного бульона</li><li>450 г бобов (консервированных)</li><li>200 г рожков</li><li>200 г картофеля</li><li>100 г пармезана</li><li>Соль по вкусу</li><li>Перец черный молотый по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистите, промойте и нарежьте кубиками 200 г картофеля и 100 г моркови.</li><li>Почистите и мелко нарежьте 80 г репчатого лука и 10 г чеснока, а крупно — 70 г стебля сельдерея.</li><li>Промойте и нарежьте кубиками 700 г помидоров.</li><li>Нарежьте тонкими полосками, а затем — кубиками 60 г бекона.</li><li>Натрите 100 г пармезана на мелкой терке.</li><li>Выложите бекон в кастрюлю и отправьте на огонь.</li><li>Затем выложите морковь и сельдерей и жарьте 5-7 минут.</li><li>Добавьте лук и чеснок, обжаривайте 2-4 минуты.</li><li>Добавьте сушенные травы: 5 г базилика и 2,5 г орегано и перемешайте.</li><li>Налейте 1 л куриного бульона и доведите до кипения.</li><li>В кипящий бульон выложите картофель.</li><li>Затем выложите помидоры и 450 г консервированных бобов.</li><li>Варите суп 15 минут, после чего посолите и поперчите.</li><li>Добавьте 200 г рожков и варите до их готовности.</li><li>Разлейте суп по порциям, посыпьте тертым пармезаном.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат с макаронами рожками и беконом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-makaronamy-rizhkamy-ta-bekonom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат с макаронами рожками и беконом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li>Бекон</li><li>Шпинат</li><li>Помидоры</li><li><a href="https://maudau.com.ua/ru/category/sousy-maionez-hirchytsia-khrin">Майонез</a></li><li>Йогурт (греческий)</li><li><a href="https://maudau.com.ua/ru/product/orhanichnyi-otset-de-nigris-z-chervonoho-vyna-500-ml-774862">Винный уксус красный</a></li><li>Чесночный порошок</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li>Петрушка (для подачи)</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Окунитесь в мир мексиканской кухни, попробовав этот пикантный салат с рожками и беконом. Ингредиенты блюда просты и доступны, а приготовление не займет много времени и сил.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Салат с макаронами рожками и беконом</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>600 г рожков</li><li>300 г бекона</li><li>200 г шпината</li><li>200 г помидоров</li><li>150 г майонеза</li><li>50 г йогурта (греческого)</li><li>60 мл винного уксуса красного</li><li>5 г чесночного порошка</li><li>5 г соли</li><li>перец черный молотый по вкусу</li><li>20 г петрушки (для подачи)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 600 г рожек в подсоленной воде, откиньте на дуршлаг и обдайте холодной водой.</li><li>Нарежьте 300 г бекона небольшими кусочками.</li><li>Промойте, обсушите и мелко нарежьте 200 г шпината.</li><li>Помойте и порежьте 200 г помидоров кубиками.</li><li>Смешайте 150 г майонеза и 50 г йогурта, добавьте соль и перец.</li><li>Выложите в большую тарелку рожки, шпинат, бекон и помидоры, заправьте получившимся соусом.</li><li>Добавьте в салат 5 г чесночного порошка и налейте 60 мл красного винного уксуса, перемешайте.</li><li>Отправьте блюдо в холодильник на 2 часа.</li><li>Подавайте салат на стол, украсив зеленью петрушки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны рожки по флотски" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-rizhky-po-flotsky.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны рожки по флотски</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=rizhky">Рожки</a></li><li>Фарш мясной (говяжий)</li><li>Репчатый лук</li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=lavrovyi-lyst">Лавровый лист</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рожки по-флотски — классическое блюдо домашней кухни. Оно получается очень вкусным, когда вы готовите его из хорошего мяса и макарон из твердых сортов пшеницы.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны рожки по флотски</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г рожков</li><li>300 г говяжьего фарша</li><li>80 г репчатого лука</li><li>50 г сливочного масла</li><li>60 мл растительного масла</li><li>Соль по вкусу</li><li>Перец черный молотый по вкусу</li><li>1 шт. лаврового листа</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте мелко 80 г лука.</li><li>На сковороду выложите 50 г сливочного масла, отправьте на огонь.</li><li>Добавьте 60 мл растительного масла и выложите лук, обжарьте до прозрачности.</li><li>Выложите к луку 300 г говяжьего фарша, разомните его, готовьте 10 минут.</li><li>Посолите и поперчите фарш, добавьте лавровый лист, перемешайте, накройте сковороду крышкой.</li><li>Отварите 400 г рожков, согласно инструкции на упаковке.</li><li>Готовые макароны выложите к фаршу, перемешайте, накройте крышкой и отправьте на огонь.</li><li>Прогрейте блюдо в течение пары минут.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">340 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">10.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">71 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

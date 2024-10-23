@@ -1,0 +1,997 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Хлебцы — вариант сухого и плоского хлеба, изготавливаемого из цельнозерновых продуктов, особенно ржи, пшеницы, овса и гречихи. Поначалу продукт производили в Скандинавии, а вскоре в качестве перекуса он распространился в Центральную
+                    Европу.
+                </p>
+                <p>
+                    Хлебцы ценят за низкое содержание калорий, по сравнению с обычным хлебом. При этом их так же легко сочетать с маслом, мясом, колбасой, сыром и овощами. В процессе изготовления продукт высушивают, что не только придает хрустящую и
+                    нежную текстуру, но и продлевает срок годности.
+                </p>
+                <h2>Ключевые разновидности хлебцев</h2>
+                <p>Лакомства классифицируют по основному ингредиенту:</p>
+                <ol>
+                    <li>Ржаные. Продукт, состоящий из муки грубого помола, воды и соли. Вариант плотных и твердых хлебцев со слегка горьковатым вкусом, характерным для ржи. Цвет — темно-серый.</li>
+                    <li>Пшеничные. Состав тот же, но пшеница придает мягкую и воздушную текстуру. Оттенок светлее, по сравнению с традиционными ржаными хлебцами.</li>
+                    <li>Овсяные. Лакомство на основе муки или хлопьев. Характерный вкусовой акцент — ореховый.</li>
+                    <li>Кукурузные. Вариант с самой легкой и нежной текстурой. Кукуруза также придает мягкий вкус и желтый цвет.</li>
+                    <li>Рисовые. Хлебцы, которые буквально тают во рту. В основе — шлифованный белый рис. Цвет — светло-кремовый.</li>
+                </ol>
+                <p>
+                    Хлебцы также изготавливают из смеси злаков. Это повышает питательную ценность, а также вносит разнообразие во вкусо-ароматическую композицию. Версию без глютена производят из риса, кукурузы, гречихи, киноа, чечевицы и льна. Вкус
+                    варьируется от нейтрального до орехового в зависимости от исходного сырья.
+                </p>
+                <p>Продукцию классифицируют не только по составу, но и способу приготовления. Например, хлебцы на заказ, представленные в интернет-магазине MAUDAU, выпекают до золотистой корочки. Это дополнительно снижает процент остаточной влаги.</p>
+                <p>Сырые хлебцы готовят из смеси семян и орехов с помощью экструзии. Продукт дегидрируют при низких температурах, сохраняя естественный питательный профиль.</p>
+                <h2>Польза и противопоказания к употреблению хлебцев</h2>
+                <p>Продукт — ценное дополнение к ежедневному рациону по нескольким причинам:</p>
+                <ol>
+                    <li>Высокое содержание клетчатки. Хлебцы, особенно из цельных зерен, способствуют пищеварению, поддерживают регулярную дефекацию, восстанавливают микробиом кишечника.</li>
+                    <li>Низкий гликемический индекс. Ржаные или овсяные хлебцы не приводят к резким скачкам сахара в крови, что важно для людей с сахарным диабетом.</li>
+                    <li>
+                        Богатство питательных веществ. В составе лакомства достаточно витаминов группы B, железа, магния и антиоксидантов. Лен также насыщает организм жирными кислотами. Лигнаны, которые содержатся в составе, обладают антиоксидантными
+                        свойствами.
+                    </li>
+                </ol>
+                <p>
+                    Несмотря на то, что хрустящие хлебцы в целом полезны, их чрезмерное употребление противопоказано при расстройствах ЖКТ. Учитывайте наличие индивидуальных аллергических реакций на основной компонент, а также выбирайте варианты без
+                    соли при гипертонии.
+                </p>
+                <p>Чтобы получить пользу для здоровья, но не перебрать с калориями, ограничьте ежедневную порцию 1–3 ломтиками. Дополняйте лакомство другими продуктами: овощами, фруктами, постными белками, жирами.</p>
+                <h2>Как выбрать хлебцы онлайн</h2>
+                <p>Учитывайте:</p>
+                <ol>
+                    <li>Бренд. Finn Crisp, Sunfill, Trapeza — предложений десятки. Если не определили фаворита, опирайтесь на отзывы и оценки других покупателей.</li>
+                    <li>Состав. Рисовые хлебцы выгодно сочетаются со сладкими пастами, тогда как ржаные — со сливочным маслом и мясом.</li>
+                    <li>Добавки. Хлебцы особенно вкусные, когда приправлены специями: паприкой, луковым порошком, морской солью.</li>
+                    <li>Вес. Продукт достаточно быстро теряет хруст, особенно при несоблюдении рекомендаций по хранению, поэтому покупайте его порционно — по 30–100 г.</li>
+                    <li>Упаковка. Полиэтилен качественнее всего защищает содержимое от контакта с влагой и воздухом, зато картон — более экологичен.</li>
+                </ol>
+                <h3>Хлебцы: цены в Украине</h3>
+                <p>
+                    Ценовой диапазон в маркете повседневных штук MAUDAU колеблется в пределах 10–364 грн. Хлебцы по самой низкой стоимости предлагает заказать торговая марка «Жменька». Упаковка рассчитана на разовый прием пищи. Если ищете что-то
+                    нестандартное, обратите внимание на натуральное лакомство с абрикосами, фисташками и семенами подсолнечника от Toast for Cheese. Цена за 100 г — 364 грн.
+                </p>
+                <h2>Как правильно хранить хлебцы</h2>
+                <p>Влага — главный враг. Поэтому поместите продукт в сухое и темное место. Если хлебцы потеряли хруст, подсушите их в духовке. Пористая текстура лакомства быстро впитывает запахи, поэтому хранение в холодильнике не рекомендовано.</p>
+                <h2>Почему выгодно купить хлебцы в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый товар в категории — качественный и оригинальный. Это результат сотрудничества с проверенными торговыми марками. Хлебцы можно купить с доставкой курьером или почтовыми службами. Если сумма заказа превысит определенную отметку,
+                    отправку оплачивает маркет повседневных штук MAUDAU. Оплата — на сайте или после получения.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Канапе с красной рыбой и соусом из авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kanape-z-chervonoiu-ryboiu-ta-sousom-z-avokado-khlibcy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Канапе с красной рыбой и соусом из авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Форель</li><li>Авокадо</li><li>Натуральный йогурт</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=vynohradnykh-kistochok">Масло из виноградных косточек</a></li><li><a href="https://maudau.com.ua/ru/category/olyvky-ta-maslyny">Маслины</a></li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Хлебцы</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Канапе с красной рыбой и авокадо — это вкусная изысканная закуска. Нежная рыба на хрустящем хлебце, дополненная кремовым авокадо-соусом, дарит гурманам небычное сочетание вкусов и текстур.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Канапе с красной рыбой и соусом из авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г форели</li><li>½ авокадо</li><li>4 ст. л. натурального йогурта</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li><li>1 ч. л. лимонного сока</li><li>1 ст. л. масла из виноградных косточек</li><li>5 маслин</li><li>3 хлебца</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Используйте вилку и разомните ½ очищенного авокадо.</li><li>Смешайте с 1 ч. л. лимонного сока, 1 ст. л. масла из виноградных косточек и 4 ст. л. натурального йогурта.</li><li>Добавьте соль и перец по вкусу, намажьте соус на хлебцы.</li><li>Нарежьте хлебцы и рыбу примерно одинаковыми кусочками.</li><li>Нанизывайте ингредиенты на зубочистку в таком порядке: хлебец (соусом вверх), кусочек форели, хлебец (соусом вниз) и половинка маслины.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Творожный десерт с хлебцами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Syrnyi-desert-z-khlibtsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Творожный десерт с хлебцами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Мягкий обезжиренный творог</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li>Банан</li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=polunytsia-21">Клубничный джем</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li><li><a href="https://maudau.com.ua/ru/category/shokolad">Шоколад</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty">Орехи</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Творожный десерт с хлебцами — легкая и полезная закуска. Нежный творог сочетается с хрустящими цельнозерновыми кусочками хлеба, создавая воздушную текстуру и насыщенный вкус. Идеально для завтрака или перекуса в течение дня.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Творожный десерт с хлебцами</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 г мягкого обезжиренного творога</li><li>3 цельнозерновых хлебца</li><li>1 банан</li><li>30 мл клубничного джема</li><li>10 г сахарной пудры</li><li>10 г шоколада</li><li>10 г орехов</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Смешайте 150 г мягкого обезжиренного творога с 10 г сахарной пудры.</li><li>Разрежьте 3 цельнозерновых хлебца на 2 части.</li><li>Смажьте их клубничным джемом.</li><li>Сверху положите кружочки бананов и по ложке творога.</li><li>Сложите вместе. Посыпьте тертым шоколадом и орехами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат с обжаренными рисовыми хлебцами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-obsmazhenymy-rysovymy-khlibtsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат с обжаренными рисовыми хлебцами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Масло канолы</li><li>Чеснок</li><li>Корень имбиря</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi/vyd_113=rysovi-4">Рисовые хлебцы</a></li><li>Консервированные ростки бамбука</li><li>Пекинская капуста</li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=soievyi">Соевый соус</a></li><li><a href="https://maudau.com.ua/ru/product/sous-soievyi-temnyi-superrior-pearl-river-bridge-150-ml">Темный соевой соус</a></li><li>Паста из черных бобов</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Шпинат</li><li>Бобовые проростки</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=kunzhutna-2">Кунжутное масло</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустящий салат с рисовыми хлебцами понравится веганам и не только. Хлопья придают блюду текстуру, а свежие овощи и нежный соус создают гармоничный вкус. Самое то для полезного ланча.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Салат с обжаренными рисовыми хлебцами</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3 столовые ложки масла канолы</li><li>3 зубчика чеснока</li><li>1 корень имбиря</li><li>100 г рисовых хлебцев</li><li>300 г консервированных ростков бамбука</li><li>1 пучок пекинской капусты</li><li>соевый соус по вкусу</li><li>1 столовая ложка темного соевого соуса</li><li>1 столовая ложка пасты из черных бобов</li><li>1 чайная ложка сахара</li><li>150 г шпината</li><li>1 стакан бобовых проростков</li><li>1 чайная ложка кунжутного масла</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нагрейте 3 столовые ложки масла канолы в воке на среднем огне.</li><li>Добавьте 3 зубчика чеснока и 1 корень имбиря. Обжаривайте и непрерывно помешивайте до появления приятного аромата.</li><li>Добавьте 100 г рисовых хлебцев, 300 г консервированных ростков бамбука и 1 пучок пекинской капусты.</li><li>Обжаривайте 5 минут до готовности.</li><li>Добавьте два вида соевого соуса, 1 столовую ложку пасты из черных бобов, 1 чайную ложку сахара. Тушите пару минут.</li><li>Добавьте 150 г шпината, 1 стакан бобовых проростков и 1 чайную ложку кунжутного масла.</li><li>Обжаривайте и непрерывно помешивайте пару минут до готовности.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Канапе с красной рыбой и соусом из авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kanape-z-chervonoiu-ryboiu-ta-avokado.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Канапе с красной рыбой и соусом из авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Форель</li><li>Авокадо</li><li>Натуральный йогурт</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=vynohradnykh-kistochok">Масло из виноградных косточек</a></li><li><a href="https://maudau.com.ua/ru/category/olyvky-ta-maslyny">Маслины</a></li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Канапе с красной рыбой и соусом из авокадо — изысканная стильная закуска. Нежное филе форели сочетается с кремовым овощем, создавая насыщенный вкус. Отлично подходит для фуршетов и праздничных столов.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Канапе с красной рыбой и соусом из авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г форели</li><li>½ авокадо</li><li>4 столовые ложки натурального йогурта</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li><li>1 чайная ложка лимонного сока</li><li>1 столовая ложка масла из виноградных косточек</li><li>5 маслин</li><li>3 цельнозерновых хлебца</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разомните половинку очищенного авокадо с помощью вилки.</li><li>Смешайте до однородной консистенции с четырьмя столовыми ложками натурального йогурта, одной столовой ложкой масла из виноградных косточек, одной чайной ложкой лимонного сока, солью, перцем.</li><li>Намажьте готовый соус на 3 цельнозерновых хлебца. Дайте им пропитаться.</li><li>Нарежьте хлебцы и 200 грамм форели на кусочки.</li><li>Нанизывайте составляющие в следующем порядке: хлебец соусом вверх, кусочек форели, хлеб соусом вниз. Сверху добавьте половинку маслины.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброд с сыром и томатами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrod-iz-syrom-ta-tomatamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброд с сыром и томатами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li>Обезжиренный мягкий сыр</li><li>Помидор</li><li>Базилик</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Бутерброд с сыром и томатами — это легкая закуска, состоящая из хрустящего хлеба, обезжиренного нежного сыра и сочных ломтиков свежего помидора. Пригодится для быстрого перекуса или легкого завтрака.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Бутерброд с сыром и томатами</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цельнозерновой хлебец</li><li>обезжиренный мягкий сыр по вкусу</li><li>1 помидор</li><li>базилик по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите 1 цельнозерновой хлебец и намажьте на него нежирный мягкий сыр.</li><li>Порежьте один помидор на дольки и выложите их поверх сыра.</li><li>Украсьте бутерброд базиликом или другой любимой зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат с пекинской капустой и креветками" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-pekinskoiu-kapustoiu-ta-krevetkamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат с пекинской капустой и креветками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/sousy-maionez-hirchytsia-khrin">Майонез</a></li><li>Креветки</li><li><a href="https://maudau.com.ua/ru/category/ketchup">Кетчуп</a></li><li>Твердый сыр</li><li>Зеленое яблоко</li><li>Пекинская капуста</li><li>Огурец</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновой хлебец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и освежающий салат с нежными креветками, хрустящей пекинской капустой и свежими яблоками, дополненный сыром и пикантным кетчупом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Салат с пекинской капустой и креветками</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>майонез по вкусу</li><li>400 г креветок</li><li>кетчуп по вкусу</li><li>50 г твердого сыра</li><li>1 зеленое яблоко</li><li>пекинская капуста по вкусу</li><li>1 огурец</li><li>1 цельнозерновой хлебец</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Сначала отварите 400 г креветок в слегка подсоленной воде до полной готовности, затем аккуратно очистите их от панцирей. Пекинскую капусту нарежьте тонкими полосками по вкусу.</li><li>Возьмите 1 зеленое яблоко, очистите от кожицы и нарежьте тонкими дольками или кубиками.</li><li>Огурец также нарежьте полукругами.</li><li>Натрите 50 г твердого сыра на крупной терке.</li><li>В большой миске аккуратно перемешайте все подготовленные ингредиенты.</li><li>Добавьте майонез и кетчуп по вкусу, равномерно распределяя их по всей массе.</li><li>Хлебец (1 шт.) разломайте на небольшие кусочки и подайте на отдельной тарелке либо выложите их вокруг салата.</li><li>Салат можно подавать сразу или слегка охладить перед подачей.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Корюшка с каперсами и помидорами черри" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Koriushka-z-kapersamy-ta-pomidoramy-cheri.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Корюшка с каперсами и помидорами черри</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Корюшка</li><li>Помидоры черри</li><li>Зелень</li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/ovochevi-ta-fruktovi-konservy/typ_280=kapersy-2">Маринованные каперсы</a></li><li>Сметана 10%</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li><a href="https://maudau.com.ua/ru/product/otset-vynnyi-runa-elitnyi-naturalnyi-bilyi-6-05-l">Белый винный уксус</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматная корюшка, обжаренная до золотистой корочки, с сочными помидорами черри, каперсами и свежей зеленью. Это блюдо легко готовится и станет отличным вариантом для сытного ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Корюшка с каперсами и помидорами черри</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 г корюшки</li><li>10 помидоров черри</li><li>1 пучок зелени</li><li>щепотка молотого черного перца</li><li>10 маринованных каперсов</li><li>5 столовых ложек сметаны 10%</li><li>10 цельнозерновых хлебцев</li><li>2 столовые ложки оливкового масла</li><li>1 чайная ложка белого винного уксуса</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Подготовьте 500 г корюшки — очистите рыбу от чешуи, тщательно промойте и обсушите.</li><li>Разогрейте сковороду с 2 столовыми ложками оливкового масла.</li><li>Выложите корюшку на разогретую поверхность и жарьте на среднем огне с обеих сторон, около 5–7 минут.</li><li>Нарежьте 10 помидоров черри пополам и добавьте их на сковороду к рыбе.</li><li>Тушите всё вместе еще несколько минут.</li><li>Добавьте 10 маринованных каперсов и щепотку молотого черного перца, хорошо перемешайте.</li><li>В отдельной миске приготовьте соус: смешайте 5 столовых ложек 10% сметаны с 1 чайной ложкой белого винного уксуса.</li><li>Полейте готовую рыбу соусом, украсьте зеленью и подавайте с цельнозерновыми хлебцами (10 шт.).</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброд с лососем и огурцом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrod-z-lososem-ta-ohirkom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброд с лососем и огурцом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li>Огурцы</li><li>Слабосоленый лосось</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустящий цельнозерновой хлебец в сочетание с нежным слабосоленым лососем и свежими огурцами. Этот быстрый перекус подойдёт как для завтрака, так и для полноценной закуски к вашему столу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Бутерброд с лососем и огурцом</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цельнозерновой хлебец</li><li>1 огурец</li><li>1 кусок слабосоленого лосося</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите 1 цельнозерновой хлебец.</li><li>Нарежьте огурец тонкими кружочками.</li><li>Нарежьте тонкими кусочками слабосоленый лосось.</li><li>Выложите огурцы ровным слоем на хлебец, затем аккуратно положите кусочек лосося сверху.</li><li>Чтобы подчеркнуть вкус, можете сбрызнуть бутерброд лимонным соком или добавить немного свежей зелени.</li><li>Подайте бутерброд сразу после приготовления, чтобы хлебец не размок и не потерял вкус.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Паста из креветок и авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pasta-z-krevetok-ta-avokado.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Паста из креветок и авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Креветки</li><li>Авокадо</li><li>Творожный сыр</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/pryznachennia_114=dlia-salativ">Специи для салата</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нежная паста с креветками и авокадо с творожным сыром — это кремовая и ароматная закуска, которая идеально подойдет для легкого перекуса или ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Паста из креветок и авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 г креветок</li><li>1 авокадо</li><li>200 г творожного сыра</li><li>10 цельнозерновых хлебцев</li><li>10 г специй для салата</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 150 г креветок в слегка подсоленной воде до полной готовности, затем очистите их от панцирей и хвостиков.</li><li>В миске разомните 1 спелый авокадо до состояния пюре — используйте вилку, чтобы масса получилась однородной, но не слишком жидкой.</li><li>Добавьте 200 г творожного сыра и тщательно перемешайте авокадо с сыром.</li><li>Мелко нарежьте креветки и добавьте их в смесь, затем снова перемешайте до равномерного распределения.</li><li>Для вкуса добавьте 10 г специй для салата или любые другие специи по вашему вкусу.</li><li>Возьмите 10 цельнозерновых хлебцев и равномерно распределите полученную пасту по каждому хлебцу.</li><li>Украсьте бутерброды зеленью или тонкими ломтиками огурца.</li><li>Подавайте сразу, чтобы сохранить хруст хлебцев.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тартар из лосося со снытью" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tartar-iz-lososia-zi-snom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тартар из лосося со снытью</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Филе лосося</li><li>Сныть</li><li>Манго</li><li>Лимон</li><li>Лайм</li><li>Апельсин</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li>Тертый сыр пармезан</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающий тартар из свежего лосося, ароматной сныти и сочного манго с цитрусовой заправкой - впечатлит всех гостей и подарит вам изумительный вкусом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Тартар из лосося со снытью</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г филе лосося</li><li>50 г сныти</li><li>80 г манго</li><li>1 лимон</li><li>1 лайм</li><li>1 апельсин</li><li>6 цельнозерновых хлебцев</li><li>30 г тертого сыра пармезан</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите 200 г свежего филе лосося и нарежьте его мелкими кубиками.</li><li>Затем мелко нарежьте 50 г сныти.</li><li>Манго (80 г) очистите от кожуры и нарежьте его кубиками такого же размера, как и лосось.</li><li>В отдельной миске приготовьте заправку: выжмите сок из 1 лимона, 1 лайма и 1 апельсина, смешайте всё в равных пропорциях.</li><li>Полейте нарезанный лосось и манго цитрусовой заправкой, добавьте сныть и все тщательно перемешайте.</li><li>Натрите на терке среднего размера 30 г тертого пармезана.</li><li>Выложите полученную смесь на цельнозерновые хлебцы (6 шт.) и посыпьте сверху натертым пармезаном.</li><li>Готово, подавайте сразу!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">242 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">8.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">2.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">46.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">7.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">33.3 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

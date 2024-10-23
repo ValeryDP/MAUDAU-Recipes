@@ -1,0 +1,996 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Хлібці — варіант сухого і плоского хліба, що виготовляється з цілозернових продуктів, особливо жита, пшениці, вівса і гречки. Спочатку продукт виробляли в Скандинавії, а незабаром як перекус він поширився в Центральну Європу.</p>
+                <p>
+                    Хлібці цінують за низький вміст калорій, порівняно зі звичайним хлібом. При цьому їх так само легко поєднувати з маслом, м'ясом, ковбасою, сиром і овочами. У процесі виготовлення продукт висушують, що не тільки надає хрусткої та
+                    ніжної текстури, а й подовжує термін придатності.
+                </p>
+                <h2>Ключові різновиди хлібців</h2>
+                <p>Ласощі класифікують за основним інгредієнтом:</p>
+                <ol>
+                    <li>Житні. Продукт, що складається з борошна грубого помелу, води і солі. Варіант щільних і твердих хлібців зі злегка гіркуватим смаком, характерним для жита. Колір — темно-сірий.</li>
+                    <li>Пшеничні. Склад той самий, але пшениця надає м'якої та повітряної текстури. Відтінок світліший, порівняно з традиційними житніми хлібцями.</li>
+                    <li>Вівсяні. Ласощі на основі борошна або пластівців. Характерний смаковий акцент — горіховий.</li>
+                    <li>Кукурудзяні. Варіант із найлегшою та найніжнішою текстурою. Кукурудза також надає м'якого смаку і жовтого кольору.</li>
+                    <li>Рисові. Хлібці, які буквально тануть у роті. В основі — шліфований білий рис. Колір — світло-кремовий.</li>
+                </ol>
+                <p>
+                    Хлібці також виготовляють із суміші злаків. Це підвищує поживну цінність, а також урізноманітнює смако-ароматичну композицію. Версію без глютену виробляють із рису, кукурудзи, гречки, кіноа, сочевиці та льону. Смак варіюється від
+                    нейтрального до горіхового залежно від вихідної сировини.
+                </p>
+                <p>Продукцію класифікують не тільки за складом, а й способом приготування. Наприклад, хлібці на замовлення, представлені в інтернет-магазині MAUDAU, випікають до золотистої скоринки. Це додатково знижує відсоток залишкової вологи.</p>
+                <p>Сирі хлібці готують із суміші насіння і горіхів за допомогою екструзії. Продукт дегідрують за низьких температур, зберігаючи природний поживний профіль.</p>
+                <h2>Користь і протипоказання до вживання хлібців</h2>
+                <p>Продукт — цінне доповнення до щоденного раціону з кількох причин:</p>
+                <ol>
+                    <li>Високий вміст клітковини. Хлібці, особливо з цільних зерен, сприяють травленню, підтримують регулярну дефекацію, відновлюють мікробіом кишківника.</li>
+                    <li>Низький глікемічний індекс. Житні або вівсяні хлібці не призводять до різких стрибків цукру в крові, що важливо для людей із цукровим діабетом.</li>
+                    <li>Багатство поживних речовин. У складі ласощів достатньо вітамінів групи B, заліза, магнію та антиоксидантів. Льон також насичує організм жирними кислотами. Лігнани, які містяться в складі, мають антиоксидантні властивості.</li>
+                </ol>
+                <p>
+                    Попри те, що хрусткі хлібці загалом корисні, їхнє надмірне вживання протипоказане в разі розладів шлунково-кишкового тракту. Зважайте на наявність індивідуальних алергічних реакцій на основний компонент, а також обирайте варіанти
+                    без солі в разі гіпертонії.
+                </p>
+                <p>Щоб отримати користь для здоров'я, але не перебрати з калоріями, обмежте щоденну порцію 1–3 скибочками. Доповнюйте ласощі іншими продуктами: овочами, фруктами, пісними білками, жирами.</p>
+                <h2>Як вибрати хлібці онлайн</h2>
+                <p>Враховуйте:</p>
+                <ol>
+                    <li>Бренд. Finn Crisp, Sunfill, Trapeza — пропозицій десятки. Якщо не визначили фаворита, спирайтеся на відгуки й оцінки інших покупців.</li>
+                    <li>Склад. Рисові хлібці вигідно поєднуються з солодкими пастами, тоді як житні — з маслом і м'ясом.</li>
+                    <li>Добавки. Хлібці особливо смачні, коли приправлені спеціями: паприкою, цибулевим порошком, морською сіллю.</li>
+                    <li>Вага. Продукт довол швидко втрачає хрускіт, особливо в разі недотримання рекомендацій щодо зберігання, тому купуйте його порційно — по 30–100 г.</li>
+                    <li>Упаковка. Поліетилен найякісніше захищає вміст від контакту з вологою та повітрям, натомість картон — екологічніший.</li>
+                </ol>
+                <h3>Хлібці: ціни в Україні</h3>
+                <p>
+                    Ціновий діапазон у маркеті повсякденних штук MAUDAU коливається в межах 10–364 грн. Хлібці за найнижчою вартістю пропонує замовити торгова марка «Жменька». Упаковка розрахована на разове приймання їжі. Якщо шукаєте щось
+                    нестандартне, зверніть увагу на натуральні ласощі з абрикосами, фісташками та насінням соняшнику від Toast for Cheese. Ціна за 100 г — 364 грн.
+                </p>
+                <h2>Як правильно зберігати хлібці</h2>
+                <p>Волога — головний ворог. Тому помістіть продукт у сухе і темне місце. Якщо хлібці втратили хрускіт, підсушіть їх у духовці. Пориста текстура ласощів швидко вбирає запахи, тому зберігання в холодильнику не рекомендоване.</p>
+                <h2>Чому вигідно купити хлібці в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен товар у категорії — якісний і оригінальний. Це результат співпраці з перевіреними торговими марками. Хлібці можна купити з доставленням кур'єром або поштовими службами. Якщо сума замовлення перевищить певну позначку,
+                    відправлення оплачує маркет повсякденних штук MAUDAU. Оплата — на сайті або після отримання.
+                </p>
+            </div>
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Канапе з червоною рибою та соусом з авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kanape-z-chervonoiu-ryboiu-ta-sousom-z-avokado-khlibcy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Канапе з червоною рибою та соусом з авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Форель</li><li>Авокадо</li><li>Натуральний йогурт</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=vynohradnykh-kistochok">Олія з виноградних кісточок</a></li><li><a href="https://maudau.com.ua/category/olyvky-ta-maslyny">Маслини</a></li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Хлебцы</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Канапе з червоною рибою та авокадо — це смачна вишукана закуска. Ніжна риба на хрусткому хлібці, доповнена кремовим авокадо-соусом, дарує гурманам небувале поєднання смаків і текстур.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Канапе з червоною рибою та соусом з авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г форелі</li><li>½ авокадо</li><li>4 ст. л. натурального йогурту</li><li>сіль до смаку</li><li>мелений чорний перець до смаку</li><li>1 ч. л. лимонного соку</li><li>1 ст. л. олії з виноградних кісточок</li><li>5 маслин</li><li>3 хлібці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Використовуйте виделку і розімніть ½ очищеного авокадо.</li><li>Змішайте з 1 ч. л. лимонного соку, 1 ст. л. олії з виноградних кісточок і 4 ст. л. натурального йогурту.</li><li>Додайте сіль і перець до смаку, намажте соус на хлібці.</li><li>Наріжте хлібці та рибу приблизно однаковими шматочками.</li><li>Нанизуйте інгредієнти на зубочистку в такому порядку: хлібець (соусом догори), шматочок форелі, хлібець (соусом донизу) і половинка маслини.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сирний десерт з хлібцями" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Syrnyi-desert-z-khlibtsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сирний десерт з хлібцями</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Мʼякий знежирений сир</li><li><a href="https://maudau.com.ua/category/khlibtsi">Цілозернові хлібці</a></li><li>Банан</li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=polunytsia-21">Полуничний джем</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li><li><a href="https://maudau.com.ua/category/shokolad">Шоколад</a></li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty">Горіхи</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сирний десерт із хлібцями — легка та корисна закуска. Ніжний сир поєднується з хрусткими цільнозерновими шматочками хліба, створюючи повітряну текстуру та насичений смак. Ідеально для сніданку або перекусу протягом дня.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Сирний десерт з хлібцями</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 г м'якого знежиреного сиру</li><li>3 цілозернові хлібці</li><li>1 банан</li><li>30 мл полуничного джему</li><li>10 г цукрової пудри</li><li>10 г шоколаду</li><li>10 г горіхів</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте 150 г м'якого знежиреного сиру з 10 г цукрової пудри.</li><li>Розріжте 3 цілозернові хлібці на 2 частини.</li><li>Змастіть їх полуничним джемом.</li><li>Зверху покладіть кружечки бананів і по ложці сиру.</li><li>Складіть разом. Посипте тертим шоколадом і горіхами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат з обсмаженими рисовими хлібцями" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-obsmazhenymy-rysovymy-khlibtsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат з обсмаженими рисовими хлібцями</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Олія каноли</li><li>Часник</li><li>Корінь імбиру</li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=rysovi-4">Рисові хлібці</a></li><li>Консервованы паростки бамбука</li><li>Пекынська капуста</li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/product/sous-soievyi-temnyi-superrior-pearl-river-bridge-150-ml">Темний соєвий соус</a></li><li>Паста з чорних бобів</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Шпинат</li><li>Бобові проростки</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=kunzhutna-2">Кунжутна олія</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрусткий салат із рисовими хлібцями сподобається веганам і не тільки. Пластівці надають страві текстури, а свіжі овочі та ніжний соус створюють гармонійний смак. Саме те для корисного ланчу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Салат з обсмаженими рисовими хлібцями</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3 столові ложки олії каноли</li><li>3 зубчики часнику</li><li>1 корінь імбиру</li><li>100 г рисових хлібців</li><li>300 г консервованих паростків бамбука</li><li>1 пучок пекінської капусти</li><li>соєвий соус до смаку</li><li>1 столова ложка темного соєвого соусу</li><li>1 столова ложка пасти з чорних бобів</li><li>1 чайна ложка цукру</li><li>150 г шпинату</li><li>1 склянка бобових проростків</li><li>1 чайна ложка кунжутної олії</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нагрійте 3 столові ложки олії каноли у воці на середньому вогні.</li><li>Додайте 3 зубчики часнику та 1 корінь імбиру. Обсмажуйте і безперервно помішуйте до появи приємного аромату.</li><li>Додайте 100 г рисових хлібців, 300 г консервованих паростків бамбука та 1 пучок пекінської капусти.</li><li>Обсмажуйте 5 хвилин до готовності.</li><li>Додайте два види соєвого соусу, 1 столову ложку пасти з чорних бобів, 1 чайну ложку цукру. Тушкуйте кілька хвилин.</li><li>Додайте 150 г шпинату, 1 склянку бобових проростків і 1 чайну ложку кунжутної олії.</li><li>Обсмажуйте і безперервно помішуйте пару хвилин до готовності.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Канапе з червоною рибою та соусом з авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kanape-z-chervonoiu-ryboiu-ta-avokado.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Канапе з червоною рибою та соусом з авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Форель</li><li>Авокадо</li><li>Натуральний йогурт</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=vynohradnykh-kistochok">Олія з виноградних кісточок</a></li><li><a href="https://maudau.com.ua/category/olyvky-ta-maslyny">Оливки чорні</a></li><li><a href="https://maudau.com.ua/category/khlibtsi">Цілозернові хлібці</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Канапе з червоною рибою та соусом з авокадо — вишукана стильна закуска. Ніжне філе форелі поєднується з кремовим овочем, створюючи насичений смак. Чудово підходить для фуршетів і святкових столів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Канапе з червоною рибою та соусом з авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г форелі</li><li>½ авокадо</li><li>4 столові ложки натурального йогурту</li><li>сіль до смаку</li><li>мелений чорний перець до смаку</li><li>1 чайна ложка лимонного соку</li><li>1 столова ложка олії з виноградних кісточок</li><li>5 чорних оливок</li><li>3 цілозернових хлібці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розімніть половинку очищеного авокадо за допомогою виделки.</li><li>Змішайте до однорідної консистенції з чотирма столовими ложками натурального йогурту, однією столовою ложкою олії з виноградних кісточок, однією чайною ложкою лимонного соку, сіллю, перцем.</li><li>Намажте готовий соус на 3 цілозернові хлібці. Дайте їм просочитися.</li><li>Наріжте хлібці та 200 грам форелі на шматочки.</li><li>Нанизуйте складові в такому порядку: хлібець соусом догори, шматочок форелі, хліб соусом донизу. Зверху додайте половинку чорної оливки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброд із сиром та томатами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrod-iz-syrom-ta-tomatamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброд із сиром та томатами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/khlibtsi">Цілозернові хлібці</a></li><li>Знежирений мʼякий сир</li><li>Помідор</li><li>Базилік</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Бутерброд із сиром і томатами — це легка закуска, що складається з хрусткого хліба, знежиреного ніжного сиру та соковитих скибочок свіжого помідора. Стане в пригоді для швидкого перекусу або легкого сніданку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бутерброд із сиром та томатами</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цілозерновий хлібець</li><li>знежирений м'який сир до смаку</li><li>1 помідор</li><li>базилік до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 1 цілозерновий хлібець і намажте на нього нежирний м'який сир.</li><li>Поріжте один помідор на часточки і викладіть їх поверх сиру.</li><li>Прикрасьте бутерброд базиліком або іншою улюбленою зеленню.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат з пекінською капустою та креветками" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-pekinskoiu-kapustoiu-ta-krevetkamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат з пекінською капустою та креветками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/sousy-maionez-hirchytsia-khrin">Майонез</a></li><li>Креветки</li><li><a href="https://maudau.com.ua/category/ketchup">Кетчуп</a></li><li>Твердий сир</li><li>Зелене яблуко</li><li>Пекінська капуста</li><li>Огірок</li><li><a href="https://maudau.com.ua/category/khlibtsi">Цілозерновий хлібець</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий та освіжальний салат із ніжними креветками, хрусткою пекінською капустою та свіжими яблуками, доповнений сиром і пікантним кетчупом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Салат з пекінською капустою та креветками</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>майонез до смаку</li><li>400 г креветок</li><li>кетчуп до смаку</li><li>50 г твердого сиру</li><li>1 зелене яблуко</li><li>пекінська капуста до смаку</li><li>1 огірок</li><li>1 цілозерновий хлібець</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Спочатку відваріть 400 г креветок у злегка підсоленій воді до повної готовності, потім акуратно очистіть їх від панцирів. Пекінську капусту наріжте тонкими смужками до смаку.</li><li>Візьміть 1 зелене яблуко, очистіть від шкірки і наріжте тонкими часточками або кубиками.</li><li>Огірок також наріжте півколами.</li><li>Натріть 50 г твердого сиру на крупній тертці.</li><li>У великій мисці акуратно перемішайте всі підготовлені інгредієнти.</li><li>Додайте майонез і кетчуп до смаку, рівномірно розподіляючи їх по всій масі.</li><li>Хлібець (1 шт.) розламайте на невеликі шматочки і подайте на окремій тарілці або викладіть їх навколо салату.</li><li>Салат можна подавати відразу або злегка охолодити перед подачею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Корюшка з каперсами та помідорами чері" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Koriushka-z-kapersamy-ta-pomidoramy-cheri.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Корюшка з каперсами та помідорами чері</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Корюшка</li><li>Помідори чері</li><li>Зелень</li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li><li><a href="https://maudau.com.ua/category/ovochevi-ta-fruktovi-konservy/typ_280=kapersy-2">Мариновані каперси</a></li><li>Сметана 10%</li><li><a href="https://maudau.com.ua/category/khlibtsi">Цілозернові хлібці</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/product/otset-vynnyi-runa-elitnyi-naturalnyi-bilyi-6-05-l">Білий винний оцет</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматна корюшка, обсмажена до золотистої скоринки, з соковитими помідорами чері, каперсами та свіжою зеленню. Ця страва легко готується і стане чудовим варіантом для ситної вечері.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Корюшка з каперсами та помідорами чері</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 г корюшки</li><li>10 помідорів чері</li><li>1 пучок зелені</li><li>щіпка меленого чорного перцю</li><li>10 маринованих каперсів</li><li>5 столових ложок сметани 10%</li><li>10 цілозернових хлібців</li><li>2 столові ложки оливкової олії</li><li>1 чайна ложка білого винного оцту</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Підготуйте 500 г корюшки — очистіть рибу від луски, ретельно промийте та обсушіть.</li><li>Розігрійте сковороду з 2 столовими ложками оливкової олії.</li><li>Викладіть корюшку на розігріту поверхню і смажте на середньому вогні з обох боків, близько 5–7 хвилин.</li><li>Наріжте 10 помідорів чері навпіл і додайте їх на сковороду до риби.</li><li>Тушкуйте все разом ще кілька хвилин.</li><li>Додайте 10 маринованих каперсів і дрібку меленого чорного перцю, добре перемішайте.</li><li>В окремій мисці приготуйте соус: змішайте 5 столових ложок 10% сметани з 1 чайною ложкою білого винного оцту.</li><li>Полийте готову рибу соусом, прикрасьте зеленню і подавайте з цілозерновими хлібцями (10 шт.).</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброд з лососем та огірком" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrod-z-lososem-ta-ohirkom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброд з лососем та огірком</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/khlibtsi">Цілозернові хлібці</a></li><li>Огірки</li><li>Слабосолоний лосось</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрусткий цілозерновий хлібець у поєднанні з ніжним слабосоленим лососем і свіжими огірками. Цей швидкий перекус підійде як для сніданку, так і для повноцінної закуски до вашого столу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бутерброд з лососем та огірком</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цілозерновий хлібець</li><li>1 огірок</li><li>1 шматок слабосоленого лосося</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 1 цілозерновий хлібець.</li><li>Наріжте огірок тонкими кружечками.</li><li>Наріжте тонкими шматочками слабосолоний лосось.</li><li>Викладіть огірки рівним шаром на хлібець, потім акуратно покладіть шматочок лосося зверху.</li><li>Щоб підкреслити смак, можете збризнути бутерброд лимонним соком або додати трохи свіжої зелені.</li><li>Подайте бутерброд одразу після приготування, щоб хлібець не розмок і не втратив смак.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Паста з креветок та авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pasta-z-krevetok-ta-avokado.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Паста з креветок та авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Креветки</li><li>Авокадо</li><li>Сирний сир</li><li><a href="https://maudau.com.ua/category/khlibtsi">Цілозернові хлібці</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/pryznachennia_114=dlia-salativ">Спеції для салату</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ніжна паста з креветками та авокадо з сирним сиром — це кремова й ароматна закуска, яка ідеально підійде для легкого перекусу або вечері.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Паста з креветок та авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 г креветок</li><li>1 авокадо</li><li>200 г сирного сиру</li><li>10 цільнозернових хлібців</li><li>10 г спецій для салату</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Відваріть 150 г креветок у злегка підсоленій воді до повної готовності, потім очистіть їх від панцирів і хвостиків.</li><li>У мисці розімніть 1 стиглий авокадо до стану пюре — використовуйте виделку, щоб маса вийшла однорідною, але не надто рідкою.</li><li>Додайте 200 г сирного сиру і ретельно перемішайте авокадо з сиром.</li><li>Дрібно наріжте креветки і додайте їх у суміш, потім знову перемішайте до рівномірного розподілу.</li><li>Для смаку додайте 10 г спецій для салату або будь-які інші спеції на ваш смак.</li><li>Візьміть 10 цільнозернових хлібців і рівномірно розподіліть отриману пасту по кожному хлібцю.</li><li>Прикрасьте бутерброди зеленню або тонкими скибочками огірка.</li><li>Подавайте одразу, щоб зберегти хрускіт хлібців.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тартар із лосося зі сном" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tartar-iz-lososia-zi-snom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тартар із лосося зі сном</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Філе лосося</li><li>Яглиць</li><li>Манго</li><li>Лимон</li><li>Лайм</li><li>Апельсин</li><li><a href="https://maudau.com.ua/category/khlibtsi">Цілозернові хлібці</a></li><li>Тертий сир пармезан</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний тартар зі свіжого лосося, ароматної яглиці та соковитого манго з цитрусовою заправкою — вразить усіх гостей і подарує вам дивовижний смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Тартар із лосося зі сном</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г філе лосося</li><li>50 г яглиці</li><li>80 г манго</li><li>1 лимон</li><li>1 лайм</li><li>1 апельсин</li><li>6 цілозернових хлібців</li><li>30 г тертого сиру пармезан</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 200 г свіжого філе лосося і наріжте його дрібними кубиками.</li><li>Потім дрібно наріжте 50 г яглиці.</li><li>Манго (80 г) очистіть від шкірки і наріжте його кубиками такого ж розміру, як і лосось.</li><li>В окремій мисці приготуйте заправку: вичавіть сік з 1 лимона, 1 лайма та 1 апельсина, змішайте все в рівних пропорціях.</li><li>Полийте нарізаний лосось і манго цитрусовою заправкою, додайте яглицю і все ретельно перемішайте.</li><li>Натріть на тертці середнього розміру 30 г тертого пармезану.</li><li>Викладіть отриману суміш на цілозернові хлібці (6 шт.) і посипте зверху натертим пармезаном.</li><li>Готово, подавайте відразу!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">242 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">8.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">2.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">46.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">7.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">33.3 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

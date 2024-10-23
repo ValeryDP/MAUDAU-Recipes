@@ -1,0 +1,999 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Макарони пір'я — екструдований тип пасти, яка являє собою порожнисті трубочки з рифленою зовнішньою поверхнею і скошеним зрізом. Довжина кожного окремого макаронного виробу становить 3–5 см.</p>
+                <p>
+                    Паста пір'я відмінно вбирає соус. Особливо вигідно продукт підкреслюють песто, маринара та аррабіата. Макаронні вироби підходять до різноманітних кулінарних сценаріїв — від холодних салатів до гарячих запіканок під томатним або
+                    сирно-м'ясним соусом.
+                </p>
+                <h2>Що відомо про походження макаронів пір'я</h2>
+                <p>
+                    Італійці називають цей вид пасти пенне, що в перекладі означає «перо». Це один із небагатьох варіантів макаронних виробів, дата появи якого точно відома. Пенне виготовляють за допомогою машини для діагонального різання. Апарат 1865
+                    року запатентував Джованні Баттіста Капурро, який виробляв макарони в Сан-Мартіно-д'Альбаро, що в Лігурії. Його апарат нарізав пасту на шматочки у вигляді сталевого пера, характерного для тогочасних ручок, не мнучи форму.
+                </p>
+                <h2>Різновиди макаронів пір'їнок</h2>
+                <p>Пенне виробляють у двох основних варіантах:</p>
+                <ol>
+                    <li>
+                        Рігате (Rigate). Версія з борозенками на поверхні у вигляді ліній, що проходять по всій довжині макаронних виробів. Pennette Rigate — варіант меншого розміру. Mezze Penne Rigate практично вдвічі коротше і товще, порівняно зі
+                        стандартною пастою.
+                    </li>
+                    <li>
+                        Ліше (Lisce). Версія макаронів пір'я без реберець. Penne Mezzane коротше стандартних макаронних виробів. Тонкий варіант, який зовні нагадує свічку, реалізують як Penne a Candela. Цей тип пасти характерний для традиційних
+                        італійських страв.
+                    </li>
+                </ol>
+                <p>На прилавках також можна натрапити на макарони Mostaccioli. Це вид, схожий на Penne Lisce, але з тонкою циліндричною формою. Довжина — 2-3 см. Збільшену версію пенне маркують як Pennoni. Довжина становить 5–7 см.</p>
+                <h2>Як виробляють пасту пір'я</h2>
+                <p>
+                    Пенне готують із борошна на основі твердих сортів пшениці та води. Тісто замішують, потім продавлюють через матрицю для надання особливої форми, а на виході — обрізають. Якщо раніше макарони пір'їнки виготовляли вручну, то зараз
+                    процес повністю автоматизований. Після нарізання слідує сушіння, під час якого видаляють зайву вологу, подовжуючи термін придатності.
+                </p>
+                <h2>Яка користь для здоров'я від макаронів пір'я</h2>
+                <p>Продукт корисний, особливо при поєднанні з листовою зеленню, овочами, м'ясом. Це результат:</p>
+                <ol>
+                    <li>Високого вмісту вуглеводів. Паста — гарне рішення, якщо потрібно відновити сили.</li>
+                    <li>Багатого поживного складу. Тверді сорти пшениці, з яких традиційно виробляють пасту пір'я, багаті на клітковину, вітаміни групи B, мінерали.</li>
+                    <li>Низького вмісту жирів. Пенне від природи не містить жиру, а пасту не обов'язково приправляти сіллю, якщо поєднуєте її з кисло-солодким соусом.</li>
+                </ol>
+                <h2>Як правильно варити макарони пір'їнки</h2>
+                <p>Час приготування становить 10–12 хвилин. Обов'язково перевіряйте пасту на готовність до закінчення часу, зазначеного на упаковці виробником, щоб уникнути її розварювання.</p>
+                <p>
+                    Підготуйте велику каструлю, 4–6 літрів води і щедру порцію солі. Як тільки вода закипить, всипте пенне і перемішайте вміст каструлі. Доведіть макарони пір'я до стану аль-денте і злийте воду, але не промивайте пасту, якщо тільки не
+                    готуєте холодний салат. Залиште трохи крохмалистої рідини для загущення соусу.
+                </p>
+                <h2>Як вибрати пасту пір'я</h2>
+                <p>
+                    Зважайте на особисті вподобання та мету покупки. Наприклад, для холодних страв краще підійде Mezze Penne Rigate, а для запіканок — класичний варіант. Рифлена поверхня добре утримує рідкий соус. Попри те, що макарони довго
+                    зберігаються, немає сенсу купувати занадто велику пачку, якщо готуєте рідко. Оптимальна вага пачки — 500 г, що дорівнює приблизно п'яти порціям і гарантує свіжість макаронних виробів.
+                </p>
+                <p>
+                    Якщо пасту пір'я люблять діти, вибирайте різноколірний варіант. Макаронні вироби забарвлюють за допомогою натуральних екстрактів, тому не потрібно турбуватися про безпеку дитини. Варіант із чорнилом каракатиці, наприклад, не тільки
+                    внесе в готову страву солону нотку, а й підвищить візуальну привабливість. Локшина — стандартне доповнення до бульйону, але пір'я також підходять, особливо тонкі та маленькі.
+                </p>
+                <h3>Макарони пір'їнки: ціна в Україні</h3>
+                <p>Пенне — доступний за вартістю варіант. Ціна в маркеті повсякденних штук MAUDAU коливається від 19 до 349 грн, при чому найдорожчий товар не відрізняється за якістю, а запакований у подарункову коробку.</p>
+                <h2>Чому вигідно купити макарони пір'я в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен варіант пенне, представлений в онлайн-каталозі MAUDAU, оригінального походження. Ціна — конкурентна, але покупка стає вигіднішою, якщо скористатися акційними пропозиціями. Замовлення по Києву привезе кур'єр, але також
+                    передбачене самовивезення із супермаркетів «Сільпо». Для доставлення в інше місто України вибирайте одну з компаній-партнерів — «Нову Пошту» або «Укрпошту».
+                </p>
+            </div>
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат із горгонзолою" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-iz-horhonzoloiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат із горгонзолою</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li>Салатний мікс</li><li>Крес-салат</li><li>Груша</li><li>Сир горгонзола</li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=hretski">Волоські горіхи (очищені)</a></li><li>Грейпфрут</li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Олія олвикова</a></li><li><a href="https://maudau.com.ua/product/perets-rozhevyi-terre-exotique-35-h">Перець рожевий горошок</a></li><li><a href="https://maudau.com.ua/product/perets-prypravka-chornyi-horoshok-20-h">Перець чорний горошок</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець мелений чорний</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Салат із горгонзолою — це легка страва з яскравим смаком. Сир надає пікантності, доповнюючи свіже листя салату, горіхи та груші. Оливкова олія та мед завершують гармонію смаків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Салат із горгонзолою</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макаронів пір'я</li><li>75 г салатного міксу</li><li>1 пучок крес-салату</li><li>1 груша</li><li>100 г сиру горгонзола</li><li>40 г волоських горіхів (очищених)</li><li>1 грейпфрут</li><li>1 ч. л. меду</li><li>50 мл олії оливкової</li><li>2 г перцю рожевого горошком</li><li>2 г перцю чорного горошком</li><li>сіль до смаку</li><li>перець мелений чорний до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Зробіть заправку: змішайте сік ½ грейпфрута, 50 мл оливкової олії, чорний і рожевий перець, 1 ч. л. меду, сіль.</li><li>Відваріть 200 г макаронів пір'я до готовності. Злийте воду.</li><li>Очистіть грушу. Наріжте скибочками. Збризніть соком грейпфрута.</li><li>Порубайте волоські горіхи за допомогою ножа і злегка прогрійте на сухій сковороді.</li><li>Змішайте макарони, грушу та салатний мікс. Полийте заправкою. Посипте розкришеною горгонзолою та волоськими горіхами.</li><li>Прикрасьте мікрозеленню або крес-салатом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Запіканка з пастою, грибами та шпинатом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Zapikanka-z-pastoiu-hrybamy-ta-shpynatom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Запіканка з пастою, грибами та шпинатом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Шпинат заморожений</li><li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li>Печериці</li><li>Цибуля ріпчаста</li><li>Сир емменталь</li><li>Яйце</li><li>Вершки 20%</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Олія рослинна</a></li><li>Масло</li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=chornyi-43">Перець чорний</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Запіканка з пастою, грибами та шпинатом — це ситна й ароматна страва із золотистою скоринкою, в якій ніжні макарони поєднуються з обсмаженими печерицями, зеленню та вершковим соусом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Запіканка з пастою, грибами та шпинатом</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г шпинату замороженого</li><li>200 г макаронів пір'я</li><li>60 г печериць</li><li>1 цибулина ріпчастої</li><li>100 г сиру емменталь</li><li>2 яйця</li><li>50 мл вершків 20%</li><li>олія рослинна за потреби</li><li>масло за потреби</li><li>перець чорний до смаку</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Відваріть 200 г макаронів пір'їв у солоній воді.</li><li>Наріжте 60 г печериць пластинками.</li><li>Дрібно наріжте 1 цибулину.</li><li>Обсмажте цибулю з рослинною олією на розігрітій сковороді.</li><li>Додайте гриби та шпинат, перемішайте все і протушкуйте.</li><li>Посоліть і поперчіть, додайте масло.</li><li>Натріть сир емменталь на крупній тертці.</li><li>Додайте до сиру 2 яйця, сіль, 50 мл вершків 20%. Перемішайте суміш.</li><li>Об'єднайте шпинатно-грибну базу з вершковою і все перемішайте.</li><li>Додайте макарони і викладіть у форму для випічки.</li><li>Розігрійте духовку до 170–180 градусів і запікайте страву пів години.</li><li>Незадовго до готовності посипте запіканку тертим сиром і залиште в духовці ще на 5 хвилин.</li><li>Дайте страві трохи відпочити перед подачею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат з пастою та свіжими овочами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-pastoiu-ta-svizhymy-ovochamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат з пастою та свіжими овочами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li>Авокадо</li><li>Цибуля червона</li><li>Помідори чері</li><li>Шпинат</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Олія оливкова</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець чорний мелений</a></li><li><a href="https://maudau.com.ua/product/orhanichnyi-otset-de-nigris-z-chervonoho-vyna-500-ml-774862">Оцет винний червоний</a></li><li>Сир моцарела</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=kedrovi-2">Горіхи кедрові</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Салат із пастою та свіжими овочами — це легка та поживна страва, що складається з макаронів, соковитих помідорів чері, авокадо, шпинату та кедрових горішків. Заправляють салат оливковою олією зі спеціями.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Салат з пастою та свіжими овочами</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макаронів пір'я</li><li>1 авокадо</li><li>1 цибулина червона</li><li>150 г помідорів чері</li><li>шпинат до смаку</li><li>2 ч. л. олії оливкової</li><li>перець чорний мелений до смаку</li><li>оцет винний червоний до смаку</li><li>1 сир моцарела</li><li>сіль до смаку</li><li>горіхи кедрові до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Відваріть 200 г макаронів пір'єв і охолодіть їх.</li><li>Наріжте 1 авокадо, 150 г помідорів чері, 1 червону цибулю.</li><li>Змішайте макарони з овочами. Посоліть і поперчіть.</li><li>Додайте в салат моцарелу, листя шпинату та кедрові горіхи.</li><li>Заправте сумішшю винного оцту і 2 ч. л. оливкової олії.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тушковані макарони з фрикадельками та моцарелою" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tushkovani-makarony-z-frykadelkamy-ta-motsareloiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тушковані макарони з фрикадельками та моцарелою</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Фарш зі свинини і яловични</li><li>Петрушка</li><li><a href="https://maudau.com.ua/product/pryprava-provanski-travy-tm-akura-30-h">Сухі прованські трави</a></li><li>Паприка</li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець мелений чорний</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Олія оливкова</a></li><li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li>Сир моцарела</li><li>Шпинат</li><li>Сир чедер</li><li>Перець чилі</li><li>Цибуля ріпчаста</li><li>Часник</li><li><a href="https://maudau.com.ua/category/tomatna-pasta">Паста томатна</a></li><li>Томати у власному соці</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тушковані макарони з фрикадельками — це ситна страва з соковитими м'ясними кульками, ароматними спеціями та розплавленим сиром, що ідеально гармонує з пастою. Проста, але смачна вечеря для всієї родини.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Тушковані макарони з фрикадельками та моцарелою</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макаронів пір'я</li><li>1 шт. сиру моцарела</li><li>сир чедер до смаку</li><li>300 г фаршу зі свинини та яловичини</li><li>1 пучок петрушки</li><li>1 ч. л. сухих прованських трав</li><li>1 ч. л. паприки</li><li>перець мелений чорний до смаку</li><li>2 ст. л. олії оливкової</li><li>100 г шпинату</li><li>3 г перцю чилі до смаку</li><li>1 цибуля ріпчаста</li><li>2 зубчики часнику</li><li>2 ст. л. пасти томатної</li><li>400 г томатів у власному соку (приблизно 1 банка)</li><li>200 мл води (або за потребою)</li><li>1 ч. л. цукру до смаку</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Додайте у фарш прованські трави, паприку, оливкову олію, сіль, чорний мелений перець і перемішайте.</li><li>Розігрійте оливкову олію на сковороді.</li><li>Наріжте 1 цибулю ріпчасту, 2 зубчики часнику і чилі перець. Відправте на сковороду.</li><li>Сформуйте фрикадельки з фаршу та помістіть їх у сковороду до овочів. Обсмажуйте з усіх боків.</li><li>Покладіть 2 ст. л. пасти томатної й обсмажуйте разом з овочами та фрикадельками.</li><li>Додайте 1 ч. л. цукру, сіль, 400 г томатів у власному соку та 200 мл води.</li><li>Всипте 200 г макаронів пір'їв і тушкуйте до 10 хвилин.</li><li>Додайте 1 шт. сиру моцарела, сир чедер, шпинат і петрушку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Паста з креветками і песто зі шпинату та часнику" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pasta-z-krevetkamy-i-pesto-zi-shpynatu-ta-chasnyku.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Паста з креветками і песто зі шпинату та часнику</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li>Креветки тигрові</li><li>Цибуля ріпчаста</li><li>Часник</li><li>Шпинат заморожений</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Олія рослинна</a></li><li>Масло</li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Перець мелений чорний</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Паста з креветками та песто зі шпинату — це ніжна страва, що поєднує соковитий морський делікатес, ароматний свіжий соус і спеції. Готувати страву легко, а виходить смачно та поживно.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Паста з креветками і песто зі шпинату та часнику</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макаронів пір'я</li><li>100 г креветок тигрових</li><li>1 шт. цибулі ріпчастої</li><li>1 головка часнику</li><li>100 г шпинату замороженого</li><li>олія рослинна за потреби</li><li>масло за потреби</li><li>перець мелений чорний до смаку</li><li>сіль до смаку</li><li>вода для варіння макаронів</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Загорніть щільно 1 головку часнику у фольгу і відправте в духовку. Запікайте до 20 хвилин.</li><li>Довільно наріжте 1 шт. цибулі ріпчастої та обсмажте на пательні з рослинною олією.</li><li>Додайте розморожений шпинат, масло, сіль, перець мелений чорний. Помішуйте періодично і випаруйте зайву вологу.</li><li>Перекладіть обсмажений шпинат із цибулею та м'якоть запеченого часнику в блендер. Пробийте до однорідного стану.</li><li>Очистіть 100 г креветок тигрових. Не викидайте хітинові покриви.</li><li>Перекладіть очищення від креветок у сотейник і додайте масло. Прогрійте та влийте воду. Перемішайте і доведіть до кипіння.</li><li>Процідіть креветковий відвар через сито.</li><li>Розігрійте сковорідку, влийте та нагрійте частину відвару.</li><li>Викладіть креветки на сковороду.</li><li>Відваріть 200 г макаронів пір'їв у солоній воді.</li><li>Злийте рідину і збризніть макарони оливковою олією.</li><li>Додайте макарони на сковороду до креветок і перемішайте.</li><li>Викладіть макарони на дно тарілки, зверху — порцію песто і креветки.</li><li>Збризніть страву оливковою олією.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макарони по-шпротськи" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-po-shprotsky.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макарони по-шпротськи</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li><a href="https://maudau.com.ua/category/miasni-ta-rybni-konservy/typ_272=shproty-2">Шпроты</a></li><li>Масло</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li>Цибуля ріпчаста</li><li>Помідор</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li><li>Петрушка</li><li>Сир напівтвердий</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Олія оливкова</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макарони по-шпротськи — це ароматна страва, у якій пір'я поєднують із ніжними шпротами та обсмаженою цибулею. Подається із зеленню та сиром, створюючи насичений смак із морськими нотками.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Макарони по-шпротськи</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макаронів пір'я</li><li>1 банка шпрот</li><li>50 г масла</li><li>сіль до смаку</li><li>2 ст. л. пшеничного борошна</li><li>100 г молока</li><li>1 шт. цибулі ріпчастої</li><li>1 шт. помідора</li><li>рослинна олія за потреби</li><li>петрушка до смаку</li><li>сир напівтвердий до смаку</li><li>олія оливкова за потреби</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розтопіть 50 г масла, додайте 2 ст. л. пшеничного борошна, прогрійте і влийте 100 г молока. Посоліть і ретельно перемішайте.</li><li>Наріжте 1 шт. цибулі ріпчастої дрібними кубиками та обсмажте на сковороді з рослинною олією.</li><li>Видаліть насіння в помідора. Залиште тільки стінки та наріжте їх кубиками.</li><li>Відправте кубики помідора до цибулі та обсмажте суміш.</li><li>Об'єднайте молочну суміш з овочами. Перемішайте і залиште на короткий час.</li><li>Додайте 1 банку шпрот і все об'єднайте.</li><li>Відваріть 200 г пір'я в солоній воді.</li><li>Під час подачі в тарілку викладіть макарони, додайте соус зі шпротами, перемішайте.</li><li>Зверху викладіть кілька рибок. Прикрасьте зеленню, оливковою олією та сиром.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пастіціо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pastitsio.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пастіціо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яловичина</li><li>Цибуля ріпчаста</li><li>Морква</li><li>Корінь селери</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Олія оливкова</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/tomatna-pasta">Паста томатна</a></li><li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li>Масло</li><li><a href="https://maudau.com.ua/category/boroshno">Борошно</a></li><li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li>Сир бринза</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=orehano-2">Орегано</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пастіцио — це традиційна грецька страва, що нагадує лазанью. Вона складається з шарів макаронів, м'ясного фаршу з томатною пастою, спецій і густого соусу. Запікається до золотистої скоринки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Пастіціо</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г яловичини</li><li>1 шт. цибулі ріпчастої</li><li>1 шт. моркви</li><li>80 г кореня селери</li><li>олія оливкова за потреби</li><li>вода за потреби</li><li>сіль до смаку</li><li>1 ст. л. пасти томатної</li><li>100 г макаронів пір'я</li><li>30 г масла вершкового</li><li>1 ст. л. борошна</li><li>500 мл молока</li><li>100 г сиру бринза</li><li>орегано до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Пропустіть через м'ясорубку 400 г яловичини і обсмажте фарш на будь-якій рослинній олії.</li><li>Очистіть 1 шт. цибулі ріпчастої, 1 шт. моркви, 80 г кореня селери і наріжте дрібними кубиками.</li><li>Обсмажте на оливковій олії. Не доводьте до скоринки.</li><li>З'єднайте фарш з овочами. Влийте трохи води і змастіть сковорідку з-під фаршу.</li><li>Влийте в сотейник із фаршем та овочами. Посоліть, додайте 1 ст. л. пасти томатної.</li><li>Залиште тушкуватися до м'якості фаршу.</li><li>Відваріть 100 г макаронів до напівготовності в підсоленій воді.</li><li>Для соусу розтопіть трохи масла, обсмажте на ньому 1 ст. л. борошна до появи горіхового аромату.</li><li>Влийте 500 мл молока. Посоліть і, постійно помішуючи, проваріть до загустіння.</li><li>Змастіть форму для запікання маслом.</li><li>Перемішайте частину макаронів із соусом і викладіть на форму. Посипте дрібно нарізаною бринзою та орегано.</li><li>Викладіть м'ясне рагу, а зверху — шар макаронів, перемішаних із соусом.</li><li>Полийте соусом зверху і запікайте в духовці до появи золотистої скоринки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Паста з кремом з моркви та апельсину" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pasta-z-kremom-z-morkvy-ta-apelsynu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Паста з кремом з моркви та апельсину</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li>Морква</li><li><a href="https://maudau.com.ua/product/vershky-ultrapasteryzyrovani-yahotynski-15-tet-br">Вершки</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Мигдаль</a></li><li>Петрушка</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Паста з кремом із моркви та апельсина — це дуже ніжна та приємна страва. Солодкість яскравого овоча і цитрусові нотки створюють гармонійний союз, що ідеально поєднується з макарошками.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Паста з кремом з моркви та апельсину</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макаронів пір'я</li><li>2 шт. моркви</li><li>150 мл вершків</li><li>1 шт. апельсина</li><li>сіль до смаку</li><li>мигдаль до смаку</li><li>петрушка до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистіть 2 моркви та наріжте їх кружечками. Відправте в каструлю і залийте гарячою водою.</li><li>Посоліть, накрийте кришкою і варіть.</li><li>Додайте 150 мл вершків.</li><li>Відправте суміш у блендер і пробийте, досоліть до смаку.</li><li>Влийте сік одного апельсина і знову пробийте.</li><li>Відваріть 200 г пір'я в каструлі з підсоленою водою.</li><li>Злийте воду і поверніть на плиту.</li><li>Додайте отриманий крем і перемішайте.</li><li>Викладіть пасту в тарілку. Прикрасьте петрушкою та подрібненим мигдалем.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лазання в стилі чилі кон карне" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Lazannia-v-styli-chyli-kon-karne.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лазання в стилі чилі кон карне</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Цибуля ріпчаста</li><li>Морква</li><li>Стебло селери</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Олія рослинна</a></li><li>Мʼякота яловичини</li><li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=kumin-zira">Зіра</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=orehano-2">Орегано</a></li><li><a href="https://maudau.com.ua/category/tomatna-pasta">Паста томатна</a></li><li><a href="https://maudau.com.ua/product/perets-chervonyi-pekuchyi-podribnenyi-12-14-2-h">Перець пекучий червоний</a></li><li>Сир чедер</li><li>Масло</li><li><a href="https://maudau.com.ua/category/boroshno">Борошно</a></li><li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li>Жовтки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Лазанья в стилі чилі кон карне — це пікантна страва, що поєднує традиційні італійські шари пасти з насиченою мексиканською начинкою. Яловичий фарш, сир чедер, гострий соус і спеції органічно поєднуються в цьому рецепті.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лазання в стилі чилі кон карне</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 шт. цибулі ріпчастої</li><li>0.5 шт. моркви</li><li>0.5 стебла селери</li><li>олія рослинна за потреби</li><li>300 г м'якоті яловичини</li><li>200 г макаронів пір'я</li><li>сіль до смаку</li><li>вода за потреби</li><li>зіра до смаку</li><li>орегано до смаку</li><li>1 ст. л. пасти томатної</li><li>перець пекучий червоний до смаку</li><li>70 г сиру чедер</li><li>30 г масла</li><li>1 ст. л. борошна</li><li>1 л молока</li><li>2 жовтки</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистіть пів моркви, пів стебла селери та 1 шт. цибулі ріпчастої.</li><li>Наріжте моркву і селеру кубиком, а цибулю — на чверть кільця.</li><li>Обсмажте овочі в каструлі з рослинною олією.</li><li>Наріжте 300 г м'якоті яловичини та пропустіть через м'ясорубку.</li><li>Обсмажте отриманий фарш на розігрітій сковорідці з олією та додайте до овочів.</li><li>Налийте трохи води в сковорідку з-під яловичини, відправте в каструлю і перемішайте.</li><li>Додайте орегано, зіру, 1 ст. л. пасти томатної та нарізаний пекучий перець.</li><li>Відваріть 200 г макаронів пір'я в сотейнику з підсоленою водою.</li><li>Розтопіть 30 г масла в сотейнику. Всипте 1 ст. л. борошна і перемішайте.</li><li>З'єднайте 1 л молока і трохи води. Перелийте в сотейник.</li><li>Посоліть і перемішайте вінчиком.</li><li>Вбийте в миску 2 жовтки та додайте трохи гарячого молока.</li><li>Добре збийте суміш. Перелийте назад у сотейник і відправте готовий соус у миску.</li><li>Налийте трохи соусу на дно форми для запікання.</li><li>Викладіть шари в такому порядку: макарони, соус, рагу, сир чедер, пір'я, соус.</li><li>Запікайте в духовці 20–25 хвилин за температури 190 градусів.</li><li>Дайте готовій лазаньї трохи охолонути.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат з макаронами, авокадо, полуницею в маковій заправці" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-makaronamy-avokado-polunytseiu-v-makovii-zapravtsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат з макаронами, авокадо, полуницею в маковій заправці</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/makaronni-vyroby/vyd_4=piria">Макарони пірʼя</a></li><li>Полуниця</li><li>Авокадо</li><li>Цибуля ріпчаста червона</li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Мигдаль</a></li><li>Шпинат</li><li>Мʼята</li><li>Сир фета</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li>Йогурт грецький</li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Гірчиця діжонська</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/otset/typ_211=yabluchnyi-2">Оцет яблучний</a></li><li><a href="https://maudau.com.ua/product/mak-sushenyi-vidbirnyi">Мак</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Олія оливкова</a></li><li>Базилік</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Салат із макаронами, авокадо та полуницею в маковій заправці — це оригінальне поєднання солодких і свіжих смаків. Легкий соус надає страві вишуканості, створюючи гармонійний баланс.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Салат з макаронами, авокадо, полуницею в маковій заправці</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макаронів пір'я</li><li>100 г полуниці</li><li>1 авокадо</li><li>0.5 шт. цибулі ріпчастої червоної</li><li>100 г мигдалю</li><li>шпинат за потребою</li><li>м'ята до смаку</li><li>сир фета до смаку</li><li>сіль до смаку</li><li>100 г йогурту грецького</li><li>1 ст. л. гірчиці діжонської</li><li>1 ст. л. меду</li><li>1 ст. л. оцту яблучного</li><li>1 ст. л. маку</li><li>1 ст. л. олії оливкової</li><li>базилік до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Відваріть 200 г макаронів пірʼїв у підсоленій воді.</li><li>Промийте готові вироби холодною водою.</li><li>З'єднайте 100 г йогурту грецького, 1 ст. л. гірчиці діжонської, 1 ст. л. меду, 1 ст. л. оцту яблучного, 1 ст. л. маку. Перемішайте.</li><li>Влийте 1 ст. л. олії оливкової.</li><li>Перемішайте все і прикрасьте подрібненими м'ятою та базиліком.</li><li>Наріжте 100 г полуниці на маленькі часточки.</li><li>Вийміть м'якоть у авокадо і поріжте на скибочки.</li><li>Наріжте 0.5 шт. цибулі ріпчастої червоної на тонкі півкільця і з'єднайте інгредієнти в мисці.</li><li>Додайте відварені пір'я, листя шпинату, подрібнену м'яту, фету і сіль. Заправте маковою заправкою.</li><li>Наріжте 100 г мигдалю на тонкі пелюстки й обсмажте на сковорідці без олії.</li><li>Покрийте салат обсмаженим мигдалем і прикрасьте базиліком.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">344 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">10.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">1.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">71.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

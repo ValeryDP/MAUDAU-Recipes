@@ -1,0 +1,798 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Гречані хлібці — тонка і хрустка закуска круглої або прямокутної форми, що нагадує крекери. Колір — сірувато-коричневий.</p>
+                <p>
+                    Хлібці з гречки вирізняються грубою зернистою текстурою, особливо в поєднанні з насінням. Смак — горіховий, з легким гіркуватим присмаком. Продукт, запечений до золотистого кольору, огортає солодкуватими підсмаженими нотками. Ласощі
+                    часто їдять без добавок як закуску. Попри землистий шлейф, його також поєднують із солодкими або солоними намазками.
+                </p>
+                <h2>Яка користь для здоров'я від гречаних хлібців</h2>
+                <p>Продукт виготовляють із гречаного борошна, яке природним чином не містить глютену. Гречку називають псевдозерном, оскільки технічно це насіння, а не злак, що додає поживної цінності.</p>
+                <p>
+                    У хлібцях із гречки переважають вуглеводи, сприяючи швидкому насиченню. У складі також присутні білки і дев'ять незамінних амінокислот — це робить ласощі хорошим варіантом для вегетаріанців. Жиру практично немає, що корисно для
+                    серцево-судинної системи, якщо тільки його не додавали під час випікання. Смаколики також містять достатню концентрацію магнію, марганцю, заліза і вітамінів групи B.
+                </p>
+                <p>
+                    Гречані хлібці цінують за високий вміст харчових волокон, які підтримують здоров'я кишківника, сприяють регулярному випорожненню та знижують показники холестерину. Клітковина також необхідна для контролю цукру в крові, що важливо
+                    для людей із цукровим діабетом.
+                </p>
+                <p>
+                    Попри передбачувану користь, хлібці з гречки протипоказані в разі індивідуальної непереносності крупи. Це доволі калорійний продукт, тому його не рекомендують вживати у великій кількості. Оптимальна щоденна порція — 2–4 скибочки, що
+                    дорівнює 20–40 г. Гречка також містить оксалати, які підвищують ризик утворення каменів у нирках у людей із захворюваннями сечовивідної системи.
+                </p>
+                <p>Гречані хлібці можна порівняти з принципами багатьох дієт, особливо — орієнтованих на цілозернову продукцію. Це корисніша альтернатива традиційному хлібу.</p>
+                <h2>Як вибрати хлібці з гречки</h2>
+                <p>Враховуйте кілька важливих чинників:</p>
+                <ol>
+                    <li>
+                        Бренд. Гречані хлібці виробляють по всьому світу, але в онлайн-каталозі переважає продукція від українських торгових марок. Мінімальні витрати на транспортування знижують підсумкову ціну на продукт. Щоб переконатися в якості,
+                        шукайте товари з оцінками та відгуками від інших покупців.
+                    </li>
+                    <li>Добавки. Вибирайте хлібці з гречки з мінімальною кількістю інгредієнтів у складі: борошно, вода, сіль. Однак насіння льону, кунжуту або чіа підвищують поживну цінність, вносячи до складу жирні омега-3 кислоти і клітковину.</li>
+                    <li>Упаковка. Гречані хлібці швидко втрачають хрускіт, тож зупиніться на поліетиленових або поліпропіленових пакетах із можливістю повторного закриття. Якщо дбаєте про стан довкілля, оптимальний варіант — картонна коробка.</li>
+                    <li>Вага. Хрусткі хлібці з гречки зазвичай продають у пачках по 100–300 г. Враховуйте кількість штук в упаковці, виходячи з регулярності вживання.</li>
+                </ol>
+                <h3>Асортимент гречаних хлібців у маркеті повсякденних штук MAUDAU</h3>
+                <p>
+                    Якщо потрібен повноцінний перекус, зверніть увагу на пропозиції від «УкрЕкоХліб», «Жменька», «Зерновита», Eki-Neki. Для поєднання з намазками обирайте великі круглі або прямокутні хлібці з гречки від «Премія», «Піколо», Trapeza.
+                    Органічну продукцію пропонують Le Pain des Fleurs і Bio Zentrale.
+                </p>
+                <h2>Гречані хлібці: ціна в Україні</h2>
+                <p>
+                    Ласощі за найнижчою вартістю пропонує торгова марка «Жменька» — за пачку вагою 17 грамів потрібно заплатити 10 грн. Це гарне рішення для перекусу на одного, особливо на навчанні або на природі. Дорожче коштують органічні хлібці з
+                    гречки або на основі суміші круп, а також варіанти з добавками. Наприклад, за 150-грамову упаковку ласощів від Le Pain des Fleurs потрібно віддати 188 грн.
+                </p>
+                <h2>Як зберігати хлібці з гречки</h2>
+                <p>
+                    Помістіть ласощі в герметичний контейнер. Тримайте їх у сухому і темному місці, але не в холодильнику, де з часом утворюється конденсат. Не зберігайте їх по сусідству з вологими продуктами, такими як свіжі овочі та фрукти. Якщо
+                    гречані хлібці втратили хрускіт, підсушіть їх у духовці. Попри тривалий термін зберігання, що становить 6–12 місяців, якщо пачку не розкривали, немає сенсу купувати їх із запасом.
+                </p>
+                <h2>Чому вигідно купити гречані хлібці в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Маркет повсякденних штук MAUDAU реалізує якісну й оригінальну продукцію. Асортимент складено так, щоб відповідати вподобанням і потребам різних категорій покупців. Хлібці гречані можна купити з доставленням кур'єром по Києву або
+                    поштовими службами по Україні. Якщо хочете забрати замовлення самостійно, така послуга доступна в магазинах «Сільпо» після підтвердження наявності обраних товарів.
+                </p>
+            </div>
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гречані хлібці з хумусом та перепелиними яйцями" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hrechani-khlibtsi-z-khumusom-ta-perepelynymy-yaitsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гречані хлібці з хумусом та перепелиними яйцями</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Перепелині яйця</li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=hrechani-3">Гречані хлібці</a></li><li>Помідор</li><li><a href="https://maudau.com.ua/product/rudolfs-bio-khumus-klasychnyi-230-h">Хумус</a></li><li>Зелений салат</li><li>Кріп</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий, але ситний перекус на гречаних хлібцях із ніжним хумусом, перепелиними яйцями та свіжими овочами. Ідеальний вибір для тих, хто віддає перевагу здоровій їжі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гречані хлібці з хумусом та перепелиними яйцями</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г перепелиних яєць</li><li>60 г гречаних хлібців</li><li>50 г помідора</li><li>50 г хумусу</li><li>листя зеленого салату</li><li>кріп</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нагрійте 3 столові ложки олії каноли у воці на середньому вогні.</li><li>Додайте 3 зубчики часнику та 1 корінь імбиру. Обсмажуйте і безперервно помішуйте до появи приємного аромату.</li><li>Додайте 100 г рисових хлібців, 300 г консервованих паростків бамбука та 1 пучок пекінської капусти.</li><li>Обсмажуйте 5 хвилин до готовності.</li><li>Додайте два види соєвого соусу, 1 столову ложку пасти з чорних бобів, 1 чайну ложку цукру. Тушкуйте кілька хвилин.</li><li>Додайте 150 г шпинату, 1 склянку бобових проростків і 1 чайну ложку кунжутної олії.</li><li>Обсмажуйте і безперервно помішуйте пару хвилин до готовності.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Куряча грудка із запеченим баклажаном" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kuriacha-hrudka-iz-zapechenym-baklazhanom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Куряча грудка із запеченим баклажаном</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Баклажан</li><li>Часник</li><li>Куряча грудка</li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=hrechani-3">Гречані хлібці</a></li><li>Кінза</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=chornyi-43">Чорний перець</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li>Помідори чері</li><li>Зелений салат</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ситна й ароматна страва, що поєднує ніжну курячу грудку із запеченим баклажаном, помідорами чері та свіжим листям салату.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Куряча грудка із запеченим баклажаном</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 г баклажана</li><li>2 зубчики часнику</li><li>150 г курячої грудки</li><li>60 г гречаних хлібців</li><li>кінза до смаку</li><li>сіль до смаку</li><li>чорний перець до смаку</li><li>оливкова олія до смаку</li><li>помідори чері до смаку</li><li>зелений салат до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 4 рисових хлібці і змастіть кожен товстим шаром рікоти або м'якого сиру.</li><li>Викладіть зверху по 2 чайні ложки абрикосового варення на кожен хлібець, акуратно розподіляючи його по поверхні.</li><li>Наріжте 1 склянку свіжих фруктів (яблуко, груша, нектарин або персик) на тонкі скибочки.</li><li>Викладіть фрукти і 1 склянку свіжої чорниці поверх сиру, намагаючись розподілити ягоди і фрукти рівномірно.</li><li>За бажанням додайте дрібку кориці.</li><li>Подавайте страву одразу, щоб хлібці залишилися хрусткими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброди з курячою грудкою та авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrody-z-kuriachoiu-hrudkoiu-ta-avokado.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброди з курячою грудкою та авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Куряча грудка</li><li>Авокадо</li><li>Помідор</li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=hrechani-3">Гречані хлібці</a></li><li>Рукола</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=chornyi-43">Чорний перець</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Смачні та корисні бутерброди на гречаних хлібцях із ніжною курячою грудкою, авокадо та свіжими овочами. Ідеальний вибір для легкого, але ситного перекусу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бутерброди з курячою грудкою та авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>70 г курячої грудки</li><li>70 г авокадо</li><li>20 г помідора</li><li>60 г гречаних хлібців</li><li>рукола до смаку</li><li>сіль до смаку</li><li>чорний перець до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Відкрийте банку сардин в олії та злийте зайву рідину.</li><li>Візьміть 5 рисових хлібців і викладіть на кожен по 1-2 шматочки сардини.</li><li>Очистіть 2 зубчики часнику, наріжте їх дрібними шматочками або пропустіть через прес.</li><li>Посипте кожен бутерброд часником, рівномірно розподіляючи його по поверхні сардин.</li><li>Візьміть невеликий пучок свіжого кропу, дрібно наріжте і прикрасьте ним бутерброди.</li><li>Подавайте відразу після приготування, щоб хлібці залишилися хрусткими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Яйця Бенедикт із тунцем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yaitsia-Benedykt-iz-tuntsem.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Яйця Бенедикт із тунцем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=hrechani-3">Гречані хлібці</a></li><li><a href="https://maudau.com.ua/category/miasni-ta-rybni-konservy/typ_272=tunets-3">Консервований тунець</a></li><li>Яйця</li><li>Помідор</li><li>Салат айсберг</li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=chornyi-43">Чорний перець</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/otset">Оцет</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригінальна версія популярної страви — яйця Бенедикт із консервованим тунцем, на гречаних хлібцях і з соковитими скибочками помідора.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Яйця Бенедикт із тунцем</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 гречаних хлібці</li><li>150 г консервованого тунця</li><li>2 яйця</li><li>50 г помідора</li><li>салат айсберг до смаку</li><li>чорний перець до смаку</li><li>оливкова олія до смаку</li><li>оцет до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Спочатку відваріть 100 г білої квасолі до м'якості або використовуйте готову консервовану квасолю.</li><li>Ретельно помийте, почистіть і натріть 1 моркву на крупній тертці.</li><li>Наріжте 5 свіжих грибів тонкими скибочками.</li><li>Очистіть і дрібно наріжте або пропустіть через прес 2 зубчики часнику.</li><li>У сковорідці розігрійте трохи олії та обсмажте моркву з грибами, додайте до них часник і дрібку солі.</li><li>Смажте на слабкому вогні близько 5–8 хвилин.</li><li>Коли овочі стануть м'якими, додайте квасолю і готуйте ще 3–5 хвилин, перемішуючи.</li><li>На 7 рисових хлібців викладіть отриману овочеву суміш.</li><li>Поріжте пучок зелені та прикрасьте нею бутерброди.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброди з авокадо та лососем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrody-z-avokado-ta-lososem.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброди з авокадо та лососем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Авокадо</li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=hrechani-3">Гречані хлібці</a></li><li>Помідор</li><li>Рукола</li><li>Філе слабосолоного лосося</li><li>Шпинат</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкі бутерброди з кремовим авокадо, ніжним слабосолоним лососем і свіжими овочами — ідеальна страва для сніданку або легкого перекусу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бутерброди з авокадо та лососем</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>70 г авокадо</li><li>20 г гречаних хлібців</li><li>10 г помідора</li><li>20 г руколи</li><li>100 г філе слабосолоного лосося</li><li>шпинат до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 2 пачки рисових хлібців (близько 10 шт.) і розкладіть їх на тарілці.</li><li>Очистіть 1-2 авокадо, видаліть кісточку, у мисці розімніть м'якоть, використовуючи виделку, до отримання однорідної маси.</li><li>Намажте авокадо на хлібці, рівномірно розподіляючи.</li><li>Потім промийте й обсушіть пучок руколи, розкладіть її невелику кількість зверху на кожен хлібець.</li><li>Додайте 3-4 столові ложки томатного соусу на кожен бутерброд.</li><li>До смаку посипте бутерброди дрібкою солі та додайте свіжомелений чорний перець.</li><li>Подайте одразу, щоб зберегти хрустку текстуру хлібців.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">360 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">12 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">70 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">8 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

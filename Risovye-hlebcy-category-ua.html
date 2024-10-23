@@ -1,0 +1,805 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Рисові хлібці — легка та хрустка закуска, яку можна використовувати як заміну хліба, особливо людям із непереносністю глютену. Продукт готують із повітряних рисових зерен. Нерідко склад доповнюють насінням і приправами, особливо
+                    морською сіллю і паприкою.
+                </p>
+                <p>
+                    Рисові хлібці — універсальний продукт. Їх подають до супів. Хрусткі ласощі також використовують як основу для приготування закусок. Наприклад, його комбінують із солоними продуктами: м'яким вершковим сиром, авокадо, хумусом,
+                    копченим лососем. Солодкі намазки складаються з шоколаду, джему, варення і меду, а доповнюють подачу свіжими фруктами і ягодами.
+                </p>
+                <h2>Яка користь від рисових хлібців</h2>
+                <p>Хрусткий продукт рекламують як корисний перекус через легкість, низьку калорійність і відсутність глютену. Детальніше про ключові аспекти:</p>
+                <ol>
+                    <li>Мінімум калорій. У складі рисових хлібців лише один основний компонент — крупа. Це мінімізує кількість порожніх калорій.</li>
+                    <li>Без глютену. Це важливий момент для людей із целіакією або індивідуальною чутливістю до рослинного білка.</li>
+                    <li>Низький вміст жирів. У складі рисових хлібців переважають вуглеводи, тому продукт швидко насичує. Невелика кількість білків залучена при формуванні та відновленні м'язів.</li>
+                    <li>Вміст харчових волокон. Продукт містить небагато клітковини, до того ж легко засвоюється, тому підходить людям із чутливим ШКТ або тим, хто відновлюється після харчового отруєння.</li>
+                </ol>
+                <p>
+                    Під час включення рисових хлібців у щоденний раціон зважайте не тільки на передбачувану користь для здоров'я, а й на протипоказання. Перш за все, поєднуйте продукт із корисними добавками: сирами, овочами, м'ясом. Самі по собі рисові
+                    хлібці практично не містять вітамінів і мінералів, тому можуть призвести до дефіциту поживних речовин.
+                </p>
+                <p>Високий глікемічний індекс — ще один важливий момент. Вживання рисових хлібців радять обмежити в разі цукрового діабету, запобігаючи різким стрибкам цукру в крові.</p>
+                <p>
+                    Деякі варіанти, доступні до замовлення в маркеті повсякденних штук MAUDAU, містять сіль, цукор та ароматизатори. Надлишок натрію протипоказаний при гіпертонії. Цукор підвищує тривожність і призводить до ожиріння. Ароматизатори
+                    можуть спровокувати алергічну реакцію, особливо в дітей.
+                </p>
+                <p>
+                    Рисові хлібці можна їсти щодня, але як частину збалансованого раціону. Продукт поєднується з принципами багатьох дієт. Конкретної добової норми споживання немає, оскільки ласощі вважають закускою. Однак краще щодня з'їдати 2-4
+                    скибочки.
+                </p>
+                <h2>Як вибрати рисові хлібці</h2>
+                <p>Враховуйте особисті вподобання та мету покупки. Наприклад, для приготування закусок обирайте нейтральний продукт, тобто без добавок. Якщо потрібен перекус, зупиніться на рисових хлібцях, приправлених насінням і спеціями.</p>
+                <p>Не купуйте одразу велику порцію — так складніше підтримувати свіжість. Оптимальна вага — 100-150 г. Маленьку пачку комфортно брати на прогулянку або навчання.</p>
+                <h3>Асортимент рисових хлібців у маркеті повсякденних штук MAUDAU</h3>
+                <p>
+                    У категорії представлені десятки варіантів: від класичних ласощів до закусок на основі декількох видів крупи. Наприклад, бренд Trapeza пропонує рисові хлібці з кукурудзою. Зерно надає солодкої нотки, тому продукт гармонійно
+                    поєднується з шоколадом. Круглі чи прямокутні, з чіа чи без добавок, із сіллю чи шоколадною глазур'ю — кожен знайде варіант до смаку.
+                </p>
+                <h2>Ціна рисових хлібців в Україні</h2>
+                <p>
+                    Мінімальний цінник в інтернет-магазині MAUDAU — 17 грн. Стільки потрібно заплатити за снек від торгової марки «Жменька». Варіант прямокутних рисових хлібців, придатних для намазування, пропонує бренд Schar. Ціна — 179 грн за 150 г.
+                    Враховуйте, що імпортна продукція завжди коштує дорожче, що пояснюється витратами на транспортування.
+                </p>
+                <h2>Як правильно зберігати рисові хлібці</h2>
+                <p>
+                    Щоб уникнути втрати хрускоту, дотримуйтесь базових правил. Зберігайте продукт у герметичному контейнері в сухому і темному місці. Холодильник не підходить, оскільки з часом у закритому просторі формується конденсат. До того ж
+                    повітряна текстура рисових хлібців швидко поглинає сторонні запахи.
+                </p>
+                <p>
+                    Після відкриття оригінальної упаковки з'їдайте закуску протягом 2-4 тижнів — конкретні терміни залежать від виробника. Рисові хлібці крихкі, тому уникайте роздавлювання, особливо під час транспортування. Правильне місце для
+                    зберігання — кухонна шафка або полиця в коморі.
+                </p>
+                <h2>Чому вигідно купити рисові хлібці в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен товар — оригінальний. Це результат співпраці з перевіреними торговими марками, зокрема Bio Zentrale, Eki-Neki, Kupiec. Доставлення здійснюють кур'єр і компанії-перевізники, але за бажання товар можна забрати самостійно в
+                    супермаркетах «Сільпо». Оформляйте замовлення за лічені хвилини. Сплачуйте одразу або після отримання — як зручно.
+                </p>
+            </div>
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат з обсмаженими рисовими хлібцями" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-obsmazhenymy-rysovymy-hlibtsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат з обсмаженими рисовими хлібцями</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Олія каноли</li><li>Часник</li><li>Корінь імбиру</li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=rysovi-4">Рисові хлібці</a></li><li>Консервованы паростки бамбука</li><li>Пекынська капуста</li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/product/sous-soievyi-temnyi-superrior-pearl-river-bridge-150-ml">Темний соєвий соус</a></li><li>Паста з чорних бобів</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Шпинат</li><li>Бобові проростки</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=kunzhutna-2">Кунжутна олія</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрусткий салат із рисовими хлібцями сподобається веганам і не тільки. Пластівці надають страві текстури, а свіжі овочі та ніжний соус створюють гармонійний смак. Саме те для корисного ланчу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Салат з обсмаженими рисовими хлібцями</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3 столові ложки олії каноли</li><li>3 зубчики часнику</li><li>1 корінь імбиру</li><li>100 г рисових хлібців</li><li>300 г консервованих паростків бамбука</li><li>1 пучок пекінської капусти</li><li>соєвий соус до смаку</li><li>1 столова ложка темного соєвого соусу</li><li>1 столова ложка пасти з чорних бобів</li><li>1 чайна ложка цукру</li><li>150 г шпинату</li><li>1 склянка бобових проростків</li><li>1 чайна ложка кунжутної олії</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нагрійте 3 столові ложки олії каноли у воці на середньому вогні.</li><li>Додайте 3 зубчики часнику та 1 корінь імбиру. Обсмажуйте і безперервно помішуйте до появи приємного аромату.</li><li>Додайте 100 г рисових хлібців, 300 г консервованих паростків бамбука та 1 пучок пекінської капусти.</li><li>Обсмажуйте 5 хвилин до готовності.</li><li>Додайте два види соєвого соусу, 1 столову ложку пасти з чорних бобів, 1 чайну ложку цукру. Тушкуйте кілька хвилин.</li><li>Додайте 150 г шпинату, 1 склянку бобових проростків і 1 чайну ложку кунжутної олії.</li><li>Обсмажуйте і безперервно помішуйте пару хвилин до готовності.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рисові хлібці з сиром та чорницею" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rysovi-khlibtsi-z-syrom-ta-chornytseiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рисові хлібці з сиром та чорницею</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Сир рікота або сир</li><li><a href="https://maudau.com.ua/category/varennia/typ_283=abrykos-10">Абрикосове варення</a></li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=rysovi-4">Хлібці рисові</a></li><li>Свіжі фрукти на вибір: яблуко, груша, нектарин або персик</li><li>Свіжа чорниця</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Кориця</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий і поживний десерт на основі рисових хлібців із рікотою або сиром, свіжою чорницею та ароматними фруктами. Чудово підходить для сніданку або перекусу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Рисові хлібці з сиром та чорницею</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1/2 склянки сиру рікота або м'якого сиру</li><li>2 ч.л. абрикосового варення</li><li>4 шт. хлібців рисових</li><li>1 склянка свіжих фруктів (яблуко, груша, нектарин або персик)</li><li>1 склянка свіжої чорниці</li><li>кориця до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 4 рисових хлібці і змастіть кожен товстим шаром рікоти або м'якого сиру.</li><li>Викладіть зверху по 2 чайні ложки абрикосового варення на кожен хлібець, акуратно розподіляючи його по поверхні.</li><li>Наріжте 1 склянку свіжих фруктів (яблуко, груша, нектарин або персик) на тонкі скибочки.</li><li>Викладіть фрукти і 1 склянку свіжої чорниці поверх сиру, намагаючись розподілити ягоди і фрукти рівномірно.</li><li>За бажанням додайте дрібку кориці.</li><li>Подавайте страву одразу, щоб хлібці залишилися хрусткими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброди на хлібцях із сардиною" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrody-na-khlibtsiakh-iz-sardynoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброди на хлібцях із сардиною</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/miasni-ta-rybni-konservy/typ_272=sardina">Сардина консервована в олії</a></li><li>Зелень кропу</li><li>Часник</li><li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=rysovi-4">Рисові хлібці</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рецепт хрустких рисових хлібців із ніжною сардиною в олії, пікантним часником і свіжою зеленню кропу — простий і смачний спосіб урізноманітнити звичні перекуси!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бутерброди на хлібцях із сардиною</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 банка консервованої сардини в олії</li><li>1 пучок зелені кропу</li><li>2 зубчики часнику</li><li>5 шт. рисових хлібців (Tasty Style)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Відкрийте банку сардин в олії та злийте зайву рідину.</li><li>Візьміть 5 рисових хлібців і викладіть на кожен по 1-2 шматочки сардини.</li><li>Очистіть 2 зубчики часнику, наріжте їх дрібними шматочками або пропустіть через прес.</li><li>Посипте кожен бутерброд часником, рівномірно розподіляючи його по поверхні сардин.</li><li>Візьміть невеликий пучок свіжого кропу, дрібно наріжте і прикрасьте ним бутерброди.</li><li>Подавайте відразу після приготування, щоб хлібці залишилися хрусткими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="«Веселі» бутерброди із хлібців" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Veseli-buterbrody-iz-khlibtsiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">«Веселі» бутерброди із хлібців</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=rysovi-4">Рисові хлібці</a></li><li><a href="https://maudau.com.ua/category/ovochevi-ta-fruktovi-konservy/typ_280=kvasolia-8">Біла квасоля</a></li><li>Свіжі гриби</li><li>Морква</li><li>Часник</li><li>Зелень</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригінальні та ситні бутерброди на основі рисових хлібців із квасолею, грибами та морквою. Легка закуска з багатим смаком і креативним оформленням.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати «Веселі» бутерброди із хлібців</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>7 шт. рисових хлібців</li><li>100 г білої квасолі</li><li>5 шт. свіжих грибів</li><li>1 шт. моркви</li><li>2 зубчики часнику</li><li>пучок зелені</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Спочатку відваріть 100 г білої квасолі до м'якості або використовуйте готову консервовану квасолю.</li><li>Ретельно помийте, почистіть і натріть 1 моркву на крупній тертці.</li><li>Наріжте 5 свіжих грибів тонкими скибочками.</li><li>Очистіть і дрібно наріжте або пропустіть через прес 2 зубчики часнику.</li><li>У сковорідці розігрійте трохи олії та обсмажте моркву з грибами, додайте до них часник і дрібку солі.</li><li>Смажте на слабкому вогні близько 5–8 хвилин.</li><li>Коли овочі стануть м'якими, додайте квасолю і готуйте ще 3–5 хвилин, перемішуючи.</li><li>На 7 рисових хлібців викладіть отриману овочеву суміш.</li><li>Поріжте пучок зелені та прикрасьте нею бутерброди.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Рисові хлібці з руколою та авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rysovi-khlibtsi-z-rukoloiu-ta-avokado.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Рисові хлібці з руколою та авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/khlibtsi/vyd_113=rysovi-4">Рисові хлібці</a></li><li>Авокадо</li><li>Рукола</li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=tomatnyi">Томатний соус</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий і корисний перекус на основі хрустких рисових хлібців із кремовим авокадо та свіжою руколою, доповнений томатним соусом для пікантного смаку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Рисові хлібці з руколою та авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 пачки рисових хлібців</li><li>1-2 шт. авокадо</li><li>пучок руколи</li><li>3-4 ст. л. томатного соусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть 2 пачки рисових хлібців (близько 10 шт.) і розкладіть їх на тарілці.</li><li>Очистіть 1-2 авокадо, видаліть кісточку, у мисці розімніть м'якоть, використовуючи виделку, до отримання однорідної маси.</li><li>Намажте авокадо на хлібці, рівномірно розподіляючи.</li><li>Потім промийте й обсушіть пучок руколи, розкладіть її невелику кількість зверху на кожен хлібець.</li><li>Додайте 3-4 столові ложки томатного соусу на кожен бутерброд.</li><li>До смаку посипте бутерброди дрібкою солі та додайте свіжомелений чорний перець.</li><li>Подайте одразу, щоб зберегти хрустку текстуру хлібців.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">353 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">2.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">72.7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

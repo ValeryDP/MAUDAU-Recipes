@@ -1,0 +1,994 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Макароны трубочки — вариант экструдированных макаронных изделий, напоминающих цилиндр или трубку с полой внутренней частью. Форма эффективно поглощает соус, делая пасту мягкой и сочной.</p>
+                <p>
+                    Трубчатые макароны отличаются по длине, толщине и диаметру отверстий. Различия также касаются наличия ребрышек на внешней поверхности. Разнообразие вариантов на рынке делает продукт подходящим вариантом для многих блюд — от холодных
+                    салатов до горячих запеканок с мясом и сырным соусом.
+                </p>
+                <h2>Как производят макаронные трубочки</h2>
+                <p>
+                    Муку перемалывают из твердой пшеницы. Затем ее смешивают с водой, формируя густое тесто. Однородную массу заливают в экструдер, на выходе из которого устанавливают матрицу — металлическую пластину с отверстиями. По мере прохождения
+                    теста формируются макароны трубочки. Ремесленники в Италии предпочитают бронзовую матрицу, придающую поверхности пасты легкую шероховатую текстуру. На конце расположен резак, который разрезает макаронные изделия на нужные кусочки.
+                </p>
+                <p>В конце пасту трубочки высушивают, что продлевает срок годности. Затем продукт упаковывают и распространяют по миру.</p>
+                <h2>Польза для здоровья от макарон трубочек</h2>
+                <p>Паста, особенно изготовленная из цельнозерновой муки, обладает рядом преимуществ:</p>
+                <ul>
+                    <li>наличие сложных углеводов в составе;</li>
+                    <li>содержание клетчатки, витаминов группы B и минералов;</li>
+                    <li>отсутствие жиров.</li>
+                </ul>
+                <p>
+                    Пасту обычно изготавливают из пшеницы, но также встречаются варианты без глютена на основе гречихи и бобов. Например, спагетти трубочки из гречки содержат аминокислоты и магний, что положительно влияет на работу сердца. Бобы богаты
+                    белками и клетчаткой.
+                </p>
+                <h2>Как правильно варить макароны трубочки</h2>
+                <p>
+                    Инструкция зависит от вида пасты, но в среднем время готовки составляет 10–13 минут. Доведите подсоленную воду до кипения, всыпьте макароны, периодически помешивайте и готовьте до состояния аль-денте, что означает «на зубок». По
+                    готовности откиньте пасту на дуршлаг, а остатки крахмалистой жидкости используйте как загуститель для соуса.
+                </p>
+                <h2>Как выбрать трубчатые макароны</h2>
+                <p>Несмотря на то, что товаров в категории немного, прежде всего важно определиться с видом, которых насчитывают с десяток:</p>
+                <ol>
+                    <li>
+                        Пенне. Они же макароны перья. Пенне — трубочки среднего размера с диагональными надрезами на концах. Доступны в гладком (lisce) и ребристом (rigate) вариантах. Макароны трубочки в виде перьев подходят для запекания с густыми
+                        соусами по типу песто, маринары, аррабиаты.
+                    </li>
+                    <li>Ригатони. Вариант, похожий на пенне, но больше и шире. Ригатони распространены в Риме. Культовый рецепт — Rigatoni al forno.</li>
+                    <li>Рожки. Макаронные трубочки из твердых сортов пшеницы, которые напоминают маленький рог или локтевой изгиб. Чрезвычайно популярны в США, где их затирают сыром.</li>
+                    <li>Каннеллони. Большие прямые трубочки, предназначенные для заполнения начинкой: мягкими сливочными сырами, фаршем, шпинатом.</li>
+                    <li>Маккарони. Паста в виде трубочек маленького или среднего размера без бороздок. В США маккарони подают под сырным соусом.</li>
+                    <li>Паккери. Самые толстые и большие макаронные трубочки в ассортименте. Продукт происходит из Кампании, где пасту традиционно смешивают с томатами.</li>
+                    <li>Тортильони. Большие ребристые трубочки в виде скрученных спиралей, которые хорошо сочетаются с густыми и насыщенными соусами.</li>
+                    <li>Зити. Трубчатые спагетти, напоминающие ригатони. Зити распространены в Неаполе.</li>
+                    <li>Строццапрети. Вариант короткой трубчатой пасты, приготовленной вручную. Макаронные изделия в основном производят в регионе Эмилия-Романья, где их подают с нежными сливочными соусами.</li>
+                </ol>
+                <p>Чтобы повысить интерес малыша к еде, выбирайте разноцветные трубчатые макароны, окрашенные натуральными экстрактами овощей. Если готовите салат, остановитесь на пасте с гладкой поверхностью.</p>
+                <p>Вес пачки зависит от частоты готовки. Например, стандартной упаковки каннеллони хватит для 3–5 человек. Полиэтилен эффективно защищает содержимое пакета от влаги. Картонная коробка — более экологичный вариант.</p>
+                <h3>Макаронные трубочки: стоимость в Украине</h3>
+                <p>
+                    Цена в маркете повседневных штук MAUDAU колеблется в пределах 26–254 грн. Доступную продукцию ищите в ассортименте Barilla, Pastificio Di Martino, Garofalo. Стоимость трубчатых макарон от украинских торговых марок всегда ниже, что
+                    объясняется минимальными расходами на транспортировку. Продукция без глютена стоит дороже, как и макаронные изделия из пшеницы, выращенной в соответствии со стандартами биодинамического земледелия.
+                </p>
+                <h2>Почему выгодно купить макароны трубочки в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый товар, доступный к заказу, оригинального происхождения. Макароны трубочки можно купить с курьерской доставкой к самому дому по Киеву. Для заказа в другой город выберите одну из партнерских компаний — «Новую Почту» или
+                    «Укрпочту». Забирайте пасту самостоятельно в супермаркетах «Сільпо», оплачивая покупку постфактум.
+                </p>
+            </div>
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Минестроне" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Minestrones.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Минестроне</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Морковь</li><li>Перец сладкий зеленый</li><li>Помидоры мелкие</li><li>Сыр пармезан</li><li><a href="https://maudau.com.ua/ru/product/kvasolia-casa-rinaldi-ispanska-bila-400-h-zb-430105">Фасоль белая консервированная</a></li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby">Макароны</a></li><li><a href="https://maudau.com.ua/ru/category/otset/typ_211=balzamichnyi">Уксус бальзамический</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Масло растительное</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy">Специи</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Минестроне — суп итальянской кухни, в составе которого много овощей, а также бобовые, макароны или рис. Суп получается довольно сытным, густым и насыщенным.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Минестроне</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 шт. моркови</li><li>1 шт. перца сладкого зеленого</li><li>9 шт. помидоров мелких</li><li>100 г сыра пармезана (или другого твердого сыра)</li><li>300 г фасоли белой консервированной</li><li>150 г макарон</li><li>2 ст. л. уксуса бальзамического</li><li>1 ст. л. масла растительного</li><li>соль по вкусу</li><li>специи по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В большой кастрюле разогрейте растительное масло на среднем огне.</li><li>Добавьте нарезанные морковь и перец. Обжаривайте около 5 минут, пока овощи не станут мягкими.</li><li>Добавьте нарезанные помидоры и продолжайте готовить еще 5 минут, помешивая время от времени.</li><li>Влейте в кастрюлю около 1,5 л воды (или овощной бульон) и доведите до кипения.</li><li>Добавьте в кастрюлю консервированную фасоль и макароны.</li><li>Варите по инструкции на упаковке макарон, обычно 8–10 минут.</li><li>После варки макарон добавьте уксус бальзамический и соль/специи по вкусу.</li><li>Перемешайте и дайте минестроне настояться пару минут под крышкой.</li><li>Подавайте горячим, посыпав натертым сыром пармезаном.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны с грибами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-z-hrybamy-tr.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны с грибами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li>Свежие грибы</li><li>Лимон</li><li>Сметана</li><li>Ланкаширский сыр</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны с грибами — это сытное блюдо, сочетающее нежные бантики, спиральки или рожки, грибы и сыр. Легкий соус придает пасте мягкость и насыщенный вкус.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны с грибами</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г макарон</li><li>250 г свежих грибов</li><li>½ лимона</li><li>200 г сметаны</li><li>110 г ланкаширского сыра</li><li>50 мл оливкового масла</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 250 г макарон в кастрюле с подсоленной водой.</li><li>Разогрейте гриль до максимальной температуры.</li><li>Обжарьте 250 г свежих грибов на оливковом масле в течение 5 минут.</li><li>Добавьте немного лимонного сока, цедру, 200 г сметаны и половину ланкаширского сыра.</li><li>Соедините макароны с грибами. Положите в форму для запекания, посыпьте оставшимся сыром.</li><li>Запекайте до появления корочки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны с фаршем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-z-farshem-tr.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны с фаршем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Репчатый лук</li><li>Морковь</li><li>Стебель сельдерея</li><li>Чеснок</li><li>Мясной фарш</li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li><a href="https://maudau.com.ua/ru/product/sous-tomatnyi-cirio-pasata-3-kh-200-h">Томатный соус пассата</a></li><li><a href="https://maudau.com.ua/ru/product/sumish-prianoshchiv-mriia-italiiski-travy-10-h-444263">Итальянские травы</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны с фаршем — это аппетитное и простое блюдо, сочетающее мучные изделия разных форм с обжаренным мясом, луком и специями. Оно легко готовится и идеально подходит для ужина на скорую руку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны с фаршем</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 головка репчатого лука</li><li>1 морковь</li><li>1 стебель сельдерея</li><li>1 зубчик чеснока</li><li>500 г мясного фарша</li><li>300 г макарон</li><li>150 г томатного соуса пассаты</li><li>итальянские травы по вкусу</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li><li>сахар по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте 1 головку репчатого лука, 1 морковь и 1 стебель сельдерея мелкими кубиками.</li><li>Разогрейте немного растительного масла в глубокой сковороде и обжарьте лук до прозрачности.</li><li>Добавьте к луку морковь и сельдерей. Жарьте до 5 минут и помешивайте.</li><li>Раздавите 1 зубчик чеснока через пресс, добавьте в сковороду и перемешайте.</li><li>Добавьте к овощам 500 г мясного фарша и жарьте, пока он не потемнеет.</li><li>Влейте 150 г томатного соуса пассаты, добавьте итальянские травы, немного сахара, перец и соль.</li><li>Добавьте 300 г макарон. Залейте водой так, чтобы они немного выглядывали.</li><li>Закройте крышкой и тушите до готовности, примерно 15 минут.</li><li>Снимите крышку, помешивайте макароны и выпарите оставшуюся воду.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны с тыквой и луком" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-z-harbuzom-ta-tsybuleiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны с тыквой и луком</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li>Репчатый лук</li><li>Тыква</li><li>Каперсы</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy">Специи</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Приготовить этот рецепт сможет даже начинающий кулинар. Нежная паста хорошо сочетается с колоритным ярким овощем и обжаренным луком, создавая приятную гармонию вкусов и текстур.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны с тыквой и луком</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г макарон</li><li>1 головка репчатого лука</li><li>1 тыква</li><li>1 чайная ложка каперсов</li><li>специи по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите в подсоленной воде 100 г макарон (бантики, рожки, или любые по желанию).</li><li>Очистите и мелко порубите 1 головку репчатого лука.</li><li>Разогрейте немного растительного масла в сковороде. Пассеруйте в ней лук до прозрачности.</li><li>Очистите одну тыкву от семечек и кожуры. Натрите на крупной терке.</li><li>Добавьте один стакан тыквы в сковороду, перемешайте, влейте немного воды и тушите до 15 минут.</li><li>Добавьте макароны и 1 чайную ложку каперсов. Перемешайте все, посолите и поперчите по вкусу.</li><li>Добавьте рубленую петрушку или другую пряную зелень по вкусу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны карри с консервированной скумбрией и шпинатом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-karri-z-konservovanoiu-skumbriieiu-ta-shpynatom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны карри с консервированной скумбрией и шпинатом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li>Репчатый лук</li><li>Чеснок</li><li>Морковь</li><li><a href="https://maudau.com.ua/ru/category/miasni-ta-rybni-konservy/typ_272=skumbriia-2">Консервированная скумбрия</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=karri-3">Карри</a></li><li>Шпинат</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны карри с консервированной скумбрией — это пикантное блюдо, сочетающее сытность макаронных изделий, насыщенный вкус рыбы и свежесть зелени в ароматном соусе. Его можно готовить хоть каждый день, настолько рецепт легкий и быстрый.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны карри с консервированной скумбрией и шпинатом</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макарон</li><li>50 г репчатого лука</li><li>1 зубчик чеснока</li><li>100 г моркови</li><li>1 банка консервированной скумбрии</li><li>50 мл растительного масла</li><li>5 г карри</li><li>20 г шпината</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 200 г макарон до готовности.</li><li>Нарежьте 50 г репчатого лука и 100 г моркови мелкими кубиками.</li><li>Измельчите 1 зубчик чеснока.</li><li>Разогрейте растительное масло на сковороде. Жарьте овощи 5 минут до золотистого цвета, помешивая смесь.</li><li>Выложите консервированную скумбрию из банки. Слегка разомните и тушите в течение 5 минут.</li><li>Влейте немного молока, добавьте 5 г карри, соль, перец. Тушите еще 5 минут.</li><li>Добавьте макароны на сковороду. Хорошо перемешайте с рыбой и овощами.</li><li>Готовьте еще пару минут, добавьте 20 г шпината и перемешайте.</li><li>Когда шпинат подвянет, снимите сковороду с огня.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны по-флотски с сочным фаршем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-po-flotsky-iz-sokovytym-farshems.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны по-флотски с сочным фаршем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li>Фарш</li><li>Репчатый лук</li><li>Чеснок</li><li><a href="https://maudau.com.ua/ru/category/tomatna-pasta">Томатная паста</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны по-флотски с сочным фаршем сочетают качественную пасту и обжаренное мясо с луком и специями. Несложное, вкусное блюдо можно приготовить буквально за пол часа.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны по-флотски с сочным фаршем</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г макарон</li><li>600 г фарша</li><li>1 головка репчатого лука</li><li>2 зубчика чеснока</li><li>2 столовые ложки томатной пасты</li><li>2 столовые ложки растительного масла</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте мелко 1 головку репчатого лука и 2 зубчика чеснока. Разогрейте масло и обжарьте овощи в сковороде.</li><li>Добавьте 600 г фарша и готовьте до 15 минут. Разминайте комочки с помощью лопатки.</li><li>К фаршу с овощами добавьте 2 столовые ложки томатной пасты, размешайте и прогрейте пару минут.</li><li>Влейте пол стакана горячей воды, посолите и поперчите по вкусу. Тушите до 5 минут.</li><li>Отварите 300 г макарон следуя инструкции на упаковке. Добавьте их в сковороду к фаршу.</li><li>Готовьте все ингредиенты до 5 минут.</li><li>Посыпьте блюдо тертым сыром и свежей зеленью перед подачей.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны с сыром и оливковым маслом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-z-syrom-ta-olyvkovoiu-oliieiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны с сыром и оливковым маслом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li>Сыр</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны с сыром и оливковым маслом — максимально простое блюдо на скорую руку.. Горячие упругие спиральки или рожки смешивают с тертым чеддером и пармезаном, создавая мягкую, кремовую текстуру и насыщенный вкус.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны с сыром и оливковым маслом</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г макарон</li><li>50 г сыра</li><li>2 столовые ложки оливкового масла</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 250 г макарон по инструкции на упаковке.</li><li>Положите в блюдо 2 столовые ложки оливкового масла и 25 г натертого сыра.</li><li>Добавьте горячие отваренные макароны и хорошо размешайте.</li><li>При подаче посыпьте блюдо оставшимся сыром.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны с сыром и беконом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-z-syrom-ta-bekonom-tr.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны с сыром и беконом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li><a href="https://maudau.com.ua/ru/category/hirchytsia/typ_269=dizhonska">Дижонская горчица</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/product/vershky-ultrapasteryzyrovani-yahotynski-15-tet-br">Жирные сливки</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=lavrovyi-lyst">Лавровый лист</a></li><li>Сыр чеддер</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Молотый мускатный орех</a></li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li>Копченый бекон</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=paniruvalni-sukhari">Панировочные сухари</a></li><li>Сыр пармезан</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            В этом рецепте смешались нежные макаронные изделия, расплавленный чеддер и копченные кусочки свинины. Блюдо идеально подходит для быстрого сытного ужина с приятным вкусом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны с сыром и беконом</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г сливочного масла</li><li>100 г пшеничной муки</li><li>1 чайная ложка дижонской горчицы</li><li>1⅕ л молока</li><li>100 мл жирных сливок</li><li>1 лавровый лист</li><li>400 г сыра чеддер</li><li>молотый мускатный орех на кончике ножа</li><li>500 г макарон</li><li>100 г копченого бекона</li><li>60 г панировочных сухарей</li><li>50 г сыра пармезан</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 200 градусов и смажьте жаропрочную форму.</li><li>Растопите 100 г сливочного масла в кастрюле на небольшом огне.</li><li>Добавьте 100 г пшеничной муки и готовьте минуту.</li><li>Добавьте 1 чайную ложку дижонской горчицы, снимите кастрюлю с огня и постепенно влейте 1⅕ л молока и 100 мл жирных сливок.</li><li>Добавьте 1 лавровый лист и поставьте кастрюлю на огонь.</li><li>Помешивайте смесь, пока она не закипит и не загустеет.</li><li>Снова снимите кастрюлю с огня, достаньте лавровый лист и добавьте 400 г сыра чеддер.</li><li>Перемешайте, чтобы сыр растаял. Приправьте черным перцем и мускатным орехом.</li><li>Доведите до кипения большую кастрюлю с подсоленной водой и добавьте 500 г макарон.</li><li>Варите до 10 минут. Процедите и добавьте в соус.</li><li>Обжарьте бекон на сковороде до хрустящей корочки. Добавьте макаронный сыр и вылейте смесь в жаростойкую форму.</li><li>Смешайте 60 г панировочных сухарей с 50 г сыра пармезан и посыпьте сверху.</li><li>Выпекайте полчаса, до появления румяной корочки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны с тушенкой по-деревенски" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-z-tushonkoiu-po-silskomus.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны с тушенкой по-деревенски</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li>Лук</li><li>Помидоры</li><li><a href="https://maudau.com.ua/ru/category/miasni-konservy/typ_274=tushonka">Тушенка</a></li><li>Куриный бульонный кубик</li><li>Зелень</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны с тушенкой по-деревенски — это простое и аппетитное сочетание мягкой вермишели и сочного мяса, с добавлением лука, томатов и зелени. Хороший выбор для уютного домашнего ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны с тушенкой по-деревенски</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г макарон</li><li>2 лука</li><li>2 помидора</li><li>2 банки тушенки</li><li>1 куриный бульонный кубик</li><li>Зелень по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистите 2 лука и нарежьте на небольшие кубики.</li><li>Нагрейте сковороду без крышки и налейте подсолнечное масло.</li><li>Положите 400 г сухих макарон жариться. Добавьте нарезанный лук.</li><li>Перемешайте, когда макароны начнут подрумяниваться.</li><li>Жарьте макароны, чтобы они подрумянились с двух сторон.</li><li>Влейте воду, чтобы она покрыла макароны.</li><li>Закройте сковородку крышкой и сделайте средний огонь.</li><li>Варите макароны, периодически помешивая.</li><li>Помойте 2 помидора и нарежьте их мелкими кубиками.</li><li>Когда макароны наполовину сварятся, добавьте бульонный кубик и нарезанные помидоры с соком.</li><li>Откройте 2 банки тушенки, нарежьте кусочками и вместе с жиром положите в приготовленные макароны.</li><li>Сделайте маленький огонь и перемешайте. Посолите по вкусу.</li><li>Добавьте зелень и потомите блюдо до 10 минут.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Суп с макаронами и песто" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sup-z-makaronamy-ta-pestos.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Суп с макаронами и песто</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Куриное филе</li><li>Овощной бульон</li><li>Чеснок</li><li>Белый лук</li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=kedrovi-2">Кедровые орехи</a></li><li>Базилик</li><li>Петрушка</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=trubochky">Макароны</a></li><li><a href="https://maudau.com.ua/ru/category/otset/typ_211=balzamichnyi">Бальзамический уксус</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Суп с макаронами и песто — это ароматное первое блюдо, сочетающее легкий овощной бульон с нежным куриным филе и насыщенным соусом. Прекрасно подходит для сытного обеда.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Суп с макаронами и песто</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г куриного филе</li><li>2 л овощного бульона</li><li>4 зубчика чеснока</li><li>1 головка белого лука</li><li>30 г кедровых орехов</li><li>1 пучок базилика</li><li>1 пучок петрушки</li><li>150 мл оливкового масла</li><li>200 г макарон</li><li>1 столовая ложка бальзамического уксуса</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте 1 головку белого лука полукольцами и обжарьте в большом разогретом сотейнике на оливковом масле.</li><li>Когда лук начнет буреть, влейте 1 столовую ложку бальзамического уксуса и положите куриное филе, нарезанное маленькими кусочками.</li><li>Обжаривайте куриное филе до готовности. После этого залейте все 2 литрами овощного бульона.</li><li>Когда бульон закипит, добавьте 200 г макарон и варите до готовности, помешивая.</li><li>Смешайте 1 пучок базилика, 1 пучок петрушки, 4 зубчика чеснока, 30 г кедровых орехов и 150 мл оливкового масла в блендере.</li><li>Заправьте готовый суп соусом перед подачей.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">340 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">12 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">71 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

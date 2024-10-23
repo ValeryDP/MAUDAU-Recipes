@@ -1,0 +1,999 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Макароны ракушки — популярный вид мучных изделий, заслуживших признание во всей мировой кулинарии. Секрет их изготовления прост — нужно только пшеничное тесто, замешанное на воде. Форма продукта может отличаться, производители
+                    предлагают большие или маленькие ракушки, завернутые разными способами.
+                </p>
+                <p>
+                    Макароны ракушки придумали в Италии, где этот тип пасты делят на три вида — конкилье, конкильоне и конкильетти. У нас их называют по-разному — черепашки, ушки, рожки. Производятся они из твердых или мягких сортов пшеницы. При
+                    готовке не разваливаются, структура остается упругой и цельной.
+                </p>
+                <h2>Рекомендации по приготовлению</h2>
+                <p>
+                    Варить вермишель ракушки нужно не более 10–15 мин. Но опускать следует в уже кипящую подсоленную воду. Рожки можно подавать в виде самостоятельного блюда или в качестве гарнира. В их составе много белка и сложных углеводов. Также
+                    здесь есть полезные для здоровья витамины (A, E, PP, B1, 2, 5, 6, 9) и минералы:
+                </p>
+                <ul>
+                    <li>железо;</li>
+                    <li>натрий;</li>
+                    <li>кремний;</li>
+                    <li>калий;</li>
+                    <li>магний и другие.</li>
+                </ul>
+                <p>Быстрая в приготовлении вермишель хорошо сочетается с такими продуктами:</p>
+                <ul>
+                    <li>овощи — томаты, горох, морковь, сельдерей, грибы;</li>
+                    <li>зелень — шпинат, розмарин, мята, базилик, петрушка;</li>
+                    <li>мясо — говядина, свинина, курица, индейка;</li>
+                    <li>сыр — чеддер, моцарелла, пармезан, рикотта.</li>
+                </ul>
+                <p>
+                    Крупные и мелкие изделия из муки улучшают пищеварение. Их можно добавлять в утренний, дневной или вечерний рацион. Способы и время приготовления у каждого кулинара разные — одним нравится паста аль денте, другие дают рожкам вариться
+                    дольше, чтобы получить более мягкую структуру.
+                </p>
+                <h2>Как выбрать макароны ракушки</h2>
+                <p>
+                    Подбирать пшеничный продукт следует, учитывая его размер и калорийность. Вермишель ракушки делят на мелкую, среднюю и крупную. Калорийность зависит от основы изделий — пшеничной муки. Средний показатель на 100 г продукта составляет
+                    356 ккал, но параметры конкретного вида производители указывают на упаковке. Она может быть из картона или полиэтилена. Вес пачки выбирают, учитывая количество членов семьи:
+                </p>
+                <ul>
+                    <li>от 100 до 500 г;</li>
+                    <li>от 500 г до 1 кг.</li>
+                </ul>
+                <p>Лучше понять, чем отличаются виды, помогает сравнение нескольких популярных товарных позиций. Для примера можно взять макаронные изделия:</p>
+                <ol>
+                    <li>Barilla Conchiglie Rigate №93 500 г. Благодаря изогнутой форме и рельефной поверхности хорошо удерживает соус. Вкусный продукт не разваривается, структура остается легкой и тонкой.</li>
+                    <li>Polmak Uszka фигурные яичные 250 г. У рожек оригинальная форма с волнистыми краями. Рецептура включает добавление яиц. Именно он добавляет питательность в блюда из фигурных изделий польского производителя.</li>
+                    <li>
+                        La Pasta суповые ракушки 400 г. Отличительная особенность этого вида макарон — маленькие размеры. Такой калибр — оптимальный выбор для приготовления супов. Ракушки не развариваются и хорошо дополняют вкус бульона со специями.
+                    </li>
+                    <li>
+                        Паста Felicetti Конкилье, 500 г. Классический вариант макарон ракушек, изготовленных в лучших итальянских кулинарных традициях. Полиэтиленовый пакет надежно защищает содержимое от попадания влаги. Такой легкий на вкус продукт
+                        послужит удачным вариантом гарнира к мясу или овощным блюдам.
+                    </li>
+                    <li>
+                        Casa Rinaldi Conchiglioni 97 500 г. Прозрачная упаковка демонстрирует необычную конфигурацию макаронных изделий от итальянского производителя. Большие ракушки с шероховатой поверхностью содержат клетчатку, поэтому им свойственна
+                        высокая пищевая ценность. Они подходят для фаршировки любыми доступными продуктами — овощами, фруктами или мясом.
+                    </li>
+                </ol>
+                <p>Узнав об отличительных особенностях разных типов макарон, можно сделать вывод — лучше покупать те, которые наиболее подходят для запланированного блюда.</p>
+                <h2>Почему выгодно купить макаронные изделия ракушки в маркете повседневных штук MAUDAU</h2>
+                <p>
+                    В интернет-магазине MAUDAU можно быстро найти необходимую позицию или категорию. Оформление заказа занимает всего несколько минут. Здесь покупка макарон ракушек — это гарантия качественного, оригинального товара от проверенных
+                    производителей. Среди других преимуществ — возможность самовывоза, наличного и безналичного расчета, доставки по регионам Украины Новой Почтой и Укрпочтой.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Фаршированные большие макароны с фаршем в духовке" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Farshyrovani-velyki-makarony-z-farshem-u-dukhovtsi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Фаршированные большие макароны с фаршем в духовке</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки (для фарширования)</a></li><li>Куриный фарш</li><li>Сметана</li><li><a href="https://maudau.com.ua/ru/category/ketchup">Кетчуп</a></li><li>Морковь</li><li>Лук</li><li>Чеснок</li><li>Твердый сыр</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Перец</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло (для жарки)</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фаршированные большие ракушки с фаршем в духовке — это очень аппетитное блюдо. Крупные макароны наполнены сочным мясом, а запеченые сыр и соус создают насыщенный вкус и аромат.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Фаршированные большие макароны с фаршем в духовке</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г макарон ракушки (любые для фарширования)</li><li>300 г куриного фарша</li><li>4 столовые ложки сметаны</li><li>3 столовые ложки кетчупа</li><li>2 моркови</li><li>1 лук</li><li>2 зубчика чеснока</li><li>100 г твердого сыра</li><li>соль по вкусу</li><li>перец по вкусу</li><li>15 г растительного масла (для жарки)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите макароны-ракушки в подсоленной воде до состояния аль денте.</li><li>Откиньте их на дуршлаг и дайте остыть.</li><li>На разогретую сковороду налейте растительное масло.</li><li>Мелко нарежьте 1 лук и 2 зубчика чеснока. Обжарьте на среднем огне до золотистого цвета.</li><li>Натрите 2 моркови на крупной терке и добавьте к луку и чесноку. Жарьте все вместе около 5 минут.</li><li>Выложите куриный фарш на сковороду. Посолите и поперчите.</li><li>Обжаривайте до готовности, перемешивайте, чтобы не было крупных комков.</li><li>Смешайте 4 столовые ложки сметаны и 3 столовые ложки кетчупа в отдельной посуде.</li><li>Положите начинку из куриного фарша в остывшие макароны.</li><li>Выложите фаршированные макароны в смазанную растительным маслом форму для запекания.</li><li>Залейте их приготовленным соусом из сметаны и кетчупа.</li><li>Сверху посыпьте тертым сыром.</li><li>Разогрейте духовку до 180 градусов и запекайте макароны в течение 15-20 минут, пока сыр не расплавится и не подрумянится.</li><li>Подавайте с зеленью и любимым овощным салатом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Конкильони фаршированные мясом с сыром" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Konkiliony-farshyrovani-miasom-iz-syrom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Конкильони фаршированные мясом с сыром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки</a></li><li>Мясной фарш</li><li>Лук репчатый</li><li>Чеснок</li><li>Твердый сыр</li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Конкильони фаршированные мясом с сыром — это крупные ракушки, наполненные сочным фаршем, смешанным с ароматными специями и нежным сыром. Запекаются в духовке до золотистой корочки и идеально подходят для ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Конкильони фаршированные мясом с сыром</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г макарон ракушек</li><li>200 г мясного фарша</li><li>1 лук репчатый</li><li>1 зубчик чеснока</li><li>30 г твердого сыра</li><li>1,5 стакана воды</li><li>2 столовые ложки растительного масла</li><li>соль по вкусу</li><li>перец черный молотый по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 100 г ракушек в подсоленной воде до состояния аль денте.</li><li>Слейте воду и промойте макароны.</li><li>Нарежьте 1 репчатый лук мелкими кубиками и обжарьте его на разогретой сковороде с растительным маслом до золотистого цвета.</li><li>Добавьте к луку мясной фарш и обжаривайте.</li><li>Помешивайте пока фарш не подрумянится и не станет рассыпчатым. В конце добавьте измельченный зубчик чеснока, соль и черный перец по вкусу.</li><li>Тщательно перемешайте и снимите с огня.</li><li>Наполните каждую ракушку приготовленным мясным фаршем.</li><li>Выложите фаршированные макароны в форму для запекания.</li><li>Налейте в форму 1,5 стакана воды, чтобы конкильони оставались мягкими при запекании.</li><li>Натрите твердый сыр и посыпьте фаршированные конкильони.</li><li>Запекайте блюдо в разогретой до 180 градусов духовке примерно 20–25 минут, пока сыр не расплавится и не образует румяную корочку.</li><li>Украсьте блюдо свежей зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ракушки фаршированные фаршем на сковороде" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Mushli-farshyrovani-farshem-na-skovorodi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ракушки фаршированные фаршем на сковороде</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки</a></li><li>Мясной фарш</li><li>Морковь</li><li>Лук репчатый</li><li>Помидоры</li><li><a href="https://maudau.com.ua/ru/product/vershky-ultrapasteryzyrovani-yahotynski-15-tet-br">Сливки</a></li><li>Растительное масло</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li>Зелень</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ракушки, фаршированные мясным фаршем, обжаривают на сковороде до золотистой корочки. Сочные и ароматные, они отлично сочетаются с томатным соусом, и становятся сытным и вкусным блюдом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Ракушки фаршированные фаршем на сковороде</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г макарон ракушек</li><li>300 г мясного фарша</li><li>1 морковь</li><li>1 лук репчатый</li><li>2 помидора</li><li>70 мл сливок</li><li>1 столовая ложка растительного масла</li><li>соль по вкусу</li><li>черный молотый перец по вкусу</li><li>зелень по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Помойте, очистите и натрите на крупной терке одну морковь.</li><li>Почистите и нарежьте небольшими кубиками репчатый лук.</li><li>Налейте немного растительного масла на разогретую сковороду.</li><li>Отправьте фарш с репчатым луком на сковороду, когда масло нагреется.</li><li>Обжарьте смесь на среднем огне до побеления фарша. Постоянно помешивайте.</li><li>Помойте 2 помидора и вырежьте плодоножки.</li><li>Разрежьте томаты на несколько кусочков, затем измельчите в пюре блендером.</li><li>Добавьте морковь и томатное пюре к фаршу.</li><li>Посолите, поперчите и перемешайте.</li><li>Тушите смесь на среднем огне до 15 минут.</li><li>Отварите 300 г макарон ракушек до полуготовности.</li><li>Наполните макароны начинкой из фарша с овощами.</li><li>Выложите ракушки на смазанную маслом сковороду.</li><li>Залейте ракушки оставшимся томатным соусом и сливками.</li><li>Посолите, поперчите и поставьте блюдо на огонь.</li><li>Когда соус закипит, сделайте средний огонь.</li><li>Накройте сковороду крышкой и тушите макароны в течение 15 минут.</li><li>Посыпьте фаршированные ракушки свежей зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Фаршированные ракушки в соусе" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Farshyrovani-mushli-v-sousi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Фаршированные ракушки в соусе</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Куриные грудки</li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-pripravka-exclusive-professional-horoshok-100-h">Перец горошком</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=lavrovyi-lyst">Лавровый лист</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Зелень</li><li>Лук репчатый</li><li>Морковь</li><li>Куриные яйца</li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки</a></li><li>Грибы</li><li><a href="https://maudau.com.ua/ru/product/vershky-ultrapasteryzyrovani-yahotynski-15-tet-br">Сливки</a></li><li>Твердый сыр</li><li>Укроп</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фаршированные ракушки в соусе — это крупные макароны, начиненные куриным мясом, сыром и овощами, запеченные в ароматном томатном или сливочном соусе. Получается вкусное, сытное и аппетитное блюдо.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Фаршированные ракушки в соусе</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г куриных грудок</li><li>600 мл воды</li><li>5 г перца горошком</li><li>2 г лаврового листа</li><li>4 г соли</li><li>15 г зелени</li><li>280 г репчатого лука</li><li>160 г моркови</li><li>2 куриных яйца</li><li>250 г макарон ракушек</li><li>100 г грибов</li><li>100 мл сливок</li><li>80 г твердого сыра</li><li>15 г укропа</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте 600 мл воды в кастрюлю и вскипятите.</li><li>Добавьте 400 г куриных грудок, 5 г перца горошком, лавровый лист, соль, и варите до получаса на среднем огне.</li><li>Остудите и мелко порежьте готовую курицу.</li><li>Мелко нарежьте репчатый лук. Натрите морковь на терке.</li><li>Обжарьте лук и морковь на сковороде до золотистого цвета. Добавьте 100 г грибов и тушите еще 5-7 минут.</li><li>Смешайте обжаренные овощи с мелко нарезанной курицей в миске.</li><li>Добавьте 2 куриных яйца, 2 г соли и мелко нарезанную зелень. Хорошо перемешайте.</li><li>Отварите 250 г макарон ракушек в подсоленной воде до состояния аль-денте.</li><li>Слейте воду и остудите пасту.</li><li>Наполните вареные ракушки приготовленной начинкой.</li><li>Нагрейте 100 мл сливок в отдельной кастрюле на среднем огне.</li><li>Добавьте натертый твердый сыр и немного соли. Помешивайте, пока сыр полностью не растворится.</li><li>В конце добавьте мелко нарезанный укроп.</li><li>Выложите фаршированные ракушки в форму для запекания. Залейте их приготовленным сливочным соусом. Накройте фольгой и запекайте в разогретой до 180°C духовке около 20 минут.</li><li>За 5 минут до конца уберите фольгу, чтобы ракушки зарумянились.</li><li>Украсьте блюдо зеленью и подавайте горячим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны ракушки с курицей и лисичками в сливочном соусе" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-mushli-z-kurkoiu-ta-lysychkamy-u-vershkovomu-sousi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны ракушки с курицей и лисичками в сливочном соусе</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки</a></li><li>Лисички</li><li>Сливки</li><li>Куриные грудки</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Растительное масло</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Перец черный молотый</a></li><li>Репчатый лук</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны-ракушки с курицей и лисичками в сливочном соусе — это нежное и сытное блюдо. Ароматные грибы, сочное мясо и бархатный соус придают пасте насыщенный вкус и изысканность.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны ракушки с курицей и лисичками в сливочном соусе</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г макарон ракушек</li><li>50 г лисичек</li><li>150 г куриных грудок</li><li>40 мл растительного масла</li><li>соль по вкусу</li><li>сливки</li><li>перец черный молотый по вкусу</li><li>30 г репчатого лука</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Промойте 50 г лисичек.</li><li>Поставьте варить 200 г макарон-ракушек до степени аль денте.</li><li>Разогрейте масло на сковороде.</li><li>Добавьте 30 г нарезанного репчатого лука и подготовленные грибы на сковороду.</li><li>Нарежьте 150 г куриных грудок кусочками и добавьте на сковороду.</li><li>Обжарьте смесь до испарения жидкости.</li><li>Присыпьте смесь мукой, быстро перемешайте и снимите с огня.</li><li>Уменьшите температуру, посолите и поперчите.</li><li>Добавьте сливки и размешайте до однородности соуса.</li><li>Полейте готовые ракушки тушеными грибами с курицей и подавайте блюдо.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны ракушки фаршированные рикоттой с песто" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-mushli-farshyrovani-rikottoiu-z-pesto.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны ракушки фаршированные рикоттой с песто</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки (конкильони)</a></li><li>Рикотта</li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=pesto-2">Соус песто</a></li><li>Тархун (эстрагон)</li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Черный молотый перец</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Кервель</li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=kedrovi-2">Кедровые орешки</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны ракушки, фаршированные нежной рикоттой, с добавлением ароматного соуса песто. Легкое, но насыщенное блюдо с итальянским акцентом, идеально сочетающее сливочную текстуру и свежие травы. Великолепно подходит для романтического ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны ракушки фаршированные рикоттой с песто</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>125 г макарон ракушек (конкильони)</li><li>250 г рикотты</li><li>150 г соуса песто</li><li>10 г тархуна (эстрагона)</li><li>3 г черного молотого перца</li><li>3 г соли</li><li>5 г кервеля</li><li>20 г кедровых орешков</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отварите 125 г макарон ракушек (конкильони) в подсоленной воде до готовности аль денте.</li><li>Слейте воду, промойте ракушки, просушите и отложите.</li><li>Взбейте 250 г рикотты с 150 г соуса песто. Добавьте измельченный эстрагон, соль и перец.</li><li>Нафаршируйте ракушки. Храните фаршированные макароны в прохладном месте до подачи.</li><li>Подрумяньте 20 г кедровых орешков с измельченным кервелем на сковороде перед подачей.</li><li>Дайте остыть и украсьте ими макароны.</li><li>Подавайте блюдо в охлажденном виде.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны ракушки с фаршем кабачками и помидорами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-mushli-z-farshem-kabachkamy-ta-pomidoramy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны ракушки с фаршем кабачками и помидорами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки</a></li><li>Мясной фарш</li><li>Кабачки</li><li>Помидоры</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chyli-melenyi-12-70-8-h">Острый молотый перец</a></li><li>Чеснок</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=lavrovyi-lyst">Лавровый лист</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны ракушки с фаршем, кабачками и помидорами — это сытное блюдо, сочетающее нежное мясо, полезные сочные овощи и специи. Прекрасный выбор для семейного ужина и дружеской вечеринки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны ракушки с фаршем кабачками и помидорами</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 г макарон ракушек</li><li>700 г мясного фарша</li><li>600 г кабачков</li><li>800 г помидоров</li><li>8 г соли</li><li>5 г острого молотого перца</li><li>10 г чеснока</li><li>2 г лаврового листа</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистите от кожуры кабачки и помидоры.</li><li>Натрите на крупной терке 600 г кабачков и 800 г помидоров в одну посуду.</li><li>Посолите, поперчите, перемешайте и оставьте смесь.</li><li>Начините макароны ракушки мясным фаршем. Выложите одним слоем в сотейник или глубокую сковороду.</li><li>Добавьте немного воды к помидорам и кабачкам при необходимости.</li><li>Залейте фаршированные макароны смесью и покройте их полностью.</li><li>Дайте блюду закипеть на сильном огне.</li><li>Убавьте огонь до минимума. Закройте крышкой и готовьте до 20 минут.</li><li>За пару минут до готовности блюда добавьте 10 г чеснока и 2 г лаврового листа.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Фаршированные макароны ракушки под соусом бешамель" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Farshyrovani-makarony-mushli-pid-sousom-beshamel.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Фаршированные макароны ракушки под соусом бешамель</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=soniashnykova">Подсолнечное масло</a></li><li>Говядина</li><li>Репчатый лук</li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=soievyi">Соевый соус</a></li><li>Зелень (зеленый лук, укроп, петрушка)</li><li>Базилик</li><li>Перец</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy">Сухие специи</a></li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li><li>Орегано</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=chebrets-4">Тимьян (чабрец)</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фаршированные макароны ракушки — это нежное блюдо, в котором крупную пасту заполняют начинкой из мяса, затем заливают сливочным соусом бешамель и запекают до золотистой корочки. Идеально для воскресного ужина или праздничного обеда.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Фаршированные макароны ракушки под соусом бешамель</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г макарон ракушек</li><li>соль по вкусу</li><li>65 мл подсолнечного масла</li><li>450 г говядины</li><li>280 г репчатого лука</li><li>20 мл соевого соуса</li><li>20 г зелени (зеленый лук, укроп, петрушка)</li><li>10 г базилика</li><li>перец по вкусу</li><li>специи сухие по вкусу</li><li>100 г сливочного масла</li><li>1 л молока</li><li>80 г пшеничной муки</li><li>5 г мускатного ореха</li><li>7 г орегано</li><li>7 г тимьяна (чабреца)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180 градусов.</li><li>Отварите 250 г макарон ракушек в подсоленной воде до 5 минут.</li><li>Слейте воду. Мелко порубите 280 г репчатого лука.</li><li>Разогрейте 2 ст. ложки оливкового масла в сковороде и обжарьте лук до золотистого цвета.</li><li>Измельчите 450 г говядины в мясорубке.</li><li>Добавьте 10 г базилика, 20 мл соевого соуса, 20 г зелени (зеленый лук, укроп, петрушка), сухие специи по вкусу, орегано и тимьян.</li><li>Добавьте мясной фарш в сковороду с луком. Посолите, поперчите и перемешайте.</li><li>Обжарьте до готовности. Разминайте комочки фарша лопаткой.</li><li>Сделайте соус бешамель: сперва растопите 100 г сливочного масла в сковороде.</li><li>Добавьте 80 г пшеничной муки и заварите массу. Перемешивайте непрерывно венчиком.</li><li>Влейте 1 л молока тонкой струйкой. Продолжайте вымешивать до получения однородного соуса.</li><li>Добавьте мускатный орех и перемешайте.</li><li>Смешайте фарш с половиной соуса.</li><li>Наполните отваренные макароны фаршем с соусом. Выложите в форму, смазанную подсолнечным маслом.</li><li>Полейте сверху оставшимся соусом бешамель.</li><li>Выпекайте в духовке до 15 минут.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макароны ракушки со шпинатом, сыром Рикотта и Грана Падано" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makarony-mushli-zi-shpynatom-syrom-Rikotta-i-Hrana-Padano.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макароны ракушки со шпинатом, сыром Рикотта и Грана Падано</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки</a></li><li>Твердый сыр (Грана Падано)</li><li>Шпинат</li><li>Рикотта</li><li>Куриные яйца</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Перец</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li><li>Репчатый лук</li><li>Чеснок</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li>Помидоры</li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Черный молотый перец</a></li><li>Базилик</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Макароны-ракушки с нежным шпинатом, ароматным сыром рикотта и пикантным Грана Падано. В этом блюде сочетаются мягкость начинки и хрустящая корочка, создавая гармонию вкусов и текстур.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макароны ракушки со шпинатом, сыром Рикотта и Грана Падано</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г макарон ракушек</li><li>150 г твердого сыра (Грана Падано)</li><li>500 г шпината</li><li>300 г рикотты</li><li>1 куриное яйцо</li><li>соль по вкусу</li><li>перец по вкусу</li><li>5 г мускатного ореха</li><li>140 г репчатого лука</li><li>10 г чеснока</li><li>20 мл оливкового масла</li><li>400 г помидоров</li><li>5 г черного молотого перца</li><li>5 г базилика</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Мелко нарежьте 140 г репчатого лука и 10 г чеснока. Обжарьте в оливковом масле.</li><li>Очистите от кожицы 400 г помидоров и крупно нарежьте их. Добавьте томаты, соль и перец к луку и чесноку.</li><li>Варите на слабом огне до 10 минут.</li><li>Добавьте рубленный базилик и перемешайте. Снимите соус с огня.</li><li>Отварите 250 г макарон в подсоленной кипящей воде до 5 минут.</li><li>Слейте отвар и промойте ракушки под проточной водой.</li><li>Соедините 500 г шпината, 300 г рикотты, яйцо, мелко тертый Грана Падано.</li><li>Посолите, поперчите, приправьте мускатным орехом и перемешайте.</li><li>Нафаршируйте макароны начинкой.</li><li>Вылейте соус в форму для запекания. Выложите ракушки с начинкой плотно друг к другу и посыпьте тертым Грана Падано.</li><li>Выпекайте блюдо полчаса в духовке при 180 градусах.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ракушки, фаршированные креветками" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Mushli-farshyrovani-krevetkamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ракушки, фаршированные креветками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Креветки среднего размера (чищеные, резаные)</li><li><a href="https://maudau.com.ua/ru/category/makaronni-vyroby/vyd_4=mushli">Макароны ракушки крупные</a></li><li>Сыр сливочный</li><li>Сыр твердый (измельченный на терке)</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Масло оливковое</a></li><li>Лук-шалот (мелко рубленный)</li><li>Чеснок (измельченный)</li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li>Соус маринара (готовый)</li><li><a href="https://maudau.com.ua/ru/product/perets-chervonyi-liubystok-chyli-melenyi-20-h">Перец красный молотый</a></li><li>Базилик свежий (рубленый)</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=krokhmal">Крахмал картофельный</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset">Масло растительное</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ракушки с креветками — это изысканное блюдо, где сочный морской деликатес, смешанный с сыром и специями, аккуратно уложен в крупные макароны и запечен до золотистой корочки. Красивое блюдо для праздничного стола.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Ракушки, фаршированные креветками</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>450 г креветок среднего размера (чищеных, резаных)</li><li>20 шт. макарон ракушек крупных</li><li>120 г сливочного сыра</li><li>45 г твердого сыра (измельченного на терке)</li><li>1,5 ст. л. оливкового масла</li><li>0,5 стакана лука-шалота (мелко рубленного)</li><li>2 ст. л. чеснока (измельченного)</li><li>0,25 стакана молока</li><li>3 стакана соуса маринара (готового)</li><li>0,25 ч. л. красного молотого перца</li><li>1/3 стакана свежего базилика (рубленого)</li><li>1 ст. л. картофельного крахмала</li><li>масло растительное по необходимости</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 200 градусов.</li><li>Отварите макароны до готовности и подсушите.</li><li>Разогрейте большую сковороду на среднем огне.</li><li>Налейте оливковое масло, высыпьте шалот. Жарьте, помешивая, до 5 минут.</li><li>Добавьте 2 ст. л. измельченного чеснока и жарьте еще минутку.</li><li>Добавьте 0,25 стакана молока, 120 г сливочного сыра, черный молотый перец и 0,25 ч. л. красного молотого перца.</li><li>Помешивайте до расплавления сыра.</li><li>Снимите сковороду с плиты и добавьте 1/3 стакана свежего рубленого базилика.</li><li>Выложите креветки в миску. Посыпьте крахмалом и перемешайте.</li><li>Выложите содержимое сковороды в миску с креветками. Перемешайте все.</li><li>Наполните ракушки сливочным соусом.</li><li>Смажьте противень растительным маслом. Налейте 1 стакан соуса маринара.</li><li>Выставите ракушки, фаршированные креветками, на противень.</li><li>Посыпьте фаршированные макароны измельченным твердым сыром.</li><li>Залейте 2 стаканами соуса маринара и поместите противень в духовку на полчаса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">340 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">11 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">1.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">71 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

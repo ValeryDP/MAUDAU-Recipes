@@ -1,0 +1,994 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Миндальная паста — густая и гладкая смесь, производимая из молотого миндаля и сахара. Лакомство от природы не содержит глютена.</p>
+                <p>Пасту из миндаля любят за сладкий сливочно-ореховый вкус. В зависимости от сорта орехов может развиваться горьковатый нюанс. Аромат — ярко выраженный.</p>
+                <p>
+                    Цвет варьируется от белого до бледно-желтого. Темный оттенок указывает на то, что орехи бланшировали перед измельчением, то есть удалили внешнюю оболочку посредством нагревания. Текстура миндальной пасты напоминает марципан, но она
+                    более твердая. Масса легко поддается раскатыванию и формированию, за что ее любят кондитеры.
+                </p>
+                <h2>Паста из миндаля: что входит в состав</h2>
+                <p>Базовый рецепт включает:</p>
+                <ol>
+                    <li>Молотый миндаль. Бланшированные орехи придают гладкую текстуру, тогда как сырые привносят горьковатую нотку.</li>
+                    <li>Сахар. Действует как подсластитель, но также служит связующим компонентом.</li>
+                    <li>Яичный желток. Не вся миндальная паста содержит яйца. Компонент способствует связыванию и приданию однородной мягкой консистенции.</li>
+                    <li>Глюкозный или кукурузный сироп. Жидкий компонент делает пасту из миндаля пластичной, параллельно подслащая продукт.</li>
+                    <li>Ароматизатор. Добавка редко встречается в органических продуктах. Зачастую используют миндальный экстракт, который усиливает вкусо-ароматическую палитру.</li>
+                </ol>
+                <h2>Как изготавливают пасту из миндаля</h2>
+                <p>Коммерческое производство выглядит так:</p>
+                <ol>
+                    <li>Подготовка миндаля. Орехи заливают горячей водой и очищают от внешней оболочки. Затем их измельчают до состояния тонкой или грубой муки — в зависимости от желаемой текстуры миндальной пасты.</li>
+                    <li>
+                        Смешивание. Муку соединяют с сахаром и другими добавками в промышленных миксерах. Иногда производители прибегают к коншированию — медленному перемешиванию при постепенном нагревании. Это обеспечивает равномерное распределение
+                        сахара. По такому принципу готовят шоколад.
+                    </li>
+                    <li>Регулировка консистенции. На этом этапе в состав вводят кукурузный сироп и яичные желтки. Иногда используют стабилизаторы и консерванты для продления срока годности.</li>
+                    <li>Упаковка. Готовую миндальную пасту разливают по стеклянным или пластиковым бутылкам под высоким давлением. Это предотвращает загрязнение и преждевременную порчу.</li>
+                </ol>
+                <h2>Как используют ореховую пасту из миндаля в кулинарии</h2>
+                <p>Вязкая масса — основная составляющая марципана. Зачастую сладкую смесь используют в десертах. Во многих странах можно найти фирменную пасхальную и рождественскую выпечку с добавлением пасты из миндаля:</p>
+                <ol>
+                    <li>Германия. Немецкий эквивалент — Marzipanrohmasse. Продукт добавляют в знаменитый праздничный хлеб — Stollen.</li>
+                    <li>Италия. Миндальную пасту повсеместно используют на Сицилии, где на ее основе готовят пиньоли — печенье с кедровыми орехами.</li>
+                    <li>Нидерланды. Традиционный десерт — Dutch Letter. Это сладкое слоеное тесто, наполненное ореховой пастой из миндаля и сформированное в виде буквы «S».</li>
+                    <li>Франция. Один из многочисленных способов использования — добавление в круассаны. Не менее вкусное сезонное блюдо — королевский пирог, который готовят в январе на Богоявление.</li>
+                </ol>
+                <p>
+                    Хотя продукт в основном ассоциируется с выпечкой, миндальную пасту можно купить и для сочетания с солеными или острыми компонентами. Лакомство также намазывают на хлеб, тосты и крекеры, подавая на завтрак, что особенно нравится
+                    детям.
+                </p>
+                <h2>Полезна ли миндальная паста для здоровья</h2>
+                <p>
+                    Продукт содержит жиры, белки и клетчатку, что необходимо для корректного функционирования ЖКТ и развития мышц. Лакомство также включает витамин E и минералы, например, магний и кальций, которые поддерживают здоровье сердца, костей,
+                    кожи.
+                </p>
+                <p>Употребляйте 1-2 столовые ложки пасты из миндаля в течение дня. Ограниченная порция обеспечивает максимальную пользу для здоровья без переизбытка калорий.</p>
+                <h2>Миндальная паста: цена в Украине</h2>
+                <p>
+                    Продукт достаточно дорогой, что объясняется стоимостью исходного сырья. Минимальная цена в интернет-магазине MAUDAU составляет 189 грн. Органическая продукция, как и позиции без пальмового масла, стоят дороже — порядка 325 грн за
+                    170 г.
+                </p>
+                <h2>Как хранить пасту из миндаля</h2>
+                <p>
+                    Продукт поставляют в банках, которые повторно закрываются. Если повредили крышку, поместите лакомство в герметичный контейнер или другую тару. Это предотвратит высыхание. Если используете миндальную пасту редко, храните ее в
+                    холодильнике. Продукт может слегка затвердеть, но достаточно оставить его на 10–15 минут при комнатной температуре и перемешать содержимое банки, чтобы вернуть полужидкую консистенцию. Замораживание также разрешено.
+                </p>
+                <h2>Почему выгодно купить миндальную пасту в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый товар в категории — оригинален. При этом цена остается конкурентной, особенно с учетом акций и скидок. Товар можно заказать с доставкой курьером по Киеву, но в столице также предусмотрен самовывоз из магазинов «Сільпо».
+                    Отправку по другим населенным пунктам осуществляют компании-перевозчики — «Новая Почта» и «Укрпочта».
+                </p>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Миндальные квадраты" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalevi-kvadraty.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Миндальные квадраты</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/boroshno-cookit-myhdaleve">Миндальная мука</a></li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2">Кленовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Масло какао</li><li><a href="https://maudau.com.ua/ru/category/kakao-hariachyi-shokolad-tsykorii">Какао-порошок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нежные и насыщенные миндальные квадраты с легким ароматом какао. Этот десерт не только удивит гостей, но и станет отличным завершением уютного домашнего ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Миндальные квадраты</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г миндальной муки</li><li>100 г миндальной пасты</li><li>80 мл кленового сиропа</li><li>1 г соли</li><li>50 г масла какао</li><li>10 г какао-порошка</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Растопите 50 г масла какао на водяной бане, не допуская перегрева.</li><li>В глубокой миске соедините 250 г миндальной муки с 100 г густой миндальной пасты, добавив 80 мл кленового сиропа для сладости и 1 г соли для акцента.</li><li>Аккуратно влейте растопленное масло какао в смесь и тщательно замесите тесто до получения однородной консистенции.</li><li>Возьмите прямоугольную форму для выпечки и выстелите ее пергаментной бумагой.</li><li>Выложите тесто ровным слоем, распределяя его равномерно по всей форме.</li><li>Отправьте форму с тестом в холодильник примерно на 30 минут.</li><li>Достаньте десерт из холодильника и через мелкое сито равномерно присыпьте поверхность 10 г какао-порошка.</li><li>Нарежьте тесто на квадратики желаемого размера.</li><li>Подавайте охлажденными.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Миндальные батончики" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalni-batonchyky.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Миндальные батончики</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Сливочное масло</li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li>Экстракт миндаля</li><li><a href="https://maudau.com.ua/ru/product/myhdalevi-plastivtsi-150-h-875413">Хлопья миндаля</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Песочные миндальные батончики с хрустящей корочкой и насыщенным вкусом орехов, которые идеально подходят для перекуса на каждый день.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Миндальные батончики</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>½ стакана миндальной пасты</li><li>½ чайной ложки соли</li><li>¾ стакана сахара</li><li>240 г сливочного масла</li><li>1 куриное яйцо</li><li>1¼ стакана пшеничной муки</li><li>1 чайная ложка экстракта миндаля</li><li>60 г хлопьев миндаля</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C.</li><li>В глубокой миске взбейте ½ стакана миндальной пасты с ½ чайной ложки соли и ¾ стакана сахара до образования гладкой массы.</li><li>Добавьте 240 г размягченного сливочного масла и перемешайте до однородности.</li><li>Вбейте 1 яйцо, затем постепенно всыпьте 1¼ стакана пшеничной муки, тщательно смешивая до получения гладкого теста.</li><li>Вмешайте 60 г миндальных хлопьев, равномерно распределяя их по тесту.</li><li>Переложите тесто в форму для выпечки, застеленную пергаментом, и аккуратно разровняйте поверхность.</li><li>Выпекайте при 180°C в течение 20-25 минут до золотистого оттенка корочки.</li><li>Остудите в форме, затем нарежьте на батончики нужного размера.</li><li>Положите в герметичный контейнер и храните в сухом месте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Миндальное воздушное печенье" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalne-povitriane-pechyvo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Миндальное воздушное печенье</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Яичные белки</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=myhdalna-2">Миндальное масло</a></li><li>Экстракт миндаля</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустящее, легкое миндальное печенье с нежной текстурой и тонким ароматом орехов. Отличный выбор для сладкого перекуса или чаепития.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Миндальное воздушное печенье</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г миндальной пасты</li><li>1 стакан сахара</li><li>¼ чайной ложки соли</li><li>2 яичных белка</li><li>0,1 чайной ложки миндального масла</li><li>¼ чайной ложки экстракта миндаля</li><li>сахарная пудра по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C.</li><li>В глубокой миске взбейте 300 г миндальной пасты, 1 стакан сахара и ¼ чайной ложки соли до образования гладкой массы.</li><li>Добавьте 2 яичных белка и взбивайте, пока смесь не станет воздушной и слегка пенистой.</li><li>Влейте 0,1 чайной ложки миндального масла и ¼ чайной ложки экстракта миндаля, тщательно перемешайте.</li><li>Из полученной массы сформируйте небольшие круглые печенья и выложите их на противень, застеленный пергаментом.</li><li>По желанию посыпьте печенье сахарной пудрой.</li><li>Выпекайте в духовке в течение 15–20 минут до золотистого оттенка</li><li>После выпекания дайте печенью остыть на решетке перед подачей.</li><li>Переложите в тарелку, еще раз посыпьте сахарной пудрой и подавайте!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Миндальная гранита" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalna-hranita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Миндальная гранита</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Миндаль</a></li><li><a href="https://maudau.com.ua/ru/product/myhdal-smazhenyi-solonyi-250-h-875417">Жареный миндаль</a></li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li>Экстракт миндаля</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающая гранита с миндальным вкусом, идеально подходящая для жаркого времени года. Ее нежная текстура, наполненная ароматом жареного миндаля, прекрасно освежает.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Миндальная гранита</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1¼ стакана миндаля</li><li>½ стакана жареного миндаля</li><li>¼ стакана миндальной пасты</li><li>1 мл экстракта миндаля</li><li>⅓ стакана сахара</li><li>1¼ стакана воды</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Обжарьте 1¼ стакана миндаля в духовке при 180°C в течение 10 минут до золотистого оттенка.</li><li>Измельчите обжаренный миндаль в блендере до мелкого состояния, чтобы он напоминал порошок.</li><li>В глубокой миске смешайте ¼ стакана миндальной пасты, 1 мл экстракта миндаля, ⅓ стакана сахара и 1¼ стакана воды.</li><li>Добавьте измельченный миндаль в смесь и хорошо перемешайте.</li><li>Перелейте смесь в широкую форму для замораживания и поместите ее в морозильную камеру.</li><li>Через каждые 30 минут перемешивайте смесь вилкой, чтобы сформировать легкую и рыхлую текстуру граниты.</li><li>Перед подачей взбейте граниту вилкой.</li><li>Охладите стаканы, насыпьте туда граниту и подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Плотное миндальное печенье" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shchilne-myhdalne-pechyvo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Плотное миндальное печенье</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=amareto-4">Ликер «Амаретто»</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Твердое и насыщенное вкусом миндальное печенье с легким алкогольным акцентом, благодаря добавлению ликера «Амаретто». Его плотная текстура и глубокий миндальный вкус оставят незабываемое впечатление у каждого гостья.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Плотное миндальное печенье</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г миндальной пасты</li><li>½ стакана сахара</li><li>½ чайной ложки соли</li><li>4 столовые ложки ликера «Амаретто»</li><li>1 стакан сахарной пудры</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C.</li><li>В глубокой миске смешайте 250 г миндальной пасты, ½ стакана сахара и ½ чайной ложки соли до однородной массы.</li><li>Влейте 4 столовые ложки ликера «Амаретто», продолжая тщательно перемешивать.</li><li>Из полученной смеси сформируйте небольшие шарики и разложите их на противень, выстланный пергаментной бумагой.</li><li>Придайте печенью желаемую форму прижав каждую заготовку ложкой.</li><li>Выпекайте в духовке 15–20 минут до появления золотистой корочки.</li><li>После выпекания остудите печенье на решетке.</li><li>Выньте з духовки, переложите на тарелку, посыпьте его сахарной пудрой и подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Эстерхази" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Esterkhazi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Эстерхази</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/boroshno-cookit-myhdaleve">Миндальная мука</a></li><li>Яичный белок</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=vanilin-2">Ванильный сахар</a></li><li>Яичный желток</li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li>Кирш</li><li><a href="https://maudau.com.ua/ru/product/krokhmal-kukurudzianyi-droetker-30-h-943059">Кукурузный крахмал</a></li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/konfitiur-belberry-royal-selection-abrykos-kmyn">Абрикосовый конфитюр</a></li><li><a href="https://maudau.com.ua/ru/category/kakao-hariachyi-shokolad-tsykorii">Какао-порошок</a></li><li>Миндальные лепестки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Это традиционный венгерский торт, сочетающий тонкие слои миндального безе с насыщенным масляным кремом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Эстерхази</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г миндальной муки</li><li>325 г яичного белка</li><li>750 г сахара</li><li>300 мл молока</li><li>10 г ванильного сахара</li><li>30 г яичного желтка</li><li>375 г сливочного масла</li><li>80 г миндальной пасты</li><li>30 мл кирша</li><li>15 г кукурузного крахмала</li><li>20 г пшеничной муки</li><li>1 чайная ложка лимонного сока</li><li>100 г абрикосового конфитюра</li><li>20 г какао-порошка</li><li>100 г миндальных лепестков</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 160°C.</li><li>Взбейте 325 г яичных белков до мягких пиков. Постепенно добавьте 375 г сахара и 1 чайную ложку лимонного сока.</li><li>Смешайте 250 г миндальной муки с 20 г пшеничной муки и аккуратно введите их в яичную смесь.</li><li>Разделите тесто на пять порций и выпекайте по очереди 5 тонких коржей на пергаментной бумаге, каждый около 15 минут.</li><li>Для крема: смешайте 300 мл молока, 10 г ванильного сахара, 30 г яичных желтков, 15 г кукурузного крахмала и 30 г сахара. Готовьте на медленном огне до загустения, затем остудите.</li><li>Взбейте 375 г сливочного масла до кремовой консистенции, добавьте 80 г миндальной пасты и постепенно введите заварной крем.</li><li>Влейте 30 мл кирша.</li><li>Соберите торт, промазывая каждый корж кремом.</li><li>Охладите торт в течение 2 часов.</li><li>Покройте торт абрикосовым конфитюром (100 г), затем нанесите глазурь из сахара и нарисуйте классический узор с помощью растопленного какао-порошка (20 г).</li><li>Украсьте миндальными лепестками (100 г).</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Йогуртовое желе с фисташковым кексом и ягодами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yohurtove-zhele-z-fistashkovym-keksom-ta-yahodamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Йогуртовое желе с фисташковым кексом и ягодами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Сливки 35%</li><li>Натуральный йогурт 3%</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=zhelatyn">Желатин</a></li><li>Ванильный стручок</li><li><a href="https://maudau.com.ua/ru/category/shokolad/vyd_shokoladu=bilyi-8">Белый шоколад</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Соленое сливочное масло</li><li>Марципан</li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li><a href="https://maudau.com.ua/ru/product/fistashky-roni-150h">Несоленые фисташки</a></li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Мята</li><li><a href="https://maudau.com.ua/ru/product/fistashky-smazheni-soloni-500-h-919638">Соленые фисташки</a></li><li>Свежие ягоды</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и освежающий десерт, сочетающий воздушное йогуртовое желе и ароматный фисташковый кекс.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Йогуртовое желе с фисташковым кексом и ягодами</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 мл сливок 35%</li><li>600 г натурального йогурта 3%</li><li>8 г желатина</li><li>1 ванильный стручок</li><li>65 г белого шоколада</li><li>150 г сахара</li><li>70 г соленого сливочного масла</li><li>60 г марципана</li><li>40 г миндальной пасты</li><li>100 г несоленых фисташек</li><li>3 куриных яйца</li><li>3 г соли</li><li>мята по вкусу</li><li>соленые фисташки по вкусу</li><li>свежие ягоды по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для желе: разогрейте 400 мл сливок на среднем огне, не доводя до кипения. Добавьте 65 г белого шоколада и размешайте до полного растворения.</li><li>Влейте 600 г натурального йогурта и смешайте с распущенным в воде желатином (8 г).</li><li>Добавьте семена из ванильного стручка для аромата.</li><li>Вылейте смесь в форму и охладите 4-6 часов до полного застывания.</li><li>Для кекса: измельчите 100 г несоленых фисташек. Взбейте 3 яйца с 150 г сахара и 3 г соли до пышности.</li><li>Добавьте 60 г марципана и 40 г миндальной пасты.</li><li>Перемешайте с 70 г соленого сливочного масла. Постепенно введите измельченные фисташки.</li><li>Выпекайте кекс при 180°C около 20-25 минут.</li><li>Подавайте желе с ломтиками фисташкового кекса, украсьте свежими ягодами, мятой и солеными фисташками по вкусу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Яблочные маффины" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yabluchni-mafinny.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Яблочные маффины</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=abrykos-11">Абрикосовый джем</a></li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li>Яичный белок</li><li>Яблоко</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот рецепт маффинов - идеальный выбор для семейного застолья. Мягкие яблоки прекрасно сочетаются с насыщенной сладостью миндаля и тонким фруктовым ароматом, создавая гармоничный вкус, который порадует каждого за столом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Яблочные маффины</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>5 столовых ложек сливочного масла</li><li>400 г миндальной пасты</li><li>1 столовая ложка абрикосового джема</li><li>3 куриных яйца</li><li>¼ стакана пшеничной муки</li><li>1 яичный белок</li><li>2 яблока</li><li>4 чайные ложки сахарной пудры</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C.</li><li>В миске взбейте 5 столовых ложек мягкого сливочного масла с 400 г миндальной пасты до однородной массы.</li><li>Добавьте 3 яйца и взбейте.</li><li>Введите 1 столовую ложку абрикосового джема и тщательно перемешайте.</li><li>Просейте ¼ стакана пшеничной муки и аккуратно добавьте ее в тесто.</li><li>В отдельной миске взбейте 1 яичный белок до мягких пиков, затем добавьте в тесто.</li><li>Нарежьте 2 яблока тонкими ломтиками и осторожно вмешайте их в смесь.</li><li>Разлейте тесто по формочкам для маффинов, заполняя их на ¾.</li><li>Выпекайте 20-25 минут до золотистой корочки.</li><li>После остывания посыпьте маффины 4 чайными ложками сахарной пудры и подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шоколадные мини-кексы с вишнями" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shokoladni-mini-keksy-z-vyshniamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шоколадные мини-кексы с вишнями</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li>Сливочное масло</li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li><a href="https://maudau.com.ua/ru/category/shokolad/vyd_shokoladu=chornyi-6">Горький шоколад</a></li><li>Пекарский порошок</li><li>Вишня</li><li><a href="https://maudau.com.ua/ru/product/dobavka-fruktova-cherry-twig-kokteilna-vyshnia-315-h-859173">Коктейльная вишня</a></li><li>Взбитые сливки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нежные шоколадные кексы с сочной вишней — это вкуснейший десерт для любителей сочетания шоколада и фруктов. Крем из взбитых сливок и украшение коктейльной вишней придают кексам праздничный вид.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Шоколадные мини-кексы с вишнями</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>175 г миндальной пасты</li><li>50 г сливочного масла</li><li>3 куриных яйца</li><li>30 г пшеничной муки</li><li>90 г горького шоколада</li><li>2 г пекарского порошка</li><li>150 г вишни</li><li>½ банки коктейльной вишни</li><li>400 мл взбитых сливок</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C.</li><li>Растопите 90 г горького шоколада вместе с 50 г сливочного масла на водяной бане.</li><li>Поставьте в холодильник для охлаждения примерно на 2–4 минуты.</li><li>Взбейте 175 г миндальной пасты с 3 яйцами до пышности, затем введите шоколадную массу.</li><li>Добавьте 30 г пшеничной муки, 2 г пекарского порошка и аккуратно перемешайте.</li><li>Со свежей вишни выньте косточки.</li><li>Вмешайте 150 г свежей вишни в шоколадную массу.</li><li>Подготовьте и смажьте формочки.</li><li>Разложите тесто по формочкам и выпекайте при 180°C в течение 15–18 минут.</li><li>Достаньте с духовки, немного охладите.</li><li>Подавайте, украсив взбитыми сливками (400 мл) и коктейльной вишней (½ банки).</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Абрикосово-апельсиновое песочное пирожное с миндалем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Abrykosovo-apelsynove-pisochne-tistechko-z-myhdalem.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Абрикосово-апельсиновое песочное пирожное с миндалем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=abrykos-11">Абрикосовый джем</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновый ликер</a></li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/boroshno/vyd_101=pshenychne-3">Пшеничная мука</a></li><li>Экстракт миндаля</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=myhdalna">Миндальная паста</a></li><li><a href="https://maudau.com.ua/ru/product/myhdalevi-plastivtsi-150-h-875413">Хлопья миндаля</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустящее песочное пирожное с абрикосовым джемом и апельсиновым ликером, дополненное миндальными хлопьями, идеально подходит для легкого, но невероятно вкусного десерта.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Абрикосово-апельсиновое песочное пирожное с миндалем</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 стакан абрикосового джема</li><li>3 столовые ложки апельсинового ликера</li><li>240 г сливочного масла</li><li>¾ стакана сахара</li><li>2 стакана пшеничной муки</li><li>1 чайная ложка экстракта миндаля</li><li>¼ чайной ложки соли</li><li>¼ стакана миндальной пасты</li><li>60 г хлопьев миндаля</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C.</li><li>Смешайте 240 г сливочного масла с ¾ стакана сахара до кремообразного состояния.</li><li>Добавьте 2 стакана пшеничной муки, 1 чайную ложку экстракта миндаля и ¼ чайной ложки соли.</li><li>Все тщательно перемешайте.</li><li>Вмешайте ¼ стакана миндальной пасты.</li><li>Раскатайте тесто и выложите его в форму.</li><li>Поставьте в духовку и выпекайте 15 минут.</li><li>Смешайте 1 стакан абрикосового джема с 3 столовыми ложками апельсинового ликера. Намажьте массу на готовое тесто и посыпьте 60 г миндальных хлопьев.</li><li>Выпекайте еще 10 минут до золотистого оттенка.</li><li>Остудите пирожное до комнатной температуры, чтобы джем слегка схватился.</li><li>Нарежьте на порционные квадраты, посыпьте сахарной пудрой и подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">458 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">27.7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">43 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">4.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">14.1 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

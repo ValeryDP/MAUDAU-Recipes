@@ -1,0 +1,1001 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Мигдальна паста — густа і гладка суміш, вироблена з меленого мигдалю і цукру. Ласощі від природи не містять глютену.</p>
+                <p>Пасту з мигдалю люблять за солодкий вершково-горіховий смак. Залежно від сорту горіхів може розвиватися гіркуватий нюанс. Аромат — яскраво виражений.</p>
+                <p>
+                    Колір варіюється від білого до блідо-жовтого. Темний відтінок вказує на те, що горіхи бланшували перед подрібненням, тобто видалили зовнішню оболонку за допомогою нагрівання. Текстура мигдальної пасти нагадує марципан, але вона
+                    твердіша. Маса легко піддається розкочуванню і формуванню, за що її люблять кондитери.
+                </p>
+                <h2>Паста з мигдалю: що входить до складу</h2>
+                <p>Базовий рецепт включає:</p>
+                <ol>
+                    <li>Мелений мигдаль. Бланшовані горіхи надають гладку текстуру, тоді як сирі вносять гіркувату нотку.</li>
+                    <li>Цукор. Діє як підсолоджувач, але також слугує сполучним компонентом.</li>
+                    <li>Яєчний жовток. Не вся мигдальна паста містить яйця. Компонент сприяє зв'язуванню та наданню однорідної м'якої консистенції.</li>
+                    <li>Глюкозний або кукурудзяний сироп. Рідкий компонент робить пасту з мигдалю пластичною, паралельно підсолоджуючи продукт.</li>
+                    <li>Ароматизатор. Добавка рідко зустрічається в органічних продуктах. Найчастіше використовують мигдальний екстракт, який підсилює смако-ароматичну палітру.</li>
+                </ol>
+                <h2>Як виготовляють пасту з мигдалю</h2>
+                <p>Комерційне виробництво виглядає так:</p>
+                <ol>
+                    <li>Підготовка мигдалю. Горіхи заливають гарячою водою й очищають від зовнішньої оболонки. Потім їх подрібнюють до стану тонкого або грубого борошна — залежно від бажаної текстури мигдальної пасти.</li>
+                    <li>
+                        Змішування. Борошно з'єднують із цукром та іншими добавками в промислових міксерах. Іноді виробники вдаються до конширування — повільного перемішування при поступовому нагріванні. Це забезпечує рівномірний розподіл цукру. За
+                        таким принципом готують шоколад.
+                    </li>
+                    <li>Регулювання консистенції. На цьому етапі до складу вводять кукурудзяний сироп і яєчні жовтки. Іноді використовують стабілізатори та консерванти для подовження терміну придатності.</li>
+                    <li>Пакування. Готову мигдальну пасту розливають у скляні або пластикові пляшки під високим тиском. Це запобігає забрудненню та передчасному псуванню.</li>
+                </ol>
+                <h2>Як використовують горіхову пасту з мигдалю в кулінарії</h2>
+                <p>В'язка маса — основна складова марципану. Найчастіше солодку суміш використовують у десертах. У багатьох країнах можна знайти фірмову великодню та різдвяну випічку з додаванням пасти з мигдалю:</p>
+                <ol>
+                    <li>Німеччина. Німецький еквівалент — Marzipanrohmasse. Продукт додають у знаменитий святковий хліб — Stollen.</li>
+                    <li>Італія. Мигдальну пасту повсюдно використовують на Сицилії, де на її основі готують піньолі — печиво з кедровими горіхами.</li>
+                    <li>Нідерланди. Традиційний десерт — Dutch Letter. Це солодке листкове тісто, наповнене горіховою пастою з мигдалю і сформоване у вигляді літери «S».</li>
+                    <li>Франція. Один із численних способів використання — додавання в круасани. Не менш смачна сезонна страва — королівський пиріг, який готують у січні на Богоявлення.</li>
+                </ol>
+                <p>
+                    Хоча продукт здебільшого асоціюється з випічкою, мигдалеву пасту можна купити і для поєднання з солоними або гострими компонентами. Ласощі також намазують на хліб, тости та крекери, подаючи на сніданок, що особливо подобається
+                    дітям.
+                </p>
+                <h2>Чи корисна мигдальна паста для здоров'я</h2>
+                <p>
+                    Продукт містить жири, білки і клітковину, що необхідно для коректного функціонування шлунково-кишкового тракту і розвитку м'язів. Ласощі також містять вітамін E і мінерали, наприклад, магній і кальцій, які підтримують здоров'я
+                    серця, кісток, шкіри.
+                </p>
+                <p>Вживайте 1–2 столові ложки пасти з мигдалю протягом дня. Обмежена порція забезпечує максимальну користь для здоров'я без надлишку калорій.</p>
+                <h2>Мигдальна паста: ціна в Україні</h2>
+                <p>Продукт доволі дорогий, що пояснюється вартістю вихідної сировини. Мінімальна ціна в інтернет-магазині MAUDAU становить 189 грн. Органічна продукція, як і позиції без пальмової олії, коштують дорожче — близько 325 грн за 170 г.</p>
+                <h2>Як зберігати пасту з мигдалю</h2>
+                <p>
+                    Продукт постачають у банках, які повторно закриваються. Якщо пошкодили кришку, помістіть ласощі в герметичний контейнер або іншу тару. Це запобіжить висиханню. Якщо використовуєте мигдальну пасту рідко, зберігайте її в холодильнику.
+                    Продукт може злегка затвердіти, але достатньо залишити його на 10–15 хвилин за кімнатної температури та перемішати вміст банки, щоб повернути напіврідку консистенцію. Заморожування також дозволено.
+                </p>
+                <h2>Чому вигідно купити мигдальну пасту в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен товар у категорії — оригінальний. При цьому ціна залишається конкурентною, особливо з урахуванням акцій і знижок. Товар можна замовити з доставленням кур'єром по Києву, але в столиці також передбачене самовивезення з магазинів
+                    «Сільпо». Відправлення іншими населеними пунктами здійснюють компанії-перевізники — «Нова Пошта» та «Укрпошта».
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мигдалеві квадрати" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalevi-kvadraty.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мигдалеві квадрати</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/boroshno-cookit-myhdaleve">Мигдальне борошно</a></li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=klen-2">Кленовий сироп</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li>Олія какао</li><li><a href="https://maudau.com.ua/category/kakao-hariachyi-shokolad-tsykorii">Какао-порошок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ніжні та насичені мигдальні квадрати з легким ароматом какао. Цей десерт не лише здивує гостей, а й стане чудовим завершенням затишної домашньої вечері.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мигдалеві квадрати</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г мигдалевого борошна</li><li>100 г мигдальної пасти</li><li>80 мл кленового сиропу</li><li>1 г солі</li><li>50 г олії какао</li><li>10 г какао-порошку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розтопіть 50 г олії какао на водяній бані, не допускаючи перегріву.</li><li>У глибокій мисці з'єднайте 250 г мигдалевого борошна зі 100 г густої мигдалевої пасти, додавши 80 мл кленового сиропу для солодкості та 1 г солі для акценту.</li><li>Акуратно влийте розтоплену олію какао в суміш і ретельно замісіть тісто до отримання однорідної консистенції.</li><li>Візьміть прямокутну форму для випічки і вистеліть її пергаментним папером.</li><li>Викладіть тісто рівним шаром, розподіляючи його рівномірно по всій формі.</li><li>Відправте форму з тістом у холодильник приблизно на 30 хвилин.</li><li>Дістаньте десерт із холодильника і через дрібне сито рівномірно присипте поверхню 10 г какао-порошку.</li><li>Наріжте тісто на квадратики бажаного розміру.</li><li>Подавайте охолодженими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мигдальні батончики" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalni-batonchyky.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мигдальні батончики</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Масло</li><li>Куряче яйце</li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li>Екстракт мигдалю</li><li><a href="https://maudau.com.ua/product/myhdalevi-plastivtsi-150-h-875413">Пластівці мигдалю</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пісочні мигдалеві батончики з хрусткою скоринкою та насиченим смаком горіхів, які ідеально підходять для перекусу на кожен день.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мигдальні батончики</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>½ склянки мигдальної пасти</li><li>½ чайної ложки солі</li><li>¾ склянки цукру</li><li>240 г масла</li><li>1 куряче яйце</li><li>1¼ склянки пшеничного борошна</li><li>1 чайна ложка екстракту мигдалю</li><li>60 г пластівців мигдалю</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C.</li><li>У глибокій мисці збийте ½ склянки мигдальної пасти з ½ чайної ложки солі та ¾ склянки цукру до утворення гладкої маси.</li><li>Додайте 240 г розм'якшеного масла і перемішайте до однорідності.</li><li>Вбийте 1 яйце, потім поступово всипте 1¼ склянки пшеничного борошна, ретельно змішуючи до отримання гладкого тіста.</li><li>Вмішайте 60 г мигдальних пластівців, рівномірно розподіляючи їх по тісту.</li><li>Перекладіть тісто у форму для випічки, застелену пергаментом, і акуратно розрівняйте поверхню.</li><li>Випікайте при 180°C протягом 20–25 хвилин до золотистого відтінку скоринки.</li><li>Остудіть у формі, потім наріжте на батончики потрібного розміру.</li><li>Покладіть у герметичний контейнер і зберігайте в сухому місці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мигдальне повітряне печиво" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalne-povitriane-pechyvo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мигдальне повітряне печиво</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li>Яєчні білки</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=myhdalna-2">Мигдальна олія</a></li><li>Екстракт мигдалю</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустке, легке мигдальне печиво з ніжною текстурою і тонким ароматом горіхів. Чудовий вибір для солодкого перекусу або чаювання.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мигдальне повітряне печиво</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г мигдальної пасти</li><li>1 склянка цукру</li><li>¼ чайної ложки солі</li><li>2 яєчні білки</li><li>0,1 чайної ложки мигдалевої олії</li><li>¼ чайної ложки екстракту мигдалю</li><li>цукрова пудра до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C.</li><li>У глибокій мисці збийте 300 г мигдальної пасти, 1 склянку цукру і ¼ чайної ложки солі до утворення гладкої маси.</li><li>Додайте 2 яєчні білки і збивайте, поки суміш не стане повітряною і злегка пінистою.</li><li>Влийте 0,1 чайної ложки мигдалевої олії та ¼ чайної ложки екстракту мигдалю, ретельно перемішайте.</li><li>З отриманої маси сформуйте невеликі круглі печива і викладіть їх на деко, застелене пергаментом.</li><li>За бажанням посипте печиво цукровою пудрою.</li><li>Випікайте в духовці протягом 15–20 хвилин до золотистого відтінку.</li><li>Після випікання дайте печиву охолонути на решітці перед подачею.</li><li>Перекладіть у тарілку, ще раз посипте цукровою пудрою і подавайте!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мигдальна граніта" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalna-hranita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мигдальна граніта</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Мигдаль</a></li><li><a href="https://maudau.com.ua/product/myhdal-smazhenyi-solonyi-250-h-875417">Смажений мигдаль</a></li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li>Екстракт мигдалю</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Граніта з мигдальним смаком, що ідеально підходить для спекотної пори року. Її ніжна текстура, наповнена ароматом смаженого мигдалю, чудово освіжає.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мигдальна граніта</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1¼ склянки мигдалю</li><li>½ склянки смаженого мигдалю</li><li>¼ склянки мигдальної пасти</li><li>1 мл екстракту мигдалю</li><li>⅓ склянки цукру</li><li>1¼ склянки води</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Обсмажте 1¼ склянки мигдалю в духовці за 180°C протягом 10 хвилин до золотистого відтінку.</li><li>Подрібніть обсмажений мигдаль у блендері до дрібного стану, щоб він нагадував порошок.</li><li>У глибокій мисці змішайте ¼ склянки мигдальної пасти, 1 мл екстракту мигдалю, ⅓ склянки цукру і 1¼ склянки води.</li><li>Додайте подрібнений мигдаль у суміш і добре перемішайте.</li><li>Перелийте суміш у широку форму для заморожування і помістіть її в морозильну камеру.</li><li>Через кожні 30 хвилин перемішуйте суміш виделкою, щоб сформувати легку та пухку текстуру граніти.</li><li>Перед подачею збийте граніту виделкою.</li><li>Охолодіть склянки, насипте туди граніту і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Щільне мигдальне печиво" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shchilne-myhdalne-pechyvo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Щільне мигдальне печиво</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=amareto-4">Лікер «Амаретто»</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тверде та насичене смаком мигдальне печиво з легким алкогольним акцентом, завдяки додаванню лікеру «Амаретто». Його щільна текстура та глибокий мигдальний смак залишать незабутнє враження у кожного гостя.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Щільне мигдальне печиво</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г мигдальної пасти</li><li>½ склянки цукру</li><li>½ чайної ложки солі</li><li>4 столові ложки лікеру «Амаретто»</li><li>1 склянка цукрової пудри</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C.</li><li>У глибокій мисці змішайте 250 г мигдальної пасти, ½ склянки цукру і ½ чайної ложки солі до однорідної маси.</li><li>Влийте 4 столові ложки лікеру «Амаретто», продовжуючи ретельно перемішувати.</li><li>З отриманої суміші сформуйте невеликі кульки і розкладіть їх на деко, вистелене пергаментним папером.</li><li>Надайте печиву бажаної форми, притиснувши кожну заготівлю ложкою.</li><li>Випікайте в духовці 15–20 хвилин до появи золотистої скоринки.</li><li>Після випікання остудіть печиво на решітці.</li><li>Вийміть із духовки, перекладіть на тарілку, посипте його цукровою пудрою і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Естерхазі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Esterkhazi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Естерхазі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/boroshno-cookit-myhdaleve">Мигдалеве борошно</a></li><li>Яєчний білок</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=vanilin-2">Ванільний цукор</a></li><li>Яєчний жовток</li><li>Масло</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li>Кірш</li><li><a href="https://maudau.com.ua/product/krokhmal-kukurudzianyi-droetker-30-h-943059">Кукурудзяний крохмаль</a></li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/konfitiur-belberry-royal-selection-abrykos-kmyn">Абрикосовий конфітюр</a></li><li><a href="https://maudau.com.ua/category/kakao-hariachyi-shokolad-tsykorii">Какао-порошок</a></li><li>Мигдальні пелюстки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Це традиційний угорський торт, що поєднує тонкі шари мигдалевого безе з насиченим масляним кремом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Естерхазі</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г мигдалевого борошна</li><li>325 г яєчного білка</li><li>750 г цукру</li><li>300 мл молока</li><li>10 г ванільного цукру</li><li>30 г яєчного жовтка</li><li>375 г масла</li><li>80 г мигдальної пасти</li><li>30 мл кірша</li><li>15 г кукурудзяного крохмалю</li><li>20 г пшеничного борошна</li><li>1 чайна ложка лимонного соку</li><li>100 г абрикосового конфітюру</li><li>20 г какао-порошку</li><li>100 г мигдальних пелюсток</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 160°C.</li><li>Збийте 325 г яєчних білків до м'яких піків. Поступово додайте 375 г цукру і 1 чайну ложку лимонного соку.</li><li>Змішайте 250 г мигдалевого борошна з 20 г пшеничного борошна й акуратно введіть їх у яєчну суміш.</li><li>Розділіть тісто на п'ять порцій і випікайте по черзі 5 тонких коржів на пергаментному папері, кожен близько 15 хвилин.</li><li>Для крему: змішайте 300 мл молока, 10 г ванільного цукру, 30 г яєчних жовтків, 15 г кукурудзяного крохмалю і 30 г цукру. Готуйте на повільному вогні до загустіння, потім остудіть.</li><li>Збийте 375 г масла до кремової консистенції, додайте 80 г мигдальної пасти та поступово введіть заварний крем.</li><li>Влийте 30 мл кірша.</li><li>Зберіть торт, промащуючи кожен корж кремом.</li><li>Охолодіть торт протягом 2 годин.</li><li>Покрийте торт абрикосовим конфітюром (100 г), потім нанесіть глазур із цукру і намалюйте класичний візерунок за допомогою розтопленого какао-порошку (20 г).</li><li>Прикрасьте мигдальними пелюстками (100 г).</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Йогуртове желе з фісташковим кексом та ягодами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yohurtove-zhele-z-fistashkovym-keksom-ta-yahodamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Йогуртове желе з фісташковим кексом та ягодами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Вершки 35%</li><li>Натуральний йогурт 3%</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=zhelatyn">Желатин</a></li><li>Ванільний стручок</li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Солене масло</li><li>Марципан</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li><a href="https://maudau.com.ua/product/fistashky-roni-150h">Несолені фісташки</a></li><li>Куряче яйце</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li>Мʼята</li><li><a href="https://maudau.com.ua/product/fistashky-smazheni-soloni-500-h-919638">Солені фісташки</a></li><li>Свіжі ягоди</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий і освіжальний десерт, що поєднує повітряне йогуртове желе й ароматний фісташковий кекс.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Йогуртове желе з фісташковим кексом та ягодами</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 мл вершків 35%</li><li>600 г натурального йогурту 3%</li><li>8 г желатину</li><li>1 ванільний стручок</li><li>65 г білого шоколаду</li><li>150 г цукру</li><li>70 г солоного масла</li><li>60 г марципану</li><li>40 г мигдальної пасти</li><li>100 г несолоних фісташок</li><li>3 курячих яйця</li><li>3 г солі</li><li>м'ята до смаку</li><li>солоні фісташки до смаку</li><li>свіжі ягоди до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для желе: розігрійте 400 мл вершків на середньому вогні, не доводячи до кипіння. Додайте 65 г білого шоколаду і розмішайте до повного розчинення.</li><li>Влийте 600 г натурального йогурту і змішайте з розпущеним у воді желатином (8 г).</li><li>Додайте насіння з ванільного стручка для аромату.</li><li>Вилийте суміш у форму й охолодіть 4–6 годин до повного застигання.</li><li>Для кексу: подрібніть 100 г несолоних фісташок. Збийте 3 яйця зі 150 г цукру і 3 г солі до пишності.</li><li>Додайте 60 г марципану і 40 г мигдальної пасти.</li><li>Перемішайте з 70 г солоного масла. Поступово введіть подрібнені фісташки.</li><li>Випікайте кекс при 180°C близько 20–25 хвилин.</li><li>Подавайте желе зі скибочками фісташкового кексу, прикрасьте свіжими ягодами, м'ятою і солоними фісташками до смаку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Яблучні мафіни" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yabluchni-mafinny.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Яблучні мафіни</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Масло</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=abrykos-11">Абрикосовий джем</a></li><li>Куряче яйце</li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li>Яєчний білок</li><li>Яблуко</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей рецепт мафінів — ідеальний вибір для сімейного застілля. М'які яблука чудово поєднуються з насиченою солодкістю мигдалю та тонким фруктовим ароматом, створюючи гармонійний смак, який потішить кожного за столом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Яблучні мафіни</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>5 столових ложок масла</li><li>400 г мигдальної пасти</li><li>1 столова ложка абрикосового джему</li><li>3 курячих яйця</li><li>¼ склянки пшеничного борошна</li><li>1 яєчний білок</li><li>2 яблука</li><li>4 чайні ложки цукрової пудри</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C.</li><li>У мисці збийте 5 столових ложок м'якого масла з 400 г мигдальної пасти до однорідної маси.</li><li>Додайте 3 яйця і збийте.</li><li>Введіть 1 столову ложку абрикосового джему і ретельно перемішайте.</li><li>Просійте ¼ склянки пшеничного борошна й акуратно додайте його в тісто.</li><li>В окремій мисці збийте 1 яєчний білок до м'яких піків, потім додайте в тісто.</li><li>Наріжте 2 яблука тонкими скибочками і обережно вмішайте їх у суміш.</li><li>Розлийте тісто у формочки для мафінів, заповнюючи їх на ¾.</li><li>Випікайте 20–25 хвилин до золотистої скоринки.</li><li>Після охолодження посипте мафіни 4 чайними ложками цукрової пудри і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шоколадні міні-кекси з вишнями" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shokoladni-mini-keksy-z-vyshniamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шоколадні міні-кекси з вишнями</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li>Масло</li><li>Куряче яйце</li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=chornyi-6">Гіркий шоколад</a></li><li>Пекарський порошок</li><li>Вишня</li><li><a href="https://maudau.com.ua/product/dobavka-fruktova-cherry-twig-kokteilna-vyshnia-315-h-859173">Коктейльна вишня</a></li><li>Взбиті вершки</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ніжні шоколадні кекси з соковитою вишнею — це дуже смачний десерт для любителів поєднання шоколаду та фруктів. Крем зі збитих вершків і прикраса коктейльною вишнею надають кексам святкового вигляду.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шоколадні міні-кекси з вишнями</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>175 г мигдальної пасти</li><li>50 г масла</li><li>3 курячих яйця</li><li>30 г пшеничного борошна</li><li>90 г гіркого шоколаду</li><li>2 г пекарського порошку</li><li>150 г вишні</li><li>½ банки коктейльної вишні</li><li>400 мл збитих вершків</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C.</li><li>Розтопіть 90 г гіркого шоколаду разом із 50 г масла на водяній бані.</li><li>Поставте в холодильник для охолодження приблизно на 2–4 хвилини.</li><li>Збийте 175 г мигдальної пасти з 3 яйцями до пишності, потім введіть шоколадну масу.</li><li>Додайте 30 г пшеничного борошна, 2 г пекарського порошку й акуратно перемішайте.</li><li>Зі свіжої вишні вийміть кісточки.</li><li>Вмішайте 150 г свіжої вишні в шоколадну масу.</li><li>Підготуйте та змастіть формочки.</li><li>Розкладіть тісто по формах і випікайте за 180°C протягом 15–18 хвилин.</li><li>Дістаньте з духовки, трохи охолодіть.</li><li>Подавайте, прикрасивши збитими вершками (400 мл) і коктейльною вишнею (½ банки).</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Абрикосово-апельсинове пісочне тістечко з мигдалем" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Abrykosovo-apelsynove-pisochne-tistechko-z-myhdalem.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Абрикосово-апельсинове пісочне тістечко з мигдалем</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=abrykos-11">Абрикосовий джем</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li>Масло</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li>Екстракт мигдалю</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=myhdalna">Мигдальна паста</a></li><li><a href="https://maudau.com.ua/product/myhdalevi-plastivtsi-150-h-875413">Пластівці мигдалю</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустке пісочне тістечко з абрикосовим джемом і апельсиновим лікером, доповнене мигдальними пластівцями, ідеально підходить для легкого, але неймовірно смачного десерту.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Абрикосово-апельсинове пісочне тістечко з мигдалем</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 склянка абрикосового джему</li><li>3 столові ложки апельсинового лікеру</li><li>240 г масла</li><li>¾ склянки цукру</li><li>2 склянки пшеничного борошна</li><li>1 чайна ложка екстракту мигдалю</li><li>¼ чайної ложки солі</li><li>¼ склянки мигдальної пасти</li><li>60 г пластівців мигдалю</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C.</li><li>Змішайте 240 г масла з ¾ склянки цукру до кремоподібного стану.</li><li>Додайте 2 склянки пшеничного борошна, 1 чайну ложку екстракту мигдалю і ¼ чайної ложки солі.</li><li>Усе ретельно перемішайте.</li><li>Вмішайте ¼ склянки мигдальної пасти.</li><li>Розкачайте тісто і викладіть його у форму.</li><li>Поставте в духовку і випікайте 15 хвилин.</li><li>Змішайте 1 склянку абрикосового джему з 3 столовими ложками апельсинового лікеру. Намажте масу на готове тісто і посипте 60 г мигдальних пластівців.</li><li>Випікайте ще 10 хвилин до золотистого відтінку.</li><li>Остудіть тістечко до кімнатної температури, щоб джем злегка схопився.</li><li>Наріжте на порційні квадрати, посипте цукровою пудрою і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">458 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">27.7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">43 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">4.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">14.1 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

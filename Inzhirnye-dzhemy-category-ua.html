@@ -1,0 +1,841 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Інжирний джем — солодка паста, приготована з м'якоті, соку і насіння плодів рослини Ficus carica, що повсюдно росте в Середземномор'ї. Продукт нагадує варення — з насиченими кисло-солодкими фруктовими нотками і терпкими нюансами на
+                    фініші. Джем з інжиру люблять за гладку, але злегка грудкувату текстуру. Насіння надає приємного хрускоту.
+                </p>
+                <p>
+                    Унікальна смако-ароматична палітра робить інжировий джем гармонійним доповненням як до солодких, так і солоних страв. Найчастіше його подають із тостами, крекерами або булочками на сніданок як намазку. Солодку масу також змішують з
+                    йогуртом і вівсянкою. Солодкість вигідно підкреслює козячий сир, гострий чедер, копчену шинку. В'язку масу також використовують як соус до запеченого м'яса або додають у начинку печива та пирогів.
+                </p>
+                <h2>Інжирний джем: стандартний склад</h2>
+                <p>Продукт виробляють за допомогою уварювання дрібно нарізаного сушеного або свіжого інжиру з цукром. Для балансу додають трохи лимонного соку, а для більш рідкої консистенції — воду. Рідше ласощі приправляють травами і спеціями.</p>
+                <p>
+                    Джем з інжиру, купити який можна в інтернет-магазині MAUDAU, виробляють на сучасних заводах. Компоненти об'єднують у великих металевих резервуарах. Суміш кип'ятять, постійно помішуючи, поки вона не загусне. Консистенція — результат
+                    високого вмісту пектину в плодах. Готовий інжировий джем розливають у скляні банки в суворо контрольованому середовищі, запобігаючи забрудненню і розвитку хвороботворних мікроорганізмів, що призводять до скорочення терміну
+                    придатності.
+                </p>
+                <h2>Чи корисний для здоров'я інжирний джем</h2>
+                <p>
+                    Ласощі, як і сам плід, цінують за багатий поживний склад. Його також відносять до продуктів із низьким глікемічним індексом. Природні сполуки впливають як м'яке проносне, а вітаміни підтримують здоровий вигляд шкіри та волосся.
+                    Оскільки джем з інжиру містить цукор, його рекомендують вживати в помірній кількості. Ключова користь:
+                </p>
+                <ol>
+                    <li>Клітковина. Інжир від природи багатий на розчинні харчові волокна, що сприяють травленню. Клітковина запобігає закрепам, відновлює мікрофлору, а на додачу — знижує показники цукру в крові.</li>
+                    <li>
+                        Джерело мінералів. Інжирний джем варто купити через високий вміст калію, кальцію, магнію та заліза. Перший залучений у регулюванні кров'яного тиску. Кальцій життєво важливий для здоров'я кісток і зубів. Магній підтримує здоров'я
+                        нервів.
+                    </li>
+                    <li>Антиоксидантний вплив. Інжир містить поліфеноли, які захищають організм від окисного стресу і знижують ризик розвитку деяких хронічних захворювань.</li>
+                </ol>
+                <h2>Короткий огляд джемів з інжиру в маркеті повсякденних штук MAUDAU</h2>
+                <p>До замовлення доступна продукція від:</p>
+                <ol>
+                    <li>Good Fig. Бренд з Іспанії, який виробляє ласощі за стандартним рецептом, але з впровадженням добавок. Наприклад, апельсин вносить яскраву кислинку, що балансує солодкий смак.</li>
+                    <li>Mrs Bridges. Торгова марка з Великої Британії, під якою випускають крафтовий інжирний джем зі 100% натуральної сировини. Фірмова баночка стане чудовим подарунком любителю рідкісних солодощів.</li>
+                    <li>Belberry. Бренд із Бельгії, який пропонує вишуканий конфітюр на основі інжиру та чорного перцю. Це смачний варіант для доповнення сирної тарілки або м'ясного плато.</li>
+                    <li>Helios. Іспанська торгова марка пропонує не тільки класичний інжирний джем, а й версію без цукру. Останній варіант кращий для дітей і людей із цукровим діабетом.</li>
+                </ol>
+                <h3>Скільки коштує інжирний джем</h3>
+                <p>
+                    Ціна стартує від 100 грн — стільки потрібно заплатити за 340-грамову баночку від Helios. Продукція без цукру коштує дорожче — 119 грн за 250 г. Щоб заощадити, звертайте увагу на акційні пропозиції — їхній перелік постійно
+                    оновлюється.
+                </p>
+                <h2>Як правильно зберігати інжирний джем</h2>
+                <p>Щоб подовжити свіжість:</p>
+                <ol>
+                    <li>Зберігайте ласощі в холодильнику після відкриття. Зазвичай вони придатні до вживання ще 2–4 тижні.</li>
+                    <li>Закриті банки зберігайте в сухому, темному і прохолодному місці. У середньому термін придатності становить 12–16 місяців.</li>
+                    <li>Перевіряйте на предмет псування. Перед вживанням інжирного джему переконайтеся, що на поверхні немає цвілі. Неприємний кислий запах — привід відмовитися від ласощів.</li>
+                </ol>
+                <h2>Чому вигідно купити інжирний джем в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У категорії зібрана оригінальна продукція за конкурентною вартістю. Практично до кожного товару доступні оцінки та відгуки від інших покупців, що полегшує вибір. Доставлення можливе кур'єром по Києву або логістичними компаніями по
+                    Україні, включно з «Новою Поштою» та «Укрпоштою». Забрати замовлення також можна в супермаркетах «Сільпо», тільки-но менеджер підтвердить наявність вподобаних позицій. Оплата — на сайті за допомогою банківської картки або після
+                    отримання. Обраний варіант не впливає на кінцеву вартість продукції.
+                </p>
+            </div>
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тости з сиром, прошутто та інжирним джемом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tosty-z-syrom-proshutto-ta-inzhyrnym-dzhemom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тости з сиром, прошутто та інжирним джемом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li>Французький багет</li><li>Сир філадельфія</li><li>Прошутто</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=chornyi-43">Свіжомелений чорний перець</a></li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Інжирний джем</a></li><li>Рукола</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматні тости з прошутто, сиром філадельфія та солодким інжировим джемом — ідеальна закуска для гурманів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Тости з сиром, прошутто та інжирним джемом</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>оливкова олія до смаку</li><li>12 шматків французького багета</li><li>100 г сиру філадельфія</li><li>6 шматків прошутто</li><li>сіль до смаку</li><li>свіжомелений чорний перець до смаку</li><li>2 столові ложки інжирного джему</li><li>рукола до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C і злегка підсмажте 12 шматочків французького багета, змастивши їх оливковою олією.</li><li>Вийміть із духовки шматочки багета, візьміть 100 г сиру філадельфія і намажте кожну скибочку.</li><li>Розріжте 6 шматків прошутто навпіл і покладіть по одному на кожен тост.</li><li>Зверху викладіть по половині чайної ложки інжирного джему.</li><li>Додайте кілька листків руколи і приправте до смаку сіллю і свіжомеленим чорним перцем.</li><li>Подавайте тости гарячими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Французький багет з шинкою серрано, манчего та інжирним джемом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Frantsuzkyi-bahet-z-shynkoiu-serrano-mancheho-ta-inzhyrnym-dzhemom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Французький багет з шинкою серрано, манчего та інжирним джемом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Масло</li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Інжирний джем</a></li><li>Французький багет</li><li>Шинка серрано</li><li>Сир манчего</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/typ_268=chornyi-43">Свіжомелений чорний перець</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вишуканий сендвіч із шинкою серрано, ніжним іспанським сиром манчего та солодким інжирним джемом на свіжому французькому багеті. Прекрасне поєднання смаків для гурманів, що підійде для легкого обіду або закуски.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Французький багет з шинкою серрано, манчего та інжирним джемом</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>масло до смаку</li><li>2 ст.л. інжирного джему</li><li>1 французький багет</li><li>6 шматочків шинки серрано</li><li>100 г сиру манчего</li><li>оливкова олія до смаку</li><li>свіжомелений чорний перець до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розріжте свіжий французький багет на кілька скибочок або на дві половини, якщо робите великий бутерброд.</li><li>Візьміть 6 скибочок шинки серрано і наріжте 100 г сиру манчего тонкими пластинками.</li><li>Підігрійте багет у духовці до хрусткої скоринки (близько 5 хвилин за 180°C).</li><li>На гарячий багет нанесіть тонкий шар інжирного джему (близько 1 ст. л. на кожну половину).</li><li>Потім покладіть тонкі скибочки сиру манчего і шинку серрано.</li><li>Приправте свіжомеленим чорним перцем і додайте кілька листків свіжої шавлії.</li><li>Подавайте одразу гарячим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Галантин з цісарки, печінки цесарки та білих грибів" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Halantyn-z-tsisarky-pechinky-tsesarky-ta-bilykh-hrybiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Галантин з цісарки, печінки цесарки та білих грибів</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Цесарка</li><li>Грудка цесарки</li><li>Печінка цесарки</li><li><a href="https://maudau.com.ua/product/oliia-olyvkova-borges-extra-virgin-500-ml-351026">Оливкова олія extra virgin</a></li><li><a href="https://maudau.com.ua/product/oliia-olyvkova-monini-extra-virgin-z-bilym-triufel">Трюфельна олія</a></li><li>Масло</li><li><a href="https://maudau.com.ua/product/vershky-ultrapasteryzyrovani-yahotynski-15-tet-br">Вершки</a></li><li>Білі гриби</li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Інжирний джем</a></li><li>Свіжа шавлія</li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений сорний перець</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Галантін — це вишукана страва з цесарки з додаванням печінки, білих грибів і ніжних вершків. Страва поєднує багатий смак і витончену текстуру.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Галантин з цісарки, печінки цесарки та білих грибів</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цесарка</li><li>2 грудки цесарки</li><li>100 г печінки цесарки</li><li>1½ столові ложки оливкової олії extra virgin</li><li>трюфельна олія до смаку</li><li>20 г масла</li><li>120 мл вершків</li><li>120 г білих грибів</li><li>2½ столові ложки інжирного джему</li><li>1 стебло свіжої шавлії</li><li>мелений чорний перець до смаку</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для приготування галантіну підготуйте одну цесарку, видаліть кістки і розділіть на два філе.</li><li>Наріжте 100 г печінки цесарки на дрібні шматочки.</li><li>У сковороді розігрійте 1½ ст. л. оливкової олії та обсмажте печінку до золотистої скоринки.</li><li>Додайте 120 г нарізаних білих грибів і готуйте ще 5–7 хвилин.</li><li>Вмішайте 20 г масла і 120 мл вершків, тушкуйте до отримання густої маси.</li><li>Зніміть з вогню і дайте трохи охолонути.</li><li>На філе цесарки викладіть печінково-грибну суміш і скрутіть рулетом, закріпіть ниткою.</li><li>Обсмажте рулети на сковорідці до рум'яної скоринки, потім запікайте в духовці за 180°C близько 20–25 хвилин.</li><li>Наприкінці збризніть рулети трюфельною олією і подайте з інжирним джемом і свіжою шавлією.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шинка в глазурі з інжиру та апельсинів" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shynka-v-hlazuri-z-inzhyru-ta-apelsyniv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шинка в глазурі з інжиру та апельсинів</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Шинка</li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Інжирний джем</a></li><li>Апельсини</li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шинка за цим рецептом стане головною стравою вашого святкового столу, дивуючи гостей багатим ароматом і насиченим смаком.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шинка в глазурі з інжиру та апельсинів</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 шматок шинки</li><li>2 столові ложки діжонської гірчиці</li><li>1 банка інжирного джему</li><li>1 апельсин</li><li>0,3 склянки апельсинового соку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для початку розігрійте духовку до 180°C.</li><li>Візьміть 1 шматок шинки (близько 1 кг) і зробіть на його поверхні неглибокі надрізи.</li><li>У невеликій мисці змішайте 2 столові ложки діжонської гірчиці, 1 банку інжирного джему і сік одного апельсина. Додайте 0,3 склянки свіжовичавленого апельсинового соку, перемішайте.</li><li>Змастіть шинку отриманою глазур'ю.</li><li>Помістіть шинку в жароміцну форму і відправте в розігріту духовку.</li><li>Запікайте близько 1,5 годин, періодично поливаючи шинку соком, що виділяється.</li><li>Якщо хочете домогтися хрусткої скоринки, збільште температуру до 200°C за 15 хвилин до кінця приготування.</li><li>Коли шинка буде готова, вийміть її з духовки і дайте трохи охолонути перед нарізанням.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тунець у гірчично-фіговому маринаді" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tunets-u-hirchychno-fihovomu-marynadi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тунець у гірчично-фіговому маринаді</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Тунець</li><li>Розмарин</li><li><a href="https://maudau.com.ua/category/hirchytsia/typ_269=dizhonska">Діжонська гірчиця</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li>Інжирний джем</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Страва, яка поєднує ніжну рибу з легкою солодкістю інжиру та пікантністю гірчиці, а яскравий маринад підкреслює природний смак тунця.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Тунець у гірчично-фіговому маринаді</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г тунця</li><li>розмарин до смаку</li><li>2 чайні ложки діжонської гірчиці</li><li>мелений чорний перець до смаку</li><li>1 столова ложка оливкової олії</li><li>1 чайна ложка соєвого соусу</li><li>2 чайні ложки інжирного джему</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У невеликій мисці змішайте 2 чайні ложки діжонської гірчиці, 1 столову ложку оливкової олії, 1 чайну ложку соєвого соусу і 2 чайні ложки інжирного джему.</li><li>Додайте кілька гілочок свіжого розмарину і трохи меленого чорного перцю до смаку.</li><li>Усе ретельно перемішайте.</li><li>Візьміть 400 г філе тунця і промийте його під холодною водою.</li><li>Після цього покладіть тунець у миску з маринадом.</li><li>Накрийте миску харчовою плівкою і залиште в холодильнику маринуватися на 30 хвилин.</li><li>Після того як тунець промаринується, розігрійте гриль або сковороду з антипригарним покриттям.</li><li>Обсмажуйте тунець з кожного боку по 2-3 хвилини до досягнення бажаного ступеня просмаження.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Маринована свинина, запечена з інжиром" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Marynovana-svynyna-zapechena-z-inzhyrom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Маринована свинина, запечена з інжиром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свинина</li><li>Інжир</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/vyno-neleman-ros-do-valencia-rozheve-sukhe-0-75-l">Рожеве сухе вино</a></li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Інжирний джем</a></li><li>Свіжий чебрець</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Соковита свинина, запечена з інжиром і рожевим вином в ароматних травах у поєднанні з інжировим джемом — ідеальна страва для смачної вечері!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Маринована свинина, запечена з інжиром</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>800 г свинини</li><li>4 штуки інжиру</li><li>15 мл лимонного соку</li><li>100 мл рожевого сухого вина</li><li>1 столова ложка інжирного джему</li><li>1 пучок свіжого чебрецю</li><li>сіль до смаку</li><li>мелений чорний перець до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для початку візьміть 800 г свинини (найкраще підійде шия або лопатка) і промийте її під холодною водою.</li><li>У мисці змішайте 100 мл рожевого сухого вина, 1 столову ложку інжирного джему, 15 мл лимонного соку, дрібку солі та меленого чорного перцю до смаку.</li><li>Додайте свіжий чебрець (кілька гілочок) і ретельно перемішайте маринад.</li><li>Замаринуйте свинину в приготовленій суміші, накрийте плівкою і залиште в холодильнику на 1-2 години.</li><li>Розігрійте духовку до 180°C.</li><li>Викладіть свинину у форму для запікання, додайте 4 нарізані інжири і запікайте близько 1,5 години.</li><li>Кожні 20–30 хвилин поливайте свинину соком, що виділяється.</li><li>Після запікання наріжте м'ясо порційними шматками і подавайте із запеченим інжиром.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">208 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">54.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

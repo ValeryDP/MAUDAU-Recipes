@@ -1,0 +1,836 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Инжирный джем — сладкая паста, приготовленная из мякоти, сока и семян плодов растения Ficus carica, повсеместно произрастающего в Средиземноморье. Продукт напоминает варенье — с насыщенными кисло-сладкими фруктовыми нотками и
+                    терпкими нюансами на финише. Джем из инжира любят за гладкую, но слегка комковатую текстуру. Семена придают приятный хруст.
+                </p>
+                <p>
+                    Уникальная вкусо-ароматическая палитра делает инжирный джем гармоничным дополнением как к сладким, так и соленым блюдам. Зачастую его подают с тостами, крекерами или булочками на завтрак как намазку. Сладкую массу также смешивают с
+                    йогуртом и овсянкой. Сладость выгодно подчеркивает козий сыр, острый чеддер, копченую ветчину. Вязкую массу также используют как соус к запеченному мясу или добавляют в начинку печенья и пирогов.
+                </p>
+                <h2>Инжирный джем: стандартный состав</h2>
+                <p>
+                    Продукт производят посредством уваривания мелко нарезанного сушеного или свежего инжира с сахаром. Для баланса добавляют немного лимонного сока, а для более жидкой консистенции — воду. Реже лакомство приправляют травами и специями.
+                </p>
+                <p>
+                    Джем из инжира, купить который можно в интернет-магазине MAUDAU, производят на современных заводах. Компоненты объединяют в больших металлических резервуарах. Смесь кипятят, постоянно помешивая, пока она не загустеет. Консистенция —
+                    результат высокого содержания пектина в плодах. Готовый инжирный джем разливают по стеклянным банкам в строго контролируемой среде, предотвращая загрязнение и развитие болезнетворных микроорганизмов, приводящих к сокращению срока
+                    годности.
+                </p>
+                <h2>Полезен ли для здоровья инжирный джем</h2>
+                <p>
+                    Лакомство, как и сам плод, ценят за богатый питательный состав. Его также относят к продуктам с низким гликемическим индексом. Естественные соединения воздействуют как мягкое слабительное, а витамины поддерживают здоровый вид кожи и
+                    волос. Поскольку джем из инжира содержит сахар, его рекомендуют употреблять в умеренном количестве. Ключевая польза:
+                </p>
+                <ol>
+                    <li>Клетчатка. Инжир от природы богат растворимыми пищевыми волокнами, способствующими пищеварению. Клетчатка предотвращает запор, восстанавливает микрофлору, а в придачу — снижает показатели сахара в крови.</li>
+                    <li>
+                        Источник минералов. Инжирный джем стоит купить из-за высокого содержания калия, кальция, магния и железа. Первый задействован в регулировке кровяного давления. Кальций жизненно важен для здоровья костей и зубов. Магний
+                        поддерживает здоровье нервов.
+                    </li>
+                    <li>Антиоксидантное воздействие. Инжир содержит полифенолы, которые защищают организм от окислительного стресса и снижают риск развития некоторых хронических заболеваний.</li>
+                </ol>
+                <h2>Краткий обзор джемов из инжира в маркете повседневных штук MAUDAU</h2>
+                <p>К заказу доступна продукция от:</p>
+                <ol>
+                    <li>Good Fig. Бренд из Испании, который производит лакомство по стандартному рецепту, но с внедрением добавок. Например, апельсин привносит яркую кислинку, балансирующую сладкий вкус.</li>
+                    <li>Mrs Bridges. Торговая марка из Великобритании, под которой выпускают крафтовый инжирный джем из 100% натурального сырья. Фирменная баночка станет отличным подарком любителю редких сладостей.</li>
+                    <li>Belberry. Бренд из Бельгии, который предлагает изысканный конфитюр на основе инжира и черного перца. Это вкусный вариант для дополнения сырной тарелки или мясного плато.</li>
+                    <li>Helios. Испанская торговая марка предлагает не только классический инжирный джем, но и версию без сахара. Последний вариант предпочтителен для детей и людей с сахарным диабетом.</li>
+                </ol>
+                <h3>Сколько стоит инжирный джем</h3>
+                <p>
+                    Цена стартует от 100 грн — столько нужно заплатить за 340-граммовую баночку от Helios. Продукция без сахара стоит дороже — 119 грн за 250 г. Чтобы сэкономить, обращайте внимание на акционные предложения — их перечень постоянно
+                    обновляется.
+                </p>
+                <h2>Как правильно хранить инжирный джем</h2>
+                <p>Чтобы продлить свежесть:</p>
+                <ol>
+                    <li>Храните лакомство в холодильнике после вскрытия. Обычно оно пригодно к употреблению еще 2–4 недели.</li>
+                    <li>Закрытые банки храните в сухом, темном и прохладном месте. В среднем срок годности составляет 12–16 месяцев.</li>
+                    <li>Проверяйте на предмет порчи. Перед употреблением инжирного джема убедитесь, что на поверхности нет плесени. Неприятный кислый запах — повод отказаться от лакомства.</li>
+                </ol>
+                <h2>Почему выгодно купить инжирный джем в интернет-магазине MAUDAU</h2>
+                <p>
+                    В категории собрана оригинальная продукция по конкурентной стоимости. Практически к каждому товару доступны оценки и отзывы от других покупателей, что облегчает выбор. Доставка возможна курьером по Киеву или логистическими
+                    компаниями по Украине, включая «Новую Почту» и «Укрпочту». Забрать заказ также можно в супермаркетах «Сільпо», но как только менеджер подтвердит наличие понравившихся позиций. Оплата — на сайте с помощью банковской карты или после
+                    получения. Выбранный вариант не влияет на конечную стоимость продукции.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тосты с сыром, прошутто и инжирным джемом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tosty-z-syrom-proshutto-ta-inzhyrnym-dzhemom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тосты с сыром, прошутто и инжирным джемом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li>Французский багет</li><li>Сыр филадельфия</li><li>Прошутто</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/typ_268=chornyi-43">Свежемолотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Инжирный джем</a></li><li>Руккола</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматные тосты с прошутто, сыром филадельфия и сладким инжирным джемом — идеальная закуска для гурманов.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Тосты с сыром, прошутто и инжирным джемом</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>оливковое масло по вкусу</li><li>12 кусков французского багета</li><li>100 г сыра филадельфия</li><li>6 кусков прошутто</li><li>соль по вкусу</li><li>свежемолотый черный перец по вкусу</li><li>2 столовые ложки инжирного джема</li><li>рукола по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C и слегка поджарьте 12 кусочков французского багета, смазав их оливковым маслом.</li><li>Выньте с духовки кусочки багета, возьмите 100 г сыра филадельфия и намажьте каждый ломтик.</li><li>Разрежьте 6 кусков прошутто пополам и уложите по одному на каждый тост.</li><li>Сверху выложите по половине чайной ложки инжирного джема.</li><li>Добавьте несколько листьев рукколы и приправьте по вкусу солью и свежемолотым черным перцем.</li><li>Подавайте тосты горячими.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Французский багет с ветчиной серрано, манчего и инжирным джемом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Frantsuzkyi-bahet-z-shynkoiu-serrano-mancheho-ta-inzhyrnym-dzhemom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Французский багет с ветчиной серрано, манчего и инжирным джемом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Инжирный джем</a></li><li>Французский багет</li><li>Ветчина серрано</li><li>Сыр манчего</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/typ_268=chornyi-43">Свежемолотый черный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Изысканный сэндвич с ветчиной серрано, нежным испанским сыром манчего и сладким инжирным джемом на свежем французском багете. Прекрасное сочетание вкусов для гурманов, который подойдет для легкого обеда или закуски.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Французский багет с ветчиной серрано, манчего и инжирным джемом</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>сливочное масло по вкусу</li><li>2 ст.л. инжирного джема</li><li>1 французский багет</li><li>6 кусочков ветчины серрано</li><li>100 г сыра манчего</li><li>оливковое масло по вкусу</li><li>свежемолотый черный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разрежьте свежий французский багет на несколько ломтиков или на две половины, если делаете большой бутерброд.</li><li>Возьмите 6 ломтиков ветчины серрано и нарежьте 100 г сыра манчего тонкими пластинками.</li><li>Подогрейте багет в духовке до хрустящей корочки (около 5 минут при 180°C).</li><li>На горячий багет нанесите тонкий слой инжирного джема (около 1 ст. л. на каждую половину).</li><li>Затем уложите тонкие ломтики сыра манчего и ветчину серрано.</li><li>Приправьте свежемолотым черным перцем и добавьте несколько листьев свежего шалфея.</li><li>Подавайте сразу горячим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Галантин из цесарки, печени цесарки и белых грибов" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Halantyn-z-tsisarky-pechinky-tsesarky-ta-bilykh-hrybiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Галантин из цесарки, печени цесарки и белых грибов</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Цесарка</li><li>Грудка цесарки</li><li>Печень цесарки</li><li><a href="https://maudau.com.ua/ru/product/oliia-olyvkova-borges-extra-virgin-500-ml-351026">Оливковое масло extra virgin</a></li><li><a href="https://maudau.com.ua/ru/product/oliia-olyvkova-monini-extra-virgin-z-bilym-triufel">Трюфельное масло</a></li><li>Сливочное масло</li><li><a href="https://maudau.com.ua/ru/product/vershky-ultrapasteryzyrovani-yahotynski-15-tet-br">Сливки</a></li><li>Белые грибы</li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Инжирный джем</a></li><li>Свежий шалфей</li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Галантин — это изысканное блюдо из цесарки с добавлением печени, белых грибов и нежных сливок. Блюдо сочетает богатый вкус и утонченную текстуру.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Галантин из цесарки, печени цесарки и белых грибов</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цесарка</li><li>2 грудки цесарки</li><li>100 г печени цесарки</li><li>1½ столовые ложки оливкового масла extra virgin</li><li>трюфельное масло по вкусу</li><li>20 г сливочного масла</li><li>120 мл сливок</li><li>120 г белых грибов</li><li>2½ столовые ложки инжирного джема</li><li>1 стебель свежего шалфея</li><li>молотый черный перец по вкусу</li><li>соль по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для приготовления галантина подготовьте одну цесарку, удалите кости и разделите на два филе.</li><li>Нарежьте 100 г печени цесарки на мелкие кусочки.</li><li>В сковороде разогрейте 1½ ст. л. оливкового масла и обжарьте печень до золотистой корочки.</li><li>Добавьте 120 г нарезанных белых грибов и готовьте еще 5-7 минут.</li><li>Вмешайте 20 г сливочного масла и 120 мл сливок, тушите до получения густой массы.</li><li>Снимите с огня и дайте немного остыть.</li><li>На филе цесарки выложите печеночно-грибную смесь и сверните рулетом, закрепите ниткой.</li><li>Обжарьте рулеты на сковороде до румяной корочки, затем запекайте в духовке при 180°C около 20-25 минут.</li><li>В конце сбрызните рулеты трюфельным маслом и подайте с инжирным джемом и свежим шалфеем.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ветчина в глазури из инжира и апельсинов" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shynka-v-hlazuri-z-inzhyru-ta-apelsyniv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ветчина в глазури из инжира и апельсинов</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Ветчина</li><li><a href="https://maudau.com.ua/ru/category/hirchytsia/typ_269=dizhonska">Дижонская горчица</a></li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Инжирный джем</a></li><li>Апельсины</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ветчина по этому рецепту станет главным блюдом вашего праздничного стола, удивляя гостей богатым ароматом и насыщенным вкусом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Ветчина в глазури из инжира и апельсинов</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 кусок ветчины</li><li>2 столовые ложки дижонской горчицы</li><li>1 банка инжирного джема</li><li>1 апельсин</li><li>0,3 стакана апельсинового сока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для начала разогрейте духовку до 180°C.</li><li>Возьмите 1 кусок ветчины (около 1 кг) и сделайте на его поверхности неглубокие надрезы.</li><li>В небольшой миске смешайте 2 столовые ложки дижонской горчицы, 1 банку инжирного джема и сок одного апельсина. Добавьте 0,3 стакана свежевыжатого апельсинового сока, перемешайте.</li><li>Смажьте ветчину получившейся глазурью.</li><li>Поместите ветчину в жаропрочную форму и отправьте в разогретую духовку.</li><li>Запекайте около 1,5 часов, периодически поливая ветчину выделяющимся соком.</li><li>Если хотите добиться хрустящей корочки, увеличьте температуру до 200°C за 15 минут до конца приготовления.</li><li>Когда ветчина будет готова, выньте ее из духовки и дайте немного остыть перед нарезкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тунец в горчично-фиговом маринаде" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tunets-u-hirchychno-fihovomu-marynadi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тунец в горчично-фиговом маринаде</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Тунец</li><li>Розмарин</li><li><a href="https://maudau.com.ua/ru/category/hirchytsia/typ_269=dizhonska">Дижонская горчица</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=olyvkova">Оливковое масло</a></li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=soievyi">Соевый соус</a></li><li>Инжирный джем</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Блюдо которое сочетает нежную рыбу с легкой сладостью инжира и пикантностью горчицы, а яркий маринад подчеркивает естественный вкус тунца.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Тунец в горчично-фиговом маринаде</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г тунца</li><li>розмарин по вкусу</li><li>2 чайные ложки дижонской горчицы</li><li>молотый черный перец по вкусу</li><li>1 столовая ложка оливкового масла</li><li>1 чайная ложка соевого соуса</li><li>2 чайные ложки инжирного джема</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В небольшой миске смешайте 2 чайные ложки дижонской горчицы, 1 столовую ложку оливкового масла, 1 чайную ложку соевого соуса и 2 чайные ложки инжирного джема.</li><li>Добавьте несколько веточек свежего розмарина и немного молотого черного перца по вкусу.</li><li>Все тщательно перемешайте.</li><li>Возьмите 400 г филе тунца и промойте его под холодной водой.</li><li>После этого положите тунец в миску с маринадом.</li><li>Накройте миску пищевой пленкой и оставьте в холодильнике мариноваться на 30 минут.</li><li>После того как тунец промаринуется, разогрейте гриль или сковороду с антипригарным покрытием.</li><li>Обжаривайте тунец с каждой стороны по 2-3 минуты до достижения желаемой степени прожарки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Маринованная свинина, запеченная с инжиром" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Marynovana-svynyna-zapechena-z-inzhyrom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Маринованная свинина, запеченная с инжиром</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свинина</li><li>Инжир</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-neleman-ros-do-valencia-rozheve-sukhe-0-75-l">Розовое сухое вино</a></li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=inzhyr-7">Инжирный джем</a></li><li>Свежий тимьян</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сочная свинина, запеченная с инжиром и розовым вином в ароматных травах в сочетании с инжирным джемом — идеальное блюдо для вкусного ужина!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Маринованная свинина, запеченная с инжиром</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>800 г свинины</li><li>4 штуки инжира</li><li>15 мл лимонного сока</li><li>100 мл розового сухого вина</li><li>1 столовая ложка инжирного джема</li><li>1 пучок свежего тимьяна</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для начала возьмите 800 г свинины (лучше всего подойдет шея или лопатка) и промойте ее под холодной водой.</li><li>В миске смешайте 100 мл розового сухого вина, 1 столовую ложку инжирного джема, 15 мл лимонного сока, щепотку соли и молотого черного перца по вкусу.</li><li>Добавьте свежий тимьян (несколько веточек) и тщательно перемешайте маринад.</li><li>Замаринуйте свинину в приготовленной смеси, накройте пленкой и оставьте в холодильнике на 1-2 часа.</li><li>Разогрейте духовку до 180°C.</li><li>Выложите свинину в форму для запекания, добавьте 4 нарезанных инжира и запекайте около 1,5 часа.</li><li>Каждые 20–30 минут поливайте свинину выделяющимся соком.</li><li>После запекания нарежьте мясо порционными кусками и подавайте с запеченным инжиром.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">208 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">54.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

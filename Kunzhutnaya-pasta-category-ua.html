@@ -1,0 +1,989 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Кунжутна паста, також відома як тахіні, — гладка кремоподібна маса, яку готують із меленого насіння кунжуту. Продукт позиціюють як приправу і цінують за насичений горіховий смак, особливо якщо насіння попередньо обсмажують.</p>
+                <h2>Що входить до складу класичної кунжутної пасти</h2>
+                <p>Стандартний рецепт часто вимагає використання лише двох компонентів — насіння та олії. За бажання до складу вводять добавки: фініковий сироп, шоколад, какао.</p>
+                <p>Кунжут — базовий інгредієнт тахінної пасти, який надає насиченого горіхового шлейфу. Сире насіння вносить у готовий продукт ніжний смак, а обсмажене — насичений.</p>
+                <p>Для регулювання консистенції в рецептуру нерідко вводять трохи олії, що робить тахінну пасту рідшою, тож її легше намазувати. Це також стабілізує продукт, подовжуючи термін придатності.</p>
+                <h2>Як виготовляють тахінну пасту</h2>
+                <p>Виробництво стартує з очищення насіння від сміття. Далі кунжут замочують, пом'якшуючи зовнішню оболонку, яку потім видаляють. Висівки тонуть у воді, а на поверхню спливає насіння.</p>
+                <p>За потреби кунжут обсмажують. Місце виготовлення безпосередньо впливає на ступінь оброблення насіння. Наприклад, на Кіпрі його часто перемелюють сирим, тоді як у Китаї готують практично до чорного кольору.</p>
+                <p>Далі кунжут подрібнюють у пасту. Густу масу можуть пропускати через сито, щоб домогтися рівної та гладкої консистенції.</p>
+                <p>Тахіні — паста, яку реалізують у пластикових або скляних банках. Фасування проводять у стерильному середовищі, подовжуючи термін придатності.</p>
+                <h2>Для чого використовують кунжутну пасту тахіні</h2>
+                <p>
+                    Продукт поширений у кухнях Близького Сходу, Середземномор'я та Східної Азії. Близькосхідні регіони використовують сезамову пасту як намазку на хліб або добавку до хумусу і баба ганушу — разом із лимонним соком, часником і сіллю.
+                    Тахіні також підходить для солодких страв: тортів, печива, халви, морозива.
+                </p>
+                <p>На прилавках магазинів у Греції кунжутну пасту можна купити як доповнення до сніданку, оскільки до складу також входять какао, мед, джем. На Кіпрі її додають у печиво та пироги.</p>
+                <p>У країнах Східної Азії, особливо в Китаї, тахінну пасту використовують як приправу, тому вона трапляється в рецептах локшини та десертів. Добавку також впроваджують у десятки традиційних соусів і заправок.</p>
+                <h2>Яка користь для здоров'я від кунжутної пасти</h2>
+                <p>Насамперед не варто забувати, що продукт доволі калорійний, тому його радять вживати в помірних кількостях. Рекомендована денна порція становить 1–2 столові ложки. Ключові переваги:</p>
+                <ol>
+                    <li>Багато корисних жирів. Пасту тахіні варто купити через високий вміст жирних омега-6 кислот, що підтримують здоров'я серця.</li>
+                    <li>Багато білків. Рослинний протеїн — хороша альтернатива для веганів.</li>
+                    <li>Клітковина. Розчинні харчові волокна запобігають розладам шлунково-кишкового тракту і закрепам, а також відповідають за регулювання цукру в крові.</li>
+                    <li>
+                        Джерело поживних речовин. Кальцій підтримує здоров'я кісток. Магній регулює роботу м'язів і нервових закінчень. Залізо сприяє виробленню еритроцитів і підвищує енергію. Цинк зміцнює загальний стан здоров'я, позитивно впливаючи
+                        на імунну систему.
+                    </li>
+                    <li>Антиоксидантний вплив. Кунжутна паста містить лігнани та вітамін E. Природні антиоксиданти захищають клітини від ушкоджень, запобігаючи розвитку деяких хронічних захворювань.</li>
+                </ol>
+                <h2>Кунжутна паста: ціна в Україні</h2>
+                <p>
+                    Вартість багато в чому залежить від обраного обсягу і варіанту упаковки. Наприклад, найдорожчий, але водночас економічно вигідний продукт для ресторанів пропонує торгова марка Achva — за відро вагою 18 кг потрібно заплатити 5799
+                    грн. Ціна на маленьку баночку стартує від 79 грн. Якщо хочете заощадити, відстежуйте список акційних пропозицій.
+                </p>
+                <h2>Як правильно зберігати сезамову пасту</h2>
+                <p>
+                    Помістіть продукт у комору або кухонну шафу якомога далі від прямих сонячних променів. Після відкриття зберігайте пасту тахіні в холодильнику, щоб подовжити свіжість і не допустити згіркнення. Перед кожним використанням перемішуйте
+                    вміст банки, оскільки продукт може розшаруватися, і олія підійметься.
+                </p>
+                <p>У холодильнику кунжутна паста зберігається від кількох місяців до року. Для оптимального збереження тримайте її в герметичному контейнері, щоб запобігти поглинанню сторонніх запахів.</p>
+                <h2>Чому вигідно купити тахінну пасту в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен товар в онлайн-каталозі MAUDAU — оригінальний. Це результат власного імпорту. Кунжутну пасту тахіні можна купити з кур'єрським доставленням по Києву. Також у столиці передбачене самовивезення із супермаркетів «Сільпо», якщо
+                    товар є в наявності. Для відправлення в інший населений пункт України скористайтеся пропозиціями від компаній-перевізників — «Нової Пошти» або «Укрпошти».
+                </p>
+            </div>
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Хацилім з тахіні" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Khatsylim-z-takhini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Хацилім з тахіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Баклажани</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li>Лимонний сік</li><li>Сіль</li><li>Мелений чорний перець</li><li>Оливкова олія</li><li>Мед</li><li>Зелена цибуля</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Класична близькосхідна страва із запечених баклажанів із тахіні та медом. Це легка й ароматна закуска з горіховими та лимонними нотками, що ідеально підходить як гарнір або самостійна страва.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Хацилім з тахіні</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 г баклажанів</li><li>50 г тахіні</li><li>30 мл лимонного соку</li><li>8 г солі</li><li>3 г меленого чорного перцю</li><li>20 мл оливкової олії</li><li>10 г меду</li><li>зелена цибуля до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 200°C.</li><li>Баклажани (500 г) вимийте, проколіть виделкою кілька разів і запікайте на деку 30–40 хвилин до м'якості.</li><li>Остудіть баклажани, очистіть від шкірки і розімніть м'якоту виделкою.</li><li>У мисці змішайте 50 г тахіні, 30 мл лимонного соку, 8 г солі, 3 г меленого чорного перцю і 20 мл оливкової олії.</li><li>Додайте 10 г меду і ретельно перемішайте.</li><li>З'єднайте баклажанну м'якоту із сумішшю, що вийшла, і перемішайте до однорідної консистенції.</li><li>Наріжте зелену цибулю до смаку і посипте зверху.</li><li>Подавайте страву кімнатної температури як закуску.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Пісні бутерброди з хумусом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pisni-buterbrody-z-humusom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Пісні бутерброди з хумусом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/bobovi/typ_262=nut-7">Нут</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=soda-2">Сода</a></li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Кунжутна паста тахіні</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_vidzhymu=kholodnyi">Олія холодного віджиму</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=chornyi-43">Чорний перець</a></li><li>Хліб</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пісні бутерброди з хумусом — це легка та корисна закуска. Хрусткий хліб, намазаний густим, ароматним хумусом, прикрашають свіжими овочами: огірками, помідорами та зеленню. Ідеально для легкого перекусу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Пісні бутерброди з хумусом</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г нуту</li><li>1 ч. л. соди</li><li>1 ст. л. кунжутної пасти тахіні</li><li>2-3 ст. л. олії холодного віджиму</li><li>2 зубчики часнику</li><li>сіль до смаку</li><li>чорний перець до смаку</li><li>скибочки хліба</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Промийте 200 г нуту і замочіть його у воді на ніч.</li><li>Наступного дня злийте воду, додайте нову, потім додайте 1 ч. л. соди і варіть нут до м'якості (близько 1,5 години).</li><li>У блендер або кухонний комбайн додайте варений нут, 2 зубчики часнику, 1 ст. л. кунжутної пасти тахіні, 2-3 ст. л. олії холодного віджиму, сіль і перець. Збийте все до отримання однорідної кремової маси.</li><li>Підсмажте скибочки хліба на сухій пательні або в тостері до золотистої скоринки.</li><li>Нанесіть хумус на хліб. За бажанням додайте свіжі овочі.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Смузі «М'ятний крем»" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Smuzi-Miaatnyi-krem.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Смузі «М'ятний крем»</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Ананас</li><li><a href="https://maudau.com.ua/category/roslynne-moloko/vyd_123=kokosove-2">Кокосове молоко</a></li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li>Свіжа мʼята</li><li><a href="https://maudau.com.ua/category/sukhofrukty/vyd_106=finik-3">Фініки</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil/typ_208=morska">Морська сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Приготування ананасово-м'ятного смузі в домашніх умовах — це чудова нагода потішити себе та близьких вітамінним і освіжальним напоєм. Смузі стане ідеальним вибором для ранкового підбадьорливого або легкого обіднього перекусу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Смузі «М'ятний крем»</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>¼ ананаса</li><li>1 ст. л. кокосового молока</li><li>1 ч. л. тахіні</li><li>1 пучок свіжої м'яти</li><li>2 фініки</li><li>¼ ч. л. морської солі</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте в блендері ¼ ананаса, 1 ч. л. тахіні, 1 пучок свіжої м'яти і 2 фініки.</li><li>Влийте 1 ст. л. кокосового молока.</li><li>Додайте ¼ ч. л. морської солі та ретельно збийте близько 3-4 хвилин.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Хумус із соєвим соусом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Khumus-iz-soievym-sousomm.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Хумус із соєвим соусом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/ovochevi-ta-fruktovi-konservy/typ_280=nut-8">Консервований нут</a></li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=kunzhutna-2">Кунжутна олія</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хумус із соєвим соусом — це цікаве поєднання класичної страви близькосхідної кухні та східноазійського соусу.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Хумус із соєвим соусом</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 банки консервованого нуту</li><li>50 г тахіні</li><li>20 мл оливкової олії</li><li>20 мл кунжутної олії</li><li>30 мл соєвого соусу</li><li>20 мл лимонного соку</li><li>3 зубчики часнику</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Злийте рідину з двох банок консервованого нуту і добре промийте його під холодною водою.</li><li>У чашу блендера помістіть промитий нут. Додайте 50 г тахіні, 20 мл оливкової олії, 20 мл кунжутної олії, 30 мл соєвого соусу, 20 мл свіжовичавленого лимонного соку і 3 очищених зубчики часнику.</li><li>Увімкніть блендер і збийте все.</li><li>Якщо хумус здається занадто густим, додайте трохи холодної води або додаткової оливкової олії.</li><li>Перекладіть готовий хумус у миску, прикрасьте зверху краплею оливкової олії та посипте трохи паприки.</li><li>Подавайте хумус із нарізаними свіжими овочами або зі скибочками свіжого хліба чи крекерами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Морквяне пюре з тахіні" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Morkviane-piure-z-takhini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Морквяне пюре з тахіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Морква</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li><a href="https://maudau.com.ua/product/oliia-olyvkova-borges-extra-virgin-500-ml-351026">Оливкова олія extra virgin</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil/pomel=velykyi">Крупна сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кремове пюре з моркви зі східними нотками тахіні та оливковою олією. Ідеально підходить для вегетаріанських страв або як гарнір для легких обідів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Морквяне пюре з тахіні</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>4 моркви</li><li>2 столові ложки тахіні</li><li>3 столові ложки оливкової олії extra virgin</li><li>щіпка крупної солі</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистіть і наріжте 4 моркви на великі шматки.</li><li>Відваріть моркву в підсоленій воді до м'якості (близько 15 хвилин), потім злийте воду.</li><li>У блендері подрібніть моркву до однорідного пюре.</li><li>Додайте 2 столові ложки тахіні, 3 столові ложки оливкової олії extra virgin і дрібку крупної солі.</li><li>Збивайте до отримання гладкої консистенції.</li><li>Подавайте теплим як гарнір або самостійну страву.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бабагануш з тахіні" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Babahanush-z-takhini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бабагануш з тахіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Баклажани</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Часник</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Класична близькосхідна страва — пікантна паста із запечених баклажанів із часником, тахіні та лимонним соком. Чудовий варіант легкої закуски.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бабагануш з тахіні</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>5 баклажанів</li><li>3 столові ложки тахіні</li><li>1 чайна ложка лимонного соку</li><li>4 зубчики часнику</li><li>3 столові ложки оливкової олії</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Запечіть 5 баклажанів за 200°C близько 40 хвилин до м'якості.</li><li>Остудіть, зніміть шкірку, розімніть м'якоть.</li><li>У мисці змішайте 3 столові ложки тахіні, 1 чайну ложку лимонного соку, 4 подрібнених зубчики часнику і 3 столові ложки оливкової олії.</li><li>Додайте баклажанну масу і сіль до смаку.</li><li>Добре перемішайте до однорідної текстури.</li><li>Подавайте з хлібцями, коржами або овочами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Турецьке печиво з тахіні та волоськими горіхами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Turetske-pechyvo-z-takhini-ta-voloskymy-horikhamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Турецьке печиво з тахіні та волоськими горіхами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Цвітна капуста</li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li>Натуральний йогурт</li><li>Кінза</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Часник</li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустке печиво з насиченим смаком тахіні та волоськими горіхами. Ідеальний десерт для любителів східних солодощів з оригінальним смаком.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Турецьке печиво з тахіні та волоськими горіхами</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цвітна капуста</li><li>50 мл оливкової олії</li><li>3 столові ложки тахіні</li><li>150 г натурального йогурту</li><li>20 г кінзи</li><li>2 столові ложки лимонного соку</li><li>1 зубчик часнику</li><li>мелений чорний перець до смаку</li><li>сіль до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розігрійте духовку до 180°C.</li><li>Цвітну капусту (1 шт.) розберіть на суцвіття і відваріть у підсоленій воді до м'якості.</li><li>Змішайте в мисці 50 мл оливкової олії, 3 столові ложки тахіні, 150 г натурального йогурту, 20 г дрібно нарізаної кінзи, 2 столові ложки лимонного соку і 1 подрібнений зубчик часнику.</li><li>Додайте мелений чорний перець і сіль до смаку.</li><li>Перекладіть капусту на деко, полийте підготовленим соусом і випікайте в розігрітій до 180°C духовці 15 хвилин. Витягніть із духовки, дайте злегка охолонути.</li><li>Подавайте, розламавши на шматочки, як хрустке печиво, або цілком.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гарячий шоколадний пудинг з тахіні у кавових чашках" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hariachyi-shokoladnyi-pudynh-z-takhini-u-kavovykh-chashkakh.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гарячий шоколадний пудинг з тахіні у кавових чашках</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Куряче яйце</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li><a href="https://maudau.com.ua/product/shokolad-chornyi-emilia-70-200-h-873264">Чорний шоколад 70%</a></li><li><a href="https://maudau.com.ua/product/tsukor-terre-exotique-muskovado-trostynnyi-200-h">Цукор мусковадо</a></li><li>Борошно з проса</li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=molochnyi-4">Молочний шоколад</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil/typ_208=morska">Морська сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шоколадний пудинг із ніжним ароматом тахіні та легким присмаком мусковадо, подається в порційних чашках. Легкий десерт для справжніх гурманів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гарячий шоколадний пудинг з тахіні у кавових чашках</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 великих курячих яйця</li><li>40 г тахіні</li><li>75 г чорного шоколаду 70%</li><li>30 г цукру мусковадо</li><li>1 столова ложка борошна з проса</li><li>3 шматки молочного шоколаду</li><li>щіпка морської солі</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розтопіть 75 г чорного шоколаду 70% на водяній бані.</li><li>У мисці збийте 2 великих яйця з 30 г цукру мусковадо до пишної маси.</li><li>Додайте 40 г тахіні та столову ложку просового борошна, акуратно і ретельно перемішайте.</li><li>Влийте розтоплений шоколад і змішайте до однорідної консистенції.</li><li>Розлийте суміш по кавових чашках, у кожну додайте по шматку молочного шоколаду.</li><li>Поставте чашки в розігріту до 160°C духовку на 10 хвилин.</li><li>Вийміть із духовки, посипте морською сіллю й одразу подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Фалафель з руколою та йогуртовою заправкою з тахіні" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Falafel-z-rukoloiu-ta-yohurtovoiu-zapravkoiu-z-takhini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Фалафель з руколою та йогуртовою заправкою з тахіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/bobovi/typ_262=nut-7">Нут</a></li><li>Ріпчаста цибуля</li><li>Часник</li><li>Рублена петрушка</li><li>Листя кінзи (коріандр)</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=koriandr-3">Мелений коріандр</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=rozpushuvach">Розпушувач</a></li><li>Мелений кмин</li><li>Грецький йогурт</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li>Рукола</li><li><a href="https://maudau.com.ua/category/oliia-i-otset">Рослинна олія</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пікантні кульки з нуту, обсмажені до золотистого кольору, подаються з освіжальною заправкою з йогурту і тахіні. Легка та поживна страва зі східними нотками.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Фалафель з руколою та йогуртовою заправкою з тахіні</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г нуту</li><li>1 головка ріпчастої цибулі</li><li>3 зубчики часнику</li><li>1 склянка рубаної петрушки</li><li>1 склянка листя кінзи (коріандру)</li><li>2 чайні ложки меленого коріандру</li><li>½ чайної ложки розпушувача</li><li>1 чайна ложка меленого кмину</li><li>3 столові ложки грецького йогурту</li><li>1 столова ложка тахіні</li><li>1 столова ложка лимонного соку</li><li>3 столові ложки оливкової олії</li><li>125 г руколи</li><li>рослинна олія до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Замочіть 250 г нуту на ніч.</li><li>Вранці злийте воду і змішайте нут з 1 головкою ріпчастої цибулі, 3 зубчиками часнику, 1 склянкою подрібненої петрушки і кінзи, 2 чайними ложками меленого коріандру і кмину, ½ чайної ложки розпушувача.</li><li>Подрібніть суміш у блендері.</li><li>Сформуйте кульки діаметром близько 3 см.</li><li>Розігрійте в глибокій сковороді рослинну олію до 180°C.</li><li>Обсмажуйте фалафелі по 2-3 хвилини з кожного боку до золотистої скоринки.</li><li>Змішайте 3 столові ложки грецького йогурту, 1 столову ложку тахіні, 1 столову ложку лимонного соку і 3 столові ложки оливкової олії extra virgin. Посоліть і перемішайте.</li><li>Подавайте фалафель на подушці зі свіжої руколи, полив йогуртовою заправкою з тахіні.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Суп-пюре з гарбуза з тахіні" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sup-piure-z-harbuza-z-takhini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Суп-пюре з гарбуза з тахіні</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Гарбуз</li><li>Овочевий бульйон</li><li>Ріпчаста цибуля</li><li>Часник</li><li><a href="https://maudau.com.ua/category/horikhovi-pasty/typ_206=kunzhutna">Тахіні</a></li><li><a href="https://maudau.com.ua/category/pryprava-perets/typ_268=papryka-5">Мелена паприка</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=kedrovi-2">Кедрові горіхи</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оксамитовий гарбузовий суп із насиченим горіховим смаком тахіні та пряною ноткою паприки. Завершується ароматом обсмаженого часнику та кедрових горіхів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Суп-пюре з гарбуза з тахіні</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 г гарбуза</li><li>1 л овочевого бульйону</li><li>1 головка ріпчастої цибулі</li><li>2 зубчики часнику</li><li>3 столові ложки тахіні</li><li>щіпка меленої паприки</li><li>3 столові ложки оливкової олії</li><li>1 столова ложка кедрових горіхів</li><li>сіль до смаку</li><li>мелений чорний перець до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте 400 г гарбуза та 1 головку ріпчастої цибулі великими кубиками.</li><li>Розігрійте в каструлі 3 столові ложки оливкової олії.</li><li>Додайте нарізані гарбуз і цибулю.</li><li>Обсмажуйте на середньому вогні приблизно 10 хвилин.</li><li>Додайте 2 зубчики подрібненого часнику і дрібку меленої паприки, обсмажуйте ще 1 хвилину.</li><li>Влийте 1 літр овочевого бульйону і доведіть до кипіння.</li><li>Зменшіть вогонь і варіть приблизно 15–20 хвилин.</li><li>Блендером подрібніть суп до отримання однорідного пюре.</li><li>Висипте назад суп у каструлю.</li><li>Додайте 3 столові ложки тахіні, перемішайте.</li><li>Додайте сіль і мелений чорний перець до смаку.</li><li>Розлийте суп по тарілках.</li><li>Посипте зверху кедровими горіхами і за бажання свіжомеленим чорним перцем.</li><li>Подавайте гарячим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">586 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">18.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">50.9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">18.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">5.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">1.6 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,806 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Кукурузные хлебцы — тонкая и хрустящая закуска, приготовленная из муки, воды и соли. Это полезная альтернатива пшеничным крекерам или хлебу, содержащим глютен.</p>
+                <p>
+                    Кукуруза придает характерный желтоватый цвет и сладковатый вкус, поэтому лакомство нередко едят без добавок. Аромат — тонкий, с землисто-ореховыми нотками. Если продукт выпекают, добавляя растительное масло, развивается сладкий
+                    поджаренный шлейф.
+                </p>
+                <p>
+                    Специи, кроме соли, используют редко, поэтому кукурузные хлебцы подходят для подачи с намазками, сырами, мясом, овощами. Не менее гармонично они сочетаются с джемом, вареньем, шоколадной или ореховой пастой. Благодаря легкой и
+                    воздушной текстуре лакомство тает во рту, что особенно нравится детям.
+                </p>
+                <h2>Полезные свойства кукурузных хлебцев</h2>
+                <p>Пищевая ценность лакомства отличается в зависимости от метода изготовления, использования добавок и производителя. Зачастую в 100 граммах продукта содержатся:</p>
+                <ul>
+                    <li>калории — 350–400;</li>
+                    <li>углеводы — 70–80 г;</li>
+                    <li>белки — 7–9 г;</li>
+                    <li>жиры — 1–3 г;</li>
+                    <li>соль — менее 1 г.</li>
+                </ul>
+                <p>
+                    Кукурузные хлебцы ценят за содержание клетчатки — около 5–7 г на 100 граммов. Достаточное количество пищевых волокон в ежедневном рационе важно для корректного функционирования ЖКТ, регулярного опорожнения кишечника, регулировки
+                    сахара в крови.
+                </p>
+                <p>Хлебцы из кукурузы также содержат витамины и минералы, включая магний, фосфор и железо. Они важны для нервной системы и мышц, эффективного обмена веществ и выработки эритроцитов.</p>
+                <p>
+                    Людям с аллергией на кукурузу стоит отказаться от лакомства. Крупу также относят к продуктам с высоким гликемическим индексом. Несмотря на то, что клетчатка снижает показатели сахара в крови, переизбыток кукурузных хлебцев несет
+                    угрозу для людей с резистентностью к инсулину.
+                </p>
+                <p>Продукт не запрещен на диете, за исключением низкоуглеводных программ. Чтобы не перебрать с калориями, употребляйте 3–6 ломтиков в день, сочетая лакомство с овощами, постными белками и жирами.</p>
+                <h2>Как выбрать хлебцы из кукурузы</h2>
+                <p>Чтобы быстрее определиться, сгруппируйте продукцию по одному из фильтров:</p>
+                <ol>
+                    <li>
+                        Бренд. Кукурузные хлебцы изготавливают как в Украине, так и за границей. Предложения от украинских торговых марок зачастую выгоднее, так как расходы на транспортировку минимизированы. Некоторые производители специализируются на
+                        выпуске органической продукции — как Bio Zentrale.
+                    </li>
+                    <li>
+                        Добавки. Если подаете хлебцы с кукурузы с намазкой, остановитесь на продуктах с минимальным набором ингредиентов в составе — мука, вода, соль или сахар. Лакомства с добавками станут полноценной закуской к вину, пиву или сидру.
+                        Это также оптимальный вариант для перекуса вне дома. Паприка, например, придает кукурузным хлебцам остроту, а травы — пикантный шлейф.
+                    </li>
+                    <li>Упаковка. Выбирайте товар в герметичной повторно закрывающейся пачке. Картонная коробка — более экологичный вариант.</li>
+                    <li>Вес. Хлебцы из кукурузы реализуют порционно — по 100–200 г. Для разового перекуса подойдут маленькие упаковки — до 100 г. Это также отличная возможность попробовать новый вкус или бренд. Большая упаковка выгодна для семьи.</li>
+                </ol>
+                <h3>Краткий обзор ассортимента кукурузных хлебцев в MAUDAU</h3>
+                <p>Бренды, позиционирующие продукт, как самостоятельную закуску:</p>
+                <ul>
+                    <li>Eki-Neki;</li>
+                    <li>Bio Zentrale;</li>
+                    <li>Fitos;</li>
+                    <li>Extrudo.</li>
+                </ul>
+                <p>Если предпочитаете кукурузные хлебцы на завтрак, отдайте предпочтение вариантам от торговых марок Galleti, Kupiec, Allos, «Жменька». Круглая или прямоугольная форма хорошо сочетается с намазками.</p>
+                <h2>Сколько стоят хлебцы из кукурузы</h2>
+                <p>
+                    Цена зависит от веса и состава, но в среднем колеблется в пределах 50 грн за 100 граммов. Органическая продукция, как и приправленная специями, традиционно стоит дороже. Например, за лакомство от Le Pain des Fleurs нужно заплатить
+                    178 грн за 150 г. Однако это гарантия, что в составе отсутствуют химикаты, которые используют для обработки кукурузы в процессе выращивания.
+                </p>
+                <h2>Как правильно хранить кукурузные хлебцы</h2>
+                <p>После вскрытия поместите лакомство в герметичный контейнер, иначе контакт с воздухом приведет к потере хруста. Храните продукт в сухом и темном месте вдали от источников влаги, таких как свежие овощи и фрукты.</p>
+                <p>Большинство хрустящих кукурузных хлебцев хранятся 6–12 месяцев, но после вскрытия пачки их нужно употребить в течение 2–4 недель, поэтому нет смысла покупать продукт с запасом.</p>
+                <h2>Почему выгодно купить кукурузные хлебцы в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый товар в ассортименте — 100% оригинальный. Это главный принцип работы маркета повседневных штук MAUDAU. Для оформления заказа достаточно 5–7 минут. Хлебцы кукурузные можно купить с курьерской или почтовой доставкой. При
+                    желании забрать товар самостоятельно такая услуга доступна в супермаркетах «Сільпо». Рассчитаться можно в момент оформления заказа, используя банковскую карту, или постфактум, например, наличными курьеру — это не влияет на конечную
+                    стоимость продукта.
+                </p>
+            </div>
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Творожный десерт с хлебцами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Syrnyi-desert-z-khlibcsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Творожный десерт с хлебцами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Мягкий обезжиренный творог</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li>Банан</li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=polunytsia-21">Клубничный джем</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li><li><a href="https://maudau.com.ua/ru/category/shokolad">Шоколад</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty">Орехи</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Творожный десерт с хлебцами — легкая и полезная закуска. Нежный творог сочетается с хрустящими цельнозерновыми кусочками хлеба, создавая воздушную текстуру и насыщенный вкус. Идеально для завтрака или перекуса в течение дня.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Творожный десерт с хлебцами</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 г мягкого обезжиренного творога</li><li>3 цельнозерновых хлебца</li><li>1 банан</li><li>30 мл клубничного джема</li><li>10 г сахарной пудры</li><li>10 г шоколада</li><li>10 г орехов</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Смешайте 150 г мягкого обезжиренного творога с 10 г сахарной пудры.</li><li>Разрежьте 3 цельнозерновых хлебца на 2 части.</li><li>Смажьте их клубничным джемом.</li><li>Сверху положите кружочки бананов и по ложке творога.</li><li>Сложите вместе. Посыпьте тертым шоколадом и орехами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат с обжаренными кукурузными хлебцами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-obsmazhenymy-kukurudzyani-hlibtsiamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат с обжаренными кукурузными хлебцами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Масло канолы</li><li>Чеснок</li><li>Корень имбиря</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi/vyd_113=kukurudziani-3">Кукурузные хлебцы</a></li><li>Консервированные ростки бамбука</li><li>Пекинская капуста</li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=soievyi">Соевый соус</a></li><li><a href="https://maudau.com.ua/ru/product/sous-soievyi-temnyi-superrior-pearl-river-bridge-150-ml">Темный соевой соус</a></li><li>Паста из черных бобов</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Шпинат</li><li>Бобовые проростки</li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=kunzhutna-2">Кунжутное масло</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Хрустящий салат с кукурузными хлебцами понравится веганам и не только. Хлопья придают блюду текстуру, а свежие овощи и нежный соус создают гармоничный вкус. Самое то для полезного ланча.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Салат с обжаренными кукурузными хлебцами</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3 столовые ложки масла канолы</li><li>3 зубчика чеснока</li><li>1 корень имбиря</li><li>100 г кукурузных хлебцев</li><li>300 г консервированных ростков бамбука</li><li>1 пучок пекинской капусты</li><li>соевый соус по вкусу</li><li>1 столовая ложка темного соевого соуса</li><li>1 столовая ложка пасты из черных бобов</li><li>1 чайная ложка сахара</li><li>150 г шпината</li><li>1 стакан бобовых проростков</li><li>1 чайная ложка кунжутного масла</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нагрейте 3 столовые ложки масла канолы в воке на среднем огне.</li><li>Добавьте 3 зубчика чеснока и 1 корень имбиря. Обжаривайте и непрерывно помешивайте до появления приятного аромата.</li><li>Добавьте 100 г кукурузных хлебцев, 300 г консервированных ростков бамбука и 1 пучок пекинской капусты.</li><li>Обжаривайте 5 минут до готовности.</li><li>Добавьте два вида соевого соуса, 1 столовую ложку пасты из черных бобов, 1 чайную ложку сахара. Тушите пару минут.</li><li>Добавьте 150 г шпината, 1 стакан бобовых проростков и 1 чайную ложку кунжутного масла.</li><li>Обжаривайте и непрерывно помешивайте пару минут до готовности.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Канапе с красной рыбой и соусом из авокадо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kanape-z-chervonoiu-ryboiu-ta-sousom-z-avokado-khlibci.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Канапе с красной рыбой и соусом из авокадо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Форель</li><li>Авокадо</li><li>Натуральный йогурт</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=vynohradnykh-kistochok">Масло из виноградных косточек</a></li><li><a href="https://maudau.com.ua/ru/category/olyvky-ta-maslyny">Маслины</a></li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Хлебцы</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Канапе с красной рыбой и авокадо — это вкусная изысканная закуска. Нежная рыба на хрустящем хлебце, дополненная кремовым авокадо-соусом, дарит гурманам небычное сочетание вкусов и текстур.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Канапе с красной рыбой и соусом из авокадо</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г форели</li><li>½ авокадо</li><li>4 ст. л. натурального йогурта</li><li>соль по вкусу</li><li>молотый черный перец по вкусу</li><li>1 ч. л. лимонного сока</li><li>1 ст. л. масла из виноградных косточек</li><li>5 маслин</li><li>3 хлебца</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Используйте вилку и разомните ½ очищенного авокадо.</li><li>Смешайте с 1 ч. л. лимонного сока, 1 ст. л. масла из виноградных косточек и 4 ст. л. натурального йогурта.</li><li>Добавьте соль и перец по вкусу, намажьте соус на хлебцы.</li><li>Нарежьте хлебцы и рыбу примерно одинаковыми кусочками.</li><li>Нанизывайте ингредиенты на зубочистку в таком порядке: хлебец (соусом вверх), кусочек форели, хлебец (соусом вниз) и половинка маслины.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бутерброд с сыром и томатами" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Buterbrod-z-syrom-ta-tomatamy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бутерброд с сыром и томатами</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновые хлебцы</a></li><li>Обезжиренный мягкий сыр</li><li>Помидор</li><li>Базилик</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Бутерброд с сыром и томатами — это легкая закуска, состоящая из хрустящего хлеба, обезжиренного нежного сыра и сочных ломтиков свежего помидора. Пригодится для быстрого перекуса или легкого завтрака.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Бутерброд с сыром и томатами</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 цельнозерновой хлебец</li><li>обезжиренный мягкий сыр по вкусу</li><li>1 помидор</li><li>базилик по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите 1 цельнозерновой хлебец и намажьте на него нежирный мягкий сыр.</li><li>Порежьте один помидор на дольки и выложите их поверх сыра.</li><li>Украсьте бутерброд базиликом или другой любимой зеленью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Салат с пекинской капустой и креветками" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salat-z-pekinskoiu-kapustoiu-ta-krevetkami.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Салат с пекинской капустой и креветками</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/sousy-maionez-hirchytsia-khrin">Майонез</a></li><li>Креветки</li><li><a href="https://maudau.com.ua/ru/category/ketchup">Кетчуп</a></li><li>Твердый сыр</li><li>Зеленое яблоко</li><li>Пекинская капуста</li><li>Огурец</li><li><a href="https://maudau.com.ua/ru/category/khlibtsi">Цельнозерновой хлебец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и освежающий салат с нежными креветками, хрустящей пекинской капустой и свежими яблоками, дополненный сыром и пикантным кетчупом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Салат с пекинской капустой и креветками</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>майонез по вкусу</li><li>400 г креветок</li><li>кетчуп по вкусу</li><li>50 г твердого сыра</li><li>1 зеленое яблоко</li><li>пекинская капуста по вкусу</li><li>1 огурец</li><li>1 цельнозерновой хлебец</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Сначала отварите 400 г креветок в слегка подсоленной воде до полной готовности, затем аккуратно очистите их от панцирей. Пекинскую капусту нарежьте тонкими полосками по вкусу.</li><li>Возьмите 1 зеленое яблоко, очистите от кожицы и нарежьте тонкими дольками или кубиками.</li><li>Огурец также нарежьте полукругами.</li><li>Натрите 50 г твердого сыра на крупной терке.</li><li>В большой миске аккуратно перемешайте все подготовленные ингредиенты.</li><li>Добавьте майонез и кетчуп по вкусу, равномерно распределяя их по всей массе.</li><li>Хлебец (1 шт.) разломайте на небольшие кусочки и подайте на отдельной тарелке либо выложите их вокруг салата.</li><li>Салат можно подавать сразу или слегка охладить перед подачей.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">340.7 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">7.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">22.9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">24.7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">3.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">36.8 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

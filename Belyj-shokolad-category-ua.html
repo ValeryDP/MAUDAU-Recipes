@@ -1,0 +1,999 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Білий шоколад — кондитерський виріб, який виготовляють із какао-олії, але без твердих частинок. Відсутність сухого какао-порошку надає ласощам м'якого смаку без гіркоти, кремової текстури та характерного кольору слонової кістки.
+                    Мінімальний вміст какао-олії — 20%.
+                </p>
+                <h2>Склад натурального білого шоколаду</h2>
+                <p>Базові компоненти:</p>
+                <ul>
+                    <li>какао-олія;</li>
+                    <li>сухе молоко;</li>
+                    <li>цукор.</li>
+                </ul>
+                <p>
+                    Іноді рецептуру доповнюють екстрактом ванілі. Такий продукт позиціюють як білий шоколад без добавок. У комерційних цілях також додають лецитин — природний емульгатор. У списку інгредієнтів також можна знайти консерванти, які
+                    подовжують термін придатності, і стабілізатори, що поліпшують текстуру. Ароматизатори підсилюють смак і аромат.
+                </p>
+                <h2>Як виготовляють білий шоколад</h2>
+                <p>
+                    Виробництво стартує з підготовки какао-бобів, які вирощують у Мексиці, Південній Америці, Африці. На фермах їх збирають і висушують. На заводі виробника какао-боби сортують, обсмажують і подрібнюють. Для виготовлення якісного білого
+                    шоколаду використовують м'яку серцевину, яку очищають від шкаралупи та перетворюють на грубу крупку.
+                </p>
+                <p>Потім какао-масу поміщають у пористий мішок і відправляють під прес. Його нагрівають до 55 ⁰C. Прес стискає пакет, який виступає ситом, розділяючи крупку на какао-олію і тверде борошно. Останнє подрібнюють до стану порошку.</p>
+                <p>Основою білого шоколаду виступає какао-олія — жир золотистого кольору. У рецептуру також вводять незбиране сухе молоко і цукор. Компоненти об'єднують у процесі конширування — повільного змішування за низьких температур.</p>
+                <p>Нарешті, ласощі темперують. Техніка передбачає регулярну зміну температур, під час якої солодощі набувають стабільної текстури.</p>
+                <p>Фінальний штрих — надання потрібної форми. На цьому етапі білий шоколад перетворюють на плитку. Прямокутні форми заповнюють рідкою масою, яку після застигання поміщають в індивідуальний пакет або фольгу, а потім — у пачку.</p>
+                <h3>Чим білий шоколад відрізняється від десертного</h3>
+                <p>Другий продукт, як правило, виготовляють із дешевших рослинних жирів, порівняно з натуральною какао-олією. Концентрація цукру знижена на користь какао-маси.</p>
+                <h3>Чим білий шоколад відрізняється від молочного</h3>
+                <p>
+                    Перший продукт не містить твердих частинок какао. У рецептуру також впроваджують додаткові компоненти на кшталт сухого молока. Саме тому на білий повітряний шоколад ціна вища, оскільки какао-олія коштує дорожче. Молочний шоколад
+                    містить олію і порошок. Це надає йому насиченого смаку та виразного аромату.
+                </p>
+                <h2>Асортимент білих шоколадок</h2>
+                <p>Різновиди:</p>
+                <ol>
+                    <li>Класичний. Традиційна версія, що становить основу асортименту кожного виробника. Цей варіант демонструє якість сировини та майстерність виробника, тому він домінує в портфоліо Lindt, Mir, E.Wedel.</li>
+                    <li>Пористий. Бульбашки — результат введення вуглекислого газу в процесі конширування. Добавка нешкідлива для здоров'я, зате білий пористий шоколад буквально тане в роті.</li>
+                    <li>З добавками. Ласощі з кокосовою стружкою, горіхами, шматочками сушених ягід або фруктів, драже. Кожна добавка вносить цікавий акцент, наприклад, апельсин надає кислинку, а драже — хрускіт.</li>
+                </ol>
+                <p>
+                    Білі шоколадки також виготовляють без цукру. Замість традиційного підсолоджувача використовують стевію, рідше — мальтит або еритрит. Виробники солодощів без глютену гарантують, що ласощі не містять рослинного білка, який негативно
+                    впливає на роботу тонкого кишківника.
+                </p>
+                <p>На органічний білий шоколад найвища вартість. Кожен із компонентів виростили і виготовили без застосування хімікатів. Наприклад, какао-боби не обробляють пестицидами, а молоко не містить антибіотиків.</p>
+                <h2>Куди можна додати білий шоколад</h2>
+                <p>
+                    Ласощі — не тільки смачний десерт. За бажання його можна додати в рецепт випічки, особливо печива, тістечок, тортів. Солодощі послужать основною для ганаша. Розтопіть повітряний білий шоколад, щоб приготувати ароматний гарячий напій
+                    або поливку для кексів, млинців, вафель, морозива. Для ароматизації киньте кубик у чашку з ранковою кавою або какао.
+                </p>
+                <h2>Білий шоколад: користь і шкода</h2>
+                <p>
+                    Корисні властивості ласощів пов'язують із какао-порошком, який природним чином містить кофеїн — психоактивний алкалоїд. Оскільки його не використовують під час виготовлення, солодощі не стимулюють ЦНС. Відповідно, білий шоколад
+                    можна купити людям, чутливим до кофеїну. Додавання сухого незбираного молока підвищує концентрацію кальцію та вітаміну B2.
+                </p>
+                <p>Білі шоколадки також не містять клітковину. Наголос на цукор і жири — прямий шлях до надмірної ваги і проблем із серцево-судинною системою, особливо при надмірному вживанні.</p>
+                <h2>Як вибрати хороший білий шоколад</h2>
+                <p>В інтернет-магазині MAUDAU представлена продукція від торгових марок з України, Німеччини, Італії, Швейцарії. Кожен варіант — якісний і смачний. Наприклад, шоколадка біла пориста — візитівка Millenium.</p>
+                <p>Якщо шукаєте унікальну крафтову продукцію, вибір — за Venchi. Рецептуру доповнили фундуком, фісташками, мигдалем. Бренд радить подачу з Prosecco, що дуже в дусі Італії.</p>
+                <p>Білий шоколад у картонній упаковці — гарне доповнення до презенту. Ласощі без зайвих добавок пропонує Zotter. Це оптимальний варіант для дітей.</p>
+                <h3>Шоколад білий: ціна в Україні</h3>
+                <p>
+                    Цінник визначають безліч чинників: від якості какао-олії та використаних добавок до особливостей виготовлення і сертифікації. Шоколад — повітряний, білий і пористий — можна купити за 34 грн. Плитку вагою 85 г пропонує Millenium.
+                    Варіант без добавок коштує 80–130 грн за 100 грамів.
+                </p>
+                <h2>Чому вигідно купити білий шоколад в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    На сторінці — тільки оригінальна продукція. Налагоджений імпорт відкриває доступ до новинок і лімітованих випусків. Приємний бонус для ласунів — акції та знижка на гуртову покупку. Замовити білий шоколад у Києві можна з кур'єрським
+                    доставленням або скористатися послугою самовивезення. Для відправлення в інше місто — виберіть одну з поштових служб.
+                </p>
+            </div>
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мокко з білим шоколадом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Mokko-z-bilym-shokoladom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мокко з білим шоколадом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li>Свіжозварена кава</li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li><a href="https://maudau.com.ua/product/korytsia-palychky-tm-akura-10-h">Палички кориці</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Мокко, або моккачино, — це гаряча кава з молоком і какао,або шоколадом. У цьому рецепті в напій додається білий шоколад. Така ароматна і ніжна кава безумовно сподобається ласунам.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мокко з білим шоколадом</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 мл молока</li><li>500 мл свіжозвареної кави</li><li>55 г білого шоколаду</li><li>1 паличка кориці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Підготуйте заздалегідь 500 мл кави, але так, щоб за час приготування вона не сильно охолола.</li><li>Налийте в сотейник 500 мл молока, додайте 55 г білого шоколаду, поламаного на шматочки, корицю і поставте на середній вогонь.</li><li>Варіть, помішуючи, доки шоколад повністю не розтане.</li><li>Влийте гарячу каву, перемішайте.</li><li>Дістаньте паличку кориці або ж залиште для краси подачі.</li><li>Розлийте мокко по чашках і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Глазур із білого шоколаду" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hlazur-iz-biloho-shokoladu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Глазур із білого шоколаду</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li><li><a href="https://maudau.com.ua/ru/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Напрочуд смачна і проста в приготуванні глазур із білого шоколаду. Чудова прикраса для будь-якого кондитерського виробу — від пампухів та еклерів до тортів і кексів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Глазур із білого шоколаду</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 ст. л. молока</li><li>175 г цукрової пудри</li><li>200 г білого шоколаду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розламайте і розтопіть на водяній бані 200 г білого шоколаду.</li><li>Додайте 1 ст. л. молока і 175 г цукрової пудри.</li><li>Помішуйте, поки не утвориться доволі щільна маса.</li><li>Долийте ще 1 ст. л. молока і збийте масу.</li><li>Готовою глазур'ю можна заливати кондитерські вироби.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кекси з білим шоколадом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Keksy-z-bilym-shokoladom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кекси з білим шоколадом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/category/oliia-i-otset/typ_210=olyvkova">Оливкова олія</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Куряче яйце</li><li><a href="https://maudau.com.ua/category/boroshno/vyd_101=pshenychne-3">Пшеничне борошно</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=rozpushuvach">Розпушувач</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кекси з білим шоколадом — це вишуканий десерт, який поєднує м'якість і легкість тіста з ніжною солодкістю білого шоколаду. Вони вирізняються насиченим вершковим смаком та ідеально підходять любителям солодощів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Кекси з білим шоколадом</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 мл молока</li><li>120 мл оливкової олії</li><li>2 ч. л. лимонного соку</li><li>1 куряче яйце</li><li>260 г пшеничного борошна</li><li>3 ч. л. розпушувача</li><li>100 г білого шоколаду</li><li>150 г цукру</li><li>дрібка солі</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У глибоку миску вбийте одне куряче яйце, з'єднайте зі 120 мл оливкової олії та 2 ч. л. лимонного соку, збийте міксером до однорідності.</li><li>Всипте до рідких інгредієнтів 150 г цукру, дрібку солі, 260 г пшеничного борошна і 3 ч. л. розпушувача. Добре перемішайте.</li><li>Додайте 250 мл молока і 100 г дрібно нарізаного білого шоколаду. Наповніть формочки для кексів тістом приблизно на ¾ висоти․</li><li>Розігрійте духовку до 170 градусів і випікайте 15–20 хвилин до золотистого кольору.</li><li>За бажанням остиглу випічку посипте цукровою пудрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Торт із білого шоколаду" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tort-iz-biloho-shokoladu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Торт із білого шоколаду</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li>Пісочне тісто</li><li>Вершки 35%</li><li>Куряче яйце</li><li>Малина</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Торт із білого шоколаду — це витончений десерт із ніжною текстурою та вершковим смаком. Крем на основі шоколаду надає ласощам особливої м'якості та аромату, а ягоди малини — приємної кислинки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Торт із білого шоколаду</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 г білого шоколаду</li><li>400 г пісочного тіста</li><li>600 мл вершків 35%</li><li>2 шт. курячих яйця</li><li>20 шт. малини</li><li>1 ст. л. цукрової пудри</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розкачайте 400 г готового пісочного тіста в тонкий пласт і викладіть його в глибоку форму для випічки.</li><li>Поставте в розігріту до 190 градусів духовку на 25 хвилин.</li><li>Дістаньте і дайте охолонути.</li><li>300 г білого шоколаду розламайте на дрібні шматочки, викладіть у каструлю, залийте 600 мл вершків 35%.</li><li>Нагрівайте на повільному вогні, постійно помішуючи, поки шоколад повністю не розтане.</li><li>Вінчиком збийте 2 курячих яйця і влийте в шоколадну масу.</li><li>Перелийте остиглу начинку в готову основу з тіста.</li><li>Поверніть у духовку приблизно на 35 хвилин за 190 градусів.</li><li>Прикрасьте остиглий торт ягідками малини і присипте зверху 1 ст. л. цукрової пудри.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лате з білим шоколадом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Late-z-bilym-shokoladom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лате з білим шоколадом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/kava/typ_86=melena">Мелена кава</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рецепт лате з шоколадом припаде до душі найдосвідченішим гурманам. Цей напій — найпростіший спосіб підсолодити собі життя. З білим шоколадом лате виходить ще смачнішим і цікавішим.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лате з білим шоколадом</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2½ ст. л. меленої кави</li><li>320 мл води</li><li>700 мл молока</li><li>120 г білого шоколаду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Насипте 2,5 ст. л. меленої кави у френч-прес і залийте 320 мл гарячої води.</li><li>Накрийте кришкою і залиште настоятися на 3-4 хвилини.</li><li>Вилийте 700 мл молока в сотейник і поставте на середній вогонь.</li><li>Доведіть до кипіння і додайте 120 г подрібненого білого шоколаду.</li><li>Перемішуйте 2 хвилини, поки шоколад не розтане.</li><li>Потім збийте до утворення густої піни і зніміть з вогню.</li><li>Розлийте каву по високих келихах.</li><li>Барною ложкою розкладіть пінку і налийте молоко.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Баварезе з білим шоколадом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bavareze-z-bilym-shokoladom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Баварезе з білим шоколадом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=zhelatyn">Желатин</a></li><li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li>Вершки 33%</li><li>Яєчний жовток</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=vanilin-2">Ванілін</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Баварезе — це ніжний освіжальний десерт із вершковим смаком, ароматом ванілі та нотками білого шоколаду. Неймовірно смачні ласощі, які захочеться приготувати не один раз!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Баварезе з білим шоколадом</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>8 г желатину</li><li>300 мл молока</li><li>100 г білого шоколаду</li><li>300 мл вершків 33%</li><li>3 шт. яєчних жовтків</li><li>ванілін до смаку</li><li>50 г цукру</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Замочіть 8 г желатину в холодній воді.</li><li>У 300 мл молока додайте трохи ваніліну, доведіть до кипіння, вимкніть і трохи остудіть.</li><li>Збийте 3 жовтки з 50 г цукру до отримання світло-жовтої піни.</li><li>Тонкою цівкою влийте в жовтки гаряче молоко, постійно помішуючи.</li><li>Цю суміш поставте на водяну баню на повільний вогонь і варіть, помішуючи, до легкого загустіння.</li><li>Вимкніть вогонь, додайте туди желатин і помішайте до його повного розчинення.</li><li>Подрібніть і розтопіть 100 г білого шоколаду.</li><li>Додайте його до яєчно-желатинової суміші та остудіть.</li><li>Збийте 300 мл 33% вершків і невеликими порціями введіть їх у шоколадну суміш, перемішуючи рухами знизу-вгору.</li><li>Вилийте суміш у формочки і приберіть у холодильник на кілька годин до застигання.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Трюфелі з білого шоколаду" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Triufeli-z-biloho-shokoladu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Трюфелі з білого шоколаду</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vershky">Вершки</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li>Масло</li><li>Яєчний жовток</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=funduk-5">Фундук</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Трюфелі з білого шоколаду — вишуканий десерт, який полюбиться як дорослим, так і дітям. Смак цих ласощів дасть змогу насолодитися моментом і створити атмосферу радості та задоволення.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Трюфелі з білого шоколаду</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 г вершків</li><li>200 г білого шоколаду</li><li>30 г масла</li><li>1 яєчний жовток</li><li>цукрова пудра до смаку</li><li>фундук до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розтопіть на водяній бані 200 г білого шоколаду.</li><li>Поступово додайте по 30 г вершків і масла.</li><li>Окремо збийте жовток і додайте його в суміш.</li><li>Поставте масу в холодильник.</li><li>Коли вона стане в'язкою, наче пластилін — зліпіть кульки та покладіть всередину по горішку.</li><li>Обваляйте ласощі в цукровій пудрі. Трюфелі готові!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Парфе з білим шоколадом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Parfe-z-bilym-shokoladom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Парфе з білим шоколадом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Яєчний жовток</li><li><a href="https://maudau.com.ua/category/chai-2/typ_83=matcha-2">Матча</a></li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li>Вершки 33%</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий і повітряний десерт парфе з білим шоколадом здивує своїм оригінальним смаком. Підкуповує той факт, що десерт готується дуже швидко — буквально 10–15 хвилин, а решту часу займає охолодження в холодильнику.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Парфе з білим шоколадом</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3 шт. яєчних жовтки</li><li>16 г матча</li><li>3 ст. л. цукрової пудри</li><li>100 г білого шоколаду</li><li>200 мл вершків 33%</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Поламайте на шматочки і розтопіть на водяній бані 100 г білого шоколаду.</li><li>Змішайте 16 г чаю матча з 3 ст. л. цукрової пудри і просійте зверху на 3 жовтки.</li><li>Збийте до пишної маси, потім додайте розтоплений шоколад і ще раз збийте, поки суміш не загусне.</li><li>Окремо збийте 200 мл вершків 33%, змішайте з жовтково-шоколадною масою і ще раз перемішайте.</li><li>Розкладіть масу по формах і приберіть у морозилку на ніч.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мигдальні цукерки в білому шоколаді" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Myhdalni-tsukerky-v-bilomu-shokoladi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мигдальні цукерки в білому шоколаді</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li><li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Мигдаль</a></li><li>Лимон</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Надзвичайно смачні, ніжні та не складні в приготуванні мигдальні цукерки в білому шоколаді. Цікаві за структурою ласощі виходять із мінімального набору інгредієнтів: білого шоколаду, подрібненого мигдалю та цукрової пудри.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мигдальні цукерки в білому шоколаді</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 ст. л. цукрової пудри</li><li>150 г білого шоколаду</li><li>200 г подрібненого бланшованого мигдалю</li><li>половина лимона</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте 200 г мигдалю, 1 ст. л. цукрової пудри, сік половини лимона і 50 г розтопленого шоколаду.</li><li>Притисніть руками, щоб вийшла щільна маса, сформуйте невеликі кульки.</li><li>По черзі занурте їх у 100 г розтопленого шоколаду, викладіть на деко, застелене харчовою плівкою, і приберіть у холодильник до застигання.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Трюфелі з йогурту та білого шоколаду" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Triufeli-z-yohurtu-ta-biloho-shokoladu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Трюфелі з йогурту та білого шоколаду</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/shokolad/vyd_shokoladu=bilyi-8">Білий шоколад</a></li><li>Натуральний йогурт</li><li>Полуниця</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Неймовірно красиві та смачні цукерки — трюфелі з йогурту та білого шоколаду з соковитою полуницею всередині. Вони прикрасять святковий стіл і стануть барвистим вишуканим десертом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Трюфелі з йогурту та білого шоколаду</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>110 г білого шоколаду</li><li>80 мл натурального йогурту</li><li>2 шт. полуниці</li><li>цукрова пудра до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розтопіть на водяній бані 110 г білого шоколаду.</li><li>Додайте 80 мл йогурту в розтоплений шоколад, перемішайте і остудіть суміш у холодильнику впродовж години.</li><li>Наріжте 2 шт. полуниці.</li><li>Зліпіть невеликі кульки з шоколадної маси.</li><li>У центр помістіть невелику частину полуниці, заліпіть шоколадною сумішшю частину надлому.</li><li>Обваляйте трюфелі в цукровій пудрі.</li><li>Остудіть їх впродовж години в холодильнику.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">539 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">5.9 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">32.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">59 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">1.3 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

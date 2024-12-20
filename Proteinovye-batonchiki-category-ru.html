@@ -1,0 +1,997 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Протеиновые батончики — вариант быстрого перекуса, предназначенный для обеспечения организма большим количеством белков. Например, для восстановления мышц после физических нагрузок. Протеин в батончик зачастую поступает из
+                    растительного источника — сои, орехов, бобовых.
+                </p>
+                <p>В состав также включают углеводы, жиры, клетчатку, витамины и минералы. При этом глютен и лактозу используют редко. Также нет искусственных красителей или ароматизаторов.</p>
+                <h3>Высокобелковые протеиновые батончики: очевидные плюсы</h3>
+                <p>
+                    Прежде всего — удобство. Это готовый к употреблению продукт. Его герметично упаковывают, что облегчает транспортировку, например, во время путешествий. Флоу-пак продлевает срок годности, поэтому продукт спокойно хранится 9–12
+                    месяцев, а это означает что коробку протеиновых батончиков можно купить с запасом во время распродажи.
+                </p>
+                <p>
+                    Второе преимущество — эффективное восстановление и наращивание мышц после активной тренировки. Продукт также быстро насыщает за счет содержания пищевых волокон, продлевая чувство сытости и снижая аппетит, что важно во время
+                    похудения.
+                </p>
+                <h3>Спортивные батончики: потенциальный вред для спортсменов</h3>
+                <p>
+                    Так разрешено маркировать продукцию, содержание протеина в которой составляет 20–30 г. В рецептуру также включают электролиты и аминокислоты с разветвленными боковыми цепями (BCAA). Такая комбинация питательных веществ способствует
+                    восстановлению энергии и гидратации. Однако батончики для спортсменов советуют далеко не все. Причина — в:
+                </p>
+                <ol>
+                    <li>Расстройствах ЖКТ. Переизбыток протеинов в организме нередко приводит к вздутию и пищеварительному дискомфорту. Рекомендованная дневная доза — 0,8 г белка на один килограмм массы тела.</li>
+                    <li>Чрезмерной калорийности. Без адекватного расхода энергии калории превращаются в лишние килограммы.</li>
+                    <li>
+                        Высоком содержании сахара. Батончики для спорта нередко включают сахарозу и глюкозу. Это вызывает резкие скачки сахара в крови, что негативно сказывается на спортивных результатах. Поэтому в перерывах между состязаниями советуют
+                        отдавать предпочтение орехам и сухофруктам.
+                    </li>
+                </ol>
+                <p>
+                    Дешевые протеиновые батончики нередко изготавливают с добавлением пальмового и рапсового масел. Они бедны по содержанию полиненасыщенных жирных кислот — омеги-3 и омеги-6, зато приводят к набору веса из-за высоких концентраций
+                    насыщенных.
+                </p>
+                <h2>Как изготавливают белковые батончики</h2>
+                <p>Этапы:</p>
+                <ul>
+                    <li>
+                        Подготовка сырья. Как и в спортивном питании, основу протеиновых батончиков составляет белковый порошок. Далее рецептуру обогащают углеводами, жирами, клетчаткой. Например, натуральные протеиновые батончики готовят с добавлением
+                        сухофруктов, орехов, семян.
+                    </li>
+                    <li>Смешивание. На этом этапе компоненты взвешивают и смешивают. На выходе получают однородную массу.</li>
+                    <li>Формирование. Продукт выпускают в форме прямоугольников. Для этого тесто нагревают, а потом используют метод прессования, прокатки или экструзии.</li>
+                    <li>Выпекание. Сформированный продукт помещают на конвейер. Его запекают, чтобы придать желаемую текстуру.</li>
+                    <li>Покрытие. Спортивные шоколадные батончики покрывают глазурью. Последнюю готовят на основе белого, молочного или темного шоколада.</li>
+                </ul>
+                <p>Наконец, протеиновые батончики фасуют по упаковкам. Этот этап проходит на автоматизированных линиях.</p>
+                <h2>Разновидности протеиновых батончиков</h2>
+                <p>Основу ассортимента составляет стандартный снэк со сбалансированным количеством белков, углеводов и жиров. Благодаря множеству вкусовых добавок фитнес-батончики можно купить под любой запрос.</p>
+                <p>Вторая категория — лакомства без сахара. Вместо привычного подсластителя — стевия или эритрит.</p>
+                <p>
+                    Особого внимания заслуживают батончики для тренировок с витаминами. Они содержат комбинацию витаминов A, B, C и E, а также важные минералы: калий, кальций, магний. Добавка не только улучшает спортивные показатели, но и положительно
+                    влияет на общее состояние здоровья.
+                </p>
+                <h3>Отличия от энергетических батончиков</h3>
+                <p>В продуктах, нацеленных на быстрое восстановление энергии, упор сделан на углеводы, а не белки. Количество последних — 5–10 г. Углеводы поступают из быстроусвояемых источников вроде белого сахара или кукурузного сиропа.</p>
+                <p>Энергетические батончики для спортсменов пригодятся во время тренировки выносливости. Их также употребляют между подходами при жиме штанги. Несмотря на рекламу, такой вариант перекуса не поможет во время умственных нагрузок.</p>
+                <h2>Рекомендации по употреблению батончиков с белком</h2>
+                <p>
+                    Съешьте снэк до или после тренировки. Его также можно использовать как перекус в перерыве между работой или учебой. Закажите несколько протеиновых батончиков по акции, чтобы они всегда были под рукой во время незапланированной
+                    прогулки или поездки. Ограничьте дневную порцию 1–2 штуками.
+                </p>
+                <h2>Как выбрать питательный батончик под разные потребности</h2>
+                <p>
+                    Для снижения веса ищите низкокалорийный продукт с минимальным количеством простых углеводов, особенно сахара. Оптимальное содержание клетчатки — 5 г. Купить протеиновые батончики для похудения по конкурентной цене можно от Go On
+                    Nutrition.
+                </p>
+                <p>Для набора веса наоборот выбирайте высококалорийный вариант на основе семян и орехов. Такую продукцию предлагает Seitenbacher. В 50 граммах снэка — 225 калорий.</p>
+                <p>Энергетические батончики стоит купить, когда много работаете физически. Однако предварительно проверьте источник углеводов.</p>
+                <h2>Ассортимент протеиновых батончиков в MAUDAU</h2>
+                <p>Акцент — на полезных лакомствах от украинских производителей. Также можно заказать продукцию, выпущенную в Германии, Польше, Латвии, Румынии. Если ищете набор протеиновых батончиков, просмотрите предложения от Fizzy.</p>
+                <p>Внутри может быть все что угодно: от клубники и апельсинов до кофе и карамели. Не забывайте о потенциальных аллергенах, особенно когда выбираете вариант для ребенка.</p>
+                <h3>Сколько стоит протеиновый батончик</h3>
+                <p>Цена колеблется в пределах 16–549 грн. Во многом она зависит от состава и выбранного веса. Выгоднее всего — заказать протеиновые батончики в коробке. Например, комплект из 10 штук от Fizzy стоит 535 грн.</p>
+                <h2>Почему выгодно купить протеиновые батончики в интернет-магазине MAUDAU</h2>
+                <p>
+                    Ассортимент — на 100% оригинальный. Доставка возможна курьером по Киеву, Днепру и Львову. В тех же городах предусмотрен самовывоз из супермаркетов «Сільпо». Снэки можно купить поштучно или оптом — в наборах. Последний вариант
+                    снижает стоимость протеиновых батончиков, как и заказ по акции.
+                </p>
+            </div>
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Протеиновые энергетические шарики" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Proteinovi-enerhetychni-kulky.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Протеиновые энергетические шарики</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновые батончики</a></li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty">Ореховая паста</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/yizha-shvydkoho-pryhotuvannia/typ_212=plastivtsi">Овсяные хлопья</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty">Орехи</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Питательный перекус, который сочетает пользу и насыщенный вкус. Удобная форма позволяет брать шарики с собой в дорогу, а сбалансированный состав поддерживает энергию и помогает восстановиться после активной деятельности.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Протеиновые энергетические шарики</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 шт. протеиновых батончиков (любого вкуса)</li><li>1/2 чашки ореховой пасты</li><li>1/4 чашки меда</li><li>1 чашка овсяных хлопьев</li><li>1/4 чашки измельченных орехов (по желанию)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте два протеиновых батончика небольшими кусочками или измельчите в блендере до крошки.</li><li>В большой миске соедините немного ореховой пасты, 1/4 чашки меда и крошку батончиков.</li><li>Добавьте чашку овсяных хлопьев и, по желанию, немного измельченных орехов. Перемешайте до получения однородной текстуры.</li><li>Из полученной массы скатайте небольшие шарики, плотно прижимая смесь, чтобы она держала форму.</li><li>Разместите шарики на подносе и поставьте в холодильник на 30–40 минут для застывания.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Протеиновый йогуртовый десерт" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Proteinovyi-yohurtovyi-desert.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Протеиновый йогуртовый десерт</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновый батончик</a></li><li>Греческий йогурт</li><li>Ягоды</li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нежное лакомство с высоким содержанием белка идеально подходит для легкого перекуса или завершения трапезы. Сочетание воздушной текстуры и натуральных вкусов приносит удовольствие, насыщая организм полезными элементами без лишних калорий.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Протеиновый йогуртовый десерт</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 шт. протеиновый батончик (любого вкуса)</li><li>1 чашка греческого йогурта</li><li>1/4 чашки ягод (клубника, черника, малина и т.д.)</li><li>1 ст. л. меда (по желанию)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разделите протеиновый батончик на небольшие кусочки или измельчите в крошку для удобного смешивания.</li><li>В чашу или стакан выложите слой греческого йогурта, добавьте половину ягод и кусочки батончика.</li><li>При желании полейте медом для дополнительной сладости.</li><li>Снова выложите йогурт, оставшиеся ягоды и протеиновую крошку.</li><li>По желанию украсьте сверху свежими ягодами или орехами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Протеиновые батончики в качестве закуски" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Proteinovi-batonchyky-yak-zakuska.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Протеиновые батончики в качестве закуски</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновые батончики</a></li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Миндаль</a></li><li><a href="https://maudau.com.ua/ru/category/sukhofrukty/vyd_106=rodzynky-4">Изюм</a></li><li><a href="https://maudau.com.ua/ru/category/nasinnia-2/typ_265=soniashnyku">Семена подсолнечника</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий перекус, который обеспечит заряд энергии и поддержит активность в течение дня. Сбалансированное сочетание белков и углеводов делает его идеальным выбором для восстановления сил после тренировки или в пути.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Протеиновые батончики в качестве закуски</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 шт. протеиновых батончика (любого вкуса)</li><li>1/2 чашки миндаля (или других орехов)</li><li>1/4 чашки изюма (или кураги)</li><li>1/4 чашки семян подсолнечника (или тыквы)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте два протеиновых батончика на небольшие ломтики.</li><li>Измельчите 1/4 стакана изюма, 1/4 чашки семян подсолнечника и немного миндаля, оставив небольшие кусочки для текстуры.</li><li>Соедините в миске кусочки батончиков, орехи, изюм и семена, перемешайте до равномерного распределения.</li><li>Из полученной массы сформируйте прямоугольные блоки или шарики.</li><li>Поместите заготовки в холодильник на 30-60 минут для стабилизации.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шоколадные конфеты с протеином" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shokoladni-tsukerky-z-proteinom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шоколадные конфеты с протеином</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновые батончики</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/sukhofrukty/vyd_106=finik-3">Финики</a></li><li>Протеиновая арахисовая паста с шоколадом</li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=arakhisova">Арахисовая паста</a></li><li><a href="https://maudau.com.ua/ru/product/protein-myprotein-vegan-protein-blend-1000-g-chocolate">Vegan Blend со вкусом шоколада</a></li><li><a href="https://maudau.com.ua/ru/category/kakao-hariachyi-shokolad-tsykorii">Какао</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=kakao-16">Какао-масло</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Полезное лакомство с насыщенным какао-вкусом и мягкой текстурой. Идеально подходит тем, кто ищет сочетание удовольствия и пользы. Богатый белками десерт поддерживает энергию и дарит чувство сытости, дополняя рацион необходимыми элементами без лишнего сахара.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Шоколадные конфеты с протеином</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 г протеиновых шоколадных батончиков (или протеинового шоколада)</li><li>150 мл воды</li><li>120 г фиников</li><li>120 г протеиновой арахисовой пасты с шоколадом</li><li>50 г арахисовой пасты</li><li>30 г Vegan Blend со вкусом шоколада</li><li>20 г какао</li><li>20 г какао-масла</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Залейте 120 г фиников 150 мл горячей воды на 10 минут, затем слейте лишнюю жидкость и измельчите в пасту с помощью блендера.</li><li>В небольшой кастрюле на водяной бане растопите 200 г протеиновых шоколадных батончиков и 20 г какао-масла, помешивая до получения однородной массы.</li><li>В большой миске соедините финиковую смесь, растопленные батончики и 120 г протеиновой ореховой пасты с шоколадом.</li><li>Добавьте 50 г арахисовой пасты, 30 г Vegan Blend и 20 г какао-порошка.</li><li>Хорошо перемешайте до однородной текстуры.</li><li>Скатайте из полученной массы небольшие шарики или придайте любую желаемую форму.</li><li>Разместите конфеты на подносе, застеленном пергаментом, и отправьте в холодильник на пару часов.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Протеиновые шарики из теста для печенья" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Proteinovi-kulky-z-tista-dlia-pechyva.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Протеиновые шарики из теста для печенья</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=arakhisova">Арахисовая паста</a></li><li><a href="https://maudau.com.ua/ru/category/yizha-shvydkoho-pryhotuvannia/typ_212=plastivtsi">Овсяные хлопья</a></li><li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновые батончики</a></li><li><a href="https://maudau.com.ua/ru/category/protein/smak_39=vanil-35">Ванильный протеин</a></li><li><a href="https://maudau.com.ua/ru/product/moloko-2-5-ultrapast-nizhynske-1l-z-kryshkoiu">Полужирное молоко</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2">Кленовый сироп</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Энергетический десерт, сочетающий легкость и насыщенность вкуса. Нежная структура с мягким ореховым акцентом и нотками кленового сиропа идеально подходит для быстрого перекуса. Натуральный состав обеспечивает полезность, а компактная форма делает угощение удобным для любых условий.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Протеиновые шарики из теста для печенья</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г арахисовой пасты (мягкой)</li><li>70 г овсяных хлопьев</li><li>50 г протеиновых батончиков (или шоколадных конфет)</li><li>45 г ванильного протеина</li><li>30–40 мл полужирного молока</li><li>30 мл кленового сиропа</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В большой миске соедините 70 г овсяных хлопьев, 45 г ванильного протеина и 50 г батончиков.</li><li>Введите 100 г арахисовой пасты (мягкой) и 30 мл кленового сиропа, тщательно перемешивая, чтобы масса стала однородной.</li><li>Постепенно влейте 30–40 мл полужирного молока, добиваясь пластичной текстуры, удобной для формирования шариков.</li><li>Скатайте небольшие порции теста в ровные шарики размером с грецкий орех.</li><li>Поместите готовые изделия в холодильник на 30 минут для застывания.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сладкая каша из булгура, какао и банана" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Solodka-kasha-iz-bulhuru-kakao-ta-bananu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сладкая каша из булгура, какао и банана</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/bulhur">Булгур</a></li><li><a href="https://maudau.com.ua/ru/category/protein/smak_39=vanil-35">Ванильный протеин</a></li><li><a href="https://maudau.com.ua/ru/category/superfudy/osnova_11=chia-2">Семена чиа</a></li><li><a href="https://maudau.com.ua/ru/category/kakao-hariachyi-shokolad-tsykorii">Какао-порошок</a></li><li>Банан</li><li><a href="https://maudau.com.ua/ru/category/horikhy-ta-sukhofrukty/typ_267=funduk-5">Фундук</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновый батончик</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сладкая каша из булгура, какао и банана — питательное блюдо с насыщенным вкусом. Текстура крупы хорошо сочетается с шоколадным порошком, а фрукт придает легкую сладость. Идеально подходит для завтрака, заряжая энергией и даря приятные ощущения.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Сладкая каша из булгура, какао и банана</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 мл молока (нежирного)</li><li>150 г булгура</li><li>30 г ванильного протеина</li><li>10 г семян чиа</li><li>2 ст. л. какао-порошка</li><li>1 банан</li><li>Ингредиенты для украшения:</li><li>10 г фундука</li><li>1 банан</li><li>1 ст. л. меда</li><li>1 протеиновый батончик</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В кастрюле доведите 500 мл молока (нежирного) до кипения, добавьте 150 г булгура и варите на среднем огне, периодически помешивая, около 20 минут до готовности.</li><li>Вмешайте 30 г ванильного протеина, 2 ст. л. какао-порошка и 10 г семян чиа. Хорошо перемешайте, готовьте еще 2-3 минуты, чтобы масса стала однородной.</li><li>Снимите с огня и дайте немного остыть.</li><li>Нарежьте банан и добавьте в кашу, перемешайте.</li><li>Для украшения порежьте банан, посыпьте фундуком и полейте медом.</li><li>По желанию добавьте кусочки протеинового батончика.</li><li>Подавайте кашу горячей или теплой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Белковый чиа-пудинг с шоколадным вкусом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bilkovyi-chia-pudynh-z-shokoladnym-smakom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Белковый чиа-пудинг с шоколадным вкусом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li>Нежирный кисломолочный творог</li><li><a href="https://maudau.com.ua/ru/product/shokolad-chornyi-vivani-feine-bitter-85-kakao-orhanichnyi-100-h">Черный 85% шоколад</a></li><li><a href="https://maudau.com.ua/ru/category/protein/smak_39=shokolad-35">Шоколадный протеин</a></li><li><a href="https://maudau.com.ua/ru/category/superfudy/osnova_11=chia-2">Семена чиа</a></li><li>Малина</li><li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновый батончик</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Белковый чиа-пудинг с шоколадным вкусом — полезный и сытный десерт, сочетающий насыщенный вкус какао и текстуру семян. Он отлично подходит для завтрака или перекуса, обеспечивая организм необходимыми питательными веществами и энергией.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Белковый чиа-пудинг с шоколадным вкусом</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>400 мл молока (нежирного)</li><li>150 г нежирного кисломолочного творога</li><li>60 г черного 85% шоколада</li><li>30 г шоколадного протеина</li><li>5 ст. л. семян чиа</li><li>Для декорирования:</li><li>100 г малины</li><li>50 г кисломолочного творога</li><li>10 г протеинового батончика</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Растопите 60 г черного 85% шоколада на водяной бане или в микроволновке.</li><li>В блендере смешайте 400 мл молока, 150 г нежирного кисломолочного творога и 30 г шоколадного протеина.</li><li>Добавьте растопленный шоколад и взбейте до однородной массы.</li><li>Положите 5 ст. л. семян чиа и хорошо перемешайте.</li><li>Перелейте смесь в банку или миску, накройте крышкой или пленкой.</li><li>Поставьте в холодильник минимум на 4 часа или на ночь, чтобы чиа впитали жидкость и загустели.</li><li>Для декора смешайте 50 г кисломолочного творога с 100 г малины. Выложите на пудинг, добавьте кусочки протеинового батончика.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сливочно-бананово-арахисовый смузи" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vershkovo-bananovo-arakhisovyi-smuzi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сливочно-бананово-арахисовый смузи</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li>Арахисовый белок</li><li>Арахисовое масло с карамельным белым шоколадом</li><li><a href="https://maudau.com.ua/ru/category/sublimovani-produkty/frukty=banan-32">Сублимированные бананы</a></li><li><a href="https://health.maudau.com.ua/ru/product/syrop-shokoladnyi-bez-tsukru-biotech-zero-syrup-chocolate-320-ml">Шоколадный Zero Syrop</a></li><li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновый батончик</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сливочно-бананово-арахисовый смузи — насыщенный, питательный напиток с кремовой текстурой. Сочетание сладкого фрукта, орехового привкуса и кремообразной основы делает его идеальным блюдом для завтрака или перекуса после тренировки. Он дарит энергию, насыщая вкусом и полезными веществами.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Сливочно-бананово-арахисовый смузи</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 мл молока (нежирного)</li><li>30 г арахисового белка</li><li>10 г арахисового масла с карамельным белым шоколадом</li><li>10 г сублимированных бананов</li><li>10 г шоколадного Zero Syrop</li><li>Протеиновый батончик (или шоколадные дропсы) по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В блендер добавьте 200 мл молока (нежирного), 30 г орехового белка и 10 г арахисового масла с карамельным белым шоколадом.</li><li>Положите 10 г сублимированных бананов и 10 г шоколадного Zero Syrop.</li><li>Включите блендер на высокую скорость, чтобы смесь стала однородной и кремовой.</li><li>При желании добавьте протеиновый батончик или шоколадные дропсы и снова взбейте.</li><li>Перелейте смузи в стакан и подавайте сразу, наслаждаясь вкусом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кокосовий торт з йогуртовим кремом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kokosovyi-tort-iz-yohurtovym-kremom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кокосовий торт з йогуртовим кремом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/yizha-shvydkoho-pryhotuvannia/typ_212=plastivtsi">Овсяные хлопья</a></li><li><a href="https://maudau.com.ua/ru/category/roslynne-moloko/vyd_123=kokosove-2">Кокосовое молоко</a></li><li>Полуобезжиренное молоко</li><li><a href="https://maudau.com.ua/ru/category/protein">Протеин</a></li><li><a href="https://maudau.com.ua/ru/category/chipsy/typ_296=kokosovi-3">Кокосовые чипсы</a></li><li>Яйца</li><li>Банан</li><li>Кокосовые дропсы</li><li>Греческий йогурт 0% жирности</li><li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновый батончик</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кокосовый торт с йогуртовым кремом — нежное, воздушное лакомство с приятным ароматом орехов. Мягкие коржи сочетаются с бананом, создавая идеальную гармонию вкусов. Этот десерт подойдет любителям легких, не приторных сладостей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Кокосовий торт з йогуртовим кремом</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>180 г овсяных хлопьев</li><li>150 г кокосового молока</li><li>100 г полуобезжиренного молока</li><li>60 г протеина (неароматизированного или кокосового)</li><li>10 г кокосовых чипсов</li><li>2 яйца</li><li>1 банан</li><li>Кокосовые дропсы по вкусу</li><li>Для декорирования:</li><li>140 г греческого йогурта 0% жирности</li><li>10 г кокосовых чипсов</li><li>5 г натертого протеинового батончика (или черного шоколада)</li><li>Кокосовые дропсы по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разогрейте духовку до 180°C и подготовьте форму для выпечки, выстелив ее бумагой.</li><li>В блендере или миске соедините 180 г овсяных хлопьев, 150 г кокосового молока и 100 г полуобезжиренного молока.</li><li>Добавьте 60 г протеина, 2 яйца, банан и 10 г кокосовых чипсов. Взбейте до однородной массы.</li><li>Перелейте смесь в подготовленную форму, добавьте кокосовые дропсы по вкусу.</li><li>Выпекайте в духовке 25–30 минут, пока торт не станет золотистым и не пройдет тест на готовность (вставьте зубочистку — она должна быть сухой).</li><li>Оставьте десерт остывать.</li><li>Для крема смешайте 140 г нежирного греческого йогурта с 10 г кокосовых чипсов и 5 г натертого протеинового батончика (или черным шоколадом).</li><li>Когда торт остынет, покройте его кремом и украсьте кокосовыми дропсами.</li><li>Подавайте десерт в охлажденном виде.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Протеиновые вафли" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Proteinovi-vafli.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Протеиновые вафли</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Спелый банан</li><li><a href="https://maudau.com.ua/ru/category/protein/smak_39=vanil-35">Ванильный протеин</a></li><li><a href="https://maudau.com.ua/ru/category/yizha-shvydkoho-pryhotuvannia/typ_212=plastivtsi">Овсяные хлопья</a></li><li>Яйцо</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=rozpushuvach">Разрыхлитель</a></li><li><a href="https://maudau.com.ua/ru/category/oliia-i-otset/typ_210=ripakova">Рапсовое масло</a></li><li>Греческий йогурт</li><li>Свежие фрукты</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=kokos-9">Кокосовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/batonchyky/typ_294=proteinovi">Протеиновый батончик</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Протеиновые вафли — вкусное и питательное блюдо, идеально подходящее для завтрака или перекуса. Они содержат высококачественные белки, обеспечивающие длительное чувство сытости. Легко готовятся, при этом остаются мягкими и воздушными, с возможностью добавить разнообразные топпинги.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Протеиновые вафли</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 г (1 шт) спелого банана</li><li>30 г (1 мерная ложка) ванильного протеина (порошка)</li><li>20 г овсяных хлопьев</li><li>1 яйцо</li><li>½ ч. л. разрыхлителя</li><li>Рапсовое масло (в форме спрея для удобства)</li><li>Для подачи:</li><li>Греческий йогурт</li><li>Свежие фрукты</li><li>Кокосовый сироп</li><li>Тертый протеиновый батончик</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разомните 100 г банана в миске до получения пюре.</li><li>Добавьте яйцо, 30 г (1 мерная ложка) ванильного протеина, 20 г овсяных хлопьев и ½ ч. л. разрыхлителя. Хорошо перемешайте до однородной массы.</li><li>Разогрейте вафельницу и слегка смажьте ее рапсовым маслом.</li><li>Вылейте тесто в форму и готовьте 5 минут, пока вафли не станут золотистыми.</li><li>Подавайте лакомство с греческим йогуртом, свежими фруктами, кокосовым сиропом и тертым протеиновым батончиком.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">354 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">34 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">15.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">15.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">34.8 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

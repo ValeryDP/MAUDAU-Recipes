@@ -1,0 +1,994 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Вино изабелла — напиток, который производят на основе одноименного винограда. Это гибрид сортов Vitis labrusca и Vitis vinifera, специально выведенный в 1816 году. Его создание приписывают Изабелле Гиббс из Южной Каролины (США).</p>
+                <p>
+                    Виноград ценят за универсальность, выносливость и устойчивость к вредителям, включая филлоксеру. Ягоды не требуют особого ухода, что минимизирует расходы при изготовлении. Соответственно, изабелла — вино, на которое цена доступнее,
+                    по сравнению с другими вариантами.
+                </p>
+                <p>Виноград повсеместно выращивают в Восточной Европе и некоторых регионах Южной Америки. У ягод темно-фиолетовая кожица. Внутри — слизистая мякоть. Сырой виноград характеризует сладкий вкус, но с терпкими нюансами в конце.</p>
+                <p>
+                    Вино Isabella окутывает интенсивным ароматом клубники. Этот винный дескриптор называют «лисьим» — он характерен для напитков, произведенных из Vitis labrusca, содержащих метилантранилат. Во вкусе также присутствуют нотки черной
+                    смородины. Завершают композицию аккорды земли и мускуса.
+                </p>
+                <h2>Как производят вино из винограда «изабелла»</h2>
+                <p>
+                    В ходе изготовления применяют стандартную технологию, но с некоторыми важными изменениями. Например, сорт отличается высокой кислотностью и низким содержанием танинов, что влияет на брожение и выдержку. Виноделам также приходится
+                    осторожно обращаться с виноградом, чтобы сбалансировать «лисий» аромат, а не вывести его на первый план. Поэтому производство вина изабелла выглядит так:
+                </p>
+                <ol>
+                    <li>Сбор ягод. Виноград собирают после полного созревания. В прохладных регионах это происходит позже, чем в теплых.</li>
+                    <li>
+                        Гребнеотделение и дробление. Ягоды давят, выпуская сок. Поскольку мякоть напоминает желатин, это делают осторожно. Мацерация, то есть настаивание сока на кожице и косточках, занимает от нескольких дней до недели. Это
+                        способствует переходу органических соединений из внешней оболочки в сок.
+                    </li>
+                    <li>
+                        Брожение. Вино из винограда «изабелла» производят с применением культивируемых штаммов дрожжей. Они поглощают сахар, взамен выделяя спирт и тепло. Чтобы сохранить цветочно-фруктовый шлейф, температуру поддерживают на уровне
+                        +12–18 °C. Ферментация длится 1–3 недели в зависимости от стиля — дольше для полусладких вин и короче для десертных.
+                    </li>
+                    <li>Прессование. Далее полупрозрачную жидкость отделяют от кожицы и семян. Чтобы смягчить кислинку, некоторые виноделы прибегают к яблочно-молочному брожению.</li>
+                    <li>Выдержка. Вино Isabella, несмотря на яркий красный цвет, редко выдерживают в дубе. Зачастую его помещают в емкости из нержавеющей стали, что сохраняет свежесть.</li>
+                </ol>
+                <p>
+                    При необходимости проводят купажирование, то есть смешивание вин из разных партий, и подслащивание. Следующий этап — фильтрация и осаждение. Наконец, напиток отправляют на розлив, но перед этим его проверяют в лабораторных условиях.
+                </p>
+                <h2>Как и с чем пить вино Isabella</h2>
+                <p>Уникальные характеристики, включая среднее тело и яркую фруктовую нотку, делают напиток подходящим вариантом для многих блюд:</p>
+                <ul>
+                    <li>мясо: курица, индейка, кролик, нежирная свинина;</li>
+                    <li>морепродукты: креветки на гриле, рулетики из тунца, копченый лосось;</li>
+                    <li>сыры: гауда, чеддер, хаварти, бри, камамбер, стилтон.</li>
+                </ul>
+                <p>
+                    Если решили подать салат, выбирайте рецепт легких холодных блюд на основе листовой зелени, мягких сыров, орехов. Сладкое вино Isabella можно подать не только как замену десерту, но и сопровождение к ягодному тарту, панна-котте,
+                    клубнике в шоколаде. Оно также гармонично дополнит канапе, брускетты, суши. Чтобы избежать горечи, откажитесь от жирных блюд по типу пасты под сливочно-грибным соусом.
+                </p>
+                <p>Вино изабелла советуют подавать при +8–12 °C. Используйте стандартный бокал с широкой чашей. Держите его за ножку, чтобы избежать нагревания от рук.</p>
+                <p>Хотя красные вина часто выигрывают от декантации, для этого напитка она не нужна. Исключение — выдержанные позиции.</p>
+                <h2>Как выбрать вино изабелла</h2>
+                <p>
+                    Прежде всего, важно учитывать, что напиток выпускают в разных стилях. Классика жанра — красное вино. Это чистейшее выражение фруктово-землистых нюансов винограда «изабелла». Розовая версия практически не встречается на рынке. Что
+                    касается содержания сахара, то вино Isabella доступно в таких вариантах:
+                </p>
+                <ol>
+                    <li>Полусладкое. Количество остаточного сахара — 10–50 г/л. Это подчеркивает фруктовую составляющую.</li>
+                    <li>
+                        Сладкое. Содержание сахара превышает 50 г/л. Десертное вино производят намеренно — как замену десерту. Виноград собирают гораздо позже, а иногда его дополнительно сушат, что повышает концентрацию естественного сахара в составе.
+                    </li>
+                    <li>Крепленое. Изабелла — вино, купить которое можно в крепленом варианте, хотя официально оно к таковым не принадлежит. Такой напиток доступен в ассортименте «Коблево». Процент алкоголя повышен до 17.</li>
+                </ol>
+                <p>Стандартная крепость составляет 9–12% — в зависимости от места изготовления и методов виноделия.</p>
+                <p>
+                    Если ищете вино Isabella на подарок, обратите внимание на предложения от Bostavan и Alianta Vin. По доступной цене можно купить напиток, разлитый по изысканным стеклянным бутылкам в виде кувшина или графина. Для отдыха на природе
+                    выбирайте эргономичный Tetra Pack.
+                </p>
+                <h3>Сколько стоит вино изабелла</h3>
+                <p>
+                    Цена стартует от 49 грн — именно столько стоит напиток в тетрапаке от «Повна Чарка». В среднем за бутылку 0,75 л нужно заплатить 125–150 грн. Стоимость доступная, по сравнению с другими красными винами, что объясняется высокой
+                    урожайностью и легкостью при выращивании винограда.
+                </p>
+                <h2>Почему выгодно купить вино Isabella в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый товар — оригинален. Несмотря на конкурентную цену, она снижается при заказе оптом — от трех штук. Список акционных предложений регулярно обновляют. Доставка возможна курьером по Киеву и пригороду, Днепру и Львову. В этих же
+                    городах предусмотрен самовывоз из супермаркетов «Сільпо». Для покупки в других населенных пунктах воспользуйтесь услугами почтовых служб — «Укрпочты» или «Новой Почты». Заказывайте на определенную сумму — и доставку оплатит маркет
+                    алкогольных штук MAUDAU.
+                </p>
+            </div>
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кармен" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Karmen.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кармен</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-bostavan-isabella-chervone-napivsolodke-12-1-l">Красное полусладкое вино Изабелла</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/kolir_vyna=rozheve">Розовое шампанское</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Изысканный коктейль с ярким характером, сочетающий глубокие оттенки вина, цитрусовую сладость и игристые акценты. Напиток, пробуждающий страсть, вдохновляющий атмосферу праздника и подчеркивающий утонченность момента.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Кармен</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>70 мл красного полусладкого вина Изабелла</li><li>30 мл розового шампанского</li><li>50 мл апельсинового сока</li><li>1 апельсин</li><li>1 ч. л сахара (или меда)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В небольшой кастрюле подогрейте 50 мл апельсинового сока с 1 ч. л сахара (или меда), пока подсластитель полностью не растворится. Не доводите до кипения.</li><li>Добавьте 70 мл красного полусладкого вина Изабелла.</li><li>Продолжайте нагревать на слабом огне, чтобы напиток стал горячим, но не закипал.</li><li>Снимите с огня, выжмите сок половины апельсина в смесь, перемешайте.</li><li>Разлейте напиток в бокалы, оставив немного места для игристого.</li><li>Долейте розовое шампанское в каждый бокал, аккуратно перемешайте.</li><li>Украсьте напиток кружочками апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Грог из рома и красного вина с гранатовым соком" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hroh-iz-romu-ta-chervonoho-vyna-z-hranatovym-sokom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Грог из рома и красного вина с гранатовым соком</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi">Темный ром</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-alianta-vin-casa-veche-isabella-chervone-napivsolodke-10-12-15-l">Красное полусладкое вино Изабелла</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hranat-8">Гранатовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Корица</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Согревающий коктейль с глубоким ароматом, где сочетаются насыщенные нотки рома, терпкость красного вина и освежающая кислинка граната. Идеальный выбор для уютного вечера в приятной компании.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Грог из рома и красного вина с гранатовым соком</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 г темного рома</li><li>50 г красного полусладкого вина Изабелла</li><li>150 мл гранатового сока</li><li>20 г лимонного сока</li><li>100 г меда</li><li>гвоздика по вкусу</li><li>корица по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В небольшой кастрюле смешайте 150 мл гранатового и 20 г лимонного сока. Добавьте 100 г меда.</li><li>Подогревайте на слабом огне, постоянно помешивая, чтобы мед полностью растворился.</li><li>Влейте 50 г красного полусладкого вина Изабелла и 50 г темного рома. Положите гвоздику и корицу. Продолжайте нагревать, не доводя до кипения, чтобы сохранить аромат напитка.</li><li>Дайте грогу настояться 5–7 минут под крышкой, чтобы специи раскрыли свои ноты.</li><li>Процедите напиток через сито и разлейте по кружкам.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Замороженная сангрия" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Zamorozhena-sanhriia.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Замороженная сангрия</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-alianta-vin-new-collection-isabella-chervone-napivsolodke-9-11-075-l">Красное полусладкое вино Изабелла</a></li><li>Сладкие яблоки</li><li>Замороженная клубника</li><li>Апельсины</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающий микс фруктов и красного вина, превращенный в нежный коктейль. Идеален для жаркого дня, радует яркими вкусами и насыщенными ароматами, создавая атмосферу беззаботного летнего праздника.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Замороженная сангрия</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка красного полусладкого вина Изабелла</li><li>3 сладких яблока</li><li>0.5 кг замороженной клубники</li><li>3 апельсина</li><li>сахар по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте три сладких яблока тонкими ломтиками, удалив сердцевину.</li><li>Очистите три апельсина и порежьте их кружочками или дольками.</li><li>В блендер загрузите 0.5 кг замороженной клубники и нарезанные фрукты.</li><li>Влейте бутылку красного полусладкого вина Изабелла и добавьте сахар по вкусу.</li><li>Взбейте смесь до однородной консистенции.</li><li>Разлейте напиток по бокалам, украсьте ломтиком апельсина или клубникой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Французский глинтвейн с кофе" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Frantsuzkyi-hlintvein-iz-kavoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Французский глинтвейн с кофе</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-tairovo-fratelli-marbella-chervone-napivsolodke-bag-in-box-10-l">Красное вино Изабелла</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/ru/category/kava">Кофе</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматный согревающий напиток, соединяющий пряные ноты красного вина и насыщенный вкус кофе. Идеально подходит для прохладных вечеров, создавая уют и окутывая теплом с изысканным французским шармом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Французский глинтвейн с кофе</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка красного вина Изабелла</li><li>150 г сахара</li><li>100 г коньяка</li><li>1 большая чашка сваренного в турке кофе</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В кастрюлю налейте бутылку красного вина Изабелла и нагревайте на среднем огне, не доводя до кипения.</li><li>Добавьте 150 г сахара и тщательно размешайте, чтобы он полностью растворился.</li><li>Влейте 100 г коньяка, продолжая подогревать смесь на слабом огне.</li><li>Добавьте большую чашку сваренного в турке кофе.</li><li>Перемешайте и прогрейте напиток еще пару минут, не давая закипеть.</li><li>Снимите с огня, разлейте по бокалам или кружкам.</li><li>Украсьте ломтиком апельсина или палочкой корицы для аромата. Подавайте напиток горячим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Red Wine Spritzer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Red-Wine-Spritzer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Red Wine Spritzer</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лед</li><li><a href="https://maudau.com.ua/ru/product/vyno-alianta-vin-casa-veche-izabella-moldavska-9-11-075-l-718839">Красное вино Изабелла</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite">Sprite</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающий коктейль с изысканным вкусом, сочетающий насыщенность красного вина и легкость шипучей воды. Идеальный выбор для теплого вечера, наполняющий атмосферу нотами утонченной прохлады.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Red Wine Spritzer</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>лед по вкусу</li><li>1/2 ст. красного вина Изабелла</li><li>Sprite доверху</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните высокий бокал кубиками льда.</li><li>Влейте красное вино Изабелла, заполнив половину объема.</li><li>Добавьте Sprite, чтобы заполнить оставшуюся часть бокала.</li><li>Аккуратно перемешайте напиток и украсьте при желании слайсом лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Raspberry Red Wine Spritzer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-Red-Wine-Spritzer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Raspberry Red Wine Spritzer</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Малина</li><li><a href="https://maudau.com.ua/ru/product/vyno-koblevo-bordo-izabella-chervone-solodke-16-075-l">Красное вино Изабелла</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=limonchello">Лимончелло</a></li><li><a href="https://maudau.com.ua/ru/product/nastoianka-angostura-orange-bitter-28-01-l-725705">Апельсиновый биттер</a></li><li>Розмарин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и освежающий коктейль с яркими нотами малины, богатого красного вина и лимонной кислинкой. Этот напиток станет прекрасным выбором для теплого летнего вечера или дружеской вечеринки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Raspberry Red Wine Spritzer</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 чашка малины</li><li>480 мл красного вина Изабелла</li><li>720 мл лимончелло</li><li>апельсиновый биттер по вкусу</li><li>веточки розмарина для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Промойте и выложите 1 чашку малины в шейкер, слегка разомните пестиком, чтобы выделился сок.</li><li>Добавьте 480 мл красного вина Изабелла и 720 мл лимончелло.</li><li>Закройте шейкер и встряхивайте его в хаотичном ритме в течение нескольких минут, чтобы все ингредиенты хорошо соединились.</li><li>Подготовьте бокал, наполните его кубиками льда до краев.</li><li>Через мелкое сито перелейте содержимое шейкера в бокал, чтобы избавиться от мелких частиц малины.</li><li>Добавьте несколько капель апельсиновых биттеров для усиления аромата.</li><li>Украсьте готовый коктейль веточкой розмарина и несколькими ягодами малины. Подавайте сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Red Moon Over Manhattan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Red-Moon-Over-Manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Red Moon Over Manhattan</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-koblevo-bordo-izabella-chervone-solodke-16-075-l">Красное вино Изабелла</a></li><li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li>Простой сироп</li><li>Ледяная сфера</li><li><a href="https://maudau.com.ua/ru/category/fruktova-konservatsiia/typ_281=vyshnia-35">Вишни мараскино</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Элегантный коктейль с глубоким вкусом красного вина Изабелла, тонкими нотами бурбона и сладостью мараскино. Идеально подходит для вечернего отдыха или романтического ужина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Red Moon Over Manhattan</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл красного вина Изабелла</li><li>15 мл бурбона</li><li>15 мл простого сиропа</li><li>1 большая круглая ледяная сфера</li><li>3 гурманские вишни мараскино</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите заранее бокал, подготовьте простой лед и крупную ледяную сферу.</li><li>В небольшой шейкер влейте 60 мл красного вина Изабелла, 15 мл бурбона и 15 мл простого сиропа.</li><li>Добавьте несколько кубиков льда, закройте крышку и энергично встряхивайте смесь около минуты.</li><li>Положите ледяную сферу в бокал, перелейте туда напиток.</li><li>Уложите сверху 3 гурманские вишни мараскино, слегка надавливая, чтобы они дали немного сока.</li><li>Украсьте напиток апельсиновой цедрой и слегка сбрызните ею коктейль, чтобы усилить аромат.</li><li>Подавайте сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Call Me A Cab" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Call-Me-A-Cab.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Call Me A Cab</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лед</li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=izabella-isabella">Вино Изабелла</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Свежий и легкий коктейль с мягким сочетанием лимонада, красного вина и водки. Подойдет как для вечеринки, так и для простого отдыха у бассейна.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Call Me A Cab</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>180 мл лимонада</li><li>30 мл водки</li><li>60–90 мл вина Изабелла</li><li>лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В высокий бокал насыпьте лёд, заполнив его на три четверти.</li><li>Влейте 30 мл водки, затем аккуратно добавьте 60–90 мл красного вина Изабелла (должен получиться цветовой градиент).</li><li>Долейте 180 мл лимонада.</li><li>Ложкой медленно перемешайте напиток, чтобы ингредиенты объединились.</li><li>Старайтесь не смешивать слои слишком быстро, чтобы коктейль не потерял насыщенность цвета.</li><li>Украсьте сверху ломтиком лимона и веточкой мяты.</li><li>Подавать лучше сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Red Wine Float" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Red-Wine-Float.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Red Wine Float</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/fruktova-konservatsiia/typ_281=vyshnia-35">Вишня мараскино</a></li><li>Ванильное мороженое</li><li><a href="https://maudau.com.ua/ru/product/vyno-koblevo-bordo-izabella-chervone-solodke-16-075-l">Красное вино Изабелла</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Нежный десерт-коктейль с насыщенным вкусом вина, сливочной текстурой мороженого и ароматом вишен. Идеальное лакомство для завершение вечеринки или уютного вечера.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Red Wine Float</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 1/2 ложки вишен мараскино</li><li>2 1/2 ложки ванильного мороженого</li><li>90 мл красного вина Изабелла</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Подготовьте нужные вам бокали и охладите их в холодильнике.</li><li>На дно бокала выложите 2 ½ ложки вишен мараскино.</li><li>Сверху добавьте 2 ½ ложки мягкого ванильного мороженого, стараясь не смешивать слои.</li><li>Медленно влейте 90 мл красного вина Изабелла по стенке бокала, чтобы создать красивый градиент.</li><li>Сверху десерт-коктейль украсьте вишней мараскино.</li><li>Подавайте сразу, чтобы морожено не растаяло.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Lucifer Morningstar" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Lucifer-Morningstar.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Lucifer Morningstar</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/typ_napoiu_6=prianyi-spiced-2">Пряный ром</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-koblevo-bordo-izabella-chervone-solodke-16-075-l">Красное вино Изабелла</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vanil-14">Ванильный сироп</a></li><li>Серебристый глиттер</li><li><a href="https://maudau.com.ua/ru/product/pyvo-bezalkoholne-bavaria-imbyr-laim-033-l">Имбирное пиво</a></li><li><a href="https://maudau.com.ua/ru/category/fruktova-konservatsiia/typ_281=vyshnia-35">Вишни мараскино</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рецепт коктейля с насыщенным вкусом рома, вина и пряными нотками. Этот напиток подойдет тем, кто любит что-то необычное.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Lucifer Morningstar</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл пряного рома</li><li>45 мл красного вина Изабелла</li><li>7,5 мл ванильного сиропа</li><li>1 ч. л. серебристого глиттера (или пудры для кондитерских изделий)</li><li>60 мл имбирного пива</li><li>вишни мараскино для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В шейкер налейте 45 мл пряного рома, 45 мл красного вина Изабелла и 7,5 мл ванильного сиропа.</li><li>Добавьте несколько кубиков льда, закройте крышку и энергично встряхивайте в течение 30 секунд.</li><li>Подготовьте бокал, наполнив его наполовину льодом.</li><li>Перелейте смесь в бокал.</li><li>Долейте 60 мл имбирного пива.</li><li>Сверху аккуратно посыпьте серебристым глиттером или пищевой пудрой.</li><li>Вишни мараскино по несколько штук оденьте на шпажки.</li><li>Украсьте этими шпажками бокал.</li><li>Подавайте, пока напиток холодный.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">70 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">7.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

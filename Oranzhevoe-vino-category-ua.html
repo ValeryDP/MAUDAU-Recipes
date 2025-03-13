@@ -1,0 +1,893 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>Помаранчеве вино — напій, який готують за допомогою подовження контакту соку з виноградною шкіркою. Характерний колір — результат вмісту в кісточках лігнінів.</p>
+                <p>Міцність найчастіше становить 11–14%. Кількість залишкового цукру — менше ніж 4 г/л, оскільки напій зброджують повністю.</p>
+                <h3>Бурштинове вино: смак і аромат</h3>
+                <p>Напій — практично завжди сухий. У носі домінують медові аромати. Інші можливі нюанси:</p>
+                <ul>
+                    <li>джекфрут;</li>
+                    <li>лісовий горіх;</li>
+                    <li>лляна олія;</li>
+                    <li>ягоди ялівцю;</li>
+                    <li>сушена апельсинова цедра.</li>
+                </ul>
+                <p>
+                    На смак помаранчеве вино багато в чому нагадує червоне сухе, оскільки містить високу концентрацію танінів. Його нерідко порівнюють із непідсолодженим остиглим чаєм. Кислинка, яка виходить на перший план на фініші, асоціюється з
+                    фруктовим пивом.
+                </p>
+                <h2>Історія появи та поширення помаранчевих вин</h2>
+                <p>
+                    Техніка настоювання виноградного соку на шкірці та кісточках налічує понад 5000 років. Наприклад, відомості про використання подібного методу легко знайти на території Грузії. Не відстає Словенія, яка практикує технологію сотні
+                    років.
+                </p>
+                <p>
+                    Виноробний стиль Ramato вважають попередником бурштинових вин. Він виник у регіоні Фріулі-Венеція-Джулія в Італії, де його й досі використовують під час виготовлення особливих виразів піно гріджіо, а пізніше також поширився на
+                    Горіцію-Гіллз. Саме з ним пов'язують відродження стародавнього методу виноробства, що лежить в основі помаранчевих вин, після того, як місцеві винороби налагодили імпорт квеврі з Грузії.
+                </p>
+                <p>Попит на напій істотно знизився після 1950-х років, коли в Італії налагодили випуск легких і освіжальних білих вин. У той час їх позиціювали як єдиний правильний варіант з погляду кольору і смаку.</p>
+                <p>
+                    Термін «помаранчеве вино» належить британському імпортеру алкогольних напоїв Девіду Гарві, який ввів його в ужиток 2004 року. На першій батьківщині, тобто в Грузії, використовують назву Karvisperi Ghvino, запозичену з поеми Сандро
+                    Шаншіашвілі.
+                </p>
+                <h2>Особливості виготовлення апельсинових вин</h2>
+                <p>Попри одну з версій назви, у складі напою немає апельсинів. Фактично, помаранчеве вино — біле. Його виробляють зі світлошкірих сортів винограду, а найбільш придатними вважають:</p>
+                <ul>
+                    <li>«ріболла джаллу»;</li>
+                    <li>«шардоне»;</li>
+                    <li>«піно гріджіо»;</li>
+                    <li>«ркацителі»;</li>
+                    <li>«кісі»;</li>
+                    <li>«гевюрцтрамінер».</li>
+                </ul>
+                <p>
+                    Напої здебільшого виробляють за допомогою купажування, тобто змішування ягід кількох видів, що призводить до збалансованого смаку й аромату. На відміну від класичної технології виготовлення білих вин, коли шкірку видаляють перед
+                    ферментацією, помаранчеве передбачає збереження контакту, аналогічно виробництву червоних позицій. Мінімальний термін мацерації на меззі — 30 днів.
+                </p>
+                <p>
+                    Більшість помаранчевих вин — натуральні, тобто втручання винороба мінімізовано. Спочатку особливий напій готували у великих закритих глиняних амфорах, які називаються квеврі. Посудини наповнювали мезгою, запечатували бджолиним
+                    воском і закопували в землю. Бродіння тривало кілька місяців, а внаслідок активного контакту вина з киснем яскраві квітково-фруктові нюанси замінювали нотки загравших яблук і меду. На додачу до цього поступово розвивався горіховий
+                    присмак. Зараз замість квеврі використовують місткості з неіржавної сталі, де і проводять стабілізацію.
+                </p>
+                <h2>Як вибрати помаранчеве вино</h2>
+                <p>Кілька знакових регіонів і торгових марок, з яких варто почати знайомство з особливим напоєм:</p>
+                <ol>
+                    <li>Грузія. Країна — лідер із виготовлення. Бурштинове вино виробляють із «ркацителі», а витримку досі проводять у квеврі. Бренди: Umano, Georgian Valleys, Ovaluri.</li>
+                    <li>Україна. Якщо хочете підтримати місцевого виробника, помаранчеве вино можна купити у Biologist і Stakhovsky Wines. Більшість напоїв — моносортові.</li>
+                    <li>Франція. Продукція походить із регіону Юра. Тут випускають напої під назвами Vin Jaune і Cotes du Jura. В основі — рідкісний сорт винограду «саваньєн».</li>
+                    <li>
+                        Італія. Виробництво зосереджене на північному сході країни. Домінантні сорти винограду: «фріулано», «ріболла джалла», «піно гріджіо». Стандарт, за яким у країні випускають помаранчеве вино, розробив Йоско Гравнер 1997 року.
+                        Найкращі виробники: Fidora, Calcarius, Dievole.
+                    </li>
+                    <li>Австрія. Тут виробники експериментують із різними сортами ягід. Щоб у цьому переконатися, погляньте на продукцію Meinklang і Judith Beck.</li>
+                </ol>
+                <h3>Помаранчеве вино: ціна в Україні</h3>
+                <p>
+                    Вартість становить близько 600–800 грн за пляшку обсягом 0,75 л, тож це доступний варіант. Натуральні та органічні напої традиційно коштують дорожче, як і продукція, випущена в обмеженій кількості в межах маленької сімейної
+                    виноробні.
+                </p>
+                <h2>Як правильно подавати і з чим поєднувати помаранчеве вино</h2>
+                <p>Щоб насолодитися сміливим танінним профілем, подавайте напій за +10–14 °C у келихах для білих вин. Така температура врівноважує його структуру і підсилює ароматичну складність.</p>
+                <p>
+                    Ключова перевага помаранчевого вина полягає в тому, що воно однаково добре пасує як до м'яса, так і морських делікатесів. Насичений напій доповнить таку ж сміливу їжу. Наприклад, до нього можна подати пікантне каррі. Страву рідко
+                    обирають як супровід до алкоголю, оскільки гострота спецій затьмарює його смак і аромат, але не у випадку з бурштиновим вином. Другий відповідний варіант — марокканський тажин. Напій також сповна розкриється при подачі з хумусом,
+                    оливками, овочами-гриль. Кислинка вигідно поєднується з кімчі та натто.
+                </p>
+                <h2>Чому вигідно купити помаранчеве вино в інтернет-магазині MAUDAU</h2>
+                <p>По-перше, це гарантія оригінальності кожного напою на сторінці. По-друге, покупці отримують масу переваг:</p>
+                <ul>
+                    <li>швидке оформлення замовлення;</li>
+                    <li>оплату кількома способами;</li>
+                    <li>доставлення кур'єром у деяких містах і поштовими службами в будь-який куточок України;</li>
+                    <li>акції та знижки на гуртове замовлення від трьох штук;</li>
+                    <li>програму лояльності «Власний Рахунок».</li>
+                </ul>
+                <p>Якщо виникнуть запитання, на них готовий відповісти менеджер. Поставити запитання можна у вікні внизу сторінки.</p>
+            </div>
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Orange Wine Sangria" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Orange-Wine-Sangria.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Orange Wine Sangria</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=pomarancheve">Помаранчеве вино</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Сироп із меду</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=brendi">Бренді</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=hrusha-15">Сік грушевий</a></li><li>Груша</li><li>Апельсин</li><li>Кардамон</li><li>Тархун</li><li><a href="https://maudau.com.ua/product/napii-schweppes-club-soda-b-alk-syl-haz-z-b">Клубна сода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Любителям сангрії однозначно варто спробувати Orange Wine Sangria. Це ароматний коктейль, у якому поєднуються помаранчеве вино, бренді та грушевий сік з нотками меду, кардамону і тархуна. Соковиті шматочки груші та апельсина надають напою свіжості, а клубна сода додає легкості. Напій чудово підходить для літніх вечорів і дружніх зустрічей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Orange Wine Sangria</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 г меду</li><li>240 мл гарячої води</li><li>750 мл помаранчевого вина</li><li>30 мл сиропу з меду</li><li>120 мл бренді</li><li>240 мл грушевого соку</li><li>1 середня груша, нарізана кубиками</li><li>1 апельсин, нарізаний скибочками</li><li>4 стручки кардамону</li><li>2 гілочки тархуна</li><li>Клубна сода до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розчиніть 120 г меду у 240 мл гарячої води, ретельно розмішуючи, поки мед повністю не розчиниться.</li><li>Дайте суміші охолонути до кімнатної температури.</li><li>У великому глечику змішайте 750 мл помаранчевого вина, 120 мл бренді та 240 мл грушевого соку.</li><li>Додайте 30 мл сиропу з меду й остиглу медову воду.</li><li>Покладіть нарізану грушу, апельсин, 4 стручки кардамону і 2 гілочки тархуна.</li><li>Перемішайте і залиште на кілька годин у холодильнику.</li><li>Перед подачею додайте клубну соду до смаку для легкої шипучості.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Going for Gold" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/going-for-gold.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Going for Gold</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=pomarancheve">Помаранчеве вино</a></li><li><a href="https://maudau.com.ua/product/kheres-emilio-lustau-manzanilla-papirusa-bile-sukhe-15-075-l-8000013918989">Мансанілья херес</a></li><li><a href="https://maudau.com.ua/product/syrop-monin-imbyr-700-ml">Імбирний сироп</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=ananas-5">Ананасовий сироп</a></li><li>Лайм</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Біттер Angostura</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Содова вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Going for Gold — це яскравий і освіжальний коктейль з унікальною комбінацією помаранчевого вина і хересу Manzanilla. Імбирний та ананасовий сиропи надають напою екзотичної солодкості, а свіжий сік лайма додає кислу нотку. Легка газована вода ідеально завершує цей ароматний коктейль.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Going for Gold</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>37 мл помаранчевого вина</li><li>45 мл хересу Manzanilla</li><li>15 мл імбирного сиропу</li><li>30 мл ананасового сиропу</li><li>15 мл свіжого соку лайма</li><li>2 краплі біттеру Angostura</li><li>Охолоджена содова вода до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер додайте 37 мл помаранчевого вина і 45 мл хересу Manzanilla.</li><li>Налийте 30 мл ананасового сиропу і по 15 мл імбирного сиропу та соку лайма.</li><li>Наповніть шейкер льодом і добре струсіть впродовж 10–15 секунд.</li><li>Процідіть суміш у келих для коктейлів або хайбол.</li><li>Додайте 2 краплі біттеру Angostura.</li><li>Долийте охолодженої содової води до смаку для легкості та газованості.</li><li>Акуратно перемішайте і подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Orange wine spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Orange-wine-spritz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Orange wine spritz</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=pomarancheve">Помаранчеве вино</a></li><li>Лікер із бузиною St Germain</li><li><a href="https://maudau.com.ua/category/voda/vyd_133=sylnohazovana">Газована вода</a></li><li>Апельсин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Orange Wine Spritz — яскравий коктейль, який поєднує насичені цитрусові нотки з неймовірним смаком помаранчевого вина та грайливими бульбашками. Напій наповнює атмосферу свіжістю, сонячним настроєм і легкістю.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Orange wine spritz</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл помаранчевого вина</li><li>15 мл лікеру з бузиною St Germain</li><li>50 мл газованої води</li><li>1 скибочка свіжого апельсина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть високий келих льодом.</li><li>Влийте в нього 50 мл помаранчевого вина і 15 мл лікеру з бузиною St Germain.</li><li>Акуратно додайте 50 мл газованої води.</li><li>Покладіть скибочку свіжого апельсина в келих, щоб додати яскравості й аромату.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Pinot Grigio Margarita" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pinot-Grigio-Margarita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Pinot Grigio Margarita</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-fidora-pinot-grigio-amphora-bio-doc-venezia-oranzheve-sukhe-135-075-l-857790">Вино Pinot Grigio</a></li><li>Лайм</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li>Простий сироп</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Pinot Grigio Margarita — незвичайний коктейль, де яскрава кислинка соку лайма зустрічається з оксамитовими нотками вина піно гріджо і легкістю апельсинового лікеру. Напій дарує свіжість і оригінальність у кожному ковтку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Pinot Grigio Margarita</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл вина Pinot Grigio</li><li>30 мл соку лайма</li><li>30 мл апельсинового лікеру</li><li>Трохи простого сиропу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер льодом. Додайте 60 мл вина Pinot Grigio.</li><li>Влийте 30 мл соку лайма, 30 мл апельсинового лікеру і трохи простого сиропу.</li><li>Закрийте шейкер і струсіть до охолодження інгредієнтів.</li><li>Процідіть суміш у посудину, наповнену льодом (можна використовувати келих для Маргарити).</li><li>За бажання прикрасьте напій слайсом лайма або апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Pinot Grigio Bellini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pinot-Grigio-Bellini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Pinot Grigio Bellini</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-fidora-pinot-grigio-amphora-bio-doc-venezia-oranzheve-sukhe-135-075-l-857790">Вино Pinot Grigio</a></li><li><a href="https://maudau.com.ua/category/dytiachi-piure/smak=persik">Персикове пюре</a></li><li>Персик</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Pinot Grigio Bellini — приголомшливий коктейль, що поєднує ніжність персикового пюре з легкими фруктовими акцентами вина піно гріджо. Цей напій заворожує елегантністю, свіжістю та ідеальний для особливих моментів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Pinot Grigio Bellini</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл вина Pinot Grigio</li><li>60 мл персикового пюре</li><li>Слайс персика (для прикрашання)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть келих для шампанського або флейту.</li><li>У шейкері або склянці змішайте 120 мл вина Pinot Grigio і 60 мл персикового пюре. Акуратно перемішайте.</li><li>Перелийте суміш у посудину, заповнюючи її до половини або трохи більше.</li><li>Прикрасьте напій слайсом персика, прикріпивши його до краю келиха.</li><li>Насолоджуйтеся легкістю і фруктовим смаком коктейлю.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Pinot Grigio Paloma" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pinot-Grigio-Paloma.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Pinot Grigio Paloma</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-fidora-pinot-grigio-amphora-bio-doc-venezia-oranzheve-sukhe-135-075-l-857790">Вино Pinot Grigio</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=hreipfrut-9">Грейпфрутовий сік</a></li><li>Лайм</li><li>Простий сироп</li><li><a href="https://maudau.com.ua/product/napii-schweppes-club-soda-bezalkoholnyi-syl-haz">Газована вода club soda</a></li><li>Грейпфрут</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Pinot Grigio Paloma — цікавий коктейль, де м'які фруктові акценти піно гріджо гармонують з яскравістю грейпфрутового соку та легкою грою газованої води. Напій освіжає і дарує витончену насолоду.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Pinot Grigio Paloma</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл вина Pinot Grigio</li><li>30 мл грейпфрутового соку</li><li>15 мл соку лайма</li><li>15 мл простого сиропу</li><li>Газована вода (до смаку)</li><li>Слайс грейпфрута (для прикрашання)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть високу склянку або келих, наповніть його кубиками льоду.</li><li>У шейкері змішайте 60 мл вина Pinot Grigio і 30 мл грейпфрутового соку.</li><li>Додайте 15 мл простого сиропу і 15 мл екстракту лайма.</li><li>Струсіть суміш до однорідності та перелийте в ємність із льодом.</li><li>Долийте газовану воду до верху й акуратно перемішайте.</li><li>Прикрасьте напій слайсом грейпфрута, закріпивши його на краю келиха.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Pinot Grigio Mojito" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pinot-Grigio-Mojito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Pinot Grigio Mojito</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Листя мʼяти</li><li>Лайм</li><li>Простий сироп</li><li><a href="https://maudau.com.ua/product/vyno-fidora-pinot-grigio-amphora-bio-doc-venezia-oranzheve-sukhe-135-075-l-857790">Вино Pinot Grigio</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Pinot Grigio Mojito — освіжальний мікс, що поєднує нотки вина піно гриджо, солодкість простого сиропу, яскравість соку лайма й аромат листя м'яти. Цей коктейль залишає легкий приємний посмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Pinot Grigio Mojito</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>Листя м'яти (до смаку, для мадлінгу)</li><li>15 мл соку лайма</li><li>15 мл простого сиропу</li><li>60 мл вина Pinot Grigio</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У високий келих покладіть листя м'яти (5–7 штучок буде достатньо).</li><li>Додайте 15 мл соку лайма і 15 мл простого сиропу.</li><li>Розімніть м'яту мадлером для яскравого аромату.</li><li>Влийте в келих 60 мл вина Pinot Grigio й акуратно перемішайте ложечкою.</li><li>Наповніть посудину кубиками льоду до країв.</li><li>Додайте гілочку свіжої м'яти і скибочку лайма для прикрашання.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">65 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

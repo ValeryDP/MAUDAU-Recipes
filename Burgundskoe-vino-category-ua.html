@@ -1,0 +1,991 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Бургундське вино — категорія напоїв, яку виробляють у маленькому, але одному з найважливіших виноробних регіонів у Франції. Щоб не заплутатися в асортименті, достатньо зупинитися на двох сортах — «піно-нуар» і «шардоне». Перший
+                    виноград у регіоні традиційно використовують при виробництві сухих червоних вин (Bourgogne Rouge), другий — білих (Bourgogne Blanc).
+                </p>
+                <h2>Bourgogne: що потрібно знати про місце народження культового вина</h2>
+                <p>
+                    Бургундія — виноробний регіон, розташований на сході Франції. Він починається з Йонни на самій півночі, включно з культовим регіоном Шаблі, і простягається через центральний департамент Кот-д'Ор аж до Кот-Шалонез і Маконне на
+                    півдні.
+                </p>
+                <p>
+                    Клімат — континентальний. Це передбачає спекотне літо і холодну зиму. Кількість опадів — помірна. Ґрунт у Бургундії вельми різноманітний, але здебільшого складається з вапняку і глини. Особливості теруару, яким так багато уваги
+                    приділяють місцеві винороби, пов'язані з геологічними моментами, зокрема — наявністю юрського вапняку та мергелю, що надають винам характерної мінеральної нотки.
+                </p>
+                <p>Burgundy — назва виноробного регіону англійською мовою. Французи використовують версію Bourgogne. Вино в Бургундії завжди виробляють в одній із п'яти підзон, не включно з Божоле і Шатійоном:</p>
+                <ol>
+                    <li>
+                        Шаблі. Найпівнічніша ділянка, клімат у якій пом'якшує річка Серен, що протікає через неї. Домінівний ґрунт — кімеріджський вапняк. Він ефективно відбиває сонячне світло і сприяє дозріванню ягід. Шаблі традиційно виробляють із
+                        «шардоне». Виноград вирощують тут відтоді, як монахи-цистерціанці вперше почали розбивати виноградники в XII столітті.
+                    </li>
+                    <li>
+                        Кот-де-Нюї. Район починається на південь від Діжона і закінчується в селі Корголуан. В основному тут виробляють піно-нуар — на нього припадає 80% продукції, що випускається. Ціна — висока, оскільки більшість напоїв
+                        удосконалюються в льохах роками.
+                    </li>
+                    <li>Кот-де-Бон. Разом із попередньою підзоною складають центр виноробної промисловості в Бургундії — Кот-д'Ор. Тут зосереджено вісім виноградників Grand Cru, сім із яких — призначені для виготовлення шардоне.</li>
+                    <li>
+                        Кот-Шалонез. Район розташований між містами Шаньї та Сен-Валлерен. Бузерон — єдиний муніципалітет, відповідальний за культивацію іншого місцевого світлошкірого винограду — «аліготе». Бургундське вино на його основі — прекрасний
+                        вибір для літнього проведення часу. Легкий квітково-фруктовий шлейф гармонійно поєднується з білою рибою і молюсками. Руллі — місце, де виробляють ігристу продукцію, яка зовсім не характерна для представленого регіону.
+                    </li>
+                    <li>Маконне. Найбільший район, розташований на півдні Бургундії. Клімат тепліший, порівняно з попередніми підзонами, тому шардоне характеризують нотки стиглих кісточкових фруктів, жимолості, цитрусової цедри та лугових трав.</li>
+                </ol>
+                <h3>Особливості класифікації виноградників</h3>
+                <p>Виноград вирощують приблизно в 300 комунах. У регіоні відомо понад 100 апелласьйонів, тобто схвалених виноробних зон. За якістю їх ділять на чотири рівні:</p>
+                <ol>
+                    <li>Regional. Кількість від усіх вин, що випускаються, — 52%. Виноград вирощують у будь-якому місці. На таке бургундське вино найнижча ціна. Приклад — Bourgogne Rose і Bourgogne Gamay.</li>
+                    <li>Village. Друга категорія — так звані сільські вина, які охоплюють 37% асортименту. Назви напоїв походять від сіл, поруч з якими вирощено виноград. Загалом їх налічують 44. Кілька відомих: Santenay, Givry, Chablis.</li>
+                    <li>
+                        Premier Cru. Бургундські вина з виняткових виноградників (кліматичних зон). Частка на ринку — 10%. Відмінності від двох попередніх варіантів полягають у дрібницях, наприклад, у тому, як сильно ягоди звернені до ранкового сонця.
+                        Загалом у регіоні існує 640 найменувань Premier Cru. Альтернативне маркування — 1er Cru.
+                    </li>
+                    <li>
+                        Grand Cru. Продукція з найпрестижніших ділянок. Більшість із 33 найкращих виноградних плантацій відведено під вирощування сорту «піно-нуар». Виноградники відзначені званням пам'ятки Всесвітньої спадщини на думку ЮНЕСКО.
+                        Кількість продукції Grand Cru — менше ніж 1%, через що напої з маркуванням La Tache і Montrachet вважають об'єктом бажання багато колекціонерів.
+                    </li>
+                </ol>
+                <h2>Bourgogne: коли і як виникло знамените вино</h2>
+                <p>Виноградарство в регіоні сягає щонайменше VI століття до н.е. Значний зсув у місцевому виноробстві стався під час римського правління в I столітті до н.е.</p>
+                <p>
+                    До VI століття такі абатства, як Клюні (збудовано 909 року) і Сіто (засновано 1098 року), визнали першими офіційними виробниками бургундських вин. Ченцям також належав знаменитий обгороджений виноградник Кло-Вужо. На його базі 1934
+                    року заснували Братство лицарів тастевена.
+                </p>
+                <p>
+                    Головне завдання громадської організації, яка досі активно функціонує, полягає в популяризації місцевих вин за допомогою проведення світських заходів на території Кло-Вужо. Серед відомих членів не тільки Шарль де Голль, а й Рональд
+                    Рейган і Грейс Келлі. Назву організації поклала металева миска, за допомогою якої винороби перевіряють якість бургундських вин після витримки.
+                </p>
+                <p>1395 року герцог Філіп Сміливий заборонив вирощування винограду «гаме», щоб захистити репутацію «піно-нуар». Рішення вважають першою історичною спробою стандартизувати виробництво алкоголю.</p>
+                <p>
+                    Після Великої Французької революції місцеві виноградники від ченців перейшли до рук приватних власників. Більшість із них розпродали на аукціонах, а потім розділили на фрагменти, що сприяло здоровій конкуренції та підвищило якість
+                    напоїв, які випускаються.
+                </p>
+                <h2>Різновиди бургундських вин</h2>
+                <p>Ключові найменування:</p>
+                <ol>
+                    <li>Шаблі (Chablis). Шардоне, яке цінують за легкий і свіжий смак, що пояснюється відсутністю витримки в дубових бочках. Смакові дескриптори: лимон, лайм, крейда.</li>
+                    <li>Червоне сухе вино Кот-де-Нюї. Багатошаровий напій, який характеризує поєднання соковитих фруктових акордів і легких димних нюансів. Найвідоміший приклад — напій із ягід, зібраних на винограднику Chambertin.</li>
+                    <li>
+                        Біле сухе вино Кот-де-Бон. Шардоне, але витримане в дубі, що надає злегка маслянистого закінчення з нотками горіхів і сухофруктів. Біле сухе вино з Бургундії, яке однозначно варто купити, випускають у містах Meursault і
+                        Puligny-Montrachet.
+                    </li>
+                    <li>Маконне. Легке і фруктове шардоне, яке подають як аперитив. Фініш — з тонкими нюансами свіжоспеченої бріоші.</li>
+                    <li>Розе (Bourgogne Rose). Сухе вино, вироблене із суміші «піно-нуар» і «гаме». Акцент — на солодких нотах червоних фруктів і ягід, що змінюються тонкою кислотністю.</li>
+                </ol>
+                <h3>Ключові характеристики вин з Бургундії</h3>
+                <p>Якщо підсумувати:</p>
+                <ol>
+                    <li>Домінівний стиль — сухе вино. Червоні та білі позиції виробляють практично в рівних кількостях, тоді як рожеві вважають рідкістю.</li>
+                    <li>Бургундське вино, купити яке можна в маркеті алкогольних штук MAUDAU, як правило, виготовлено з одного типу ягід. Купажування — рідко використовуваний метод.</li>
+                    <li>Теруар — важлива частина виноробства, що пояснює маркування готових напоїв. Коли ягоди вирощені в місці з відмінним ґрунтом, виробники завжди вказують точне місцеперебування і назву виноградника на етикетці.</li>
+                    <li>Склад бургундських вин обертається навколо сортів «піно-нуар» і «шардоне». Рідше використовують «аліготе», «піно-блан» і «піно-грі».</li>
+                    <li>
+                        Смак і аромат багато в чому залежать від стилю. Білі вина наповнені акордами зелених яблук, груш і сушених трав, а короткочасна витримка надає горіхового нюансу. Червоні — сміливі та повнотілі. Вони огортають нюансами слив,
+                        вишень, тютюну. Фініш — із характерною землистою ноткою.
+                    </li>
+                    <li>Міцність варіюється в межах 12–14%. Вона багато в чому залежить від застосовуваного методу виноробства і терміну дозрівання.</li>
+                </ol>
+                <h2>Як вибрати вино з Бургундії</h2>
+                <p>
+                    Враховуйте бюджет, а також мету покупки. Наприклад, як супровід до вечері вибирайте варіанти Regional і Village. Вони також вигідно доповнять презент. Щоб здивувати іменинника, виберіть вінтаж того ж року народження. Якщо вирішили
+                    замовити пляшку з метою заробітку в майбутньому, зупиніться на класах Premier Cru і Grand Cru.
+                </p>
+                <p>
+                    Обсяг також важливий, оскільки впливає на ціну. Стандартний — 0,75 л. Найменший — пляшечки по 0,375 л. Це чудовий варіант для знайомства з культовими торговими марками, особливо коли немає бажання відразу купувати повнорозмірну
+                    версію.
+                </p>
+                <p>Більшість червоних вин придатні для тривалого зберігання. Білими радять насолоджуватися незадовго після покупки.</p>
+                <h3>Вино з Бургундії: ціна в Україні</h3>
+                <p>Вартість сильно різниться. Наприклад, у маркеті алкогольних штук MAUDAU цінник стартує від 119 грн, а максимальна ціна сягає кількох сотень тисяч гривень.</p>
+                <p>
+                    Bourgogne — вино із середньою ціною за пляшку в межах 1000–2000 грн. Водночас продукцію класу Grand Cru вважають найдорожчою у світі, що пояснюється обмеженим виробництвом, невеликими фрагментованими виноградниками та низькою
+                    врожайністю загалом.
+                </p>
+                <p>Продукцію відомих торгових марок на кшталт Olivier Leflaive нерідко продають за сотні тисяч гривень через рідкісність, попит, що перевищує пропозицію, престиж та історичну значущість. Приклад — Montrachet Grand Cru 2017.</p>
+                <h2>Чому вигідно купити вино з Бургундії в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Команда MAUDAU гарантує оригінальне походження кожної товарної позиції. З огляду на високу ціну вин Bourgogne розумніше замовити їх гуртом або під час розпродажу. Щоб додатково заощадити, обирайте позиції, які доставляють безплатно
+                    за допомогою поштових служб «Укрпошта» та «Нова Пошта». У деяких містах також доступне доставлення кур'єром.
+                </p>
+            </div>
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Blackberry Cola" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blackberry-Cola.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Blackberry Cola</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Бренді</a></li><li><a href="https://maudau.com.ua/product/vyno-shabo-limited-edition-kheres-bile-sukhe-15-16-075-l">Сухий херес</a></li><li><a href="https://maudau.com.ua/product/vyno-luis-caballero-cuesta-cream-sherry-bile-solodke-075-l">Солодкий херес</a></li><li><a href="https://maudau.com.ua/category/vyno/rehion=burhundiia">Бургундське вино</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=coca-cola">Кола</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Blackberry Cola — це багатоскладовий коктейль із 5 інгредієнтів, який проте легко приготувати. Зазвичай напій подають у склянці-хайболі, а його оригінальний смак зможе задовольнити навіть найвибагливішого гурмана. М'який, ненав'язливий і злегка солодкуватий посмак дарує поєднання солодкого хересу та коли.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Blackberry Cola</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл бренді</li><li>15 мл сухого хересу</li><li>15 мл солодкого хересу</li><li>30 мл бургундського вина</li><li>120 мл коли</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте в склянці-хайбол 45 мл бренді та 30 мл бургундського вина.</li><li>Додайте по 15 мл сухого та солодкого хересу.</li><li>Перемішайте суміш високою ложкою.</li><li>Доверху келиха налийте 120 мл коли і ще раз акуратно розмішайте.</li><li>Подавайте напій відразу, поки бульбашки коли зберігають свою шипучість.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="El Obispo" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/El-Obispo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">El Obispo</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лимон</li><li>Апельсин</li><li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li><li><a href="https://maudau.com.ua/category/vyno/rehion=burhundiia">Бургундське вино</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль El Obispo — один із дюжини варіацій «червоне або біле вино+цитрусові». Легкий, освіжальний напій вирізняється помірною кислинкою і приємним, тривалим посмаком. Коктейль чудово поєднується з білим м'ясом, пікантними закусками та рибними стравами.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати El Obispo</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>Сік половини лимона</li><li>Сік 1 апельсина</li><li>1 ч. л. цукрової пудри</li><li>Половина келиха бургундського вина</li><li>Лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Прикрасьте обідок келиха-рокс цукровою пудрою і наповніть льодом.</li><li>Вичавіть сік половини лимона й одного апельсина.</li><li>Налийте половину келиха бургундського вина.</li><li>Акуратно перемішайте інгредієнти коктейльною ложкою.</li><li>За бажанням прикрасьте напій лимонною або апельсиновою скибочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Burgundy from Chile" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Burgundy-from-Chile.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Burgundy from Chile</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=burhundiia">Бургундське вино</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Імбирний ель</a></li><li>Полуниця</li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Burgundy from Chile — це чудовий твіст на традиційний чилійський коктейль «Бургундія». У цьому рецепті до нього додано імбирний ель. Напій ідеально підходить для гучних святкувань і вечірок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Burgundy from Chile</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл бургундського вина</li><li>120 мл імбирного елю</li><li>Полуниця до смаку</li><li>Лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Викладіть на дно шейкера полуницю та розімніть товкачем-мадлером.</li><li>Додайте в шейкер 30 мл бургундського вина і 120 мл імбирного елю.</li><li>Акуратно збовтайте і процідіть напій через сито в келих.</li><li>За бажанням перед подачею додайте ще льоду.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Queen Charlotte" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Queen-Charlotte.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Queen Charlotte</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=burhundiia">Бургундське вино</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=hranat-6">Гранатовий сироп</a></li><li><a href="https://maudau.com.ua/product/napii-bundaberg-lemon-limebitters-bezalkoholnyi-sylnohazovannyi-zb-0375-l-833461">Лимонно-лаймовий напій</a></li><li>Лід</li><li>Полуниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Queen Charlotte вирізняється освіжальним смаком та оригінальним поєднанням інгредієнтів. Цей напій здається незвичайним завдяки комбінації лимона, лайма і витончених фруктових інтонацій вина. Підбадьорливий напій вразить ваших гостей і додасть яскравих деталей дружній вечірці.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Queen Charlotte</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл бургундського вина</li><li>30 мл гранатового сиропу</li><li>30 мл лимонно-лаймового напою</li><li>Лід до смаку</li><li>Полуниця до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в склянку для змішування 60 мл бургундського вина.</li><li>Додайте по 30 мл гранатового сиропу та лимонно-лаймового напою.</li><li>Всипте лід у кубиках і перемішайте барною ложкою.</li><li>Перелийте напій через сито-стейнер в охолоджений келих для коктейлів.</li><li>Прикрасьте келих ягодами полуниці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Burgundy Bubbler" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Burgundy-Bubbler.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Burgundy Bubbler</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=burhundiia">Вино Burgundy</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Імбирний ель</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насолоджуйтеся освіжальним та ігристим смаком Burgundy Bubbler! Цей чудовий мікс поєднує бургундське вино та імбирний ель, створюючи простий, але елегантний напій для будь-якого випадку. Коктейль підійде для поціновувачів нестандартних, легких композицій.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Burgundy Bubbler</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл вина Burgundy</li><li>120 мл імбирного елю</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть великий келих для вина льодом.</li><li>Вилийте 30 мл бургундського вина поверх кубиків льоду.</li><li>Додайте в келих 120 мл імбирного елю.</li><li>Акуратно розмішайте напій високою коктейльною ложкою.</li><li>Прикрасьте келих скибочками лимона, лайма або апельсина — за бажанням.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Burgundy Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Burgundy-Punch.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Burgundy Punch</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-pierre-andre-volnay-aop-2020-chervone-sukhe-0-75-l">Червоне вино Burgundy</a></li><li>Бренді Kirschwasser</li><li><a href="https://maudau.com.ua/category/vyno/typ_vyna_2=portvein">Портвейн</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Burgundy Punch — це м'який, але доволі міцний пунш на базі червоного вина. Такі інгредієнти для пуншу, як соки, бажано використовувати у свіжовичавленому вигляді. Напій чудово підійде для вечірки з великою компанією.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Burgundy Punch</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1.5 л червоного вина Burgundy</li><li>240 мл бренді Kirschwasser</li><li>240 мл портвейну</li><li>480 мл апельсинового соку (бажано свіжовичавленого)</li><li>120 мл лимонного соку (бажано свіжовичавленого)</li><li>30 мл цукрового сиропу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Вилийте в охолоджений глечик 1.5 л червоного вина Burgundy.</li><li>Додайте по 240 мл бренді Kirschwasser і портвейну.</li><li>Зверху налийте 480 мл апельсинового і 120 мл лимонного соку.</li><li>Для завершення додайте 30 мл цукрового сиропу.</li><li>Ретельно перемішайте пунш і прикрасьте кружечками апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лоліта" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Lolita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лоліта</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=burhundiia">Вино Burgundy</a></li><li><a href="https://maudau.com.ua/product/feeps-sour-mix-sauer-miks">Sour Mix</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Лоліта — доволі простий і швидкий у приготуванні напій, який поєднує яскраве вишукане вино Burgundy і напій Sour Mix, що додасть у коктейль оригінальну смакову нотку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лоліта</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл вина Burgundy</li><li>120 мл Sour Mix</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Попередньо охолодіть келих-купе в морозилці.</li><li>Змішайте в шейкері по 120 мл вина Burgundy і напою Sour Mix.</li><li>Наповніть келих кубиками льоду і перелийте в нього напій.</li><li>Дбайливо розмішайте коктейль високою барною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Sangria Julep #1" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sangria-Julep-1.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Sangria Julep #1</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=burhundiia">Вино Burgundy</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Содова</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad">Лимонад</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Найпопулярніший іспанський коктейль — Sangria Julep #1 освіжає у спеку, і не надто п'янить. Має привабливий звабливий аромат і м'який, фруктовий посмак. Те, що потрібно для літньої вечірки з друзями!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Sangria Julep #1</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>4 частини вина Burgundy</li><li>1 частина апельсинового соку</li><li>4 частини апельсина</li><li>1 частина содової</li><li>4 частини лимонаду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Викладіть на дно глечика для пуншу 4 нарізані частини апельсина.</li><li>Влийте в глечик по 4 частини вина Burgundy і лимонаду.</li><li>Додайте по 1 частині апельсинового соку і содової.</li><li>Ретельно перемішайте напій високою ложкою.</li><li>Сангрію бажано подавати з льодом — додайте його в келихи за бажанням.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бішоп" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Bishopl.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бішоп</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom">Ром</a></li><li><a href="https://maudau.com.ua/product/vyno-remoissenet-pere-fils-gevrey-chambertin-1er-cru-le-trio-aoc-chervone-sukhe-135-075-l">Бургундське червоне вино</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Бішоп — це класичний коктейль із насиченим смаком, який поєднує тепло пряного червоного вина та насиченість рому. Напій вирізняється універсальністю: його можна подавати як теплим — у холодну пору року, так і охолодженим — для створення розслаблювальної атмосфери в спекотні дні.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Бішоп</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл рому</li><li>30 мл червоного бургундського вина</li><li>1 ч. л. сиропу</li><li>1/2 ст. л. соку лайма</li><li>лід кубиками до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У невеликій каструлі нагрійте 30 мл червоного бургундського вина на середньому вогні, не доводячи до кипіння.</li><li>Додайте повну коктейльну ложку сиропу та 1/2 ст. л. соку лайма.</li><li>Зніміть каструлю з вогню, влийте 90 мл рому і перемішайте.</li><li>Остудіть напій і налийте у високий келих.</li><li>Насипте лід кубиками до смаку.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">86 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.7 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85.6 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

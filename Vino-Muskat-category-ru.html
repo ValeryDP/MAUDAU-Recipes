@@ -1,0 +1,1001 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Вино мускат — напиток, который изготовлен из любого белого мускатного винограда. При этом семейство насчитывает более 200 сортов.</p>
+                <p>Крепость вина в среднем составляет 13–16%. Большинство напитков производят в полусладком и сладком стилях, но на рынке также представлены десертные варианты, которые иногда относят к категории крепленых.</p>
+                <h3>Вино Muscat: вкус и аромат</h3>
+                <p>
+                    Первый глоток раскрывает сбалансированную цветочно-фруктовую композицию, которая склоняется к персиковому, нектариновому и абрикосовому концу вкусового спектра. Нотки тропических фруктов, имбиря, лимонника, жимолости, жасмина, личи
+                    и меда также хорошо ощутимы. Точный перечень вкусовых и ароматических нюансов зависит от конкретного сорта и применяемых методов виноделия, например, выдержки в дубовых бочках.
+                </p>
+                <h2>Что известно о происхождении вина из винограда «мускат»</h2>
+                <p>
+                    Историю мускатных вин прослеживают до времен Древней Греции и Рима. Первоначально считавшееся непригодным для изготовления сухих напитков из-за горечи, семейство виноградных сортов приобрело популярность в Италии, где активно
+                    применяли технику «пассито», то есть сушку ягод на солнце с целью «заизюмливания», и во французских винодельческих регионах Бом-де-Вениз и Фронтиньян.
+                </p>
+                <p>
+                    Известно, что вино Muscat производят на полуострове Сетубал в Португалии с XIX века. Южноафриканская сладкая версия, которую распространяли как «Констанцию» по месту изготовления, завоевала доверие потребителей викторианской Англии
+                    примерно в то же время. Название также отсылает к тому, что напиток долгое время считали деликатесом исключительно для женщин.
+                </p>
+                <p>
+                    Мускат, произведенный в Украине, можно купить с 1828 года. Виноград выращивали на полуострове Крым, где вскоре «Массандра» наладила выпуск знаменитого десертного вина «Белый мускат Красного Камня», известный по насыщенному аромату
+                    сухофруктов.
+                </p>
+                <h2>«Мускат»: ключевые особенности винограда</h2>
+                <p>
+                    Ягоды считают ароматными. Цветочно-фруктовый шлейф — результат высокого содержания естественных эфирных соединений, которые также придают легкую горчинку. Вкусовая палитра ягод полностью раскрывается, когда они произрастают в теплом
+                    и солнечном климате. Мякоть — сочная, но покрытая тонкой кожицей, поэтому виноград зачастую собирают вручную.
+                </p>
+                <p>Семейство сортов подходит для изготовления разных стилей: от белых и красных до розовых, от сухих до сладких, от полностью развитых до оксидированных.</p>
+                <h3>География производства вин мускат</h3>
+                <p>Виноград выращивают по всему миру, но особого внимания заслуживает продукция из таких стран:</p>
+                <ol>
+                    <li>Франции. Регионы Ривальт и Эльзас славятся десертными винами с ярко выраженными медово-цветочными нюансами. Доминантный сорт — «мускат блан а пти грен».</li>
+                    <li>Италии. Вино из винограда «мускат», особенно сортов «москато бьянко», производят в Пьемонте и Пантеллерии, а также на Сицилии. Самый известный пример — Moscato d’Asti.</li>
+                    <li>Испании. Знаковые винодельческие регионы — Малага и Валенсия. В стране выращивают один из самых известных сортов — «мускат александрийский», вина из которого окутывают апельсиновой свежестью.</li>
+                    <li>Украины. Местные виноделы выпускают в основном крепленые вина с интенсивными ароматами сухофруктов.</li>
+                    <li>Молдовы. На основе винограда «мускат оттонель» производят сладкие медовые напитки светло-золотистого цвета.</li>
+                </ol>
+                <p>Другие важные регионы:</p>
+                <ul>
+                    <li>Австрия (Штирия и Бургенланд);</li>
+                    <li>Греция (Самос и Патры);</li>
+                    <li>ЮАР (Констанция и Западный Кейп);</li>
+                    <li>Австралия (Рутерглен и Виктория).</li>
+                </ul>
+                <h2>Краткий обзор основных разновидностей вин Muscat</h2>
+                <p>Ключевые категории:</p>
+                <ol>
+                    <li>Moscato di Pantelleria. Десертный напиток в стиле «пассито» с концентрированными ароматами кураги, инжира и меда.</li>
+                    <li>Moscato Giallo. Итальянский сорт с тонкой сладостью и ярко выраженными цветочными нюансами, который зачастую винифицируют в полусухом и сухом стилях.</li>
+                    <li>Moscato Rose. Сладкий или полусладкий напиток на основе розовокожих ягод с нотками лепестков роз и красных фруктов. Muscat Rose — вино, цена которого самая доступная.</li>
+                    <li>Moscato National. Версия, которую производят в Украине и Молдове. Этот виноградный сорт придает готовому напитку насыщенные нотки сухофруктов и пряных специй.</li>
+                    <li>Moscato Terre Siciliane. Категория мускатных вин с освежающими цитрусовыми аккордами и медовым послевкусием.</li>
+                    <li>Moscato d’Asti. Слабоалкогольный напиток из Пьемонта (Италия) с характерными ароматами персика, груши и апельсиновых цветков.</li>
+                </ol>
+                <h2>Как выбрать вино мускат</h2>
+                <p>В интернет-магазине MAUDAU представлены десятки вариантов, поэтому каждый найдет вариант по вкусу и бюджету. Чтобы убедиться в качестве, остановитесь на товарах с оценками и отзывами от других покупателей.</p>
+                <p>Большинство вин продают в стандартном объеме — 0,75 л. Но на рынке также можно найти варианты побольше, например, в тетрапаках по 2 л.</p>
+                <p>Мускат — вино, которое можно купить на подарок, особенно новичку или любителю легкого алкоголя. Остановитесь на предложениях от культовых торговых марок:</p>
+                <ul>
+                    <li>Yellow Tail;</li>
+                    <li>Baronia de Turis;</li>
+                    <li>Frontera.</li>
+                </ul>
+                <h3>Мускат вино: цена в Украине</h3>
+                <p>
+                    Стоимость варьируется в зависимости от репутации производителя, места изготовления, стиля и качества ягод. Зачастую бутылку оригинального напитка можно найти по 400–600 грн — это относительно низкая цена, по сравнению с
+                    конкурентными категориями.
+                </p>
+                <h2>Как подавать и с чем пить вино Muscat</h2>
+                <p>Большинство напитков предназначены для употребления молодыми. Комфортная температура употребления — +8–12 °C. Десертное мускатное вино гармонично сочетается с:</p>
+                <ul>
+                    <li>свежими фруктами и ягодами;</li>
+                    <li>орехами;</li>
+                    <li>мягкими сливочными сырами;</li>
+                    <li>морепродуктами.</li>
+                </ul>
+                <p>Розовую версию нередко подают с пикантными азиатскими блюдами. Напиток также дополнит десерт, особенно рахат-лукум.</p>
+                <h2>Почему выгодно купить вино Muscat в интернет-магазине MAUDAU</h2>
+                <p>
+                    Команда MAUDAU гарантирует оригинальное происхождение каждого напитка, доступного к заказу. Доставку осуществляют курьеры по Киеву и пригороду, а также Днепру и Львову. В тех же городах предусмотрен самовывоз. Чтобы оформить заказ в
+                    любой другой населенный пункт Украины, выбирайте ближайшее почтовое отделение. Несмотря на то, что на мускат цена доступная, дополнительная экономия возможна при заказе оптом или по акции.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Холодная Мимоза" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Frozen-Mimosa.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Холодная Мимоза</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-shabo-limited-edition-muskat-ottonel-marochne-bile-desertne-16-075-l">Белое десертное вино Мускат</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновый ликер</a></li><li>Мороженое</li><li>Мята</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Холодная Мимоза — коктейль из десертного белого вина Мускат, с пломбиром, апельсиновым ликером и соком. Является модификацией классического коктейля Мимоза. Вкус у напитка получается очень мягкий и освежающий.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Холодная Мимоза</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>200 мл белого десертного вина Мускат</li><li>50 мл апельсинового сока</li><li>10 мл апельсинового ликера</li><li>1 шарик/1 ст. ложка мороженого (пломбир)</li><li>Мята по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Смешайте в бокале 50 мл апельсинового сока и 10 мл апельсинового ликера.</li><li>Затем добавьте 200 мл белого десертного вина Мускат и перемешайте.</li><li>Сверху выложите 1 шарик или 1 ст. л. мороженного пломбир.</li><li>Для украшения коктейля используйте листочки мяты.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Key Lime Moscato" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Key-Lime-Moscato.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Key Lime Moscato</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=muskat-muscat">Вино Moscato</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda">Сладкая вода</a></li><li>Лаймы</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Key Lime Moscato состоит всего из нескольких ингредиентов, а именно: вина Moscato, газированной воды и лаймов. Для насыщенности вкуса желательно использовать персиково-грушевую воду. Напиток идеально подходит как для праздничных моментов, так и для повседневного удовольствия.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Key Lime Moscato</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка вина Moscato</li><li>2 банки газированной воды (желательно персиково-грушевого вкуса)</li><li>6 лаймов, нарезанных ломтиками</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Вылейте в кувшин или чашу для пунша 1 бутылку вина Moscato.</li><li>Бережно влейте 2 банки газированной воды — напиток может пениться.</li><li>Выдавите большую часть сока лайма в кувшин.</li><li>Тщательно перемешайте содержимое коктейльной ложкой.</li><li>Украсьте напиток лаймовыми ломтиками.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Perfect Summit Manhattan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Perfect-Summit-Manhattan.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Perfect Summit Manhattan</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=sukhyi-dry">Сухой вермут</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-jean-baptiste-adam-muscat-rserve-bile-sukhe-075-l">Вино Мускат Réserve</a></li><li><a href="https://maudau.com.ua/ru/product/liker-joseph-cartron-curacao-orange-kiurasao-oranzh-35-07-l">Ликер апельсиновый Кюрасао</a></li><li><a href="https://maudau.com.ua/ru/product/biter-zwack-unicum-40-07-l">Биттер</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Perfect Summit Manhattan сохраняет баланс сладости и сухости, благодаря использованию разных ингредиентов, что придает ему уникальный и глубокий вкус. Напиток получается ароматным и насыщенным, с фруктовыми и пряными нотами.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Perfect Summit Manhattan</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 1/2 шота бурбона</li><li>3/4 шота сухого вермута</li><li>3/4 шота вина Мускат Réserve</li><li>1/6 шота ликера апельсинового Кюрасао</li><li>2 капли выдержанного биттера</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните стакан для смешивания льдом.</li><li>Добавьте 2 с половиной шота бурбона.</li><li>Влейте по 3/4 шота сухого вермута и вина Мускат Réserve.</li><li>Налейте 1/6 шота ликера апельсинового Кюрасао.</li><li>Добавьте 2 капли выдержанного биттера.</li><li>Хорошо перемешайте все ингредиенты с помощью барной ложки.</li><li>Процедите коктейль в охлажденный бокал для мартини или бокал-купе.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Золотой плющ (Golden Ivy)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Golden-Ivy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Золотой плющ (Golden Ivy)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-jean-baptiste-adam-muscat-rserve-bile-sukhe-075-l">Вино Мускат Réserve</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Сок клюквенный</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Золотой плющ — коктейль на базе коньяка, с добавлением вина Мускат Réserve и сладкого клюквенного сока. Сочетание фруктовых нот и глубоких ароматов создает насыщенный, сбалансированный и утонченный вкус, который определенно понравится вашим гостям.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Золотой плющ (Golden Ivy)</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 шота коньяка (бренди)</li><li>1/2 шота вина Мускат Réserve</li><li>1 шот сока клюквенного (сладкого)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер льдом в кубиках.</li><li>Добавьте 2 шота коньяка и половину шота вина Мускат Réserve.</li><li>Влейте 1 шот клюквенного сока и встряхните шейкер до охлаждения ингредиентов.</li><li>Процедите коктейль в охлажденный бокал для подачи.</li><li>Украсьте напиток свежими ягодами клюквы.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Winter Moscato Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Winter-Moscato-Punch.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Winter Moscato Punch</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Сок клюквенный</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hranat-8">Сок гранатовый</a></li><li><a href="https://maudau.com.ua/ru/product/pyvo-bezalkoholne-bavaria-imbyr-laim-033-l">Имбирное пиво</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл-сек</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=muskat-muscat">Вино Moscato</a></li><li>Лед</li><li>Апельсин</li><li>Клюква</li><li>Розмарин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающий пунш с кислинкой ягодных соков, вином Moscato и имбирным пивом. Winter Moscato Punch — отличный коктейль для праздничных ужинов и вечеринок. Этот напиток, который состоит всего из нескольких ингредиентов, готовится легко и быстро непосредственно перед началом мероприятия.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Winter Moscato Punch</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 ст. сока клюквенного</li><li>1 ст. сока гранатового</li><li>355 мл имбирного пива</li><li>118 мл трипл-сека</li><li>1.5 л вина Moscato</li><li>Лед по вкусу</li><li>Свежие апельсиновые дольки, клюква и розмарин для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В большой чаше или кувшине смешайте 2 ст. клюквенного и 1 ст. гранатового сока.</li><li>Добавьте 118 мл трипл-сека и 1.5 л вина Moscato.</li><li>Аккуратно влейте 355 мл имбирного пива.</li><li>Перемешайте все ингредиенты, добавьте лед по вкусу.</li><li>Украсьте пунш дольками апельсина, свежей клюквой и розмарином.</li><li>Подавайте напиток в охлажденном виде.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Cranberry Pear Moscato" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cranberry-Pear-Moscato.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Cranberry Pear Moscato</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свежая клюква</li><li>Свежая груша</li><li><a href="https://maudau.com.ua/ru/product/vyno-santero-moscato-dasti-villa-jolanda-solodke-bile-075-l">Вино Москато д'Асти</a></li><li>Свежий розмарин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Cranberry Pear Moscato — это утонченный коктейль с яркими фруктово-ягодными нотами. Свежая клюква и груша создают идеальный насыщенный тандем, который гармонирует с легким вином Moscato d'Asti. Нотки розмарина придают напитку травяную свежесть и необычный аромат.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Cranberry Pear Moscato</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1/2 ст. свежей клюквы</li><li>1/2 ст. свежей груши (очищенной и нарезанной)</li><li>2 ст. вина Москато д'Асти</li><li>4 веточки свежего розмарина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В шейкере смешайте 1/2 ст. свежей клюквы и столько же очищенной, нарезанной груши.</li><li>Легко разомните их мадлером, чтобы выпустить сок.</li><li>Добавьте в шейкер 2 ст. вина Москато д'Асти и пару веточек розмарина.</li><li>Наполните шейкер льдом и тщательно встряхните.</li><li>Процедите коктейль в бокал через барное сито.</li><li>Украсьте напиток оставшимися веточками розмарина, а по желанию — дольками груши и клюквой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Watermelon Moscato Slushie" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Watermelon-Moscato-Slushie.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Watermelon Moscato Slushie</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Арбуз</li><li>Лед</li><li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=muskat-muscat">Вино Мускат</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Watermelon Moscato Slushie — это освежающий сладкий коктейль, идеально подходящий для жарких летних дней. Сочетание арбуза, льда и вина Moscato создает необычную, фруктово-замороженную текстуру. Этот напиток дарит прохладу, с ярким вкусом арбуза и легкими винными нотками.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Watermelon Moscato Slushie</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3 части арбуза</li><li>3 части льда</li><li>1.5 части вина Москато</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Поместите по 3 части нарезанного арбуза и льда в блендер.</li><li>Добавьте 1.5 части вина Москато.</li><li>Смешайте все ингредиенты до получения густой, однородной консистенции.</li><li>Перелейте коктейль в стакан и подавайте сразу в холодном виде.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Pink Lemonade Moscato" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-Lemonade-Moscato.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Pink Lemonade Moscato</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-santero-moscato-rose-villa-jolanda-carved-rozheve-solodke-65-075-l-2184">Розе Moscato</a></li><li><a href="https://maudau.com.ua/ru/product/napii-fentimans-rose-bezalkoholnyi-275-ml-788639">Розовый лимонад</a></li><li>Лимон</li><li>Клубника</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Pink Lemonade Moscato — освежающий коктейль с ярким вкусом. Вино Moscato гармонично сочетается с розовым лимонадом, придающим напитку легкую кислинку. Нарезанные лимон и клубника добавляют цитрусово-ягодную пикантность, а лед — морозные нотки в жаркие дни.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Pink Lemonade Moscato</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка (187 мл) розового Moscato</li><li>1 ст. розового лимонада</li><li>1/2 нарезанного лимона</li><li>3 нарезанных ягоды клубники</li><li>Много льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В шейкере смешайте 1 бутылку розового Moscato и 1 ст. розового лимонада.</li><li>Добавьте половину нарезанного лимона и 3 ягоды клубники.</li><li>Легко примните ягоды пестиком, чтобы они отдали сок.</li><li>Наполните стакан льдом до половины или по вкусу.</li><li>Перемешайте ингредиенты, чтобы они хорошо смешались и охладились.</li><li>Украсьте коктейль ягодками клубники и дольками лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Tropical White Moscato Sangria" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tropical-White-Moscato-Sangria.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Tropical White Moscato Sangria</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-yellow-tail-moscato-bile-napivsolodke-75-075-l-475085">Белое Moscato</a></li><li><a href="https://maudau.com.ua/ru/product/napii-coconaut-kokosovyi-z-sokom-ananasu-nhaz-zb-032-l">Кокосовая вода с ананасом</a></li><li><a href="https://maudau.com.ua/ru/product/horilka-distil-9-mango-40-0-5-l">Водка с манговым вкусом</a></li><li>Ананас</li><li>Манго</li><li>Лаймы</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Tropical White Moscato Sangria — насыщенный тропический коктейль, сочетающий сладость белого Moscato и экзотические фруктовые нотки. Кокосовая вода, манговая водка, измельченные ананас, манго и лайм создают яркий и фруктовый вкус, идеально подходящий для веселых вечеринок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Tropical White Moscato Sangria</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка (750 мл) белого Moscato</li><li>1.5 ст. кокосовой воды с ананасом</li><li>1/2 ст. водки с манговым вкусом</li><li>1 ст. нарезанного кубиками ананаса</li><li>1 большое нарезанное кубиками манго</li><li>2 тонко нарезанных лайма</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Вылейте в кувшин одну бутылку белого вина Moscato.</li><li>Добавьте 1.5 ст. кокосовой воды с ананасом и 1/2 ст. водки с манговым вкусом.</li><li>Насыпьте в кувшин 1 ст. нарезанного кубиками ананаса, одно измельченное манго и два лайма в слайсах.</li><li>Аккуратно перемешайте все ингредиенты, чтобы они хорошо обменялись вкусами.</li><li>Поставьте в холодильник на 2–4 часа, чтобы коктейль настоялся.</li><li>Подавайте напиток в бокалах со льдом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Summer Peach Moscato Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Summer-Peach-Moscato-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Summer Peach Moscato Cocktail</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=muskat-muscat">Вино Мускат</a></li><li><a href="https://maudau.com.ua/ru/product/napii-sokovmisnyi-naturalis-persyk-manho-1-l">Сок персиково-манговый</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=persykovyi-3">Персиковый шнапс</a></li><li>Свежие персики</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вкусный десертный коктейль, сочетающий сладость мускатного вина с персиково-манговым соком, — это Summer Peach Moscato Cocktail. Персиковый шнапс придает напитку умеренную крепость, а свежие персики украшают коктейль, добавляя ярких фруктовых ноток с ароматами лета.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Summer Peach Moscato Cocktail</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка мускатного вина</li><li>6 ст. персиково-мангового сока</li><li>1/4 ст. персикового шнапса (по желанию)</li><li>1 ст. свежих нарезанных персиков для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В глубокой емкости смешайте 1 бутылку мускатного вина и 6 ст. персиково-мангового сока.</li><li>Для крепости влейте 1/4 ст. персикового шнапса и хорошо перемешайте.</li><li>Добавьте лед, чтобы коктейль охладился.</li><li>Украсьте напиток свежими нарезанными персиками.</li><li>Подавайте коктейль охлажденным и наслаждайтесь летним вкусом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">82 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">5.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85.7 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

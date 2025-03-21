@@ -1,0 +1,987 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Вино Cabernet Sauvignon — напій, який виробляють на основі одного з найпопулярніших сортів темного винограду у світі. Класичний вираз — сухе та повнотіле, із середніми танінами та високою кислотністю, що сприяє витримці. Міцність
+                    коливається в межах 13–15%.
+                </p>
+                <h2>Трохи з історії вина Cabernet Sauvignon</h2>
+                <p>
+                    Напій починає свій шлях у мальовничих виноградниках Бордо — відомому виноробному регіоні у Франції. Сорт вивели випадково у XVII столітті, коли виноградарі виявили, що можна схрестити два різні типи ягід — червоний «каберне-фран» і
+                    білий «совіньйон-блан», щоб отримати щось абсолютно нове.
+                </p>
+                <p>
+                    Відтоді вино каберне совіньйон — візитівка Франції. У рідному регіоні виноград змішують з «мерло» і «каберне-фран» для створення культових бордоських купажів. Незабаром виноград перекочував до Іспанії, а звідти — до Нового Світу, де
+                    знайшов домівку в безлічі важливих виноробних зон, включно з Каліфорнією (США) і Маргарет-Ривер (Австралія).
+                </p>
+                <h2>Особливості виноградного сорту «каберне совіньйон»</h2>
+                <p>
+                    Площа світових насаджень обчислюється 341 000 гектарами. Успіх сорту пов’язаний із простотою вирощування — лози витривалі та від природи маловрожайні. Бруньки пізно розпускаються, що оптимально для регіонів з ранніми заморозками, і
+                    стійкі до різних «небезпек», включно з гниллю і зараження комахами.
+                </p>
+                <p>Ягоди характеризує товста шкірка з високим вмістом танінів — група природних фенольних сполук, що перетворює каберне совіньйон на вино з насиченим смаком і яскравим кольором.</p>
+                <p>Сорт також називають типовим, тобто таким, що виражає смак, аромат і структуру незалежно від методів виноробства. Візитівка — аромат зеленого болгарського перцю, який пояснюється вмістом метоксипіразину.</p>
+                <p>
+                    Виноградні лози віддають перевагу теплій і сонячній погоді. Найкраще вони ростуть у місцях, де літо тривале і не надто дощове. Що стосується місцевості, то ягоди люблять ґрунт, який добре пропускає воду, наприклад, гравій або пісок,
+                    що не допускає перезволоження і загнивання коренів.
+                </p>
+                <h2>Каберне совіньйон: у яких регіонах краще купити вино</h2>
+                <p>Виноград вирощують по всьому світу, але на особливу увагу заслуговують кілька країн:</p>
+                <ol>
+                    <li>
+                        Франція. Виноград особливо добре почувається на гравійних ґрунтах Бордо, а після дозрівання ягоди набувають злегка пікантної нотки. Тут сорт рідко використовують у чистому вигляді, але в складі купажу його характеризують нотки
+                        чорної смородини, анісу, тютюну і графіту. На деякі версії Cabernet Sauvignon ціна сягає десятків тисяч гривень, що пов’язано з репутацією окремих виноробів (шато).
+                    </li>
+                    <li>
+                        США. До стандартного набору смакових дескрипторів приєднуються ожина та ментол. Найкращі місця для пошуку — Каліфорнія, включно з Долиною Напи та Соному. Каліфорнійське Cabernet — вино з цікавою історією. Успіх до нього прийшов
+                        після сліпої дегустації 1976 року, яка пізніше отримала назву «Суд Парижа». Організатором виступив Стівен Спарієр, а одностайну перемогу здобуло каліфорнійське вино каберне совіньйон, назавжди довівши, що якісну продукцію
+                        виробляють не тільки у Франції.
+                    </li>
+                    <li>Австралія. Помірний клімат Кунаварри призводить до розвитку нюансів білого перцю, сливи, шоколаду і лаврового листа. Пляшки з рідкісними розливами нерідко закорковують гвинтовими пробками.</li>
+                    <li>
+                        Чилі. Дегустаційні нотатки включають вишню, ожину, інжир, зелений болгарський перець. Оскільки регіон не так давно визнали важливою виноробною зоною, на каберне совіньйон ціна залишається доступною — навіть для напоїв найвищої
+                        якості.
+                    </li>
+                    <li>Україна. Виробництво зосереджене в південних регіонах, процвітаючи в Одесі та Миколаєві. Унікальний теруар надає напою особливого характеру — з яскравими землисто-мінеральними нюансами.</li>
+                </ol>
+                <p>
+                    Якщо підсумувати, то вино Cabernet Sauvignon із прохолодних регіонів характеризують нотки чорної смородини, кедра, м’яти, зеленого перцю. Помірний клімат, наприклад, як у Кунаваррі в Південній Австралії, призводить до розвитку
+                    нюансів чорного перцю та евкаліпта. Коли виноград росте під палючим сонцем, то фруктові нотки більше нагадують джем.
+                </p>
+                <h2>Різновиди вин каберне совіньйон</h2>
+                <p>В основному з винограду виробляють червоні стилі, але рожеві також випускають. Це легший і ніжніший вираз, який огортає свіжими ароматами червоних фруктів і ягід.</p>
+                <p>За вмістом залишкового цукру вино Cabernet Sauvignon буває:</p>
+                <ul>
+                    <li>сухим — до 4 г/л;</li>
+                    <li>напівсухим — 4–12 г/л;</li>
+                    <li>напівсолодким — 12–45 г/л;</li>
+                    <li>солодким — від 45 г/л.</li>
+                </ul>
+                <p>
+                    Напої також поділяють на вінтажні, тобто виготовлені з винограду одного року збирання, що часто відображає виняткову якість врожаю, і не вінтажні — змішані з винних спиртів, приготованих у різний час для сталості смаку й аромату. На
+                    останнє вино Cabernet ціна найдоступніша.
+                </p>
+                <p>У маркеті алкогольних штук MAUDAU також можна замовити безалкогольну версію, яка повністю передає смак і аромат традиційного вина. Це чудовий варіант для вечірки з великою кількістю гостей або людей, які не вживають алкоголь.</p>
+                <h2>Як вибрати вино Cabernet Sauvignon</h2>
+                <p>Проаналізуйте важливі критерії:</p>
+                <ul>
+                    <li>бренд;</li>
+                    <li>колір;</li>
+                    <li>солодкість;</li>
+                    <li>міцність;</li>
+                    <li>обсяг.</li>
+                </ul>
+                <p>Наприклад, варіант у тетрапаках по 2–3 літри підходить для компанії або відпочинку на природі. Якщо хочете поповнити особисту колекцію, спершу можна купити мініатюрку, а після проведення дегустації — повнорозмірну пляшку.</p>
+                <p>Щоб підтримати українського виробника, зверніть увагу на продукцію Shabo, Leleka Wines, Villa Tinta. Варіант на подарунок можна знайти у Robert Mondavi (США), Santa Rita (Чилі), Tenuta di Nozzole (Італія).</p>
+                <h3>Вино каберне совіньйон: ціна в Україні</h3>
+                <p>
+                    Вартість пляшки залежить від багатьох чинників, включно з репутацією виробника, якістю ягід, обраним методом вініфікації. Наприклад, у Франції існує градація виноградників. Якщо ягоди вирощені на престижних ділянках, це підвищує
+                    ціну. Витримка в дубі не тільки пом’якшує таніни і сприяє розвитку нових смакових нюансів, а й підвищує ціну.
+                </p>
+                <p>За пляшку якісного напою в середньому потрібно заплатити 300–500 грн. Продукція з високим потенціалом до зберігання коштує дорожче — близько 1000–1500 грн за 0.75 л.</p>
+                <h2>З чим пити вино Cabernet Sauvignon</h2>
+                <p>
+                    Через суху танінність і повнотілість напій найкраще подавати з жирними і ситними стравами: бургерами, піцою, пастою, червоним м’ясом і дичиною. Якщо складно визначитися, подумайте про регіон. Наприклад, макарони під томатним соусом
+                    чудово поєднуються з версією з Італії. Шанувальники напоїв з Іспанії можуть подати тапаси з томленим м’ясом свинини або оленини. Фруктові вирази з Каліфорнії стануть апетитним доповненням до курячого філе або лобстера.
+                </p>
+                <h2>Чому вигідно купити вино каберне совіньйон в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен товар, який можна знайти на сторінці, — оригінальний. Гарантією цьому слугує власний імпорт від MAUDAU. Завдяки прямим постачанням Cabernet Sauvignon — вино, ціна якого залишається доступною, оскільки націнка в офіційних
+                    дистриб’юторів мінімальна. Якщо хочете додатково заощадити, відберіть товари за акцією або знижкою. Замовляйте напої з доставленням по всій Україні поштовими службами — «Новою Поштою» та «Укрпоштою».
+                </p>
+            </div>
+            
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Simple Sippin' Vodka Sangria Spritzer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Simple-Sippin-Vodka-Sangria-Spritzer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Simple Sippin' Vodka Sangria Spritzer</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/sort_vynohradu=kaberne-sovin-jon-cabernet-sauvignon">Каберне Совіньйон</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=apelsyn-26">Газована апельсинова вода</a></li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li>Свіжа малина</li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Малина та цитрусовий смак апельсинової газованої води роблять цей коктейль свіжим, а Каберне Совіньйон додає глибину смаку, роблячи простий і вишуканий напій, який миттєво створює атмосферу свята.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Simple Sippin' Vodka Sangria Spritzer</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл Каберне Совіньйон</li><li>90 мл газованої води зі смаком апельсина</li><li>30 мл горілки</li><li>Жменя свіжої малини</li><li>Лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У високу склянку додайте жменю свіжої малини.</li><li>Легко розімніть ягоди ложкою, щоб вони пустили сік, але не перетворилися на пюре.</li><li>Насипте кубики льоду, заповнивши склянку на три чверті.</li><li>Потім налийте горілку і рівномірно змішайте з малиновим соком.</li><li>Влийте Каберне Совіньйон, а потім додайте газовану воду зі смаком апельсина.</li><li>Обережно перемішайте ложкою або барною паличкою, намагаючись зберегти легку піну від газованої води.</li><li>Прикрасьте напій свіжою малиною або тонкою скибочкою апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Cabernet Sauvignon Winter Sangria Pitcher" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cabernet-Sauvignon-Winter-Sangria-Pitcher.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Cabernet Sauvignon Winter Sangria Pitcher</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Журавлина</li><li>Яблуко</li><li>Апельсини</li><li><a href="https://maudau.com.ua/product/korytsia-palychky-cannamela-3-sht">Палички кориці</a></li><li><a href="https://maudau.com.ua/category/vyno/sort_vynohradu=kaberne-sovin-jon-cabernet-sauvignon">Каберне Совіньйон</a></li><li><a href="https://maudau.com.ua/category/sydry-ta-medy/smak=jabluko">Яблучний сидр</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=brendi">Бренді</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей теплий і насичений напій наповнює дім ароматами зимових спецій, фруктів і вина. Він ідеально підходить для затишних вечорів із друзями та родиною.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Cabernet Sauvignon Winter Sangria Pitcher</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 склянка журавлини</li><li>1 яблуко (нарізане на тонкі четвертинки без серцевини)</li><li>2 апельсини (нарізаних на тонкі четвертинки)</li><li>2 палички кориці</li><li>1 пляшка Каберне Совіньйон</li><li>2 склянки яблучного сидру</li><li>½ склянки бренді</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У великий скляний глечик покладіть свіжу журавлину.</li><li>Наріжте тонкими четвертинками яблуко і два апельсини.</li><li>Додайте їх у глечик разом із двома паличками кориці.</li><li>Повільно влийте Каберне Совіньйон у глечик.</li><li>Додайте яблучний сидр, а потім акуратно влийте бренді.</li><li>Перемішайте вміст довгою ложкою і поставте глечик у холодильник мінімум на 4 години, щоб фрукти ввібрали алкоголь і спеції розкрили свої аромати.</li><li>Перед подачею ще раз перемішайте напій, розлийте його по келихах, додаючи в кожен шматочки фруктів.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чорнична сангрія (Blueberry Sangria)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blueberry-Sangria.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чорнична сангрія (Blueberry Sangria)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Чорниця</li><li>Апельсин</li><li>Лайм</li><li>Лимон</li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=brendi">Бренді</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/vyno/sort_vynohradu=kaberne-sovin-jon-cabernet-sauvignon">Каберне Совіньйон</a></li><li>Лід</li><li><a href="https://maudau.com.ua/product/lymonad-natakhtari-lymon-laim-05-l">Лимонно-лаймова сода</a></li><li>Свіжа мʼята</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Багата чорнична сангрія з нотками цитрусових і свіжої м'яти — це справжня окраса літнього столу. Приємний баланс солодкості та кислинки робить напій воістину незабутнім.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Чорнична сангрія (Blueberry Sangria)</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 склянки свіжої чорниці</li><li>1 апельсин (тонко нарізаний)</li><li>1 лайм (нарізаний)</li><li>1 лимон (нарізаний)</li><li>1 склянка бренді</li><li>1 склянка апельсинового соку</li><li>1 пляшка Каберне Совіньйон</li><li>Лід до смаку</li><li>Лимонно-лаймова сода</li><li>Свіжа м'ята для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте кружальцями апельсин, лимон і лайм.</li><li>У великий скляний глечик викладіть свіжі чорниці та нарізані фрукти.</li><li>Легенько придушіть чорниці, щоб вони виділили трохи соку.</li><li>Влийте апельсиновий сік і бренді, ретельно перемішуючи.</li><li>Потім додайте Каберне Совіньйон і поставте глечик у холодильник на 3-4 години, щоб фрукти просочилися алкоголем. Перед подачею наповніть келихи льодом, розлийте сангрію і додайте трохи лимонно-лаймової соди.</li><li>Прикрасьте напій гілочкою м'яти, ягодами чорниці та шматочками просочених фруктів.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Малинова сангрія (Raspberry Sangria)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-Sangria.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Малинова сангрія (Raspberry Sangria)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/sort_vynohradu=kaberne-sovin-jon-cabernet-sauvignon">Каберне Совіньйон</a></li><li>Заморожена малина</li><li>Чебрець</li><li><a href="https://maudau.com.ua/product/lymonad-natakhtari-lymon-laim-05-l">Лимонно-лаймова сода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Малинова сангрія з чебрецем — це гармонійне поєднання солодкості ягід, пряного аромату трав і глибини червоного вина. Напій підходить як для святкових заходів, так і для розслабленого вечора.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Малинова сангрія (Raspberry Sangria)</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>750 мл Каберне Совіньйон</li><li>2 склянки замороженої малини</li><li>4 гілочки чебрецю</li><li>1 банка лимонно-лаймової соди</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Перед приготуванням покладіть малину та чебрець у морозилку приблизно на годину.</li><li>Помістіть заморожені інгредієнти в глечик.</li><li>Додайте Каберне Совіньйон, накрийте кришкою і залиште настоятися в холодильнику мінімум на 2 години.</li><li>Перед подачею додайте лимонно-лаймову соду.</li><li>Наповніть келихи льодом, розлийте коктейль по келихах.</li><li>Прикрасьте кожен келих додатковою гілочкою чебрецю.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Gin and Cabernet Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Gin-and-Cabernet-Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Gin and Cabernet Sour</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li>Простий сироп</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/vyno/sort_vynohradu=kaberne-sovin-jon-cabernet-sauvignon">Каберне Совіньйон</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вишуканий коктейль із яскравими цитрусовими акцентами та бархатистою винною ноткою. Він дивує поєднанням джину та червоного вина, створюючи багатошаровий смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Gin and Cabernet Sour</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл джину</li><li>22.5 мл апельсинового лікеру</li><li>22.5 мл простого сиропу</li><li>22.5 мл свіжовичавленого лимонного соку</li><li>15 мл Каберне Совіньйон</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер помістіть лід, потім налийте джин, апельсиновий лікер, простий сироп і свіжовичавлений лимонний сік. Струшуйте суміш до появи конденсату на шейкері.</li><li>Перед подачею покладіть келихи в холодильник.</li><li>В охолоджені келихи через ситечко налийте отриману суміш.</li><li>Зверху, акуратно по ложці, влийте Каберне Совіньон, щоб створити ефект шарів.</li><li>Прикрасьте коктейль тонкою скибочкою лимона або апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Каберне Коблер (Cabernet Cobbler)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cabernet-Cobbler.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Каберне Коблер (Cabernet Cobbler)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-tierra-antica-cabernet-sauvignon-2021-chervone-sukhe-075-l">Червоне вино Каберне Совіньйон</a></li><li>Свіжий лимонний сік</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Содова вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Каберне Коблер — це класичний винний коктейль з освіжальними цитрусовими нотами і легкою солодкістю. Простий у приготуванні, він ідеально підходить для розслаблених вечорів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Каберне Коблер (Cabernet Cobbler)</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл охолодженого червоного вина Каберне Совіньйон</li><li>1 ч. л. свіжого лимонного соку</li><li>1 ч. л. цукрового піску</li><li>60 мл охолодженої содової води</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер додайте цукровий пісок і свіжовичавлений лимонний сік.</li><li>Ложкою ретельно перемішайте, щоб цукор повністю розчинився.</li><li>Охолодіть у холодильнику Каберне Совіньйон.</li><li>Додайте його та кілька кубиків льоду в шейкер.</li><li>Енергійно струшуйте його кілька хвилин.</li><li>Наповніть келих льодом на ¾, акуратно перелийте вміст шейкера.</li><li>Зверху додайте охолоджену содову воду.</li><li>Прикрасьте келих за бажанням.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Amaretto Cabernet Sauvignon Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Amaretto-Cabernet-Sauvignon-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Amaretto Cabernet Sauvignon Cocktail</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/sort_vynohradu=kaberne-sovin-jon-cabernet-sauvignon">Каберне Совіньйон</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=amareto-3">Амаретто</a></li><li>Свіжий розмарин</li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Багатошаровий коктейль з теплими горіховими нотами Амаретто і насиченим смаком Каберне Совіньйон. Цей напій приємно зігріє в холодні вечори.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Amaretto Cabernet Sauvignon Cocktail</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл Каберне Совіньйон</li><li>60 мл журавлинного соку</li><li>30 мл Амаретто</li><li>Свіжий розмарин до смаку</li><li>Лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер додайте лід, Каберне Совіньйон, журавлинний сік і Амаретто.</li><li>Струшуйте до повного охолодження напою.</li><li>Келих наповніть кубиками льоду й акуратно перелийте коктейль через ситечко.</li><li>Злегка розімніть гілочку свіжого розмарину і прикрасьте ним коктейль.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Lamasina" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Lamasina.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Lamasina</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-bostavan-kaberne-chervone-napivsolodke-12-1-l-470468">Червоне вино Каберне Совіньйон</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li><a href="https://maudau.com.ua/product/napii-schweppes-club-soda-bezalkoholnyi-syl-haz">Клубна сода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Просте, але дуже смачне поєднання червоного вина, журавлинного соку і клубної соди, яке створює збалансований і освіжальний коктейль, що підходить для будь-якого випадку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Lamasina</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл червоного вина Каберне Совіньйон</li><li>60 мл холодного журавлинного соку</li><li>60 мл холодної клубної соди</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Високу склянку наповніть кубиками льоду.</li><li>Влийте червоне вино Каберне Совіньйон і журавлинний сік, акуратно перемішуючи.</li><li>Зверху додайте холодну клубну соду.</li><li>Прикрасьте коктейль тонкою скибочкою лимону і кількома свіжими ягодами журавлини.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Glogg" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Glogg.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Glogg</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-leleka-wines-cabernet-sauvignon-chervone-sukhe-13-075-l-854157">Червоне вино Каберне Совіньйон</a></li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=kardamon-3">Кардамон</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Кориця</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/category/horikhy-ta-sukhofrukty/typ_267=myhdal-6">Мигдаль</a></li><li><a href="https://maudau.com.ua/category/sukhofrukty/vyd_106=rodzynky-4">Родзинки</a></li><li><a href="https://maudau.com.ua/category/sukhofrukty/vyd_106=inzhyr-4">Сушений інжир</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Традиційний скандинавський глінтвейн із багатим набором спецій, сухофруктів і горіхів. Це зігрівальний напій для зимових посиденьок вдома в компанії близьких друзів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Glogg</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 пляшки червоного вина Каберне Совіньйон</li><li>1 ¾ літра горілки</li><li>20 шт. кардамону</li><li>10 шт. гвоздики</li><li>2 палички кориці</li><li>1 шматок апельсина</li><li>1 ½ склянки бланшованого цілого мигдалю</li><li>1 ½ склянки родзинок</li><li>10 шт сушеного інжиру</li><li>450 г цукру</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У велику каструлю налийте Каберне Совіньйон, додайте горілку і спеції: кардамон, гвоздику і палички кориці.</li><li>Туди ж покладіть нарізаний шматочками апельсин, бланшований мигдаль, родзинки і сушений інжир.</li><li>Поступово нагрівайте суміш на слабкому вогні, не доводячи до кипіння.</li><li>Додайте цукор і перемішуйте до повного розчинення.</li><li>Зніміть з вогню і дайте настоятися 30 хвилин.</li><li>Перед подачею процідіть напій через сито, розлийте по кухлях і прикрасьте мигдалем і родзинками.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">90 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,989 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Токайське вино — напій, який виробляють в однойменному виноробному регіоні Угорщини. Головний компонент — виноград, уражений некротрофним плодовим грибком, більш відомим як Botrytis cinerea. Угорці називають ягоди «асу». Підв’ялений
+                    на гілках виноград ретельно відбирають у момент збору і використовують виключно для виготовлення білих десертних токайських вин.
+                </p>
+                <p>
+                    Шляхетна сіра пліснява вражає ягоди у вологих умовах, наприклад, у туманних річкових долинах, освітлюваних сонцем у денний час. Процес постійного гниття і підсихання призводить до того, що виноград зморщується, а концентрація
+                    природних цукрів підвищується. Це також пояснює особливі нюанси в смаку готових напоїв, а саме нотки кураги, імбиру, шафрану та бджолиного воску.
+                </p>
+                <h2>Де виготовляють токайське вино</h2>
+                <p>
+                    Виробництво відбувається в регіоні Токай-Хедьялья, що на північному сході Угорщини. Однак схожу продукцію виробляють також у Словенії — у зоні Токай. До Тріанонського договору, підписаного в червні 1920 року, цей район входив до
+                    складу великого виноробного регіону Токай-Гедьялья в Королівстві Угорщина. Плато розташоване недалеко від Карпатських гір між річками Тиса і Бодрог.
+                </p>
+                <h2>Tokaji: вино з аристократичною історією</h2>
+                <p>
+                    Виноградарство в регіоні сягає XIII століття, а виробництво алкоголю — XV. «Золотим віком» вважають часи, коли виноробна зона належала магнатам із роду Ракоці. Незабаром володіння перейшли до графа Міклоша Берчені. Відтоді токайське
+                    вино можна було купити не тільки в Угорщині, а й в інших монарших дворах у всій Європі, де його іменували «королем вин і вином королів».
+                </p>
+                <p>
+                    Закритий виробничий округ зареєстрували 1757 року, після того, як Ельзас (Франція) і Фріулі-Венеція-Джулія (Італія) запозичили назву в угорських колег. До цього 1730 року провели класифікацію виноградників, а потім створили
+                    знамениту систему маркування Puttonyos.
+                </p>
+                <p>
+                    Угорське вино токай колись вважали найважливішим у світі. Його обирали представники шляхетних родин, включно з князем Ференцом II Ракоці, королем Людовіком XIV і композитором Йозефом Гайдном. Останній нерідко приймав платежі за
+                    виконану роботу у вигляді вина Tokaji. Зараз нектар, який отримують із винограду, ураженого Botrytis cinerea, згадують навіть у національному гімні Угорщини.
+                </p>
+                <h2>Дозволені сорти винограду у винах Tokaji</h2>
+                <p>Законом схвалено шість типів ягід, проте найчастіше в купажах використовують лише два:</p>
+                <ol>
+                    <li>
+                        «Фурмінт». Домінівний сорт, що займає 60% місцевих виноградників. Ягоди забезпечують токайському вину структуру, а також надають складної ароматичної композиції з нотками цитрусових і кісточкових фруктів. На завершення — тонкий
+                        мінеральний нюанс.
+                    </li>
+                    <li>«Харшлевелю». Сорт, назва якого в перекладі з угорської означає «лист лайма». Виноград характеризують аромати меду та білих квіток.</li>
+                </ol>
+                <p>Інші можливі сорти:</p>
+                <ul>
+                    <li>«мускат білий»;</li>
+                    <li>«коверсзоло»;</li>
+                    <li>«кабар»;</li>
+                    <li>«зета».</li>
+                </ul>
+                <h2>Різноманітність токайських вин пізнього врожаю</h2>
+                <p>Ключові стилі:</p>
+                <ol>
+                    <li>
+                        Aszu. Початкова категорія напоїв, вироблених із винограду одного сорту, але зібраного в різний час. В основі — базове виноградне сусло. Його готують зі свіжих ягід, що дозріли до початку вересня. Далі до сусла додають
+                        подрібнений виноград, зморщений від благородної сірої гнилі. Суміш відправляють настоюватися впродовж 2–5 днів. Подальша мінімальна витримка в дубових бочках становить 18 місяців. Міцність — 9–11%.
+                    </li>
+                    <li>
+                        Eszencia. Вид токайського вина, ціна якого найвища — за пляшку обсягом 375 мл потрібно заплатити близько 30 000 грн. Це золотиста есенція, що містить стільки ж солодощів, скільки цукровий сироп. Для повного зброджування потрібно
+                        4–6 років. При цьому міцність рідко перевищує 3%. Витримка найкращих вин нерідко сягає 200 років. Напій настільки інтенсивний на смак, що його п’ють з особливої ложки, що нагадує столову, і офіційно вважають найсолодшим у світі.
+                    </li>
+                    <li>
+                        Szamorodni. Вино Tokaji, вироблене зі змішаних ягід, тобто не розділених на свіжі та ботритизовані. У межах групи виділяють два види — Edes і Szaraz. Перший містить понад 45 грамів цукру на літр, а другий відносять до сухих, бо
+                        кількість становить до 9 г/л.
+                    </li>
+                    <li>Forditas. Назва в перекладі означає «перевертання». Цей варіант токайського вина готують навпаки: базове виноградне сусло вливають до відпрацьованої заготівлі Aszu.</li>
+                    <li>Maslas. Напій, виготовлений на осаді Aszu. За фактом, це копія традиційного стилю, що й відображено в назві.</li>
+                </ol>
+                <p>Останнім часом у регіоні також налагодили випуск сухих моносортових ботритизованих напоїв із ягід «фурмінт» і «харшлевелю». Назва завжди вказує на використаний виноград. Більшість напоїв походять із села Мад.</p>
+                <h3>Класифікація токайських вин</h3>
+                <p>Головна — Puttonyos, що відображає багатовікову традицію угорського виноробства. Класифікацію використовують тільки для вин Tokaji Aszu.</p>
+                <p>
+                    Раніше ягоди «асу» збирали в кошики під назвою «путтоні». Виноград із них додавали у відміряних кількостях у бочки з виноградним суслом, які не уражені ботритисом. Готове вино маркували залежно від того, скільки кошиків вкинули. На
+                    основі цього виникла система маркування Puttonyos, що налічує чотири класи залежно від солодкості:
+                </p>
+                <ul>
+                    <li>3 — від 60 г/л;</li>
+                    <li>4 — від 90 г/л;</li>
+                    <li>5 — від 120 г/л;</li>
+                    <li>6 — від 150 г/л.</li>
+                </ul>
+                <p>Tokaji Aszueszencia — найсолодше вино. Категорію виділили 2013 року. Вміст цукру коливається в межах 180–450 г/л.</p>
+                <p>
+                    Класифікацію Puttonyos скасували 2013 року, оскільки сучасні виробники не використовують кошики. Щоб отримати маркування Aszu, вино має містити мінімум 120 грамів цукру на літр. При цьому позначка 6 Puttonyos досі дозволена,
+                    оскільки вказує на підвищений вміст цукру — від 150 г/л.
+                </p>
+                <h2>З чим пити вино токай</h2>
+                <p>Сухі стилі гармонійно поєднуються з морепродуктами, особливо мідіями, устрицями і лангустинами. До них також можна подати рибу, свіжий овочевий салат, м’який козячий сир.</p>
+                <p>
+                    Tokaji Aszu — вино, ціна якого доволі висока, тому нікому не хочеться зіпсувати враження від напою. Солодкість у поєднанні з ароматичною складністю відкриває цілий світ гастрономічних можливостей — від фуа-гра і блакитних сирів до
+                    фруктових пирогів і гіркого темного шоколаду.
+                </p>
+                <h2>Як вибрати токайське вино</h2>
+                <p>
+                    Найкращий варіант — продукція Disznoko. Портфоліо виробника об’єднує напої в різних стилях, включно з раритетним виразом Eszencia. Якщо потрібен варіант за доступною ціною, зверніть увагу на пропозиції від Pannon, Chateau Dereszla,
+                    Napos. Бренди пропонують напої в сучасному сухому стилі.
+                </p>
+                <h3>Вино токай: ціна в Україні</h3>
+                <p>
+                    Цінник сформований на основі кількох чинників, включно з репутацією виробника, стилем напою, роком врожаю, місткістю. Сухий стиль — доступний за вартістю, тоді як класична солодка версія коштує приблизно 7000–9000 грн за півлітрову
+                    пляшку.
+                </p>
+                <h2>Чому вигідно купити токайське вино в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен товар на сторінці — оригінальний. З огляду на високу ціну напою, вигідно скористатися гуртовою знижкою або зупинитися на акційних позиціях. Угорське вино токай можна купити з доставленням кур’єром, доступним в деяких містах,
+                    або поштовими службами по всій Україні.
+                </p>
+            </div>
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Токай-шприц" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tokai-shpryts.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Токай-шприц</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=tokai">Токайське вино</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Содова</a></li><li>Лайм</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Токай-шприц — освіжальний коктейль, що поєднує витончений смак вина з легкою грайливістю газованої води та ніжною кислинкою лайма. Напій надихає на відпочинок і дарує вишукану легкість.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Токай-шприц</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>3 частини токайського вина</li><li>1 частина содової</li><li>Часточка лайма для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Виберіть високу посудину (наприклад, келих для вина або хайбол) і наповніть її кубиками льоду.</li><li>Налийте 3 частини токайського вина і 1 частину содової.</li><li>Акуратно перемішайте, щоб не зруйнувати газованість води.</li><li>Додайте часточку лайма на край келиха або опустіть її всередину для яскравого цитрусового акценту.</li><li>Подавайте напій одразу, щоб зберегти його свіжість і легкість.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Токайський сауер" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tokaj-Sour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Токайський сауер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=tokai">Токайське вино</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Простий сироп</li><li>Яєчний білок</li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Токайський сауер — унікальний коктейль, у якому насичене вино зустрічається з яскравою кислинкою лимонного соку та легкою солодкістю сиропу. Напій приваблює гармонією смаків і сподобається справжнім гурманам.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Токайський сауер</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл токайського вина</li><li>30 мл лимонного соку</li><li>22.5 мл простого сиропу</li><li>1 яєчний білок</li><li>Лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер додайте 45 мл токайського вина і 30 мл лимонного соку.</li><li>Влийте 22.5 мл простого сиропу і яєчний білок.</li><li>Закрийте посудину та енергійно струсіть, щоб добре змішати інгредієнти та емульгувати білок.</li><li>Відкрийте шейкер і додайте лід. Закрийте і знову струсіть, щоб коктейль охолонув.</li><li>Процідіть напій у келих, використовуючи ситечко, щоб видалити лід і отримати гладку текстуру.</li><li>За бажанням можете прикрасити коктейль скибочкою лимона або цедрою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Токайський тікі" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tokaj-tiki.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Токайський тікі</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=tokai">Токайське вино</a></li><li><a href="https://maudau.com.ua/category/rom/kolir_2=chornyitemnyi">Темний ром</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/syrop-monin-hrenadin-250-ml-3052910051389">Гренадин</a></li><li>Ананас</li><li>Вишня</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Токайський тікі — екзотичний коктейль, що поєднує ароматний винний акцент, тропічну солодкість і легку пряну нотку. Напій занурює в атмосферу затишку та пригод, даруючи яскраві смакові враження.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Токайський тікі</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл токайського вина</li><li>30 мл темного рому</li><li>22.5 мл апельсинового лікеру</li><li>15 мл лимонного соку</li><li>7.5 мл гренадину</li><li>Скибочка ананаса для прикрашання</li><li>Вишня для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер налийте 45 мл токайського вина і 30 мл темного рому.</li><li>Додайте 22.5 мл апельсинового лікеру, 15 мл лимонного соку і 7.5 мл гренадину.</li><li>Наповніть посудину льодом і енергійно струсіть, щоб усі компоненти добре змішалися.</li><li>Процідіть коктейль через барне сито в підготовлений келих, наповнений льодом.</li><li>Для прикрашання додайте скибочку ананаса та вишню.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Жимолость (Honeysuckle)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Honeysuckle.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Жимолость (Honeysuckle)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/viski-makers-mark-46-kentucky-straight-bourbon-47-07-l">Віскі Makers 46</a></li><li><a href="https://maudau.com.ua/category/vyno/rehion=tokai">Токайське вино</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/country_of_origin=italija">Італійський лікер</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Ангостура</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Жимолость — коктейль із ніжною, але яскравою солодкістю віскі Makers 46, нотками токайського вина і легкою пряною гармонією лікеру. Напій наповнений літньою чарівністю та природною свіжістю.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Жимолость (Honeysuckle)</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл віскі Makers 46</li><li>15 мл токайського вина</li><li>7.5 мл італійського лікеру</li><li>7.5 мл меду</li><li>4 краплі Ангостури</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер додайте 60 мл віскі Makers 46 і 15 мл токайського вина.</li><li>Влийте 7.5 мл італійського лікеру, 7.5 мл меду і 4 краплі Ангостури.</li><li>Наповніть ємність льодом і струсіть, щоб усі компоненти перемішалися й охололи.</li><li>Процідіть коктейль у підготовлений келих, використовуючи ситечко.</li><li>Декоруйте напій гілочкою м'яти та цедрою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Golden Smash" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Golden-Smash.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Golden Smash</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom/product_class=kashasa">Кашаса</a></li><li><a href="https://maudau.com.ua/category/vyno/rehion=tokai">Токайське вино</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li>Квітковий пилок</li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li>Білий виноград без кісточок</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Golden Smash — динамічний коктейль із яскравим смаком цитрусів, соковитою свіжістю та легкою солодкістю. Напій немов іскриться енергією, поєднуючи елегантність кашаси та інтенсивність лайма.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Golden Smash</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл кашаси</li><li>15 мл Токайського вина</li><li>30 мл соку лайма</li><li>20 мл медового сиропу з квітковим пилком (мед, розчинений у рівних частинах теплої води, з додаванням квіткового пилку)</li><li>5 ягід білого винограду без кісточок</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для сиропу розчиніть мед у рівних частинах теплої води і додайте трохи квіткового пилку.</li><li>Перемішайте до повного розчинення суміші.</li><li>У шейкер додайте 50 мл кашаси, 15 мл токайського вина, 30 мл соку лайма і медовий сироп із квітковим пилком.</li><li>Покладіть 5 ягід білого винограду і злегка розчавіть їх, щоб випустити сік.</li><li>Наповніть шейкер льодом і струсіть, щоб усі компоненти добре охололи.</li><li>Пропустіть коктейль через сито в келих.</li><li>Прикрасьте напій ягодою винограду або гілочкою м'яти.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шляхетна Європа (Noble Europe)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Noble-Europe.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шляхетна Європа (Noble Europe)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vyno/rehion=tokai">Токайське вино</a></li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/product/vanilnyi-ekstrakt-12-56-7-h">Ванільний екстракт</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Шляхетна Європа — неймовірний коктейль, що поєднує витончені аромати токайського вина, легку кислинку апельсинового соку і теплі нотки ванільного екстракту. Напій відображає класичну елегантність старовинних європейських традицій.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шляхетна Європа (Noble Europe)</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл токайського вина</li><li>30 мл горілки</li><li>30 мл апельсинового соку</li><li>1 крапля ванільного екстракту</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер налийте 45 мл токайського вина, 30 мл горілки і 30 мл апельсинового соку.</li><li>Пару крапель ванільного екстракту додадуть напою витонченого аромату.</li><li>Наповніть шейкер льодом і ретельно струсіть, щоб усі інгредієнти гарненько перемішалися.</li><li>Процідіть напій у келих і насолоджуйтеся фруктовими та ванільними нотками.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Empire Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Empire-Punch.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Empire Punch</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=benedictine">Бенедиктин</a></li><li><a href="https://maudau.com.ua/product/rom-santisima-trinidad-de-cuba-3-anos-40-07-l-871942">Ром Сантісіма Трінідад 3 роки</a></li><li>Eau de Vie Massenez</li><li>Червоний Кюрасао</li><li><a href="https://maudau.com.ua/category/vyno/typ_vyna_2=madeira">Мадера</a></li><li><a href="https://maudau.com.ua/product/liker-stambecco-maraschino-cherry-amaro-35-07-l">Лікер мараскіно</a></li><li><a href="https://maudau.com.ua/product/vyno-chateau-dereszla-chateau-dereszla-tokaji-dry-bile-sukhe-075-l">Біле токайське вино</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li>Лід</li><li>Ананас</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Empire Punch — багатоскладовий коктейль із яскравими нотами рому, лікеру, вина та шампанського. Гармонійно поєднує тропічну солодкість і легку пряність. Напій втілює розкіш, силу і стиль, створюючи ідеальний настрій для будь-якої урочистості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Empire Punch</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл Бенедиктина</li><li>15 мл рому Сантісіма Трінідад 3 роки</li><li>15 мл Eau de Vie Massenez</li><li>15 мл червоного Кюрасао</li><li>15 мл мадери</li><li>15 мл лікеру мараскіно</li><li>50 мл білого токайського вина</li><li>50 мл шампанського</li><li>100 мл льоду</li><li>1 скибочка ананаса для прикрашання, за бажанням</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкері змішайте по 15 мл Бенедиктина, рому Сантісіма Тринідад, Eau de Vie Massenez, червоного Кюрасао, мадери та лікеру мараскіно.</li><li>Додайте 50 мл білого токайського вина.</li><li>Покладіть 100 мл льоду і гарненько струсіть.</li><li>Процідіть напій у келих через ситечко, щоб позбутися залишків льоду.</li><li>Щоб зберегти бульбашки, дуже акуратно влийте 50 мл шампанського в коктейль,</li><li>Прикрасьте напій скибочкою ананаса для додаткового тропічного акценту.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Oceanides" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Oceanides.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Oceanides</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Бренді Метакса Резерв</li><li><a href="https://maudau.com.ua/product/vyno-napos-semi-dry-bile-napivsukhe-075-l">Біле токайське вино</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Oceanides — коктейль, натхненний морськими глибинами, поєднує свіжість тоніка, димні нюанси бренді Метакса Резерв і насичену солодкість білого токайського вина. Напій ідеально передає атмосферу океанських хвиль і загадкових водних світів, даруючи витончену насолоду.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Oceanides</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл бренді Метакса Резерв</li><li>90 мл білого токайського вина</li><li>30 мл тоніка</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У келих налийте 30 мл бренді Метакса Резерв і 90 мл білого токайського вина.</li><li>Влийте 30 мл тоніка й акуратно перемішайте коктейльною ложкою.</li><li>Подавайте напій в охолодженому келиху з кількома кубиками льоду для освіжального ефекту.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Esquire" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Esquire.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Esquire</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Джин Rocca di Montemassi</li><li><a href="https://maudau.com.ua/product/vyno-chateau-dereszla-szamorodni-bile-sukhe-05-l">Біле токайське вино</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Esquire — елегантний коктейль із насиченими нотами джину Rocca di Montemassi та тонкими акцентами білого токайського вина. Цей напій поєднує стиль, витонченість і динамічність, створюючи унікальне відчуття вишуканості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Esquire</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл джина Rocca di Montemassi</li><li>120 мл білого токайського вина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У келих налийте 30 мл джина Rocca di Montemassi.</li><li>Влийте 120 мл білого токайського вина.</li><li>Акуратно перемішайте інгредієнти в келиху високою ложкою.</li><li>Подайте напій в охолодженій посудині з додаванням льоду.</li><li>Насолоджуйтеся коктейлем, що ідеально підходить як аперитив.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">150 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">16 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

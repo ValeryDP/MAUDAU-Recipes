@@ -1,0 +1,944 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Мерло — вино, которое изготавливают из одноименного темно-фиолетового сорта винограда. Стилистически напиток охватывает широкую гамму — от фруктовых и сладких аккордов с дубовыми нотками до более структурированного и
+                    нюансированного, способного спокойно выдерживаться в погребе десятилетиями.
+                </p>
+                <h2>Merlot: краткая история вина</h2>
+                <p>
+                    Самое раннее упоминание о винограде нашли в записях чиновника из Бордо, который в 1784 году назвал напиток, произведенный из темнокожего винограда в Либурне, одним из лучших в регионе. Современное название восходит к 1824 году и
+                    статье о винах Медока. Автор объяснил, что виноград назвали в честь местной птицы, которая любила питаться маленькими ягодами. К концу XIX века сорт вовсю высаживали в Бордо, но из-за ряда неудач его посадки запретили до 1975 года.
+                </p>
+                <p>
+                    Вино мерло в Италии возникло возле Венеции. Вскоре его завезли в Швейцарию, а затем доставили в США, где потребление красных купажей возросло после выхода в эфир репортажа 60 Minutes о так называемом французском парадоксе и его
+                    связи с ресвератролом — естественным соединением, содержащимся в кожице и косточках ягод.
+                </p>
+                <h2>Что особенного в винограде «мерло»</h2>
+                <p>
+                    Название ягод в переводе с диалектного французского означает «маленький черный дрозд». Сорт занимает второе место по распространению в мире, уступая только своему двоюродному брату — «каберне совиньону». Виноград называют
+                    хамелеоном, поскольку вкус и аромат зависят отчасти от того, как ягоды винифицируют, а в основном — от места выращивания.
+                </p>
+                <p>
+                    «Мерло» — важная составляющая красных купажей в Бордо. Его особенно часто используют в Помероле, смешивая с «каберне-фран». Сорт также хорошо себя чувствует в Сент-Эмильоне, где из него производят Bordeaux Superieur — вкусное Merlo,
+                    купить которое можно за 300–400 грн.
+                </p>
+                <h3>География выращивания винограда «мерло»</h3>
+                <p>Лозы хорошо себя чувствуют в умеренном или теплом климате. Почва не столь важна, но предпочтение отдают глине.</p>
+                <p>
+                    Помимо Франции, сорт культивируют в США, особенно в Калифорнии — в основном в Долине Напы и Сономе. Живописные насаждения также можно увидеть в Италии (Тоскана), Австралии (Долина Макларен и Долина Баросса) и Чили (Долина
+                    Кольчагуа).
+                </p>
+                <p>Другие страны, ставшие домом для винограда Merlot:</p>
+                <ul>
+                    <li>Аргентина;</li>
+                    <li>Греция;</li>
+                    <li>Германия;</li>
+                    <li>Испания;</li>
+                    <li>Бельгия;</li>
+                    <li>Израиль;</li>
+                    <li>Венгрия;</li>
+                    <li>Молдова;</li>
+                    <li>Украина.</li>
+                </ul>
+                <h2>Мерло: что особенного в вине</h2>
+                <p>Несколько важных моментов и интересных фактов:</p>
+                <ol>
+                    <li>Сухой стиль, доминирующий на рынке, часто сравнивают с костью. Терпкий привкус — результат содержания танинов средней интенсивности.</li>
+                    <li>Стандартная крепость составляет 13–15%. Кислотность — средняя.</li>
+                    <li>Вкус напитка нередко описывают как «бархатистый». Этому есть научное объяснение. Ягоды содержат мало семян, в отличие от «каберне совиньон», соответственно, в сусло попадает меньше танинов.</li>
+                    <li>
+                        Merlot — вино, которое производят в двух основных стилях. Международный воплощают в жизнь виноделы из стран Нового Света. Ягоды собираю поздно, что придает вину пурпурно-чернильный цвет, полное тело и бархатистый танинный
+                        профиль с нотками сливы и ежевики. Традиционный стиль возник в Бордо, где урожай собирают раньше. Это приводит к повышению кислотности и умеренному алкогольному вкусу с нюансами малины и клубники, приправленными растительными
+                        нотками.
+                    </li>
+                </ol>
+                <h3>Вкус и аромат вин Merlot</h3>
+                <p>
+                    В носу напиток раскрывается аккордами ежевики и специй для выпечки, если происходит из жарких регионов. Акценты смещаются в сторону красных слив и вишен при выращивании в прохладном климате. Выдержка в дубе придает ванильный шлейф.
+                    По мере старения также развиваются нотки шоколада и табака.
+                </p>
+                <p>Вкус — сбалансированный. Чем теплее климат, тем мягче танины, выше содержание алкоголя и выраженнее тело. Вино также характеризует освежающая, но не слишком высокая кислотность.</p>
+                <h2>Как выбрать вино мерло</h2>
+                <p>Учитывайте несколько важных моментов:</p>
+                <ol>
+                    <li>Бренд. Ассортимент маркета алкогольных штук MAUDAU объединяет продукцию от проверенных торговых марок, но лидерами среди покупателей считают Leleka Wines, Purcari, Kavalier, Villa Tinta.</li>
+                    <li>Сладость. Классический стиль — сухой. Если ищете что-то интересное, обратите внимание на полусладкие и сладкие позиции.</li>
+                    <li>Место изготовления. Например, вино Merlot из Италии — в основном моносортовое, но редко подпадает под высшую классификацию DOCG.</li>
+                    <li>Винтаж. Если нужен вариант на подарок или хотите отчетливо ощутить терруарное влияние, остановитесь на винтажных позициях.</li>
+                    <li>Емкость. Стандартный объем — 0.75 л. Мини-бутылочки подойдут для знакомства с новой торговой маркой.</li>
+                </ol>
+                <h3>Merlot: цена в Украине</h3>
+                <p>Ценник в интернет-магазине MAUDAU стартует от 46 грн. Большинство напитков по доступной цене относят к столовым, то есть не предназначенным для продолжительного хранения.</p>
+                <p>Merlot — вино, цена которого крайне отличается в зависимости от качества ягод и методов виноделия. Например, напитки из стран Нового Света зачастую стоят дешевле, что не влияет на качество.</p>
+                <h2>Мерло: как и с чем подать вино</h2>
+                <p>
+                    Напиток советуют употреблять чуть ниже комнатной температуры — при +15–20 °C. Это гарантия того, что на первый план выйдет постепенно развивающийся глубокий вкусо-ароматический букет, а не алкогольный шлейф. Декантация в течение
+                    30–40 минут поможет напитку раскрыться.
+                </p>
+                <p>Merlot — вино, с которым легко экспериментировать. Для вечера вторника идеально подойдет легко пьющаяся версия в сочетании с пиццей, курицей BBQ, пастой под томатным соусом.</p>
+                <p>
+                    Слегка выдержанный напиток с тонкими землистыми нюансами дополнят жареная индейка, говяжьи ребрышка, рататуй по-деревенски. Чтобы подчеркнуть фруктовую составляющую, подайте к мясу соус чимичурри. Для сопровождения насыщенных
+                    позиций из Долины Напы приготовьте каре ягненка или филе-миньон под перечным соусом.
+                </p>
+                <h2>Почему выгодно купить вино мерло в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый товар на странице — оригинален. Оценки и отзывы других покупателей помогут определиться, как и продуманная система фильтров. Скидка на оптовый заказ и акции — дополнительная возможность сэкономить. Вино мерло можно купить с
+                    доставкой по всей Украине — благодаря сотрудничеству с компаниями-перевозчиками.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Merlot Wine Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Merlot-Wine-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Merlot Wine Cocktail</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=merlo-merlot">Мерло</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=brendi">Бренди</a></li><li>Простой сироп</li><li>Свежий лимонный сок</li><li><a href="https://maudau.com.ua/ru/product/vyno-freimeisterkollektiv-orange-bitters-kriplene-solodke-chervone-194-05-l">Апельсиновый биттер</a></li><li>Лед</li><li>Апельсин</li><li>Свежие ягоды</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Merlot Wine Cocktail сочетает насыщенный вкус вина с оттенками цитрусов и пряностей, создавая гармоничный и сбалансированный напиток, подходящий для любого случая.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Merlot Wine Cocktail</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл мерло</li><li>30 мл бренди</li><li>30 мл простого сиропа</li><li>15 мл свежего лимонного сока</li><li>Несколько капель апельсинового биттера</li><li>Лед</li><li>Ломтик апельсина для украшения</li><li>Свежие ягоды для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер льдом и добавьте 120 мл вина Merlot, 30 мл бренди, 30 мл простого сиропа и 15 мл свежевыжатого лимонного сока.</li><li>Встряхивайте энергично в течение 15 секунд.</li><li>Добавьте несколько капель апельсинового биттера и повторно встряхните.</li><li>Охладите бокал для подачи, опустив в него лед на 2–3 минуты.</li><li>Процедите смесь в бокал.</li><li>Украсьте ломтиком апельсина, слегка сжав его, и положите в бокал несколько свежих ягод.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Розовый слон" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/pink-elephant.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Розовый слон</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=amarula">Амарула</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=shokoladnyi-2">Шоколадный ликер</a></li><li><a href="https://maudau.com.ua/ru/product/fruktove-piure-monin-malyna-1-l">Пюре малины</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=merlo-merlot">Мерло</a></li><li><a href="https://maudau.com.ua/ru/category/vershky">Сливки</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            «Розовый слон» — это сливочный десертный коктейль с шоколадно-малиновыми нотками и изысканным послевкусием вина, идеально подходящий для романтических вечеров.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Розовый слон</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>37,5 мл Амарула (Крем)</li><li>25 мл шоколадного ликера</li><li>75 мл пюре малины</li><li>50 мл Мерло</li><li>75 мл жирных сливок</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В блендере смешайте 37,5 мл Amarula, 25 мл шоколадного ликера и 75 мл малинового пюре до однородной массы.</li><li>Охладите бокал, наполнив его льдом на 3 минуты.</li><li>Влейте 50 мл вина Merlot и 75 мл жирных сливок в блендер, тщательно взбейте до появления легкой пенки.</li><li>Выньте лед из бокала и аккуратно перелейте коктейль.</li><li>Для украшения используйте тертый шоколад и несколько свежих ягод малины.</li><li>Подайте с ложечкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Merlot Mule" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Merlot-Mule-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Merlot Mule</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-leleka-wines-merlot-chervone-sukhe-125-075-l">Красное вино Merlot</a></li><li><a href="https://maudau.com.ua/ru/product/napii-fentimans-ginger-beer-zi-smakom-imbyru-bezalkoholnyi-275-ml-788637">Имбирное пиво</a></li><li>Лайм</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и освежающий Merlot Mule с пикантными нотками имбиря и лайма — это универсальный напиток для дружеских вечеринок и отдыха.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Merlot Mule</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2/3 красного вина Merlot</li><li>1/3 имбирного пива</li><li>Брызги сока лайма</li><li>Ломтик лайма</li><li>Лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В высокий стакан налейте 2/3 вина Merlot и 1/3 имбирного пива.</li><li>Добавьте брызги свежего сока лайма.</li><li>Барной ложкой аккуратно перемешайте, чтобы сохранить пузырьки.</li><li>Наполните стакан льдом, украсьте ломтиком лайма, предварительно слегка сжав его.</li><li>Подавайте охлажденным с соломинкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Merlot Spritzer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Merlot-Spritzer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Merlot Spritzer</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-kolonist-merlo-chervone-sukhe-14-075-l-7494">Красное вино Мерло</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite">Спрайт</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий Merlot Spritzer с нотками свежести и сладости — это идеальный выбор для жарких дней или непринужденных встреч с друзьями.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Merlot Spritzer</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка красного вина Мерло</li><li>1 литр Спрайта</li><li>Лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В кувшине смешайте бутылку вина Merlot и литр Спрайта.</li><li>Наполните бокалы льдом.</li><li>Разлейте напиток по бокалам, украсьте веточкой мяты и ломтиком цитрусового фрукта.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Merlot Mojito" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Merlot-Mojito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Merlot Mojito</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=merlo-merlot">Merlot</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сироп тростникового сахара</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Листья мяты</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            В Merlot Mojito соединены освежающая мята, лайм и тростниковый сироп, подчеркнутые винными нотками, для создания неповторимого вкуса.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Merlot Mojito</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>7 мл Merlot</li><li>20 мл сиропа тростникового сахара</li><li>30 мл лаймового сока</li><li>10 листьев мяты</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В стакане разотрите листья мяты с сиропом и лаймовым соком.</li><li>Добавьте 7 мл вина Merlot, лед и перемешайте.</li><li>Украсьте веточкой мяты и подавайте с соломинкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Yuletide Moon Red Wine" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yuletide-Moon-Red-Wine.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Yuletide Moon Red Wine</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Вишни</li><li>Свежий апельсиновый сок</li><li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=merlo-merlot">Вино Merlot</a></li><li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Корица</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li><li>Лед</li><li>Апельсин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Yuletide Moon сочетает в себе уют пряностей, свежесть цитрусов и глубину вкуса вина — это идеальный зимний напиток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Yuletide Moon Red Wine</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>9 вишен, без косточек (свежих или из банки)</li><li>90 мл сока свежего апельсина или мандарина</li><li>150–180 мл вина Merlot</li><li>60 мл бурбона</li><li>1 ст. л. меда или кленового сиропа</li><li>Щепотка корицы и мускатного ореха</li><li>Лед</li><li>Ломтики апельсина или цедра лимона для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В кастрюле на медляном огне нагрейте вино Merlot с бурбоном.</li><li>Когда жидкость немного подогреется добавьте вишни, сок апельсина, мед, щепотку корицы и мускатного ореха.</li><li>Доведите до слабого кипения и снимите с огня.</li><li>Охладите и процедите через сито.</li><li>Наполните бокал льдом, влейте коктейль, украсьте ломтиками апельсина и цедрой лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Holiday Wine Tale" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Holiday-Wine-Tale.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Holiday Wine Tale</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-kavalier-varietale-merlot-rosso-chervone-sukhe-075-l">Красное вино Merlot</a></li><li><a href="https://maudau.com.ua/ru/product/dzhyn-haymans-sloe-gin-26-07-l-589998">Джин Hayman’s Sloe</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor/vyd_61=trostnykovyi">Коричневый сахар</a></li><li>Ломтик апельсина</li><li>Имбирь</li><li>Розмарин</li><li>Апельсин</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li><li>Гранат</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Теплый и ароматный Holiday Wine Tale сочетает пряности, цитрусы и глубину Merlot, создавая праздничное настроение у всех, кто его пробует.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Holiday Wine Tale</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл красного вина Merlot</li><li>30 мл джина Hayman’s Sloe</li><li>0,5–1 ст. л. коричневого сахара или 30 мл простого сиропа из коричневого сахара</li><li>1 ломтик апельсина, разрезанный пополам</li><li>2,5 см тонко нарезанного имбиря (приблизительно 3 тонких ломтика)</li><li>Для украшения: веточка розмарина, апельсин, мускатный орех, гранат</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В бокале разотрите имбирь с сахарным сиропом, добавьте вино Merlot и джин.</li><li>Положите ломтик апельсина и лед.</li><li>Украсьте розмарином и щепоткой мускатного ореха.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Bishops Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bishops-Punch.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Bishops Punch</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/vyno/sort_vynohradu=merlo-merlot">Вино Merlot</a></li><li><a href="https://maudau.com.ua/ru/category/rom">Ром</a></li><li>Лимон</li><li>Лайм</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Апельсины</li><li>Черника</li><li>Листья мяты</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий и насыщенный Bishops Punch с ягодами, цитрусами и ромом — это праздничный напиток, которого хватит на большую компанию.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Bishops Punch</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 бутылка вина Merlot</li><li>120 мл рома</li><li>Сок 1 лимона</li><li>Сок 1 лайма</li><li>2 ст. л. сахара</li><li>2 апельсина, разрезанных пополам и нарезанных</li><li>Свежие черные ягоды черники</li><li>Свежие листья мяты</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Нарежьте полукольцами апельсины.</li><li>В кувшине смешайте бутылку вина Merlot, ром, лимонный и лаймовый соки, сахар и нарезанные апельсины.</li><li>Добавьте ягоды черники и мяту.</li><li>Поставьте в холодильник минут на 30–40 для охлаждения и настаивания.</li><li>В бокалы добавьте лед и разлейте по ним коктейль.</li><li>Украсьте мятой и трубочкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">68 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

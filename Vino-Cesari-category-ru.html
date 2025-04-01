@@ -1,0 +1,810 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Известная преданностью земле и многовековым знаниям, «Чезари» — компания, которая специализируется на выпуске культовых итальянских вин, включая Amarone и Lugana. Бренд сочетает проверенные временем методы ведения сельского
+                    хозяйства и виноделия с современными подходами, выражая в каждом напитке уникальный терруар Венето, делая особый акцент на виноградниках из Вальполичеллы.
+                </p>
+                <h2>Cesari: краткая история компании</h2>
+                <p>
+                    Бренд основал Херардо Чезари в 1936 году в Вероне (Италия). Винодельня расположена вдоль южных берегов озера Гарда. Сперва винодел намеревался производить классическое красное сухое вино — Amarone della Valpolicella, чтобы составить
+                    достойную конкуренцию купажам из Франции. Вскоре продукцию, выпущенную под торговой маркой, можно было найти на пяти континентах. В начале 1960-х годов к семейному делу присоединился сын Херардо Франко, который вскоре расширил
+                    ассортимент.
+                </p>
+                <p>
+                    В 1971 году Cesari Amarone Classico стало первым вином, пересекшим океан и попавшим в США. Спустя 26 лет королева Елизавета II лично поблагодарила представителей торговой марки за то, что они подарили ей эту же знаковую бутылку. В
+                    2024 году состоялся полный ребрендинг. Компания изменила не только внешний вид бутылок, но и пересмотрела вкус и аромат.
+                </p>
+                <p>
+                    Сейчас компании «Чезари» принадлежат около 100 гектаров виноградников на склонах холмов, расположенных на лучших участках апелласьона Вальполичелла. Три из них находятся в самом престижном регионе — Классико. Еще 10 гектаров
+                    разбросаны по всему региону Венето. На виноградниках произрастают ягоды местных сортов, а процент импортных составляет около 10.
+                </p>
+                <h2>Cesari: особенности изготовления вина</h2>
+                <p>
+                    Ягоды выращивают в соответствии с принципами экологического сельского хозяйства, а собирают исключительно вручную. Собранный виноград поступает не на винодельню, а в подвал Fumane, возведенный в нескольких километрах от Вероны в
+                    2021 году, где проходят процессы сушки, прессования, ферментации и фильтрации.
+                </p>
+                <p>
+                    Многоуровневое здание расположено у подножья горы. Жемчужиной считают фруктовую комнату, где ягоды подсыхают. Компьютеризированные системы поддерживают в помещении постоянную температуру и влажность, создавая идеальную среду для
+                    гроздьев, разложенных по ящикам.
+                </p>
+                <p>
+                    Выдержка вин «Чезари» проходит в подвале Cavaion Veronese, построенном в 1997 году. Погреб олицетворяет пространство, посвященное развитию вкуса и аромата напитков в барриках на протяжении длительного периода времени — часто
+                    выходящего за рамки стандартов DOCG.
+                </p>
+                <h2>Ассортимент вин Cesari</h2>
+                <p>Бренд выпускает несколько линеек:</p>
+                <ol>
+                    <li>
+                        Bosan. Вершина совершенства компании со статусом DOCG, демонстрирующая вина из одного виноградника Вальполичеллы. Например, продолжительная выдержка Amarone Bosan 1997 привела к развитию ноток спелых темных фруктов, изюма и
+                        шоколада. Вкус — сбалансированный, с легким сигарным шлейфом.
+                    </li>
+                    <li>
+                        Centofilari. Коллекция, которая воплощает преданность команды «Чезари» современным традициям и устойчивым принципам земледелия. Белое сухое вино Lugana — пример легкого и освежающего напитка с яркими тонами цитрусовых и цветов.
+                    </li>
+                    <li>Classico. Вина, раскрывающие суть многовековых винодельческих традиций Венето. Коллекция объединяет Merlot, Bardolino и Soave — напитки, которые подходят для повседневного употребления.</li>
+                </ol>
+                <h2>Как выбрать вино «Чезари»</h2>
+                <p>
+                    Дело — в личных предпочтениях и целях покупки. Например, на подарок лучше выбрать напитки из линейки Bosan, особенно если человек интересуется винами. Если нужен вариант для использования в кулинарных целях, остановитесь на
+                    кисловатых позициях из коллекции Centofilari.
+                </p>
+                <p>Цена — не менее важный критерий при выборе. Выдержанная продукция стоит дороже, но чтобы сэкономить, можно выбрать один из акционных товаров.</p>
+                <h3>Cesari: сколько стоит вино</h3>
+                <p>
+                    Доступная коллекция — Classico. Бутылка объемом 0.75 л стоит 200–300 грн. Белое вино зачастую продают дешевле, так как процессы винификации и выдержки проще, по сравнению с красными позициями. Цена редких разливов, например, из
+                    серии Bosan, достигает нескольких тысяч гривен.
+                </p>
+                <h2>С чем пить вино «Чезари»</h2>
+                <p>Учитывайте цвет напитка. Красные позиции содержат достаточно танинов, которые гармонично дополнят сытную пищу: мясо, пасту, лазанью, рагу, выдержанный сыр. Белые подходят к легким продуктам и блюдам:</p>
+                <ul>
+                    <li>рыбе;</li>
+                    <li>морепродуктам;</li>
+                    <li>мягким сливочным сырам;</li>
+                    <li>салатам с листовой зеленью;</li>
+                    <li>кремовым десертам.</li>
+                </ul>
+                <h2>Почему выгодно купить вино «Чезари» в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый напиток на странице — оригинален. Доставку заказов из маркета алкогольных штук MAUDAU по Киеву, Днепру и Львову осуществляют курьеры. Алкогольный шопинг в других городах также возможен благодаря транспортным компаниям —
+                    «Новой Почте» и «Укрпочте». Программа лояльности «Власний Рахунок» — дополнительная возможность сэкономить.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Белая сангрия в пунше" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bila-sanhriia-v-punshi-Cesari.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Белая сангрия в пунше</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=persykovyi-3">Персиковый ликер</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-gerardo-cesari-soave-being-bile-sukhe-075-l">Белое вино сухое Cesari</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda">Содовая</a></li><li>Лимон</li><li>Лайм</li><li>Апельсин</li><li><a href="https://maudau.com.ua/ru/category/fruktova-konservatsiia/typ_281=vyshnia-35">Коктейльная вишня красная</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Белая сангрия в пунше — это освежающий напиток на основе белого вина с добавлением фруктов, ягод, цитрусовых и сахарного сиропа. Часто дополняется ликерами или соками для усиления вкуса. Подается охлажденным и идеально подходит для летних вечеринок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Белая сангрия в пунше</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 мл водки</li><li>300 мл персикового ликера</li><li>1 л белого сухого вина</li><li>200 мл сахарного сиропа</li><li>1 л содовой</li><li>160 г лимона</li><li>80 г лайма</li><li>300 г апельсина</li><li>75 г коктейльной красной вишни</li><li>2 кг льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните чашу для пунша кубиками льда на 1/3.</li><li>Бросьте в нее примерно 15-20 штук коктейльных вишен.</li><li>Нарежьте на кружки 300 г апельсина, 160 г лимона и 80 г лайма.</li><li>Налейте в емкость 200 мл сахарного сиропа, 1 л белого сухого вина.</li><li>Добавьте 300 мл персикового ликера и 300 мл водки.</li><li>Долейте литр содовой доверху и аккуратно размешайте коктейльной ложкой.</li><li>Разлейте напиток в бокалы-блюдца украсив по желанию дольками апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Beautiful Mind" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Beautiful-Mind-Cesari.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Beautiful Mind</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Домашняя ванильная водка</li><li><a href="https://maudau.com.ua/ru/product/vyno-cesari-bianco-trevenezie-igt-essere-bile-sukhe-115-075-l">Белое вино сухое Cesari</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2">Кленовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Киви</li><li>Мята</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригинальный напиток с ярким сочетанием крепкого алкоголя и фруктовых нот. Beautiful Mind удивляет своей насыщенностью и гармонией, создавая атмосферу домашнего уюта, а сироп приглушает крепость и оставляет приятное послевкусие.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Beautiful Mind</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл домашней ванильной водки</li><li>40 мл белого сухого вина</li><li>40 мл просекко</li><li>10 мл кленового сиропа</li><li>10 мл лаймового сока</li><li>60 г киви</li><li>1 г мяты</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В шейкере смешайте 40 мл домашней ванильной водки, 40 мл белого сухого вина и 40 мл просекко.</li><li>Влейте 10 мл кленового сиропа и 10 мл лаймового сока.</li><li>Добавьте нарезанное киви и листья мяты. Хорошо встряхните, чтобы все ингредиенты смешались.</li><li>Наполните бокал льдом и процедите в него коктейль через сито.</li><li>Украсьте напиток мятой для свежести и аромата.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Белый лимонный глинтвейн" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bilyi-lymonnyi-hlintvein-Cesari.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Белый лимонный глинтвейн</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=limonchello">Лимончелло</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-cesari-lugana-cento-filari-bile-sukhe-075-l">Белое вино сухое Cesari</a></li><li>Лимонная трава</li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=kardamon-3">Кардамон</a></li><li>Лимонная цедра</li><li>Апельсиновая цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и освежающий напиток с ярким цитрусовым акцентом, где белое вино с лимоном, медом и специями создает баланс между сладостью и кислинкой, наполняя атмосферу теплом и ароматом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Белый лимонный глинтвейн</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл лимончелло</li><li>150 мл белого сухого вина</li><li>5 г лимонной травы</li><li>10 мл меда</li><li>5 г кардамона</li><li>цедра одного лимона</li><li>цедра одного апельсина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В кастрюле нагрейте 150 мл белого сухого вина на среднем огне. Не доводите до кипения.</li><li>Добавьте 20 мл лимончелло, 5 г кардамона, 5 г лимонной травы и цедры цитрусовых фруктов.</li><li>Перемешайте и подогревайте еще 3–5 минут.</li><li>Положите 10 мл меда и тщательно размешайте до растворения.</li><li>Дайте напитку настояться 5–7 минут, чтобы ароматы раскрылись.</li><li>Процедите готовый глинтвейн через сито и разлейте по бокалам.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Starlight" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Starlight-Cesari.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Starlight</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-cesari-bardolino-classico-chervone-sukhe-0375-l">Красное вино Cesari</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hranat-6">Гранатовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Клубника</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Starlight — это утонченный коктейль с изысканным балансом сладких и цитрусовых нот. Искрящийся и освежающий, он напоминает звездное небо, создавая атмосферу волшебного вечера.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Starlight</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл красного вина</li><li>15 мл гранатового сиропа</li><li>30 мл апельсинового сока</li><li>клубника для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В бокал налейте 120 мл красного вина.</li><li>Добавьте 15 мл гранатового сиропа и 30 мл апельсинового сока, аккуратно перемешайте.</li><li>Украсьте напиток свежей клубникой, надев ее на край бокала или добавив внутрь.</li><li>Наслаждайтесь богатым и освежающим вкусом Starlight!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Claret Cup" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Claret-Cup-Cesari.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Claret Cup</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=sylnohazovana">Газированная вода</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Апельсиновый ликер Куантро</a></li><li><a href="https://maudau.com.ua/ru/product/lyker-gamondi-creme-de-cassis-15-1-l-alr13552">Черносмородиновый ликер Крем де Кассис</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-cesari-valpolicella-superiore-ripasso-mara-chervone-napivsukhe-075-l">Красное вино Cesari</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=portvein">Портвейн</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Claret Cup — это изысканный коктейль, в котором сочетаются красное вино и фруктовые ликеры. Легкий, освежающий и утонченный, он идеально подходит для теплых вечеров и праздничных встреч.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Claret Cup</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 л газированной воды (соды)</li><li>120 мл Куантро® (апельсиновый ликер)</li><li>120 мл Крем де Кассис (черносмородиновый ликер)</li><li>75 мл свежевыжатого лимонного сока</li><li>2 бутылки красного вина (по 750 мл каждая)</li><li>60 г сахара по вкусу</li><li>75 мл портвейна</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В большой кувшин или миску налейте две бутылки красного вина (по 750 мл каждая).</li><li>Добавьте 120 мл Куантро, 120 мл Крем де Кассис и 75 мл портвейна.</li><li>Влейте 75 мл свежевыжатого лимонного сока и насыпьте 60 г сахара, регулируя сладость по вкусу.</li><li>Охладите смесь в холодильнике в течение 1-2 часов.</li><li>Перед подачей добавьте литр газированной воды — для легкости и дополнительного освежающего эффекта.</li><li>Перелейте напиток в бокалы, украсьте по желанию ломтиками цитрусовых или ягодами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">64 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

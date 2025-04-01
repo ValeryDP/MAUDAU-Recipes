@@ -1,0 +1,988 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Іспанське вино виробляють по всій країні. Іспанію вважають третім за величиною виробником вина у світі після Італії та Франції. За кількістю експортованого алкоголю вона посідає друге місце.</p>
+                <p>
+                    Стилі варіюються від червоних і білих до рожевих, від напівсухих і сухих до солодких, від повністю розвинених до молодих. На особливу увагу заслуговує херес — кріплене вино, яке витримують за особливою системою Solera і випускають у
+                    безлічі варіантів.
+                </p>
+                <h2>Що відомо про зародження і становлення іспанського вина</h2>
+                <p>Історія виноробства в країні налічує тисячі років. Перші виноградники виникли приблизно 4000 року до н.е., а фінікійці, які заснували торговий пост Кадіс через три тисячі років, сприяли розвитку виноробних традицій.</p>
+                <p>
+                    Коли маври завоювали Іспанію, виробництво алкоголю припинили, оскільки це суперечило мусульманським законам. Завдяки серії військових завоювань Реконкіста експорт відновили. Незабаром Христофор Колумб відкрив додатковий ринок збуту
+                    — Новий Світ.
+                </p>
+                <p>У XVII-XVIII століттях Іспанія в основному виробляла кріплене вино, а також малагу і ріоху. Однак країна все ще відставала в технічних питаннях аж до навали філоксери в 1850-х роках.</p>
+                <h2>Географія виробництва іспанського вина: виноробні зони та виноградники</h2>
+                <p>
+                    Виноградники в Іспанії займають близько 1.2 мільйона гектарів, що робить країну найбільш засадженою у світі. На них вирощують близько 400 різних виноградних сортів. При цьому понад 85% іспанських вин виробляють усього з 20 типів
+                    ягід. Червоні сорти:
+                </p>
+                <ul>
+                    <li>«темпранільйо»;</li>
+                    <li>«бобаль»;</li>
+                    <li>«гарнача»;</li>
+                    <li>«монастрель».</li>
+                </ul>
+                <p>Білі сорти включають «альбаріньо», «айрен», «вердехо» і «паломіно». Шляхетними вважають три типи світлошкірих ягід, які використовують у виробництві знаменитого ігристого вина Cava, — «парельяду», «шарелло» і «макабео».</p>
+                <p>Країна розділена на 12 виноробних регіонів. Центральний, де найактивніше виготовляють іспанське вино, — Кастилія-Ла-Манча. Далі йдуть Каталонія і Ріоха. Кожна зона, що залишилася, відома за конкретним напоєм:</p>
+                <ul>
+                    <li>пенедес — ігристе вино кава;</li>
+                    <li>руеда — вердехо;</li>
+                    <li>ріас-Байшас — альбаріньо;</li>
+                    <li>вальдерас — годельо;</li>
+                    <li>країна Басків — чаколі;</li>
+                    <li>королівство Наварра — рожеве вино (Rosado);</li>
+                    <li>б’єрсо — менсія;</li>
+                    <li>пріорат і Монсант — червоні купажі;</li>
+                    <li>мурсія — монастрель;</li>
+                    <li>рібера-дель-Дуеро — темпранільйо;</li>
+                    <li>торо — тінта де торо;</li>
+                    <li>ментріда — птіті вердо;</li>
+                    <li>херес — кріплене вино.</li>
+                </ul>
+                <h2>Класифікація іспанських вин</h2>
+                <p>
+                    Виробники дотримуються системи Denominacion de Origen (DO), переглянутої 2016 року і перейменованої в DOP. За кожним апелласьйоном стежить Consejo Regulador — керівний орган, який контролює процес виноробства до найдрібніших
+                    деталей: від сортового складу до того, яка інформація має бути присутня на етикетці. Іспанські вина, які продають в Україні, також розділені на шість рівнів якості:
+                </p>
+                <ol>
+                    <li>DOP. Найвищий статус. Категорія об’єднує 96 апелласьйонів, розділених на підгрупи.</li>
+                    <li>DOCa/DOQ. Маркування означає, що вино виробили в регіоні з історією постійної якості. Перша зона, що отримала подібний статус, — Ріоха.</li>
+                    <li>Vino de Pago — VP. Термін, який позначає вино, приготоване з ягід, зібраних з одного висококласного маєтку (виноградника).</li>
+                    <li>VC. Ще одне нове позначення, яке використовують для іспанських вин, що не повністю відповідають суворим стандартам категорії DOP, але перевершують IGP.</li>
+                    <li>IGP. Напої походять із регіонів, відомих за однією певною якістю, наприклад, методом виноробства.</li>
+                    <li>Vino de Mesa (VdM). Еквівалент столових вин, вироблених із ягід, зібраних на некласифікованих виноградниках.</li>
+                </ol>
+                <h2>Найкращі іспанські вина в Україні</h2>
+                <p>У маркеті алкогольних штук MAUDAU представлено кілька знакових найменувань:</p>
+                <ol>
+                    <li>Темпранільйо. На основі фірмового темно-фіолетового винограду виробляють червоне вино з ароматами фруктів, тютюну та шкіри.</li>
+                    <li>Ріоха. Назву категорії поклав виноробний регіон, де змішують «темпранільйо» і «гренаш». Найдорожчий варіант — Gran Reserva. Мінімальна витримка становить п’ять років.</li>
+                    <li>
+                        Херес. Кріплене вино з Андалусії та вкрай варіативне в плані стилів. Унікальний метод витримки, який передбачає регулярне переливання винних спиртів у бочки на різних рівнях льоху, призводить до розвитку складних
+                        горіхово-карамельних нюансів.
+                    </li>
+                </ol>
+                <h2>Як вибрати іспанське вино</h2>
+                <p>
+                    Враховуйте особисті вподобання та мету покупки. Наприклад, якщо потрібно вино для вечері посеред тижня, немає сенсу переплачувати за вінтаж. Продукцію з Іспанії також можна купити для використання в кулінарних цілях. Щоб краще
+                    зрозуміти, що в пляшці, на сторінці конкретного товару можна знайти опис і відгуки інших покупців.
+                </p>
+                <h3>Іспанське вино: ціна в Україні</h3>
+                <p>Хорошу пляшку легко знайти в межах 200–500 грн. Перевірені торгові марки:</p>
+                <ul>
+                    <li>La Barbacoa;</li>
+                    <li>Garcia Carrion;</li>
+                    <li>Marques de Carano.</li>
+                </ul>
+                <p>Якщо шукаєте щось рідкісне, зверніть увагу на пропозиції від Clos Mogador — виноробні, яка спеціалізується на випуску моносортових вінтажних вин. Другий варіант — Mas Martinet Viticultors.</p>
+                <p>Вино в Іспанії смачне, а ціна якісної пляшки нерідко становить половину від бургундських купажів. Щоб трохи заощадити, стежте за новинками серед акційних пропозицій або шукайте позиції з гуртовою знижкою.</p>
+                <h2>Що подати до іспанського вина</h2>
+                <p>Щоб не помилитися, зупиніться на традиційних стравах: паельї, емпанаде, кальсотаде, гаспачо. Враховуйте стиль напою:</p>
+                <ol>
+                    <li>Червоне вино гармонійно поєднується з ягням, хамоном, сиром манчего. Таніни доповнять овочеве рагу. Сухі позиції подавайте з пастою під вершково-грибним соусом. Солодкі — як доповнення до фруктів, ягід, шоколаду.</li>
+                    <li>Біле вино традиційно подають із рибою та морепродуктами. Воно також підходить як супровід до холодних закусок, салатів, легких десертів.</li>
+                </ol>
+                <h2>Чому вигідно купити іспанське вино в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Команда MAUDAU гарантує оригінальне походження кожного алкогольного напою і конкурентну ціну, багато в чому — завдяки власному налагодженому імпорту. Іспанські вина легко купити з доставленням по всій Україні — кур’єром у деяких
+                    містах і поштовими службами. Оплатити замовлення можна безпосередньо на сайті або постфактум.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Ребухіто (Rebujito)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/rebujito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Ребухіто (Rebujito)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-bodegas-alvaro-domecq-manzanilla-la-jaca-kriplene-bile-15-0-75-l">Сухий іспанський херес Manzanilla</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=sprite">Sprite</a></li><li>Мʼята</li><li>Лимон</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ребухіто — освіжальний андалузький коктейль із м'яким смаком хересу, м'ятною свіжістю та легкими цитрусовими нотами. Легкість і яскравий смак роблять його чудовим вибором для літніх вечорів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Ребухіто (Rebujito)</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл сухого хересу Manzanilla</li><li>180 мл лимонно-лаймової газованої води Sprite</li><li>5-6 листків м'яти</li><li>1 скибочка лимона</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У келих налийте трохи лимонно-лаймової газованої води і покладіть листя м'яти.</li><li>Акуратно розімніть м'яту ложкою.</li><li>Потім додайте лід, сухий херес Manzanilla і решту газованої води.</li><li>Ретельно перемішайте, щоб усі інгредієнти змішалися.</li><li>Прикрасьте коктейль скибочкою лимона.</li><li>Для насиченішого аромату можна злегка стиснути скибочку лимона перед додаванням.</li><li>Подавайте охолодженим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Замальовки Іспанії (Sketches of Spain)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sketches-of-Spain.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Замальовки Іспанії (Sketches of Spain)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/kheres-emilio-lustau-manzanilla-papirusa-bile-sukhe-15-075-l-8000013918989">Іспанський херес Lustau</a></li><li><a href="https://maudau.com.ua/product/vermut-emilio-lustau-vermut-white-15-075-l-8000017860538">Іспанський солодкий вермут Lustau</a></li><li><a href="https://maudau.com.ua/product/brendi-de-kheres-carlos-ii-solera-reserva-36-07-l-593429">Бренді де Херес</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Сироп медовий</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Багатий і багатошаровий коктейль, який передає дух Іспанії завдяки поєднанню солодкого вермуту, хересу та бренді. Його м'яка текстура і тонкий медовий відтінок створюють незабутнє враження.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Замальовки Іспанії (Sketches of Spain)</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл хересу Lustau</li><li>22.5 мл іспанського солодкого вермуту Lustau</li><li>15 мл бренді де Херес</li><li>7.5 мл медового сиропу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер додайте херес Lustau, іспанський солодкий вермут, бренді та медовий сироп.</li><li>Наповніть шейкер льодом і струшуйте впродовж 20–30 секунд до охолодження.</li><li>Процідіть суміш через ситечко в охолоджений келих для коктейлів.</li><li>Для прикрашання використовуйте тонку смужку апельсинової цедри: перед додаванням у келих злегка стисніть її, щоб виділити ароматичні олії.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Coctel de Jerez" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Coctel_de_Jerez.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Coctel de Jerez</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-sandeman-fino-sherry-bile-sukhe-15-075-l-15981">Херес Фіно</a></li><li>Персиковий бренді</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Куантро</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей коктейль поєднує легкість хересу Фіно та насичені фруктові нотки персикового бренді, створюючи елегантний і збалансований смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Coctel de Jerez</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 мл хересу Фіно</li><li>100 мл персикового бренді</li><li>1 ч. л. Куантро</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер льодом і додайте херес Фіно, персиковий бренді та Куантро.</li><li>Струшуйте близько 30 секунд, щоб напій охолов і інгредієнти змішалися.</li><li>У високий келих насипте лід і перелийте коктейль через ситечко.</li><li>Для прикрашання можна використати свіжу скибочку персика та виноград.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="The Barcelona" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Barcelona.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">The Barcelona</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-don-simon-sauvignon-blanc-bile-sukhe-125-075-l">Біле вино</a></li><li><a href="https://maudau.com.ua/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=grand-marnier">Гранд Марньє</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=buzyna-2">Сироп із квітів бузини</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=sprite">Спрайт</a></li><li>Свіжі скибочки цитрусових</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вишуканий коктейль із тонкими квітковими нотами бузини та освіжальними цитрусовими акцентами. Його гармонійний смак сподобається поціновувачам легких та оригінальних напоїв.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати The Barcelona</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 мл охолодженого білого вина</li><li>100 мл джину</li><li>50 мл Гранд Марньє</li><li>50 мл сиропу з квіток бузини</li><li>1 ч. л. лимонного соку</li><li>1 ч. л. апельсинового соку</li><li>спрайт до смаку</li><li>свіжі скибочки цитрусових для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть глечик льодом і додайте охолоджене біле вино, джин, сироп із квіток бузини, Гранд Марньє та соки лимона й апельсина.</li><li>Ретельно перемішайте.</li><li>Перед подачею додайте спрайт.</li><li>Перелийте в келихи, наповнені льодом, і прикрасьте скибочками свіжих цитрусових.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сурракапоте (Zurracapote)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/zurracapote.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сурракапоте (Zurracapote)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-la-barbacoa-garnacha-red-13-075-l-873684">Вино червоне сухе</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Кориця</a></li><li>Лимони</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Традиційний іспанський напій, який нагадує сангрію, але з насиченішим смаком завдяки спеціям і лимону. Чудовий вибір для вечірок або пікніків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Сурракапоте (Zurracapote)</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>4 л червоного сухого вина</li><li>0,5 л води</li><li>500 г цукру</li><li>½ палички кориці</li><li>2 лимони</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У велику каструлю налийте червоне вино, воду і додайте цукор.</li><li>Тонкими скибочками наріжте лимон.</li><li>Покладіть половину палички кориці та нарізані скибочки лимона.</li><li>Поставте суміш на слабкий вогонь, повільно нагрівайте, періодично помішуючи, щоб цукор повністю розчинився.</li><li>Доведіть до кипіння, потім зменшіть вогонь і готуйте 10 хвилин.</li><li>Зніміть з вогню і залиште на 1-2 години для настоювання.</li><li>Перед подачею процідіть напій через ситечко, щоб видалити спеції та лимон.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Sherry-tini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sherry-tini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Sherry-tini</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/olyvky-ta-maslyny">Оливки</a></li><li>Цедра апельсина</li><li>Лід</li><li><a href="https://maudau.com.ua/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/product/vyno-bodegas-alvaro-domecq-manzanilla-la-jaca-kriplene-bile-15-0-75-l">Херес Мансанілья</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Витончений коктейль, який об'єднує яскравість джину з легкою солоністю хересу Мансанілья, створюючи незвичайне, але гармонійне поєднання.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Sherry-tini</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>8 оливок або 4 завитка апельсинової цедри</li><li>подрібнений лід до смаку</li><li>250 мл джину</li><li>50 мл хересу Мансанілья (або Фіно)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Шейкер наповніть льодом, додайте джин і херес.</li><li>Струшуйте близько 30 секунд до охолодження.</li><li>Процідіть напій через ситечко в охолоджений келих для мартіні.</li><li>Прикрасьте коктейль оливками на шпажці або завитком апельсинової цедри.</li><li>Подавайте одразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Тінто де Верано" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/tinto-de-verano.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Тінто де Верано</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-marques-de-carano-gran-reserva-do-carinena-125-075-l-652089">Червоне вино</a></li><li><a href="https://maudau.com.ua/category/voda/vyd_133=sylnohazovana">Газована вода</a></li><li>Лимон</li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тінто де Верано — легкий і освіжальний іспанський коктейль, що поєднує червоне вино і газовану воду. Він ідеально втамовує спрагу та дарує відчуття прохолоди у спекотні дні. Цей напій підійде для літнього відпочинку або вечірки!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Тінто де Верано</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>1 частина червоного вина</li><li>2 частини газованої води</li><li>1 скибочка лимона</li><li>лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У склянку, наповнену льодом, налийте червоне вино.</li><li>Додайте газовану воду, ретельно перемішайте.</li><li>Вичавіть шматочок лимона в коктейль, залишивши саму скибочку в склянці для прикрашання.</li><li>Подавайте відразу, насолоджуючись приголомшливим смаком.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Калімочо" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kalimotxo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Калімочо</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=coca-cola">Кола</a></li><li><a href="https://maudau.com.ua/product/vyno-monasterio-de-las-vinas-garnachatempranillo-13-075-l-734218">Червоне вино</a></li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простий тонізуючий коктейль всього із двох компонентів. Вважається атрибутом вечірок, тому що бадьорить і викликає приплив сил. Добре поєднується з морозивом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Калімочо</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл коли</li><li>100 мл червоного вина</li><li>лід у кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть охолоджений келих кубиками льоду.</li><li>Додайте 100 мл червоного вина та 100 мл коли.</li><li>Акуратно перемішайте коктейльною ложечкою.</li><li>Прикрасьте напій скибочкою лимона та додайте трубочку.</li><li>За бажанням подавайте з ванільним морозивом.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сангрія" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sanhria.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сангрія</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-garcia-carrion-cappo-shiraz-chervone-sukhe-125-075-l-27260">Червоне вино</a></li><li><a href="https://maudau.com.ua/category/voda/vyd_133=bez-hazu">Вода без газу</a></li><li>Апельсини</li><li>Лимон</li><li><a href="https://maudau.com.ua/category/sil-tsukor/format_vypusku=rozsypnyi">Цукор</a></li><li>Свіжа мʼята</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сангрія — візитна картка Іспанії та найвідоміший прохолодний напій на основі червоного вина та води. Легкий і чудово втамовує спрагу. Традиційно подається в прозорому глеку або місткій чаші.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Сангрія</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>500 мл червоне вино</li><li>500 мл вода без газу</li><li>2 апельсини</li><li>1 лимон</li><li>1 столова ложка цукру</li><li>свіжа м'ята</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наріжте апельсини та лимон тонкими скибочками і викладіть у глечик. Посипте цукром.</li><li>В окремій місткості змішайте 500 мл червоного вина та 500 мл води без газу.</li><li>Сумішшю залийте цитрусові. За бажанням додайте прянощі.</li><li>Настоюйте напій у холодильнику від 3 до 12 годин.</li><li>Перед подачею додайте в глечик лід і свіжу м'яту.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">65 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">2.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

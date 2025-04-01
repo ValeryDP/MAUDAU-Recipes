@@ -1,0 +1,816 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    «Бадагоні» — лінійка вишуканих невінтажних вин, вироблених у Грузії, що відображають теруар країни, яку називають колискою виноробства. Бренд поєднує багатовікові виноробні традиції, найдавніші з яких налічують понад 8 000 років, і
+                    сучасний підхід, наприклад, у питаннях автоматизації виробництва.
+                </p>
+                <h2>«Бадагоні»: коротка історія компанії</h2>
+                <p>Бренд виник 2006 року в Кахетії, а точніше — у селищі Земо-Ходашені. У 2020 році винна продукція торгової марки завоювала шість золотих медалей на престижному фестивалі Munduns Vini в Німеччині.</p>
+                <p>
+                    Це не дивно, адже за шість років до цього до команди «Бадагоні» приєднався Донатто Ланатті — доктор наук і почесний консул Сан-Марино в Грузії, який, окрім своєї основної діяльності, також входить до п’ятірки найкращих світових
+                    енологів. У 2015 році йому присудили найвищу винну нагороду — Oscar del Vino.
+                </p>
+                <p>Бренд Badagoni — не єдиний, кого консультує Донатто Ланатті. Він також співпрацює з виробниками з Румунії, Італії та Швейцарії.</p>
+                <h2>Особливості виготовлення вин «Бадагоні»</h2>
+                <p>Виноград вирощують на власних виноградниках площею близько 400 гектарів, розташованих у престижних мікрокліматичних зонах Кахетії. У напоях використовують тільки місцеві сорти:</p>
+                <ul>
+                    <li>«сапераві» — з Ахашені, Мукузані, Кварелі, Алаверді та Гіоргіцмінди;</li>
+                    <li>«ркацителі» — з Акури;</li>
+                    <li>«кісі» — з Алаверді;</li>
+                    <li>«мцване» — з Тохліаурі.</li>
+                </ul>
+                <p>
+                    Виноробню Badagoni вважають найвисокотехнологічнішою не тільки в Грузії, а й у всій Східній Європі. Завод складається з двох частин: одна розташована біля міста Ахмета, друга — в районі Сагареджо в селищі Манаві. Виноробня повністю,
+                    включно з будівлями, обладнанням і лабораторією, відповідає міжнародним стандартам ISO.
+                </p>
+                <p>Виробництво передбачає використання традиційних методів, але з деякими коригуваннями. Наприклад, мікрофільтрація запобігає випаданню осаду.</p>
+                <p>
+                    Дозрівання вина «Бадагоні» проходить у французьких дубових бочках нового наповнення. Якщо використовують кеврі, їх поміщають у марані — винний льох, облицьований 300-річною цеглою, що ефективно підтримує потрібну температуру та
+                    вологість усередині.
+                </p>
+                <p>Після витримки кожен напій проходить ретельну лабораторну перевірку щодо вмісту залишкового цукру, міцності та показників pH. Попри такий складний виробничий процес, «Бадагоні» — вино, ціна якого залишається доступною.</p>
+                <p>
+                    З 2014 року розлив здійснюють переважно на заводі в Ахметі, оснащеному автоматизованими лініями від Bertolaso та Enotec — найкращих італійських виробників. Систему створили спеціально на замовлення Badagoni, тож аналогів у світі
+                    немає. Напій не контактує з киснем і металом, що зберігає смак і аромат.
+                </p>
+                <p>Потім вино «Бадагоні» з кожної партії відправляють до Італії, а саме до дослідницького центру Enosis Meraviglia. Лише після комплексної оцінки від провідних експертів починають його розповсюдження.</p>
+                <h2>Асортимент вин Badagoni</h2>
+                <p>Бренд займається випуском моносортових напоїв. Це означає, що напій відображає характер ягід. Наприклад, «сапераві» вносить інтенсивний шлейф темних фруктів, а «ркацителі» — ніжну кислинку з помірною терпкою ноткою на фініші.</p>
+                <p>Основу асортименту становить лінійка базових вин Badagoni, купити які можна за доступною вартістю. Червоні представлені варіантами:</p>
+                <ul>
+                    <li>Alazani Valley — напівсолодке з фруктово-ягідним ароматом;</li>
+                    <li>Khvanchkara — напівсолодке з нюансами малини, чорниці та аґрусу;</li>
+                    <li>Akhasheni — напівсолодке з багатим букетом лісових ягід, полуниці та вишень;</li>
+                    <li>Kindzmarauli — напівсолодке з нотами чорних фруктів;</li>
+                    <li>Pirosmani — напівсухе з яскраво вираженим смаком вишні;</li>
+                    <li>Mukuzani — сухе зі збалансованими акордами граната і червоної смородини.</li>
+                </ul>
+                <p>Білі вина «Бадагоні»:</p>
+                <ul>
+                    <li>Alazani Valley — напівсолодке з ніжними айвовими нюансами;</li>
+                    <li>Pirosmani — напівсухе з живою кислотністю і легкою фінальною гіркуватістю;</li>
+                    <li>Tsinandali — сухе з виразним мінеральним закінченням.</li>
+                </ul>
+                <p>Лінійку також представляє Badagoni Rose. Міцність — 13%. Колір — світло-рожевий. Аромат — насичений, з нотками граната і малини. Смак — елегантний і оксамитовий.</p>
+                <p>
+                    «Бадагоні» — вино, купити яке варто через тісний зв’язок із землею, де воно вироблене. Особливе місце в портфоліо виробника посідає Alaverdi Tradition. Вино темно-рубінового кольору, вперше вироблене в XI столітті в стінах
+                    Алавердського монастиря, готують у квеврі — традиційних глиняних амфорах, які закопують у землю і покривають кам’яними плитами. Потім напій витримують у дерев’яних чанах, розміщених на території нещодавно відновленого храму
+                    Алаверді.
+                </p>
+                <h2>Як вибрати вино «Бадагоні»</h2>
+                <p>
+                    У маркеті алкогольних штук MAUDAU представлений основний асортимент виробника. Напої доступні в стандартному обсязі — 0.75 л. Під час вибору враховуйте особисті вподобання. Наприклад, червоні сухі вина — терпкі завдяки танінам, що
+                    підходить для холодної пори, тоді як білі — легкі та освіжальні.
+                </p>
+                <h3>Вино Badagoni: ціна в Україні</h3>
+                <p>Пляшку якісного напою можна купити за 150–200 грн. Продукція з колекції «Золота історія Бадагоні» коштує дорожче — близько 500–700 грн за 0.75 л. Спецпропозиції від MAUDAU, включно з гуртом і акціями, допоможуть заощадити.</p>
+                <h2>З чим пити вино «Бадагоні»</h2>
+                <p>Червоні сухі позиції особливо вигідно поєднуються з м’ясом. Солодкі — з фруктово-ягідними нарізками та десертами. Сміливе та структуроване вино радять подавати за +14–16 ºC.</p>
+                <p>Badagoni Rose — вино, купити яке варто через його універсальність. Сухий стиль однаково добре пасує як до холодних і гарячих закусок, так і солодощів. Напій радять подавати злегка охолодженим.</p>
+                <p>Білі позиції комбінують із легкими овочевими салатами, пісним м’ясом, рибою та морепродуктами. Температура подачі — +8–10 ºC.</p>
+                <h2>Чому вигідно купити «Бадагоні» в інтернет-магазині MAUDAU</h2>
+                <p>Замовити оригінальну продукцію легко — достатньо 5–7 хвилин. Доставлення можливе кур’єром у деяких містах і поштовими службами. Оплата — в момент оформлення замовлення або під час отримання.</p>
+            </div>
+            
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Фрозе" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Frozse-Cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Фрозе</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-badagoni-saperavi-rose-12-075-l-au4p012">Рожеве вино Badagoni</a></li><li>Полуниця</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Лимон</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фрозе — це освіжальний і ніжний заморожений коктейль, приготований на основі рожевого вина. Напій поєднує ягідну солодкість і легку кислинку, що робить його ідеальним вибором для спекотного літа.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Фрозе</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>750 мл рожевого вина</li><li>300 г полуниці</li><li>50 г цукру</li><li>1 лимон</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте 750 мл рожевого вина в контейнер і приберіть у морозильник на 6-7 годин.</li><li>300 г полуниці очистіть від плодоніжок, наріжте крупно, засипте цукром і залиште на 30 хвилин.</li><li>Вино дістаньте з форми і розбийте на великі шматки.</li><li>З'єднайте заморожене вино і полуницю з цукром, збийте все блендером до однорідності.</li><li>Додайте сік одного лимона до смаку і добре перемішайте коктейльною ложкою.</li><li>Розлийте напій у келихи для подачі та прикрасьте скибочкою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кавуновий спритцер" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kavunovy-sprytzer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кавуновий спритцер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Кавун</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=ahava">Нектар агави</a></li><li><a href="https://maudau.com.ua/product/vyno-badagoni-alazani-valley-white-napivsolodke-12-075-l-411287">Біле вино Badagoni</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Полунична сода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кавуновий спритцер — це коктейль на основі свіжого кавунового соку, содової та білого вина. Легкий, освіжальний, з насиченим фруктовим смаком. Ідеальний для спекотних днів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Кавуновий спритцер</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 чашки нарізаного кубиками та охолодженого кавуна</li><li>1 ст. ложка нектару агави</li><li>2 чашки білого охолодженого вина</li><li>2 чашки охолодженої клубної содової</li><li>4 шматочки кавуна для прикраси</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у шейкер 2 чашки нарізаного кубиками охолодженого</li><li>кавуна та подавіть мадлером.</li><li>Налийте в отриману м'якоту 2 чашки білого охолодженого вина та одну столову ложку нектару агави.</li><li>Перелийте напій через стрейнер і ситечко в рокс, наповнивши келих на половину.</li><li>Долийте охолоджену клубну содову доверху й акуратно розмішай коктейльною ложкою.</li><li>Прикрасьте коктейль маленькими шматочками кавуна на шпажці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гойдалки на ґанку (Front Porch Swing)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Front-Porche-Swing.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гойдалки на ґанку (Front Porch Swing)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-badagoni-tsinandali-13-075-l-au4p004">Біле вино Badagoni</a></li><li>Огіркова горілка Square One</li><li><a href="https://maudau.com.ua/product/liker-st-germain-20-07-l">Лікер із бузини St-Germain</a></li><li>Виноградини</li><li>Мʼята</li><li>Апельсин</li><li>Полуниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Front Porch Swing — приємний коктейль із ніжним фруктовим смаком, ідеальний варіант для відпочинку та релаксу. Свіжий, як ранній ранок, і легкий, як літній бриз!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гойдалки на ґанку (Front Porch Swing)</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл білого вина</li><li>45 мл огіркової горілки Square One</li><li>30 мл лікеру з бузини St-Germain</li><li>5 білих або зелених виноградин, розрізаних навпіл</li><li>5 червоних виноградин, розрізаних навпіл</li><li>1 гілочка м'яти (або естрагону)</li><li>1 скибочка апельсина</li><li>1 полуниця, розрізана навпіл</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 90 мл білого вина, 45 мл огіркової горілки Square One</li><li>і 30 мл лікеру з бузини St-Germain.</li><li>Всипте розрізані навпіл 5 білих і 5 червоних виноградин.</li><li>Струшуйте впродовж 20 секунд.</li><li>Перелийте напій через стрейнер у кубок.</li><li>Прикрасьте коктейль гілочкою м'яти, скибочкою апельсина і половинкою полуниці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Абрикосовий глінтвейн із коньяком" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Abrykosovyi-hlintvein-iz-konjakom.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Абрикосовий глінтвейн із коньяком</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=hennessy">Коньяк Hennessy</a></li><li><a href="https://maudau.com.ua/product/vyno-badagoni-saperavi-chervone-sukhe-12-075-l-411291">Червоне вино сухе Badagoni</a></li><li>Абрикос</li><li>Апельсин</li><li><a href="https://maudau.com.ua/category/varennia-dzhemy-ta-med/osnova_17=abrykos-11">Абрикосовий джем</a></li><li><a href="https://maudau.com.ua/product/korytsia-palychky-cannamela-3-sht">Кориця в паличках</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li>Лимонна цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Теплий, насичений напій із фруктовою солодкістю абрикосів і глибоким смаком коньяку. Ідеальний для холодних вечорів, коли хочеться зігрітися і насолодитися ароматною, м'якою гармонією прянощів і алкоголю.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Абрикосовий глінтвейн із коньяком</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл коньяку Hennessy</li><li>150 мл червоного сухого вина</li><li>60 г абрикоса</li><li>75 г апельсина</li><li>15 г абрикосового джему</li><li>5 г кориці в паличках</li><li>3 г гвоздики</li><li>цедра одного лимона</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У каструлі змішайте 150 мл червоного сухого вина, 15 г джему, 60 г абрикоса і 75 г апельсина.</li><li>Додайте 5 г кориці в паличках, 3 г гвоздики і цедру одного лимона.</li><li>Поставте каструлю на середній вогонь і акуратно підігрівайте, не доводячи до кипіння, щоб аромати розкрилися.</li><li>Щойно напій стане теплим, додайте 20 мл коньяку Hennessy і ретельно перемішайте.</li><li>Дайте настоятися 5–10 хвилин, щоб усі смаки змішалися.</li><li>Процідіть напій через сито і розлийте по келихах.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Чорна троянда Маргарита" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Chorna-troyanda-Marharyta.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Чорна троянда Маргарита</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-badagoni-kindzmarauli-11-075-l-411298">Напівсолодке червоне вино Badagoni</a></li><li>Essensia Orange Muscat</li><li><a href="https://maudau.com.ua/category/tekila/kolir_3=blanko-blanco-2">Текіла бланко</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li><a href="https://maudau.com.ua/category/kukhonna-sil">Сіль</a></li><li>Лайм</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль із насиченим смаком текіли, солодкістю Muscat і винними акцентами, доповнений солоним обідком келиха.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Чорна троянда Маргарита</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60–90 мл напівсолодкого червоного вина</li><li>30 мл Essensia Orange Muscat</li><li>30 мл текіли бланко</li><li>30 мл соку лайма</li><li>сіль для прикрашання</li><li>лайм для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Підготуйте келих для Маргарити, змочивши його край соком лайма і зануривши в сіль.</li><li>У шейкер налийте 60–90 мл напівсолодкого червоного вина, 30 мл Essensia Orange Muscat, 30 мл текіли бланко і 30 мл свіжовичавленого соку лайма.</li><li>Додайте лід і струшуйте 15–20 секунд.</li><li>Через сито розлийте напій у підготовлений келих.</li><li>Прикрасьте скибочкою лайма, прикріпивши її до краю келиха і тонким зрізом апельсина.</li><li>Вживати потрібно одразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">85 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

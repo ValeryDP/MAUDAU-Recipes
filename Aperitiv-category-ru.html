@@ -1,0 +1,981 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Аперитив — алкогольный напиток, который традиционно подают перед едой для возбуждения аппетита. История спиртного уходит корнями в древние времена, когда люди употребляли различные настойки и вина для улучшения пищеварения и
+                    повышения аппетита. Современная традиция пить легкий алкоголь перед едой появилась в Италии и Франции в конце XVIII века и быстро распространилась во всем мире.
+                </p>
+                <p>
+                    Аперитивы характеризуются легким, освежающим вкусом и относительно невысоким процентом алкоголя — обычно не больше 25%, хотя встречаются настойки 45% спирта. Они обладают ярким цветом и приятным ароматом, который достигается за счет
+                    использования различных трав, специй, фруктов и ягод.
+                </p>
+                <p>Такое спиртное часто становится основой коктейлей: Spritz, Negroni, Americano. Они придают более комплексный, глубокий вкус и аромат.</p>
+                <h2>Как изготавливают аперитив</h2>
+                <p>
+                    Технология производства аперитивов включает несколько этапов. Первый — выбор и подготовка компонентов. Для изготовления используются натуральные ингредиенты, которые часто отбираются ручным методом. Некоторые производители
+                    выращивают необходимые компоненты самостоятельно, чтобы обеспечить их высокое качество и свежесть.
+                </p>
+                <p>Травы, плоды и ягоды проходят разные процессы обработки: сушку, измельчение, выжимку и другие операции. Затем ингредиенты смешиваются в определенных пропорциях согласно рецептуре каждого конкретного аперитива.</p>
+                <p>
+                    Следующий этап — мацерация. Настаивание смеси в спирте позволяет экстрагировать вкусовые и ароматические вещества и передать их напитку. Длительность процесса может варьироваться от нескольких дней до нескольких месяцев, в
+                    зависимости от желаемого результата.
+                </p>
+                <p>После мацерации напиток фильтруют, чтобы удалить остатки растений и получить чистый, прозрачный продукт. Затем аперитив разливают по бутылкам и отправляют на реализацию.</p>
+                <h2>Советы по выбору аперитива</h2>
+                <p>Чтобы подобрать подходящий вариант, нужно определиться с основными критериями:</p>
+                <ol>
+                    <li>Крепость. Обычно содержание алкоголя в аперитивах варьируется. Для легкого употребления перед едой лучше выбирать напиток с низким уровнем спирта, а для коктейлей можно рассмотреть более крепкие варианты.</li>
+                    <li>Цвет. Влияет на восприятие вкуса и аромата, а также на внешний вид микса.</li>
+                    <li>Цена. Аперитивы представлены в различных категориях. Выбор зависит от бюджета и назначения напитка — для домашнего употребления или для использования в барах и ресторанах.</li>
+                </ol>
+                <p>На рынке доступно множество разновидностей, среди которых каждый может найти напиток по своему вкусу. Популярными предложениями считаются:</p>
+                <ol>
+                    <li>Aperol Aperetivo, 11%, 1 л — итальянский аперитив ярко-оранжевого цвета с легкими горьковато-сладкими нюансами. Отлично подходит для приготовления коктейля Spritz.</li>
+                    <li>Aelred Aperitif Nectarine, 12%, 0,7 л — французский напиток на основе персиков и нектаринов с мягким, сладковатым вкусом. Идеален для употребления в чистом виде или в составе фруктовых миксов.</li>
+                    <li>Aelred 1889 Pastis, 45%, 0,7 л — классический анисовый аперитив из Франции с высоким содержанием алкоголя. Обладает характерным сладким, немного лакричный вкусом и пряным ароматом. Обычно подается разбавленным водой.</li>
+                    <li>
+                        Freimeisterkollektiv Orange Bitters, 19,4%, 0,5 л — творение французских мастеров на основе апельсиновых корок, различных трав и специй. Обладает насыщенным оранжевым цветом и горьковатым вкусом. Используется в коктейлях для
+                        придания им сложности и глубины.
+                    </li>
+                </ol>
+                <p>Представленные предложения демонстрируют разнообразие аперитивов на рынке и могут стать отличным выбором для домашнего бара и профессионального использования.</p>
+                <h2>Почему выгодно купить аперитив в маркете повседневных штук MAUDAU</h2>
+                <p>В интернет-магазине MAUDAU можно купить аперитивы онлайн, сэкономив на покупке. На избранные позиции действует опт от 3-х штук, а некоторые товары отправляются бесплатно, что делает шопинг на сайте еще более привлекательным.</p>
+                <p>Маркет обеспечивает доставку заказов курьером, а также в точки выдачи «Сільпо» и на отделения почты. При необходимости клиенты могут проконсультироваться с менеджером и получить профессиональную помощь в выборе.</p>
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Восковидный" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/wax-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Восковидный</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Аперитив Апероль</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=jagermeister">Егермейстер</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/chai-2/typ_83=chornyi-22">Черный чай</a></li><li>Молоко</li><li>Домашний ягодный чатни</li><li><a href="https://maudau.com.ua/ru/category/horikhovi-pasty/typ_206=arakhisova">Арахисовая паста</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Восковидный — слабоалкогольный коктейль для большой компании. Готовится в чаше для пунша на основе чая и ягодного чатни. За крепость отвечают Апероль и Егермейстер.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Восковидный</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 мл Апероля</li><li>70 мл Егермейстера</li><li>500 мл лимонного сока</li><li>500 мл грейпфрутового сока</li><li>500 мл черного чая</li><li>500 мл молока</li><li>500 г ягодного чатни</li><li>300 г арахисовой пасты</li><li>1 кг льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите трехлитровую чашу для пунша и положите в нее 500 г домашнего ягодного чатни и 300 г арахисовой пасты.</li><li>Налейте по 500 мл черного чая, молока и грейпфрутового сока.</li><li>Добавьте 500 мл лимонного сока, 70 мл Егермейстера и 250 мл Апероля.</li><li>Тщательно перемешайте высоким венчиком.</li><li>Наполните бокалы-роксы кубиками льда и разлейте напиток. Пунша хватит примерно на 15 порций.</li><li>Украсьте напиток ложечкой арахисовой пасты.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мескалеро" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Mezcalero-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мескалеро</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal">Мескаль</a></li><li>Маурин квина</li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Аперитив Aperol</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/smakaromat_4=tsytrusovi-2">Грейпфрутовый биттер</a></li><li>Апельсиновая цедра</li><li>Ледяной куб</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Крепкий и гармоничный коктейль на основе ароматного мескаля и апероля. Капелька грейпфрутового биттера привносит цитрусовую нотку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Мескалеро</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл мескаля</li><li>30 мл маурин квина</li><li>30 мл биттера апероль</li><li>1 мл грейпфрутового биттера</li><li>Апельсиновая цедра</li><li>1 ледяной куб</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в стакан-коллинз ледяной куб.</li><li>В емкость для смешивания налейте 30 мл апероля и 30 мл маурин квина.</li><li>Туда же добавьте 30 мл мескаля и 1 мл грейпфрутового биттера.</li><li>Насыпьте в напиток кубики льда и бережно размешайте барной ложкой.</li><li>Перелейте коктейль через стрейнер в коллинз и украсьте его апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Прыгающая Джессика" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Jumping_Jessica-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Прыгающая Джессика</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=zolota-gold">Золотая текила</a></li><li>Зеленый Шартрез</li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Аперитив Aperol</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Белок перепелиного яйца</li><li>Стручковый перец сладкий</li><li>Корень имбиря</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригинальный овощной сауэр, многосложный и пикантный. Ведущую роль играет текила, а апероль вкусно оттеняет коктейль.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Прыгающая Джессика</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл золотой текилы</li><li>10 мл зеленого Шартреза</li><li>10 мл Aperol</li><li>20мл сахарного сиропа</li><li>30 мл лаймового сока</li><li>30 мл белка перепелиного яйца</li><li>200 г стручкового сладкого перца</li><li>10 г кореня имбиря</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Выжмите сок из стручкового сладкого перца и корня имбиря.</li><li>Налейте в шейкер 5 мл сока имбиря, 30 мл сока перца, 30 мл лаймового сока и 30 мл белка перепелиного яйца.</li><li>Добавьте 20 мл сахарного сиропа, 10 мл Aperol, 10 мл зеленого Шартреза и 50 мл золотой текилы.</li><li>Сперва взбейте смесь безо льда, потом наполните шейкер льдом и взбейте еще раз.</li><li>Процедите коктейль через ситечко-стрейнер в заранее охлажденный коктейльный бокал.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Черный трюфель" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Black_Truffle-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Черный трюфель</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/typ_napoiu_6=vytrymanyi-anejo">Выдержанный ром</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi">Темный ром</a></li><li><a href="https://maudau.com.ua/ru/category/tekila/product_class=meskal">Мескаль</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone">Красный вермут</a></li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Аперитив Aperol</a></li><li>Красный биттер</li><li><a href="https://maudau.com.ua/ru/product/nastoianka-angostura-orange-bitter-28-01-l-725705">Апельсиновый биттер</a></li><li>Пармезан</li><li>Трюфельное масло</li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/vyd_111=horoshok-2">Перец горошком</a></li><li>Лед в кубиках</li><li>Ледяная сфера</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Смелый горько-кислый шорт с трюфельным маслом. Сочетание алкогольных ингредиентов получается гармоничное и оригинальное.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Черный трюфель</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл выдержанного рома</li><li>10 мл темного рома</li><li>10 мл мескаля</li><li>50 мл красного вермута</li><li>30 мл апероля</li><li>5 мл красного биттера</li><li>4 мл апельсинового биттера</li><li>15 г пармезана</li><li>32 мл трюфельного масла</li><li>1 г перца горошком</li><li>300 г льда в кубиках</li><li>Ледяная сфера</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в стакан-рокс ледяную сферу.</li><li>Налейте в емкость для смешивания 5 мл красного биттера, 30 мл апероля, 50 мл красного вермута и 10 мл мескаля.</li><li>Добавьте в напиток трюфельное масло, 4 мл апельсинового биттера, 10 мл темного и 30 мл выдержанного рома.</li><li>Наполните емкость кубиками льда и аккуратно размешайте коктейльной ложкой.</li><li>Процедите через сито-стрейнер в рокс.</li><li>Вымочите 15 г пармезана в трюфельном масле, добавьте черный перец и украсьте коктейль.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Апероль со Швепсом" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/aperol_schweppes-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Апероль со Швепсом</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-1-l-505492">Аперитив Aperol</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=schweppes">Тоник Schweppes</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Модный освежающий коктейль из двух компонентов. Простой в приготовлении и тонизирующий, быстро взбодрит и утолит жажду в разгар вечеринки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Апероль со Швепсом</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл апероля</li><li>50 мл тоника Schweppes</li><li>Лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните льдом бокал для подачи. Подойдет большой винный бокал на ножке.</li><li>Влейте 25 мл апероля и добавьте 50 мл тоника Schweppes.</li><li>Аккуратно перемешайте, но не взбалтывайте — появится много пены.</li><li>По желанию декорируйте коктейль апельсиновой долькой и трубочкой для напитков.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Апероль Сауэр" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Aperol_Sour-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Апероль Сауэр</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Аперитив Aperol</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Белок куриного яйца</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сауэр из равных долей апероля и джина. В меру сладкий, с горчинкой и можжевеловой ноткой. Взбитый белок привносит в коктейль характерную пенку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Апероль Сауэр</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл джина</li><li>30 мл апероля</li><li>15 мл лимонного сока</li><li>10 мл сахарного сиропа</li><li>Белок куриного яйца</li><li>Лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Для охлаждения наполните бокал-рокс льдом доверху.</li><li>Налейте в шейкер 30 мл апероля и 30 мл джина.</li><li>Добавьте в состав 15 мл лимонного сока, 10 мл сахарного сиропа и белок куриного яйца.</li><li>Насыпьте лед и взбейте коктейль.</li><li>Процедите смесь через ситечко-стрейнер в бокал для подачи.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Aperol Shpritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Aperol_Spritz-cocktail-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Aperol Shpritz</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-1-l-505492">Аперитив Aperol</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/vyd_133=sylnohazovana">Содовая</a></li><li>Апельсин</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Aperol Spritz — самый популярный коктейль на основе аперитива Aperol. Его фирменная травяная горчинка идеально сочетается с просекко и цитрусовыми.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Aperol Shpritz</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл аперитива Апероль</li><li>100 мл просекко</li><li>20 мл содовой или тоника</li><li>30 г апельсина</li><li>лед в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в бокал кубики льда.</li><li>Налейте 100 мл просекко или другого сухого игристого вина.</li><li>Добавьте 100 мл Апероля.</li><li>Влейте содовую и перемешайте коктейльной ложечкой.</li><li>Украсьте ломтиком апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rob Roy" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/rob-roy-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rob Roy</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=chivas-regal">Виски Chivas Regal</a></li><li>Аперитив Lillet Rouge</li><li><a href="https://maudau.com.ua/ru/product/aperytyv-lillet-blanc-na-osnovi-vyna-17-075-l-668889">Аперитив Lillet Blanc</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Биттер Ангостура</a></li><li>Апельсин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Rob Roy более100 лет известен гурманам и любителям виски Chivas. Назван в честь национального героя Шотландии — Роб Роя МакГрегора. Напиток крепкий и несложный в приготовлении.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Rob Roy</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл виски Chivas Regal</li><li>12,5 мл аперитива Lillet Rouge</li><li>12,5 мл аперитива Lillet Blanc</li><li>чайная ложка биттера Ангостура</li><li>долька апельсина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В стакан для смешивания налейте по 12,5 мл аперитивов Lillet Rouge и Lillet Blanc.</li><li>Добавьте 50 мл виски Chivas Regal и ложечку биттера Ангостура.</li><li>Размешайте высокой ложкой и перелейте в охлажденный бокал для подачи.</li><li>Декорируйте напиток долькой апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Выбор бармена" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bartender_choice-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Выбор бармена</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=sribna-silver">Серебряная текила</a></li><li>Красный биттер</li><li><a href="https://maudau.com.ua/ru/product/aperytyv-lillet-blanc-na-osnovi-vyna-17-075-l-668889">Лилле блан</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li><li>Грейпфрутовая цедра</li><li>Ледяной куб</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Выбор бармена — это удивительный микс алкогольных напитков, сиропа и цитрусовых соков. В результате получается вкуснейший крепкий шорт-дринк с текиловой базой.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Выбор бармена</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл серебряной текилы</li><li>10 мл красного биттера</li><li>20 мл аперитива Лилле блан</li><li>20 мл сахарного сиропа</li><li>20 мл лаймового сока</li><li>15 мл грейпфрутового сока</li><li>Грейпфрутовая цедра</li><li>Ледяной куб</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в шампанское блюдце ледяной куб.</li><li>Налейте в шейкер 20 мл сахарного сиропа, 20 мл лаймового сока и 15 мл грейпфрутового сока.</li><li>Добавьте 10 мл красного биттера, 20 мл аперитива Лилле блан и 30 мл серебряной текилы.</li><li>Насыпьте в шейкер 200 г льда в кубиках и взбейте смесь.</li><li>Процедите напиток через стрейнер в шампанское блюдце.</li><li>Украсьте коктейль цедрой грейпфрута.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Иностранный легион" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/foreign-legion-aperitiv.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Иностранный легион</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/rom/typ_napoiu_6=vytrymanyi-anejo">Выдержанный ром</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/product_brand=dubonnet">Дюбонне</a></li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Аперитив Aperol</a></li><li>Какао-ликер коричневый Fruko Schulz</li><li><a href="https://maudau.com.ua/ru/product/kheres-kriplene-bodegas-barbadillo-manzanilla-sherry-bile-sukhe-15-0-75-l-36377">Херес манзанилья</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=revenevyi">Ревеневый биттер</a></li><li>Лимонная цедра</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Экстравагантный шот одновременно травяной и шоколадный на вкус. Довольно крепкий, с долгим послевкусием.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Иностранный легион</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл выдержанного рома</li><li>15 мл аперитива Дюбонне</li><li>15 мл апероля</li><li>5 мл какао-ликера коричневого Fruko Schulz</li><li>15 мл хереса манзанилья</li><li>1 мл ревеневого биттера</li><li>Лимонная цедра</li><li>420 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-рокс до краев кубиками льда.</li><li>Налейте в смесительный стакан 15 мл хереса манзанилья, 15 мл апероля и 15 мл аперитива Дюбонне.</li><li>Добавьте 45 мл выдержанного рома, 5 мл какао-ликера Fruko Schulz и 1 мл ревеневого биттера.</li><li>Наполните стакан кубиками льда и размешайте барной ложкой.</li><li>Перелейте коктейль через сито-стрейнер в рокс и украсьте лимонной цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">160.8 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">24.8 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

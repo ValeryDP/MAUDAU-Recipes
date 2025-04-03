@@ -1,0 +1,847 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Грузинское вино — напиток, который производят в одном из самых старых винодельческих регионов мира. Известно, что ягоды из семейства Vitis vinifera в стране выращивают свыше 8 000 лет, а самым важным праздником считают день сбора
+                    урожая — Ртвели.
+                </p>
+                <p>
+                    Древние методы виноделия подчеркивают особенности местных сортов винограда. Например, виноделы нередко производят вино натуральным способом, то есть прибегая к помощи диких дрожжей. Сульфиты практически не используют. Особого
+                    внимания заслуживают брожение и выдержка в квеври — глиняных сосудах, зарытых под землю. В 2013 году технику внесли в список нематериального культурного наследия ЮНЕСКО.
+                </p>
+                <p>
+                    Вина Грузии, доступные к заказу в Украине, производят примерно из 500 видов ягод. Самым распространенным белым сортом считают «ркацители», а красным — «саперави». Каждый из них отражает специфические характеристики местного
+                    терруара.
+                </p>
+                <h2>Краткий взгляд на историю грузинского виноделия</h2>
+                <p>
+                    Местом зарождения виноградарства считают Закавказье. Этот факт подтвержден археологическими находками: отпечатками виноградных листьев, остатками мезги на стенках квеври, каменными прессами для измельчения ягод. В городе Вани также
+                    обнаружили мужскую статуэтку, которую связывают с образом тамады — распорядителя грузинского застолья.
+                </p>
+                <p>
+                    Примерно до 1860-х годов производители алкоголя на основе виноградного сока следовали традиционному методу виноделия. Концентрат заливали в квеври и закапывали в землю, поэтому большинство вин производили в белом стиле, а красные
+                    использовали исключительно в религиозных обрядах. Кувшины хранили в марани — погребах, расположенных под открытым небом. Выдержку в дубовых бочках ввел князь Александр Чавчавадзе.
+                </p>
+                <p>
+                    В 1883 году купить грузинское вино можно было под несколькими торговыми марками: «Цинандали», «Мукузани», «Мухрани». После Второй мировой войны производителей объединили в «Самтрест», что привело к увеличению годового объема
+                    выпускаемой продукции и расширению виноградных насаждений.
+                </p>
+                <p>В 2010 году правительство приняло систему контролируемых регионов происхождения вин. Классификацию разработали по примеру французских коллег, рассматривающих каждый апелласьон отдельно.</p>
+                <h2>География производства вин Грузии</h2>
+                <p>
+                    Самые важные винодельческие регионы размещены на востоке страны. Напитки зачастую носят названия мест выращивания винограда по типу французских вин Бордо и Бургундии. Район, где производят примерно 70% продукции, нацеленной на
+                    экспорт, — Кахетия. Климат — умеренный, с холодной зимой и жарким летом. Регион разделен на подзоны:
+                </p>
+                <ul>
+                    <li>Телави — восточная Кахетия;</li>
+                    <li>Кварели — западная Кахетия.</li>
+                </ul>
+                <p>В первой подзоне в основном выпускают структурированное красное вино с ярко выраженными танинами. Вторая специализируется на крепких и полнотелых выражениях винограда «саперави», самое известное среди которых — киндзмараули.</p>
+                <p>Другие возможные регионы происхождения вина из Грузии, купить которое можно в Украине:</p>
+                <ol start="1">
+                    <li>Картли. Климат — континентальный. Умеренное количество осадков способствует выращиванию разнообразных сортов винограда. Регион известен по легким белым и мягким красным винам. Важные подзоны — Атени и Болниси.</li>
+                    <li>Имеретия. Влажный субтропический климат повышает кислотность ягод. Вместо больших квеври используют сосуды поменьше — чури. Имеретия — район, где стоит искать ароматное и освежающее грузинское вино по типу цоликоури.</li>
+                    <li>Рача-Лечхуми и Квемо-Сванети. Регион известен полусладкими красными винами, особенно из сортов «александроули» и «муджуретули», которые ценят за глубокий фруктовый аромат.</li>
+                    <li>Аджария. Район расположен вблизи Черного моря, что создает мягкую и влажную среду для выращивания ягод. Редкий розовый виноград «чхавери», используемый в розовых купажах, происходит именно из Аджарии.</li>
+                    <li>Абхазия. Прибрежный климат способствует развитию ярких и сочных нюансов темных фруктов и ягод.</li>
+                </ol>
+                <h2>Сортовое разнообразие грузинских вин</h2>
+                <p>Хотя в стране зарегистрировано свыше 500 виноградных сортов, всего 38 официально признаны пригодными для винификации. Среди светлокожих ягод особо популярны:</p>
+                <ul>
+                    <li>«ркацители»;</li>
+                    <li>«мцване»;</li>
+                    <li>«цоликоури»;</li>
+                    <li>«чинури»;</li>
+                    <li>«хихви».</li>
+                </ul>
+                <p>Распространенные сорта для изготовления красных вин:</p>
+                <ul>
+                    <li>«саперави»;</li>
+                    <li>«тавквери»;</li>
+                    <li>«усахелаури»;</li>
+                    <li>«александрули»;</li>
+                    <li>«муджуретули»;</li>
+                    <li>«мтевандиди»;</li>
+                    <li>«оджалеши».</li>
+                </ul>
+                <h2>Вина Грузии: краткий обзор основных наименований</h2>
+                <p>
+                    Примерно 90% напитков на странице — купажи, то есть смеси двух и более виноградных сортов. Красные и белые вина выпускают примерно в одинаковых количествах. Розовые встречаются реже. Несмотря на то, что сейчас в стране производят
+                    много сухих стилей, подавляющее большинство — все равно естественно сладкие.
+                </p>
+                <p>
+                    Красное вино зачастую содержит высокую концентрацию танинов, по сравнению с вариантами из других стран, и больше алкоголя. Выдержку свыше 10 лет практикуют редко. Несколько узнаваемых красных грузинских вин, представленных в
+                    Украине:
+                </p>
+                <ol start="1">
+                    <li>Саперави. Самое признанное наименование среди иностранных сомелье. Содержание алкоголя — 10–13%.</li>
+                    <li>Ахашени. Натуральный полусладкий напиток темно-гранатового цвета с ярко выраженными шоколадными нюансами, который выпускают с 1958 года. В основе — виноград «саперави».</li>
+                    <li>Киндзмараули. Одно из самых известных красных кахетинских вин. Цвет напоминает перезрелую вишню. Вкус — богатый и бархатистый.</li>
+                    <li>Хванчкара. Натуральное полусладкое вино, которое характеризует рубиновый цвет и полностью развитый букет.</li>
+                </ol>
+                <p>
+                    Белое грузинское вино отличается больше всего. Виноградную кожицу и косточки не удаляют, а помещают вместе с соком в квеври, в результате чего напиток приобретает янтарный цвет и сложную вкусо-ароматическую палитру. Несколько хорошо
+                    известных примеров:
+                </p>
+                <ol start="1">
+                    <li>
+                        Цинандали. Купаж винограда сортов «ркацители» и «мцване» из Кахетии, производимый с 1886 года. Это сухое белое вино крепостью 10–12%, которое выдерживают в дубовых бочках не менее трех лет, что придает ему светло-соломенный
+                        оттенок. Вкус — с приглушенными цветочными тонами.
+                    </li>
+                    <li>Твиши. Полусладкое вино светло-янтарного цвета с освежающим фруктовым букетом.</li>
+                    <li>
+                        Тбилисури. Купаж, который готовят из смеси четырех виноградных сортов, собранных в знаменитой Алазанской долине. Заказать вино Tbilisuri из Грузии стоит тем, кто ищет кисловато-сладкий напиток, подаваемый в качестве аперитива.
+                    </li>
+                    <li>
+                        Киси. Редкий сорт, входящий в пятерку лучших вин Грузии и производимый из одноименного винограда, собранного с виноградников возрастом не менее 50 лет. Особая технология выдержки придает нотки копченой свинины, приправленных
+                        древесными специями.
+                    </li>
+                </ol>
+                <h2>Классификация грузинских вин</h2>
+                <p>Каждая из представленных ниже категорий отражает качество, метод виноделия и назначение:</p>
+                <ol start="1">
+                    <li>Сортовое. В составе — минимум 85% ягод одного вида. Моносортовое вино подчеркивает особые характеристики автохтонных виноградных сортов.</li>
+                    <li>
+                        Столовое. Напитки для повседневного употребления без строгих требований к урожаю или наименованию. Они редко содержат сахар, поэтому отличаются кисловатым вкусом. На столовое грузинское вино цена самая низкая, так как его
+                        выпускают большими партиями.
+                    </li>
+                    <li>Марочное. Высококачественные вина определенного года урожая, изготовленные из тщательно отобранного сырья и выдержанные не менее 24 месяцев.</li>
+                    <li>Коллекционное. Премиальные напитки с выдержкой в квеври в пределах 3–20 лет.</li>
+                </ol>
+                <h2>Как выбрать вино из Грузии</h2>
+                <p>
+                    Все, что действительно важно — личные вкусовые предпочтения и повод. Например, саперави — насыщенное вино, которое может показаться слишком терпким новичку. Выдержка в квеври придает землисто-минеральный шлейф. Чтобы быстрее
+                    определиться, обратите внимание на отзывы других покупателей и сортировку напитков за популярностью.
+                </p>
+                <p>Продукцию можно купить как поштучно, так и в коробках по несколько бутылок. Например, такую опцию предлагает торговая марка Kartuli Vazi.</p>
+                <h3>Грузинские вина: цены в Украине</h3>
+                <p>
+                    Стоимость во многом зависит от класса напитка. Ценовой диапазон столовых вин в среднем колеблется в пределах 150–300 грн за бутылку на 750 мл, тогда как марочные стоят дороже — порядка 300–800 грн. Цена редких выражений, например,
+                    от Colours of Georgia достигает 2 000 грн.
+                </p>
+                <h2>Как и чем пить грузинское вино</h2>
+                <p>
+                    На Кавказе виноградный эликсир подают не в бокале, а в роге — кханци. Особенно важен социальный контекст — дегустация вместе с друзьями или семьей. Если в других странах белое вино называют преимущественно женским напитком из-за его
+                    легкости, а красное — мужским, то в Грузии все наоборот.
+                </p>
+                <p>Чтобы помочь напитку раскрыться, правильно определите температуру подачи:</p>
+                <ul>
+                    <li>белое — +10–12 °C;</li>
+                    <li>красное — +16–18 °C;</li>
+                    <li>янтарное, то есть выдержанное в квеври — +14–16 °C.</li>
+                </ul>
+                <p>Традиционные сочетания:</p>
+                <ol start="1">
+                    <li>Красное. Подавайте со сытными мясными блюдами, например, мцвади или хинкали. Бокал также дополнит стейк.</li>
+                    <li>Белое. Легкий напиток дополнят рыба, морепродукты, курица. Если ищете конкретный рецепт, остановитесь на хачапури или средиземноморских салатах.</li>
+                    <li>Янтарное. Выдержанные позиции выгодно раскрываются вместе с пряными блюдами вроде лобио.</li>
+                </ol>
+                <h2>Почему выгодно купить грузинское вино в Украине в интернет-магазине MAUDAU</h2>
+                <p>
+                    Команда MAUDAU гарантирует оригинальное происхождение каждого товара. Конкурентная цена — результат прямого сотрудничества с официальными поставщиками. Система фильтров облегчает выбор, как и поддержка менеджера в окне внизу
+                    страницы в нужное время. Вино из Грузии можно заказать с доставкой в любой населенный пункт Украины, где доступно почтовое отделение. В некоторых городах доступны развозка заказов курьером и самовывоз из супермаркетов «Сільпо».
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Глинтвейн" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hlintvein-Georgia.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Глинтвейн</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/chervone-sukhe-vyno-kartuli-vazi-saperavi-chervone-sukhe-12-075-l-226786">Красное сухое вино</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=rozsypnyi">Сахарный песок</a></li><li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht">Корица в палочках</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li>Лимонная цедра</li><li>Апельсиновая цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматный горячий глинтвейн давно стал символом уютных зимних вечеров. Его основу составляет красное вино с добавлением сахара и пряностей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Глинтвейн</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 мл красного сухого вина</li><li>10 г сахарного песка</li><li>5 г корицы в палочках</li><li>1 г гвоздики</li><li>Лимонная цедра</li><li>Апельсиновая цедра</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в чайничек-питчер 150 мл красного сухого вина.</li><li>Добавьте в вино 10 г сахарного песка, палочку корицы и 3 шт гвоздики.</li><li>Киньте туда цедру лимона и апельсина.</li><li>Нагревайте, помешивая и не доводя до кипения.</li><li>Перелейте глинтвейн в бокал для ирландского кофе с ручкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Черный Ангел" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Chornyi-Anhel-Georgia.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Черный Ангел</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-kartuli-vazi-alazanska-dolyna-chervone-11-15-l">Полусладкое красное вино</a></li><li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava">Сироп агавы</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda">Содовая вода</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Завораживающий коктейль с глубокими ароматами красного вина, яркостью джина и нежной сладостью агавового сиропа. Идеальный выбор напитка на вечера.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Черный Ангел</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 мл полусладкого красного вина</li><li>45 мл джина</li><li>22 мл агавового сиропа</li><li>22 мл сока лайма</li><li>содовая вода для доливки</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните высокий бокал кубиками льда, чтобы он охладился.</li><li>В шейкер налейте 150 мл полусладкого красного вина, 45 мл джина, 22 мл агавового сиропа и 22 мл свежевыжатого сока лайма.</li><li>Добавьте лед в шейкер и встряхивайте 15–20 секунд.</li><li>Через сито переливайте коктейль в подготовленный бокал со льдом.</li><li>Долейте содовой воды до краев и аккуратно перемешайте барной ложкой.</li><li>Украсьте коктейль кружочком лайма, прикрепите его на край бокала и добавьте веточку свежего розмарина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Полночний час" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Midnight-hour.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Полночний час</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-marani-telavuri-chervone-napivsolodke-115-075-l">Полусладкое красное вино</a></li><li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850">Ангостура Bitters</a></li><li><a href="https://maudau.com.ua/ru/category/fruktova-konservatsiia/typ_281=vyshnia-35">Вишни Maraschino</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Элегантный коктейль с выразительными нотами бурбона, тонким ароматом вина и пикантной горчинкой биттера.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Полночний час</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл полусладкого красного вина</li><li>30 мл бурбона</li><li>2-3 капли ангостуры (Bitters)</li><li>вишни Maraschino для украшения (или апельсиновая корка)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Подготовьте рокс-бокал и охладите его.</li><li>В шейкере соедините 60 мл полусладкого красного вина, 30 мл бурбона и 2–3 капли ангостуры.</li><li>Добавьте лед и перемешайте барной ложкой.</li><li>Через сито налейте напиток в охлажденный бокал.</li><li>Украсьте коктейль вишней мараскино, прикрепив ее к краю бокала на шпажке и добавьте спираль апельсиновой цедры.</li><li>Подавайте сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Малиново-апельсиновый глинтвейн с розмарином" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Malynovo-apelsynovyi-hlintvein-iz-rozmarynom-Georgia.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Малиново-апельсиновый глинтвейн с розмарином</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-kartuli-vazi-pirosmani-chervone-napivsukhe-12-075-l-245276">Вино красное полусухое</a></li><li><a href="https://maudau.com.ua/ru/category/dytiachi-piure/smak=malyna">Малиновое пюре</a></li><li>Малина замороженная</li><li>Апельсин</li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=badian-2">Бадьян (анис)</a></li><li><a href="https://maudau.com.ua/ru/product/perets-mriia-zapashnyi-20-h-31377">Перец душистый горошком</a></li><li><a href="https://maudau.com.ua/ru/product/hvozdyka-prypravka-tsila-10-h-175533">Гвоздика сушеная</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Корица</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=rozmaryn-4">Розмарин сушеный</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пряный и согревающий глинтвейн с насыщенным вкусом малины и апельсина, дополненный ароматом розмарина и пряностей. Напиток, который превратит зимний вечер в уютный праздник.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Малиново-апельсиновый глинтвейн с розмарином</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>750 мл полусухого красного вина</li><li>250 г малинового пюре</li><li>150 г замороженной малины</li><li>1 шт. апельсина (250 г)</li><li>80 г меда</li><li>3 звездочки бадьяна (аниса)</li><li>2 ч. л. душистого перца горошком</li><li>1-2 ч. л. сушеной гвоздики</li><li>3 палочки корицы</li><li>0.5 ч. л. сушеного (или свежего) розмарина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В кастрюле соедините 750 мл полусухого красного вина, 250 г малинового пюре и 150 г замороженной малины.</li><li>Апельсин нарежьте тонкими кружками и добавьте в кастрюлю вместе с 80 г меда.</li><li>Положите 3 звездочки бадьяна, 2 ч. л. душистого перца, 1-2 ч. л. сушеной гвоздики, 3 палочки корицы и 0,5 ч. л. сушеного розмарина.</li><li>На слабом огне прогрейте смесь до температуры 70–75°C, не доводя до кипения.</li><li>Дайте настояться под крышкой 15 минут.</li><li>В это время подготовьте термостойкие стаканы или чашки.</li><li>Разлейте глинтвейн по бокалам, украсив веточкой свежего розмарина.</li><li>Пейте пока горячий.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">69 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,850 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Вино примітиво — червоний напій із фруктово-димними нотками, виготовлений з однойменного сорту винограду. Його часто виконують у сухому і напівсухому стилях. Міцність трохи підвищена і становить 14–17%. Рідше на ринку зустрічається
+                    рожева солодка версія, яку в США продають як White Zinfandel, а в Україні — як Rosado.
+                </p>
+                <h3>Вино Primitivo: смак і аромат</h3>
+                <p>
+                    Смако-ароматична композиція залежить від місця вирощування і ступеня зрілості винограду. Коли він дозріває в прохолодних регіонах, в ароматі відчуваються нотки червоних фруктів і ягід, особливо полуниці та малини. Ароматичний спектр
+                    зміщується в бік вишень і ожини при вирощуванні винограду на залитих сонцем схилах. Після витримки розвиваються нові нюанси:
+                </p>
+                <ul>
+                    <li>лакриця;</li>
+                    <li>чорнослив;</li>
+                    <li>стара шкіра;</li>
+                    <li>солодкий тютюн.</li>
+                </ul>
+                <p>
+                    На смак вино примітивне — повнотіле і сміливе. Обов'язковий дескриптор — перцева нотка, яка поступово змінюється шлейфом пряних спецій для випічки. Таніни яскраво виражені, тому на фініші напій нерідко поколює язик, а в роті
+                    зберігається відчуття сухості.
+                </p>
+                <h2>Що відомо про походження винограду Primitivo</h2>
+                <p>
+                    Суперечки про місце народження сорту точаться досі. У світі відомо два клони винограду — Zinfandel у США та Primitivo в Італії. Італійська версія назви походить від латинського слова «primativus», що означає «ранньостиглий». При
+                    цьому нещодавній генетичний аналіз підтвердив, що сорт насправді вперше вивели в Хорватії на основі ягід Crljenak Kastelanski.
+                </p>
+                <p>
+                    З огляду на цей факт експерти вважають, що в Італію ягоди потрапили через Адріатичне море завдяки бенедиктинським ченцям у XVIII столітті, де їх спочатку називали Zagatese. Сорт сподобався виноробу з Барі (Апулія), який і висадив
+                    його на місцевих плантаціях. Мікрозона досі має статус DOC.
+                </p>
+                <p>
+                    Перші лози в США завезли в період з 1820 по 1829 рік. За однією з версій, вони потрапили на Лонг-Айленд із Далмації за часів Австрійської імперії. Незабаром виноград визнали «національним» і довгий час його вважали автохтонним у
+                    США.
+                </p>
+                <h2>Що особливого у винограді «примітиво»</h2>
+                <p>Primitivo — невибагливий ранньостиглий сорт винограду. Перший урожай збирають на початку серпня.</p>
+                <p>
+                    Ягоди — маленькі, але концентрація цукру в них нерідко сягає 30%. Це пов'язано з тим, що грона дозрівають нерівномірно завдяки щільному розташуванню виноградинок, тому їх довше залишають на лозі. Завдяки високій природній солодкості
+                    за правильного використання культивованих штамів дріжджів міцність готових напоїв нерідко перевищує 15%.
+                </p>
+                <h2>Види вин із винограду «примітиво»</h2>
+                <p>Ягоди нерідко включають у купажі Salice Salentino Rosso і Rosso di Puglia IGT. За бажання їх змішують з іншими червоними сортами, включно з «ширазом» і «дюріфом». Вина, які заслуговують на особливу увагу:</p>
+                <ol start="1">
+                    <li>
+                        Primitivo di Manduria DOC. Насичене сухе моносортове вино, яке виробляють у Мандурії. Смак — з нюансами червоних фруктів, ванілі та гвоздики. Primitivo di Manduria DOC — вино, ціна якого доступна, оскільки вимоги до виробництва
+                        не настільки суворі, як для DOCG.
+                    </li>
+                    <li>Primitivo di Puglia IGP. Столове вино, розраховане на повсякденне вживання. Напій не придатний для тривалої витримки в погребі.</li>
+                    <li>Gioia del Colle Primitivo DOC. Червоне напівсухе вино з міста Джоя-дель-Колле, де виноград отримав сучасну назву з ініціативи місцевого священника.</li>
+                </ol>
+                <h3>Географія виробництва вин Primitivo</h3>
+                <p>
+                    Спочатку шукайте напої зі США, особливо каліфорнійських регіонів Лоді, Пасо-Роблес і Сьєрра-Футхіллс. Друга країна — Італія, а точніше Апулія з престижними виноробними зонами Джоя-дель-Колле і Мандурія. Інші місця вирощування
+                    винограду і виробництва вин:
+                </p>
+                <ul>
+                    <li>Хорватія;</li>
+                    <li>Австралія;</li>
+                    <li>Чилі;</li>
+                    <li>ПАР;</li>
+                    <li>Канада.</li>
+                </ul>
+                <h2>Як вибрати вино Primitivo</h2>
+                <p>
+                    Найважливіше — особисті вподобання та мета покупки. Враховуйте відгуки інших покупців, щоб переконатися в якості та відповідності інформації, заявленої виробником, дійсності. Знижка на малий гурт допоможе заощадити при підготовці до
+                    сімейного застілля або вечірки.
+                </p>
+                <p>Якщо шукаєте напій для поповнення особистої колекції, вибір — за вінтажними винами, які спокійно проведуть у льосі десятки років. Рожевий вираз — солодкий, тому гармонійно доповнить десерт.</p>
+                <h3>Скільки коштує вино примітиво</h3>
+                <p>Ціна залежить від багатьох чинників:</p>
+                <ul>
+                    <li>торгової марки;</li>
+                    <li>місця виготовлення;</li>
+                    <li>витримки;</li>
+                    <li>обсягу;</li>
+                    <li>класифікації.</li>
+                </ul>
+                <p>
+                    Наприклад, органічне вино коштує дорожче, оскільки під час вирощування ягід не використовують хімікати. За якісну пляшку IGT потрібно заплатити близько 300–500 грн. Вінтажні розливи певного особливого року обійдуться в кілька тисяч
+                    гривень.
+                </p>
+                <h2>Вино Primitivo: що подати до насиченого фруктового напою</h2>
+                <p>
+                    Виноградний еліксир розливають за температури +15–20 °C. Декантація не завадить — вона навіть рекомендована. Червоне сухе вино добре поєднується з марокканськими і турецькими прянощами, що вигідно підкреслюють коричний акорд.
+                    Класичне доповнення в Апулії — закрита піца Rustica, фарширована анчоусами, помідорами, оливками і смаженою цибулею.
+                </p>
+                <p>Напій також можна подати з м'ясом: реберцями, смаженою куркою або ягням, свинячими відбивними, яловичою вирізкою в беконі. Як проста закуска підійде сир, особливо копчений або запечений. Додайте до страви овочі з яскравим смаком:</p>
+                <ul>
+                    <li>карамелізована цибуля;</li>
+                    <li>червоний перець;</li>
+                    <li>баклажан;</li>
+                    <li>печериці;</li>
+                    <li>цукіні;</li>
+                    <li>нут.</li>
+                </ul>
+                <h2>Чому вигідно купити вино примітиво в інтернет-магазині MAUDAU</h2>
+                <p>Кожен товар — оригінальний. Ціна — конкурентна, особливо якщо скористатися спецпропозиціями від MAUDAU:</p>
+                <ul>
+                    <li>безплатним доставленням деяких позицій та на певну суму;</li>
+                    <li>знижками під час розпродажів;</li>
+                    <li>програмою лояльності «Власний Рахунок».</li>
+                </ul>
+                <p>На сторінці представлено кілька напоїв, які можна знайти тільки в MAUDAU — завдяки власному імпорту. Якщо виникнуть питання, з ними допоможе розібратися менеджер у вікні внизу сторінки.</p>
+            </div>
+            
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Полуничний рожевий мохіто" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Strawberry-Pink-Mojito.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Полуничний рожевий мохіто</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-paololeo-varietali-primitivo-rosado-igp-rozheve-sukhe-075-l">Рожеве вино Primitivo</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Клубна содова вода</a></li><li>Простий сироп</li><li>Лайм</li><li>Мʼята</li><li>Полуниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            У літню спеку так необхідний легкий напій, що бадьорить і освіжає. Полуничний рожевий мохіто — ідеальний варіант, що відповідає всім перерахованим вище вимогам. Цей ягідний, кислий і м'ятний коктейль на основі рожевого вина подарує феєрію смаків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Полуничний рожевий мохіто</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл рожевого вина</li><li>30 мл клубної содової води</li><li>простий сироп (до смаку)</li><li>2 скибочки лайма</li><li>6 листочків м'яти</li><li>2 нарізані полуниці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Покладіть у келих-хайбол 6 листочків м'яти та 2 скибочки лайма.</li><li>Додайте 2 нарізані полуниці та придушіть мадлером.</li><li>Налийте 60 мл рожевого вина та сироп до смаку.</li><li>Долийте 30 мл клубної содової води доверху і розмішайте коктейльною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rosé All Day" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rose-All-Day.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rosé All Day</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-da-uve-leggermente-appassite-primitivo-rosato-puglia-igtrozheve-napivsukhe-075-l">Рожеве вино Primitivo</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky">Лікер</a></li><li><a href="https://maudau.com.ua/category/voda/vyd_133=sylnohazovana">Вода газована</a></li><li>Лід</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Полуниця</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний, фруктово-квітковий, з цитрусовими акцентами коктейль Rosé All Day — справжній літній хіт. Сподобається любителям оригінальних поєднань і кислого посмаку в напоях.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Rosé All Day</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл рожевого вина</li><li>30 мл лікеру</li><li>30 мл води газованої</li><li>лід у кубиках (до смаку)</li><li>15 мл лимонного соку</li><li>2 шт. полуниці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте у винному келиху 120 мл рожевого вина, 30 мл лікеру і 15 мл лимонного соку.</li><li>Розімніть 2 полуниці в шейкері та додайте в коктейль.</li><li>Доповніть напій кубиками льоду, влийте 30 мл газованої води.</li><li>Подавайте в охолодженому вигляді.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кривава сангрія" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kryvava-sanhriia-primitivo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кривава сангрія</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-piccini-primitivo-125-075-l-875436">Червоне вино Primitivo</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Куантро</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=hranat-8">Гранатовий сік</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукровий пісок</a></li><li>Гренадин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кривава сангрія — це насичений мікс червоного вина з гранатовим соком і гренадином. Яскравий, ароматний напій із глибоким смаком ідеально доповнить вечір у компанії друзів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Кривава сангрія</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл червоного вина</li><li>15 мл Куантро (або Гран Марньє)</li><li>40 мл гранатового соку</li><li>2 ч. л. цукрового піску</li><li>трохи гренадину (або іншого червоного сиропу)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкері змішайте 40 мл гранатового соку, 15 мл Куантро і 2 ч. л. цукрового піску, поки він повністю не розчиниться.</li><li>Додайте 75 мл червоного вина і кілька крапель гренадину для насиченого кольору.</li><li>Ретельно струсіть, щоб інгредієнти змішалися.</li><li>Перелийте напій в охолоджений келих.</li><li>Прикрасьте коктейль скибочкою апельсина за бажанням.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Диявольська Маргарита" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Dyiavolska-Marharyta-primitivo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Диявольська Маргарита</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/tekila/kolir_3=sribna-silver">Срібна текіла</a></li><li><a href="https://maudau.com.ua/product/vyno-mottura-vini-primitivo-di-manduria-stilio-doc-chervone-sukhe-145-075-l">Червоне вино Primitivo</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Диявольська Маргарита — пристрасний коктейль, що поєднує пікантність текіли та свіжість лайма, з яскравим акцентом на гостроту. Цей напій подарує вибух емоцій і незабутній посмак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Диявольська Маргарита</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл срібної текіли</li><li>30 мл червоного вина</li><li>20 мл апельсинового лікеру</li><li>40 мл соку лайма</li><li>150 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 40 мл срібної текіли та 30 мл червоного вина.</li><li>Додайте 20 мл апельсинового лікеру та 40 мл соку лайма.</li><li>Наповніть шейкер льодом і ретельно струсіть, щоб інгредієнти добре перемішалися і напій охолов.</li><li>Процідіть коктейль у підготовлений келих із льодом.</li><li>За бажання прикрасьте скибочкою лайма або солоним обідком.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Червоний захід сонця" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Chervonyi-zakhid-sontsia-primitivo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Червоний захід сонця</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-felline-primitivo-puglia-igp-chervone-napivsolodke-0-75-l">Напівсолодке червоне вино Primitivo</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=hranat-8">Гранатовий сік</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Лід</li><li>Гранатові зерна</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль, у якому гранатовий сік немов закарбовує останні відблиски західного сонця. Його насичений смак і цитрусова свіжість пробуджують спогади про теплі вечори біля води.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Червоний захід сонця</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 мл напівсолодкого червоного вина</li><li>50 мл гранатового соку</li><li>30 мл апельсинового лікеру</li><li>20 мл лимонного соку</li><li>лід до смаку</li><li>гранатові зерна для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келихи для подачі великим льодом.</li><li>У шейкер налийте 150 мл напівсолодкого червоного вина, 50 мл гранатового соку, 30 мл апельсинового лікеру і 20 мл лимонного соку.</li><li>Додайте лід і енергійно струшуйте 15–20 секунд.</li><li>Процідіть напій через сито в келихи.</li><li>Очистіть грант і розберіть його на зерна.</li><li>Додайте в кожен келих трохи гранатових зерен.</li><li>Помніть їх ложкою, щоб вони трохи пустили сік.</li><li>Прикрасьте напій тонкими кружечками апельсина та гілочкою м'яти.</li><li>Такий коктейль потрібно пити впродовж 10–15 хвилин після приготування.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">80 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">85-90 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

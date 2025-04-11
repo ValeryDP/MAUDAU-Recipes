@@ -1,0 +1,997 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>
+                    Текила Rooster Rojo — крепкий спиртной напиток, изготовленный в Мексике по классическому рецепту из сока голубой агавы. Продукцию считают премиальной, так как ее выпускают небольшими партиями. Особого внимания заслуживают крафтовые
+                    позиции вроде Smoked Pineapple. Крепость — 38%, за исключением мескаля Joven.
+                </p>
+                <h2>Как возникла торговая марка Rooster Rojo</h2>
+                <p>Бренд довольно молодой, поэтому история компании не слишком наполнена фактами. Сейчас за производством следит мастер-дистиллятор Артуро Фуэнтес Кортес. Сам бренд входит в состав Amber Beverage Group.</p>
+                <p>Дизайн бутылки вдохновлен вулканом Текила, у подножья которого находится производство. Дополняет его корковая пробка.</p>
+                <p>Название Rooster Rojo переводится как «красный петух». Это один из знаковых символов Мексики. Его выбрали не случайно — он олицетворяет силу и мужество, подчеркивая особый характер традиционного мексиканского алкоголя.</p>
+                <h2>Где и как производят текилу «Рустер Рохо»</h2>
+                <p>Крепкий спиртной напиток выпускают в стенах винокурни Fabrica de Tequilas Finos в городе Текила (Халиско). Завод запустили только в 2000 году, но само здание возвели в 1923.</p>
+                <p>Производство стандартизировано в соответствии с мексиканскими законами. Краткий обзор основных этапов:</p>
+                <ol>
+                    <li>
+                        Сбор и подготовка сырья. В основе каждой текилы «Рустер» — сок агавы сорта Weber Blue. Суккуленты поставляют из престижного пустынного региона — Лос-Альтос-де-Халиско. Пинью, то есть сердцевину экзотического растения, разрезают
+                        на 2–4 части. Затем ее помещают в автоклав — скоростную пароварку. Диффузор в процессе не используют. Пиньи готовят в течение 10 часов.
+                    </li>
+                    <li>Брожение. После запекания размягченную сердцевину измельчают и прессуют, выжимая сок. Его смешивают со специально выведенными дрожжами в бродильных резервуарах. Ферментация длится до 72 часов.</li>
+                    <li>Дистилляция. Спирты Rooster Rojo традиционно перегоняют дважды. Для этого используют кубы из нержавеющей стали, которые никоим образом не влияют на пикантную вкусо-ароматическую палитру готовых дистиллятов.</li>
+                    <li>
+                        Разбавление. После перегонки спирты смешивают и доводят до нужной крепости посредством вливания воды, очищенной с помощью серебра, что способствует мягкости. Это уникальная технология, которую в Мексике практикует только Rooster
+                        Rojo.
+                    </li>
+                    <li>
+                        Старение. Выдержка проходит при контролируемой влажности во французском или американском дубе — в зависимости от стиля. Минимальный срок созревания для Reposado составляет два месяца. Для Añejo используют 200-литровую бочку
+                        из-под бурбона, где напиток проводит от 12 месяцев. Версию Blanco вовсе не выдерживают — она попадает в бутылку вскоре после настаивания.
+                    </li>
+                </ol>
+                <h2>Rooster Rojo: основные виды текилы</h2>
+                <p>Бренд предлагает несколько вариантов — от свежего и пикантного до сладкого и фруктового. Базовая линейка объединяет:</p>
+                <ol>
+                    <li>Blanco. Цвет — прозрачный. Изначально сладкая, серебряная текила «Рустер» постепенно сменяется тонким перечным послевкусием. Аромат — живой, с цитрусовыми тонами. Финиш — гладкий, но крепкий.</li>
+                    <li>
+                        Reposado. Напиток светло-янтарного цвета, который является результатом выдержки во французских дубовых бочках, где ранее хранили коньяк. Во вкусе переплетены аккорды печеной агавы, красных фруктов, ванили и карамели. Аромат —
+                        слегка древесный, с нотами апельсиновой цедры и корицы.
+                    </li>
+                    <li>
+                        Añejo. Выдержанный не менее 12 месяцев в бочках из-под бурбона, этот напиток окутывает глубокими тонами жареной агавы, дуба, ванили и карамели. Кульминация — продолжительное ванильное послевкусие. Аромат — с нотками кофе, табака
+                        и шоколада.
+                    </li>
+                </ol>
+                <p>В портфолио производителя также представлены две особые линейки:</p>
+                <ol>
+                    <li>Smoked Pineapple. Дистиллят, настоянный на сочных испанских ананасах. В аромате отчетливо ощущаются нотки банана и дыма, а во вкусе — тропических плодов и пряностей.</li>
+                    <li>Ahumado. Напиток, изготовленный по кустарному методу. Пиньи запекают в подземных каменных печах, что придает спирту ярко выраженные нюансы кожи и древесины.</li>
+                </ol>
+                <h3>Сколько стоит текила «Рустер Рохо»</h3>
+                <p>Цена зависит от стиля и объема. Например, миниатюрку 50 мл можно купить от 189 грн. Полноразмерная бутылка стоит порядка 1200–2000 грн. Самый дорогой — мескаль Joven.</p>
+                <h2>Как и с чем пить текилу Rooster Rojo</h2>
+                <p>
+                    Крепким спиртным лучше всего наслаждаться в чистом виде при +18–20 °C. Напиток можно сочетать с традиционными мексиканскими блюдами и продуктами: тако, жареным мясом, запеченными морепродуктами под цитрусовой заправкой. Дистиллят
+                    также станет хорошей основой для многих коктейлей — от «Маргариты» до «Паломы».
+                </p>
+                <h2>Почему выгодно купить текилу Rooster Rojo в интернет-магазине MAUDAU</h2>
+                <p>На странице представлен полный и исключительно оригинальный ассортимент производителя. На продукцию регулярно распространяются скидки. Доставка возможна по всей Украине почтовыми службами, а оплата — на сайте или после получения.</p>
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rooster Rojo Ву-Ву" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rooster-Rojo-Ву-Ву.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rooster Rojo Ву-Ву</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-blanco-38-07-l-837680">Текила Rooster Rojo Blanco</a></li><li><a href="https://maudau.com.ua/ru/product/mors-yarmolyntsi-zhuravlynovyi">Клюквенный морс</a></li><li>Лед в кубиках</li><li>Долька лайма</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Rooster Rojo Ву-Ву — изысканный коктейль с насыщенными фруктовыми оттенками. Сбалансированный состав гармонично объединяет сладость клюквенного морса и легкую терпкость текилы. Этот напиток создает яркое впечатление и поднимает настроение в любую погоду.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Rooster Rojo Ву-Ву</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл текилы Rooster Rojo Blanco</li><li>120 мл клюквенного морса</li><li>200 мл льда в кубиках</li><li>1 долька лайма для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите высокий бокал-хайбол и наполните его кубиками льда.</li><li>Налейте 40 мл текилы Rooster Rojo Blanco, затем добавьте 120 мл клюквенного морса.</li><li>Аккуратно перемешайте коктейль барной ложкой, чтобы ингредиенты равномерно смешались.</li><li>Украсьте бокал долькой лайма, зацепив ее за край, или поместите в напиток для дополнительного аромата.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Spiced Summer Strawberry Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Spiced-Summer-Strawberry-Spritz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Spiced Summer Strawberry Spritz</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-hochriegl-rose-rozheve-sukhe-075-l">Сухое игристое розе</a></li><li><a href="https://maudau.com.ua/ru/category/tekila/product_brand=rooster-rojo">Текила Rooster Rojo</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Корица</a></li><li>Клубника</li><li>Ломтики клубники</li><li>Съедобные цветы</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Spiced Summer Strawberry Spritz — это потрясающий коктейль с ароматом текилы и пряными нотками корицы. Сочетание сочной клубники и бодрящей игристости розе создает гармоничный вкус, идеально подходящий для праздничных застолий.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Spiced Summer Strawberry Spritz</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>90 мл сухого игристого розе</li><li>60 мл текилы Rooster Rojo</li><li>30 мл корицы для простого сиропа</li><li>3 шт. клубники без хвостиков, разрезанных на четвертинки</li><li>Ломтики клубники для украшения</li><li>Съедобные цветы для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В небольшой кастрюле смешайте в равных пропорциях сахар и воду, добавьте 30 мл корицы.</li><li>Доведите до кипения, помешивайте, пока сахар не растворится, и остудите.</li><li>В шейкере разомните четвертинки клубники с помощью мадлера (или ложки), чтобы выделился сок.</li><li>Добавьте 60 мл текилы Rooster Rojo и сахарный сироп с корицей.</li><li>Наполните шейкер льдом и энергично встряхните.</li><li>Процедите смесь в бокал для вина.</li><li>Медленно влейте 90 мл сухого игристого розе, чтобы сохранить пузырьки.</li><li>Декорируйте коктейль ломтиками клубники и съедобными цветами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rio Grande" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rio-Grande.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rio Grande</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-blanco-38-07-l-837680">Текила Бланко Rooster Rojo</a></li><li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/product/vermut-martini-rosso-chervonyi-solodkyi-15-1-l-17768">Вермут Россо</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Rio Grande — это освежающий напиток с ярким вкусом текилы, дополненный можжевеловыми нотками джина и полынной горчинкой вермута Россо. Сбалансированность и насыщенность делают его прекрасным выбором для вечера в кругу друзей или семьи.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Rio Grande</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл текилы Бланко Rooster Rojo</li><li>30 мл джина</li><li>30 мл вермута Россо</li><li>100 мл льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее охладите бокал для коктейля, чтобы напиток дольше сохранял свою температуру.</li><li>В шейкер добавьте 100 мл льда и 30 мл текилы Бланко Rooster Rojo.</li><li>Налейте 30 мл джина и 30 мл вермута Россо.</li><li>Тщательно встряхните смесь в течение 15 секунд, чтобы ингредиенты хорошо охладились и замиксовались.</li><li>С помощью стрейнера процедите коктейль из шейкера в охлажденный бокал.</li><li>Для усиления вкуса украсьте напиток слайсом свежего апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Tequila Body Slammer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tequila-Body-Slammer.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Tequila Body Slammer</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-blanco-38-07-l-837680">Текила Бланко Rooster Rojo</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Лимон</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Tequila Body Slammer — простой, но яркий коктейль, с бодрящей смесью текилы и лайма. Гармоничная комбинация создает взрывной и впечатляющий вкус. «Лизни! Выпей! Закуси!» — традиционный девиз шумных вечеринок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Tequila Body Slammer</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл текилы Бланко Rooster Rojo</li><li>Соль по вкусу</li><li>1 лайм или по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Выберите рюмку или небольшой бокал для текилы.</li><li>Проведите лаймовой долькой по краю сосуда и окуните его в соль.</li><li>Нарежьте цитрус на дольки. Одну из них оставьте для украшения, а из остальных выжмите сок.</li><li>Налейте 30 мл текилы Бланко Rooster Rojo в бокал.</li><li>Добавьте выжатый лаймовый сок и украсьте бокал цитрусовой долькой.</li><li>Для классической подачи Body Slammer приготовьте в отдельной емкости соль.</li><li>Повторяйте простой алгоритм: лизните соль, выпейте шот текилы, закусите долькой лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Tequila Screwdriver" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tequila-Screwdriver.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Tequila Screwdriver</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-blanco-38-07-l-837680">Текила Бланко Rooster Rojo</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот коктейль – мексиканский взгляд на классический Screwdriver. Текила Rooster Rojo Blanco добавляет глубину цитрусовому вкусу, а правильная техника приготовления усиливает аромат апельсина.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Tequila Screwdriver</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл текилы Бланко Rooster Rojo</li><li>70 мл апельсинового сока</li><li>190 мл льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите высокий бокал, заполнив его кубиками льда (190 мл) и дайте постоять.</li><li>В шейкер налейте 30 мл текилы Rooster Rojo Blanco и 70 мл свежего апельсинового сока, затем добавьте 4-5 кубиков льда и встряхните 10 секунд.</li><li>Вылейте содержимое через стрейнер в подготовленный бокал, удалив остатки тающего льда.</li><li>Возьмите апельсиновую цедру, слегка сожмите над бокалом для выделения эфирных масел и проведите ею по краю.</li><li>Подавать можно с тонким слайсом апельсина, слегка обжаренным на сухой сковороде для усиления карамельных ноток.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Future Man" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Future-Man.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Future Man</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/dzhyn/product_brand=martin-miller-s">Джин Martin Miller</a></li><li>Водка Broken Shed</li><li>Ром Light White Seco Herrerano</li><li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-blanco-38-07-l-837680">Текила Blanco Rooster Rojo</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=lokhyna-2">Голубичная газировка</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот коктейль – настоящий эксперимент с балансом алкоголя и игривой голубичной газировки, создающий многослойный вкус.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Future Man</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл джина Martin Miller</li><li>15 мл водки Broken Shed</li><li>15 мл рома Light White Seco Herrerano</li><li>15 мл текилы Blanco Rooster Rojo</li><li>40 мл голубичной газировки</li><li>190 мл льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее охладите бокал, заполнив его льдом (190 мл).</li><li>В шейкер налейте 15 мл джина Martin Miller, 15 мл водки Broken Shed, 15 мл рома Light White Seco Herrerano и 15 мл текилы Rooster Rojo Blanco.</li><li>Добавьте лед и встряхните 15 секунд до образования легкой пены.</li><li>Процедите в бокал со льдом.</li><li>Медленно влейте 40 мл голубичной газировки, она создаст эффект градиента.</li><li>Для подачи используйте сушеную голубику, предварительно обмакнув ее в сахарный сироп и слегка обжарив.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Hey Rosey" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hey-Rosey.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Hey Rosey</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-blanco-38-07-l-837680">Текила Rooster Rojo Blanco</a></li><li>Ликер Nardini Tagiatella</li><li>Вермут Mancino Secco</li><li>Вермут Casa Mariol Vermut Negre</li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=the-bitter-truth">Биттер The Bitter Truth</a></li><li>Лимон сушеный</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Ароматный и сложный коктейль, который раскрывается цветочными, винными и травяными оттенками, а биттер придает ему завершающую горчинку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Hey Rosey</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл текилы Rooster Rojo Blanco</li><li>22,5 мл ликера Nardini Tagiatella</li><li>22,5 мл вермута Mancino Secco</li><li>22,5 мл вермута Casa Mariol Vermut Negre</li><li>2 капли биттеров The Bitter Truth (грейпфрут)</li><li>Лимон сушеный для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее охладите бокал, заполнив его льдом.</li><li>В смесительном стакане соедините 30 мл текилы Rooster Rojo Blanco, 22,5 мл ликера Nardini Tagiatella, 22,5 мл вермута Mancino Secco и 22,5 мл Casa Mariol Vermut Negre.</li><li>Добавьте лед и перемешивайте 30 секунд.</li><li>Затем аккуратно процедите в охлажденный коктейльный бокал.</li><li>Добавьте 2 капли грейпфрутового биттера и украсьте сушеным лимоном, слегка сбрызнув его розовой водой для дополнительного аромата.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="So American" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/So-American.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">So American</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-reposado-38-07-l-837681">Текила Rooster Rojo Reposado</a></li><li>Вермут Mancino Bianco</li><li>Спиртной напиток Empirical Spirits</li><li>Простой сироп</li><li>Табаско Хабанеро</li><li>Сушеный лимон</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот коктейль сочетает мягкость вермута, сложность текилы Rooster Rojo Reposado и неожиданную пикантность.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить So American</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл текилы Rooster Rojo Reposado</li><li>30 мл вермута Mancino Bianco</li><li>7,5 мл Empirical Spirits F*** Trump</li><li>1 ч. л. простого сиропа</li><li>1 капля Табаско Хабанеро по желанию</li><li>Лимон сушеный для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее охладите бокал, заполнив его льдом.</li><li>В стакане для смешивания соедините 45 мл текилы Rooster Rojo Reposado, 30 мл вермута Mancino Bianco, 7,5 мл ликера Empirical Spirits F*** Trump и 1 ч. л. простого сиропа.</li><li>Добавьте лед и перемешивайте барной ложкой 20 секунд.</li><li>По желанию добавьте каплю Табаско Хабанеро для легкой остроты.</li><li>Перелейте в бокал через стрейнер, украсьте сушеным лимоном, который предварительно можно слегка поджечь, чтобы добавить дымности.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rooster Rojo Smoked Pineapple & Tonic" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rooster-Rojo-Smoked-Pineapple-Tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rooster Rojo Smoked Pineapple & Tonic</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-smoked-pineapple-38-07-l">Текила Rooster Rojo Smoked Pineapple</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2">Тоник</a></li><li>Апельсин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простой, но выразительный коктейль, в котором копченая ананасовая текила задает тон.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Rooster Rojo Smoked Pineapple & Tonic</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл текилы Rooster Rojo Smoked Pineapple</li><li>180 мл тоника</li><li>1 ломтик апельсина для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заполните высокий бокал льдом и налейте 60 мл текилы Rooster Rojo Smoked Pineapple.</li><li>Осторожно влейте 180 мл тоника, используя барную ложку для слоистого эффекта.</li><li>Украсьте ломтиком апельсина, предварительно слегка обожженным, чтобы выделить эфирные масла.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-19" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Smokey Pineapple Margarita" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Smokey-Pineapple-Margarita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Smokey Pineapple Margarita</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/product/tekila-rooster-rojo-smoked-pineapple-38-07-l">Текила Rooster Rojo Pineapple</a></li><li><a href="https://maudau.com.ua/ru/product/tekila-kah-blanco-40-07-l-790888">Текила KAH Blanco</a></li><li>Мескаль Bozal Ensamble</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот рецепт маргариты объединяет ананасовую текилу, классическую текилу и мескаль, создавая яркий дымный вкус.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup19" class="overlay add-popup">
+                <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Smokey Pineapple Margarita</h2>
+                    <a class="close add-id" href="#cocktail-item-19">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл текилы Rooster Rojo Pineapple</li><li>30 мл текилы KAH Blanco</li><li>15 мл мескаля Bozal Ensamble</li><li>30 мл лаймового сока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>На тарелке смешайте соль и копченый перец, обмакните в них край охлажденного бокала.</li><li>Выжмите со свежего лайма 30 мл сока.</li><li>В шейкер налейте 30 мл текилы Rooster Rojo Pineapple, 30 мл KAH Blanco, 15 мл мескаля Bozal Ensamble и 30 мл свежевыжатого лаймового сока.</li><li>Добавьте лед и встряхивайте 15 секунд.</li><li>Процедите в подготовленный бокал со свежим льдом и украсьте тонким слайсом лайма, предварительно слегка карамелизованным с помощью горелки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">95 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.1 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

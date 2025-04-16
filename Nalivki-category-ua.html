@@ -1,0 +1,874 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="css-qx9h31">
+                <p>Наливка — спиртний напій, який традиційно готували в домашніх умовах за допомогою настоювання ягід і фруктів на спирті, горілці або самогоні з подальшим додаванням цукру. Зараз у рецептуру також впроваджують лимонну кислоту.</p>
+                <p>Стандартна міцність коливається в межах 18–25%. Вміст залишкового цукру становить не менше 100 г/л, що надає напою характерного дуже солодкого смаку.</p>
+                <h2>Що відомо про історію наливок</h2>
+                <p>
+                    Походження напою сягає XVI-XVII століття, коли на території Речі Посполитої, що включала на той час деякі регіони сучасної України, почали масово настоювати ягоди та фрукти на спирту. Напій швидко набув популярності не тільки серед
+                    шляхти, а й простих людей, багато в чому — завдяки доступності вихідної сировини.
+                </p>
+                <p>У XIX столітті налагодили комерційне виробництво наливок. Перші подібні напої випускали в стінах лікеро-горілчаної фабрики Бачевських, заснованій 1782 року. Незабаром завод визнали найбільшим виробником алкоголю в Галичині.</p>
+                <p>Традиція настоювання ягід і фруктів на спиртовій основі частково згасла в період СРСР. Відродження рецептів і методів відбулося тільки після здобуття Україною незалежності 1991 року.</p>
+                <p>
+                    Сьогодні наливки виготовляють переважно на Поліссі, Поділлі, Галичині та, звісно ж, у Карпатах, де з давніх часів процвітає домашнє винокуріння. Львів, Одеса та Київ — міста, в яких особливо розвинений комерційний випуск солодких
+                    алкогольних напоїв. Кілька торгових марок на слуху:
+                </p>
+                <ul>
+                    <li>«Хані Баджер»;</li>
+                    <li>Lady Berry;</li>
+                    <li>VCC;</li>
+                    <li>Witch Water.</li>
+                </ul>
+                <h2>Особливості виготовлення наливок</h2>
+                <p>Виробництво на заводі виглядає так:</p>
+                <ul>
+                    <li>підготовка сировини — відбір, промивання, очищення ягід і фруктів;</li>
+                    <li>настоювання — заливка відібраних інгредієнтів спиртом або горілкою;</li>
+                    <li>додавання цукру або меду — для посилення смаку й аромату;</li>
+                    <li>витримка — короткочасне дозрівання алкоголю з метою пом'якшення;</li>
+                    <li>фільтрація — видалення твердих залишків;</li>
+                    <li>розлив — проходить на автоматизованих виробничих лініях.</li>
+                </ul>
+                <h3>У чому відмінності наливки від настоянки</h3>
+                <p>
+                    Перший момент — солодкість. Настоянка може бути гіркою, оскільки її готують переважно з коренів, квіток, кори та спецій. Смак — інтенсивний, нерідко з глибокими землисто-мінеральними нотками. Настоянка рідко містить доданий цукор.
+                    Міцність може перевищувати 40%.
+                </p>
+                <h3>У чому відмінності наливки від лікеру</h3>
+                <p>Основні моменти:</p>
+                <ol>
+                    <li>Вміст цукру, як правило, вищий у лікерах, становлячи близько 150–400 г/л.</li>
+                    <li>Завдяки збільшеному вмісту цукру консистенція густіша. Лікери нерідко містять допоміжні загусники.</li>
+                    <li>Процес приготування також відрізняється. Лікери здебільшого проходять етап перегонки.</li>
+                </ol>
+                <h2>Наливки: короткий огляд різновидів</h2>
+                <p>Насамперед асортимент розділений на ягідні та фруктові варіанти. Перші — солодкі та соковиті. Другі нерідко огортають медово-пряними нюансами.</p>
+                <p>
+                    За міцністю розрізняють легкі (15–18%), середні (18–22%) і міцні (22–25%) напої. Перші виробляють із м'яких ягід: малини, полуниці, чорниці. Міцні — з кісточкових плодів. Залежно від складу і тривалості дозрівання наливки бувають:
+                </p>
+                <ol>
+                    <li>Скоростиглі. Швидкий варіант на основі малини, полуниці, ожини, журавлини. Час приготування обмежений 30–45 днями.</li>
+                    <li>Середньостиглі. Напої на основі вишні, сливи, брусниці та суниці. Для віддачі смаку й аромату компонентам потрібно 1,5–2,5 місяця.</li>
+                    <li>Пізньостиглі. Витримані варіанти на основі яблука, груші, айви, горобини, терну, аґрусу. Настоювання триває 3–6 місяців.</li>
+                </ol>
+                <h2>Поради щодо вибору наливок</h2>
+                <p>Враховуйте:</p>
+                <ul>
+                    <li>репутацію виробника;</li>
+                    <li>міцність;</li>
+                    <li>домінантний смак;</li>
+                    <li>обсяг;</li>
+                    <li>тип упаковки.</li>
+                </ul>
+                <p>Якщо шукаєте унікальний подарунок, придивіться до напоїв від Witch Water на основі лаванди та аронії. Шанувальникам кисло-солодких нюансів сподобається червона смородина, а любителям терпких акцентів — кизил.</p>
+                <h2>Як і з чим пити наливки</h2>
+                <p>
+                    Солодкий напій п'ють охолодженим — маленькими ковтками або одним махом з невеликих чарок по 30–50 мл. Найчастіше гостям підносять одразу кілька видів, особливо на Галичині. Напій гармонійно поєднується з десертами, фруктами,
+                    горіхами та сирами. Подавати його можна до або після їжі — залежно від особистих уподобань.
+                </p>
+                <p>
+                    Наливку також можна купити як солодку основу для коктейлів. Спробуйте поєднання з ігристими винами, джином, текілою, фруктовими соками, газованою водою. У холодну пору року їх можна додавати в чай або каву для зігрівального ефекту.
+                    Вони також підходять для використання в кулінарних цілях завдяки високому вмісту цукру.
+                </p>
+                <h2>Чому вигідно купити наливки в Україні в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У категорії — виключно оригінальна продукція від перевірених торгових марок. Замовити унікальний алкоголь можна з доставленням по всій Україні — просто виберіть відповідну логістичну компанію. У деяких містах передбачено розвезення
+                    кур'єром. На наливку ціна залежить від низки факторів, але вона точно стає конкурентнішою під час розпродажів.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Глінтвейн із вишневою наливкою" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hlintvein-iz-vyshnevoiu-nalyvkoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Глінтвейн із вишневою наливкою</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/product/vyno-bostavan-kahor-pastoral-desertne-16-075-l-705080">Червоне десертне вино</a></li><li><a href="https://maudau.com.ua/product/nalyvka-vcc-vyshneva-201-0-5-l-17-5">Вишнева наливка</a></li><li>Лимон</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy">Прянощі</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/product/korytsia-palychky-tm-akura-20-h">Паличка кориці</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Це незвичайний рецепт глінтвейну, який поєднує насиченість червоного десертного вина з глибоким смаком вишневої наливки, доповнений ароматними прянощами. Він зігріє та наповнить затишком кожен куточок вашої оселі.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Глінтвейн із вишневою наливкою</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>300 мл червоного десертного вина</li><li>100 мл вишневої наливки</li><li>1/2 лимона (кружечками)</li><li>Прянощі до смаку</li><li>3 бутони гвоздики</li><li>1 паличка кориці</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У каструлі розігрійте 300 мл червоного десертного вина, але не доводьте до кипіння, щоб зберегти алкоголь.</li><li>Додайте 100 мл вишневої наливки, нарізаний кружечками лимон, 3 бутони гвоздики та 1 паличку кориці.</li><li>За бажання додайте зірочку анісу або шматочок свіжого імбиру.</li><li>Підігрівайте на повільному вогні 10 хвилин, помішуючи.</li><li>Потім накрийте кришкою і залиште настоятися 5 хвилин.</li><li>Процідіть через сито, розлийте по келихах, прикрасьте лимонним кружальцем і подавайте гарячим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Вишнева квітка" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vyshneva-kvitka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Вишнева квітка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Лікер апельсиновий</a></li><li><a href="https://maudau.com.ua/product/nalyvka-vcc-vyshneva-201-0-5-l-17-5">Вишнева наливка</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Сік лимона</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей коктейль має оксамитову текстуру і глибокий фруктовий смак. Вишнева наливка надає напою солодкості, коньяк — насиченості, апельсиновий лікер і лимонний сік балансують смак, роблячи коктейль неймовірно смачним.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Вишнева квітка</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл коньяку</li><li>20 мл апельсинового лікеру</li><li>40 мл вишневої наливки</li><li>10 мл соку лимона</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер льодом.</li><li>Влийте 50 мл коньяку, 20 мл апельсинового лікеру, 40 мл вишневої наливки та 10 мл соку лимона.</li><li>Струшуйте 15 секунд, щоб змішати й охолодити інгредієнти.</li><li>Процідіть через стрейнер в охолоджений коктейльний келих.</li><li>Прикрасьте спіраллю лимонної цедри та краплею наливки, створюючи ефект «вишневої квітки».</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Іній" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Inii.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Іній</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=tsytrusovyi-3">Цитрусовий лікер</a></li><li><a href="https://maudau.com.ua/product/nalyvka-khani-badzher-malynova-domashnia-17-005-l">Малинова наливка</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Колотий лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний коктейль із тонкими ягідними та цитрусовими нотами, що створює відчуття крижаної свіжості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Іній</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл цитрусового лікеру</li><li>20 мл малинової наливки</li><li>Сік з 1/2 лимона</li><li>Колотий лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У келих-хайбол додайте колотий лід.</li><li>Видавіть сік із половини лимона.</li><li>Влийте 20 мл цитрусового лікеру, 20 мл малинової наливки і сік лимона.</li><li>Перемішайте барною ложкою, щоб лід злегка підтанув і напій охолодився рівномірно.</li><li>Подайте з тонкою соломинкою, прикрасивши цедрою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шампань Коблер с вишневой наливкой" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Shampan-Kobler-s-vyshnevoi-nalyvkoi.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шампань Коблер с вишневой наливкой</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco">Сухе ігристе вино Просекко</a></li><li><a href="https://maudau.com.ua/product/nalyvka-vcc-vyshneva-201-0-5-l-17-5">Вишнева наливка</a></li><li>Фреш з апельсина</li><li>Фреш з ананаса</li><li>Малина</li><li>Чорниця</li><li>Листя мʼяти</li><li>Кубики льоду</li><li>Колотий лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей ігристий коктейль здивує вас насиченою фруктовою палітрою смаків. У ньому просекко в поєднанні з ягодами, цитрусовими соками та вишневою наливкою створює багатошаровий, грайливий смак.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шампань Коблер с вишневой наливкой</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл сухого ігристого вина Просекко</li><li>20 мл вишневої наливки</li><li>30 мл фрешу з апельсина</li><li>30 мл фрешу з ананаса</li><li>15 г малини</li><li>5 г чорниці</li><li>1 г листя м'яти</li><li>200 г кубиків льоду</li><li>60 г колотого льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У келих для коктейлів додайте 200 г кубиків льоду.</li><li>Підготуйте фреш з апельсина й ананаса по 30 мл.</li><li>Розчавіть 15 г малини і 5 г чорниці в шейкері, додайте 20 мл вишневої наливки, 30 мл фрешу з апельсина і 30 мл фрешу з ананаса.</li><li>Струсіть із 60 г колотого льоду.</li><li>Процідіть через сито в келих, потім акуратно влийте 120 мл Просекко.</li><li>Прикрасьте м'ятою та ягодами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Лимонний пунш" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Lemon-Punch.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Лимонний пунш</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/rom">Ром</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/product/napii-alkoholnyi-desertnyi-plodovyi-ledi-berri-bila-17-5-0-5-l">Ягідна наливка</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li>Тертий імбир</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мелений мускатний горіх</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей насичений гарячий пунш поєднує багатство рому і коньяку з ягідною наливкою і яскравим лимонним акцентом, створюючи напій, що зігріває і бадьорить.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Лимонний пунш</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>0.5 л рому</li><li>300 мл коньяку</li><li>300 мл будь-якої ягідної наливки</li><li>100 г цукру</li><li>Лимонний сік із 6 лимонів</li><li>700 мл гарячої води</li><li>1 ложка тертого імбиру</li><li>Тертий мускатний горіх до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У каструлю налийте 700 мл гарячої води, розчиніть 100 г цукру.</li><li>Додайте сік 6 лимонів, 1 ложку тертого імбиру, тертий мускатний горіх до смаку, 0,5 л рому, 300 мл коньяку і 300 мл ягідної наливки.</li><li>Підігрівайте на слабкому вогні 10 хвилин, не доводячи до кипіння.</li><li>Розлийте в чаші, подавайте гарячим.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кірш & Кассіс зі смородиновою наливкою" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kirsh-Kassis-zi-smorodynovoiu-nalyvkoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кірш & Кассіс зі смородиновою наливкою</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лід</li><li><a href="https://maudau.com.ua/product/nalyvka-vcc-smorodynova-203-0-5-l-17-5">Чорносмородинова наливка</a></li><li>Кіршвассер</li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Содова</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Рецепт коктейлю, в якому ягідна насиченість чорносмородинової наливки з'єднується з терпкістю кіршвассера, а содова робить смак легким та ігристим.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Кірш & Кассіс зі смородиновою наливкою</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>Лід до смаку</li><li>60 мл чорносмородинової наливки</li><li>30 мл кіршвассера</li><li>100–150 мл содова до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих льодом.</li><li>Влийте 60 мл чорносмородинової наливки, 30 мл кіршвассера.</li><li>Перемішайте і акуратно долийте 100–150 мл содової.</li><li>Прикрасьте замороженою чорною смородиною.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">124 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0.6 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">31.6 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,992 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Ликер с дыней — сладкий алкогольный напиток, который производят посредством настаивания фруктовой мякоти на спирту. Иногда в качестве основы используют бренди. Для подслащивания применяют сахар или сироп. Чтобы разбавить
+                    естественную сладость и придать освежающую нотку, некоторые производители вводят в рецептуру цитрусовые. Большинство напитков разливают при крепости 16–21%.
+                </p>
+                <p>
+                    Естественный цвет ликера на основе дыни — ярко-желтый, но производители также выпускают светло-зеленую версию, полученную посредством внедрения красителей. Ароматную эссенцию, которая готова к употреблению после фильтрации, зачастую
+                    используют в коктейлях.
+                </p>
+                <h3>Дынный ликер: особенности вкуса и аромата</h3>
+                <p>
+                    На первом плане — сладкие и сочные нотки, напоминающие спелую медовую ягоду. Постепенно развивается едва уловимый цитрусовый шлейф. Послевкусие — свежее и слегка терпкое. В носу напиток раскрывается душистыми фруктовыми ароматами,
+                    вызывая ассоциацию с отдыхом в экзотических краях.
+                </p>
+                <h2>История появления и распространения ликера из дыни</h2>
+                <p>
+                    Узнаваемость к напитку пришла после 1970-х годов, когда алкогигант Suntory выпустил Midori. Ключевая составляющая — дыня сорта Yubari King, выращиваемая в Хоккайдо. Хотя рецепт принадлежит японской компании, презентацию нового вида
+                    алкоголя провели в престижном ночном клубе Нью-Йорка — Studio 54. На вечеринке присутствовали знаменитости и именитые бармены, поэтому дынный ликер быстро завоевал статус напитка для бурной ночной жизни. После этого бренд Midori,
+                    вышедший на рынок в 1978 году, занял центральное место в коктейльной культуре конца XX века, особенно в США.
+                </p>
+                <p>
+                    Сегодня дынный ликер производят по всему миру, но Midori до сих пор считают эталоном. В то же время современные производители учли и убрали недостатки, с которыми столкнулась японская компания на первых порах, — чрезмерно приторный
+                    вкус и добавление искусственных ароматизаторов, затмевающих естественную сладость экзотического плода.
+                </p>
+                <h2>Ликер с дыней: популярные бренды-производители</h2>
+                <p>Продукт представлен в ассортименте всемирно известных торговых марок:</p>
+                <ol>
+                    <li>Bols. Напиток от одной из самых старых винокурен в мире, основанной в 1575 году в Нидерландах. Ликер отличается умеренной сладостью и гладкой текстурой.</li>
+                    <li>Melonade. Французский дынный ликер крепостью 18%. В основе — дыня Charentais из Прованса. В составе нет искусственных красителей, поэтому напиток сохраняет естественный золотистый оттенок.</li>
+                    <li>BVLand. Ликер из дыни, производимый в Испании. Это яркий по вкусу и цвету напиток, который подходит для сладких миксов с тропическим шлейфом.</li>
+                    <li>
+                        Joseph Cartron. Французский ликер премиум-класса из Бургундии, изготовленный с использованием дыни Cavaillon, обладающей умеренной сладостью. Он крепче других представленных вариантов, поэтому подходит как для потягивания в
+                        чистом виде, так и смешивания в коктейлях.
+                    </li>
+                    <li>De Kuyper. Напиток со сбалансированным дынно-цитрусовым профилем, что делает его отличным вариантом для классических рецептов.</li>
+                </ol>
+                <h2>Как выбрать ликер из дыни онлайн</h2>
+                <p>Учитывайте:</p>
+                <ul>
+                    <li>репутацию производителя;</li>
+                    <li>состав;</li>
+                    <li>крепость;</li>
+                    <li>предполагаемое использование;</li>
+                    <li>текущие акции.</li>
+                </ul>
+                <p>
+                    Например, ликер из зеленой дыни — окрашен, поэтому красиво выглядит в коктейлях. Он также отличается более сладким конфетным вкусом с ярко выраженными медовыми нотками. Для пропитки бисквитных коржей лучше выбрать напиток
+                    золотистого цвета — со вкусом, напоминающим свежий фрукт.
+                </p>
+                <p>Если выбрали крепкий ликер, используйте его как алкогольную основу в коктейлях. Варианты с объемной долей алкоголя в пределах 15–17% используют для подчеркивания других составляющих.</p>
+                <h3>Сколько стоит дынный ликер</h3>
+                <p>Цена зависит от многих факторов: от именитости производителя до дизайна бутылки. В среднем стоимость стартует от 400 грн за 0.7 литра. Продукция без искусственных добавок в составе традиционно стоит дороже.</p>
+                <h2>Ликер с дыней: как и с чем лучше пить</h2>
+                <p>Сладкий алкогольный напиток советуют подавать в качестве аперитива в составе коктейлей при +8–12 °C. Несколько примеров:</p>
+                <ul>
+                    <li>Japanese Slipper;</li>
+                    <li>Melon Ball;</li>
+                    <li>Midori Sour;</li>
+                    <li>Melon Margarita.</li>
+                </ul>
+                <p>
+                    Ликер лучше всего сочетается с цитрусовыми соками, содовой, водкой, текилой, джином и другими ликерами. Его также можно использовать для приготовления десертов. Если хотите продегустировать напиток в чистом виде, добавьте в бокал
+                    немного льда.
+                </p>
+                <h2>Почему выгодно купить дынный ликер в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый напиток на странице — оригинального происхождения. Фильтры, оценки и отзывы других покупателей, фото и подробное описание ключевых характеристик продукции — преимущества шопинга в маркете алкогольных штук MAUDAU, упрощающие
+                    выбор и ускоряющие оформление заказа. Ликер с дыней можно купить с доставкой курьером в некоторых городах и компаниями-перевозчиками по всей Украине.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Зеленая фея" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/green_fairy_ml.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Зеленая фея</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Серебряная текила</li><li>Абсент</li><li>Водка</li><li>Белый ром</li><li>Ликер Блю Кюрасао Fruko Schulz</li><li>Дынный ликер</li><li>Лимонный сок</li><li>Энергетик</li><li>Коктейльная вишня красная</li><li>Лимонная цедра</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Знаменитый коктейль Зеленая Фея — это сумасшедший микс алкогольных напитков и энергетика. Поэтому он так популярен на дискотеках и вечеринках.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Зеленая фея</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл серебряной текили</li><li>15 мл абсента</li><li>15 мл водки</li><li>15 мл белого рома</li><li>10 мл ликера Блю Кюрасао Fruko Schulz</li><li>30 мл дынного ликера</li><li>30 мл лимонного сока</li><li>100 мл энергетика</li><li>10 г красной коктейльной вишни</li><li>Лимонная цедра</li><li>150 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-слинг доверху кубиками льда.</li><li>Сперва налейте 30 мл лимонного сока, 10 мл ликера Блю Кюрасао Fruko Schulz и 30 мл дынного ликера.</li><li>Добавьте в равных пропорциях по 15 мл серебряной текилы, абсента, водки и белого рома.</li><li>Сверху долейте 100 мл энергетика и размешайте барной ложкой.</li><li>Украсьте бокал лимонной цедрой и двумя коктейльными вишнями.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Вечнозеленый физз" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Evergreen-Fizz.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Вечнозеленый физз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лондонский сухой джин</li><li>Дынный ликер</li><li>Ликер Блю Кюрасао</li><li>Лимонный сок</li><li>Содовая</li><li>Белок перепелиного яйца</li><li>Лимон</li><li>Сахарная пудра</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий, освежающий коктейль с насыщенным дынным ароматом, кислинкой лимона и легкой сладостью. Белок придает напитку воздушную текстуру, а содовая делает его легким и игривым.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Вечнозеленый физз</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл лондонского сухого джина</li><li>20 мл дынного ликера</li><li>5 мл ликера Блю Кюрасао</li><li>15 мл лимонного сока</li><li>130 мл содовой</li><li>25 мл белка перепелиного яйца</li><li>80 г лимона</li><li>3 г сахарной пудры</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите хайболл бокал, заполнив его кубиками льда.</li><li>В шейкер влейте 50 мл лондонского сухого джина, 20 мл дынного ликера и 5 мл ликера Блю Кюрасао.</li><li>Добавьте 15 мл лимонного сока и 25 мл белка перепелиного яйца.</li><li>Наполните шейкер 200 г кубиков льда и энергично встряхивайте 10–12 секунд.</li><li>Удалите лед из бокала и процедите коктейль через стрейнер.</li><li>Аккуратно влейте 130 мл содовой, осторожно перемешайте.</li><li>Украсьте коктейль 80 г тонко нарезанного лимона и слегка посыпьте 3 г сахарной пудры.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мелоник" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Melonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мелоник</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Дынный ликер</li><li>Лаймовый сок</li><li>Тоник</li><li>Лайм</li><li>Дробленый лед</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающий коктейль с выразительной дынной сладостью и легкой цитрусовой горечью лимонного биттера. Искрящийся и бодрящий, он идеально подойдет тем, кто любит баланс свежести и пикантности.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Мелоник</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл дынного ликера</li><li>10 мл лаймового сока</li><li>150 мл тоника</li><li>10 г лайма</li><li>60 г дробленого льда</li><li>180 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите хайболл бокал, заполнив его кубиками льда и дав постоять несколько минут.</li><li>Влейте 50 мл дынного ликера.</li><li>Добавьте 10 мл свежевыжатого лаймового сока.</li><li>Налейте 150 мл охлажденного тоника, аккуратно перемешайте барной ложкой.</li><li>Заполните бокал 60 г дробленого льда.</li><li>Украсьте коктейль тонкими дольками лайма или спиралью из его цедры.</li><li>Подавайте сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Соблазнитель" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Seduction-Shot.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Соблазнитель</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Кофейный ликер</li><li>Дынный ликер</li><li>Айриш Крем</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Слоистый коктейль-шот с выраженным кофейным вкусом, сливочной текстурой и мягкими дынными оттенками.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Соблазнитель</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл кофейного ликера</li><li>15 мл дынного ликера</li><li>15 мл Айриш Крем</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите бокал-шот, заполнив льдом, затем удалите его.</li><li>Налейте 20 мл кофейного ликера, используя заднюю сторону барной ложки, чтобы создать базовый слой.</li><li>По той же схеме аккуратно добавьте 15 мл дынного ликера.</li><li>Поверх вылейте 15 мл Айриш Крем, сохраняя четкие слои.</li><li>Подавайте сразу, предлагая выпить шот одним глотком.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Бока чика" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Boca-chica.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Бока чика</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Водка</li><li>Дынный ликер</li><li>Сироп маракуйи</li><li>Банановый сироп</li><li>Лаймовый сок</li><li>Гуава</li><li>Ананас</li><li>Ананасовые листья</li><li>Кокосовый крем</li><li>Коктейльная вишня красная</li><li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тропический блендовый коктейль с бархатистой текстурой, сочными фруктовыми нотами и сливочной глубиной.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Бока чика</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл водки</li><li>20 мл дынного ликера</li><li>10 мл сиропа маракуйи</li><li>10 мл бананового сиропа (желтого)</li><li>15 мл лаймового сока</li><li>120 г гуавы</li><li>30 г ананаса</li><li>1 ананасовый лист</li><li>30 г кокосового крема</li><li>5 г коктейльной вишни красной</li><li>60 г дробленого льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите бокал харрикейн, заполнив кубиками льда.</li><li>В блендер поместите 120 г очищенной гуавы и 30 г ананаса.</li><li>Добавьте 30 г кокосового крема для мягкости и 60 г дробленого льда для текстуры.</li><li>Влейте 60 мл водки, 20 мл дынного ликера, 10 мл сиропа маракуйи и 10 мл бананового сиропа.</li><li>Сбалансируйте вкус, добавив 15 мл свежего лаймового сока.</li><li>Взбейте до однородной консистенции.</li><li>Процедите в охлажденный бокал через сито жидкость, чтобы убрать все твердые частицы.</li><li>Украсьте ананасовым листом и коктейльной вишней.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Биттер мелон" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bitter-Melon.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Биттер мелон</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Дынный ликер</li><li>Биттер лимон</li><li>Лимонная цедра</li><li>Лед в кубиках</li><li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающий коктейль с насыщенным ароматом дыни, сбалансированный цитрусовой кислинкой и легкой горечью лимонного биттера. Идеальный выбор для тех, кто любит яркие вкусовые контрасты.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Биттер мелон</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл дынного ликера</li><li>150 мл биттера лимон</li><li>1 шт. лимонной цедры</li><li>180 г льда в кубиках</li><li>60 г дробленого льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите хайболл бокал, заполнив его кубиками льда на несколько минут.</li><li>Влейте 50 мл дынного ликера.</li><li>Добавьте 150 мл биттера лимон и 60 г дробленого льда.</li><li>Перемешайте акуратно ложкой, делая круговые движения.</li><li>Натрите на мелкую терку цедру лимона и украсьте ею сверху коктейль.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Яблочный мармелад" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Apple-marmalade.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Яблочный мармелад</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Ванильная водка</li><li>Дынный ликер</li><li>Лаймовый сок</li><li>Ананасовый сок</li><li>Мармелад</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фруктовый коктейль с нежной ванильной сладостью, освежающей кислинкой лайма и ананаса и неожиданной текстурной ноткой мармелада.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Яблочный мармелад</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл ванильной водки</li><li>30 мл дынного ликера</li><li>10 мл лаймового сока</li><li>30 мл ананасового сока</li><li>15 г мармелада</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите олд-фэшн бокал, наполнив его кубиками льда на несколько минут.</li><li>В шейкер влейте 40 мл ванильной водки, 30 мл дынного ликера и 10 мл лаймового сока.</li><li>Добавьте 30 мл ананасового сока и 15 г мелко нарезанного мармелада.</li><li>Наполните шейкер 200 г кубиков льда и встряхивайте 10–12 секунд.</li><li>Процедите в бокал через сито жидкость, чтобы убрать все твердые частицы</li><li>Украсьте по вкусу и подавайте.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Universal" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Universal.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Universal</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Водка</li><li>Дынный ликер</li><li>Грейпфрутовый сок</li><li>Грейпфрут</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий и утонченный коктейль, в котором сочетаются нежная дынная сладость, мягкая водочная основа и выразительная грейпфрутовая кислинка. Гармоничный баланс вкусов делает этот напиток идеальным выбором тех, кто ценит свежесть и элегантность в каждом глотке.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Universal</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл водки</li><li>20 мл дынного ликера</li><li>15 мл грейпфрутового сока</li><li>30 г грейпфрута</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите олд-фэшн бокал, наполнив его кубиками льда и дав постоять несколько минут.</li><li>Удалите лед, затем влейте 15 мл водки.</li><li>Добавьте 20 мл дынного ликера, чтобы подчеркнуть фруктовые ноты.</li><li>Влейте 15 мл свежего грейпфрутового сока.</li><li>Очистите 30 г грейпфрута от пленок, слегка сожмите его над бокалом, чтобы выделились эфирные масла, и добавьте в коктейль.</li><li>Аккуратно перемешайте ингредиенты барной ложкой, выполняя мягкие круговые движения.</li><li>Подавайте сразу, украсив тонкой долькой грейпфрута на краю бокала.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Top Scoop" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Top-Scoop.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Top Scoop</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Водка</li><li>Дынный ликер</li><li>Красный биттер</li><li>Грейпфрутовый биттер</li><li>Ананасовый сок</li><li>Лаймовый сок</li><li>Физалис</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий коктейль с выразительным балансом фруктовой сладости, легкой цитрусовой горечи и освежающей ананасовой основой. Дынный ликер придает мягкость, а грейпфрутовый биттер — элегантную пикантность.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Top Scoop</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл водки</li><li>10 мл дынного ликера</li><li>5 мл красного биттера</li><li>2 мл грейпфрутового биттера</li><li>30 мл ананасового сока</li><li>10 мл лаймового сока</li><li>5 г физалиса</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите олд-фэшн бокал, заполнив его кубиками льда и дав постоять несколько минут.</li><li>В шейкер влейте 30 мл водки, затем добавьте 10 мл дынного ликера и 5 мл красного биттера.</li><li>Влейте 2 мл грейпфрутового биттера, чтобы подчеркнуть цитрусовые оттенки.</li><li>Добавьте 30 мл ананасового сока и 10 мл свежего лаймового сока для баланса кислотности.</li><li>Поместите в шейкер 5 г свежего физалиса, слегка разомните его, чтобы высвободить аромат.</li><li>Наполните шейкер 200 г кубиков льда и энергично встряхивайте 10–15 секунд.</li><li>Процедите коктейль через стрейнер в охлажденный бокал.</li><li>Подавайте сразу, украсив половинкой физалиса или тонким ломтиком ананаса.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">250 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">30 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

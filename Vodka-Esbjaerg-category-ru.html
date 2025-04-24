@@ -1,0 +1,977 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Водка Esbjaerg — пример скандинавско-голландского мастерства, сочетающего чистоту вкуса и многовековые традиции. Этот премиальный напиток изготавливается из отборного пшеничного спирта с последующей фильтрацией через активированный
+                    уголь, что обеспечивает мягкость и сбалансированный профиль с легкими зерновыми нотами и сладковатым финишем. Идеально подходит как для чистого употребления со льдом, так и для изысканных коктейлей.
+                </p>
+                <h2>История бренда Esbjaerg</h2>
+                <p>
+                    Бренд Esbjaerg ведет свою историю с довоенного периода. Изначально он позиционировался как датская водка, получившая популярность еще до Второй мировой войны. Однако современное производство полностью сосредоточено в Нидерландах на
+                    семейной дистиллерии Boomsma Distillery, которая сохраняет традиции с 1877 года (более 140 лет опыта).
+                </p>
+                <p>
+                    Компания Boomsma, базирующаяся в городе Леуварден, изначально специализировалась на выпуске женевера и травяных ликеров. Со временем ассортимент расширился: помимо классических напитков, дистиллерия освоила производство виски, вин и
+                    премиальной водки Esbjaerg.
+                </p>
+                <p>
+                    Современная версия напитка сохранила связь со скандинавскими корнями через название (отсылка к датскому городу Эсбьерг), но технологические процессы полностью соответствуют голландским стандартам качества. Бренд сочетает
+                    историческое наследие с инновациями — например, использует фильтрацию через древесный уголь для смягчения вкуса.
+                </p>
+                <h2>Вкус и аромат водки Esbjaerg</h2>
+                <p>Водка Esbjaerg обладает изысканным профилем, который выгодно отличает ее от других представителей этой категории крепких напитков:</p>
+                <ul>
+                    <li>в аромате раскрываются легкие ноты зерна и минералов, придающие свежесть;</li>
+                    <li>вкус мягкий, шелковистый, с приятной пшеничной сладостью и идеально сбалансированной нейтральностью;</li>
+                    <li>послевкусие чистое и элегантное.</li>
+                </ul>
+                <p>Столь гармоничный органолептический профиль достигается за счет высокого качества ингредиентов и многоступенчатой дистилляции.</p>
+                <h2>С чем сочетается и как пить водку Esbjaerg</h2>
+                <p>Благодаря своему чистому мягкому вкусу и деликатному аромату, водка Esbjaerg является универсальным напитком. Ее можно употреблять различными способами:</p>
+                <ol>
+                    <li>В чистом виде, желательно охлажденной до 8–10 °C. Это позволит в полной мере насладиться премиальным вкусом.</li>
+                    <li>В составе разнообразных коктейлей. Нейтральность делает водку идеальной основой для миксов.</li>
+                    <li>Со льдом или добавлением тоника, сока, содовой.</li>
+                </ol>
+                <p>Водка Esbjaerg прекрасно сочетается со многими закусками — от традиционных соленых огурцов и селедки до сыров, мясных деликатесов, овощей и морепродуктов.</p>
+                <h2>Преимущества покупки водки Esbjaerg в MAUDAU</h2>
+                <p>Приобретая датскую водку Esbjaerg в интернет-магазине MAUDAU, клиенты получают:</p>
+                <ul>
+                    <li>большой ассортимент элитного алкоголя, включая различные версии Esbjaerg;</li>
+                    <li>бесплатную доставку при заказе от определенной суммы;</li>
+                    <li>регулярные акции и спецпредложения для экономии бюджета;</li>
+                    <li>надежную упаковку товаров, обеспечивающую сохранность при транспортировке;</li>
+                    <li>удобные способы оплаты и оперативная обработка заказов.</li>
+                </ul>
+                <p>Приобретая в MAUDAU, можно быть уверенным в оригинальности элитных алкогольных напитков и высоком уровне сервиса.</p>
+                <p>
+                    Водка Esbjaerg — воплощение датского качества и чистоты. Ее безупречный вкус, деликатный аромат и универсальность позволяют получить непревзойденное удовольствие от каждого глотка. А благодаря выгодным условиям в MAUDAU премиальная
+                    водка становится доступным подарком для себя и близких.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Berry Breeze" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Berry-Breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Berry Breeze</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjærg</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2">Тоник</a></li><li>Клубника</li><li>Малина</li><li>Черника</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот освежающий коктейль сочетает мягкость водки, цитрусовую кислинку лайма и легкую игривость тоника, создавая идеальный баланс вкуса. Ягодный микс из клубники, малины и черники не только дополняет вкус, но и делает подачу эффектной и яркой.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Berry Breeze</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл водки Esbjærg</li><li>10 мл сока лайма</li><li>Тоник по вкусу</li><li>Клубника для украшения</li><li>Малина для украшения</li><li>Черника для украшения</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите бокал, наполнив его льдом на 1–2 минуты, затем слейте лишнюю воду.</li><li>Добавьте 60 мл водки Esbjærg и 10 мл свежевыжатого сока лайма.</li><li>Перемешайте, чтобы ингредиенты равномерно соединились.</li><li>Медленно влейте охлажденный тоник по вкусу, создавая мягкую пену.</li><li>Украсьте коктейль свежей клубникой, малиной и черникой, равномерно распределяя их по поверхности.</li><li>Перед подачей можно слегка размять несколько ягод, чтобы придать напитку насыщенный фруктовый аромат.</li><li>Подавайте сразу, предлагая перемешать перед первым глотком.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Dirty Shirley" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Dirty-Shirley-esb.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Dirty Shirley</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjærg</a></li><li><a href="https://maudau.com.ua/ru/product/syrop-volare-grenadin-07-l">Гренадин</a></li><li><a href="https://maudau.com.ua/ru/product/hazovanyi-orhanichnyi-napii-naturfrisk-ginger-ale-025-l">Имбирный эль</a></li><li>Вишня</li><li>Мята</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий, сладкий и немного дерзкий коктейль, который играет на контрасте легкой водочной горечи и насыщенной сладости гренадина. Имбирный эль добавляет приятную пряную ноту, а вишня с мятой завершают образ коктейля.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Dirty Shirley</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл водки Esbjærg</li><li>15 мл гренадина</li><li>Имбирный эль по вкусу</li><li>Вишня для украшения</li><li>Веточка мяты для украшения</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал кубиками льда, чтобы охладить стенки и создать идеальную основу для смешивания.</li><li>Влейте 60 мл водки Esbjærg.</li><li>Аккуратно добавьте 15 мл гренадина, позволяя ему медленно опуститься на дно, создавая красивый градиент.</li><li>Осторожно влейте охлажденный имбирный эль по вкусу, чтобы не разрушить слои.</li><li>Перемешайте барной ложкой легкими движениями.</li><li>Украсьте коктейль вишней и веточкой свежей мяты.</li><li>Перед подачей можно слегка прижать мяту пальцами, чтобы активировать ее аромат.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rooftop Lemonade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rooftop-Lemonade.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rooftop Lemonade</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjærg</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li>Мята</li><li>Лимон</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простой, но невероятно освежающий коктейль, в котором классическое сочетание водки и лимонада приобретает новую глубину вкуса благодаря мяте и свежим цитрусовым нотам.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Rooftop Lemonade</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл водки Esbjærg</li><li>90 мл холодного лимонада</li><li>Веточка мяты для украшения</li><li>Лимонные дольки для украшения</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните высокий бокал свежими кубиками льда, обеспечивая идеальную температуру напитка.</li><li>Влейте 60 мл водки Esbjærg.</li><li>Добавьте 90 мл холодного лимонада, чтобы создать мягкую кисло-сладкую основу.</li><li>Перемешайте, чтобы ароматы соединились.</li><li>Добавьте несколько дольек лимона, слегка отжав их, чтобы выделилось больше эфирных масел.</li><li>Завершите подачу веточкой свежей мяты, предварительно слегка размяв ее, чтобы усилить аромат.</li><li>Подавайте сразу, предлагая перед дегустацией слегка перемешать коктейль.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Kamikaze" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kamikaze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Kamikaze</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjærg</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Triple Sec</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li>Лайм</li><li>Мята</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический коктейль с ярким цитрусовым характером, который сочетает водку, апельсиновый ликер и свежий сок лайма. Яркий, бодрящий и идеально сбалансированный.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Kamikaze</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл водки Esbjærg</li><li>30 мл Triple Sec</li><li>30 мл сока лайма</li><li>Долька лайма для украшения</li><li>Веточка мяты для украшения</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер кубиками льда.</li><li>Добавьте 30 мл водки Esbjærg, 30 мл Triple Sec и 30 мл свежевыжатого сока лайма.</li><li>Встряхивайте в течение 15 секунд, чтобы напиток охладился и насытился кислородом.</li><li>Процедите коктейль в охлажденный бокал.</li><li>Украсьте долькой лайма и веточкой свежей мяты для яркого аромата.</li><li>Подавайте сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Cucumber Vodka Tonic" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cucumber-Vodka-Tonic.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Cucumber Vodka Tonic</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjærg</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2">Тоник</a></li><li>Огурец</li><li>Мята</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот легкий и освежающий коктейль идеально подходит для жарких дней. Сочетание огурца, водки и тоника дарит чистый вкус с прохладой.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Cucumber Vodka Tonic</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки Esbjærg</li><li>Тоник по вкусу</li><li>Огурец для украшения</li><li>Мята для украшения</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Охладите бокал, наполнив его льдом и дав постоять 1–2 минуты, затем удалите воду.</li><li>Добавьте 50 мл водки Esbjærg.</li><li>Аккуратно налейте тоник по вкусу, сохраняя его легкую игристость.</li><li>Нарежьте огурец тонкими лентами и разместите их внутри бокала.</li><li>Украсьте коктейль свежей мятой, предварительно слегка растерев ее.</li><li>Пейте сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Watermelon Vodka" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Watermelon-Vodka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Watermelon Vodka</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjærg</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li>Арбуз</li><li>Свежая мята</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фруктовый, яркий и невероятно освежающий коктейль, который сочетает сочность арбуза, легкость лайма и глубину водки, создавая идеальный летний напиток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Watermelon Vodka</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 мл водки Esbjærg (для 4 коктейлей)</li><li>30 мл сока лайма</li><li>1/2 арбуза</li><li>Свежая мята по вкусу</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разрежьте арбуз и удалите косточки.</li><li>Выложите мякоть в блендер.</li><li>Добавьте 30 мл свежевыжатого сока лайма.</li><li>Взбейте до получения гладкого пюре.</li><li>Процедите через сито, чтобы убрать мякоть и получить чистый сок.</li><li>Наполните кувшин льдом.</li><li>Добавьте 250 мл водки Esbjærg и арбузный сок.</li><li>Перемешайте, чтобы соединить ароматы.</li><li>Разлейте по бокалам.</li><li>Украсьте свежими листьями мяты.</li><li>Перед подачей можно слегка раздавить мяту, чтобы раскрыть ее аромат.</li><li>Подавайте сразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Berry Light Bliss" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Berry-Light-Bliss.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Berry Light Bliss</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=buzyna-6">Бузинный ликер</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Малина</li><li>Ежевика</li><li>Лед</li><li>Свежие ягоды</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Этот коктейль – настоящее наслаждение для любителей ягодных вкусов. Он сочетает водку, бузинный ликер, свежий лимонный сок и сахарный сироп, создавая легкий и ароматный напиток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Berry Light Bliss</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл водки</li><li>30 мл бузинного ликера</li><li>30 мл свежевыжатого лимонного сока</li><li>30 мл сахарного сиропа</li><li>4-6 шт. малины</li><li>4-6 шт. ежевики</li><li>Кубики льда по вкусу</li><li>Свежие ягоды для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Добавьте в шейкер 4–6 ягод малины и ежевики.</li><li>Слегка разомните их, чтобы высвободить соки и ароматы.</li><li>Добавьте 60 мл водки, 30 мл бузинного ликера, 30 мл свежевыжатого лимонного сока и 30 мл сахарного сиропа.</li><li>Наполните шейкер льдом.</li><li>Энергично встряхивайте в течение 15 секунд.</li><li>Процедите в бокал с кубиками льда, создавая гладкую текстуру.</li><li>Украсьте свежими ягодами, разместив их сверху.</li><li>Перед подачей можно слегка размять ягоды для дополнительного аромата.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Водка мартини" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vodka-Martini-esb.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Водка мартини</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjaerg</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=sukhyi-dry">Сухой вермут</a></li><li><a href="https://maudau.com.ua/ru/category/olyvky-ta-maslyny">Оливки</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Тот самый любимый коктейль Джеймса Бонда. Аромат полыни из сухого вермута прекрасно сочетается с высоким градусом горько-сладкой водки. Обязательно добавьте оливочку!
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Водка мартини</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>75 мл водки Esbjaerg</li><li>15 мл сухого вермута</li><li>9 г оливок</li><li>300 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте в емкость для смешивания 15 мл сухого вермута и 75 мл водки.</li><li>Насыпьте 300 г льда в кубиках и аккуратно размешайте высокой барной ложкой.</li><li>Перелейте через сито-стрейнер в заранее охлажденный коктейльный бокал.</li><li>Украсьте коктейль тремя оливками на шпажке. Бондиана начинается!</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Космополитен" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cosmopolitan-esb.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Космополитен</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=esbjaerg">Водка Esbjaerg</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Куантро</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический кисло-сладкий Космополитен имеет долгую историю и огромную популярность. Засветившись в сериале Sex and the City, коктейль стал любимым женским напитком целого поколения. В этом заслуга приятного ягодного вкуса и цитрусовых ноток.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Космополитен</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл водки Esbjaerg</li><li>15 мл ликера Куантро</li><li>10 мл сока лайма</li><li>30 мл клюквенный сока</li><li>лед</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер кубиками льда доверху.</li><li>Налейте 10 мл лаймового и 30 мл клюквенного сока.</li><li>Добавьте 45 мл водки и 15 мл ликера Куантро.</li><li>Интенсивно взбейте напиток.</li><li>Процедите через сито-стрейнер в коктейльный бокал.</li><li>По желанию декорируйте апельсиновой цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

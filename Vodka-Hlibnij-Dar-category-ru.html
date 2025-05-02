@@ -1,0 +1,937 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    «Хлебный Дар» — легендарный бренд украинской водки, который выпускает компания «Баядера Групп» с 2002 года. Этот крепкий алкогольный напиток изготавливается по классической технологии из отборного зерна и чистейшей артезианской воды
+                    с использованием многоступенчатой очистки и фильтрации.
+                </p>
+                <h2>История и производство водки «Хлебный Дар»</h2>
+                <p>
+                    История бренда началась с запуска производства этого напитка на заводе «Национальная водочная компания» в селе Степанки Черкасской области. Основатели бренда с самого начала поставили цель изготовить алкоголь наивысшего качества,
+                    который станет настоящим символом украинского мастерства.
+                </p>
+                <p>
+                    У истоков создания стоят давние традиции локального винокурения и использование современного высокотехнологичного оборудования. Спирты для производства проходят пятиступенчатую систему фильтрацию. Процесс включает кварцевание, а
+                    также угольную и серебряную очистку для особой мягкости напитка.
+                </p>
+                <p>Производство бренда сегодня — это сочетание классических рецептов и инновационных технологий:</p>
+                <ul>
+                    <li>спирты класса «Люкс» из отборного зерна пшеницы, ржи и ячменя;</li>
+                    <li>вода из собственных артезианских скважин глубиной более 300 метров;</li>
+                    <li>многоступенчатая система очистки и фильтрации;</li>
+                    <li>современные производственные линии европейского уровня;</li>
+                    <li>строгий контроль качества на всех этапах изготовления.</li>
+                </ul>
+                <p>
+                    Ежегодно завод «Национальная водочная компания» выпускает миллионы бутылок водки «Хлебный Дар», которые реализуются как в Украине, так и экспортируются в более чем 20 стран мира. При этом качество напитка остается неизменно высоким.
+                </p>
+                <h2>Ассортимент водки «Хлебный Дар»</h2>
+                <p>В зависимости от цены водка «Хлебный Дар» представлена несколькими линейками, каждая из которых выделяется своими особенностями:</p>
+                <ol>
+                    <li>«Классическая» — традиционная рецептура на основе спирта из пшеницы и ржи. Напиток получил чистый аромат с легкими хлебными нотками и мягкий вкус. Самый доступный продукт Hlibny Dar по цене.</li>
+                    <li>«Пшеничная» — изготавливается по особой технологии из отборной пшеницы, что придает водке деликатный аромат и гармоничный вкус.</li>
+                    <li>«Житняя» — в основе лежит спирт из ржаного зерна, что обеспечивает слегка пряный аромат и плотный вкус.</li>
+                    <li>«На пророщенном зерне» — для производства используется спирт из ржи и пшеницы. Обладает мягким вкусом.</li>
+                    <li>«Украинская пшеничная особая» — изготовлена из спирта высшей степени очистки с технологией фильтрации через угольные пески. В аромате улавливаются хлебные и медовые ноты, вкус мягкий и чистый.</li>
+                    <li>«Украинская пшеничная мягкая» — для производства используются отборные спирты из локального озимого зерна, очищенные серебром. Крепость понижена до 38%, что делает профиль более легким.</li>
+                </ol>
+                <p>Особого внимания заслуживают оригинальные вкусы водки «Хлебный Дар»:</p>
+                <ol>
+                    <li>«Черный хлеб, черный перец» — крафтовая водка со сладковатым согревающим послевкусием. В состав входят экстракт черного перца и черный хлеб, которые настаиваются на чистом спирте.</li>
+                    <li>«Белый хлеб, паприка» — специальный вариант в линейке, который сочетает традиционные ингредиенты в новом формате.</li>
+                    <li>«Озимая» — классический вариант водки крепостью 40 градусов с чистым водочным ароматом.</li>
+                    <li>«Имбирно-медовая» — новинка в ассортименте торговой марки, изготовленная по эксклюзивной рецептуре.</li>
+                </ol>
+                <p>Выбирая любую из представленных видов водки «Хлебный Дар», вы неизменно получаете высококачественный украинский продукт с характерным мягким вкусом.</p>
+                <h2>Награды и достижения бренда</h2>
+                <p>Неизменно высокое качество водки «Хлебный Дар» было неоднократно отмечено престижными международными наградами:</p>
+                <ul>
+                    <li>золотые медали на международном конкурсе «International Spirits Challenge» в 2005 и 2007 годах;</li>
+                    <li>звание «Лучшая водка года» на конкурсе «Best Drink» в 2011 году;</li>
+                    <li>многочисленные награды дегустационного конкурса «Укрводка» в 2009–2017 годах;</li>
+                    <li>1 место в рейтинге «Фавориты Успеха» в 2017 году.</li>
+                </ul>
+                <p>Эти и другие достижения свидетельствуют о признании водки «Хлебный Дар» как одного из символов украинского алкогольного мастерства.</p>
+                <h2>С чем пьют водку «Хлебный Дар»</h2>
+                <p>Закуской к этому благородному напитку могут стать:</p>
+                <ul>
+                    <li>традиционные соленья — огурчики, помидорчики, квашеная капуста, грибочки;</li>
+                    <li>мясная и рыбная нарезка — буженина, ростбиф, слабосоленая семга, селедочка;</li>
+                    <li>салаты и свежие овощи — оливье, сельдь под шубой, свежие помидоры и огурцы;</li>
+                    <li>горячие блюда украинской кухни — вареники, борщ, жаркое в горшочках.</li>
+                </ul>
+                <p>
+                    Оригинальные сорта водки «Хлебный Дар» смело можно использовать для приготовления различных коктейлей. Фантазия барменов и любителей миксологии здесь не ограничена. Например, пряная «Житняя» хорошо сочетается с имбирным элем и
+                    лаймом, а «Украинская медовая с перцем» становится отличной основой для пряных согревающих миксов.
+                </p>
+                <p>
+                    Талантливо сочетая лучшее из прошлого и будущего, бренд «Хлебный Дар» продолжает радовать своим высочайшим качеством истинных ценителей крепких алкогольных напитков уже более 20 лет. И каждая бутылка — настоящее воплощение щедрости
+                    нашего народа.
+                </p>
+                <h2>Почему выгодно купить водку «Хлібний Дар» в MAUDAU</h2>
+                <p>Один из лучших вариантов купить водку «Хлебный Дар» — в интернет-магазине алкогольных напитков MAUDAU. Преимущества покупки здесь:</p>
+                <ul>
+                    <li>100% оригинальная лицензионная продукция;</li>
+                    <li>ассортимент всех сортов;</li>
+                    <li>удобная доставка по Киеву и Украине;</li>
+                    <li>регулярные акции и специальные цены.</li>
+                </ul>
+                <p>Покупая в MAUDAU, клиенты гарантированно получают выгодные цены на «Хлебный Дар».</p>
+                <p>
+                    Vodka Hlibny Dar — это не просто один из множества крепких напитков. Это квинтэссенция украинских традиций производства алкоголя, вобравшая в себя лучшие рецептуры и технологии. Недаром эта марка водки получила признание как в
+                    Украине, так и за ее пределами. Попробовав «Хлебный Дар», можно ощутить истинный вкус украинского гостеприимства и душевности.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rhubarb & custard cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rhubarb_and_custard_cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rhubarb & custard cocktail</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Ревень</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=revin-3">Сироп из ревеня</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-advocaat-yaiechnyi-148-07-l-73490">Advocaat</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=lymonad">Лимонад</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий и нежный коктейль с насыщенным вкусом ревеня и кремовой текстурой Advocaat. Элегантный розовый оттенок и оригинальная подача делают его идеальным для особых случаев.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Rhubarb & custard cocktail</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл водки Хлібний Дар</li><li>100 мл сиропа из ревеня</li><li>1 стебель ревеня для украшения</li><li>30 мл Advocaat</li><li>75 мл лимонада</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налейте 100 мл водки «Хлібний Дар» в шейкер.</li><li>Добавьте 100 мл сиропа из ревеня.</li><li>Заполните шейкер льдом доверху.</li><li>Встряхивайте энергично 15 секунд.</li><li>Процедите через стрейнер в охлажденный бокал купе.</li><li>В отдельный стакан налейте 30 мл Advocaat.</li><li>Аккуратно влейте Advocaat в коктейль через барную ложку.</li><li>Размешайте легкими движениями, создавая воздушную текстуру.</li><li>Очистите стебель ревеня и нарежьте длинными тонкими лентами.</li><li>Скрутите ленту в спираль и закрепите на краю бокала.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Aperol & limoncello" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Aperol_and_limoncello.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Aperol & limoncello</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=limonchello">Лимончелло</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл сек</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=aperol">Апероль</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Апельсины</li><li>Лимоны</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освежающий цитрусовый коктейль с мягкими горько-сладкими нотами. Яркий вкус лимончелло, гармоничный баланс Апероля и апельсинового сока создают легкий летний напиток с насыщенным ароматом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Aperol & limoncello</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл водки Хлібний Дар</li><li>100 мл лимончелло</li><li>1 ст. л. трипл сек</li><li>200 мл Апероля</li><li>300 мл апельсинового сока</li><li>Нарезанные апельсины для украшения</li><li>Нарезанные лимоны для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните большой винный бокал льдом.</li><li>Налейте 100 мл водки «Хлібний Дар».</li><li>Добавьте 100 мл лимончелло и 1 ст. л. трипл сек.</li><li>Влейте 200 мл Апероля, интенсивно размешайте барной ложкой.</li><li>Добавьте 300 мл свежевыжатого апельсинового сока.</li><li>Перемешайте мягкими движениями, охлаждая коктейль.</li><li>Украсьте нарезанными апельсинами и лимонами.</li><li>Подавайте с широкой трубочкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Harvey wallbanger" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Harvey-wallbanger.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Harvey wallbanger</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лед</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li>Апельсин</li><li>Лимон</li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=galliano">Гальяно</a></li><li>Коктейльная вишня</li><li>Апельсиновая долька</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический коктейль с мягкими цитрусовыми нотами и пряным послевкусием. Гальяно придает тонкую ванильную сложность, а свежий апельсиновый сок делает вкус насыщенным и сочным. Идеальный выбор любителей элегантных коктейлей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Harvey wallbanger</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>Лед по вкусу</li><li>50 мл водки Хлібний Дар</li><li>1 большой или 2 маленьких апельсина для свежего сока</li><li>Сок половины лимона</li><li>15 мл Гальяно</li><li>1 коктейльная вишня для украшения</li><li>1 апельсиновая долька для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-хайбол ледяными кубиками.</li><li>Выжмите сок из 1 большого или 2 маленьких апельсинов.</li><li>Процедите сок, удаляя мякоть, в шейкер.</li><li>Добавьте 50 мл водки «Хлібний Дар».</li><li>Влейте сок половины лимона.</li><li>Заполните шейкер льдом и встряхивайте 15 секунд.</li><li>Перелейте через стрейнер в хайбол.</li><li>Осторожно налейте 15 мл Гальяно по барной ложке.</li><li>Украсьте коктейльной вишней и апельсиновой долькой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Eastern breeze" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Eastern-breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Eastern breeze</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лед</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li>Листики мяты</li><li>Семена граната</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=yabloko">Яблочный сок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фруктово-травяной коктейль с выразительной свежестью мяты и легкими гранатовыми нотами. Основа из яблочного сока и водки делает его легким, а семена граната добавляют приятную текстуру. Прекрасно подходит для летних вечеров.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Eastern breeze</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>Лед по вкусу</li><li>300 мл водки Хлібний Дар (на 6 коктейлей)</li><li>24 листика мяты</li><li>Семена из 1 граната (около 1 ч. л. на стакан)</li><li>600 мл яблочного сока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите вместительный шейкер.</li><li>Поместите 24 листика мяты и мягко разомните мадлером.</li><li>Добавьте 300 мл водки «Хлібний Дар».</li><li>Влейте 600 мл яблочного сока.</li><li>Наполните шейкер льдом доверху.</li><li>Встряхивайте энергично 15 секунд.</li><li>Процедите в охлажденные хайболы.</li><li>Добавьте по 1 ч. л. гранатовых семян в каждый стакан.</li><li>Аккуратно перемешайте барной ложкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мармеладная водка" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Marmeladna-horilka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мармеладная водка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/ru/category/marmelad">Мармелад</a></li><li>Стручок ванили</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насыщенная настойка с яркими цитрусовыми нотами и нежным ароматом ванили. Подходит как самостоятельный напиток или основа для коктейлей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Мармеладная водка</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>700 мл водки Хлібний Дар</li><li>250 г мармелада</li><li>1/2 стручка ванили (высыпать и выскрести семена по желанию)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Возьмите стеклянную емкость объемом 1 л.</li><li>Нарежьте 250 г мармелада на мелкие кусочки.</li><li>Поместите в емкость и залейте 700 мл водки «Хлібний Дар».</li><li>Разрежьте стручок ванили, добавьте семена (по желанию).</li><li>Закройте плотно крышкой и встряхните.</li><li>Оставьте в темном месте на 3-4 дня, периодически встряхивая.</li><li>Процедите через мелкое сито или марлю.</li><li>Перелейте в чистую бутылку.</li><li>Охладите перед подачей, подавайте в роксах.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Valentine's Day" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Valentines-Day.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Valentine's Day</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li><a href="https://maudau.com.ua/ru/product/syrop-volare-grenadin-07-l">Гренадин</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li>Лед</li><li>Лайм</li><li>Малина</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Романтический коктейль с балансом кислинки клюквы, сладости гренадина и легкой игристой нотки просекко. Идеален для особых случаев.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Valentine's Day</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 мл клюквенного сока</li><li>1 ч. л. гренадина</li><li>50 мл водки Хлібний Дар</li><li>Горсть льда</li><li>1 лайм</li><li>4 ягоды малины</li><li>Охлажденное просекко для доливания</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер льдом.</li><li>Влейте 50 мл водки «Хлібний Дар».</li><li>Добавьте 150 мл клюквенного сока и 1 ч. л. гренадина.</li><li>Встряхивайте 15 секунд.</li><li>Процедите в охлажденный флейт-бокал.</li><li>Выдавите сок половины лайма.</li><li>Добавьте 4 ягоды малины.</li><li>Аккуратно долейте охлажденное просекко.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Caipimoka" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Caipimoka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Caipimoka</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Эспрессо</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Cахар</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li>Базилик</li><li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=sylnohazovana">Газированная вода</a></li><li>Лимон</li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Уникальное сочетание насыщенного эспрессо, освежающего цитруса и пряного базилика создает сложный, многослойный вкус с легкой горчинкой и свежестью. Этот коктейль идеально подойдет ценителям нетривиальных сочетаний.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Caipimoka</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл эспрессо</li><li>15 г мелкого белого сахара</li><li>15 мл водки Хлібний Дар</li><li>2 стебля базилика</li><li>10 мл газированной воды</li><li>25 г лимона</li><li>200 г льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В бокале разомните 2 стебля базилика мадлером.</li><li>Добавьте 15 г мелкого белого сахара.</li><li>Выдавите сок из 25 г лимона.</li><li>Влейте 15 мл водки «Хлібний Дар».</li><li>Добавьте 15 мл свежего эспрессо.</li><li>Наполните бокал 200 г дробленого льда.</li><li>Аккуратно влейте 10 мл газированной воды.</li><li>Перемешайте барной ложкой.</li><li>Подавайте с трубочкой в олд-фэшн бокале.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Menheim 370" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Menheim-370.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Menheim 370</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=hlibnij-dar">Водка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=campari">Кампари</a></li><li>Мандарины</li><li>Розмарин</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vanil-14">Ванильный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Изысканный коктейль с тонкими нотами Кампари, мандарина и ванили, создающий гармоничный баланс между горчинкой, цитрусовой свежестью и сладостью. Аромат розмарина придает глубину вкусу, а насыщенный цвет напитка делает его эффектным выбором для особых случаев.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Menheim 370</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки Хлібний Дар</li><li>20 мл Кампари</li><li>1 шт. мандарина</li><li>Розмарин по вкусу</li><li>20 мл ванильного сиропа</li><li>15 мл лимонного сока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Разомните 1 очищенный мандарин в шейкере.</li><li>Добавьте 50 мл водки «Хлібний Дар».</li><li>Влейте 20 мл Кампари и 20 мл ванильного сиропа.</li><li>Добавьте 15 мл свежего лимонного сока.</li><li>Наполните шейкер льдом и встряхивайте 15 секунд.</li><li>Процедите через ситечко в охлажденный бокал-купе.</li><li>Украсьте веточкой розмарина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,933 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    «Хлібний Дар» — легендарний бренд української горілки, який випускає компанія «Баядера Груп» з 2002 року. Цей міцний алкогольний напій виготовляють за класичною технологією з добірного зерна і найчистішої артезіанської води із
+                    застосуванням багатоступеневого очищення і фільтрації.
+                </p>
+                <h2>Історія та виробництво горілки «Хлібний Дар»</h2>
+                <p>
+                    Історія бренду почалася із запуску виробництва цього напою на заводі «Національна горілчана компанія» в селі Степанки Черкаської області. Засновники бренду з самого початку поставили за мету виготовити алкоголь найвищої якості, який
+                    стане справжнім символом української майстерності.
+                </p>
+                <p>
+                    Біля витоків створення стоять давні традиції локального винокуріння та використання сучасного високотехнологічного обладнання. Спирти для виробництва проходять п’ятиступеневу систему фільтрації. Процес включає кварцування, а також
+                    вугільне та срібне очищення для особливої м’якості напою.
+                </p>
+                <p>Виробництво бренду сьогодні — це поєднання класичних рецептів та інноваційних технологій:</p>
+                <ul>
+                    <li>спирти класу «Люкс» із добірного зерна пшениці, жита та ячменю;</li>
+                    <li>вода з власних артезіанських свердловин глибиною понад 300 метрів;</li>
+                    <li>багатоступенева система очищення та фільтрації;</li>
+                    <li>сучасні виробничі лінії європейського рівня;</li>
+                    <li>суворий контроль якості на всіх етапах виготовлення.</li>
+                </ul>
+                <p>Щорічно завод «Національна горілчана компанія» випускає мільйони пляшок горілки «Хлібний Дар», які реалізуються як в Україні, так і експортуються в більш ніж 20 країн світу. При цьому якість напою залишається незмінно високою.</p>
+                <h2>Асортимент горілки «Хлібний Дар»</h2>
+                <p>Залежно від ціни горілка «Хлібний Дар» представлена кількома лінійками, кожна з яких вирізняється своїми особливостями:</p>
+                <ol>
+                    <li>«Класична» — традиційна рецептура на основі спирту з пшениці та жита. Напій отримав чистий аромат із легкими хлібними нотками та м’який смак. Найдоступніший продукт Hlibny Dar за ціною.</li>
+                    <li>«Пшенична» — виготовляється за особливою технологією з добірної пшениці, що надає горілці делікатного аромату та гармонійного смаку.</li>
+                    <li>«Житня» — в основі лежить спирт із житнього зерна, що забезпечує злегка пряний аромат і щільний смак.</li>
+                    <li>«На пророщеному зерні» — для виробництва використовують спирт із жита і пшениці. Має м’який смак.</li>
+                    <li>«Українська пшенична особлива» — виготовлена зі спирту вищого ступеня очищення з технологією фільтрації через вугільні піски. В ароматі вловлюються хлібні та медові ноти, смак м’який і чистий.</li>
+                    <li>«Українська пшенична м’яка» — для виробництва використовують добірні спирти з локального озимого зерна, очищені сріблом. Міцність знижена до 38%, що робить профіль легшим.</li>
+                </ol>
+                <p>На особливу увагу заслуговують оригінальні смаки горілки «Хлібний Дар»:</p>
+                <ol>
+                    <li>«Чорний хліб, чорний перець» — крафтова горілка з солодкуватим зігрівальним посмаком. До складу входять екстракт чорного перцю і чорний хліб, які настоюються на чистому спирті.</li>
+                    <li>«Білий хліб, паприка» — спеціальний варіант у лінійці, який поєднує традиційні інгредієнти в новому форматі.</li>
+                    <li>«Озима» — класичний варіант горілки міцністю 40 градусів із чистим горілчаним ароматом.</li>
+                    <li>«Імбирно-медова» — новинка в асортименті торгової марки, виготовлена за ексклюзивною рецептурою.</li>
+                </ol>
+                <p>Обираючи будь-яку з представлених видів горілки «Хлібний Дар», ви незмінно отримуєте високоякісний український продукт із характерним м’яким смаком.</p>
+                <h2>Нагороди та досягнення бренду</h2>
+                <p>Незмінно висока якість горілки «Хлібний Дар» була неодноразово відзначена престижними міжнародними нагородами:</p>
+                <ul>
+                    <li>золоті медалі на міжнародному конкурсі «International Spirits Challenge» у 2005 та 2007 роках;</li>
+                    <li>звання «Найкраща горілка року» на конкурсі «Best Drink» 2011 року;</li>
+                    <li>численні нагороди дегустаційного конкурсу «Укргорілка» у 2009–2017 роках;</li>
+                    <li>1 місце в рейтингу «Фаворити Успіху» 2017 року.</li>
+                </ul>
+                <p>Ці та інші досягнення свідчать про визнання горілки «Хлібний Дар» як одного із символів української алкогольної майстерності.</p>
+                <h2>З чим п’ють горілку «Хлібний Дар»</h2>
+                <p>Закускою до цього благородного напою можуть стати:</p>
+                <ul>
+                    <li>традиційні соління — огірочки, помідорчики, квашена капуста, грибочки;</li>
+                    <li>м’ясна і рибна нарізка — буженина, ростбіф, слабосолона сьомга, оселедець;</li>
+                    <li>салати і свіжі овочі — олів’є, оселедець під шубою, свіжі помідори та огірки;</li>
+                    <li>гарячі страви української кухні — вареники, борщ, печеня в горщиках.</li>
+                </ul>
+                <p>
+                    Оригінальні сорти горілки «Хлібний Дар» сміливо можна використовувати для приготування різноманітних коктейлів. Фантазія барменів і любителів міксології тут не обмежена. Наприклад, пряна «Житня» добре поєднується з імбирним елем і
+                    лаймом, а «Українська медова з перцем» стає чудовою основою для пряних зігрівальних міксів.
+                </p>
+                <p>
+                    Талановито поєднуючи найкраще з минулого і майбутнього, бренд «Хлібний Дар» продовжує тішити своєю високою якістю справжніх поціновувачів міцних алкогольних напоїв уже понад 20 років. І кожна пляшка — справжнє втілення щедрості
+                    нашого народу.
+                </p>
+                <h2>Чому вигідно купити горілку «Хлібний Дар» у MAUDAU</h2>
+                <p>Один із найкращих варіантів купити горілку «Хлібний Дар» — в інтернет-магазині алкогольних напоїв MAUDAU. Переваги покупки тут:</p>
+                <ul>
+                    <li>100% оригінальна ліцензійна продукція;</li>
+                    <li>асортимент усіх сортів;</li>
+                    <li>зручне доставлення по Києву та Україні;</li>
+                    <li>регулярні акції та спеціальні ціни.</li>
+                </ul>
+                <p>Купуючи в MAUDAU, клієнти гарантовано отримують вигідні ціни на «Хлібний Дар».</p>
+                <p>
+                    Vodka Hlibny Dar — це не просто один із безлічі міцних напоїв. Це квінтесенція українських традицій виробництва алкоголю, що увібрала в себе найкращі рецептури і технології. Недарма ця марка горілки отримала визнання як в Україні,
+                    так і за її межами. Скуштувавши «Хлібний Дар», можна відчути справжній смак української гостинності та душевності.
+                </p>
+            </div>
+            
+            
+
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Rhubarb & custard cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rhubarb_and_custard_cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Rhubarb & custard cocktail</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Ревінь</li><li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=revin-3">Сироп із ревеню</a></li><li><a href="https://maudau.com.ua/product/liker-de-kuyper-advocaat-yaiechnyi-148-07-l-73490">Advocaat</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad">Лимонад</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яскравий і ніжний коктейль із насиченим смаком ревеню та кремовою текстурою Advocaat. Елегантний рожевий відтінок і оригінальна подача роблять його ідеальним для особливих випадків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Rhubarb & custard cocktail</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл горілки Хлібний Дар</li><li>100 мл сиропу з ревеню</li><li>1 стебло ревеню для прикрашання</li><li>30 мл Advocaat</li><li>75 мл лимонаду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте 100 мл горілки «Хлібний Дар» у шейкер.</li><li>Додайте 100 мл сиропу з ревеню.</li><li>Заповніть шейкер льодом доверху.</li><li>Струшуйте енергійно 15 секунд.</li><li>Процідіть через стрейнер в охолоджений келих купе.</li><li>В окрему склянку налийте 30 мл Advocaat.</li><li>Акуратно влийте Advocaat у коктейль через барну ложку.</li><li>Розмішайте легкими рухами, створюючи повітряну текстуру.</li><li>Очистіть стебло ревеню і наріжте довгими тонкими стрічками.</li><li>Скрутіть стрічку в спіраль і закріпіть на краю келиха.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Aperol & limoncello" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Aperol_and_limoncello.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Aperol & limoncello</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=limonchello">Лимончелло</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=triple-sec">Трипл сек</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=aperol">Апероль</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li>Апельсини</li><li>Лимони</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Освіжальний цитрусовий коктейль із м'якими гірко-солодкими нотами. Яскравий смак лимончелло, гармонійний баланс Апероля й апельсинового соку створюють легкий літній напій із насиченим ароматом.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Aperol & limoncello</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>100 мл горілки Хлібний Дар</li><li>100 мл лимончелло</li><li>1 ст. л. трипл сек</li><li>200 мл Апероля</li><li>300 мл апельсинового соку</li><li>Нарізані апельсини для прикрашання</li><li>Нарізані лимони для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть великий винний келих льодом.</li><li>Налийте 100 мл горілки «Хлібний Дар».</li><li>Додайте 100 мл лимончелло та 1 ст. л. трипл сек.</li><li>Влийте 200 мл Апероля, інтенсивно розмішайте барною ложкою.</li><li>Додайте 300 мл свіжовичавленого апельсинового соку.</li><li>Перемішайте м'якими рухами, охолоджуючи коктейль.</li><li>Прикрасьте нарізаними апельсинами та лимонами.</li><li>Подавайте з широкою трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Harvey wallbanger" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Harvey-wallbanger.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Harvey wallbanger</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лід</li><li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li>Апельсин</li><li>Лимон</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=galliano">Гальяно</a></li><li>Коктейльна вишня</li><li>Апельсинова скибочка</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Класичний коктейль із м'якими цитрусовими нотами та пряним посмаком. Гальяно надає тонкої ванільної складності, а свіжий апельсиновий сік робить смак насиченим і соковитим. Ідеальний вибір любителів елегантних коктейлів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Harvey wallbanger</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>Лід до смаку</li><li>50 мл горілки Хлібний Дар</li><li>1 великий або 2 маленьких апельсини для свіжого соку</li><li>Сік половини лимона</li><li>15 мл Гальяно</li><li>1 коктейльна вишня для прикрашання</li><li>1 апельсинова скибочка для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих-хайбол крижаними кубиками.</li><li>Вичавіть сік з 1 великого або 2 маленьких апельсинів.</li><li>Процідіть сік, видаляючи м'якоту, у шейкер.</li><li>Додайте 50 мл горілки «Хлібний Дар».</li><li>Влийте сік половини лимона.</li><li>Заповніть шейкер льодом і струшуйте 15 секунд.</li><li>Перелийте через стрейнер у хайбол.</li><li>Обережно налийте 15 мл Гальяно по барній ложці.</li><li>Прикрасьте коктейльною вишнею та апельсиновою скибочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Eastern breeze" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Eastern-breeze.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Eastern breeze</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лід</li><li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li>Листочки мʼяти</li><li>Насіння граната</li><li><a href="https://maudau.com.ua/category/soky/smak_25=yabloko">Яблучний сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Фруктово-трав'яний коктейль із виразною свіжістю м'яти та легкими гранатовими нотами. Основа з яблучного соку та горілки робить його легким, а насіння граната додає приємної текстури. Чудово підходить для літніх вечорів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Eastern breeze</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>Лід до смаку</li><li>300 мл горілки Хлібний Дар (на 6 коктейлів)</li><li>24 листочки м'яти</li><li>Насіння з 1 граната (близько 1 ч. л. на склянку)</li><li>600 мл яблучного соку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть місткий шейкер.</li><li>Помістіть 24 листочки м'яти і м'яко розімніть мадлером.</li><li>Додайте 300 мл горілки «Хлібний Дар».</li><li>Влийте 600 мл яблучного соку.</li><li>Наповніть шейкер льодом доверху.</li><li>Струшуйте енергійно 15 секунд.</li><li>Процідіть в охолоджені хайболи.</li><li>Додайте по 1 ч. л. гранатового насіння в кожну склянку.</li><li>Акуратно перемішайте барною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Мармеладна горілка" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Marmeladna-horilka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Мармеладна горілка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/category/marmelad">Мармелад</a></li><li>Стручок ванілі</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насичена настоянка з яскравими цитрусовими нотами та ніжним ароматом ванілі. Підходить як самостійний напій або основа для коктейлів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Мармеладна горілка</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>700 мл горілки Хлібний Дар</li><li>250 г мармеладу</li><li>1/2 стручка ванілі (висипати і вишкребти насіння за бажанням)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Візьміть скляну місткість обсягом 1 л.</li><li>Наріжте 250 г мармеладу на дрібні шматочки.</li><li>Помістіть у місткість і залийте 700 мл горілки «Хлібний Дар».</li><li>Розріжте стручок ванілі, додайте насіння (за бажанням).</li><li>Закрийте щільно кришкою і струсіть.</li><li>Залиште в темному місці на 3-4 дні, періодично струшуючи.</li><li>Процідіть через дрібне сито або марлю.</li><li>Перелийте в чисту пляшку.</li><li>Охолодіть перед подачею, подавайте в роксах.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Valentine's Day" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Valentines-Day.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Valentine's Day</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li><a href="https://maudau.com.ua/product/syrop-volare-grenadin-07-l">Гренадин</a></li><li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li>Лід</li><li>Лайм</li><li>Малина</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Романтичний коктейль із балансом кислинки журавлини, солодкості гренадину та легкої ігристої нотки просекко. Ідеальний для особливих випадків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Valentine's Day</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>150 мл журавлинного соку</li><li>1 ч. л. гренадину</li><li>50 мл горілки Хлібний Дар</li><li>Жменя льоду</li><li>1 лайм</li><li>4 ягоди малини</li><li>Охолоджене просекко для доливання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер льодом.</li><li>Влийте 50 мл горілки «Хлібний Дар».</li><li>Додайте 150 мл журавлинного соку та 1 ч. л. гренадину.</li><li>Струшуйте 15 секунд.</li><li>Процідіть в охолоджений флейт-бокал.</li><li>Вичавіть сік половини лайма.</li><li>Додайте 4 ягоди малини.</li><li>Акуратно долийте охолоджене просекко.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Caipimoka" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Caipimoka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Caipimoka</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Еспресо</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li>Базилік</li><li><a href="https://maudau.com.ua/category/voda/vyd_133=sylnohazovana">Газована вода</a></li><li>Лимон</li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Унікальне поєднання насиченого еспресо, освіжального цитруса і пряного базиліка створює складний, багатошаровий смак із легкою гіркуватістю і свіжістю. Цей коктейль ідеально підійде поціновувачам нетривіальних поєднань.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Caipimoka</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл еспресо</li><li>15 г дрібного білого цукру</li><li>15 мл горілки Хлібний Дар</li><li>2 стебла базиліка</li><li>10 мл газованої води</li><li>25 г лимона</li><li>200 г льоду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У келиху розімніть 2 стебла базиліку мадлером.</li><li>Додайте 15 г дрібного білого цукру.</li><li>Вичавіть сік із 25 г лимона.</li><li>Влийте 15 мл горілки «Хлібний Дар».</li><li>Додайте 15 мл свіжого еспресо.</li><li>Наповніть келих 200 г подрібненого льоду.</li><li>Акуратно влийте 10 мл газованої води.</li><li>Перемішайте барною ложкою.</li><li>Подавайте з трубочкою в олд-фешн келиху.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Menheim 370" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Menheim-370.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Menheim 370</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=hlibnij-dar">Горілка Хлібний Дар</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=campari">Кампарі</a></li><li>Мандарини</li><li>Розмарин</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14">Ванільний сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Вишуканий коктейль із тонкими нотами Кампарі, мандарина і ванілі, що створює гармонійний баланс між гіркуватістю, цитрусовою свіжістю і солодкістю. Аромат розмарину надає глибину смаку, а насичений колір напою робить його ефектним вибором для особливих випадків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Menheim 370</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл горілки Хлібний Дар</li><li>20 мл Кампарі</li><li>1 шт. мандарина</li><li>Розмарин до смаку</li><li>20 мл ванільного сиропу</li><li>15 мл лимонного соку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розімніть 1 очищений мандарин у шейкері.</li><li>Додайте 50 мл горілки «Хлібний Дар».</li><li>Влийте 20 мл Кампарі та 20 мл ванільного сиропу.</li><li>Додайте 15 мл свіжого лимонного соку.</li><li>Наповніть шейкер льодом і струшуйте 15 секунд.</li><li>Процідіть через ситечко в охолоджений келих-купе.</li><li>Прикрасьте гілочкою розмарину.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

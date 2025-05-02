@@ -1,0 +1,998 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>«Перша Гільдія» — лінійка елітної української горілки, яку випускає компанія «Баядера Груп» вже понад 27 років. Напої цього бренду належать до преміального сегмента і вирізняються незмінно високою якістю та чудовим смаком.</p>
+                <p>
+                    Для виробництва горілки «Гільдія» використовується чистісінька артезіанська вода з природних джерел Черкаської області, де зосереджені найбільші запаси найвищої якості в Україні. Крім того, до складу напоїв входять тільки натуральні
+                    інгредієнти і найкращі спирти класу люкс.
+                </p>
+                <h2>Історія бренду «Перша Гільдія»</h2>
+                <p>
+                    Торгова марка «Перша Гільдія» була створена 1998 року Національною Горілчаною Компанією, яка пізніше увійшла до складу холдингу «Баядера Груп». Сучасний високотехнологічний завод з виробництва горілки було побудовано 2005 року в
+                    Черкаській області.
+                </p>
+                <p>
+                    За роки існування бренду технологи компанії розробили понад 100 авторських рецептів алкогольних напоїв. Сучасний завод має 18 унікальних патентів і оснащений передовим італійським і французьким обладнанням, що дає змогу випускати
+                    понад 150 мільйонів пляшок продукції на рік.
+                </p>
+                <h2>Асортимент горілки «Перша Гільдія»</h2>
+                <p>Під брендом «Перша Гільдія» випускається 6 різновидів преміальної горілки:</p>
+                <ol>
+                    <li>«Поважна» — м'який класичний смак і аромат без домішок. Добре поєднується з різними стравами та інгредієнтами для коктейлів.</li>
+                    <li>Grand — елітна горілка з легким ароматом м'яти та рису. Для поціновувачів вишуканих напоїв.</li>
+                    <li>«Верховна» — м'який приємний смак і аромат. Містить глюкозу, фруктозу та бурштинову кислоту.</li>
+                    <li>Prestige — класичний горілчаний смак і аромат. Пляшка з масивного скла підкреслює статусність напою.</li>
+                    <li>«Знатна» — витончений аромат із солодкуватими нотками. Один із найпопулярніших сортів лінійки.</li>
+                    <li>«Класична» — чистий традиційний смак і характерний горілчаний аромат без надмірностей.</li>
+                </ol>
+                <p>Горілки «Перша Гільдія» представлені в пляшках обсягом 0.5 л і 0.7 л. Стильний лаконічний дизайн упаковки відповідає преміальному статусу продукту.</p>
+                <h2>З чим і як пити горілку «Перша Гільдія»</h2>
+                <p>Елітна горілка «Перша Гільдія» — ідеальний дижестив, який заведено вживати в чистому вигляді, охолодженим до 5–7°C. Напій чудово поєднується з традиційними українськими закусками:</p>
+                <ul>
+                    <li>соліннями та маринадами — хрусткі квашені овочі та ароматні гриби підкреслюють смак горілки;</li>
+                    <li>м'ясними та рибними делікатесами — тонкі скибочки буженини, шинки або лосося стануть ідеальним гастрономічним супроводом до алкоголю;</li>
+                    <li>салатами та овочами — свіжі або запечені, вінегрети та рагу врівноважують міцність напою;</li>
+                    <li>грибами — маринади та соління доповнюють смакову палітру;</li>
+                    <li>сирами — нарізка з твердих і м'яких сортів задає правильний гастрономічний тон.</li>
+                </ul>
+                <p>Також різні сорти горілки «Перша Гільдія» стають основою для приготування коктейлів. Наприклад, «Поважна» відмінно міксується з іншими інгредієнтами завдяки своєму нейтральному смаку.</p>
+                <h2>Вартість горілки «Перша Гільдія» в Україні</h2>
+                <p>Горілка «Перша Гільдія» належить до преміального сегмента, проте її ціна залишається доступною у своїй категорії. Вартість напоїв цієї торгової марки в Україні залежить від конкретного сорту та обсягу пляшки:</p>
+                <ul>
+                    <li>«Поважна» 0.5 л — від 149 ₴;</li>
+                    <li>«Верховна» 0.5 л — від 119 ₴;</li>
+                    <li>«Знатна» 0.7 л — від 220 ₴;</li>
+                    <li>Grand 0.7 л — від 1059 ₴.</li>
+                </ul>
+                <p>Загалом, ціни на горілку «Перша Гільдія» варіюються від 120 до 1100 ₴ за пляшку 0.5–0.7 л, що дає змогу вибрати оптимальний варіант для конкретного випадку та приводу.</p>
+                <h2>Чому вигідно купити горілку «Перша Гільдія» в MAUDAU</h2>
+                <p>Інтернет-магазин елітного алкоголю MAUDAU — надійний партнер, де можна купити горілку «Перша Гільдія» за вигідною ціною. Переваги покупки в MAUDAU:</p>
+                <ul>
+                    <li>великий асортимент — в наявності всі основні сорти горілки «Перша Гільдія» в різних обсягах;</li>
+                    <li>безплатне доставлення при замовленні від 2000 ₴ — економія часу і грошей;</li>
+                    <li>регулярні акції та спеціальні пропозиції на алкогольні напої;</li>
+                    <li>акуратне надійне пакування, яке гарантує збереження товару під час транспортування;</li>
+                    <li>зручні способи оплати та оперативне опрацювання замовлень.</li>
+                </ul>
+                <p>
+                    MAUDAU дорожить своєю репутацією, тому співпрацює тільки з перевіреними виробниками елітного алкоголю. Купуючи горілку «Перша Гільдія» в інтернет-магазині, клієнт може бути впевнений в оригінальності та бездоганній якості продукту.
+                </p>
+                <p>
+                    Горілка «Гільдія» — чудовий вибір поціновувачів елітного міцного алкоголю. Висококласні українські напої цього бренду виготовляються за сучасними технологіями з найкращих інгредієнтів і вирізняються бездоганним смаком. А завдяки
+                    пропозиціям від інтернет-магазину MAUDAU кожен охочий може купити фірмовий преміальний міцний напій на вигідних умовах.
+                </p>
+            </div>
+            
+            
+            
+            
+
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Witch's brew" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/witches-brew.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Witch's brew</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Цукрова пудра</a></li><li>Заморожені змішані ягоди</li><li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li><a href="https://maudau.com.ua/product/liker-de-kuyper-raspberry-malyna-15-07-l">Малина лікер</a></li><li><a href="https://maudau.com.ua/product/liker-joseph-cartron-curacao-bleu-bliu-kiurasao-25-07-l">Блакитний кюрасао</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Лід</li><li>Їстівні блискітки</li><li>Коктейльні вишні</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Містичний коктейль із глибоким ягідним смаком, кисло-солодкими відтінками та загадковим мерехтінням їстівних блискіток. Яскравий баланс малинового лікеру, блакитного кюрасао та лимонного соку робить його освіжальним і насиченим, а заморожені ягоди надають приємної текстури.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Witch's brew</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 г цукрової пудри за бажанням</li><li>50 г заморожених змішаних ягід</li><li>200 мл горілки Перша Гільдія</li><li>100 мл малинового лікеру</li><li>50 мл блакитного кюрасао</li><li>100 мл лимонного соку</li><li>Лід до смаку</li><li>Їстівні блискітки для прикрашання</li><li>4 коктейльні вишні для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У блендер додайте 50 г заморожених змішаних ягід.</li><li>Влийте 200 мл горілки Перша Гільдія, 100 мл малинового лікеру, 50 мл блакитного кюрасао і 100 мл лимонного соку.</li><li>За бажання додайте 20 г цукрової пудри.</li><li>Збийте до однорідності.</li><li>Наповніть келих льодом і перелийте коктейль через сито.</li><li>Посипте їстівними блискітками, перемішайте барною ложкою.</li><li>Прикрасьте коктейльними вишнями на шпажці.</li><li>Подавайте в келиху із широкою трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Woo woo" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Woo-woo.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Woo woo</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li>Персиковий шнапс</li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li>Свіжий сік лайма</li><li>Лід</li><li>Лайм</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий фруктовий коктейль із ніжною солодкістю персикового шнапсу, освіжальною кислинкою журавлини та тонким лаймовим акцентом. Вирізняється гладкою текстурою і приємним балансом смаків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Woo woo</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл горілки Перша Гільдія</li><li>25 мл персикового шнапсу</li><li>100 мл журавлинного соку</li><li>Кілька крапель свіжого соку лайма</li><li>Лід до смаку</li><li>Скибочка лайма для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть келих льодом.</li><li>Влийте 50 мл горілки Перша Гільдія і 25 мл персикового шнапсу.</li><li>Додайте 100 мл журавлинного соку.</li><li>Вичавіть кілька крапель свіжого соку лайма.</li><li>Перемішайте барною ложкою.</li><li>Прикрасьте скибочкою лайма, розташувавши її на краю келиха.</li><li>Подавайте з трубочкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Гарібальді Граніта" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Haribaldi-Hranita.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Гарібальді Граніта</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=campari">Кампарі</a></li><li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li>Апельсин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яскравий, цитрусовий коктейль із насиченим смаком апельсина, гіркуватістю Кампарі та легким алкоголем. Граніта робить його освіжальним і незвичайним. Подається в олд-фешн келиху.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Гарібальді Граніта</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл апельсинового соку</li><li>60 мл Кампарі</li><li>30 мл горілки Перша Гільдія</li><li>Скибочка апельсина для прикрашання</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Влийте 120 мл апельсинового соку в контейнер і приберіть у морозильник.</li><li>Через 30 хвилин перемішайте виделкою, повторіть процес 3-4 рази, поки не отримаєте гранульовану текстуру.</li><li>У високий келих додайте 60 мл Кампарі та 30 мл горілки Перша Гільдія.</li><li>Наповніть келих апельсиновою гранітою.</li><li>Перемішайте барною ложкою.</li><li>Прикрасьте скибочкою апельсина.</li><li>Подавайте з ложечкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Імбирний пунш із горілкою" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Imbyrnyi-punsh-iz-horilkoiu.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Імбирний пунш із горілкою</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/product/hazovanyi-orhanichnyi-napii-naturfrisk-ginger-ale-025-l">Імбирний ель</a></li><li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li><a href="https://maudau.com.ua/category/solodka-voda">Содова вода</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий ігристий коктейль із пряними імбирними нотами, тропічною солодкістю ананаса і м'якою газованою структурою. Чудовий варіант для великої компанії.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Імбирний пунш із горілкою</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 склянки ананасового соку</li><li>1 1/4 л імбирного елю</li><li>1/2 склянки горілки Перша Гільдія</li><li>1 склянка содової води</li><li>Лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У великий пунш-бол додайте лід.</li><li>Влийте 2 склянки ананасового соку і 1/2 склянки горілки Перша Гільдія.</li><li>Додайте 1 1/4 л імбирного елю.</li><li>Влийте 1 склянку содової води.</li><li>Перемішайте великою пуншевою ложкою.</li><li>Розлийте в келихи, наповнюючи льодом.</li><li>Подавайте зі скибочкою ананаса на бортику.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Яблучний шот" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yabluchnyi-shot.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Яблучний шот</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=yabloko">Яблучний сік</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Кориця</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пряний і насичений мінікоктейль з яблучними нотами і тонким акцентом кориці. Ідеальний для вечірок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Яблучний шот</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>35 мл горілки Перша Гільдія</li><li>15 г яблучного соку</li><li>Кориця до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер льодом.</li><li>Додайте 35 мл горілки Перша Гільдія та 15 г яблучного соку.</li><li>Струшуйте 15 секунд.</li><li>Процідіть в охолоджений шот-бокал.</li><li>Посипте корицею.</li><li>Подавайте одразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Слава Україні! (Glory to Ukraine)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Glory-to-Ukraine.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Слава Україні! (Glory to Ukraine)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=yaiechnyi-2">Яєчний лікер</a></li><li><a href="https://maudau.com.ua/product/liker-joseph-cartron-curacao-bleu-bliu-kiurasao-25-07-l">Блю Кюрасао</a></li><li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Цей ефектний тришаровий шот вражає не тільки зовнішнім виглядом, а й смаком. Подається охолодженим та ідеально підходить для урочистих патріотичних свят.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Слава Україні! (Glory to Ukraine)</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл яєчного лікеру</li><li>15 мл Блю Кюрасао</li><li>15 мл горілки Перша Гільдія</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шот-бокал влийте 30 мл яєчного лікеру.</li><li>Повільно налийте 15 мл Блю Кюрасао по зворотному боці барної ложки.</li><li>Додайте 15 мл горілки Перша Гільдія тим самим способом.</li><li>Подавайте в охолодженому вигляді.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Козацький коктейль (Cossack cocktail)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cossack-cocktail.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Козацький коктейль (Cossack cocktail)</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li>Сироп GOMME</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Міцний і насичений коктейль із глибоким, багатошаровим смаком, у якому м'якість коньяку гармонійно поєднується з чистим, прозорим характером горілки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Козацький коктейль (Cossack cocktail)</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл горілки Перша Гільдія</li><li>15 мл коньяку</li><li>15 мл лаймового соку</li><li>1 ч. л. сиропу GOMME</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть шейкер льодом.</li><li>Додайте 15 мл горілки Перша Гільдія, 15 мл коньяку і 15 мл лаймового соку.</li><li>Влийте 1 ч. л. сиропу GOMME.</li><li>Струшуйте 20 секунд.</li><li>Процідіть в охолоджений коктейльний келих.</li><li>Подавайте без льоду.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шот Червоний каблук" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Chervonyi-kabluk.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шот "Червоний каблук"</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/sousy/product_brand=tabasco">Соус Tabasco</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яскравий і зухвалий шот, що вражає своєю вогненною пікантністю та насиченими томатними нотами. Цей коктейль ідеально підходить любителям гострих, виразних напоїв і стане справжнім викликом навіть для досвідчених дегустаторів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шот "Червоний каблук"</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 мл горілки Перша Гільдія</li><li>30 мл томатного соку</li><li>Соус Tabasco до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкер налийте 20 мл горілки Перша Гільдія та 30 мл томатного соку.</li><li>Додайте соус TABASCO до смаку.</li><li>Струсіть 10 секунд.</li><li>Перелийте в шот-бокал.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Шот Огірок" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ohirok.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Шот "Огірок"</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свіжі огірки</li><li><a href="https://maudau.com.ua/category/med">Мед</a></li><li>Лимон</li><li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li>Мʼята</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Легкий, освіжальний і надзвичайно м'який шот із чистим смаком свіжого огірка і тонкими трав'яними відтінками м'яти. Цей коктейль ідеальний для літнього вечора, коли хочеться чогось легкого, підбадьорливого, але при цьому незвичайного.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Шот "Огірок"</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>2 шт. свіжих огірків</li><li>1 ч. л. рідкого меду</li><li>1/2 шт. лимона</li><li>50–100 мл горілки Перша Гільдія</li><li>Кілька листочків м'яти або меліси</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Очистіть і наріжте 2 свіжих огірки.</li><li>Додайте в шейкер разом з 1 ч. л. рідкого меду.</li><li>Вичавіть сік із половини лимона.</li><li>Розімніть мадлером до однорідності.</li><li>Влийте 50–100 мл горілки Перша Гільдія.</li><li>Додайте лід і струшуйте 15 секунд.</li><li>Процідіть в охолоджений шот-бокал.</li><li>Прикрасьте листочком м'яти.</li><li>Подавайте одразу.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кейп Кодер" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cape-Codder.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кейп Кодер</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/horilka/product_brand=persha-gil-dija">Горілка Перша Гільдія</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li>Журавлина</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кисло-солодкий коктейль з яскравим насиченим ягідним смаком. Названий на честь півострова Кейп-Код, де розташовані великі журавлинні поля. Гарний та ефектний через додавання червоного ягідного соку.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Кейп Кодер</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл горілки Перша Гільдія</li><li>150 мл журавлинного соку</li><li>5 г журавлини</li><li>180 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть склянку-хайбол кубиками льоду до верхнього краю.</li><li>Покладіть на дно склянки 1 коктейльну ложку журавлини.</li><li>Налийте 50 мл горілки та зверху 150 мл журавлинного соку.</li><li>Акуратно розмішайте напій коктейльною ложкою.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Харчові волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,953 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>Водка «Рада» (Rada) — премиальный украинский алкоголь, изготавливаемый в лучших национальных традициях. Это авторский продукт, созданный по эксклюзивной рецептуре из отборных ингредиентов.</p>
+                <p>
+                    Кристально чистая, с мягким классическим вкусом, Rada стала воплощением высочайшего качества. Уникальная 11-кратная система фильтрации с использованием березового и кокосового угля, а также кварца, обеспечивает безупречность
+                    напитка.
+                </p>
+                <h2>История бренда «Рада»</h2>
+                <p>Торговая марка «Рада» принадлежит украинской компании «Алкогольные Традиции» — признанному лидеру по производству элитных крепких спиртных напитков в стране. Основной завод расположен в Черкасской области.</p>
+                <p>Rada быстро стала популярной не только в Украине и Европе, но и в США. Подтверждением ее высочайшего качества служат престижные награды:</p>
+                <ul>
+                    <li>серебряная медаль за pure luxury стиль на конкурсе Института тестирования напитков в Чикаго;</li>
+                    <li>золотая медаль на выставке «Продэкспо-2011».</li>
+                </ul>
+                <p>Водка «Рада» экспортируется в более чем 27 стран мира, а география поставок постоянно расширяется.</p>
+                <h2>Виды водки «Рада»</h2>
+                <p>Линейка представлена тремя разновидностями:</p>
+                <ul>
+                    <li>Rada Классик — традиционная рецептура, тонкий аромат с нотками хлеба и трав;</li>
+                    <li>Rada Особая — с добавлением настоек злаков для неповторимого вкуса;</li>
+                    <li>Rada Респект — оригинальный купаж с настойками укропа, куркумы и липы.</li>
+                </ul>
+                <p>Каждый вид отличается уникальным характером, но неизменно радует безупречным качеством и чистотой.</p>
+                <h2>Как и с чем пить водку «Рада»</h2>
+                <p>Водка «Рада» премиум идеальна в чистом виде, охлажденная до 10–15 °C. Ее также можно использовать как основу для коктейлей. Она отлично сочетается с традиционными украинскими закусками:</p>
+                <ul>
+                    <li>соленьями и маринадами — кислинка и острота огурцов, помидоров, грибов и капусты идеально сбалансирует вкус водки, подчеркнет ее мягкость и чистоту;</li>
+                    <li>салом, колбасами, мясными деликатесами — насыщенность домашней солонины, ароматной буженины или балыка становится прекрасным фоном для раскрытия классического характера Rada;</li>
+                    <li>блюдами из рыбы — селедка, лосось, икра, особенно с луком и специями, дарит необычайно изысканное сочетание с премиальной водкой;</li>
+                    <li>салатами и гарнирами — свежие или запеченные овощи добавляют легкости и яркости, позволяя в полной мере насладиться вкусом благородного напитка, а также помогают избежать быстрого опьянения.</li>
+                </ul>
+                <p>
+                    Благодаря своему мягкому, чистому профилю с едва уловимыми хлебными и травяными нотками, водка «Рада» Классик составляет прекрасную пару самым разнообразным блюдам украинской кухни. Она одинаково хорошо подходит и для шумного
+                    застолья, и для камерного дружеского общения. С Rada любая трапеза превращается в истинное гастрономическое удовольствие, подарит приятные эмоции и яркие впечатления.
+                </p>
+                <h2>Цена водки «Рада» в Украине</h2>
+                <p>Стоимость водки «Рада» варьируется в зависимости от объема бутылки и конкретной торговой точки. В среднем цены составляют:</p>
+                <ul>
+                    <li>Rada Классик 0.7 л — от 224 ₴;</li>
+                    <li>Rada Особая 0.5 л — от 219 ₴;</li>
+                    <li>Rada Респект 0.7 л — от 219 ₴.</li>
+                </ul>
+                <p>При этом на алкоголь часто действуют акции и скидки. Это позволяет подобрать оптимальную по цене водку Rada.</p>
+                <h2>Преимущества покупки водки «Рада» в MAUDAU</h2>
+                <p>Интернет-магазин MAUDAU — надежная площадка, где можно купить водку «Рада», получив ряд преимуществ:</p>
+                <ul>
+                    <li>большой выбор объемов и видов алкоголя;</li>
+                    <li>регулярные акции и выгодные цены;</li>
+                    <li>удобная и безопасная отправка;</li>
+                    <li>бесплатная доставка при заказе от 2000 ₴;</li>
+                    <li>качественная защитная упаковка товара;</li>
+                    <li>оригинальная сертифицированная продукция.</li>
+                </ul>
+                <p>Заказывая в MAUDAU, клиенты получают любимый напиток по выгодной цене с доставкой до двери. Разнообразие вариантов позволяет выбрать идеальную по цене водку «Рада» для любого повода.</p>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Дабл рада" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Dabl-rada.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Дабл рада</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=kahlua">Ликер Kahlua</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Элегантный коктейль с глубоким вкусом кофейного ликера, свежестью лимонного сока и мягкостью водки. Гармоничное сочетание сладких и кисло-горьких нот делает его идеальным выбором для вечернего наслаждения.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Дабл рада</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки Rada</li><li>25 мл ликера Kahlua</li><li>25 мл лимонного сока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните шейкер льдом.</li><li>Добавьте водку, Kahlua и лимонный сок.</li><li>Тщательно взбейте до охлаждения.</li><li>Процедите в охлажденный олд-фэшн бокал.</li><li>Подавайте без льда, украсив лимонной цедрой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Яблочный мартини" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Apple-Martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Яблочный мартини</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li><a href="https://maudau.com.ua/ru/product/sik-svitanok-yabluchnyi-z-miakottiu-095-l">Яблочный сок с мякотью</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2">Кленовый сироп</a></li><li>Дробленый лед</li><li>Яблоко</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Изящный коктейль с насыщенным яблочным вкусом, легкой кислинкой лимона и тонкой сладостью кленового сиропа. Прекрасный выбор ценителей фруктовой свежести в бокале.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Яблочный мартини</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки Rada</li><li>50 мл яблочного сока с мякотью</li><li>1 ч. л. лимонного сока</li><li>1 ч. л. кленового сиропа</li><li>100 г дробленого льда</li><li>Долька яблока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заполните шейкер дробленым льдом.</li><li>Добавьте водку, яблочный сок, лимонный сок и кленовый сироп.</li><li>Интенсивно встряхивайте до полного охлаждения.</li><li>Процедите в охлажденный бокал мартини.</li><li>Украсьте долькой яблока, закрепив ее на краю бокала.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Red Bull водка" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/red-bull-vodka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Red Bull водка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li><a href="https://maudau.com.ua/ru/category/enerhetychni-napoi/product_brand=red-bull">Энергетик Red Bull</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Энергичный коктейль с выразительным вкусом водки и бодрящими нотами Red Bull. Идеальный выбор для вечеринок и динамичных ночей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Red Bull водка</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл водки Rada</li><li>120 мл энергетика Red Bull</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заполните хайболл льдом.</li><li>Влейте водку, затем аккуратно добавьте Red Bull.</li><li>Перемешайте барной ложкой.</li><li>Украсьте коктейльной вишней или долькой лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Соленая сливовая водка Коллинз" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Collins-Salted-Plum-Vodka.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Соленая сливовая водка Коллинз</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li>Соленая слива</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=sylnohazovana">Газированная вода</a></li><li>Лимон</li><li>Вишня Амарена</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Необычное сочетание водки, соленой сливы и свежего лимона с сахарной терпкостью. Легкий, освежающий коктейль с пикантными нюансами.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Соленая сливовая водка Коллинз</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл водки Rada</li><li>1 соленая слива, промытая</li><li>30 мл лимонного сока</li><li>3 кубика сахара</li><li>Газированная вода</li><li>Долька лимона и вишня Амарена для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Растолките соленую сливу с сахаром в хайболле.</li><li>Добавьте лимонный сок и водку, перемешайте.</li><li>Заполните бокал льдом, затем долейте газированную воду.</li><li>Аккуратно перемешайте барной ложкой.</li><li>Украсьте долькой лимона и вишней Амарена.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Аляска Кокодака" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Alaska-Coqodaq.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Аляска Кокодака</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/product/vermut-dolin-blanc-bilyi-solodkyi-16-075-l">Блан вермут</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li>Зеленый Шартрез</li><li>Ликер Midori</li><li>Мараскиновая вишня</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Изысканный коктейль с травяными и фруктовыми оттенками. Сложное сочетание джина, водки, вермута и ликеров делает его настоящим открытием для гурманов.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Аляска Кокодака</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл джина</li><li>22,5 мл блан вермута</li><li>15 мл водки Rada</li><li>7,5 мл зеленого Шартреза</li><li>7,5 мл ликера Midori</li><li>Мараскиновая вишня (для украшения)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заполните смесительный стакан льдом.</li><li>Добавьте джин, водку, блан вермут, зеленый Шартрез и Midori.</li><li>Перемешайте барной ложкой до равномерного охлаждения.</li><li>Процедите в охлажденный коктейльный бокал.</li><li>Украсьте мараскиновой вишней.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Salty Dog" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salty-Dog.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Salty Dog</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li><li>Лед</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Грейпфрут</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Классический коктейль с выразительной грейпфрутовой горчинкой и тонкой соленой ноткой, подчеркнутой обрамлением бокала.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Salty Dog</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл водки Rada</li><li>90 мл грейпфрутового сока</li><li>Лед по вкусу</li><li>Соль для обрамления края стакана</li><li>Долька грейпфрута для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Смажьте край хайболла лимоном, затем обмакните в соль.</li><li>Заполните бокал льдом.</li><li>Добавьте водку и грейпфрутовый сок.</li><li>Перемешайте барной ложкой.</li><li>Украсьте долькой грейпфрута, закрепив ее на краю бокала.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кровавая Мэри" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bloody-Mary-rd.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кровавая Мэри</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=tomat-6">Томатный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сельдерей</li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=tabasko">Табаско соус красный</a></li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=vustershyrskyi">Ворчестер соус</a></li><li>Сельдереевая соль</li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-melenyi-mriia-20-h-8058">Черный перец молотый</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий и пикантный коктейль Bloody Mary — это больше, чем водка с томатным соком. В состав входят специи, сельдерей и лимонный сок.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Кровавая Мэри</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки Rada</li><li>120 мл томатного сока</li><li>10 мл лимонного сока</li><li>15 г сельдерея</li><li>1 мл красного соуса Табаско</li><li>1 мл соуса Ворчестер</li><li>1 г сельдереевой соли</li><li>1 г молотого черного переца</li><li>380 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните хайбол доверху кубиками льда.</li><li>Налейте в шейкер 120 мл томатного сока, 10 мл лимонного сока и 50 мл водки.</li><li>Добавьте по 1 мл красного соуса Табаско и соуса Ворчестер.</li><li>Присыпьте напиток щепотками черного молотого перца и сельдереевой соли.</li><li>Наполните шейкер льдом, плотно закройте и несколько минут перекатывайте по вертикали.</li><li>Процедите коктейль через стрейнер в хайбол и украсьте сельдереем.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Отвертка" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Screwdriver-rd.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Отвертка</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Апельсин</li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Простейший коктейль Отвертка не теряет популярность. Все дело в освежающем цитрусовом вкусе, который приглушает крепость водки.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Отвертка</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки</li><li>150 мл апельсинового сока</li><li>30 г апельсина</li><li>180 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните бокал-коллинз кубиками льда до краев.</li><li>Налейте в бокал 50 мл охлажденной водки.</li><li>Долейте доверху 150 мл апельсинового сока и осторожно размешайте коктейльной ложечкой.</li><li>Украсьте напиток кружочком апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-17" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Кайпироска" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Caipiroska_rd.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Кайпироска</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=rada">Водка Rada</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Лайм</li><li>Дробленый лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Кайпироска считается народным коктейлем Южной Америки. Он очень простой — состоит из водки и лайма с сиропом. Имеет кисло-сладкие нотки и цитрусовое послевкусие с легкой горчинкой.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup17" class="overlay add-popup">
+                <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Кайпироска</h2>
+                    <a class="close add-id" href="#cocktail-item-17">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл водки Rada</li><li>20 мл сахарного сиропа</li><li>60 г лайма</li><li>150 г дробленого льда</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Положите в рокс-бокал два ломтика лайма и подавите мадлером.</li><li>Наполните рокс доверху дробленым льдом.</li><li>Налейте в бокал 20 мл сахарного сиропа и 50 мл водки.</li><li>Размешайте напиток высокой барной ложкой.</li><li>По желание досыпьте еще немного дробленого льда.</li><li>Добавьте в бокал дольку лайма.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

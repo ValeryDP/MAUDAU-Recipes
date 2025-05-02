@@ -1,0 +1,904 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Водка Ora — это уникальный продукт от известного французского коньячного дома A.E. Dor. Этот премиальный напиток создается из отборной пшеницы, выращенной в провинции Бургундия, и родниковой воды, прошедшей естественную очистку
+                    через легендарные локальные известняки.
+                </p>
+                <p>Спирт для водки Ora подвергается пятикратной дистилляции, благодаря чему напиток получается лишенным примесей почти на 100%. Результат — кристально чистый алкоголь с непревзойденно мягким вкусом и тонким изящным ароматом.</p>
+                <h2>История бренда Ora</h2>
+                <p>
+                    Все началось с Амадея Эдуарда Дора, который оставил работу в банке, чтобы основать свой коньячный дом. Это заняло у него более 20 лет. Будучи большим ценителем крепкого алкоголя, он хотел создать неповторимый напиток, опираясь на
+                    свой вкус, — и ему это удалось.
+                </p>
+                <p>
+                    Проявив дальновидность, в 1874 году, когда началась эпидемия филлоксеры, которая погубила почти все виноградники в регионе Шаранта, Амадей Эдуар Дор скупил выдержанные коньячные спирты. Со временем они приобрели огромную ценность, а
+                    миллезимы, датируемые 1805–1893 годами, до сих пор хранятся в погребах «Парадиз» (Рай) коньячного дома.
+                </p>
+                <p>Современный A.E. Dor входит в тройку лучших в мире, а у их коллекций нет аналогов. Но с некоторых пор компания приступила к выпуску неожиданного для себя продукта — премиальной водки Ora.</p>
+                <h2>Аромат и вкус водки Ora</h2>
+                <p>Водка «Ора» обладает тонким ароматом с нотами зерна, минералов и деликатными оттенками сухофруктов и специй. Вкус мягкий, без яркой спиртуозности, с легким пикантным послевкусием и тонами фруктов.</p>
+                <p>
+                    Секрет исключительного профиля водки Ora кроется в использовании высококачественного сырья и передовых технологий производства. Отборная французская пшеница и чистейшая родниковая вода в сочетании с многоступенчатой системой очистки
+                    и фильтрации позволяют получить по-настоящему уникальный продукт.
+                </p>
+                <p>За высокое качество и отменные вкусовые характеристики водка Ora Blue наградили золотой медалью и оценкой «Исключительная» на международной выставке «The International Review of Spirits» в 2005 году.</p>
+                <h2>Гастрономические сочетания</h2>
+                <p>Водка Ora идеальна в чистом виде, охлажденной. Также ее можно подавать с тоником и льдом или использовать в составе различных коктейлей. Этот премиальный напиток становится украшением любого стола и дополнит изысканные блюда.</p>
+                <h2>Стоимость водки Ora в Украине</h2>
+                <p>Цена на водку «Ора» в Украине варьируется в зависимости от объема бутылки. В среднем стоимость составляет:</p>
+                <ul>
+                    <li>Ora Blue, 0.05 л — от 205 ₴;</li>
+                    <li>Ora Blue, 0.7 л — от 1320 ₴.</li>
+                </ul>
+                <p>
+                    Несмотря на премиальный статус, цена водки Ora остается доступной для ценителей высококачественного алкоголя. Учитывая уникальные характеристики напитка и его богатую историю, можно с уверенностью сказать, что водка «Ора» стоит
+                    своих денег.
+                </p>
+                <h2>Почему выгодно купить водку Ora в MAUDAU</h2>
+                <p>MAUDAU — один из ведущих алкогольных интернет-магазинов Украины, где можно купить водку Ora на выгодных условиях:</p>
+                <ul>
+                    <li>по-настоящему большой ассортимент элитных напитков, включая редкие позиции;</li>
+                    <li>бесплатная доставка при заказе от определенной суммы;</li>
+                    <li>регулярные акции и спецпредложения на премиальные напитки;</li>
+                    <li>надежная и аккуратная упаковка, которая гарантирует сохранность товара при транспортировке.</li>
+                </ul>
+                <p>
+                    Купить водку Ora в интернет-магазине MAUDAU — значит получить оригинальный продукт высочайшего качества с максимальным комфортом и по привлекательной цене. Премиальный французский напиток с богатой историей станет настоящей
+                    жемчужиной любой коллекции.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-1" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="White chocolate martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/White-chocolate-martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">White chocolate martini</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/shokolad/vyd_shokoladu=bilyi-8">Белый шоколад</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2">Кленовый сироп</a></li><li>Крем де какао</li><li><a href="https://maudau.com.ua/ru/category/vershky">Сливки</a></li><li>Паста из ванильных стручков</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Насыщенный, бархатистый коктейль с выразительным вкусом белого шоколада, мягкой сладостью кленового сиропа и нежной ванильной глубиной. Легкие сливочные оттенки сочетаются с мягкой крепостью водки, создавая сбалансированный, гладкий профиль.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup1" class="overlay add-popup">
+                <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить White chocolate martini</h2>
+                    <a class="close add-id" href="#cocktail-item-1">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>20 г крупно натертого белого шоколада</li><li>1 ч. л. кленового сиропа</li><li>25 мл крема де какао</li><li>25 мл жирных сливок</li><li>1/4 ч. л. пасты из ванильных стручков</li><li>50 мл водки Ora</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Выложите 20 г крупно натертого белого шоколада на плоскую тарелку.</li><li>Смажьте край бокала для мартини 1 ч. л. кленового сиропа и обмакните в шоколадную стружку.</li><li>Наполните шейкер льдом.</li><li>Добавьте 50 мл водки Ora, 25 мл крема де какао, 25 мл жирных сливок и 1/4 ч. л. пасты из ванильных стручков.</li><li>Встряхивайте 15 секунд, используя энергичную технику «хард-шейк».</li><li>Перелейте через стрейнер в подготовленный бокал.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-3" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Amaretto espresso martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Amaretto-espresso-martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Amaretto espresso martini</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Свежесваренный эспрессо</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=amareto-3">Амаретто</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li>Лед</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Гармоничное сочетание крепкого эспрессо, миндального амаретто и нежной сладости меда создает коктейль с многогранной глубиной вкуса. Идеальный выбор ценителей кофейных коктейлей.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay add-popup">
+                <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Amaretto espresso martini</h2>
+                    <a class="close add-id" href="#cocktail-item-3">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>50 мл свежесваренного эспрессо</li><li>100 мл водки Ora</li><li>50 мл амаретто</li><li>1 ст. л. жидкого меда</li><li>Лед по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заварите 50 мл свежего эспрессо и остудите его до комнатной температуры.</li><li>Наполните шейкер кубиками льда.</li><li>Добавьте 100 мл водки Ora, 50 мл амаретто и 1 ст. л. жидкого меда.</li><li>Влейте охлажденный эспрессо.</li><li>Встряхивайте 20 секунд, используя технику «сухого шейка» для создания гладкой текстуры.</li><li>Процедите через двойной стрейнер в охлажденный коктейльный бокал.</li><li>Украсьте кофейными зернами, уложенными в центре пены.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-5" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Grown-up limeade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Grown-up-limeade.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Grown-up limeade</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Лайм</li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda">Содовая вода</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Яркий цитрусовый коктейль с освежающей кислинкой лаймов и легкой сладостью сахарной пудры. Содовая вода придает напитку игристость, а водка делает вкус насыщенным и выразительным.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup5" class="overlay add-popup">
+                <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Grown-up limeade</h2>
+                    <a class="close add-id" href="#cocktail-item-5">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>12 лаймов (10 грубо нарезаны, 2 нарезаны ломтиками)</li><li>200 г сахарной пудры</li><li>1 л бутылка содовой воды</li><li>Водка Ora по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В стакан добавьте 10 грубо нарезанных лаймов.</li><li>Засыпьте 200 г сахарной пудры.</li><li>Разомните мадлером, пока лаймы не выпустят сок.</li><li>Наполните стакан льдом до краев.</li><li>Влейте водку Ora по вкусу.</li><li>Добавьте 1 л содовой воды.</li><li>Перемешайте барной ложкой.</li><li>Украсьте двумя ломтиками лайма.</li><li>Подавайте с трубочкой в высоком бокале.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-7" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Валентино" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/valentino.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Валентино</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=campari">Кампари</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=solodkyi-sweet">Сладкий вермут</a></li><li>Апельсиновый твист</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль с выразительными горько-сладкими нотами Кампари, глубиной вермута и мягкой крепостью водки. Яркий аромат апельсиновой цедры завершает композицию. Подается в бокале Nick & Nora.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup7" class="overlay add-popup">
+                <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Валентино</h2>
+                    <a class="close add-id" href="#cocktail-item-7">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл водки Ora</li><li>15 мл Кампари</li><li>15 мл сладкого вермута</li><li>Апельсиновый твист для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните меш-стакан кубиками льда.</li><li>Добавьте 60 мл водки Ora, 15 мл Кампари и 15 мл сладкого вермута.</li><li>Размешивайте барной ложкой 30 секунд, охлаждая напиток.</li><li>Процедите через стрейнер в предварительно охлажденный бокал.</li><li>Украсьте апельсиновым твистом, предварительно слегка отжав цедру над поверхностью.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-9" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Макадамия Чи Чи" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Makadamyia-Chy-Chy.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Макадамия Чи Чи</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=horikh-makadamiia">Ликер макадамии</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13">Ананасовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/vershky/osnova_16=kokos-16">Кокосовые сливки</a></li><li>Лед</li><li>Зонтик для украшения</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Экзотический тропический коктейль с насыщенным вкусом макадамии, сладостью ананаса и бархатистой текстурой кокосовых сливок. Подается в харрикейне с зонтиком.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup9" class="overlay add-popup">
+                <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Макадамия Чи Чи</h2>
+                    <a class="close add-id" href="#cocktail-item-9">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>120 мл водки Ora</li><li>75 мл ликера макадамии</li><li>240 мл ананасового сока</li><li>60 мл кокосовых сливок</li><li>2 стакана льда</li><li>Зонтик для украшения</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наполните блендер 2 стаканами льда.</li><li>Добавьте 120 мл водки Ora, 75 мл ликера макадамии, 240 мл ананасового сока и 60 мл кокосовых сливок.</li><li>Взбейте до получения однородной густой текстуры.</li><li>Перелейте в охлажденный харрикейн.</li><li>Украсьте зонтиком и кусочком ананаса на бортике.</li><li>Подавайте с широкой трубочкой.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-11" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Dead Head" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Dead-Head.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Dead Head</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/sousy/vyd_119=vustershyrskyi">Вустерширский соус</a></li><li><a href="https://maudau.com.ua/ru/category/sousy/product_brand=tabasco">Соус TABASCO</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chornyi-prypravka-exclusprofessional-melenyi-100-h">Молотый черный перец</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/product/perets-chervonyi-mriia-melenyi-20-h">Молотый красный перец</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Пикантный коктейль с легкой солоноватой ноткой и согревающим послевкусием. В нем сочетаются кислинка лимонного сока, острота перца и глубокий вкус вустерширского соуса.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup11" class="overlay add-popup">
+                <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Dead Head</h2>
+                    <a class="close add-id" href="#cocktail-item-11">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>25 мл водки Ora</li><li>5 мл лимонного сока</li><li>3 г вустерширского соуса</li><li>2 мл соуса TABASCO</li><li>Молотый черный перец по вкусу</li><li>Соль по вкусу</li><li>Молотый красный перец по вкусу</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>В шейкер налейте 25 мл водки Ora.</li><li>Добавьте 5 мл лимонного сока, 3 г вустерширского соуса и 2 мл TABASCO.</li><li>Приправьте солью, молотым черным и красным перцем.</li><li>Добавьте лед и энергично встряхните.</li><li>Процедите через стрейнер в охлажденный шот-бокал.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-13" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Crème de la Crème" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Creme-de-la-Creme.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Crème de la Crème</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=karamel-8">Карамельный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/nastoianka-angostura-orange-bitter-28-01-l-725705">Оранж биттер</a></li><li>Яичный белок</li><li>Лимонная цедра</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Элегантный сливочный коктейль с бархатистой текстурой, тонкими цитрусовыми нотами и карамельной сладостью. Идеальный выбор любителей изысканных десертных напитков.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup13" class="overlay add-popup">
+                <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Crème de la Crème</h2>
+                    <a class="close add-id" href="#cocktail-item-13">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл водки Ora</li><li>25 мл лимонного сока</li><li>12 мл карамельного сиропа</li><li>2 мл оранж биттера</li><li>1 шт. яичного белка</li><li>Щепотка лимонной цедры</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Отделите белок 1 яйца и взбейте венчиком до легкой пены.</li><li>В шейкер добавьте 45 мл водки Ora, 25 мл лимонного сока, 12 мл карамельного сиропа и 2 мл оранж биттера.</li><li>Влейте подготовленный белок.</li><li>Встряхивайте 15 секунд без льда (техника «драй-шейк»).</li><li>Добавьте лед и встряхните повторно в течение 20 секунд.</li><li>Процедите через двойной стрейнер в охлажденный коктейльный бокал.</li><li>Украсьте щепоткой лимонной цедры.</li><li>Подавайте без трубочки.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-15" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Эспрессо мартини" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Espresso-martini.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Эспрессо мартини</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ora">Водка Ora</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кофейный ликер</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vanil-14">Ванильный сироп</a></li><li>Кофе эспрессо</li><li><a href="https://maudau.com.ua/ru/category/kava/typ_86=u-zernakh">Кофе в зернах</a></li><li>Лед в кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Оригинальный коктейль для кофеманов на базе водки. Крепкий алкоголь смягчается кофейным ликером. В итоге получается сладкий и пряный коктейль, красиво украшенный кофейными зернами.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup15" class="overlay add-popup">
+                <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Как приготовить Эспрессо мартини</h2>
+                    <a class="close add-id" href="#cocktail-item-15">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл водки Ora</li><li>15 мл кофейного ликера</li><li>5 мл ванильного сиропа</li><li>50 мл кофе эспрессо</li><li>4 г кофе в зернах</li><li>200 г льда в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготовление:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Заранее приготовьте и охладите кофе-эспрессо.</li><li>Налейте в шейкер 50 мл холодного эспрессо, 5 мл ванильного сиропа и 15 мл кофейного ликера.</li><li>Добавьте в состав 30 мл водки.</li><li>Наполните шейкер 200 г льда в кубиках и взбейте.</li><li>Перелейте через барное сито в охлажденный коктейльный бокал.</li><li>Украсьте напиток кофейными зернами.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">235 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.4 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Пищевые волокна</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вода</div>
+                <div class="nutrion-facts-row__value">66.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

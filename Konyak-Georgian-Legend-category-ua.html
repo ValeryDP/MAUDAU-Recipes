@@ -1,0 +1,978 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Коньяк Georgian Legend — міцний спиртний напій, вироблений на потужностях відомої виноробної компанії SHABO з України. Попри назву, насправді — це бренді. Найменування «коньяк» зарезервовано виключно для напоїв на основі тихих білих
+                    вин з однойменного міста у Франції. З огляду на схожість методів виготовлення та вподобання покупців, бренд використовує найменування для просування продукції, але тільки на внутрішньому ринку.
+                </p>
+                <h3>«Легенди Грузії»: що особливого в коньяку</h3>
+                <p>Процес виробництва повторює класичну французьку технологію, але з деякими відмінностями, що відповідають місцевому теруару. Конкретніше про найважливіші моменти:</p>
+                <ol>
+                    <li>Склад. Для виготовлення використовують суміш світлошкірих ягід. Акцент — на міжнародних сортах винограду, але також додають автохтонні на кшталт «тельті-курук».</li>
+                    <li>Дистиляція. Georgian Legend — класичний коньяк, тому він проходить подвійну перегонку в мідних кубах.</li>
+                    <li>Витримка. Після дистиляції новий коньячний спирт поміщають у дубову бочку. Місткості зберігають у льохах неподалік від моря, що надає дистиляту глибини та складності.</li>
+                </ol>
+                <p>Що не менш важливо, команда Shabo забезпечує сувору перевірку на відповідність стандарту на кожному етапі виготовлення — від збору винограду до розливу. Це гарантує високу якість і збалансований смак.</p>
+                <h2>Види коньяків Georgian Legend</h2>
+                <p>Під торговою маркою випускають три напої різної витримки:</p>
+                <ol>
+                    <li>VS. Витриманий не менше трьох років, цей напій пропонує тонкий аромат з легким шлейфом червоних ягід. Смак — м’який і округлий, але з виразними акордами свіжих фруктів. Фініш — злегка пекучий.</li>
+                    <li>VSOP. Купаж на основі коньячних спиртів 5-річної витримки. Аромат насиченіший — з нотками сухофруктів, горіхів і меду. Кожен ковток дарує збалансований фруктовий смак.</li>
+                    <li>
+                        XO. Найвитриманіша версія Georgian Legend — коньяк, який провів у дубі не менше семи років. Аромат — складний і глибокий. У роті — переплетення нюансів темного шоколаду, карамелі та обпаленого дуба, що надає виразного димного
+                        посмаку.
+                    </li>
+                </ol>
+                <p>Перші два коньяки відносять до категорії ординарних. Останній — марочний. Кількість зірок на етикетці вказує на вік коньячних спиртів.</p>
+                <h2>Georgian Legend: як і з чим пити коньяк</h2>
+                <p>
+                    Незалежно від сорту, напій радять подавати за +18–20 °C у келихах-тюльпанах. Насолоджуватися виноградним бренді можна в чистому вигляді або з невеликим кубиком льоду, щоб пом’якшити інтенсивність алкоголю, особливо в молодих напоях.
+                    Поєднання з їжею залежить від виду:
+                </p>
+                <ul>
+                    <li>VS — темний шоколад, м’які сири, свіжі фрукти та ягоди;</li>
+                    <li>VSOP — сухофрукти, горіхи, сири середньої витримки;</li>
+                    <li>XO — десерти на основі вершків і шоколаду, копченості, м’ясо на грилі.</li>
+                </ul>
+                <p>До витриманого коньяку традиційно подають сигару. Дистилят також підходить для коктейлів на кшталт Sidecar і French Connection.</p>
+                <h2>Чому вигідно купити коньяк Georgian Legend в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожен товар гарантовано оригінальний, адже надходить на склад MAUDAU безпосередньо із заводу виробника, розташованого в Одеській області. Щоб швидше визначитися, звертайте увагу на відгуки від інших покупців. Вони надають цінну
+                    інформацію про смак і аромат. «Легенди Грузії» — коньяк за доступною вартістю. Ціна стає ще вигіднішою при замовленні за акцією. Доставлення здійснюють кур’єри в Києві, Дніпрі та Львові. Замовлення також можуть доставити популярні
+                    логістичні компанії — це особливо зручно для покупців із віддалених куточків України. Послуга безплатна при досягненні певної суми замовлення.
+                </p>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="cocktail-item-0" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Royal Manhattan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/royal-manhattan-gl.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Royal Manhattan</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=chervone">Червоний вермут</a></li><li>Біттер Angostura Aromatic</li><li><a href="https://maudau.com.ua/product/dobavka-fruktova-cherry-twig-kokteilna-vyshnia-315-h-859173">Коктейльна вишня</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Royal Manhattan — це вишуканий напій, у якому м'якість коньяку Georgian Legend гармонійно поєднується з червоним вермутом і пряними нотами біттеру Angostura. Лід надає освіжальної прохолоди, а коктейльна вишня завершує образ, додаючи фруктової солодкості. Прекрасний вибір для поціновувачів класики.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup0" class="overlay add-popup">
+                <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Royal Manhattan</h2>
+                    <a class="close add-id" href="#cocktail-item-0">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл коньяку Georgian Legend</li><li>30 мл червоного вермуту (солодкого)</li><li>Пара крапель біттеру Angostura Aromatic</li><li>1 коктейльна вишня для прикрашання</li><li>Кусковий лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть склянку для змішування кусковим льодом.</li><li>Влийте 60 мл коньяку Georgian Legend і 30 мл червоного вермуту.</li><li>Додайте пару крапель біттеру Angostura Aromatic.</li><li>Перемішайте барною ложкою до охолодження.</li><li>Процідіть через сито в коктейльний келих.</li><li>Прикрасьте напій червоною коктейльною вишнею.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-2" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Springtime in Cognac" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/summertime-in-cognac.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Springtime in Cognac</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Медовий сироп</a></li><li>Полуниця</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/kolir_vyna=rozheve">Ігристе рожеве вино</a></li><li>Лід</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Springtime in Cognac — це освіжальний коктейль, де шляхетний коньяк Georgian Legend відмінно доповнюється яскравістю лимонного соку, солодкістю медового сиропу і ягідним ароматом полуниці. Ігристе рожеве вино надає легкість і безтурботність, створюючи святковий настрій.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="overlay add-popup">
+                <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Springtime in Cognac</h2>
+                    <a class="close add-id" href="#cocktail-item-2">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл коньяку Georgian Legend</li><li>15 мл лимонного соку</li><li>15 мл медового сиропу</li><li>1 ягода полуниці для коктейлю</li><li>1 ягода полуниці для прикрашання</li><li>Ігристе рожеве вино для доливання</li><li>Кусковий лід до смаку</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкері розімніть одну ягоду полуниці та влийте 45 мл коньяку.</li><li>Додайте по 15 мл лимонного соку та медового сиропу.</li><li>Наповніть шейкер льодом і енергійно струсіть.</li><li>Процідіть в охолоджений келих для шампанського або винний келих.</li><li>Долийте ігристе рожеве вино до смаку.</li><li>Прикрасьте коктейль яскравою полуницею</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-4" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Toddy" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/toddy-gl.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Toddy</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/category/med">Мед</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Toddy — зігрівальний напій міцністю до 10 градусів, чудово підходить для холодних вечорів. Коньяк Georgian Legend змішується з гарячою водою і медом, створюючи затишний коктейль із простими запашними нотками. Його теплота і м'який смак дарують розслаблення і комфорт у холодну пору року.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup4" class="overlay add-popup">
+                <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Toddy</h2>
+                    <a class="close add-id" href="#cocktail-item-4">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>60 мл коньяку Georgian Legend</li><li>120 мл гарячої води</li><li>2 ч. л. меду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У кухоль або термостійкий келих налийте 120 мл гарячої води.</li><li>Додайте 2 ч. л. меду і розмішайте до повного розчинення.</li><li>Влийте 60 мл коньяку Georgian Legend.</li><li>Акуратно перемішайте коктейль барною ложкою.</li><li>За бажанням прикрасьте келих скибочкою лимона або паличкою кориці.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-6" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Альба" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Alba.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Альба</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li>Малина</li><li>Апельсин</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Коктейль Альба ідеально підходить для створення літнього настрою на святкових заходах. У цьому яскравому напої апельсиновий сік гармонійно зливається з витриманим коньяком Georgian Legend. Акценти малини надають невагому ягідну солодкість, а скибочка апельсина додає цитрусової свіжості.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup6" class="overlay add-popup">
+                <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Альба</h2>
+                    <a class="close add-id" href="#cocktail-item-6">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>30 мл апельсинового соку</li><li>30 мл коньяку Georgian Legend</li><li>1 ст. л. малини</li><li>1 скибочка апельсина</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У шейкері змішайте по 30 мл апельсинового соку і коньяку Georgian Legend.</li><li>Потім додайте 1 ст. л. малини.</li><li>Насипте лід і ретельно струсіть шейкер.</li><li>Процідіть суміш в охолоджений келих.</li><li>Прикрасьте коктейль скибочкою апельсина.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-8" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Біла насолода" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/White-pleasure.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Біла насолода</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li>Вершкове морозиво</li><li>Банан</li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/category/moloko">Молоко</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            У кремовому коктейлі «Біла насолода» ніжне морозиво з'єднується з солодкістю бананового пюре, а коньяк Georgian Legend додає міцності та глибини відтінків. Молоко надає напою оксамитової м'якості, яка сподобається любителям вершкових смаків.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup8" class="overlay add-popup">
+                <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Біла насолода</h2>
+                    <a class="close add-id" href="#cocktail-item-8">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>250 г вершкового морозива</li><li>1 банан (бананове пюре)</li><li>30 мл коньяку Georgian Legend</li><li>150 мл молока</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Розімніть виделкою один стиглий солодкий банан.</li><li>Помістіть у блендер 250 г вершкового морозива і бананове пюре.</li><li>Влийте 150 мл молока і змішайте до отримання однорідної маси.</li><li>Додайте 30 мл коньяку і знову ретельно збийте.</li><li>Перед подачею перелийте коктейль у високий келих.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-10" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Медовий місяць" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Honey-month.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Медовий місяць</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/category/vyno/kolir_vyna=bile">Біле вино</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Куантро</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Медовий місяць — це елегантний збалансований коктейль, у якому коньяк Georgian Legend комбінується з солодким смаком лікеру Куантро і терпкістю білого вина. Легкий і витончений, він стане чудовим вибором для особливих випадків і романтичних вечорів.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup10" class="overlay add-popup">
+                <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Медовий місяць</h2>
+                    <a class="close add-id" href="#cocktail-item-10">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл коньяку Georgian Legend</li><li>10 мл білого вина (сухого)</li><li>10 мл лікеру Куантро</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 40 мл коньяку Georgian Legend.</li><li>Потім влийте по 10 мл білого сухого вина і лікеру Куантро.</li><li>Додайте лід і гарненько змішайте всі компоненти.</li><li>Процідіть напій в охолоджений келих для коктейлів.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-12" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="MGM Grand" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/MGM-Grand.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">MGM Grand</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/ru/product/lyker-luxardo-maraschino-32-07-l">Ликер Luxardo Maraschino</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сахарный сироп</li><li>Апельсиновый биттер Angostura</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            MGM Grand — стильний коктейль з унікальною комбінацією коньяку Georgian Legend і лікеру Luxardo Maraschino. Лимонний сік і цукровий сироп надають збалансованої солодкості, а апельсиновий біттер додає яскравих цитрусових відтінків. Прекрасний варіант для дружньої вечірки або романтичної вечері.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup12" class="overlay add-popup">
+                <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати MGM Grand</h2>
+                    <a class="close add-id" href="#cocktail-item-12">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл коньяку Georgian Legend</li><li>15 мл лікеру Luxardo Maraschino</li><li>20 мл лимонного соку</li><li>10 мл цукрового сиропу (2:1)</li><li>0.9 мл апельсинового біттеру Angostura</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Змішайте в шейкері 45 мл коньяку Georgian Legend і 15 мл лікеру Luxardo Maraschino.</li><li>Додайте 20 мл лимонного соку і 10 мл цукрового сиропу.</li><li>Насипте лід і енергійно струсіть.</li><li>Процідіть напій через сито-стрейнер в охолоджений келих для коктейлів.</li><li>Долийте 0.9 мл апельсинового біттеру Angostura.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-14" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Bombay No. 2" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bombay-No2.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Bombay No. 2</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li><li><a href="https://maudau.com.ua/product/vermut-martini-rosso-chervonyi-solodkyi-15-1-l-17768">Солодкий вермут Россо</a></li><li><a href="https://maudau.com.ua/product/liker-joseph-cartron-curacao-orange-kiurasao-oranzh-35-07-l">Лікер Оранж Кюрасао</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Bombay No. 2 — це складний глибокий коктейль, в якому коньяк Georgian Legend з'єднується з дуетом сухого і солодкого вермутів, створюючи збагачений букет. Лікер Оранж Кюрасао додає цитрусової нотки, а абсент надає напою загадковості та елегантності.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup14" class="overlay add-popup">
+                <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Bombay No. 2</h2>
+                    <a class="close add-id" href="#cocktail-item-14">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>45 мл коньяку Georgian Legend</li><li>22.5 мл сухого вермуту</li><li>22.5 мл солодкого вермуту Россо</li><li>2.5 мл лікеру Оранж Кюрасао</li><li>1.25 мл абсенту (можна виключити)</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Налийте в шейкер 45 мл коньяку і по 22.5 мл сухого і солодкого вермутів.</li><li>Додайте 2.5 мл лікеру Оранж Кюрасао і 1.25 мл абсенту.</li><li>Додайте лід і гарненько струсіть усі компоненти.</li><li>Процідіть коктейль через сито-стрейнер в охолоджений келих.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-16" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Cognac Summit" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cognac-Summit-gl.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Cognac Summit</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li>Імбир</li><li>Лайм</li><li>Огірок</li><li>Лимонад</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Cognac Summit — новомодний коктейль на базі традиційного коньяку. Свіжість лайма і пряність імбиру балансують міцність алкоголю, створюючи гармонійний і оригінальний смак. Напій простий у приготуванні та добре освіжає в спекотну погоду.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup16" class="overlay add-popup">
+                <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Cognac Summit</h2>
+                    <a class="close add-id" href="#cocktail-item-16">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>40 мл коньяку</li><li>4 скибочки імбиру</li><li>цедра 1 лайма</li><li>1 спіраль огірка</li><li>60 мл лимонаду</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>У келиху розімніть мадлером 4 скибочки імбиру і цедру лайма, щоб розкрити аромати.</li><li>Додайте 40 мл коньяку і перемішайте високою коктейльною ложкою.</li><li>Наповніть келих льодом і влийте 60 мл лимонаду.</li><li>Ще раз розмішайте коктейль і прикрасьте спіраллю огірка.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div id="cocktail-item-18" class="anchor-wrapper add-id">
+                <div class="cocktail-card">
+                    <div class="cocktail-card__img">
+                        <img class="add-photo" alt="Сазерак" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/sazerac-gl.webp">
+                    </div>
+                    <div class="cocktail-card__description">
+                        <h2 class="cocktale-name add-name">Сазерак</h2>
+                        <ul class="description-ingredients add-ingr-new">
+                            <li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_brand=georgian-legend">Коньяк Georgian Legend</a></li><li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Бітер Ангостура</a></li><li><a href="https://maudau.com.ua/product/bitter-peychauds-bitters-35-0148-l">Бітер Пішо</a></li><li><a href="https://maudau.com.ua/category/voda/vyd_133=bez-hazu">Вода без газу</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor/format_vypusku=presovanyi">Цукор у кубиках</a></li><li>Лимонна цедра</li><li>Лід у кубиках</li>
+                        </ul>
+                        <div class="description-text a add-descr">
+                            Сазерак — міцний трав'яний коктейль на бурбоні та коньяку. Є офіційним коктейлем штату Луїзіана, оскільки з'явився саме там.
+                        </div>
+                        <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup18" class="overlay add-popup">
+                <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+                <div class="popup">
+                    <h2 class="popup-cocktail-header add-how-text">Як приготувати Сазерак</h2>
+                    <a class="close add-id" href="#cocktail-item-18">&times;</a>
+                    <div class="popup-cocktail-content">
+                        <ul class="add-ingr-second">
+                            <li>15 мл абсенту</li><li>45 мл коньяку Georgian Legend</li><li>30 мл бурбону</li><li>3 мл бітеру Ангостура</li><li>3 мл бітеру Пішо</li><li>10 мл води без газу</li><li>5 г цукру в кубиках</li><li>Лимонна цедра</li><li>420 г льоду в кубиках</li>
+                        </ul>
+                        <p>
+                            <span class="cocktail-accent add-prepare">Приготування:</span>
+                        </p>
+                        <ol class="add-how-make">
+                            <li>Наповніть рокс до країв кубиками льоду.</li><li>Налийте в нього воду без газу та 15 мл абсенту. Відставте його убік.</li><li>Покладіть у склянку для змішування кубик цукру.</li><li>Накапайте на цукор 3 мл бітеру Ангостура та 3 мл бітеру Пішо. Почавіть мадлером.</li><li>Додайте в склянку 45 мл коньяку та 30 мл бурбону.</li><li>Наповніть склянку льодом і розмішуйте барною ложкою до розчинення цукру.</li><li>Вилийте з роксу воду з абсентом і льодом.</li><li>Процідіть коктейль через стрейнер у келих і прикрасьте цедрою лимона.</li>
+                        </ol>
+                        
+                        <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">239 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">1.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

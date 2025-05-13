@@ -1,0 +1,969 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Несмотря на название, коньяк «Французский Бульвар» производят в Украине, но с применением традиционных французских методов перегонки и выдержки. По факту — это виноградный бренди. Название «коньяк» зарезервировано для продукции из
+                    Франции, но для внутреннего рынка украинская компания сохраняет наименование из-за наследия и признания потребителями.
+                </p>
+                <h2>Краткая история коньяка и торговой марки «Французский Бульвар»</h2>
+                <p>
+                    Корни восходят к 1857 году, когда бельгийский консул Виктор Энно и французский купец Франсуа Нуво возвели винный погреб в прибрежных катакомбах Одессы. Изначально улицу, где располагался подвал, называли Малофонтанской дорогой, но
+                    позже переименовали во «Французский Бульвар». Постепенно место превратилось в важный винодельческий центр под руководством князя Льва Голицына.
+                </p>
+                <p>
+                    В следующем веке предприятие пережило несколько потрясений — две войны, советскую индустриализацию и экономический кризис. Торговую марку «Французский бульвар» зарегистрировали в 1997 году. Сегодня бренди выпускают на мощностях ЧАО
+                    «Одессавинпром».
+                </p>
+                <h2>Как производят коньяк «Французский Бульвар»</h2>
+                <p>
+                    Технология — классическая. Первый этап — сбор и подготовка ягод. Для изготовления белых тихих вин предпочитают сорта «алиготе» и «ркацители». Дальше — двойная дистилляция в медных кубах в стиле Шаранты, выдержка в дубовых бочках,
+                    чтобы придать теплый шлейф ванили и специй, а после этого — купажирование и розлив.
+                </p>
+                <h3>Типичный вкус и аромат коньяков «Французский Бульвар»</h3>
+                <p>
+                    У бренди — элегантный и богатый букет. В носу — нежные цветочные ноты сочетаются с аккордами сухофруктов, карамели и обожженного дуба. Каждый глоток дарит бархатистую текстуру с нюансами меда, орехов, шоколада и пряностей в качестве
+                    завершающего штриха.
+                </p>
+                <h2>Разновидности бренди «Французский Бульвар»</h2>
+                <p>Компания предлагает три напитка:</p>
+                <ol>
+                    <li>VS. Молодой и мягкий, с выразительными нотками свежего винограда из-за непродолжительного срока созревания.</li>
+                    <li>VSOP. Цвет становится немного темнее. Оттенок подсказывает, что во рту дистиллят раскрывается более глубокими древесными тонами, а акцент со свежих ягод смещается в сторону сухофруктов.</li>
+                    <li>VVSOP. Отборный коньяк с ярким ароматом слив и жареных орехов. Дополняет впечатление глубокий вкус с тонкими цветочными нюансами.</li>
+                </ol>
+                <p>У каждого напитка — этикетка собственного цвета. Количество звезд указывает на возраст самого молодого спирта в составе.</p>
+                <h3>Коньяк «Французский Бульвар»: цена в Украине</h3>
+                <p>Стоимость — доступная, особенно при заказе по акции. Она зависит от выдержки и выбранного объема. Учитывайте, что купить полноразмерную бутылку выгоднее, особенно если уже знакомы с ассортиментом торговой марки.</p>
+                <h2>Как и с чем пить бренди «Французский Бульвар»</h2>
+                <p>
+                    Коньяк советуют подавать при +18–20 °C в бокала-тюльпанах. Если это пятизвездочный купаж, им лучше наслаждаться соло. Он хорошо сочетается с выдержанными сырами, темным шоколадом, орехами, сухофруктами, копченостями, красным мясом.
+                    Молодой напиток вроде VS станет хорошей коктейльной основой.
+                </p>
+                <h2>Почему выгодно купить коньяк «Французский Бульвар» в интернет-магазине MAUDAU</h2>
+                <p>
+                    В ассортименте — 100% оригинальная продукция. Высокие оценки от покупателей на странице некоторых товаров лишний раз подтверждают высокое качество напитков от украинского производителя, которые не уступают французским коньякам.
+                    Доставка возможна по всей территории Украины с помощью почтовых служб «Укрпочта» и «Новая почта». Во Львове, Днепре и Киеве работают курьеры, а также предусмотрен самовывоз из супермаркетов «Сільпо». Не забывайте о программе
+                    лояльности «Власний Рахунок» для дополнительной выгоды.
+                </p>
+            </div>
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Между простынями (Between the Sheets)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/between-the-sheets.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Между простынями (Between the Sheets)</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл Сек</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Between the Sheets — коктейль с выразительным вкусом, в котором белый ром, ароматный коньяк и ликер Трипл Сек комбинируются с яркой кислинкой лимона. Напиток легкий, но в то же время насыщенный, идеально подходящий как для дружеского вечера, так и для создания романтической атмосферы.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Между простынями (Between the Sheets)</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл белого рома</li><li>30 мл коньяка Французький Бульвар</li><li>30 мл Трипл Сек</li><li>20 мл лимонного сока</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте по 30 мл белого рома и коньяка «Французький Бульвар».</li><li>Добавьте 20 мл лимонного сока и 30 мл ликера Трипл Сек.</li><li>Заполните шейкер льдом, встряхивайте до охлаждения ингредиентов.</li><li>Процедите напиток через сито в коктейльный бокал.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Пьяная корица (Drunk cinnamon)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Drunk-cinnamon.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Пьяная корица (Drunk cinnamon)</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=yabloko">Яблочный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=karamel-8">Карамельный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/korytsia-banka-spetsii-palychky-55-h-915319">Корица в палочках</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Drunk cinnamon объединяет ароматный коньяк, яблочный сок и карамельный сироп, создавая мягкий и теплый вкус. Корица добавляет пикантную пряность, а лед придает свежесть. Отличный напиток с насыщенным и согревающим вкусом для уютных вечеров.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Пьяная корица (Drunk cinnamon)</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл коньяка Французький Бульвар</li><li>60 мл яблочного сока</li><li>10 мл карамельного сиропа</li><li>1-2 шт. корицы в палочках</li><li>Лед по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере 30 мл коньяка «Французький Бульвар» и 60 мл яблочного сока.</li><li>Следом добавьте 10 мл карамельного сиропа.</li><li>Насыпьте лед и хорошенько перемешайте все компоненты.</li><li>Процедите коктейль в бокал, предварительно наполнив его льдом.</li><li>Украсьте напиток цельными палочками корицы.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Гарвардский коктейль (Harvard Cocktail)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Harvard_Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Гарвардский коктейль (Harvard Cocktail)</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=solodkyi-sweet">Сладкий вермут</a></li><li>Биттер Angostura</li><li><a href="https://maudau.com.ua/ru/product/napii-schweppes-club-soda-b-alk-syl-haz-z-b">Клубная сода</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Гарвардский коктейль — это удачное сочетание крепкого коньяка, сладкого вермута и пряного биттера Angostura, разбавленных для свежести клубной содой. Напиток с богатым вкусом и легким послевкусием станет отличным фоном для интеллектуальных бесед и дружеских посиделок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Гарвардский коктейль (Harvard Cocktail)</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл коньяка Французький Бульвар</li><li>22 мл сладкого вермута</li><li>1.8 мл биттера Angostura</li><li>Клубная сода по вкусу</li><li>Кубики льда по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В стакане для смешивания соедините 45 мл коньяка и 22 мл сладкого вермута.</li><li>Добавьте 1.8 мл биттера Angostura.</li><li>Насыпьте лед в кубиках, перемешайте до охлаждения.</li><li>Отфильтруйте напиток в бокал через сито-стрейнер.</li><li>Долейте клубной соды по вкусу и аккуратно размешайте барной ложечкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Equinox" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Equinox.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Equinox</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=zhytnii-rye">Ржаной виски</a></li><li>Сироп демерара</li><li>Биттер Angostura</li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=campari">Кампари</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Equinox — насыщенный коктейль, в котором крепкий коньяк и ароматный ржаной виски органично смешиваются с биттером Angostura и сиропом демерара. Кампари в аэрозоле добавляет пряную горечь, гармонично дополняя этот эксклюзивный напиток.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Equinox</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл коньяка Французький Бульвар</li><li>30 мл ржаного виски</li><li>1 ч. л. сиропа демерара</li><li>3.6 мл биттера Angostura</li><li>Кампари (идеально в виде аэрозоля)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер по 30 мл коньяка и ржаного виски.</li><li>Добавьте 1 ч. л. сиропа демерара и 3.6 мл биттера Angostura.</li><li>Засыпьте лед и несколько раз встряхните шейкер.</li><li>Процедите полученную смесь в бокал через стрейнер.</li><li>Слегка распылите поверх коктейля Кампари, используя специальный пульверизатор.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Stay Insider" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Stay-Insider.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Stay Insider</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Красное вино Apothic Red</li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=korytsia-7">Коричный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht">Корица в палочках</a></li><li>Яблоки</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=badian-2">Бадьян</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Stay Insider — согревающий многослойный напиток на базе красного вина Apothic Red, коньяка и коричного сиропа. Подается в горячем виде, что делает его подходящим вариантом для холодных вечеров. Декор из яблок, бадьяна и мускатного ореха придает коктейлю неповторимый аромат.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Stay Insider</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл красного вина Apothic Red</li><li>30 мл коньяка Французький Бульвар</li><li>15 мл коричного сиропа</li><li>7.5 мл лимонного сока</li><li>90 мл горячей воды</li><li>Палочка корицы для украшения</li><li>Яблочные дольки для украшения</li><li>Бадьян для украшения</li><li>Мускатный орех для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в бокале 60 мл красного вина и 30 мл коньяка.</li><li>Добавьте 15 мл коричного сиропа и 7.5 мл лимонного сока.</li><li>Аккуратно введите 90 мл горячей воды и тщательно перемешайте.</li><li>Украсьте коктейль палочкой корицы, яблочными дольками, бадьяном, измельченным мускатным орехом.</li><li>Подавайте горячим, наслаждаясь согревающим вкусом!</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Dulce de Tequila" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Dulce-de-Tequila.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Dulce de Tequila</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/tekila/typ_4=reposado-reposado-2">Репосадо текила</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл Сек</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava">Сироп агавы</a></li><li>Лайм</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Dulce de Tequila — насыщенный коктейль с гармоничным союзом текилы, коньяка и Трипл Сека, дополненный цитрусовым соком и агавой. Сахарный ободок и лаймовая долька добавляют сладость и освежающий аромат, создавая феерию вкусов в каждом глотке.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Dulce de Tequila</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>Сахар для ободка бокала</li><li>60 мл текилы Репосадо</li><li>30 мл коньяка Французький Бульвар</li><li>30 мл Трипл Сека</li><li>15 мл лаймового сока</li><li>1 ст. л. нектара агавы</li><li>Лаймовая долька для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Обработайте ободок бокала соком лайма.</li><li>Затем обмакните его в сахар для создания сахарной каемки.</li><li>В шейкере смешайте 60 мл текилы Репосадо и 15 мл лаймового сока.</li><li>Добавьте по 30 мл коньяка и ликера, а также 1 ст. л. нектара агавы.</li><li>Насыпьте лед, смешайте компоненты и процедите коктейль в охлажденный бокал.</li><li>Украсьте готовый напиток лаймовой долькой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Jack-O’-Lantern" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/jack-o-lantern.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Jack-O’-Lantern</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li>Апельсиновый ликер на основе бренди</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Имбирный эль</a></li><li>Лайм</li><li>Апельсин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Jack-O’-Lantern — яркий напиток с коньячной основой, апельсиновым ликером и свежим цитрусовым соком, гармонично дополненный имбирным элем. Коктейль освежает и дарит приятное пряное послевкусие. Украшения из лаймовой цедры и апельсина завершают стильную композицию.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Jack-O’-Lantern</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл коньяка Французький Бульвар</li><li>15 мл апельсинового ликера на основе бренди</li><li>30 мл апельсинового сока</li><li>60–90 мл имбирного эля по вкусу</li><li>Лаймовая цедра для украшения</li><li>Кружок апельсина для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере 45 мл коньяка и 15 мл апельсинового ликера на основе бренди.</li><li>Долейте 30 мл апельсинового сока и насыпьте лед.</li><li>Энергично встряхните, чтобы хорошо смешать все компоненты.</li><li>Отфильтруйте смесь в бокал, затем аккуратно влейте 60–90 мл имбирного эля по вкусу.</li><li>Украсьте коктейль лаймовой цедрой и кружком апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Snow Honey" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Snow-Honey.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Snow Honey</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li>Мед клеверный</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=muskatnyi-horikh-2">Мускатный орех</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    The Snow Honey — согревающий уютный коктейль, который сочетает нежность молока, тепло коньяка и сладость клеверного меда. Бархатистый напиток с деликатным мускатным ароматом станет удачным выбором для холодных вечеров.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить The Snow Honey</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл молока</li><li>45 мл коньяка Французький Бульвар</li><li>1 ч. л. клеверного меда</li><li>Тертый мускатный орех для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В небольшой кастрюле подогрейте 120 мл молока, но не доводите до кипения.</li><li>В отдельной емкости смешайте теплое молоко и 45 мл коньяка.</li><li>Добавьте 1 ч. л. клеверного меда.</li><li>Интенсивно перемешайте смесь, до полного растворения меда.</li><li>Перелейте напиток в термостойкий бокал с ручкой, украсьте тертым мускатным орехом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Козацкий коктейль (Cossack cocktail)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cossack-cocktail-fb.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Козацкий коктейль (Cossack cocktail)</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=persha-gil-dija">Водка Перша Гільдія</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Сироп GOMME</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Крепкий и насыщенный коктейль с глубоким, многослойным вкусом, в котором мягкость коньяка гармонично сочетается с чистым, прозрачным характером водки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Козацкий коктейль (Cossack cocktail)</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл водки Перша Гільдія</li><li>15 мл коньяка</li><li>15 мл лаймового сока</li><li>1 ч. л. сиропа GOMME</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните шейкер льдом.</li><li>Добавьте 15 мл водки Перша Гільдія, 15 мл коньяка и 15 мл лаймового сока.</li><li>Влейте 1 ч. л. сиропа GOMME.</li><li>Встряхивайте 20 секунд.</li><li>Процедите в охлажденный коктейльный бокал.</li><li>Подавайте без льда.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-19" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Балтиморский эг-ног (Baltimore Eggnog)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Baltimore-Eggnog-fb.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Балтиморский эг-ног (Baltimore Eggnog)</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/vyno-henriqueshenriques-madeira-5yo-finest-dry-bile-napivsukhe-19-05-l">Полусухая Мадера</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=francuzskij-bul-var">Коньяк Французький Бульвар</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=chornyitemnyi">Темный ром</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/vershky">Сливки</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li>Яйцо</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Балтиморский эг-ног — культовый, но не слишком известный коктейль, с длинной историей. Это творение — настоящее наслаждение для гурманов, ведь сливочные ингредиенты хорошо сочетаются как с крепким коньяком и ромом, так и белым полусухим вином.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup19" class="overlay add-popup">
+        <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Балтиморский эг-ног (Baltimore Eggnog)</h2>
+            <a class="close add-id" href="#cocktail-item-19">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл полусухой Мадеры</li><li>30 мл коньяка</li><li>30 мл темного рома</li><li>15 мл сахарного сиропа</li><li>15 мл сливок</li><li>15 мл молока</li><li>1 яйцо</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер по 30 мл темного рома и коньяка.</li><li>Добавьте по 15 мл полусухой Мадеры и сахарного сиропа.</li><li>Влейте к алкоголю 15 мл сливок и столько же молока.</li><li>Заключительным ингредиентом добавьте яйцо.</li><li>Энергично встряхните напиток, процедите в большой коктейльный бокал или купе.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">239 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">1.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,999 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Masottina — бренд игристых вин из Италии, самым известных среди которых является Prosecco. Производство сосредоточено в провинциях Тревизо и Конельяно-Вальдоббьядене. Бренд остановился на танковом (резервуарном) методе, при этом
+                    каждый продукт отражает местный терруар и подчеркивает богатое винодельческое наследие северных регионов Италии.
+                </p>
+                <h2>Что особенного в игристых винах Masottina</h2>
+                <p>Прежде всего — отменное качество. Бренд тщательно отбирает сырье и контролирует каждый производственный процесс. Результат — изысканная коллекция игристых вин с различными вкусовыми профилями в зависимости от места изготовления:</p>
+                <ul>
+                    <li>тревизо — свежее, легкое и цветочное;</li>
+                    <li>конельяно-Вальдоббьядене — более сложное и минеральное.</li>
+                </ul>
+                <p>Что не менее важно, Masottina стремится к экологическому виноделию. Компания внедрила в производство множество этичных решений:</p>
+                <ul>
+                    <li>сертификацию SQNPI;</li>
+                    <li>упаковки с низким углеродным следом;</li>
+                    <li>этикетки из бумаги FSC;</li>
+                    <li>зеленую энергию для обслуживания мощностей;</li>
+                    <li>соответствие международным стандартам IFS, BRC и ISO 9001.</li>
+                </ul>
+                <h2>Как возникла торговая марка Masottina</h2>
+                <p>
+                    У истоков — семья Даль Бьянко. История винокурни началась в 1946 году, когда Эпифанио Даль Бьянко стал владельцем поместья Ai Palazzi в Горго-аль-Монтикано. Договор предусматривал покупку старого фермерского дома и пяти гектаров
+                    виноградников. Сейчас компании принадлежат 370 гектаров виноградных насаждений. Во время реконструкции здания на одной из стен семья обнаружила слово Masottina — его и выбрали в качестве названия торговой марки.
+                </p>
+                <p>
+                    Новый импульс к развитию семейного дела дал старший сын Эпифанио — Адриано. Позднее вместе с братьями он запустил винокурню Terre di Ogliano, где сегодня производят игристое вино «Масоттина». Не так давно к бизнесу присоединились
+                    сыновья Адриано: филиппо отвечает за продажи, тогда как Федерико занимает должность вице-президента.
+                </p>
+                <h2>Как производят игристое вино Masottina</h2>
+                <p>Продукцию изготавливают по методу Charmat, что обеспечивает свежесть и интенсивный аромат. Процесс включает:</p>
+                <ol>
+                    <li>Сбор ягод. Собранный вручную спелый виноград «глера» поставляют на винокурню. Там из него выжимают сок.</li>
+                    <li>Первичная ферментация. Концентрат смешивают с дрожжами и помещают в резервуар из нержавеющей стали с контролируемой температурой.</li>
+                    <li>Вторичная ферментация. Естественная карбонизация — результат повторного сбраживания в стальных емкостях под высоким давлением.</li>
+                    <li>Фильтрация и стабилизация. После охлаждения игристое вино «Масоттина» осветляют, пропуская через систему фильтров. Затем оно еще некоторое время проводит в металлических емкостях.</li>
+                    <li>Розлив. Чтобы сохранить шипучесть, напиток разливают по бутылкам, опять-таки — под высоким давлением.</li>
+                </ol>
+                <h2>Разновидности игристых вин Masottina</h2>
+                <p>Бренд выпускает несколько коллекций:</p>
+                <ol>
+                    <li>R.D.O. Элитное просекко с ягод, выращенных на крутых склонах Конельяно-Вальдоббьядене. Напиток ценят за сложность и глубину. В 2009 году его престиж подчеркнули путем введения особого класса Rive.</li>
+                    <li>
+                        Contradagranda. Дань историческому наследию Конельяно, отраженная в элегантных и терруарно-выразительных игристых винах Prosecco. Здесь важен каждый нюанс: и фруктовая сложность ягод из Ольяно, и цветочные нотки винограда из
+                        Солигетто, и выраженная кислинка сырья из Пассо Ролле.
+                    </li>
+                    <li>Calmaggiore. Флагманская линейка Masottina, посвященная главной улице исторического центра Тревизо. Акцент — на балансе между сладостью, кислотностью и тонким ароматом.</li>
+                    <li>Virage. Серия современных и ярких игристых вин Spumante со свежим фруктовым профилем.</li>
+                    <li>Collezione 96. Лимитированная коллекция, посвященная присвоению заветных 96 баллов Prosecco Brut в 2017 году.</li>
+                </ol>
+                <h2>Гастрономическое сочетание игристых вин Masottina</h2>
+                <p>
+                    Для наслаждения свежестью и яркостью напитки советуют подавать при +6–8 °C. Бокал-тюльпан усилит аромат. Так как это белое игристое вино, его традиционно подают с легкими закусками, свежими салатами, рыбой и морепродуктами.
+                    Конкретные рекомендации зависят от класса:
+                </p>
+                <ul>
+                    <li>Extra Brut — паста под сливочным соусом, ризотто, постное белое мясо;</li>
+                    <li>Brut — мягкий сливочный сыр, красное мясо, десерты на основе ягод.</li>
+                </ul>
+                <h2>Почему выгодно купить игристое вино Masottina в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас можно заказать оригинальную продукцию от ведущего итальянского производителя по конкурентной стоимости. Качество подтверждают позитивные отзывы покупателей. Шопинг становится еще выгоднее при заказе по акции. Доставку игристых
+                    вин «Масоттина» выполняют по всей Украине, включая курьеров в Киеве, Днепре и Львове. За нее не нужно платить при заказе на определенную сумму. Рассчитаться за покупку можно на сайте или после получения — как комфортно.
+                </p>
+            </div>
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pom Fizz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pom-Fizz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pom Fizz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hranat-8">Гранатовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hranat-6">Гранатовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=masottina">Игристое вино Masottina</a></li><li>Гранатовые зерна</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий, свежий коктейль с насыщенными гранатовыми нотами, дополненными легкой сладостью сиропа и воздушными пузырьками игристого вина. Яркий цвет и тонкий баланс вкусов делают его эффектным выбором для вечера.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pom Fizz</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл 100% гранатового сока</li><li>1 ст. л. гранатового сиропа</li><li>120 мл игристого вина Masottina</li><li>4 шт. гранатовых зерен</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните бокал-флюте 4-5 гранатовыми зернами и охладите его в морозильнике 3 минуты.</li><li>В шейкер налейте 100 мл гранатового сока и 1 ст. л. гранатового сиропа.</li><li>Добавьте лед и встряхивайте 10 секунд.</li><li>Процедите через стрейнер в охлажденный бокал-флюте.</li><li>Аккуратно долейте 120 мл игристого вина Masottina, позволяя пузырькам распределить аромат.</li><li>Украсьте дополнительными гранатовыми зернами и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sabot" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sabot.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sabot</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл сек</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сахарный сироп</li><li>Белок яичный</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-virage-vino-spumante-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Роскошный коктейль с выразительными цитрусовыми и сухими цветочными оттенками. Яичный белок придает ему шелковистую текстуру, а игристое вино завершает композицию утонченными пузырьками.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sabot</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина</li><li>22.5 мл Трипл Сека</li><li>22.5 мл лимонного сока</li><li>10 мл сахарного сиропа (2:1)</li><li>15 мл пастеризованного яичного белка</li><li>22.5 мл игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал-купе, поставив его в морозильник на 5 минут.</li><li>В шейкер налейте 45 мл джина, 22.5 мл Трипл Сека, 22.5 мл лимонного сока и 10 мл сахарного сиропа.</li><li>Добавьте 15 мл пастеризованного яичного белка.</li><li>Сначала встряхните безо льда 20 секунд, затем добавьте лед и снова встряхните 15 секунд.</li><li>Процедите в охлажденный бокал-купе.</li><li>Аккуратно влейте 22.5 мл охлажденного игристого вина Masottina брют, создавая плотную пену.</li><li>Украсьте цедрой лимона, слегка сжав ее над бокалом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Air Mail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Air-Mail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Air Mail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=zolotyi-6">Светлый золотистый ром</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=med-14">Медовый сироп</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-prosecco-treviso-collezione-96-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Изысканный коктейль, сочетающий бархатистую сладость меда с освежающей цитрусовой кислинкой лайма. Тонкие древесные и ванильные нюансы выдержанного рома гармонично переплетаются с легкостью игристого вина, создавая напиток с насыщенным, но сбалансированным вкусом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Air Mail</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл светлого золотистого рома (1–3 года)</li><li>15 мл лаймового сока</li><li>15 мл медового сиропа</li><li>45 мл игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заранее охладите хайбол, оставив в нем лед на несколько минут.</li><li>В шейкер налейте 30 мл светлого рома, 15 мл лаймового сока и 15 мл медового сиропа.</li><li>Наполните шейкер льдом и встряхивайте энергично 15 секунд.</li><li>Процедите через стрейнер в охлажденный хайбол.</li><li>Долейте 45 мл охлажденного игристого вина Masottina брют.</li><li>Украсьте тонким слайсом лайма, закрепив его на краю бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pisco Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pisco_Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pisco Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=pisko-2">Писко</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13">Ананасовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сахарный сироп</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-contrada-granda-conegliano-valdobbiadene-prosecco-superiore-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль — выбор любителей тропических вкусов и ярких цитрусовых акцентов. Экзотическое сочетание ананаса и цитрусов создает насыщенную фруктовую гармонию, а игристое вино придает легкость и освежающий послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pisco Punch</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 шт. гвоздики</li><li>50 мл писко</li><li>30 мл ананасового сока</li><li>15 мл апельсинового сока</li><li>15 мл лимонного сока</li><li>15 мл сахарного сиропа (2:1)</li><li>20 мл охлажденного игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Положите в шейкер 2 гвоздики и разомните их мадлером.</li><li>Добавьте 50 мл писко, 30 мл ананасового сока, 15 мл апельсинового сока, 15 мл лимонного сока и 15 мл сахарного сиропа.</li><li>Заполните шейкер кубиками льда и встряхивайте энергично 15 секунд.</li><li>Охладите бокал олд-фэшн, наполнив его льдом на несколько минут. После этого выньте лед из бокала.</li><li>Процедите коктейль через двойной стрейнер в охлажденный бокал.</li><li>Аккуратно долейте 20 мл игристого вина Masottina брют.</li><li>Украсьте скибочкой ананаса и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Improved Pendennis Club" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Improved-Pendennis-Club.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Improved Pendennis Club</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/product/liker-joseph-cartron-apricot-brandy-25-07-l-853983">Абрикосовый ликер</a></li><li>Абрикосовый Eau de vie</li><li>Сахарный сироп</li><li>Креольский биттер</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-calmaggiore-prosecco-treviso-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Фруктово-пряный коктейль с насыщенными абрикосовыми оттенками, подчеркнутыми легкой терпкостью Eau de Vie. Сочетание свежего лайма и креольского биттера добавляет глубину вкуса, а игристое вино придает напитку легкость и утонченное послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Improved Pendennis Club</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл джина</li><li>15 мл лаймового сока</li><li>15 мл абрикосового ликера</li><li>10 мл абрикосового Eau de vie</li><li>7.5 мл сахарного сиропа (2:1)</li><li>3 капли креольского биттера</li><li>30 мл игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните бокал купе льдом и оставьте его на 5 минут для охлаждения.</li><li>В шейкер налейте 30 мл джина, 15 мл лаймового сока, 15 мл абрикосового ликера, 10 мл абрикосового Eau de vie, 7.5 мл сахарного сиропа и 3 капли креольского биттера.</li><li>Добавьте лед и встряхивайте 15 секунд.</li><li>Удалите лед из бокала, обсушите его и процедите коктейль через двойной стрейнер.</li><li>Аккуратно влейте 30 мл игристого вина Masottina брют.</li><li>Украсьте тонким абрикосовым слайсом на коктейльной шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Papaya Jack" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Papaya-Jack.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Papaya Jack</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=tennessi-tennessee">Теннесси виски</a></li><li>Сок папайи</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=med-14">Медовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Апельсиновый биттер</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-virage-vino-spumante-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Тем, кто ищет нечто экзотичное, этот коктейль с кремовой сладостью папайи и древесными нотами виски станет настоящим открытием. Медовый сироп и цитрусовая кислинка создают яркую гармонию вкусов, а легкие пузырьки игристого вина придают напитку легкость.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Papaya Jack</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>20 мл Теннесси виски</li><li>30 мл сока папайи</li><li>10 мл медового сиропа</li><li>5 мл лимонного сока</li><li>2 капли апельсинового биттера</li><li>45 мл игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В смесительный стакан налейте 20 мл Теннесси виски, 30 мл сока папайи, 10 мл медового сиропа, 5 мл лимонного сока и 2 капли апельсинового биттера.</li><li>Добавьте несколько кубиков льда и размешивайте барной ложкой 15 секунд.</li><li>Охладите бокал-флюте, наполнив его льдом на несколько минут, затем выньте лед из бокала.</li><li>Процедите через стрейнер в охлажденный бокал.</li><li>Осторожно долейте 45 мл игристого вина Masottina брют.</li><li>Украсьте апельсиновой цедрой, закрепив ее на краю бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Fleur De Paradis" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Fleur-De-Paradis.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Fleur De Paradis</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=buzyna-6">Ликер бузины</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сахарный сироп</li><li>Апельсиновый биттер</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-prosecco-treviso-collezione-96-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль — выбор ценителей утонченности и элегантности. Он сочетает цветочные ноты бузины, переплетающиеся с цитрусовой свежестью, которые создают невероятно нежный и изысканный вкус.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Fleur De Paradis</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина</li><li>15 мл ликера бузины</li><li>10 мл грейпфрутового сока (розового)</li><li>10 мл лимонного сока</li><li>5 мл сахарного сиропа (2:1)</li><li>0.9 мл апельсинового биттера</li><li>20 мл игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заранее охладите бокал-купе, поставив его в морозильник.</li><li>В шейкер налейте 45 мл джина, 15 мл ликера бузины, 10 мл розового грейпфрутового сока, 10 мл лимонного сока, 5 мл сахарного сиропа и 0.9 мл апельсинового биттера.</li><li>Добавьте лед и встряхивайте энергично 15 секунд.</li><li>Охладите бокал-купе, наполнив его льдом на несколько минут, затем выньте лед из бокала.</li><li>Процедите коктейль через двойной стрейнер в охлажденный бокал.</li><li>Аккуратно долейте 20 мл игристого вина Masottina брют.</li><li>Украсьте цветком съедобной фиалки или тонким ломтиком грейпфрута.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ritz Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ritz-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ritz Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк (бренди)</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл сек</a></li><li><a href="https://maudau.com.ua/ru/product/lyker-luxardo-maraschino-32-07-l">Ликер мараскино</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-contrada-granda-conegliano-valdobbiadene-prosecco-superiore-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Роскошный коктейль для истинных гурманов, ценящих сложные вкусовые сочетания. Коньяк в сочетании с цитрусовыми и мараскино создает богатый и насыщенный вкус, который прекрасно дополняет игристое вино. Легкая кислинка лимона и воздушная текстура вина делают его идеальным для элегантных вечеров.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Ritz Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл коньяка (бренди)</li><li>15 мл Трипл Сека</li><li>7.5 мл ликера мараскино</li><li>7.5 мл лимонного сока</li><li>60 мл охлажденного игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал-флюте, положив его на несколько минут в морозилку.</li><li>Налейте 30 мл коньяка, 15 мл Трипл Сека, 7.5 мл ликера мараскино и 7.5 мл лимонного сока.</li><li>Добавьте 2-3 кубика льда и аккуратно размешайте барной ложкой 10 секунд.</li><li>Процедите через стрейнер, убирая лед, оставив лишь жидкость.</li><li>Осторожно долейте 60 мл охлажденного игристого вина Masottina брют.</li><li>Украсьте коктейль тонкой спиралью лимонной цедры.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Jalisco Flower" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Jalisco-Flower.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Jalisco Flower</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/tekila/typ_4=reposado-reposado-2">Репосадо текила</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=buzyna-6">Ликер бузины</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-calmaggiore-prosecco-treviso-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль с пряной текилой репосадо и медовой сладостью бузины подходит любителям более глубоких и сложных вкусов. Красный грейпфрут и игристое вино привносят свежесть, делая напиток сбалансированным и выразительным.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Jalisco Flower</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл репосадо текилы</li><li>22.5 мл ликера бузины</li><li>30 мл грейпфрутового сока (красного)</li><li>90 мл игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите коктейльный бокал, наполнив его льдом на несколько минут.</li><li>В шейкер налейте 15 мл репосадо текилы, 22.5 мл ликера бузины и 30 мл красного грейпфрутового сока.</li><li>Добавьте лед и встряхивайте 15 секунд.</li><li>Процедите через стрейнер в охлажденный бокал флюте.</li><li>Аккуратно долейте 90 мл игристого вина Masottina брют.</li><li>Украсьте цедрой грейпфрута, слегка скрутив ее над бокалом для выделения эфирных масел.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-19" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sloe Gin Fizz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sloe-Gin-Fizz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sloe Gin Fizz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Ликер Sloe Gin</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-masottina-virage-vino-spumante-brut-bile-briut-075-l">Игристое вино Masottina брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий и освежающий коктейль, идеально подходящий для вечеринки или коктейльного часа. Ягодная сладость Sloe Gin и цитрусовая кислинка лимона создают идеальный баланс, а игристое вино добавляет изысканную воздушность.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup19" class="overlay add-popup">
+        <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sloe Gin Fizz</h2>
+            <a class="close add-id" href="#cocktail-item-19">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл ликера Sloe Gin</li><li>30 мл лимонного сока</li><li>1 ч. л. сахарной пудры (или 5 мл сахарного сиропа 2:1)</li><li>120 мл игристого вина Masottina брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните хайбол льдом и оставьте на 3 минуты.</li><li>В шейкер налейте 45 мл ликера Sloe Gin, 30 мл лимонного сока и 1 ч. л. сахарной пудры.</li><li>Добавьте лед и встряхивайте 15 секунд.</li><li>Уберите кубики льда с хайбола.</li><li>Процедите напиток через стрейнер в охлажденный бокал.</li><li>Аккуратно долейте 120 мл игристого вина Masottina брют.</li><li>Смочите край бокала водой, затем обмакните его в сахарную пудру.</li><li>Украсьте свежими ягодами и добавьте трубочку.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">68-88 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.6-5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

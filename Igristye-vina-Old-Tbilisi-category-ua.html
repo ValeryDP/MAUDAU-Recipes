@@ -1,0 +1,1001 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Ігристе вино Old Tbilisi — напій, що відображає багаторічний досвід грузинського виноробства. Його виробляє компанія Marussia Beverages. Хоча бренд, що вийшов на ринок 2001 року, відомий здебільшого як виробник тихих вин, ігриста
+                    продукція вирізняється завдяки яскравому фруктовому профілю на додачу до освіжального фінішного шлейфу.
+                </p>
+                <h2>Особливості ігристих вин Old Tbilisi</h2>
+                <p>Насамперед виділяється склад. Компанія робить акцент на автохтонних сортах винограду, особливо на «ркацителі». Його цінують за яскраву кислотність і квітковий аромат.</p>
+                <p>Друга відмінна риса — технологія виготовлення. Ігристе вино виробляють за методом Шарма, тобто вторинна ферментація проходить у резервуарах з неіржавної сталі, зберігаючи насичений фруктовий смак.</p>
+                <p>Кожен напій — легкий і ароматний, при цьому легко п’ється. Його можна поєднувати з їжею — як із традиційною грузинською кухнею, так і з продуктами з інших країн світу.</p>
+                <p>Бренд також задовольняє різні смакові вподобання. Основу асортименту становить Brut, але також можна знайти напівсухі та напівсолодкі стилі.</p>
+                <h2>Хто і як давно виробляє ігристе вино Old Tbilisi</h2>
+                <p>
+                    Виноробню GWS (Georgian Wines &amp; Spirits) запустили 1993 року в Кахетії — найпрестижнішому виноробному регіоні Грузії. Виноградники на території підприємства розбили ще раніше — 1976 року. Зараз під вирощування світлошкірих
+                    сортів винограду відведено 120 гектарів у різних селах, включно з Маграані та Садмелі.
+                </p>
+                <p>
+                    Кахетія — найкраще місце для виготовлення ігристих вин. Це заслуга унікального теруару, який сприяє вирощуванню кислих і ароматних ягід. Однак сама виноробня розташована в Телаві, отримуючи максимальну вигоду від поєднання залитих
+                    сонцем долин і прохолодних гірських бризів. Виноград у цьому регіоні висаджено в селах Акура, Вардісубані та Артана.
+                </p>
+                <p>
+                    Назва Old Tbilisi — знак поваги історичній столиці Грузії. Як це місто пов’язує минуле і сьогодення, так і продукція торгової марки поєднує глибоко вкорінену виноградарську спадщину з новаторськими підходами. На деяких етикетках
+                    навіть зображені старовинні балкончики, що підкреслюють історичний зв’язок напою з місцевістю.
+                </p>
+                <h2>Різновиди ігристих вин Old Tbilisi</h2>
+                <p>У портфоліо виробника — три позиції:</p>
+                <ol>
+                    <li>
+                        Брют. За яскравим лимонним кольором ховається інтенсивний фруктовий смак — з акордами кісточкових плодів і лісових горіхів. Дрібний перляж підсилює аромат — з нюансами свіжоскошеної трави і квіток. Посмак — стійкий і тривалий.
+                    </li>
+                    <li>
+                        Біле напівсолодке. Колір — трохи темніший. На першому плані в цьому ігристому вині Old Tbilisi — підбадьорливий цитрусовий аромат. Поступово до нього приєднуються нотки тропічних фруктів і меду, створюючи гладку кремову симфонію
+                        на язиці. Завершує дегустацію м’який посмак.
+                    </li>
+                    <li>
+                        Біле напівсухе. Попри те, що колір доволі блідий, цього точно не можна сказати про смак, у якому витримано баланс між фруктовою солодкістю та тонкою кислотністю. Результат — ніжний і стабільний посмак. У носі домінують нотки
+                        білих і жовтих фруктів.
+                    </li>
+                </ol>
+                <p>Міцність кожного ігристого вина становить від 12.5 до 13%. Вміст цукру залежить від класу. Наприклад, для Brut — це 8.5–10 г/л.</p>
+                <h2>Що подати до ігристого вина Old Tbilisi</h2>
+                <p>
+                    Підкреслити витончену свіжість допоможе правильна температура і посуд. Подавайте напій за +6–8 °C. Віддайте перевагу келиху-тюльпану або флюте. Занадто широка чаша не дає можливості розкритися аромату, оскільки він передчасно
+                    вивітрюється.
+                </p>
+                <p>Гастрономічне поєднання залежить від обраного ігристого вина Old Tbilisi:</p>
+                <ol>
+                    <li>Брют. Найкращий аперитив, який потім можна доповнити суші, устрицями, мідіями або закусками, наприклад, оливками чи твердими витриманими сирами.</li>
+                    <li>Біле напівсолодке. Смачне доповнення до легких закусок, страв із мінімальною кількістю спецій, ягідно-фруктового десерту.</li>
+                    <li>Біле напівсухе. Варіант для поєднання з насиченішими стравами: пастою під вершковим соусом, ризотто, м’ясом або морепродуктами, запеченими на грилі. Цей напій також підходить до пряної їжі.</li>
+                </ol>
+                <h2>Чому вигідно купити ігристе вино Old Tbilisi в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Команда MAUDAU налагодила власний імпорт оригінального алкоголю прямо з Грузії, гарантуючи якість і конкурентну ціну. Вартість додатково знижується при замовленні за акцією — при цьому список спецпропозицій постійно оновлюється,
+                    надаючи покупцеві можливість познайомитися з різними стилями. Оформлення замовлення не займе більше ніж 5–7 хвилин. Доставлення можливе в будь-яку точку України завдяки співпраці з популярними логістичними компаніями, а в деяких
+                    містах також працюють кур’єри та передбачено самовивезення із супермаркетів «Сільпо».
+                </p>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Love Heart" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Love-Heart.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Love Heart</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=polunychnyi">Полуничний лікер</a></li><li><a href="https://maudau.com.ua/product/liker-bols-parfait-amour-24-07-l">Лікер Parfait Amour</a></li><li><a href="https://maudau.com.ua/product/ihryste-vyno-old-tbilisi-bile-briut-13-075-l">Ігристе вино Old Tbilisi брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль з яскравими фруктовими нотами, що поєднує полуничний лікер і лікер Parfait Amour з ігристим вином. Легка солодкість і вишукана текстура роблять його ідеальним для романтичних вечорів.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Love Heart</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл горілки (з морозильника)</li><li>7.5 мл полуничного лікеру</li><li>7.5 мл лікеру Parfait Amour</li><li>120 мл охолодженого ігристого вина Old Tbilisi брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих для коктейлю, наповнивши його льодом на кілька хвилин. Після цього вийміть лід із келиха.</li><li>У шейкер налийте 15 мл горілки, попередньо охолодивши її в морозильнику.</li><li>Додайте 7.5 мл полуничного лікеру і 7.5 мл лікеру Parfait Amour.</li><li>Наповніть шейкер льодом і енергійно струшуйте впродовж 15 секунд.</li><li>Процідіть коктейль через стейнер в охолоджений келих.</li><li>Долийте 120 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте коктейль свіжими полуничними скибочками.</li><li>Подавайте з трубочкою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Evening Sun" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Evening-Sun.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Evening Sun</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк (бренді)</a></li><li>Лікер Chartreuse Green</li><li>Лікер из лепестков роз</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Цукровий сироп</li><li>Білок яєчний</li><li><a href="https://maudau.com.ua/product/ihryste-vyno-old-tbilisi-bile-briut-13-075-l">Ігристе вино Old Tbilisi брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Evening Sun — це коктейль із м'якими квітковими і трав'яними нотами, який поєднує коньяк, лікер Chartreuse та ігристе вино. Його глибокий смак дарує відчуття умиротворення, а легкі бульбашки вина надають напою свіжості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Evening Sun</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>20 мл коньяку (бренді)</li><li>10 мл лікеру Chartreuse Green</li><li>5 мл лікеру з пелюсток троянд</li><li>15 мл лимонного соку</li><li>5 мл цукрового сиропу (2:1)</li><li>10 мл білка яєчного (пастеризованого)</li><li>60 мл ігристого вина Old Tbilisi брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих для коктейлю, наповнивши його льодом на кілька хвилин, потім вийміть лід із келиха.</li><li>У шейкер налийте 20 мл коньяку (бренді), 10 мл лікеру Chartreuse Green, 5 мл лікеру з пелюсток троянд, 15 мл свіжовичавленого лимонного соку і 5 мл цукрового сиропу (2:1).</li><li>Додайте 10 мл пастеризованого яєчного білка.</li><li>Наповніть шейкер льодом і струшуйте впродовж 15 секунд.</li><li>Процідіть коктейль через стейнер в охолоджений келих.</li><li>Долийте 60 мл ігристого вина Old Tbilisi брют.</li><li>Прикрасьте коктейль пелюстковою цедрою або свіжою м'ятою.</li><li>Подавайте з трубочкою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="North By Northwest" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/North-By-Northwest.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">North By Northwest</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Цукровий сироп</li><li>Сольовий розчин</li><li><a href="https://maudau.com.ua/product/ihryste-vyno-old-tbilisi-bile-briut-13-075-l">Ігристе вино Old Tbilisi брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль із вираженою цитрусовою кислотністю, насиченим ароматом джину та складною анісовою ноткою абсенту. Збалансована свіжість лимона і легка солодкість сиропу розкриваються в поєднанні з ігристим вином, створюючи багатошаровий смак.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати North By Northwest</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину</li><li>7.5 мл абсенту</li><li>22.5 мл лимонного соку</li><li>15 мл цукрового сиропу (2:1)</li><li>2 краплі сольового розчину (4:1)</li><li>60 мл ігристого вина Old Tbilisi брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-сауер, наповнивши його льодом і залишивши на 3 хвилини.</li><li>Вийміть лід, промийте келих холодною водою і обсушіть.</li><li>У шейкер налийте 45 мл джину, 7.5 мл абсенту і 22.5 мл свіжого лимонного соку.</li><li>Додайте 15 мл цукрового сиропу і 2 краплі 4:1 сольового розчину.</li><li>Наповніть шейкер кубиками льоду і струшуйте енергійно впродовж 12 секунд.</li><li>Процідіть через подвійний стрейнер в охолоджений келих-сауер.</li><li>Обережно долийте 60 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте цедрою лимона, злегка вичавивши масла над напоєм.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Forbidden Fruit Martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Forbidden-Fruit-Martini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Forbidden Fruit Martini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=kalvados-2">Кальвадос</a></li><li>Ревіневий лікер</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14">Ванільний цукровий сироп</a></li><li>Білок яєчний пастеризований</li><li><a href="https://maudau.com.ua/product/ihryste-vyno-old-tbilisi-bile-briut-13-075-l">Ігристе вино Old Tbilisi брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яскравий і багатогранний коктейль, що поєднує яблучну терпкість кальвадосу, ніжну кислинку ревеневого лікеру і ванільну солодкість. Лимонна свіжість надає напою жвавості, а повітряна текстура білка робить його оксамитовим, завершуючи композицію вершковими бульбашками ігристого вина.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Forbidden Fruit Martini</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл кальвадосу</li><li>20 мл ревеневого лікеру</li><li>20 мл лимонного соку</li><li>10 мл ванільного цукрового сиропу</li><li>10 мл яєчного білка (пастеризованого)</li><li>50 мл ігристого вина Old Tbilisi брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-мартіні, наповнивши його льодом на 5 хвилин.</li><li>У шейкер налийте 40 мл кальвадосу, 20 мл ревеневого лікеру, 20 мл лимонного соку і 10 мл ванільного цукрового сиропу.</li><li>Додайте 10 мл пастеризованого яєчного білка.</li><li>Струшуйте без льоду 20 секунд.</li><li>Додайте лід і струшуйте ще 15 секунд.</li><li>Процідіть через подвійний стрейнер в охолоджений келих-мартіні.</li><li>Долийте 50 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте тонкою скибочкою сушеного яблука.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Twinkle" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Twinkle.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Twinkle</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=buzyna-6">Лікер бузиновий</a></li><li><a href="https://maudau.com.ua/product/ihryste-vyno-old-tbilisi-bile-briut-13-075-l">Ігристе вино Old Tbilisi брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Лаконічний, але елегантний коктейль, у якому міцність горілки зустрічається з квітковою легкістю бузинного лікеру. Ігристе вино підкреслює витонченість смаку, додаючи ніжні фруктові та медові нюанси, створюючи легкий і освіжальний напій.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Twinkle</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл горілки</li><li>15 мл бузинного лікеру</li><li>60 мл ігристого вина Old Tbilisi брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-флюте, наповнивши його льодом і залишивши на 5 хвилин.</li><li>Видаліть лід, промийте келих холодною водою і обсушіть.</li><li>У змішувальну склянку налийте 60 мл горілки та 15 мл бузинного лікеру.</li><li>Додайте кілька кубиків льоду і перемішуйте барною ложкою 15 секунд.</li><li>Процідіть суміш через стрейнер в охолоджений келих-флюте.</li><li>Обережно долийте 60 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте коктейль тонкою смужкою лимонної цедри, злегка скрутивши її.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Queen's Knees" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Queens-Knees.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Queen's Knees</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=kalvados-2">Кальвадос</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Медовий сироп</a></li><li>Апельсиновий біттер</li><li><a href="https://maudau.com.ua/product/ihryste-vyno-old-tbilisi-bile-briut-13-075-l">Ігристе вино Old Tbilisi брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Витончений коктейль на основі кальвадосу, що поєднує фруктову глибину яблучного бренді, медову солодкість і пряну гірчинку апельсинового біттеру. Ігристе вино додає легкості, роблячи напій шляхетним і повітряним.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Queen's Knees</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл кальвадосу (яблучного бренді)</li><li>7.5 мл медово-водного сиропу</li><li>2 краплі апельсинового біттеру</li><li>45 мл ігристого вина Old Tbilisi брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-купе, заповнивши його льодом і залишивши на 5 хвилин.</li><li>Видаліть лід, промийте келих холодною водою і ретельно обсушіть.</li><li>У змішувальну склянку налийте 45 мл кальвадосу і 7.5 мл медово-водного сиропу.</li><li>Додайте 2 краплі апельсинового біттеру і наповніть склянку кубиками льоду.</li><li>Перемішуйте барною ложкою 20 секунд, забезпечуючи м'яке об'єднання інгредієнтів.</li><li>Процідіть суміш через стрейнер в охолоджений келих-купе.</li><li>Акуратно влийте 45 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте тонким слайсом зеленого яблука.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Day Bell" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Day-Bell.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Day Bell</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/product/liker-caffo-red-bitter-25-1-l">Червоний біттер-лікер</a></li><li>Лікер Ramazzotti Amaro</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=grand-marnier">Гран Марньє</a></li><li>Сольовий розчин</li><li><a href="https://maudau.com.ua/product/ihryste-vyno-old-tbilisi-bile-briut-13-075-l">Ігристе вино Old Tbilisi брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Глибокий коктейль із міцним бурбоном і багатошаровою гірко-солодкою композицією лікерів. Червоний біттер-лікер, амаро і Гран Марньє додають складних трав'яних і цитрусових акцентів, а ігристе вино — фінальної легкості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Day Bell</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл бурбону</li><li>15 мл червоного біттер-лікеру</li><li>7.5 мл лікеру Ramazzotti Amaro</li><li>7.5 мл Гран Марньє</li><li>2 краплі сольового розчину (4:1)</li><li>30 мл охолодженого ігристого вина Old Tbilisi (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-рокс, наповнивши його льодом на 5 хвилин.</li><li>Вийміть лід, обполосніть келих холодною водою і обсушіть.</li><li>У змішувальну склянку налийте 45 мл бурбону, 15 мл червоного біттер-лікеру і 7.5 мл лікеру Ramazzotti Amaro.</li><li>Додайте 7.5 мл Гран Марньє і 2 краплі 4:1 сольового розчину.</li><li>Заповніть склянку льодом і перемішуйте барною ложкою 25 секунд.</li><li>Процідіть суміш через стрейнер в охолоджений келих-рокс із великим кубом льоду.</li><li>Долийте 30 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте коктейль цедрою апельсина, злегка вичавивши масла над поверхнею напою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-14" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tribute" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tribute.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tribute</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лікер Creme de Violette</li><li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк (бренді)</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=old-tbilisi">Ігристе вино Old Tbilisi</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Елегантний і ніжний коктейль, у якому квітковий лікер Crème de Violette гармонійно поєднується з глибиною коньяку. Бульбашки ігристого вина роблять напій повітряним і легким, залишаючи приємний фіалковий посмак.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup14" class="overlay add-popup">
+        <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Tribute</h2>
+            <a class="close add-id" href="#cocktail-item-14">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>5 мл Crème de Violette</li><li>15 мл коньяку (бренді)</li><li>105 мл ігристого вина Old Tbilisi</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-флюте, заповнивши його льодом і залишивши на кілька хвилин.</li><li>Видаліть лід, промийте келих холодною водою і ретельно обсушіть.</li><li>У змішувальну склянку налийте 5 мл Crème de Violette і 15 мл коньяку.</li><li>Додайте кілька кубиків льоду й акуратно перемішайте барною ложкою 15 секунд.</li><li>Процідіть суміш через стрейнер в охолоджений келих-флюте.</li><li>Обережно долийте 105 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте коктейль тонкою смужкою цедри лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-16" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Elle For Leather" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Elle-For-Leather.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Elle For Leather</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/viski/rehion_2=scotch">Скотч-віскі</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=vanilnyi-2">Ванільний лікер</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Цукровий сироп</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=old-tbilisi">Ігристе вино Old Tbilisi</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Теплий, оксамитовий коктейль із насиченим смаком скотчу, збагачений м'якою ванільною солодкістю. Легка кислинка лимона і тонка ігристість роблять його збалансованим і елегантним, розкриваючи багату текстуру.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup16" class="overlay add-popup">
+        <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Elle For Leather</h2>
+            <a class="close add-id" href="#cocktail-item-16">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл скотч-віскі</li><li>30 мл ванільного лікеру</li><li>7.5 мл лимонного соку</li><li>5 мл цукрового сиропу (2:1)</li><li>75 мл охолодженого ігристого вина Old Tbilisi (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-купе, наповнивши його льодом на 5 хвилин.</li><li>Видаліть лід, промийте келих холодною водою і обсушіть.</li><li>У шейкер налийте 45 мл скотч-віскі, 30 мл ванільного лікеру і 7.5 мл свіжовичавленого лимонного соку.</li><li>Додайте 5 мл цукрового сиропу (2:1) і наповніть шейкер кубиками льоду.</li><li>Струшуйте енергійно 15 секунд, щоб охолодити суміш.</li><li>Процідіть через подвійний стрейнер в охолоджений келих-купе.</li><li>Долийте 75 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Прикрасьте коктейль тонкою смужкою цедри лимона, злегка скрутивши її.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-18" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ramos Chocolate Fizz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ramos-Chocolate-Fizz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ramos Chocolate Fizz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/product/liker-de-kuyper-crme-de-cacao-white-15-07-l-180306">Білий лікер Crème De Cacao</a></li><li><a href="https://maudau.com.ua/product/voda-terre-exotique-kvitkova-z-kvitiv-apelsynu-iz-tunisu-100ml">Апельсинова квіткова вода</a></li><li>Яєчний білок</li><li><a href="https://maudau.com.ua/category/vershky">Вершки</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=old-tbilisi">Ігристе вино Old Tbilisi</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Незвичайний варіант класичного Ramos Fizz з насиченою шоколадною солодкістю. Джин і лікер Crème de Cacao створюють складну смакову основу, а ваніль і апельсинова квіткова вода надають коктейлю ароматну глибину.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup18" class="overlay add-popup">
+        <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Ramos Chocolate Fizz</h2>
+            <a class="close add-id" href="#cocktail-item-18">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину</li><li>45 мл білого лікеру Crème De Cacao</li><li>5 мл апельсинової квіткової води</li><li>5 мл ванільного екстракту</li><li>30 мл яєчного білка</li><li>30 мл ігристого вина Old Tbilisi (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть хайбол, наповнивши його льодом і залишивши на 5 хвилин.</li><li>Видаліть лід, обполосніть келих холодною водою і ретельно обсушіть.</li><li>У шейкер налийте 45 мл джину, 45 мл білого лікеру Crème de Cacao і 5 мл апельсинової квіткової води.</li><li>Додайте 5 мл ванільного екстракту, 30 мл яєчного білка і 30 мл охолодженого ігристого вина Old Tbilisi брют.</li><li>Струшуйте без льоду (сухий шейк) 20 секунд для створення пишної піни.</li><li>Додайте лід і струшуйте ще 15 секунд.</li><li>Процідіть суміш через подвійний стрейнер в охолоджений келих-хайбол.</li><li>Прикрасьте тонкою стружкою темного шоколаду або цедрою апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">85 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.8-3 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

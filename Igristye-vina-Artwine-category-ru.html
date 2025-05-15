@@ -1,0 +1,977 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Игристое вино Artwine — напиток, отражающий достижения современного виноделия в Украине. При этом продукцию производят по традиционному методу шампанизации, из-за чего она сохраняет баланс между начальной фруктовой кислотностью и
+                    последующей сливочной сладостью.
+                </p>
+                <h2>Особенности игристых вин «Артвайн»</h2>
+                <p>Отличительные моменты:</p>
+                <ol>
+                    <li>Изготовление в Украине. Каждый напиток отражает местный терруар и многолетний опыт винификации.</li>
+                    <li>Ассортимент. Большинство игристых вин Artwine относят к винтажным — из-за продолжительной выдержки на осадке. Они также удовлетворяют вкусовые предпочтения разных групп покупателей — за счет разнообразия стилей.</li>
+                    <li>Брендинг. Бутылки напоминают емкости для «Артемовского» — первого игристого вина, произведенного в стенах Artwinery.</li>
+                </ol>
+                <h2>История торговой марки Artwine</h2>
+                <p>Бренд зарегистрировали в 2016 году. При этом история торговой марки началась раньше и связана с Артемовским заводом шампанских вин, основанным в 1950 году в Бахмуте в Донецкой области.</p>
+                <p>
+                    Это уникальный производственный комплекс не только для Украины, но и для всего мира. Раньше изготовление игристых вин «Артвайн» проходило полностью под землей — в просторных штольнях на глубине 72 метра, возникших вследствие добычи
+                    гипса для знаменитого завода Эдмунда Фарке, запущенного еще в XVIII веке. Подземный город как нельзя лучше способствовал производству — благодаря стабильно низкой температуре и высокой влажности воздуха.
+                </p>
+                <p>Сейчас продукцию Artwine временно выпускают на ООО «Таирово Вайнери» в Одесской области. Часть производственных мощностей перенесли в Киев.</p>
+                <h2>Как производят игристое вино «Артвайн»</h2>
+                <p>
+                    Винокурня практикует Methode Traditionnelle. Это означает, что после сбора ягод, их прессования и превращения виноградного сока в базовое вино в ходе первичного сбраживания вторичная ферментация проходит в закупоренных бутылках.
+                    Важный момент — вливание тиражного ликера, то есть смеси вина и дрожжей. Именно поэтому продукцию Artwine называют шампанским на внутреннем рынке, хотя в Европе это запрещено законом.
+                </p>
+                <p>Сортовой состав зависит от выпускаемого стиля. Белое игристое вино производят на основе «шардоне», «пино-гри», «алиготе» и «рислинга», а в красных купажах используют смесь «каберне-совиньон» с «пино-фран».</p>
+                <h2>Разновидности игристых вин Artwine</h2>
+                <p>Флагман — Brut Nature 18. Это мягкое и тонкое игристое вино с нотами зеленых яблок, ванили и меда. В носу — переплетение аккордов белых косточковых плодов и цветков акации.</p>
+                <p>Если флагман выдержан в течение 18 месяцев, то отдельного внимания заслуживает винтажный розлив, созревавший 36 месяцев. Длительная выдержка придает напитку насыщенное послевкусие с нотками пряных специй.</p>
+                <p>Artwine Rose — элегантное шампанское с тонами клубники, малины и красной смородины. Окончание — с нотками сливочного спелого персика.</p>
+                <h2>Гастрономическое сочетание напитков «Артвайн»</h2>
+                <p>
+                    Игристое советуют подавать во Flute при +6–8 °C. Молодой купаж дополнят суши, морепродукты, легкие закуски, свежие салаты, фруктово-ягодные десерты. Выдержанные позиции гармонично сочетаются с пикантными твердыми сырами, икрой,
+                    трюфелями.
+                </p>
+                <h2>Почему выгодно купить игристое вино Artwine в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждый товар гарантированно оригинален, а цена остается конкурентной — особенно с учетом постоянных скидок. После оформления заказа выберите предпочтительный вариант доставки: курьером в некоторых городах или одной из почтовых
+                    служб. Список супермаркетов «Сільпо» для самовывоза в Киеве, Днепре и Львове ищите в разделе «Доставка». Оплатить покупку удобнее всего на сайте, но это можно сделать и при получении.
+                </p>
+            </div>
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Salvatore Meets" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Salvatore-Meets.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Salvatore Meets</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Светлый белый ром</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=limonchello">Ликер лимончелло</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Сахарный сироп</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=artwine">Игристое вино Artwine</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Изысканный коктейль с ярким цитрусовым характером, в котором сочетаются свежесть лайма, насыщенность лимончелло и мягкие тропические ноты рома. Финальный штрих – игристое вино, придающее напитку утонченную воздушность.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Salvatore Meets</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл светлого белого рома</li><li>20 мл ликера лимончелло</li><li>30 мл лаймового сока</li><li>10 мл сахарного сиропа (2:1)</li><li>15 мл игристого вина Artwine (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Nick & Nora, наполнив его льдом и оставив на несколько минут. Удалите лед и аккуратно обсушите бокал.</li><li>В шейкер налейте 60 мл светлого белого рома, добавьте 20 мл ликера лимончелло, 30 мл свежевыжатого лаймового сока и 10 мл сахарного сиропа (2:1).</li><li>Заполните шейкер кубиками льда и энергично встряхивайте в течение 15 секунд.</li><li>Через двойное сито процедите коктейль в подготовленный бокал.</li><li>Осторожно долейте 15 мл хорошо охлажденного игристого вина Artwine (брют), используя барную ложку для сохранения структуры коктейля.</li><li>Украсьте тонким завитком лимонной цедры.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Cab" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Cab.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Cab</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Сахарный сироп</li><li>Мята</li><li>Ароматический биттер</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=artwine">Игристое вино Artwine</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль с глубоким, насыщенным вкусом, в котором крепость коньяка смягчается свежестью лайма и сладостью сахарного сиропа. Ароматные ноты мяты и биттера создают сложный букет, а игристое вино придает напитку утонченность.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить The Cab</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл коньяка</li><li>25 мл лаймового сока</li><li>15 мл сахарного сиропа (2:1)</li><li>8 листьев мяты</li><li>2 капли ароматического биттера</li><li>50 мл игристого вина Artwine (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Sour, наполнив его льдом и оставив на несколько минут.</li><li>В шейкер положите 8 свежих листьев мяты и аккуратно разомните мадлером.</li><li>Добавьте 50 мл коньяка, 25 мл свежевыжатого лаймового сока, 15 мл сахарного сиропа (2:1) и 2 капли ароматического биттера.</li><li>Наполните шейкер кубиками льда и энергично встряхивайте в течение 12–15 секунд.</li><li>Через двойное сито процедите напиток в подготовленный бокал.</li><li>Осторожно влейте 50 мл охлажденного игристого вина Artwine (брют), направляя струю по барной ложке, чтобы сохранить структуру напитка.</li><li>Украсьте небольшим пучком свежей мяты, слегка похлопав по листьям перед подачей, чтобы усилить аромат.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="French 95" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/French-95-art.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">French 95</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li><li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-artwine-18-misiatsiv-vytrymky-100-135-075-l-834423">Игристое вино Artwine брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль сочетает в себе насыщенность бурбона с освежающей кислинкой лимона и легкой сладостью. Игристое вино придает воздушную текстуру и делает его идеальным выбором тех, кто ценит элегантные, но крепкие напитки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить French 95</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл лимонного сока</li><li>3 ч. л. сахарной пудры (или 5 мл сахарного сиропа 2:1 на ложку)</li><li>45 мл бурбона</li><li>75 мл игристого вина Artwine (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Coupe, заполнив его льдом и оставив на несколько минут. Удалите лед, ополосните бокал ледяной водой и обсушите.</li><li>В шейкер добавьте 30 мл свежевыжатого лимонного сока и 3 чайные ложки сахарной пудры (или 5 мл сахарного сиропа 2:1).</li><li>Размешивайте барной ложкой до полного растворения сахара.</li><li>Добавьте 45 мл бурбона и наполните шейкер кубиками льда. Встряхивайте энергично в течение 12–15 секунд.</li><li>Через двойное сито процедите коктейль в подготовленный бокал.</li><li>Осторожно влейте 75 мл охлажденного игристого вина Artwine (брют), направляя струю по стенке бокала.</li><li>Украсьте коктейль тонкой лимонной цедрой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Jayne Mansfield" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Jayne-Mansfield.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Jayne Mansfield</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Клубника</li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Светлый ром</a></li><li>Клубничный ликер</li><li>Сахарный сироп</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-artwine-18-misiatsiv-vytrymky-100-135-075-l-834423">Игристое вино Artwine брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Фруктовый и игристый коктейль с клубничной основой, дополненной нотами рома и ликера. Легкий, освежающий, но при этом насыщенный вкус делает его идеальным для летнего вечера или романтического ужина.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Jayne Mansfield</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>4 шт. клубники (очищенной, мелкой и спелой)</li><li>30 мл светлого рома</li><li>15 мл клубничного ликера</li><li>5 мл сахарного сиропа (2:1)</li><li>50 мл игристого вина Artwine (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Flute, заполнив его колотым льдом и оставив на 5 минут.</li><li>В шейкере разомните 4 свежие очищенные клубники в пюре с помощью мадлера.</li><li>Добавьте 30 мл светлого рома, 15 мл клубничного ликера и 5 мл сахарного сиропа (2:1).</li><li>Заполните шейкер льдом и встряхивайте в течение 15 секунд.</li><li>Через двойное сито процедите смесь в подготовленный бокал.</li><li>Осторожно долейте 50 мл охлажденного игристого вина Artwine (брют), направляя струю по барной ложке для сохранения пузырьков.</li><li>Украсьте коктейль тонким ломтиком свежей клубники, надетым на край бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Bling! Bling!" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bling-Bling.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Bling! Bling!</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Малина</li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Сахарный сироп</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-artwine-18-misiatsiv-vytrymky-100-135-075-l-834423">Игристое вино Artwine брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий коктейль с выразительным малиновым вкусом, дополненным лаймовой кислинкой и легкой крепостью водки. Игристое вино делает напиток свежим и утонченным, подчеркивая его насыщенные ягодные оттенки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Bling! Bling!</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>7 шт. малины</li><li>15 мл водки</li><li>15 мл лаймового сока</li><li>7.5 мл сахарного сиропа (2:1)</li><li>15 мл игристого вина Artwine (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Nick & Nora, заполнив его льдом и оставив на 3–5 минут. Удалите лед, ополосните бокал ледяной водой и обсушите.</li><li>В шейкере разомните 7 свежих ягод малины, используя мадлер.</li><li>Добавьте 15 мл водки, 15 мл свежевыжатого лаймового сока и 7,5 мл сахарного сиропа (2:1).</li><li>Наполните шейкер льдом и энергично встряхивайте в течение 15 секунд.</li><li>Через двойное сито процедите напиток в бокал.</li><li>Аккуратно долейте 15 мл охлажденного игристого вина Artwine (брют), направляя струю по стенке бокала для сохранения структуры.</li><li>Украсьте коктейль одной малиной, нанизанной на коктейльную шпажку, уложенную на край бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="French 1605" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/French-1605.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">French 1605</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Chartreuse Green</li><li>Chartreuse Yellow</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сахарный сироп</li><li>Elixir Vegetal</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-artwine-18-misiatsiv-vytrymky-100-135-075-l-834423">Игристое вино Artwine брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Травянистый, сложный коктейль с ярким сочетанием двух видов Chartreuse, дополненных лимонной кислинкой и тонкой сладостью. Игристое вино делает напиток легким и подчеркивает его глубокие ботанические ноты.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить French 1605</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>10 мл Chartreuse Green</li><li>10 мл Chartreuse Yellow</li><li>15 мл лимонного сока</li><li>7.5 мл сахарного сиропа (2:1)</li><li>0.9 мл Élixir Végétal</li><li>90 мл игристого вина Artwine (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Flute, наполнив его льдом и оставив на 5 минут. Удалите лед, ополосните бокал ледяной водой и тщательно обсушите.</li><li>В шейкер налейте 10 мл Chartreuse Green, 10 мл Chartreuse Yellow, 15 мл свежевыжатого лимонного сока и 7,5 мл сахарного сиропа (2:1).</li><li>Добавьте 0.9 мл Élixir Végétal.</li><li>Заполните шейкер льдом и встряхивайте в течение 15 секунд.</li><li>Процедите напиток через двойное сито в охлажденный бокал.</li><li>Осторожно долейте 90 мл охлажденного игристого вина Artwine (брют), направляя струю по барной ложке для сохранения пузырьков.</li><li>Украсьте край бокала тонкой спиралью лимонной цедры.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="White Lotus" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/White-Lotus.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">White Lotus</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Светлый белый ром</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13">Ананасовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=kokos-9">Кокосовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-artwine-18-misiatsiv-vytrymky-100-135-075-l-834423">Игристое вино Artwine брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Экзотический коктейль, который сочетает вкусы ананаса и кокоса с освежающей кислинкой лимона. Светлый ром добавляет глубину, а игристое вино — воздушную легкость и утонченную игристость.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить White Lotus</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл светлого белого рома</li><li>15 мл ананасового сока</li><li>7.5 мл кокосового сиропа</li><li>15 мл лимонного сока</li><li>30 мл игристого вина брют</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В высокий бокал Collins налейте 15 мл ананасового сока и 7,5 мл кокосового сиропа.</li><li>Добавьте 15 мл свежевыжатого лимонного сока и 60 мл светлого рома, тщательно перемешивая барной ложкой.</li><li>Заполните бокал крупными кубиками льда.</li><li>Медленно влейте 30 мл охлажденного игристого вина брют, направляя струю по стенке бокала, чтобы сохранить пузырьки.</li><li>Аккуратно перемешайте содержимое бокала, используя барную ложку, но не нарушая структуру игристого вина.</li><li>Украсьте коктейль тонким ломтиком ананаса и небольшой кокосовой стружкой, слегка присыпав край бокала.</li><li>Подавайте с коктейльной трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Strawberry On Acid" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Strawberry-On-Acid.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Strawberry On Acid</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Клубника</li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=polunychnyi">Клубничный ликер</a></li><li><a href="https://maudau.com.ua/ru/category/otset/typ_211=balzamichnyi">Бальзамический уксус</a></li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/typ_268=chornyi-43">Черный перец</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-artwine-18-misiatsiv-vytrymky-100-135-075-l-834423">Игристые вина Artwine брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий, насыщенный коктейль с выразительным клубничным вкусом, пикантными нотами черного перца и неожиданным акцентом бальзамического уксуса. Идеальный выбор для любителей нестандартных сочетаний.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Strawberry On Acid</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>3 шт. клубники</li><li>45 мл водки</li><li>22.5 мл клубничного ликера</li><li>5 мл бальзамического уксуса</li><li>1 щепотка черного перца</li><li>75 мл игристого вина Artwine (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере разомните 3 свежие клубники, используя мадлер.</li><li>Добавьте 45 мл водки, 22,5 мл клубничного ликера и 5 мл бальзамического уксуса.</li><li>Всыпьте щепотку свежемолотого черного перца.</li><li>Заполните шейкер кубиками льда и встряхивайте в течение 15 секунд.</li><li>Процедите коктейль через двойное сито в бокал Coupe, удерживая мякоть клубники и излишки перца.</li><li>Осторожно долейте 75 мл охлажденного игристого вина Artwine (брют), направляя струю по барной ложке для сохранения пузырьков.</li><li>Украсьте напиток тонким ломтиком клубники, прикрепленным к краю бокала, и легкой щепоткой молотого перца сверху.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pear Tree Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pear-Tree-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pear Tree Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/smak_5=hrusha">Грушевая водка</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=buzyna-6">Бузиновый ликер</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-artwine-18-misiatsiv-vytrymky-100-135-075-l-834423">Игристое вино Artwine брют</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Pear Tree Cocktail — это коктейль с утонченным сочетанием нежной сладости груши и цветочных нот бузины, подчеркнутых легким шипучим послевкусием игристого вина.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pear Tree Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл грушевой водки</li><li>45 мл бузинового ликера</li><li>Игристое вино Artwine (брют) для доливки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В предварительно охлажденный бокал налейте 45 мл грушевой водки и 45 мл бузинового ликера.</li><li>Осторожно перемешайте содержимое барной ложкой.</li><li>Медленно долейте охлажденное игристое вино Artwine (брют), направляя струю по стенке бокала для сохранения пузырьков.</li><li>Украсьте коктейль тонкой долькой свежей груши, аккуратно закрепив ее на краю бокала.</li><li>Для дополнительного аромата можно слегка сбрызнуть поверхность напитка эфирными маслами лимонной цедры.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-19" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Reindeer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Reindeer.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Reindeer</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Свежий имбирь</li><li><a href="https://maudau.com.ua/ru/category/horilka/smak_5=tsytrus">Цитрусовая водка</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=perets-chyli-3">Острый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=artwine">Игристые вина Artwine</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    The Reindeer — пряный, согревающий коктейль с насыщенными имбирными и цитрусовыми нотами, дополненными легкой остротой. Игристое вино придает ему праздничную свежесть и игривость.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup19" class="overlay add-popup">
+        <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить The Reindeer</h2>
+            <a class="close add-id" href="#cocktail-item-19">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 кусочка свежего имбиря</li><li>20 мл цитрусовой водки</li><li>7.5 мл острого сиропа</li><li>2.5 мл лимонного сока</li><li>Игристое вино Artwine для доливки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер поместите 2 кусочка свежего имбиря и разомните их мадлером.</li><li>Добавьте 20 мл цитрусовой водки, 7,5 мл острого сиропа и 2,5 мл свежевыжатого лимонного сока.</li><li>Наполните шейкер кубиками льда и энергично встряхивайте в течение 15 секунд.</li><li>Через двойное сито процедите коктейль в предварительно охлажденный бокал Coupe, оставляя крупные частицы имбиря в шейкере.</li><li>Осторожно долейте охлажденное игристое вино Artwine.</li><li>Украсьте коктейль тонкой спиралью лимонной цедры, слегка скрутив ее над бокалом, чтобы высвободить эфирные масла.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">239.7-448.9 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0-8 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

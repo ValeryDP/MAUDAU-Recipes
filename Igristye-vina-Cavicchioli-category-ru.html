@@ -1,0 +1,993 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Бренд Cavicchioli предлагает игристое вино, произведенное в регионе Эмилия-Романья (Италия). Благодаря множеству стилей, включая Frizzante и Spumante, каждый найдет вариант по вкусу. А что самое главное — это игристое вино сочетает
+                    многовековой опыт местного виноделия с освежающим фруктовым вкусом, который дополнит любую еду.
+                </p>
+                <h2>Как возникла торговая марка Cavicchioli</h2>
+                <p>
+                    История винокурни восходит к 6 апрелю 1928-го года, когда Умберто Кавиккьоли, проживавший в Сан-Просперо недалеко от Модены, переделал небольшой фермерский домик в винокурню. Семья и до этого владела виноградниками в Эмилии-Романьи,
+                    но вскоре наладила еще и самостоятельный разлив ламбруско — что было весьма необычно для того времени.
+                </p>
+                <p>В период Второй мировой войны семейное дело перешло к сыну Умберто Пьерджорджо. Именно он возвел новую винодельню в Бомпорто, где сейчас изготавливают игристое вино Cavicchioli.</p>
+                <p>Сегодня бизнес по-прежнему принадлежит четвертому поколению семьи Кавиккьоли. Ежегодно в стенах винокурни выпускают более 20 миллионов бутылок, экспортируемых в 60 стран.</p>
+                <h2>Как производят игристое вино «Кавиккьоли»</h2>
+                <p>
+                    Бренд использует резервуарную (танковую) технику — она же метод «Шарма-Мартинотти». Как и первичная, так и вторичная ферментация проходят в емкостях из нержавеющей стали. Второй этап длится 20–60 дней при постоянно поддерживаемом
+                    высоком давлении, что способствует образованию мягких пузырьков и сохранению свежего фруктового шлейфа игристых вин Cavicchioli. Продукцию разливают без выдержки.
+                </p>
+                <p>Что касается состава, то в 80% купажей доминируют сорта «ламбруско» в разных клонах. Не менее активно используют «мальвазию», «глеру» и «пиньолетто».</p>
+                <h2>Разновидности игристых вин «Кавиккьоли»</h2>
+                <p>В портфолио производителя представлены как международные фавориты вроде Lambrusco и Prosecco, так и региональные купажи. Несколько заслуживающих внимания напитков:</p>
+                <ol>
+                    <li>Fantasia Rose Spumante. Легкое розовое игристое вино Cavicchioli с нотами малины, земляники и лепестков роз. Пузырьки большого размера балансируют сладость.</li>
+                    <li>Bianco Lambrusco dell’Emilia. Бледно-желтое полусладкое игристое вино, изготовленное из светлокожих клонов «ламбруско». Изюминка — выразительный цветочный шлейф.</li>
+                    <li>Prosecco Extra Dry. Культовый продукт Cavicchioli с содержанием сахара 12–17 г/л. На первом плане — хрустящее яблоко, которое сменяется сладковатыми тонами груш и белых цветков.</li>
+                    <li>Pignoletto Frizzante. Это региональный вариант на основе автохтонного сорта винограда «пиньолетто». Ягоды придают напитку нотки персиков и цитрусовой цедры. Послевкусие — со сбалансированной горчинкой.</li>
+                    <li>Malvasia Emilia Amabile. Одно из самых ароматных игристых вин, в котором доминируют аккорды тропических фруктов, цветков апельсина и меда акации.</li>
+                </ol>
+                <h2>Как выбрать игристое вино Cavicchioli</h2>
+                <p>
+                    Учитывайте способ подачи и повод. Розовая версия гармонично сочетается с ягодами и морепродуктами, тогда как белая — с сырами и легкими закусками. Крепость колеблется в пределах 7.5–11.5%, что делает игристое вино дружелюбным к еде.
+                </p>
+                <p>
+                    Сортовой состав не менее важен. Например, «глера» придает интенсивную освежающую кислинку — такую желанную в жаркую погоду. Если решили купить игристое вино Cavicchioli в подарок, остановитесь на просекко — это универсальный
+                    вариант.
+                </p>
+                <p>Сладость также влияет на сочетаемость с пищей. Сухое игристое вино — идеально к соленьям, птице, рыбе. Полусладкое смакует с салатами, острой азиатской пищей, копченостями, десертами.</p>
+                <h3>Сколько стоит игристое вино «Кавиккьоли»</h3>
+                <p>
+                    Бренд сфокусировался на невинтажной продукции, обеспечивая постоянство качества и доступность круглый год. В отличие от шампанского, на Cavicchioli цена колеблется в пределах 180–300 грн за бутылку. Это объясняется отсутствием
+                    продолжительной выдержки, характерной для традиционного метода, применяемого во французской Шампани для шампанского.
+                </p>
+                <h2>Как наслаждаться игристым вином Cavicchioli</h2>
+                <p>
+                    Прежде всего определите температуру подачи. Рекомендованный диапазон зависит от цвета напитка: для белых и розовых позиций — это +6–8 °C, для красных — +8–10 °C. Используйте классический винный бокал, а не Flute — последний не дает
+                    раскрыться яркому фруктовому букету.
+                </p>
+                <h2>Почему выгодно купить Cavicchioli в интернет-магазине MAUDAU</h2>
+                <p>
+                    На странице — исключительно оригинальная продукция по конкурентной стоимости. Цены снижаются при заказе со скидкой — при этом спецпредложения регулярно обновляются, предоставляя возможность познакомиться с разными стилями игристых
+                    вин «Кавиккьоли». Доставку осуществляют по всей Украине с помощью курьеров в некоторых городах и логистических компаний. Если товар в наличии, его можно забрать самостоятельно в супермаркетах «Сільпо» в Киеве, Днепре и Львове.
+                </p>
+            </div>
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Americana" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Americana.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Americana</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/rafinatsiia=rafinovanyi">Сахар-рафинад</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Ангостура биттер</a></li><li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Americana — элегантная версия классического аперитива. Сахар, пропитанный биттером Angostura, задает пряно-горькое настроение, плавно переходящее в карамельно-древесные ноты бурбона. Игристое вино завершает композицию, придавая коктейлю воздушность и тонкий перляж. Подается в бокале-флюте для изысканного начала торжественных мероприятий.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Americana</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 кубик сахара-рафинада (мелкого белого)</li><li>2 мл ангостуры биттера</li><li>15 мл бурбона</li><li>Игристое вино (шампанское) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Поместите кубик белого сахара-рафинада в бокал-флюте.</li><li>Плесните на него 2 мл биттера Angostura.</li><li>Затем влейте 15 мл бурбона и дождитесь впитывания.</li><li>Осторожно долейте игристое вино, чтобы сохранить перляж.</li><li>Украсьте коктейль цедрой апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ray Gun" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ray-Gun.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ray Gun</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=travy-ta-spetsii-2">Травяной ликер</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-blue-curacao-20-07-l-76086">Ликер De Kuyper Blue Curaçao</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Игристый коктейль с футуристическим характером — это яркий Ray Gun. Сочетание ликера De Kuyper Blue Curaçao и травяных нот создает выразительный баланс сладости и пряной глубины. Игристое вино добавляет в композицию свежесть, превращая напиток в насыщенный, но легкий аперитив с экзотическим оттенком.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Ray Gun</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл травяного ликера</li><li>22.5 мл ликера De Kuyper Blue Curaçao</li><li>Игристое вино (шампанское) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Влейте 15 мл травяного ликера в охлажденный бокал-флюте или купе.</li><li>Добавьте 22.5 мл ликера De Kuyper Blue Curaçao.</li><li>Постепенно долейте игристое вино так, чтобы сохранить объемные пузырьки.</li><li>По желанию декорируйте напиток цедрой цитрусовых.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Anita's Attitude Adjuster" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Anitas-Attitude-Adjuster.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Anita's Attitude Adjuster</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-triple-sec-apelsyn-40-07-l-76089">Ликер De Kuyper Triple Sec</a></li><li><a href="https://maudau.com.ua/ru/product/tekila-patr-n-reposado-40-0-75-l">Текила Patrón Reposado</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Светлый белый ром</a></li><li><a href="https://maudau.com.ua/ru/product/dzhyn-haymans-london-dry-412-07-l-769716">Джин Hayman’s London Dry</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ketel-one">Водка Ketel One</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сахарный сироп</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Мощный микс пяти крепких основ — текилы, рома, джина, водки и ликера — сбалансирован лимонным соком и сиропом. Завершает напиток освежающее игристое вино. Коктейль демонстрирует выразительную цитрусовую кислинку, мягко переходящую в пряно-сухое послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Anita's Attitude Adjuster</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл ликера De Kuyper Triple Sec (40%)</li><li>15 мл текилы Patrón Reposado</li><li>15 мл светлого белого рома (1-4 года выдержки)</li><li>15 мл джина Hayman’s London Dry</li><li>15 мл водки Ketel One</li><li>15 мл лимонного сока</li><li>15 мл сахарного сиропа (2:1)</li><li>Игристое вино (шампанское) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере со льдом по 15 мл ликера, текилы и светлого белого рома.</li><li>Влейте по 15 мл джина, водки и лимонного сока.</li><li>Затем добавьте 15 мл сахарного сиропа.</li><li>Встряхните смесь и процедите в охлажденный хайбол.</li><li>Аккуратно долейте игристое вино до верха.</li><li>Украсьте бокал цедрой лимона и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blue Champagne" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blue-Champagne.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blue Champagne</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=ketel-one">Водка Ketel One</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-triple-sec-apelsyn-40-07-l-76089">Ликер De Kuyper Triple Sec</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-blue-curacao-20-07-l-76086">Ликер De Kuyper Blue Curaçao</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Blue Champagne — освежающий спарклинг с цитрусовым профилем и выразительными оттенками. В его основе — крепкая водка, дополненная трипл-секом и блю кюрасао. Ликеры создают тонкое апельсиновое послевкусие и эффектный визуальный акцент. Лимонный сок балансирует сладость, а шампанское завершает композицию деликатными пузырьками.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blue Champagne</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>22,5 мл водки Ketel One</li><li>5 мл ликера De Kuyper Triple Sec (40%)</li><li>7.5 мл ликера De Kuyper Blue Curaçao</li><li>7.5 мл лимонного сока</li><li>Игристое вино (шампанское) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 22.5 водки Ketel One и 5 мл ликера De Kuyper Triple Sec.</li><li>Добавьте по 7.5 мл ликера De Kuyper Blue Curaçao и лимонного сока.</li><li>Насыпьте лед и энергично встряхните напиток.</li><li>Процедите через сито-стрейнер в охлажденный флюте или коктейльный бокал.</li><li>Осторожно долейте шампанское до самого верха.</li><li>Украсьте коктейль лимонной цедрой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tequila Slammer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tequila-Slammer.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tequila Slammer</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/tekila-patr-n-reposado-40-0-75-l">Текила Patrón Reposado</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Взрывной шот с дерзким характером — это Tequila Slammer. Коктейль соединяет насыщенные ноты выдержанной текилы и яркую игристость брютa, отличаясь характерной пеной при «ударе». Неотъемлемая часть барного шоу — это эффектное вспенивание и моментальная подача.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Tequila Slammer</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл текилы Patrón Reposado</li><li>30 мл игристого вина (шампанского)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте по 30 мл текилы и шампанского в прочный и низкий стакан-рокc.</li><li>Быстро накройте бокал салфеткой или ладонью.</li><li>Слегка ударьте дном стакана об стол, чтобы смесь вспенилась.</li><li>Выпейте коктейль залпом, пока пузырьки не улетучились.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Baccio Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Baccio-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Baccio Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-haymans-london-dry-412-07-l-769716">Джин Hayman’s London Dry</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=anisovyi-2">Ликер анисовый</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=thomas-henry">Газированная вода Thomas Henry</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Baccio Punch — это эклектичный микс с ярким анисовым акцентом и выразительной цитрусовой кислинкой. Джин образует классическую основу, а ликер придает характерный средиземноморский штрих. Игристое вино и содовая добавляют свежести, создавая легкую, но многослойную структуру вкусов.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Baccio Punch</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина Hayman’s London Dry</li><li>22.5 мл анисового ликера</li><li>45 мл лимонного сока</li><li>45 мл игристого вина (шампанского)</li><li>22.5 мл газированной воды Thomas Henry</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере со льдом смешайте 45 мл джина и 22.5 мл анисового ликера.</li><li>Затем добавьте 45 мл лимонного сока.</li><li>Встряхните ингредиенты и процедите через сито-стрейнер в охлажденный бокал.</li><li>Долейте 45 мл игристого вина и 22.5 мл газированной воды.</li><li>Перед подачей аккуратно перемешайте напиток высокой ложкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cordless Screwdriver" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cordless-Screwdriver.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cordless Screwdriver</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Водка Ketel One Oranje</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Cordless Screwdriver — это тонизирующий твист на классический лонг-дринк «Отвертка». Тандем апельсиновой водки и брюта создает яркий цитрусовый букет с легкой игристой текстурой. Идеален в качестве аперитива, поскольку сочетает фруктовую мягкость и сухое послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Cordless Screwdriver</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл водки Ketel One Oranje</li><li>Игристое вино (шампанское) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в охлажденный бокал 30 мл водки Ketel One Oranje.</li><li>Аккуратно долейте игристое вино или шампанское до верха.</li><li>Не перемешивайте компоненты, а сразу подавайте коктейль.</li><li>При желании украсьте бокал апельсиновой цедрой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Elegance" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Elegance.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Elegance</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/rom-bacardi-carta-blanca-40-07-l-639087">Ром Bacardi Carta Blanca Superior White</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-elderflower-buzyna-15-07-l">Ликер из цветков Elderflower</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hibiskus-3">Сироп из гибискуса</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Яичный белок</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Изысканный коктейль с бархатистой текстурой и многослойным ароматом. Ром создает крепкую базу, ликер из бузины вносит цветочные ноты, гибискус добавляет кислинку и легкую терпкость. Белок придает напитку воздушную пенку, а брют завершает композицию освежающими игристыми акцентами.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Elegance</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл рома Bacardi Carta Blanca Superior White</li><li>20 мл ликера из цветков Elderflower</li><li>20 мл сиропа из гибискуса</li><li>20 мл лимонного сока</li><li>20 мл яичного белка (пастеризованного) или аквафабы (воды из нута)</li><li>50 мл игристого вина (шампанского)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 45 мл рома, добавьте по 20 мл ликера и сиропа из гибискуса.</li><li>Влейте по 20 мл лимонного сока и яичного белка (или аквафабы).</li><li>Насыпьте лед и хорошенько встряхните шейкер.</li><li>Пропустите смесь через сито-стрейнер в охлажденный бокал.</li><li>Долейте 50 мл шампанского и украсьте напиток цветком бузины.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="French Governor" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/French-Governor.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">French Governor</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/rom-bacardi-carta-blanca-40-07-l-639087">Ром Bacardi Carta Blanca Superior White</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hrusha-15">Грушевый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=tarkhun-6">Тархуновый сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    French Governor — легкий, свежий коктейль с изящным балансом кислых, сладких и травяных нот. Белый ром с грушевым и лимонным соками создают гармоничный союз, который освежается игристым вином. Капелька тархунового сиропа добавляет тонкую анисовую ноту, придавая напитку особенный характер.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить French Governor</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл рома Bacardi Carta Blanca Superior White</li><li>10 мл лимонного сока</li><li>10 мл грушевого сока</li><li>5 мл тархунового сахарного сиропа</li><li>75 мл игристого вина (шампанского)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 30 мл рома и по 10 мл лимонного и грушевого соков.</li><li>Добавьте 5 мл тархунового сиропа и лед.</li><li>Тщательно встряхните емкость и процедите напиток в охлажденный бокал.</li><li>Долейте 75 мл игристого вина и аккуратно перемешайте барной ложкой.</li><li>Декорируйте листочками тархуна и слайсами груши.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-19" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Fizzy Fresh" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Fizzy-Fresh.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Fizzy Fresh</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/viski/product_brand=monkey-shoulder">Виски Monkey Shoulder</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-triple-sec-apelsyn-40-07-l-76089">Ликер De Kuyper Triple Sec</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=cavicchioli">Игристое вино Cavicchioli</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Игристый твист с нотками цитруса и мягким солодовым профилем. Сочетание Трипл сека и купажированного шотландского виски создает сбалансированную вкусовую палитру, а брют придает коктейлю легкость и деликатность. Отличный выбор как для вечеринки, так и для семейного праздника.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup19" class="overlay add-popup">
+        <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Fizzy Fresh</h2>
+            <a class="close add-id" href="#cocktail-item-19">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл виски Monkey Shoulder</li><li>15 мл ликера De Kuyper Triple Sec</li><li>Игристое вино (шампанское) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер насыпьте лед в кубиках и добавьте 30 мл виски Monkey Shoulder.</li><li>Влейте 15 мл ликера Трипл сек и встряхните сосуд несколько раз.</li><li>Процедите смесь через сито-стрейнер в охлажденный бокал.</li><li>Аккуратно долейте игристое вино до верха.</li><li>Осторожно перемешайте компоненты и подавайте коктейль.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">61 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,996 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+    <p>
+        Игристое вино Jaume Serra — напиток, изготовленный по классическому методу Champenoise в Пенедесе (Испания). Производственный регион расположен недалеко от Барселоны. Это испанский ответ шампанскому — с такими же строгими
+        стандартами касательно производства, закрепленными в стандартах DO, но с отчетливо средиземноморским характером.
+    </p>
+    <p>Хотя Jaume Serra часто сравнивают с Champagne, это не одно и то же, особенно с юридической точки зрения. Название «шампанское» зарезервировано для игристых вин из французской Шампани.</p>
+    <h2>Что известно о происхождении «Жауме Серра»</h2>
+    <p>
+        Винокурню основали в 1943 году в деревне Алелья (Каталония). Это была идея выдающегося энолога Жауме Серра Гуэля. Производство игристых вин запустили спустя четыре года, предварительно подготовив резерв виноматериалов в подвалах
+        винодельни.
+    </p>
+    <p>
+        В 1984 году винокурня переехала в Виланова-и-ла-Желтру. Завод перенесли на территорию старинной масии, возведенной в XVII веке. Теперь винодельня Jaume Serra находится в своеобразном анклаве в окружении 125 гектаров виноградников —
+        при этом всего в пяти километрах от Средиземного моря.
+    </p>
+    <p>С 1997 года торговая марка входит в состав Garcia Carrion. Это крупнейший концерн по производству игристых вин в Испании. Компанию также считают пятой по величине в мире.</p>
+    <h2>Как производят вино игристое Jaume Serra</h2>
+    <p>
+        Бренд применяет Metodo Tradicional — технику, идентичную изготовлению шампанского во Франции. После первичного сбраживания в емкостях из нержавеющей стали базовое вино помещают в бутылку, где его выдерживают на осадке не менее
+        девяти месяцев в ходе вторичной ферментации. Для премиальных купажей срок продлевают до 30 месяцев. Это придает готовому игристому вину текстуру и сложный многослойный аромат.
+    </p>
+    <p>Основой купажей «Жауме Серра» обычно выбирают смесь сортов «макабео», «шарелло» и «парельяда». Виноград «шардоне» и «пино-нуар» используют для розовых версий и редких разливов.</p>
+    <h2>Ассортимент игристых вин Jaume Serra</h2>
+    <p>Бренд специализируется на Cava — испанском игристом вине, известным балансом и свежестью. Портфолио производителя объединяет несколько стилей:</p>
+    <ol>
+        <li>
+            Cava Brut Nature / Brut / Semi-Seco. Все напитки изготовлены из классической для кавы смеси винограда, но с разным содержанием сахара. Самый сухой вариант среди представленных — Brut Nature. Хотя это не шампанское, Jaume Serra
+            предлагает всю ту же фруктово-цветочную элегантность.
+        </li>
+        <li>Castell Llord Cava Brut. Выразительно фруктовая версия, которую советуют подавать как аперитив. На первом плане — яркая кислотность цитрусовых, переплетенная со сладостью яблок.</li>
+        <li>Cava Pinot Noir Rose Brut. В составе — 100% ягод «пино-нуар». Бледно-лососевый оттенок скрывает взрывной вкусовой букет с преобладанием красных ягод.</li>
+        <li>
+            Cava Brut Organic. Традиционное вино игристое Jaume Serra, однако изготовленное из сертифицированного органического винограда. Это означает, что ни в процессе выращивания, ни во время последующей обработки ягод не используют
+            химикаты.
+        </li>
+        <li>Cava Gran Reserva Chardonnay. Коллекционное игристое вино, выдержанное от 30 месяцев. Это придает ему нежную кремовую текстуру, сопровождаемую тонами поджаренных орехов и бриоши.</li>
+    </ol>
+    <h2>Как выбрать вино игристое Jaume Serra</h2>
+    <p>Чтобы быстро сориентироваться в ассортименте, используйте фильтры. Они помогут с важными нюансами:</p>
+    <ol>
+        <li>Цвет. Белый напиток — свежий и хрустящий. Розовый — слаще, поэтому гармонично дополняет десерты.</li>
+        <li>Сладость. Бренд предлагает несколько вариантов — от полностью сухих до полусладких. Как и на шампанское, на Jaume Serra Brut цена самая высокая — из-за отчетливого терруарного выражения.</li>
+        <li>Крепость. Содержание алкоголя варьируется в пределах 11.5–12%.</li>
+        <li>Сортовой состав. Каждая ягода привносит изюминку в купаж. «Шарелло», например, придает полноту, «парельяда» — цветочный шлейф, а «пино-нуар» — глубину красных фруктов.</li>
+    </ol>
+    <h3>Jaume Serra: цена в Украине</h3>
+    <p>Стоимость колеблется в пределах 200–400 грн за бутылку объемом 0.75 л. Это доступная альтернатива шампанскому. Цена зависит от срока выдержки и редкости игристого вина.</p>
+    <h2>Как наслаждаться «Жауме Серра»</h2>
+    <p>Подавайте игристое вино при +6–8 °C в бокалах-тюльпанах. Охлаждайте его в холодильнике или воде со льдом, но не в морозилке.</p>
+    <p>В качестве закуски предложите морепродукты, вяленое мясо, мягкий сливочный сыр. Для сопровождения жареного лосося или сытного рагу закажите бутылочку Rose.</p>
+    <h2>Почему выгодно купить Jaume Serra в интернет-магазине MAUDAU</h2>
+    <p>
+        Каждая бутылка на странице — гарантированно оригинальна. А регулярно обновляющиеся скидки делают алкогольный шопинг еще приятнее — несмотря на и без того конкурентную цену. Игристую продукцию Jaume Serra можно купить не только с
+        доставкой почтой или курьером в некоторых городах, но и с самовывозом из супермаркетов «Сільпо» в Львове, Днепре и Киеве. Список актуальных локаций ищите в разделе «Доставка».
+    </p>
+            </div>
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="French 125" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/French-125.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">French 125</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/vse-dlia-vypichky/typ_290=tsukrova-pudra">Сахарная пудра</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    French 125 — это изысканный коктейль с игристым характером. Освежающий лимонный сок и сладкий сахарный сироп подчеркивают благородство коньяка, а брют добавляет элегантности и легкости. Напиток подойдет для праздников, бранчей и романтических вечеров.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить French 125</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл лимонного сока</li><li>1 ½ барной ложки сахарной пудры (или 5 мл 2:1 сахарного сиропа на ложку)</li><li>45 мл коньяка</li><li>75 мл игристого вина (брютa)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере смешайте 15 мл лимонного сока и полторы барной ложки сахарной пудры.</li><li>Затем налейте 45 мл коньяка.</li><li>Добавьте лед и встряхните смесь до охлаждения.</li><li>Процедите напиток в охлажденный бокал-флюте.</li><li>Аккуратно долейте 75 мл игристого вина.</li><li>По желанию украсьте коктейль цедрой лимона и вишней.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Quarter Century" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Quarter-Century.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Quarter Century</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-caffo-red-bitter-25-1-l">Красный биттер</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=abrykosovyi-3">Абрикосовый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Элегантный и многослойный коктейль для особых моментов — это лонг Quarter Century с ярким вкусом. Гармоничное сочетание горького биттера, фруктового ликера, пикантного абсента и бодрящего игристого вина придает напитку истинной уникальности.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Quarter Century</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл красного биттера (ликера в стиле Campari)</li><li>15 мл абрикосового ликера</li><li>1 мл абсента</li><li>120 мл игристого вина (брютa)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в бокал флюте по 15 мл красного биттера и абрикосового ликера.</li><li>Добавьте 1 мл абсента для создания яркого акцента.</li><li>Затем долейте 120 мл игристого вина брют.</li><li>Тщательно перемешайте коктейль барной ложкой.</li><li>Украсьте бокал цедрой апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Elderflower Champagne" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Elderflower-Champagne.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Elderflower Champagne</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонский сухой джин</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=buzyna-6">Бузинный ликер</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Elderflower Champagne — приятный освежающий коктейль с цветочным акцентом и тонкой кислинкой. Ароматный бузинный ликер гармонирует с сухим джином и лимонной кислинкой, а игристое вино придает легкости и воздушности.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Elderflower Champagne</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл лондонского сухого джина</li><li>30 мл бузинного ликера</li><li>15 мл лимонного сока</li><li>45 мл игристого вина (брютa)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер добавьте по 30 мл сухого джина и бузинного ликера.</li><li>Следом налейте 15 мл лимонного сока.</li><li>Наполните шейкер льдом и энергично встряхните.</li><li>Процедите через сито-стрейнер в охлажденный бокал-флюте или купе.</li><li>Постепенно влейте 45 мл игристого вина.</li><li>Декорируйте напиток цедрой лимона и цветком бузины.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Champagne Piña Colada" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Champagne-Pina-Colada.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Champagne Piña Colada</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Светлый белый ром</a></li><li>Белый ром Rhum Clément</li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=ananasovyi">Ананасовый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13">Ананасовый сок</a></li><li>Кокосовый сорбет</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль придется по душе любителям классического микса Пина Колада. Champagne Piña Colada — экзотический лонг, в котором нежный кокосовый сорбет, сладкий ананас и крепкий ром создают тропическую основу, а игристое вино добавляет праздничной свежести.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Champagne Piña Colada</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл светлого белого рома</li><li>5 мл белого рома Rhum Clément</li><li>20 мл ананасового ликера</li><li>45 мл ананасового сока</li><li>2 шарика кокосового сорбета</li><li>15 мл игристого вина (брютa) для смешивания</li><li>45 мл игристого вина (брютa) для доливания</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В блендере или шейкере смешайте 25 мл светлого рома и 5 мл Rhum Clément.</li><li>Добавьте 20 мл ананасового ликера и 45 мл ананасового сока.</li><li>Положите два шарика кокосового сорбета.</li><li>Взбейте компоненты до получения однородной текстуры.</li><li>Перелейте в охлажденный бокал, добавьте 15 мл игристого вина и перемешайте.</li><li>Для завершения долейте 45 мл игристого вина до верху.</li><li>Украсьте коктейль ананасом и кокосовыми стружками.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Autumn Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Autumn-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Autumn Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Маракуйя</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=zubrowka">Водка на зубровке</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=marakuia-3">Сироп маракуйи</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hrusha-15">Грушевый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Autumn Punch — замечательный вариант фруктового лонга для неспешного осеннего времяпрепровождения. В бокале сладкая экзотическая маракуйя переплетается с ароматной водкой на зубровке, а также грушевым и лимонным соками. Благодаря игристому вину появляются свежая кислинка и яблочное послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Autumn Punch</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 шт. маракуйи</li><li>60 мл водки на зубровке</li><li>7.5 мл сиропа маракуйи</li><li>30 мл грушевого сока</li><li>15 мл лимонного сока</li><li>Игристое вино (брют) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Соедините в шейкере мякоть маракуйи и 60 мл водки на зубровке.</li><li>Добавьте 7.5 мл сиропа маракуйи, 30 мл грушевого и 15 мл лимонного сока.</li><li>Встряхните ингредиенты со льдом до охлаждения.</li><li>Процедите смесь через сито-стрейнер в высокий бокал со льдом.</li><li>Долейте игристое вино до верха.</li><li>Украсьте коктейль долькой груши или половинкой маракуйи.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sparkling Perry" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sparkling-Perry.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sparkling Perry</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/lyker-joseph-cartron-williams-pear-liqueur-25-07-l">Грушевый о-де-ви Poire William</a></li><li>Грушевый ликер Belle de Brillet</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hrusha-15">Грушевый сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Ненавязчивый коктейль с грушевыми нотами — это Sparkling Perry. Фруктовые компоненты — сок, ликер и бренди — создают гармоничный вкус, а игристое добавляет искристой невесомости . Это удачный вариант для отдыха на природе или воскресного бранча.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sparkling Perry</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл грушевого Poire William</li><li>25 мл грушевого ликера Belle de Brillet</li><li>25 мл грушевого сока</li><li>25 мл игристого вина (брютa)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере по 25 мл грушевого Poire William и ликера Belle de Brillet.</li><li>Влейте 25 мл грушевого сока и добавьте лед.</li><li>Встряхните и процедите напиток в охлажденный бокал.</li><li>Аккуратно долейте 25 мл игристого вина брюта.</li><li>Украсьте коктейль дольками зеленой груши.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Chin Chin" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Chin-Chin.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Chin Chin</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li><a href="https://maudau.com.ua/ru/category/viski/rehion_2=scotch">Шотландский виски</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=yabloko">Яблочный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Chin Chin — это коктейль, сочетающий гармонию вкусов: шотландский виски придает ему насыщенность и глубину, а мед и яблочный сок — мягкости и сладости. Игристое вино завершает напиток освежающими нотами. Этот лонг подходит для особых случаев и оставляет длительное приятное послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Chin Chin</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>½ барной ложки меда</li><li>30 мл смешанного шотландского виски</li><li>15 мл яблочного сока</li><li>Игристого вина (брютa) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере смешайте половину барной ложки меда и 30 мл виски.</li><li>Добавьте 15 мл яблочного сока и лед.</li><li>Встряхните до охлаждения и процедите через сито-стрейнер в бокал.</li><li>Долейте игристое вино-брют до верха.</li><li>Декорируйте напиток яблочной долькой и палочкой корицей.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Champagne Julep" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Champagne-Julep.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Champagne Julep</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Мятные листья</li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк</a></li><li>Сироп сахарный</li><li><a href="https://maudau.com.ua/ru/product/bitter-angostura-bitter-447-02-l-726850">Биттер Angostura Aromatic</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Champagne Julep — это ненавязчивая и освежающая вариация классического мятного джулепа. Травянистый аромат дарит ощущение прохлады, коньяк добавляет глубину, а игристое вино делает вкус ярким и дерзким. Отличный лонг для летнего вечера и непринужденного общения.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Champagne Julep</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>8 свежих листьев мяты</li><li>15 мл коньяка</li><li>7.5 мл сахарного сиропа (2 части сахара на 1 часть воды)</li><li>1 мл биттера Angostura Aromatic</li><li>90 мл игристого вина (брютa)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокале для подачи аккуратно разомните пестиком 8 листьев мяты.</li><li>Налейте 7.5 мл сахарного сиропа и 1 мл биттера Angostura Aromatic.</li><li>Добавьте немного льда и влейте 15 мл коньяка.</li><li>Долейте 90 мл игристого вина и аккуратно перемешайте.</li><li>Перед подачей украсьте коктейль веточкой мяты.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ostend Fizz Royale" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ostend-Fizz-Royale.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ostend Fizz Royale</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Бренди Kirschwasser</li><li><a href="https://maudau.com.ua/ru/product/lyker-doudet-naudin-creme-de-cassis-de-bourgogne-18-07-l">Ликер Crème de Cassis de Bourgogne</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Оригинальный спарклинг-коктейль с выразительной кисло-сладкой структурой и ягодным профилем. Kirschwasser придает напитку характерную вишневую сухость, ликер Crème de Cassis — насыщенные нотки черной смородины, а брют добавляет легкую минеральность и освежающую игристость.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Ostend Fizz Royale</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл бренди Kirschwasser</li><li>12.5 мл ликера Crème de Cassis de Bourgogne</li><li>90 мл игристого вина (брютa)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Влейте 25 мл бренди Kirschwasser в охлажденный флюте.</li><li>Добавьте 12.5 ликера Crème de Cassis de Bourgogne.</li><li>Осторожно долейте 90 мл игристого вина, чтобы сохранить пузырьки.</li><li>Аккуратно перемешайте компоненты барной ложкой.</li><li>Украсьте коктейль вишенкой или тонким ломтиком груши.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-19" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Grape Escape" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Grape-Escape.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Grape Escape</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Зеленый виноград</li><li>Мятные листья</li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк</a></li><li>Сироп сахарный</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=jaume-serra">Игристое вино Jaume Serra</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающий виноградный твист с фруктово-травяным послевкусием. Виноград и мята создают яркие акценты, сбалансированные благородной глубиной коньяка и мягкой сладостью сиропа. Финальные ноты брюта добавляют структурность, элегантную кислинку и игристость.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup19">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup19" class="overlay add-popup">
+        <a href="#cocktail-item-19" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Grape Escape</h2>
+            <a class="close add-id" href="#cocktail-item-19">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>8 свежих ягод зеленого винограда (бескосточковых)</li><li>5 свежих листьев мяты</li><li>60 мл коньяка</li><li>15 мл сиропа сахарного (2 части сахара на 1 часть воды)</li><li>Игристое вино (брют) долить до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере разомните мадлером 8 ягод винограда и 5 листьев мяты.</li><li>Налейте 60 мл коньяка и 15 мл сахарного сиропа.</li><li>Добавьте лед и хорошенько встряхните емкость.</li><li>Процедите напиток через сито в бокал с льдом или в охлажденный флюте.</li><li>Сверху долейте игристое вино, слегка перемешайте.</li><li>Украсьте бокал виноградом на шпажке и веточкой мяты.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-19">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">68-69 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.7-0.95 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

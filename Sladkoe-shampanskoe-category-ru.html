@@ -1,0 +1,934 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>Сладкое шампанское — последняя ступенька в структуре сладости игристых вин. Несмотря на простоту производства, стиль Doux встречается на рынке редко, так как выбор покупателей обычно падает на Brut, что продиктовано маркетингом.</p>
+                <p>В то же время максимально высокое содержание остаточного сахара зачастую приводит к более мягкому и ароматному фруктовому профилю. Именно поэтому спрос на сладкое игристое вино уверенно растет с каждым годом.</p>
+                <h3>Сколько сахара в стиле Doux</h3>
+                <p>Сладкое игристое вино содержит не менее 50 г/л. Уровень применим как для шампанского, так и для других напитков.</p>
+                <h2>Краткий экскурс в историю сладкого шампанского</h2>
+                <p>
+                    Стиль существует с XVIII века. Однако до конца XX века не только на французском, но и на мировом рынке доминировало исключительно сухое игристое вино. Его считали более качественным, поскольку покупатели проводили аналогию с крепким
+                    алкоголем, в котором с помощью сахара нередко маскировали ошибки производителя.
+                </p>
+                <p>
+                    Первыми от этого заблуждения отошли виноделы из Италии. Вскоре к ним присоединились производители из некоторых французских регионов. Сегодня такие зоны, как Пьемонт и Эмилия-Романья в Италии, а также Шампань во Франции, предлагают
+                    собственные версии сладкого игристого вина.
+                </p>
+                <h2>Как производят Champagne Doux</h2>
+                <p>
+                    Продукцию изготавливают по классическому методу Champenoise. Виноградный сок смешивают с дрожжами и сахаром. По окончанию первичного брожения базовое вино разливают по стеклянным бутылкам и отправляют на повторную ферментацию.
+                    Углекислый газ, который высвобождается в процессе, придает сладкому шампанскому тонкий перляж.
+                </p>
+                <p>
+                    Финальный штрих — вливание экспедиционного (тиражного) ликера. Его готовят из смеси дрожжей и сахара, добавляя после дегоржажа — откупорки бутылки при низких температурах. На этом этапе также удаляют остатки мертвых дрожжевых
+                    культур после повторного брожения в бутылках. Концентрация тиражного ликера определяет, насколько сладким станет готовое шампанское.
+                </p>
+                <p>
+                    Если производят сладкое игристое вино, то прибегают к менее трудоемкому методу «Шарма-Мартинотти». В таком случае вторичная ферментация проходит в металлических резервуарах, то есть в тех же емкостях, где впервые сбраживали
+                    виноградный сок.
+                </p>
+                <h2>Разновидности сладких игристых вин</h2>
+                <p>
+                    Классика жанра — шампанское. Его производят в Шампани во Франции из смеси трех виноградных сортов: «шардоне», «пино-нуар» и «пино-менье». Но на шампанское, без разницы сладкое или сухое, цена довольно высокая, из-за чего покупатели
+                    часто отдают предпочтение некоторым игристым винам из Италии:
+                </p>
+                <ol>
+                    <li>Асти. В основе — виноград «москато бьянко». Асти готовят по танковому (резервуарному) методу, поэтому оно интенсивно ароматное, но с низким содержанием алкоголя.</li>
+                    <li>Ламбруско. Это игристое вино производят в разных стилях. Сладкая версия, как правило, красная. Мелкий перляж скрывает взрывную композицию с нотами темных ягод.</li>
+                    <li>Фраголино. В основе — виноград «фрагола». Именно он придает фирменный клубничный привкус.</li>
+                </ol>
+                <h2>Как выбрать сладкое шампанское</h2>
+                <p>Возьмите за основу один из критериев:</p>
+                <ol>
+                    <li>Крепость. Варьируется в пределах 5–10%. Низкий процент алкоголя объясняется высокой концентрацией остаточного сахара.</li>
+                    <li>Емкость. Сладкое шампанское обычно разливают по стандартным бутылкам объемом 0.75 л. Но в маркете алкогольных штук MAUDAU также можно найти мини-бутылочки и магнумы вместительностью 1.5 л.</li>
+                    <li>Сорт винограда. Если для шампанского состав купажа определен законом, то список разрешенных сортов при изготовлении игристых вин обширнее. Белый виноград обогащает напиток свежими нотками, а красный — приятной кислинкой.</li>
+                </ol>
+                <h3>Лучшие производители сладких игристых вин</h3>
+                <p>Лидеры продаж:</p>
+                <ol>
+                    <li>Martini. Бренд из Италии, который, помимо игристой продукции, также производит вермуты.</li>
+                    <li>Fiorelli. Еще одна итальянская компания, выпускающая недорогую и ароматную продукцию.</li>
+                    <li>Katlenburger. Изначально под немецкой торговой маркой выпускали фруктовый сок, но после случайного открытия Вилли Демут запустил производство сладких игристых вин.</li>
+                </ol>
+                <h3>Сочетаемость с едой</h3>
+                <p>Гастрономическое сопровождение советуют подбирать исходя из цвета игристого вина:</p>
+                <ul>
+                    <li>белое — салаты и холодные закуски, мягкие сыры, севиче, суши и сашими, птица;</li>
+                    <li>красное — сыры с голубой плесенью, темный шоколад, карамелизированные фрукты;</li>
+                    <li>розовое — стейки, острые блюда мексиканской и тайской кухонь, мороженое, свежие фрукты и ягоды.</li>
+                </ul>
+                <h2>Почему выгодно купить сладкое шампанское в интернет-магазине MAUDAU</h2>
+                <p>
+                    Если ищете оригинальную алкогольную продукцию для праздника по конкурентной цене, MAUDAU — правильное место. Помимо регулярных скидок на сладкое игристое вино, включая Champagne, покупатели могут получить товар в самый краткий срок,
+                    выбрав доставку почтовой службой или курьером в Киеве, Днепре и Львове.
+                </p>
+            </div>
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Рози" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rosie.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Рози</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li><a href="https://maudau.com.ua/ru/product/brendi-spicer-abrykosovyi-38-0-5-l">Абрикосовое бренди</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=campari">Кампари</a></li><li><a href="https://maudau.com.ua/ru/product/napii-sokovyi-sandora-sytsiliiskyi-chervonyi-apelsyn-095-l-719492">Сок из красных апельсинов</a></li><li>Красный апельсин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий коктейль с насыщенным фруктовым вкусом, в котором сладкое шампанское сочетается с абрикосовым бренди и кампари. Сок красного апельсина добавляет легкую горчинку и балансирует сладость. Напиток подходит для вечеров, когда хочется выразительного и свежего вкуса.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Рози</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл сладкого шампанского</li><li>30 мл абрикосового бренди</li><li>10 мл кампари</li><li>10 мл сока из красных апельсинов</li><li>ломтик красного апельсина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Nick & Nora, поставив его в холодильник на несколько минут.</li><li>В смесительном стакане соедините 30 мл абрикосового бренди, 10 мл кампари и 10 мл сока из красных апельсинов.</li><li>Добавьте крупные кубики льда, затем плавно перемешайте 20 секунд барной ложкой.</li><li>Отфильтруйте содержимое через двойной стрейнер в подготовленный бокал.</li><li>Влейте 120 мл сладкого шампанского по барной ложке, чтобы сохранить карбонизацию.</li><li>Украсьте ломтиком красного апельсина, закрепив его на кромке бокала с помощью зажимной шпажки.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Джеймс Бонд" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/James-Bond.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Джеймс Бонд</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Светлый ром</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=karamel-8">Карамельный сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль сочетает сладкое шампанское, водку и ром с карамельным сиропом, который придает напитку легкую сладость и бархатистую текстуру. Подается в высоком бокале с кубиками льда, что добавляет освежающий акцент. Коктейль подойдет тем, кто ценит крепкие напитки с мягким и сбалансированным вкусом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Джеймс Бонд</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>200 мл сладкого шампанского</li><li>30 мл водки</li><li>20 мл светлого рома</li><li>30 мл карамельного сиропа</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заранее охладите бокал highball в морозильной камере.</li><li>В шейкер добавьте 30 мл водки, 20 мл светлого рома и 30 мл карамельного сиропа.</li><li>Наполните шейкер льдом до верха, затем встряхните энергично в течение 12 секунд.</li><li>Отфильтруйте содержимое через двойной стрейнер в бокал без льда.</li><li>Добавьте 200 мл сладкого шампанского, вливая по ложке, сохраняя карбонизацию.</li><li>Размешайте одним оборотом барной ложкой — только по центру, без касания стенок.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Баккара" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Baccarat.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Баккара</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li>Ликер Гранд Маньер</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li><a href="https://maudau.com.ua/ru/category/shokolad">Шоколад</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль сочетает в себе насыщенный вкус клюквенного сока и апельсиновый ликер Гранд Манье, создавая гармоничную композицию. Шампанское добавляет воздушности и делает напиток идеально подходящим для вечерних встреч. Отлично сочетается с темным шоколадом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Баккара</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>90 мл сладкого шампанского</li><li>30 мл ликера Гранд Маньер</li><li>20 мл клюквенного сока</li><li>10 мл сока лайма</li><li>плитка шоколада</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал coupette, засыпав его кубиками льда и отставив на 7 минут.</li><li>В шейкер налейте 30 мл ликера Гранд Маньер, 20 мл клюквенного сока и 10 мл сока лайма.</li><li>Добавьте много льда, затем встряхните энергично в течение 15 секунд, контролируя температуру через корпус.</li><li>Удалите лед из бокала и вытрите его салфеткой изнутри.</li><li>Процедите коктейль через двойной стрейнер в бокал.</li><li>Добавьте 90 мл сладкого шампанского, вливая тонкой струей по ложке.</li><li>На край бокала поместите небольшую плитку темного шоколада на зажимной шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Физ по-французски" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Fizz-in-French.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Физ по-французски</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Сок лимона</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Напиток с насыщенным и при этом освежающим вкусом, основанным на сочетании сладкого шампанского, коньяка, лимонного сока и сахарного сиропа. Легкая кислинка цитруса уравновешивает плотность алкоголя, что делает его хорошим вариантом для торжественных поводов.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Физ по-французски</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл сладкого шампанского</li><li>50 мл коньяка</li><li>15 мл сока лимона</li><li>2 ч. л. сахарного сиропа</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заранее охладите бокал fizz в морозильной камере минимум 5 минут.</li><li>В шейкере соедините 50 мл коньяка, 15 мл сока лимона и 2 ч. л. сахарного сиропа.</li><li>Добавьте лед и взболтайте до сильного охлаждения в течение 12 секунд.</li><li>Процедите через двойной стрейнер в подготовленный бокал.</li><li>Добавьте 100 мл сладкого шампанского, вливая по барной ложке.</li><li>Дайте пене осесть, затем долейте остаток, чтобы достичь визуального равновесия.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cotton Candy Champagne" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cotton-Candy-Champagne.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cotton Candy Champagne</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li>Коктейльная вата</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Необычный коктейль с мягким сладким вкусом, в котором шампанское соединяется с сахарной ватой. Этот напиток создает ощущение легкости и игривости, а также подходит для тематичных вечеринок и особенных случаев.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Cotton Candy Champagne</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл сладкого шампанского</li><li>10 г коктейльной ваты (небольшой шарик)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал флюте, погрузив его в ведерко со льдом на 5–7 минут.</li><li>Подготовьте коктейльную вату: скатайте из 10 г компактный шар, диаметром с половину ладони.</li><li>Осторожно поместите шарик ваты на край бокала, используя пинцет или щипцы, не допуская контакта с влагой.</li><li>Налейте 120 мл сладкого шампанского по ложке внутрь бокала, избегая попадания на вату.</li><li>Подавайте сразу, не трогая вату, так как каждый самостоятельно должен опустить ее в бокал для завершения коктейля.</li><li>Пить рекомендуется после полного растворения ваты.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Raspberry Champagne" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-Champagne.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Raspberry Champagne</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=malyna-9">Малиновый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Сок лимона</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li>Свежая малина</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Свежий коктейль с насыщенным ягодным вкусом: малиновое пюре и лимонный сок придают баланс между сладостью и кислинкой, а шампанское добавляет воздушную текстуру и освежающий эффект. Отличный выбор для тех, кто предпочитает фруктовые напитки с легкой изюминкой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Raspberry Champagne</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 ст. л. малинового сиропа</li><li>15 мл сока лимона</li><li>120 мл сладкого шампанского</li><li>Свежие ягоды малины для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал-флюте добавив в него лед на 5 минут, потом уберите его.</li><li>Налейте 2 ст. л. малинового сиропа и 15 мл сока лимона в дно бокала.</li><li>Слегка взболтайте вручную барной ложкой, не создавая пены.</li><li>Добавьте 120 мл сладкого шампанского, вливая строго по барной ложке, чтобы сохранить пузыри.</li><li>При помощи пинцета аккуратно поместите внутрь бокала 2–3 свежих ягоды малины для украшения.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Peach Sorbet Champagne" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Peach-Sorbet-Champagne.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Peach Sorbet Champagne</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li>Персиковый сорбет</li><li>Свежие фрукты</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Мягкий и освежающий коктейль на основе персикового сорбета и шампанского. Сорбет добавляет кремовую текстуру и фруктовую сладость, а игристое вино балансирует вкус и делает напиток более легким. Хороший выбор для летних встреч, особенно в жаркое время дня.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Peach Sorbet Champagne</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл охлажденного шампанского</li><li>1 шарик персикового сорбета</li><li>Свежие фрукты или съедобные цветы для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заранее охладите бокал-флюте в морозильной камере минимум 5 минут.</li><li>Подготовьте шарик персикового сорбета диаметром около 4 см с помощью ложки для мороженого.</li><li>Поместите шарик на дно бокала с помощью щипцов, избегая деформации формы.</li><li>Влейте 120 мл охлажденного шампанского тонкой струей по ложке, чтобы не вспенить поверхность.</li><li>Украсьте край бокала свежими фруктами или съедобными цветами, используя пинцет.</li><li>Подавайте на блюдце с десертной вилкой — для поедания остатка сорбета.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Коблер Дамский" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cobbler-Damsky.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Коблер Дамский</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=bile">Белое вино</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=abrykosovyi-3">Абрикосовый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=miatnyi-3">Мятный ликер</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/solodkist_3=solodke-3">Сладкое шампанское</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Сок лимона</a></li><li>Настой гвоздики</li><li>Колотый лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коблер Дамский — коктейль на основе шампанского с добавлением абрикосового и мятного ликеров. Освежающий, легкий и немного пряный. Подается с колотым льдом, мятой и долькой лимона.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Коблер Дамский</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>300 мл белого вина (столового)</li><li>200 мл абрикосового ликера</li><li>200 мл мятного ликера</li><li>300 мл сладкого шампанского</li><li>100 мл сока лимона</li><li>10 мл настоя гвоздики</li><li>Колотый лед по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заполните винтажный бокал коблер колотым льдом до самого верха.</li><li>В кувшин налейте 300 мл белого вина, 200 мл абрикосового ликера и 200 мл мятного ликера.</li><li>Добавьте 100 мл лимонного сока и 10 мл настоя гвоздики.</li><li>Перемешайте длинной барной ложкой 30 секунд.</li><li>Добавьте 300 мл сладкого шампанского, вливая по стенке.</li><li>Осторожно перелейте в бокал через барную воронку, сохраняя лед.</li><li>Украсьте веткой свежей мяты и тонкой долькой лимона на шпажке.</li><li>Подавайте с широкой трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">75-85 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">8.5-10 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

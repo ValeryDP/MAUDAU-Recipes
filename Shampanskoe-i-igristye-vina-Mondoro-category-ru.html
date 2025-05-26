@@ -1,0 +1,980 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    «Мондоро» — торговая марка, входящая в состав крупного алкогольного холдинга Campari Group, специализирующаяся на производстве итальянских игристых вин, включая изысканное Prosecco DOCG. В отличие от конкурентов, компания делает
+                    акцент на тщательно контролируемых методах ферментации и выдержки, что приводит к постоянству вкуса и аромата.
+                </p>
+                <h2>Как возник бренд Mondoro</h2>
+                <p>
+                    Датой рождения торговой марки считают 1878 год, когда провели первую дегустацию игристого вина, изготовленного по рецепту Энрико Серафино. Ювелир по профессии и поклонник шампанского по призванию, он адаптировал классическую
+                    французскую технологию шампанизации к местному климату, создав элегантное выражение. С того времени «Мондоро» называют итальянским шампанским, но на самом деле это игристое вино, так как наименование Champagne закреплено за
+                    напитками из Шампани (Франция).
+                </p>
+                <p>Продукцию в современном виде выпускают с 1989 года, когда к делу приступила команда энологов из Пьемонта. За время своего существования бренд завоевал свыше 30 наград на престижных международных конкурсах.</p>
+                <h2>Особенности производства шампанского «Мондоро»</h2>
+                <p>
+                    Технология изготовления еще раз подтверждает, что под торговой маркой выпускают именно игристое вино. Продукцию производят по методу «Шарма-Мартинотти». Резервуарная (танковая) технология предусматривает двойную ферментацию в
+                    резервуарах из нержавеющей стали под высоким давлением, что сохраняет свежий фруктово-цветочный аромат.
+                </p>
+                <p>
+                    Процессы немного отличаются в зависимости от выпускаемого игристого вина Mondoro. Например, Asti на основе светлокожих ягод «москато бьянко» проходит однократную ферментацию, при которой виноградное сусло охлаждают, а затем медленно
+                    сбраживают до низкого содержания алкоголя. Техника сохраняет остаточный сахар, придавая напитку характерную сладость. Пузырьки — результат естественной карбонизации.
+                </p>
+                <p>Вино игристое Mondoro Prosecco DOCG — флагманский продукт. Его производят из винограда «глера» посредством двойной ферментации в металлических емкостях. Брют готовят по такому же принципу.</p>
+                <h3>Сколько градусов в итальянском шампанском «Мондоро»</h3>
+                <p>
+                    Типичное содержание алкоголя колеблется в пределах 7,5–11%. Крепость зависит от сорта винограда, продолжительности ферментации виноградного сусла и содержания остаточного сахара. Например, мускат сбраживают не до конца,
+                    соответственно, объемная доля алкоголя на выходе ниже.
+                </p>
+                <h2>Ассортимент игристых вин «Мондоро»</h2>
+                <p>Бренд предлагает несколько стилей:</p>
+                <ol>
+                    <li>
+                        Asti. Сладкое игристое вино с низким содержанием алкоголя. Деликатный вкус окутывает тонами груш, персиков и ананасов. Аромат — интенсивный, что является отличительной чертой белых мускатных ягод. В нем доминируют оттенки
+                        апельсиновых цветков и меда. Купить это шампанское «Мондоро» стоит тем, кто ищет освежающий напиток без приторной сладости.
+                    </li>
+                    <li>Prosecco. Сухое игристое вино с выразительными аккордами зеленых яблок, груш и акации. На финише хорошо ощутима сбалансированная кислинка.</li>
+                    <li>
+                        Brut. В составе — виноград сортов «пино-нуар» и «совиньон-блан». Технология изготовления приближена к традиционному методу Champenoise. Однако на итальянское шампанское Mondoro цена куда выгоднее, по сравнению с французским. В
+                        носу превалируют нотки свежего винограда и белых цветков. Каждый глоток демонстрирует сложную вкусовую композицию — с акцентом на яблоках и грушах.
+                    </li>
+                    <li>
+                        Rose. Полусладкое игристое вино на основе темнокожих ягод вроде «пино-нуар». Светло-розовый цвет дает подсказку о вкусах и ароматах — свежих, фруктовых, с нотками малины, клубники, манго и яблок. Окончание — с умеренным
+                        травянистым шлейфом.
+                    </li>
+                </ol>
+                <h3>«Мондоро»: как не купить подделку</h3>
+                <p>
+                    При заказе игристого вина в маркете алкогольных штук MAUDAU этот раздел можно смело пропустить, так как у нас представлена исключительно оригинальная продукция. В противном случае проверьте номер партии, этикетку и саму бутылку,
+                    ведь бренд известен необычными обтекаемыми формами. Подделку обычно выдают дефектная крышка и неправильный шрифт.
+                </p>
+                <p>
+                    На шампанское «Мондоро» стоимость снижается с учетом акций и скидок. Например, в интернет-магазине MAUDAU список актуальных предложений постоянно обновляют. Но все равно цена не должна быть слишком низкой — это может говорить о
+                    контрафакте.
+                </p>
+                <h2>Шампанское Mondoro: что подать к элегантному напитку</h2>
+                <p>Любое игристое вино советуют подавать охлажденным — при +6–8 °C. Наливайте его медленно в бокал по типу Flute. Поддерживайте температуру бутылки с помощью ведерка со льдом.</p>
+                <p>
+                    Сочетания с едой зависят от стиля. Например, асти гармонично дополнит десерт. Просекко — универсально, поэтому его сопровождают салатами, морепродуктами, птицей, нежирной морской рыбой, суши и сашими. Брют балансирует жирную еду. А
+                    еще — это отличное дополнение к порции устриц. Розе дополнит красное мясо или ягодный десерт.
+                </p>
+                <h2>Шампанское «Мондоро»: цена в Украине</h2>
+                <p>
+                    В среднем бутылка игристого вина стоит 400–500 грн. Продукция, которой присвоили сертификат DOCG, стоит дороже — как минимум потому, что производство строго регламентировано, а ягоды собирают вручную. На стоимость также влияют
+                    налоги и пошлины, которые нужно оплатить импортеру по закону, прежде чем он получит возможность продавать продукцию итальянского производителя в Украине.
+                </p>
+                <h2>Почему выгодно купить шампанское Mondoro в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас собрана исключительно оригинальная алкогольная продукция — без компромиссов касательно качества и происхождения. Поиск по онлайн-каталогу удобен и понятен, а отзывы других покупателей, как и система фильтров, помогут быстрее
+                    определиться.
+                </p>
+                <p>
+                    Доставка курьером возможна в Киеве, Днепре и Львове — там же предусмотрен самовывоз из супермаркетов «Сільпо». Покупатели из других городов Украины могут воспользоваться услугами почтовых служб. Добавьте в список преимуществ шопинга
+                    в интернет-магазине MAUDAU регулярные акции, скидки, бесплатную доставку заказа на определенную сумму и программу лояльности «Власний Рахунок».
+                </p>
+            </div>
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Jacuzzi" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Jacuzzi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Jacuzzi</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-peach-tree-persyk-20-07-l">Ликер Peachtree</a></li><li><a href="https://maudau.com.ua/ru/product/dzhyn-haymans-london-dry-412-07-l-769716">Джин Hayman's London Dry</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Jacuzzi — как уютный уикенд в спа: теплый, расслабляющий, изысканный. Мягкие фруктовые оттенки ликера и пузырьки игристого создают атмосферу комфорта и беззаботности. Напиток окутывает, увлекает и дарит наслаждение.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Jacuzzi</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл ликера Peachtree (персикового)</li><li>15 мл джина Hayman's London Dry</li><li>30 мл апельсинового сока</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте по 30 мл ликера Peachtree и апельсинового сока.</li><li>Добавьте 15 мл джина Hayman's London Dry.</li><li>Положите лед и энергично встряхните.</li><li>Процедите через сито в охлажденный бокал, лучше всего во флюте.</li><li>С осторожностью долейте игристое вино до верха.</li><li>Для визуального акцента используйте цедру цитруса или ломтик персика.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Guillotine" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Guillotine.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Guillotine</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-joseph-cartron-creme-de-cassis-15-003-l">Ликер Joseph Cartron Double Crème de Cassis</a></li><li>Eau-de-Vie de Poire William</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Фантастический вкус Guillotine отличается изысканной смелостью. Этот коктейль пленяет дерзкими, яркими сочетаниями и мягким послевкусием. Интенсивные ноты ликера пробуждают чувства, балансируя между насыщенностью и элегантностью.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Guillotine</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл ликера Joseph Cartron Double Crème de Cassis</li><li>15 мл Eau-de-Vie de Poire William</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокал-флюте налейте по 15 мл ликера Joseph Cartron Double Crème de Cassis и Eau-de-Vie de Poire William.</li><li>Аккуратно долейте игристое вино до верха стакана.</li><li>Осторожно перемешайте коктейль барной ложкой, чтобы соединить все ингредиенты.</li><li>Украсьте бокал ягодами черной смородины и грушевой долькой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Baltic Spring Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Baltic-Spring-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Baltic Spring Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Свежий спелый персик</li><li>Ликер из розовых лепестков</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сахарный сироп</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Baltic Spring Punch — это взрыв бодрящей сладости персика, цитрусовой искры лимонного сока и легких цветочных оттенков ликера. Ароматы компонентов сливаются воедино, создавая гармоничный букет на радость гурманам.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Baltic Spring Punch</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 свежий спелый персик (очищенный и нарезанный)</li><li>45 мл ликера из розовых лепестков</li><li>15 мл лимонного сока</li><li>7.5 мл сахарного сиропа (2 части сахара к 1 части воды)</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер положите нарезанный персик и тщательно разомните мадлером, чтобы выпустить сок и аромат.</li><li>Налейте 45 мл ликера из розовых лепестков и 15 мл лимонного сока.</li><li>Добавьте 7.5 мл сахарного сиропа, кубики льда и энергично встряхните.</li><li>Процедите через сито-стрейнер в охлажденный бокал-коллинз.</li><li>Долейте игристое вино до верха.</li><li>Украсьте бокал фруктовой долькой для завершающего акцента.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Limeosa" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Limeosa.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Limeosa</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/horilka-absolut-lime-40-07-l-794090">Водка Absolut Lime</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль — как утренний бриз у морского побережья: бодрящий, лучистый, нежный. Цитрусовая свежесть апельсинового сока соединяется с шипучей легкостью шампанского, оставляя яркое и волнующее послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Limeosa</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл водки Absolut Lime</li><li>60 мл апельсинового сока</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере смешайте 30 мл водки Absolut Lime и 60 мл апельсинового сока со льдом.</li><li>Пропустите смесь через сито в охлажденный бокал-флюте.</li><li>Аккуратно долейте игристое вино (шампанское) до верхнего края.</li><li>Аккуратно перемешайте барной ложкой.</li><li>Для яркого штриха украсьте коктейль долькой лайма.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Carol Channing" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Carol-Channing.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Carol Channing</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-aelred-1889-creme-de-framboise-malyna-16-07-l">Ликер Framboise малина</a></li><li>Ликер Giffard Crème de Framboise</li><li>Сахарный сироп</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Carol Channing — обаятельный микс, напоминающий бурлеск в бокале. Он игристый, эксцентричный и блестящий. Яркие фруктовые ноты играют первые роли, сменяясь легкой кислинкой и нежной сладостью.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Carol Channing</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл Framboise малина eau-de-vie</li><li>10 мл ликера Giffard Crème de Framboise</li><li>5 мл сахарного сиропа (2 части сахара к 1 части воды)</li><li>120 мл игристого вина (шампанского)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охлажденный бокал-флюте налейте 15 мл Framboise малина.</li><li>Добавьте 10 мл ликера Giffard Crème и 5 мл сахарного сиропа.</li><li>Осторожно долейте игристое вино до верха (примерно 100–120 мл).</li><li>Бережно перемешайте коктейль барной ложкой.</li><li>Декорируйте напиток малиной или твистом лимонной цедры.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Monte Carlo Imperial" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Monte-Carlo-Imperial.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Monte Carlo Imperial</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-haymans-london-dry-412-07-l-769716">Джин Hayman's London Dry</a></li><li>Ликер Giffard Menthe Pastille</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Monte Carlo Imperial — это словно вечер в казино под шелест фишек: изысканный, величественный, соблазнительный. Глубокие ноты джина Hayman's London Dry переплетаются с мятными акцентами ликера Giffard Menthe Pastille, создавая роскошный вкус, полный игривой таинственности.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Monte Carlo Imperial</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина Hayman's London Dry</li><li>15 мл ликера Giffard Menthe Pastille (белого крем-де-мент)</li><li>15 мл лимонного сока</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер со льдом 45 мл джина Hayman's London Dry.</li><li>Добавьте по 15 мл ликера Giffard Menthe Pastille и лимонного сока.</li><li>Встряхните хорошо все компоненты и процедите в охлажденный бокал для мартини.</li><li>Не спеша долейте шампанское до верха, аккуратно перемешайте коктейльной ложкой.</li><li>Украсьте веточкой мяты и цедрой цитруса для стильной подачи.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Fru Fru" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Fru-Fru.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Fru Fru</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Ликер Giffard Fraise des Bois</li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=passoa">Ликер Passoã</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Fru Fru — это капризный вихрь, созданный из ярких грез: воздушный, игривый и обольстительный коктейль. Сочные ягодные оттенки ликеров переплетаются с легкой горчинкой грейпфрутового сока, создавая настроение веселья и флирта среди солнечных брызг шампанского.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Fru Fru</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>22,5 мл ликера Giffard Fraise des Bois (клубничного)</li><li>22.5 мл ликера Passoã (маракуйя)</li><li>22.5 мл грейпфрутового сока (розового)</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере со льдом смешайте по 22.5 мл ликеров Giffard Fraise des Bois (клубничного) и Passoã (маракуйя).</li><li>Добавьте 22.5 мл розового грейпфрутового сока.</li><li>Встряхните шейкер пару раз, пропустите смесь через стрейнер в бокал-флюте.</li><li>Долейте до верха шампанское (либо игристое вино).</li><li>Осторожно перемешайте, декорируйте ягодой или цедрой цитрусовых.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Henry VIII" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Henry-VIII.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Henry VIII</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/sil-tsukor/rafinatsiia=rafinovanyi">Сахар-рафинад</a></li><li>Абсент La Fée Parisienne</li><li>Водка Ketel One Citroen</li><li>Водка Absolut Peppar</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Благородный и многослойный коктейль Henry VIII достоен королевского пира. В каждом глотке — характер крепкого алкоголя, пряная насыщенность, бархатистый шлейф. Напиток переносит в эпоху трапез и величия, где безраздельно властвуют королевские вкусы.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Henry VIII</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 кубик сахара-рафинада (мелкого белого)</li><li>5 мл абсента La Fée Parisienne</li><li>15 мл водки Ketel One Citroen</li><li>15 мл водки Absolut Peppar</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Поместите кубик сахара-рафинада в бокал-флюте.</li><li>Сбрызните его абсентом La Fée Parisienne и дайте впитаться.</li><li>Добавьте по 15 мл водки Ketel One Citroen и Absolut Peppar.</li><li>Осторожно долейте до верха игристое вино (шампанское).</li><li>При желании аккуратно перемешайте ингредиенты или оставьте несмешанными.</li><li>Украсьте напиток цедрой лимона и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Champagne Daisy" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Champagne-Daisy.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Champagne Daisy</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Ликер Yellow Chartreuse</li><li>Гренадин</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=mondoro">Игристое вино Mondoro</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль, как вспышка весеннего солнца: яркий, живой, искристый. Цитрусовая свежесть сока сочетается с благородной глубиной игристого вина. Союз компонентов создает ощущение легкости, элегантности и игривого очарования раннего утра.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Champagne Daisy</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл ликера Yellow Chartreuse (или génépy)</li><li>5 мл гренадина / гранатового сиропа</li><li>30 мл лимонного сока</li><li>Дополнить игристым вином (шампанским) до верха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере со льдом смешайте по 30 мл ликера Yellow Chartreuse и лимонного сока.</li><li>Добавьте 5 мл гренадина или гранатового сиропа.</li><li>Встряхните смесь и процедите через сито в охлажденный бокал-флюте.</li><li>Осторожно долейте игристое вино до самого верха.</li><li>Аккуратно перемешайте с помощью барной ложки.</li><li>Украсьте цедрой цитруса и мараскиновой вишней.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">76-105 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">9-17 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

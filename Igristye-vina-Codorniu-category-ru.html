@@ -1,0 +1,862 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Винодельня Codorniu из Испании специализируется на изготовлении игристого вина Cava — напитка, производимого по той же технологии, что и шампанское, но зачастую по низшей стоимости. Метод Champenoise, который предусматривает
+                    вторичную ферментацию в закупоренных бутылках, обеспечивает тонкий перляж и многослойную вкусо-ароматическую композицию с характерным поджаристым шлейфом на финише.
+                </p>
+                <h2>Немного о возникновении торговой марки Codorniu</h2>
+                <p>Бренд берет начало в 1551 году, когда Жауме Кодорниу решил заняться виноделием в городке Сан-Садурни-д’Анойя. Это делает заложенную им винодельню официально самой старой в Каталонии.</p>
+                <p>
+                    В 1659 году Анна Кодорниу вышла замуж на виноградаря Микеля Равентоса, объединив знания и достижения двух влиятельных винодельческих семей. Именно Хосеп Равентос Фатхо, их прямой потомок, в 1872 году произвел первое в Испании
+                    игристое вино с применением традиционного метода шампанизации, которое вскоре назвали Cava.
+                </p>
+                <p>Современное здание винодельни «Кодорнью» построили в 1895 году. Его спроектировал Жозеп Пуч-и-Кадафалк в стиле индустриального модернизма. Здание внесено в список Всемирного наследия ЮНЕСКО.</p>
+                <p>
+                    Сегодня бренд по-прежнему принадлежит семейному холдингу Raventos Codorniu, представленному в разных уголках мира. Считается, что название торговой марки — производное от латинского слова, которое в переводе означает «голубь». Оно
+                    символизирует чистоту — главную ценность, отраженную в алкогольной продукции из Каталонии.
+                </p>
+                <h2>Как производят испанское шампанское «Кодорнью»</h2>
+                <p>Бренд прибегает к традиционному методу «Шампенуаз». Сначала производят тихое вино на основе местных сортов винограда:</p>
+                <ul>
+                    <li>«макабео»;</li>
+                    <li>«парельяды»;</li>
+                    <li>«шарелло».</li>
+                </ul>
+                <p>
+                    Иногда в рецептуру также внедряют «шардоне» и «пино-нуар». Как и в случае со шампанским, виноделы Codorniu разливают базовое вино по бутылкам, добавляя к нему тиражный ликер — смесь виноматериалов и сахара. Так запускают вторичную
+                    ферментацию и последующую выдержку на осадке — мертвых дрожжевых клетках. Этот процесс полностью меняет структуру и вкус готовой кавы.
+                </p>
+                <p>Выдержка зависит от класса напитка. Базовые игристые вина выдерживают не менее 15 месяцев, а винтажную продукцию — свыше 30.</p>
+                <h2>Ассортимент игристых вин Codorniu</h2>
+                <p>
+                    Бренд предлагает несколько стилей — от Brut Nature до Semi-Seco. Однако самой покупаемой категорией до сих пор остается Brut, в котором содержание остаточного сахара не превышает 12 г/л. Каждое игристое вино «Кодорнью» доступно в
+                    двух цветах — белом и розовом. Краткий обзор основных разновидностей:
+                </p>
+                <ol>
+                    <li>Cava Clasico. Базовый продукт, олицетворяющий аутентичный вкус испанской кавы — свежий, фруктовый и ярко кислотный. В составе — традиционная смесь трех сортов винограда с последующей кратковременной выдержкой на осадке.</li>
+                    <li>
+                        Anna Blanc de Blancs Brut Reserva. Элегантная версия с внедрением «шардоне», предназначенная для истинных ценителей. Это мягкое игристое вино с преобладанием цитрусовых и тропических нот. Серию создали в 1984 году, посвятив
+                        женщине, оставившей заметный след в истории Codorniu.
+                    </li>
+                    <li>Seleccion Raventos Brut. Более сложный стиль с длительной выдержкой, который предназначен для сочетания с изысканными блюдами.</li>
+                </ol>
+                <p>
+                    Отдельного внимания заслуживает серия Ars Collecta. Это престижная линейка, ежегодно выпускаемая в ограниченном количестве, так как ягоды собирают на пике зрелости исключительно из лучших виноградников. Выдержка составляет не менее
+                    35 месяцев.
+                </p>
+                <h3>Испанское шампанское Codorniu: цена в Украине</h3>
+                <p>
+                    Стоимость серьезно отличается, ведь хорошую бутылку можно купить как за 500, так и за 1000 грн. Цены зависят от коллекции, использованного винограда и его качества, срока созревания. Нижний предел — Cava Clasico. Дороже всего стоит
+                    Ars Collecta 457 Gran Reserva Brut.
+                </p>
+                <h2>Как наслаждаться игристым вином «Кодорнью»</h2>
+                <p>Обязательно охладите бутылку до +6–8 °C. Для дегустации используйте бокал-тюльпан.</p>
+                <p>
+                    Когда подбираете гастрономическое сопровождение, учитывайте цену игристого вина Codorniu и срок его выдержки. Например, Cava Clasico — прекрасная пара к тапасам и морепродуктам, запеченным на гриле. Версия Blanc de Blancs смакует с
+                    жирной морской рыбой и кремовыми блюдами вроде пасты под сливочно-грибным соусом. Серия Ars Collecta дополнит кулинарные шедевры с добавлением трюфелей и лобстеров.
+                </p>
+                <h2>Почему выгодно купить испанское шампанское Codorniu в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас — только оригинальная продукция, которую можно заказать с доставкой по всей Украине. Для жителей Днепра, Львова и Киева также предусмотрены два дополнительные варианты доставки — курьером и самовывоз из супермаркетов «Сільпо».
+                    Так как цена на некоторые игристые вина «Кодорнью» довольно высокая, это возможность накопить немало баллобонусов с помощью программы лояльности «Власний Рахунок» или получить кешбек благодаря WOW Club.
+                </p>
+            </div>
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Na Turquessa" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Na-Turquessa.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Na Turquessa</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=grand-marnier">Гранд Марнье</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lichi-13">Сок личи</a></li><li>Блю Кюрасао</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=codorniu">Игристое вино Codorniu</a></li><li>Текила Los Azulejos Reposado</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Na Turquessa — яркий, насыщенный спарклинг-коктейль с тропическим акцентом. Баланс сладкого сока личи, апельсиновых оттенков ликера Гранд Марнье и ванильных нот текилы Los Azulejos Reposado подчеркивает небольшая горчинка Блю Кюрасао. Брют завершает композицию освежающей газированной текстурой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Na Turquessa</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>20 мл Гранд Марнье</li><li>80 мл сока личи</li><li>30 мл Блю Кюрасао</li><li>90 мл игристого вина Codorniu</li><li>20 мл текилы Los Azulejos Reposado</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере соедините 20 мл Гранд Марнье и 80 мл сока личи.</li><li>Добавьте 30 мл Блю Кюрасао и 20 мл текилы с кубиками льда.</li><li>Встряхните энергично в течении 10-15 секунд.</li><li>Процедите в охлажденный винный бокал или флюте.</li><li>Долейте сверху 90 мл игристого вина.</li><li>Аккуратно перемешайте напиток высокой барной ложкой.</li><li>Украсьте коктейль апельсиновыми цукатами.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Тропический коктейль с маракуйей" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tropycheskyi-kokteil-s-marakuiei.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Тропический коктейль с маракуйей</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-bezalkoholne-codorniu-zero-bile-sukhe-05-075-l-35013">Безалкогольное игристое вино Codorniu Zero</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=marakuia-7">Сок маракуйи</a></li><li>Лайм</li><li>Свежая мята</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Изысканный безалкогольный спритц с маракуйей сочетает экзотическую сладость и деликатную кислинку. Насыщенный фруктовый сок гармонично интегрируется в структуру игристого вина, создавая сбалансированный профиль. Гарниш из лайма и мяты добавляет свежих цитрусово-травяных акцентов.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Тропический коктейль с маракуйей</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл безалкогольного игристого вина Codorniu Zero</li><li>50 мл сока маракуйи</li><li>1 ломтик лайма</li><li>несколько листьев свежей мяты для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните охлажденный бокал льдом.</li><li>Затем влейте 50 мл сока маракуйи.</li><li>Аккуратно долейте 100 мл безалкогольного игристого вина Codorniu Zero.</li><li>Украсьте коктейль ломтиком лайма и веточкой мяты.</li><li>Подавайте сразу, пока напиток сохраняет свежесть.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Фруктовый бриз" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Fruktovyi-bryz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Фруктовый бриз</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-bezalkoholne-codorniu-zero-bile-sukhe-05-075-l-35013">Безалкогольное игристое вино Codorniu Zero</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13">Ананасовый сок</a></li><li>Апельсин</li><li>Мята</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий и выразительный «Фруктовый бриз» — это безалкогольный спарклинг с ярким тропическим профилем. Сочетание ананасового и апельсинового соков создает сбалансированную кисло-сладкую основу, которую поддерживает свежесть игристого вина. Отличный выбор для вечеринок на свежем воздухе и летних мероприятий.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Фруктовый бриз</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл безалкогольного игристого вина Codorniu Zero</li><li>60 мл апельсинового сока</li><li>30 мл ананасового сока</li><li>1 ломтик апельсина</li><li>1 веточка мяты для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте 60 мл апельсинового и 30 мл ананасового сока в винный бокал.</li><li>Осторожно долейте 120 мл безалкогольного игристого вина Codorniu Zero.</li><li>Тщательно перемешайте коктейль барной ложкой.</li><li>Украсьте напиток ломтиком апельсина и веточкой мяты.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Безалкогольная Мимоза" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bezalkoholna-Mimoza.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Безалкогольная "Мимоза"</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-bezalkoholne-codorniu-zero-bile-sukhe-05-075-l-35013">Безалкогольное игристое вино Кодорнью Зеро</a></li><li>Свежевыжатый апельсиновый сок</li><li>Апельсиновая цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Безалкогольная интерпретация классической Мимозы сочетает яркие кисло-сладкие ноты свежевыжатого апельсинового сока и фруктовые акценты игристого вина. Мягкий и освежающий напиток с ярким цитрусовым профилем идеально подходит для бранча или обеденного аперитива.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Безалкогольная "Мимоза"</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл безалкогольного игристого вина Codorniu Zero</li><li>50 мл свежевыжатого апельсинового сока</li><li>апельсиновая цедра для украшения по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охлажденный бокал-флюте налейте 50 мл свежевыжатого апельсинового сока.</li><li>Аккуратно долейте 100 мл безалкогольного игристого вина Codorniu Zero.</li><li>Украсьте бокал тонкой спиралью апельсиновой цедры.</li><li>Подавайте коктейль сразу, пока структура сохраняет перляж.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ягодный спаркл" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yahidnyi-sparkl.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ягодный спаркл</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-bezalkoholne-codorniu-zero-bile-sukhe-05-075-l-35013">Безалкогольное игристое вино Codorniu Zero</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=malyna-20">Малиновый сок</a></li><li>Малина</li><li>Клубника</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Безалкогольный спаркл сочетает освежающую легкость игристого вина и ягодную сладость. Малиновый сок придает коктейлю насыщенный фруктовый профиль с кисло-сладкими акцентами, а ягоды добавляют свежести и визуальной привлекательности. Сбалансированный вариант для гурманов, ищущих сдержанный напиток без алкоголя.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Ягодный спаркл</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл безалкогольного игристого вина Codorniu Zero</li><li>30 мл малинового сока</li><li>свежие ягоды малины для украшения</li><li>свежие ягоды клубники для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте 30 мл малинового сока в бокал-флюте.</li><li>Медленно долейте 100 мл безалкогольного игристого вина Codorniu Zero.</li><li>Украсьте коктейль ягодами малины и клубники.</li><li>Подавайте напиток сразу, в охлажденном виде.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Имбирное игристое" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ginger-sparkling.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Имбирное игристое</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-bezalkoholne-codorniu-zero-bile-sukhe-05-075-l-35013">Безалкогольное игристое вино Codorniu Zero</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=imbyr-13">Имбирный сок</a></li><li>Свежий имбирь</li><li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht">Корица</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Имбирное игристое — легкий и выразительный напиток с пикантным характером. Острые пряные ноты свежего имбиря гармонично сбалансированы мягкой кислинкой безалкогольного брютa, что создает многослойный вкус с небольшой терпкостью. Послевкусие у напитка получается теплым, с древесно-пряными акцентами корицы.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Имбирное игристое</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл безалкогольного игристого вина Codorniu Zero</li><li>30 мл имбирного сока</li><li>1 ломтик свежего имбиря</li><li>1 палочка корицы для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте 30 мл имбирного сока в бокал для шампанского или высокий винный бокал.</li><li>Аккуратно долейте 120 мл безалкогольного игристого вина Codorniu Zero.</li><li>Слегка перемешайте напиток высокой барной ложкой.</li><li>Украсьте коктейль ломтиком имбиря и палочкой корицы.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">26-66 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0-0.3 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.8-5.65 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,856 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Бренд Abbazia, который производит доступное, но при этом изящное игристое вино, происходит из Пьемонта (Италия). Многим знакомы Lambrusco и Prosecco, но портфолио производителя включает еще несколько заслуживающих внимания разливов
+                    под этикетками DOC и IGT.
+                </p>
+                <p>
+                    Винодельня расположена в маленьком городке Санто-Стефано-Бельбо — в живописной местности между виноградниками Ланге-Роэро и Монферрат. Бренд использует метод «Шарма», сочетая традиционное мастерство со вкусами современных
+                    потребителей.
+                </p>
+                <h2>Краткая история торговой марки Abbazia</h2>
+                <p>
+                    Истоки винокурни восходят к 1848 году, когда Пьетро Сантеро переехал в Калоссо, где занялся виноградарством. Именно его потомки в начале XX века возвели винодельческое предприятие на месте старого бенедиктинского монастыря, который
+                    вскоре полностью выкупили.
+                </p>
+                <p>Первый разлив игристых вин состоялся в 1918 году. Спустя 12 лет продукцию Abbazia можно было купить не только в Пьемонте, но и в других регионах Италии. А первый магазин открылся в Турине в 1945 году.</p>
+                <p>
+                    В период после Второй мировой войны компания стабильно развивалась благодаря использованию современных техник розлива и емкостей из нержавеющей стали — раннему внедрению того, что вскоре стало методом Charmat. К концу 1990-х годов
+                    бренд Abbazia вышел на ключевые рынки стран Европы, Северной Америки и Азии.
+                </p>
+                <p>
+                    Сегодня компания ежегодно производит более 10 миллионов бутылок, уделяя особое внимание легко пьющимся фруктовым игристым винам, которые соответствуют вкусам покупателей из разных стран мира. Производство по-прежнему контролирует
+                    семья Сантеро.
+                </p>
+                <h3>Немного интересных фактов о торговой марке Abbazia</h3>
+                <p>Прежде всего стоит упомянуть, что компания владеет четырьмя виноградниками в нескольких важных зонах:</p>
+                <ul>
+                    <li>Torbane;</li>
+                    <li>Pelassa;</li>
+                    <li>Fontanette;</li>
+                    <li>La Giungla.</li>
+                </ul>
+                <p>Первые две виноградные плантации — самые старые. На них произрастают сорта «москато бьянко» и «москато неро».</p>
+                <p>
+                    Название торговой марки — отсылка к историческому аббатству, на территории которого расположена винодельня. Особый повод для гордости компании обеспечивают погреба Abbazia, частично вытесанные в холме, что поддерживает внутри
+                    постоянно прохладную температуру.
+                </p>
+                <p>
+                    Продукция производителя за время своего существования завоевала множество престижных наград. Особенно ценны для компании призовые места на Mundus Vini в 2015 году и CWWSC в 2019. Последние награды продукции присудили в рамках
+                    дегустаций Luca Maroni и Gilbert &amp; Gaillard.
+                </p>
+                <h2>Как производят игристое вино Abbazia</h2>
+                <p>Бренд применяет метод «Шарма-Мартинотти», поэтому вторичная ферментация проходит в стальных резервуарах под постоянно высоким давлением. Технология сохраняет свежий фруктовый привкус каждого игристого вина.</p>
+                <p>Сортовой состав зависит от производимого стиля. Так, «глеру» используют для просекко, «москато бьянко» — для асти, а «ламбруско» — для разливов Emilia IGT.</p>
+                <p>
+                    Помните, что Abbazia — не шампанское. Большинство этих игристых вин не относят к винтажным, а так как они ориентированы на свежесть, то их не подвергают длительной выдержке. Следовательно, продукция производителя — отличный вариант
+                    для немедленного наслаждения, особенно с учетом конкурентной стоимости.
+                </p>
+                <h2>Ассортимент игристых вин Abbazia</h2>
+                <p>Бренд выпускает пять линеек. В маркете алкогольных штук MAUDAU представлены три из них:</p>
+                <ol>
+                    <li>
+                        Fortuna. Одна из недавних коллекций, созданная в 2020 году и предназначенная для особых случаев вроде дня рождения. Изюминка — четырехлистный клевер, украшающий горлышко каждой бутылки. Флагман — Asti DOCG. Это игристое вино с
+                        низким содержанием алкоголя изготовлено из 100% Moscato Bianco. В носу доминируют нотки белого персика, шалфея и цветков акации.
+                    </li>
+                    <li>
+                        Atmosphere. Линейка, которая предназначена для неформальных торжеств и расслабленных посиделок с друзьями. Отличительная черта — минималистичный дизайн бутылок. Коллекция включает Cuvee Prestige и Prosecco DOC. Первый напиток —
+                        универсальное игристое вино Abbazia с интенсивным цветочным ароматом и аккордами груш. Второй продукт впечатлит тонким перляжем и сбалансированной сладостью с нюансами свежих яблок и миндаля.
+                    </li>
+                    <li>
+                        Vini. Дизайн этикеток вдохновлен розовым окном бенедиктинского аббатства, возведенного в XII веке. Один из примеров — Lambrusco Bianco Emilia Fiorino d’Oro. Это столовое игристое вино для повседневных обедов, которое легко
+                        открывать и столько же легко сочетать с едой. Акцент — на тропических и цитрусовых нотках.
+                    </li>
+                </ol>
+                <h2>Как выбрать игристое вино Abbazia</h2>
+                <p>Учитывайте важные аспекты:</p>
+                <ol>
+                    <li>Цвет. Зависит от винограда и стиля. Влияет на сочетаемость с пищей. Например, розовое игристое вино советуют подавать со свежими фруктами и ягодами. Белое — привычное дополнение к рыбе и морепродуктам.</li>
+                    <li>Крепость. Содержание алкоголя варьируется в пределах 7–11%. Легкое игристое вино рассчитано на дневное мероприятие, а более крепкое — на вечерний прием.</li>
+                    <li>
+                        Сладость. Бренд Abbazia сосредоточен на двух категориях — Extra Dry и Demi-Sec. Чем ниже содержание сахара, тем суше ощущения во рту, но при этом на первый план выходит не приторная сладость, а яркий цветочно-фруктовый шлейф.
+                    </li>
+                    <li>Объем. Самый распространенный вариант — стандартная бутылка на 0,75 л. Альтернативных объемов бренд не предлагает.</li>
+                </ol>
+                <p>Быстрее сориентироваться в онлайн-каталоге MAUDAU поможет система фильтров. Товары также можно сгруппировать по новизне или популярности.</p>
+                <h3>Сколько стоит игристое вино Abbazia</h3>
+                <p>
+                    Цена, как правило, не превышает 500 грн, однако она зависит от линейки и классификации. При этом хорошую бутылку можно найти за 250–300 грн. Добавьте к этому акции и возможность сэкономить, заказывая некоторые позиции оптом —
+                    снижение стоимости предусмотрено при покупке от трех бутылок. Это еще одна причина выбрать Abbazia вместо шампанского, которое обычно стоит гораздо дороже.
+                </p>
+                <h2>Как пить игристое вино и что к нему подать</h2>
+                <p>Разливайте напитки хорошо охлажденными:</p>
+                <ol>
+                    <li>Игристое вино Asti DOCG смакует при +6–8 °C из бокала в форме тюльпана, максимально раскрывающего его аромат. Напиток гармонично сочетается с фруктовыми пирогами, панна-коттой, свежими сырами.</li>
+                    <li>Prosecco DOC и Cuvee Prestige от Abbazia советуют подавать при +8–10 °C, сопровождая рыбу, морепродукты, птицу. Для этих игристых вин подходит Flute или стандартный бокал для белых вин.</li>
+                    <li>Lambrusco Bianco можно наслаждаться при +10–12 °C. Полусухое игристое вино выгодно подчеркнет копчености, овощи-гриль, пасту под сливочным соусом.</li>
+                </ol>
+                <h2>Почему выгодно купить игристое вино Abbazia в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас — гарантированно оригинальная продукция, которую доставляю в любой уголок Украины. За это отвечают логистические компании-партнеры — «Новая почта», «Укрпочта» и «Meest ПОЧТА». Для жителей Киева, Днепра и Львова предусмотрен
+                    дополнительный вариант — курьерская доставка. Еще одна возможность забрать заказ в этих городах — это самовывоз из супермаркетов «Сільпо». Покупку можно оплатить на сайте или после получения. А немного сэкономить предлагают
+                    программы лояльности «Власний Рахунок» и WOW Club.
+                </p>
+            </div>
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pomtini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pomtini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pomtini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/horilka-proshyan-brandy-factory-khent-hranatova-05-l">Гранатовая водка</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл-сек</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hranat-8">Гранатовый сок</a></li><li>Смесь Sweet &amp; Sour</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=abbazia">Игристое вино Abbazia</a></li><li>Лимон</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Pomtini сочетает крепкую ароматизированную водку и цитрусовый профиль трипл-сека, сбалансированные кислинкой гранатового сока и сладостью смеси Sweet & Sour. Игристое вино добавляет текстурную легкость за счет деликатной перляции. Напиток уместен в качестве аперитива перед основным приемом пищи.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pomtini</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл гранатовой водки</li><li>15 мл трипл-сека</li><li>гранатовый сок по вкусу</li><li>смесь Sweet &amp; Sour по вкусу</li><li>игристое вино для доливки</li><li>твист из лимона для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер со льдом налейте 45 мл гранатовой водки и 15 мл трипл-сека.</li><li>Добавьте гранатовый сок и смесь Sweet & Sour по вкусу.</li><li>Взбейте и процедите через сито в охлажденный коктейльный бокал.</li><li>Аккуратно долейте игристое вино до верха.</li><li>Украсьте коктейль твистом лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Too hot to handle" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Too-hot-to-handle.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Too hot to handle</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Cointreau L'Unique</a></li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aelred-aperitif-nectarine-nektaryn-12-07-l">Ликер из нектаринов</a></li><li>Нектариновое пюре</li><li><a href="https://maudau.com.ua/ru/product/kordial-monin-paragone-white-penja-pepper-485h">Кордиал паприка</a></li><li>Биттер Peychaud</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=abbazia">Игристое вино Abbazia</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль гармонично соединяет сладкую фруктовую основу ликеров, пюре нектарина и мягкую пряность папричного кордиала. Игристое вино вводит тонкую кислотность и невесомую текстуру, балансируя общий вкус. Биттер придает небольшую горечь и ароматные акценты. Коктейль подают в охлажденном бокале-флюте.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Too hot to handle</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>10 мл ликера Cointreau L'Unique</li><li>10 мл ликера из нектаринов</li><li>20 мл нектаринового пюре</li><li>10 мл кордиала паприка</li><li>2 капли биттера Peychaud</li><li>игристое вино Abbazia для доливки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер без льда влейте по 10 мл ликера Cointreau L'Unique и ликера из нектаринов.</li><li>Добавьте 20 мл нектаринового пюре и 10 мл кордиала паприка.</li><li>Засыпьте лед, встряхните и процедите в охлажденный бокал-флюте или купе.</li><li>Затем долейте игристое вино Abbazia до верха.</li><li>Аккуратно плесните 2 капли биттера Peychaud.</li><li>Декорируйте бокал слайсом нектарина или цедрой апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Heart of the Ocean" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Heart-of-the-Ocean.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Heart of the Ocean</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Биттер Angostura</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Cointreau L'Unique</a></li><li>Свежий лимонный сок</li><li>Свежие ягоды клубники</li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-abbazia-prosecco-spumante-doc-rose-extra-dry-rozheve-ekstra-drai-075-l">Игристое вино Abbazia Prosecco</a></li><li>Rémy Martin 1738 Accord Royal</li><li>Простой сироп</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Heart of the Ocean — сбалансированный коктейль на базе коньяка с добавлением апельсинового ликера, лимонного сока и легких ягодных нот. Сладкий сироп смягчает кислотность, а просекко придает композиции игристую текстуру. Каплю биттера Angostura добавляют в качестве акцента для глубины вкуса.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Heart of the Ocean</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li></li><li></li><li>1 капля биттера Angostura</li><li>20 мл ликера Cointreau L'Unique</li><li>20 мл свежего лимонного сока</li><li>3 ломтика свежих ягод клубник</li><li>60 мл игристого вина Abbazia Prosecco</li><li>45 мл Rémy Martin 1738 Accord Royal</li><li>5 мл простого сиропа</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере раздавите мадлером 3 ломтика свежих ягод клубники.</li><li>Влейте 45 мл коньяка Rémy Martin 1738 Accord Royal и 20 мл ликера.</li><li>Добавьте 20 мл лимонного сока, 5 мл сиропа и каплю биттера.</li><li>Наполните шейкер льдом и энергично встряхните.</li><li>Двойным стрейном процедите в охлажденный бокал.</li><li>Долейте 60 мл игристого вина Abbazia Prosecco для финиша.</li><li>Аккуратно перемешайте барной ложкой, украсьте ломтиком клубники.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Frankly, My Dear" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Frankly-My-Dear.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Frankly, My Dear</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Cointreau L'Unique</a></li><li>Свежий лимонный сок</li><li><a href="https://maudau.com.ua/ru/category/dytiachi-piure/smak=persik">Персиковое пюре</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-abbazia-prosecco-spumante-doc-rose-extra-dry-rozheve-ekstra-drai-075-l">Игристое вино Abbazia Prosecco</a></li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Frankly, My Dear — гармоничный коктейль на базе водки с выраженным фруктовым характером. Персиковое пюре придает мягкую текстуру и сладость, контрастирующую со свежим лимонным соком. Ликер Cointreau добавляет цитрусовый акцент, а просекко завершает композицию легкими пузырьками и игристым финалом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Frankly, My Dear</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>20 мл ликера Cointreau L'Unique</li><li>20 мл свежего лимонного сока</li><li>15 мл персикового пюре</li><li>90 мл игристого вина Abbazia Prosecco</li><li>20 мл водки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер по 20 мл ликера, водки и лимонного сока.</li><li>Затем добавьте 15 мл персикового пюре.</li><li>Насыпьте лед и тщательно взбейте в течении 20 секунд.</li><li>Долейте 90 мл игристого вина Abbazia Prosecco до верха.</li><li>Подавайте коктейль без гарниша или с долькой персика.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Acceptance Speech" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Acceptance-Speech.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Acceptance Speech</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Cointreau L'Unique</a></li><li>Съедобный золотой лист</li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=buzyna-3">Бузинный тоник</a></li><li>Свежий грейпфрутовый сок</li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-abbazia-prosecco-spumante-doc-rose-extra-dry-rozheve-ekstra-drai-075-l">Игристое вино Abbazia Prosecco</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Acceptance сочетает ярко выраженный цитрусовый профиль Cointreau, мягкую горечь грейпфрута и цветочные ноты бузинного тоника. Игристое вино придает композиции объем и текстурную легкость. Баланс сладкого и кислого делает напиток уместным на воскресном бранче.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Acceptance Speech</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл ликера Cointreau L'Unique</li><li>щепотка съедобного золотого листа для украшения</li><li>90 мл бузинного тоника</li><li>30 мл свежего грейпфрутового сока</li><li>60 мл игристого вина Abbazia Prosecco</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокал-флюте или хайболл налейте по 30 мл ликера и грейпфрутового сока.</li><li>Затем осторожно влейте 90 мл бузинного тоника.</li><li>Долейте 60 мл игристого вина Abbazia Prosecco для финиша.</li><li>Аккуратно перемешайте коктейль барной ложкой.</li><li>Перед подачей украсьте напиток щепоткой съедобного золотого листа.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        
+        
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">66-72 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">1.5-6 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,977 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Шампанське Mumm — одне з найбільш упізнаваних найменувань у світі французьких ігристих вин. Його виробляють у самому серці Шампані. Продукцію впізнають за яскравою червоною стрічкою, зображеною на кожній пляшці, а цінують за
+                    сміливий характер, який є результатом поєднання багатовікового досвіду виноробства з сучасними методами.
+                </p>
+                <h3>Що особливого в шампанському «Мумм»</h3>
+                <p>
+                    Це один із найстаріших домів шампанських вин у світі, якй працює досі. Його заснували ще 1827 року. Фірмова червона стрічка (Cordon Rouge) натхненна вищою французькою державною нагородою — орденом «Почесного легіону», заснованим
+                    Наполеоном Бонапартом 1802 року.
+                </p>
+                <p>
+                    Виноград для створення Mumm Champagne вирощують на 218 гектарах власних виноградників, 98% з яких класифікують як Grand Cru і Premier Cru. Домінантний сорт — «піно-нуар», що надає кожному розливу структуру і сміливість. Виробництво
+                    на кожному етапі, включно з купажуванням і витримкою, контролює Лоран Фресне.
+                </p>
+                <p>Бренд «Мумм» також здійснив фурор у плані дизайну, коли презентував колекцію Grand Gordon. На цих пляшках немає традиційних передніх етикеток — тільки вигравіювана червона стрічка.</p>
+                <h2>Mumm: коротка історія торгової марки і самого шампанського</h2>
+                <p>
+                    Компанію заснували 1827 року в Реймсі. Це заслуга трьох братів німецького походження, чия сім’я свого часу торгувала винами в Кельні, — Якобса, Готліба і Філіпа Муммів. До них також приєднався купець Фрідріх Гіслер. Так виник
+                    невеликий бізнес, який спочатку називався P. A. Mumm Giesler &amp; Co.
+                </p>
+                <p>До кінця XIX століття дім шампанських вин став постачальником для кількох королівських дворів в Австро-Угорщині, Бельгії та Великій Британії. Фірмову етикетку Cordon Rouge презентували 1876 року.</p>
+                <p>Після двох світових воєн компанія зазнала безлічі змін, проте ті тільки пішли їй на користь. При цьому акцент все ж залишився на традиційних методах, включно з витримкою на осаді та ручним ридлінгом (ремюажем) для деяких кюве.</p>
+                <p>Сьогодні дім шампанських вин Mumm належить компанії Pernod Ricard. Бренд експортує свою продукцію в понад 100 країн, зберігаючи репутацію одного з найбільш продаваних ігристих вин у світі.</p>
+                <h2>Різновиди шампанського «Мумм»</h2>
+                <p>Портфоліо виробника об’єднує три лінійки. У маркеті алкогольних штук MAUDAU представлено дві — Cordon Rouge і Grand Cordon.</p>
+                <p>
+                    Перша — флагманська. Центральний продукт — Cordon Rouge Brut, що являє собою невінтажну суміш «піно-нуар», «шардоне» і «піно-менье». Біле ігристе вино «Мумм» огортає яскравими нотами цитрусових і зелених яблук, доповнених нюансами
+                    свіжої бріоші та підсмажених лісових горіхів. Посмак — чистий, з тонкими мінеральними ароматами.
+                </p>
+                <p>
+                    Рожева версія, тобто Cordon Rouge Rose Brut, містить приблизно 14% червоного тихого вина на основі «піно-нуар». Це фруктове та елегантне шампанське «Мумм», ціна якого залишається доступною. У роті домінують нотки вишні, суниці та
+                    рожевого грейпфрута, збалансовані тонкою кислотністю.
+                </p>
+                <p>Новаторські та виразні кюве представлені в колекції Grand Cordon. У складі кожного купажу переважають ягоди «піно-нуар» — їхня кількість сягає 75%.</p>
+                <p>
+                    Один із прикладів — Mumm Grand Cordon Brut, у якому ненав’язливі аромати кісточкових плодів і меду накладаються на основу з переважанням освіжальних цитрусових. Доповнює сенсорний досвід тривалий сухий посмак із крейдяною
+                    мінеральністю.
+                </p>
+                <p>Рожева версія — смілива суміш із тонами червоних ягід і граната. Це шампанське «Мумм» покращено тривалою витримкою на осаді для округлості та складності.</p>
+                <h2>Mumm Champagne: що подати до легендарного шампанського</h2>
+                <p>Рекомендована температура для дегустації становить +7–9 °C. Біле ігристе вино радять подавати прохолодним, а рожеве — на 1–2 градуси тепліше. Поєднання з їжею залежать від кольору напою:</p>
+                <ol>
+                    <li>Біле. Добре поєднується з молюсками, сашимі, устрицями та маринованим у цитрусових севіче. Біле Mumm Brut — шампанське, яке також можна купити як супровід до витриманих твердих сирів, птиці, вершкової пасти або ризотто.</li>
+                    <li>Рожеве. Гармонійне доповнення до м’ясних закусок, смаженого лосося, качиної грудки, фруктово-ягідних десертів. Не обходьте стороною поєднання з тартаром із тунця і стравами з додаванням пікантних азійських спецій.</li>
+                </ol>
+                <h2>Чому вигідно купити шампанське «Мумм» в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У нас — виключно оригінальна алкогольна продукція, яку доставляють по всій Україні за допомогою популярних логістичних компаній, а в деяких містах — ще й кур’єрів. Mumm — шампанське, ціна якого залишається доступною, попри високу
+                    якість сировини та багаторічну репутацію виробника. Щоб заощадити, дочекайтеся акції або замовляйте ігристе вино в момент розпродажу.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Old Cuban Champagne" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Old-Cuban-Champagne.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Old Cuban Champagne</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/shampanske-mumm-cordon-rouge-brut-bile-briut-0-75-l">Ігристе вино Mumm Grand Cordon</a></li><li>Мʼята</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Ароматичний біттер Angostura</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/rom">Ром</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Old Cuban Champagne — коктейль із вираженим ароматичним профілем: витриманий ром надає структуру, цитрусовий сік формує кислотність, а м'ята вносить свіжі ноти. Ігристе вино доповнює композицію делікатною перляцією, роблячи напій придатним для аперитивної подачі.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Old Cuban Champagne</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл ігристого вина Mumm Grand Cordon</li><li>4–6 листків м'яти для коктейлю</li><li>2 краплі ароматичного біттеру</li><li>10 мл цукрового сиропу</li><li>10 мл лимонного соку</li><li>15 мл рому (витриманого)</li><li>листочок м'яти для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Помістіть у шейкер кілька листочків м'яти і 10 мл цукрового сиропу.</li><li>Акуратно подавіть зелень мадлером, не пошкоджуючи структуру.</li><li>Додайте 15 мл рому, 10 мл лимонного соку і 2 краплі біттеру.</li><li>Наповніть шейкер льодом і енергійно струсіть.</li><li>Процідіть через стрейнер в охолоджений келих-купе.</li><li>Долийте 60 мл ігристого вина Mumm Grand Cordon.</li><li>Прикрасьте коктейль листочками м'яти.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Champagne Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Champagne-Sour.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Champagne Sour</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/shampanske-mumm-cordon-rouge-brut-bile-briut-0-75-l">Ігристе вино Mumm Grand Cordon</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Лимон</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Champagne Sour — це оригінальна варіація класичного кислого сауеру, з акцентом на ігристе вино. Баланс досягається завдяки поєднанню пікатного лимонного соку і м'якого, солодкого цукрового сиропу. Вино Mumm Grand Cordon надає структурі легкість і тривалий ігристий посмак.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Champagne Sour</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>90 мл ігристого вина Mumm Grand Cordon</li><li>10 мл цукрового сиропу</li><li>10 мл свіжовичавленого лимонного соку</li><li>цедра лимона для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охолодженому келиху-флюте змішайте по 10 мл лимонного соку і цукрового сиропу.</li><li>Акуратно долийте 90 мл ігристого вина Mumm Grand Cordon.</li><li>Повільно перемішайте напій високою барною ложкою.</li><li>Прикрасьте коктейль цедрою лимона перед подачею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Champagne Old Fashioned" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Champagne-Old-Fashioned.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Champagne Old Fashioned</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/shampanske-mumm-cordon-rouge-brut-bile-briut-0-75-l">Ігристе вино Mumm Grand Cordon</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сироп із тростинного цукру</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Ароматичний біттер Angostura</a></li><li>Апельсин</li><li>Вишня Амарена</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сухий твіст на легендарний Old Fashioned балансує між гіркуватістю біттеру, солодкістю сиропу та вираженою кислинкою ігристого вина. Акценти цедри апельсина і вишні додають ароматів і завершують смаковий профіль. Напій чудово підходить для подачі як аперитив.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Champagne Old Fashioned</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>90 мл ігристого вина Mumm Grand Cordon</li><li>5 мл сиропу з тростинного цукру</li><li>2 краплі ароматичного біттеру</li><li>цедра апельсина для прикрашання</li><li>вишня Амарена для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У келих-рокс покладіть 5 мл сиропу з тростинного цукру.</li><li>Додайте 2 краплі ароматичного біттеру.</li><li>Обережно влийте 90 мл охолодженого ігристого вина Mumm Grand Cordon.</li><li>Перемішайте барною ложкою до об'єднання інгредієнтів.</li><li>Прикрасьте напій цедрою апельсина та вишнею Амарена.</li><li>Подавайте коктейль без льоду.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Champagne Piña Colada" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Champagne-Pina-Colada-mu.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Champagne Piña Colada</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Світлий білий ром</a></li><li>Білий ром Rhum Clément</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=ananasovyi">Ананасовий лікер</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li><li>Кокосовий сорбет</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=mumm">Ігристе вино Mumm</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Цей коктейль припаде до душі любителям класичного міксу Піна Колада. Champagne Piña Colada — екзотичний лонг, у якому ніжний кокосовий сорбет, солодкий ананас і міцний ром створюють тропічну основу, а ігристе вино додає святкової свіжості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Champagne Piña Colada</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл світлого білого рому</li><li>5 мл білого рому Rhum Clément</li><li>20 мл ананасового лікеру</li><li>45 мл ананасового соку</li><li>2 кульки кокосового сорбету</li><li>15 мл ігристого вина (брюту) для змішування</li><li>45 мл ігристого вина (брюту) для доливання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У блендері або шейкері змішайте 25 мл світлого рому і 5 мл Rhum Clément.</li><li>Додайте 20 мл ананасового лікеру і 45 мл ананасового соку.</li><li>Покладіть дві кульки кокосового сорбету.</li><li>Збийте компоненти до отримання однорідної текстури.</li><li>Перелийте в охолоджений келих, додайте 15 мл ігристого вина і перемішайте.</li><li>Для завершення долийте 45 мл ігристого вина до верху.</li><li>Прикрасьте коктейль ананасом і кокосовими стружками.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Lillet Rosé Flambe" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rose-Flambe.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Lillet Rosé Flambe</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Lillet Rosé</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=mumm">Ігристе вино Mumm</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Ароматичний апельсиновий біттер</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Збалансований аперитив на основі Lillet Rosé та ігристого вина Mumm. Смак будується на ніжних винних тонах з м'якими ягідними акцентами, підкресленими легкою гіркотою апельсинового біттеру. Помірна кислотність і грайлива текстура роблять коктейль придатним для початку трапези і подальшого супроводу основних страв.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Lillet Rosé Flambe</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл Lillet Rosé</li><li>40 мл ігристого вина Mumm</li><li>1 крапля апельсинового біттеру</li><li>лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть охолоджений келих кубиками льоду.</li><li>Влийте в нього 50 мл Lillet Rosé.</li><li>Додайте 1 краплю апельсинового біттеру.</li><li>Акуратно долийте 40 мл ігристого вина Mumm.</li><li>Не поспішаючи перемішайте напій високою барною ложкою.</li><li>Подавайте коктейль без гарнішу або прикрасьте цедрою апельсина за бажанням.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Peach Press Sparkling" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Peach-Press-Sparkling.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Peach Press Sparkling</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/chai-2/aromat_3=persyk">Персиковий чай</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=mumm">Ігристе вино Mumm</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Peach Press Sparkling поєднує м'яку солодкість персикового чаю та помірну кислотність лимонного соку. Ігристе вино Mumm надає структурі легкість і газовану текстуру. Баланс між солодкістю і свіжістю робить його доречним для аперитиву або невимушеного денного бранчу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Peach Press Sparkling</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл персикового холодного чаю</li><li>15 мл лимонного соку</li><li>150 мл ігристого вина Mumm</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в келих 60 мл охолодженого персикового чаю.</li><li>Додайте 15 мл свіжовичавленого лимонного соку.</li><li>Обережно долийте 150 мл ігристого вина Mumm.</li><li>Ретельно перемішайте напій коктейльною ложкою.</li><li>Прикрасьте келих скибочкою персика або лимонним слайсом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sparkling Lemonade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sparkling-Lemonade.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sparkling Lemonade</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=mumm">Ігристе вино Mumm</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li>Мʼята</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Sparkling Lemonade — це легкий слабоалкогольний напій, що ґрунтується на збалансованому поєднанні кислого лимонаду та освіжального ігристого вина. Велика кількість льоду забезпечує прохолодну текстуру, а м'ята додає трав'янистих ноток. Мікс підходить для подачі у форматі large batch.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Sparkling Lemonade</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>охолоджене ігристе вино Mumm для доливання</li><li>1 банка замороженого лимонаду</li><li>велика жменя м'яти для прикрашання</li><li>великий пакет льоду</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У великий глечик або пунш-боул викладіть великий пакет льоду.</li><li>Додайте 1 банку замороженого лимонаду і дайте йому трохи розтанути.</li><li>Акуратно влийте охолоджене ігристе вино Mumm, доливаючи до потрібного обсягу.</li><li>Перемішайте для рівномірного розподілу смаків і текстур.</li><li>Прикрасьте великою жменею свіжої м'яти перед подачею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-14" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sparkling Pear" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sparkling-Pear.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sparkling Pear</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=mumm">Ігристе вино Mumm</a></li><li><a href="https://maudau.com.ua/product/nektar-happy-day-hrusha-1-l-507677">Грушевий нектар</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Груша</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Sparkling Pear поєднує пікантність лимонного соку і м'яку солодкість грушевого нектару. Вино Mumm надає напою ігристої текстури та балансу завдяки сухому профілю. Коктейль подають як аперитив, він підходить і для гастрономічного супроводу страв, і для самостійної дегустації.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup14" class="overlay add-popup">
+        <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Sparkling Pear</h2>
+            <a class="close add-id" href="#cocktail-item-14">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>150 мл ігристого вина Mumm</li><li>45 мл грушевого нектару</li><li>7.5 мл лимонного соку</li><li>1 груша для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-флюте або винний келих перед приготуванням.</li><li>Змішайте в шейкері 45 мл грушевого нектару і 7.5 мл лимонного соку.</li><li>Влийте отриману суміш у келих.</li><li>Обережно долийте 150 мл ігристого вина Mumm.</li><li>Добре перемішайте напій довгою барною ложкою.</li><li>Прикрасьте коктейль тонким грушевим слайсом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-16" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Raspberry Rosé" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-Rosé.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Raspberry Rosé</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Малина</li><li><a href="https://maudau.com.ua/product/shampanske-mumm-grand-cordon-rose-brut-rozheve-briut-0-75-l">Ігристе вино Mumm Sparkling Brut Rosé</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Лайм</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Raspberry Rosé — легкий коктейль на базі ігристого вина для невимушеної подачі. Кислотність лайма та солодкість малини створюють збалансований смаковий профіль. Структура напою залишається свіжою та сухою завдяки брюту, а свіжі ягоди та цитрусові додають текстурних акцентів і візуальної привабливості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup16" class="overlay add-popup">
+        <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Raspberry Rosé</h2>
+            <a class="close add-id" href="#cocktail-item-16">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 лайм, нарізаний кільцями</li><li>1/2 склянки малини</li><li>1 пляшка охолодженого ігристого вина Mumm Sparkling Brut Rosé</li><li>цукор до смаку</li><li>свіжа малина для прикрашання</li><li>кільця лайма для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У графині злегка розімніть пів склянки малини і слайси одного лайма.</li><li>Додайте трохи цукру до смаку і перемішайте до розчинення.</li><li>Влийте 1 пляшку ігристого вина Mumm Sparkling Brut Rosé.</li><li>Акуратно перемішайте всі інгредієнти.</li><li>Подавайте в келихах, прикрасивши свіжою малиною і кільцями лайма.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">75 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.6-0.8 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

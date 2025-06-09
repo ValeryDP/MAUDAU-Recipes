@@ -1,0 +1,814 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Бренд Felix Solis пропонує колекцію вишуканих іспанських ігристих вин за конкурентною вартістю, вироблених за методом Charmat. Це зберігає свіжість і надає їм легкості у вживанні. Компанія володіє двома виноробнями, розташованими в
+                    найважливіших виноробних зонах — Ла-Манчі та Вальдепеньясі.
+                </p>
+                <h2>Що відомо про походження торгової марки Felix Solis</h2>
+                <p>
+                    Компанію заснував Фелікс Соліс Фернандес 1952 року, обравши для цього Вальдепеньяс — регіон, який здавна славиться виробництвом вин. Спочатку портфоліо виробника складалося винятково з тихих вин, поки асортимент не розширили 1990
+                    року, коли зріс попит на ігристу продукцію за нижчою ціною порівняно з шампанським.
+                </p>
+                <p>Сьогодні компанія Felix Solis залишається в сімейному підпорядкуванні, експортуючи продукцію до більш ніж 115 країн. Бренд поєднує традиційне виноробство з попитом сучасного масового ринку.</p>
+                <h2>Як виробляють ігристе вино «Фелікс Соліс»</h2>
+                <p>
+                    Продукцію виготовляють за методом «Шарма-Мартінотті». Це означає, що вторинна ферментація відбувається в герметичних резервуарах із неіржавної сталі, а не в окремих пляшках. Технологія полегшує виноробу контроль над розчиненням CO₂
+                    у вині, водночас зберігаючи вихідний інтенсивний фруктово-квітковий аромат від винограду.
+                </p>
+                <p>Сортовий склад залежить від виробленого стилю. Найчастіше використовують «айрен», «макабео» і «темпранільо».</p>
+                <h2>Різновиди ігристих вин Felix Solis</h2>
+                <p>Асортимент виробника об’єднує кілька позицій:</p>
+                <ol>
+                    <li>Provetto. Легке і фруктове ігристе вино, що нагадує кремовий мус. Біла версія огортає тонами зеленого яблука і білого персика. Смак рожевої схиляється до червоних ягід і пелюсток троянд.</li>
+                    <li>
+                        Vina Albali. Більш вишуканий вираз Felix Solis, виготовлений із суміші традиційних іспанських сортів винограду. Збалансований між яскравістю цитрусових і легкою підсмаженістю горіхів, цей напій найкраще підходить для
+                        неформальної обстави.
+                    </li>
+                    <li>Muchas Manos. Яскравий напій із домінантними акордами яблук, груші та лимона.</li>
+                    <li>
+                        La Camioneta. Напівсолодке ігристе вино з винограду «вердехо» з низькою міцністю — всього 5.5%. Дрібний перляж (Frizzante) дає можливість насолоджуватися ним впродовж довгого вечора. Усе це доповнює освіжальний смак із нюансами
+                        зелених фруктів.
+                    </li>
+                </ol>
+                <h3>Скільки коштує ігристе вино Felix Solis</h3>
+                <p>Ціни коливаються в межах 220–400 грн. Найдорожче коштує Muchas Manos — ігристе вино, що ззовні нагадує шампанське, через що стане гарним подарунком або доповненням до урочистого заходу.</p>
+                <h2>Рекомендації щодо вживання ігристих вин «Фелікс Соліс»</h2>
+                <p>Напої радять подавати охолодженими — приблизно за +6–10 °C. Щоб зберегти бульбашки, використовуйте вузький келих. Однак якщо такого немає в розпорядженні, зупиніться на стандартній склянці для білих вин.</p>
+                <p>
+                    Легке ігристе вино на кшталт Provetto доповнить фруктове асорті або сирне плато. Колекція Vina Albali пасує до морепродуктів і овочів, запечених на грилі. Варіанти Frizzante врівноважать солону їжу: витримані сири, горішки,
+                    копченості.
+                </p>
+                <h2>Чому вигідно купити ігристе вино Felix Solis в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Алкогольну продукцію постачають від офіційних дистриб’юторів, що гарантує справжнє походження кожної пляшки. Доставлення виконують по всій Україні — просто виберіть відповідну поштову службу. Для жителів Львова, Дніпра та Києва
+                    передбачено кур’єрське розвезення та самовивезення із супермаркетів «Сільпо». Оплата замовлення можлива як на сайті, так і постфактум. Щоб не втратити балобонуси та кешбек, приєднуйтесь до програм лояльності «Власний Рахунок» і WOW
+                    Club.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Astermix" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Astermix.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Astermix</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Мескаль Le Tribute</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=korytsia-7">Сироп кориці</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=felix-solis">Ігристе вино Felix Solis</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Astermix — коктейль на базі мескаля з гармонійним балансом копчених і пряних відтінків. Поєднання сиропу кориці та соку лайма задає структуровану кисло-солодку основу. Ігристе вино пом'якшує смак, надаючи композиції чистоти та свіжості. Напій добре підходить як аперитив.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Astermix</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл мескаля Le Tribute</li><li>15 мл сиропу кориці</li><li>20 мл соку лайма</li><li>ігристе вино Felix Solis для доливання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері змішайте 40 мл мескаля Le Tribute і 15 мл сиропу кориці.</li><li>Потім додайте 20 мл соку лайма і лід.</li><li>Струсіть і процідіть через сито в охолоджений келих-флюте або купе.</li><li>Долийте ігристого вина Felix Solis до верху.</li><li>Прикрасьте напій цедрою лайма та паличкою кориці.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Soupe Angevine" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Soupe-Angevine.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Soupe Angevine</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Cointreau L'Unique</a></li><li>Свіжий лимонний сік</li><li>Свіжий апельсиновий сік</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=felix-solis">Ігристе вино Felix Solis</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Soupe Angevine — французький пунш із помірною міцністю та збалансованою кисло-солодкою основою. У композиції домінує апельсиновий лікер із характерним цитрусовим профілем, доповнений цукровим сиропом. Ігристе вино забезпечує тонку перляцію і збалансовану текстуру, роблячи коктейль доречним вибором для аперитиву.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Soupe Angevine</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>200 мл лікеру Cointreau L'Unique</li><li>50 мл свіжого лимонного соку</li><li>50 мл свіжого апельсинового соку</li><li>750 мл ігристого вина Felix Solis</li><li>50 мл цукрового сиропу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в графин 200 мл лікеру і по 50 мл лимонного та апельсинового соку.</li><li>Слідом додайте 50 мл цукрового сиропу.</li><li>Перемішайте і добре охолодіть суміш у холодильнику.</li><li>Перед подачею влийте 750 мл ігристого вина Felix Solis і ще раз акуратно перемішайте.</li><li>Подавайте напій у келихах флюте або купе.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pink Lady" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-Lady.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pink Lady</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Cointreau L'Unique</a></li><li>Свіжий лаймовий сік</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=felix-solis">Ігристе вино Felix Solis</a></li><li>Полуниця</li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Збалансований коктейль Pink Lady створений на базі горілки, з додаванням цитрусової кислинки і делікатних ягідних нот. Полуниця надає м'яку фруктову глибину, в той час як Cointreau додає структуровану солодкість. Ігристе вино завершує композицію кислинкою та виразною свіжістю.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pink Lady</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>22 мл лікеру Cointreau L'Unique</li><li>22 мл свіжого лаймового соку</li><li>60 мл ігристого вина</li><li>3 полуниці</li><li>60 мл горілки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Розімніть у шейкері 3 штуки полуниці.</li><li>Додайте 60 мл горілки і по 22 мл лікеру та лаймового соку.</li><li>Наповніть шейкер льодом і збовтайте до охолодження.</li><li>Процідіть через сито-стрейнер у підготовлений келих-купе або флюте.</li><li>Акуратно долийте 60 мл ігристого вина для фінішу.</li><li>Прикрасьте напій половинкою полуниці та цедрою лайма.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ja-Mora" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ja-Mora-fs.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ja-Mora</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/product_brand=ketel-one">Горілка Ketel One</a></li><li>Лікер Giffard Framboise de Ronce</li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=yabloko">Яблучний сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=felix-solis">Ігристе вино Felix Solis</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Фруктовий коктейль із вираженим смаком малини та яблука, доповнений легкою цитрусовою кислинкою і свіжістю ігристого. Збалансований за солодкістю, п'ється м'яко, з чистим посмаком. Сподобається тим, хто цінує ніжні ягідні акценти без яскравої алкогольної агресії.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Ja-Mora</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл горілки Ketel One</li><li>15 мл лікеру Giffard Framboise de Ronce (малина)</li><li>15 мл апельсинового соку</li><li>15 мл мутного яблучного соку</li><li>Ігристе вино (брют) долити до верху</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Помістіть келих-флюте в морозильник або наповніть льодом.</li><li>У шейкер влийте горілку Ketel One, лікер Giffard Framboise de Ronce, апельсиновий і мутний яблучний соки.</li><li>Додайте багато льоду і струсіть енергійно 12 секунд.</li><li>Видаліть лід із келиха і витріть насухо.</li><li>Процідіть через подвійний стрейнер.</li><li>Акуратно долийте ігристе вино по барній ложці.</li><li>Прикрасьте свіжою малиною.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ponce de Leon" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ponce-de-Leon-fs.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ponce de Leon</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Світлий білий ром</a></li><li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/product/liker-de-kuyper-triple-sec-apelsyn-40-07-l-76089">Лікер De Kuyper Triple Sec</a></li><li>Рожевий грейпфрутовий сік</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=felix-solis">Ігристе вино Felix Solis</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Ponce de Leon — коктейль, у якому стриманий зовнішній вигляд контрастує з багатошаровим глибоким смаком. М'яка, злегка масляниста база з рому і коньяку слугує фоном для збалансованих цитрусових акцентів. Грейпфрутова гірчинка не домінує, а поєднується з апельсиновими тонами Triple Sec, підкреслюючи структуру смаку.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Ponce de Leon</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл світлого білого рому</li><li>15 мл коньяку</li><li>15 мл лікеру De Kuyper Triple Sec</li><li>15 мл свіжовичавленого рожевого грейпфрутового соку</li><li>Ігристе вино (брют) долити до верху</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих для шампанського, заповнивши його льодом на 2 хвилини.</li><li>У шейкер налийте 15 мл світлого білого рому, 15 мл коньяку, 15 мл лікеру De Kuyper Triple Sec і 15 мл свіжовичавленого рожевого грейпфрутового соку.</li><li>Додайте туди ще лід і струсіть інтенсивно впродовж 12 секунд.</li><li>Процідіть коктейль через стрейнер у підготовлений келих, заповнивши його на дві третини.</li><li>Повільно долийте ігристе вино (брют) до верху, спрямовуючи потік по стінці келиха для збереження газів.</li><li>Дайте напою постояти кілька секунд і відразу подавайте без прикрашань.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">29-83 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.4-1.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

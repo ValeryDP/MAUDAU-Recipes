@@ -1,0 +1,830 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Ігристе вино Jules Larose — напій, який виробляють у Франції. Хоча його не класифікують як шампанське, компанія все ж приділяє особливу увагу традиційним методам виноробства. Бренд робить акцент на збалансованості та доступності,
+                    пропонуючи бульбашки за конкурентною вартістю.
+                </p>
+                <h2>Трохи з історії торгової марки Jules Larose</h2>
+                <p>
+                    Бренд є частиною групи Les Grands Chais de France (GCF), заснованої 1979 року Джозефом Хельфріхом у Петерсбаку в Ельзасі. Зараз це найбільший холдинг у Франції, що займається виробництвом вин. Реєстрація торгової марки була
+                    покликана зробити якісну ігристу продукцію доступнішою для світової авдиторії, оскільки, на відміну від шампанського, Jules Larose можна купити по 250–300 грн за пляшку.
+                </p>
+                <p>
+                    Виробництво не прив’язане до конкретного села, як це буває з будинками шампанських вин. Бренд навпаки отримує вигоду з великих виноградників, розташованих у різних виноробних зонах Франції, а також передових потужностей GCF.
+                    Наприклад, деякі кюве виробляють у Бордо, Бургундії, Божоле і Долині Луари.
+                </p>
+                <p>Останнім часом компанія помітно розширила ринок збуту, особливо на Східну Європу. Відтоді знайти продукцію виробника можна і в Україні — у маркеті алкогольних штук MAUDAU.</p>
+                <h2>Як виробляють ігристе вино Jules Larose</h2>
+                <p>
+                    У стінах винокурні, що займає площу приблизно в 12.8 гектара, застосовують метод Charmat. Що відрізняє його від традиційної техніки Champenoise, так це те, що вторинна ферментація, під час якої утворюються бульбашки, відбувається у
+                    великих металевих місткостях під високим тиском, а не в окремих закоркованих пляшках. Це чудовий метод для створення свіжих фруктових ігристих вин за низькою вартістю.
+                </p>
+                <p>Продукцію витримують, а точніше настоюють з метою стабілізації впродовж короткого проміжку часу. Це зберігає більше фруктово-квіткових ароматів, що виходять від ягід.</p>
+                <h2>Асортимент ігристих вин Jules Larose</h2>
+                <p>В інтернет-магазині MAUDAU можна замовити три позиції:</p>
+                <ol>
+                    <li>
+                        Brut Rose. Живе рожеве ігристе вино з тонами полуниці, малини та пелюсток троянд. Вміст цукру не перевищує 10 г/л, а доповнює враження від дегустації тонка фруктово-ягідна кислинка. Фініш — свіжий, з легким ароматом цитрусової
+                        цедри.
+                    </li>
+                    <li>
+                        Blanc de Blancs Brut. Елегантний і освіжальний купаж з нотами зелених яблук, цитрусових і тостів. Це ігристе вино найбільше нагадує шампанське, але Jules Larose пропонує ціну практично у 2–3 рази нижчу, порівняно з асортиментом
+                        багатьох популярних торгових марок.
+                    </li>
+                    <li>
+                        Blanc de Blancs Demi Sec. М’яке і доступне за ціною ігристе вино міцністю 12%, виготовлене виключно з суміші білих сортів винограду. У ньому переважають ноти груші, білого персика та меду. Смак — середньо-солодкий, з округлим і
+                        стійким посмаком.
+                    </li>
+                </ol>
+                <h3>Скільки коштує продукція Jules Larose в Україні</h3>
+                <p>
+                    Ціна за пляшку стандартного обсягу не перевищує 400 грн. Попри те, що ігристе вино вироблено у Франції, така вартість зумовлена застосуванням танкового (резервуарного) методу зброджування, що істотно знижує витрати на виготовлення,
+                    ефективною експортною дистрибуцією та глобальною присутністю GCF на міжнародному ринку.
+                </p>
+                <h2>Рекомендації з дегустації ігристих вин Jules Larose</h2>
+                <p>
+                    Напої радять подавати охолодженими до +6–8 °C. Для підтримання комфортної температури під час застілля помістіть пляшку у відерце з льодом. Ніколи не зберігайте її в морозилці — це притупить смак і аромат. Келих-тюльпан або флейта —
+                    не так уже й принципово, оскільки фруктово-квітковий аромат добре відчувається в будь-якій склянці.
+                </p>
+                <p>
+                    Що стосується гастрономічного супроводу, то зважайте на колір, смак і аромат конкретного ігристого вина Jules Larose. Наприклад, Blanc de Blancs підходить до суші та морепродуктів. Солодшу версію можна подати з паштетом, фуа-гра,
+                    м’якими вершковими сирами, фруктовим пирогом.
+                </p>
+                <p>Щоб доповнити смажені креветки, канапе з прошуто або копченості, вибирайте Brut Rose. Його також можна запропонувати як аперитив.</p>
+                <h2>Чому вигідно купити Jules Larose в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У нас — гарантовано оригінальна алкогольна продукція, яку доставляють по всій Україні. Для покупців із Києва, Дніпра та Львова передбачені послуги кур’єрів, а також самовивезення із супермаркетів «Сільпо». Усі інші можуть обрати
+                    одну з поштових служб — «Укрпошту», «Нову пошту», «Meest ПОШТУ». Оплатити замовлення можна на сайті або після отримання. А трохи заощадити допоможуть акції та знижки, а також програми лояльності «Власний Рахунок» і WOW Club. Перша
+                    дає можливість накопичувати балобонуси, якими можна оплатити частину наступного замовлення. А за допомогою WOW Club легко повернути додатковий кешбек і отримати парочку безплатних доставлень.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Stroke of Midnight" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Stroke-of-Midnight.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Stroke of Midnight</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=jules-larose">Ігристе вино Jules Larose</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Cointreau L'Unique</a></li><li>Гренадин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Stroke of Midnight — це збалансований коктейль із виразною структурою. Лікер Cointreau привносить цитрусову гіркоту, а гренадин — легкий фруктовий акцент і візуальну глибину. Ігристе вино Jules Larose надає міксу свіжості та газованої текстури. Напій не перемішують — для збереження шаруватої подачі.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Stroke of Midnight</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл ігристого вина Jules Larose</li><li>30 мл лікеру Cointreau L'Unique</li><li>5 мл гренадину</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в келих-флюте 120 мл охолодженого ігристого вина Jules Larose.</li><li>Потім додайте 30 мл лікеру Cointreau L'Unique.</li><li>Влийте 5 мл гренадину, щоб він плавно опустився на дно і створив градієнт.</li><li>Не перемішуйте і подавайте без гарнішу.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Thanks Given For A Crowd" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Thanks-Given-For-A-Crowd.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Thanks Given For A Crowd</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Cointreau L'Unique</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=zhuravlynnyi">Журавлинний соус</a></li><li>Свіжий лимонний сік</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=klen-2">Журавлинний сироп</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=jules-larose">Ігристе вино Jules Larose</a></li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль являє собою інтерпретацію сезонного міксу, в якій поєднуються цитрусова гіркота Cointreau, кисло-солодкий профіль журавлини і м'яка солодкість кленового сиропу. Горілка підсилює алкогольну основу, а ігристе вино надає об'єму та структури.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Thanks Given For A Crowd</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл лікеру Cointreau L'Unique</li><li>60 мл журавлинного соусу</li><li>30 мл свіжого лимонного соку</li><li>30 мл кленового сиропу</li><li>120 мл ігристого вина Jules Larose для доливання</li><li>120 мл горілки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в шейкер по 60 мл лікеру Cointreau і журавлинного соусу.</li><li>Влийте по 30 мл свіжого лимонного соку і кленового сиропу.</li><li>Потім додайте 120 мл горілки.</li><li>Енергійно струсіть із льодом до повного охолодження.</li><li>Процідіть суміш у великий графин або розподіліть порційно.</li><li>Долийте 120 мл ігристого вина Jules Larose перед подачею.</li><li>Прикрасьте скибочками цитрусових або ягодами.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Colonel big one" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Colonel-big-one.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Colonel big one</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=jules-larose">Ігристе вино Jules Larose</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Cointreau L'Unique</a></li><li>Свіжий лаймовий сік</li><li><a href="https://maudau.com.ua/category/dzhyn/product_brand=the-botanist">Джин The Botanist</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Напій Colonel Big One об'єднує виражений ялівцевий профіль джину, апельсинову структуру лікеру Cointreau та кислотність лаймового соку. Цитрусова частина врівноважує м'яку солодкість, а додавання ігристого вина забезпечує невагому текстуру та свіжі акценти. Коктейль подають в охолодженому вигляді.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Colonel big one</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл ігристого вина Jules Larose</li><li>30 мл лікеру Cointreau L'Unique</li><li>5 мл свіжого лаймового соку</li><li>30 мл джину The Botanist</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>З'єднайте в шейкері по 30 мл джину The Botanist і лікеру Cointreau L'Unique.</li><li>Додайте 5 мл свіжого лаймового соку.</li><li>Насипте лід і енергійно струсіть.</li><li>Відфільтруйте напій через стрейнер в охолоджений келих.</li><li>Акуратно долийте 60 мл ігристого вина Jules Larose.</li><li>Перемішайте легким рухом барної ложки.</li><li>За бажанням декоруйте коктейль цедрою лайма.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="White Lotus" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/White-Lotus-jl.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">White Lotus</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Світлий білий ром</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=kokos-9">Кокосовий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=jules-larose">Ігристе вино Jules Larose</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Екзотичний коктейль, який поєднує смаки ананаса і кокоса з освіжальною кислинкою лимона. Світлий ром додає глибину, а ігристе вино — повітряної легкості та витонченої ігристості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати White Lotus</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл світлого білого рому</li><li>15 мл ананасового соку</li><li>7.5 мл кокосового сиропу</li><li>15 мл лимонного соку</li><li>30 мл ігристого вина (брют)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У високий келих Collins налийте 15 мл ананасового соку і 7,5 мл кокосового сиропу.</li><li>Додайте 15 мл свіжовичавленого лимонного соку і 60 мл світлого рому, ретельно перемішуючи барною ложкою.</li><li>Заповніть келих великими кубиками льоду.</li><li>Повільно влийте 30 мл охолодженого ігристого вина брют, спрямовуючи струмінь по стінці келиха, щоб зберегти бульбашки.</li><li>Акуратно перемішайте вміст келиха, використовуючи барну ложку, але не порушуючи структуру ігристого вина.</li><li>Прикрасьте коктейль тонкою скибочкою ананаса і невеликою кокосовою стружкою, злегка присипавши край келиха.</li><li>Подавайте з коктейльною трубочкою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Reindeer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Reindeer-jl.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Reindeer</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Свіжий імбир</li><li><a href="https://maudau.com.ua/category/horilka/smak_5=tsytrus">Цитрусова горілка</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=perets-chyli-3">Гострий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=jules-larose">Ігристе вино Jules Larose</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    The Reindeer — пряний зігрівальний коктейль із насиченими імбирними та цитрусовими нотами, доповненими легкою гостротою. Ігристе вино надає йому святкової свіжості та грайливості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Reindeer</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 шматочки свіжого імбиру</li><li>20 мл цитрусової горілки</li><li>7.5 мл гострого сиропу</li><li>2.5 мл лимонного соку</li><li>Ігристе вино для доливання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер помістіть 2 шматочки свіжого імбиру і розімніть їх мадлером.</li><li>Додайте 20 мл цитрусової горілки, 7,5 мл гострого сиропу і 2,5 мл свіжовичавленого лимонного соку.</li><li>Наповніть шейкер кубиками льоду й енергійно струшуйте впродовж 15 секунд.</li><li>Через подвійне сито процідіть коктейль у попередньо охолоджений келих Coupe, залишаючи великі частинки імбиру в шейкері.</li><li>Обережно долийте охолоджене ігристе вино Jules Larose</li><li>Прикрасьте коктейль тонкою спіраллю лимонної цедри, злегка скрутивши її над келихом, щоб вивільнити ефірні олії.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">70-78 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.5-5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

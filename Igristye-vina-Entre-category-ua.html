@@ -1,0 +1,818 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Entre — колекція ароматних фруктових вин в італійському стилі, що випускаються в Україні. Торгова марка представляє доступний ціновий сегмент, пропонуючи як напівсолодкі, так і солодкі стилі з акцентом на Fragolino. Продукція чудово
+                    підходить для неформальних зустрічей і урочистих заходів.
+                </p>
+                <h2>Коротка історія торгової марки Entre</h2>
+                <p>Бренд контролює приватна компанія. Торгову марку створили для експорту, насамперед — для країн Східної Європи.</p>
+                <p>
+                    Ігристе вино «Ентре» виробляють в Одеській області. Кожна пляшка уособлює локальний багатовіковий виноробний досвід, а в складі купажів переважають міжнародні сорти винограду, включно з «шардоне», «піно-блан» і «мускат». Крім
+                    України, продукція виробника також має попит у Молдові та країнах Балтії.
+                </p>
+                <h2>Різновиди ігристих вин «Ентре»</h2>
+                <p>У маркеті алкогольних штук MAUDAU представлено кілька напоїв:</p>
+                <ol>
+                    <li>
+                        Fragolino Bianco і Rosso. Базова лінійка за конкурентною вартістю. Біла версія розкривається нотами зелених яблук і бузини. Фініш — м’який, квітковий і злегка мускусний. Рожевий напій характеризують аромати вишні, полуниці та
+                        лісових ягід. Це м’яке і зацукроване на смак ігристе вино Entre.
+                    </li>
+                    <li>
+                        Fragolino Salute Bianco і Rosso. Смако-ароматичний профіль схожий на класичну версію, але акцент зміщений на цитрусово-квіткові нюанси. Це легкі й освіжальні варіації звичних напоїв, які можна знайти не тільки в скляних пляшках
+                        обсягом 0.75 літра, а й у компактних бляшанках. Тож тепер насолоджуватися Fragolino Salute від Entre можна як вдома, так і на природі.
+                    </li>
+                    <li>Asti. Ігристе вино на основі «москато б’янко». Це солодкий напій із яскраво вираженими нотками персиків, абрикосів і меду. Посмак — багатий і пишний, що пояснюється вмістом залишкового цукру в межах 90 г/л.</li>
+                </ol>
+                <h3>Скільки коштує продукція Entre в Україні</h3>
+                <p>
+                    Ціна в роздріб становить близько 160–250 грн за пляшку. Доступна вартість пов’язана із застосуванням методу Charmat, а також відсутністю податків і мит, характерних для імпортного алкоголю. Щоб ще трохи заощадити, можна дочекатися
+                    акції або розпродажу — це звична справа для інтернет-магазину MAUDAU.
+                </p>
+                <h2>Як і з чим пити ігристе вино «Ентре»</h2>
+                <p>Напої краще подавати охолодженими до +6–8 °C у вузьких келихах-флейтах або тюльпаноподібних склянках. Це посилює ігристість і зберігає свіжий фруктовий смак.</p>
+                <p>
+                    Версії Entre Fragolino Bianco і Salute Bianco добре поєднуються з легкими десертами на кшталт панна-коти і пісочного печива. Рожеве ігристе вино смакує з шоколадом, кремовою випічкою, тортами, кексами, тартами з фруктовою начинкою.
+                    Якщо шукаєте гармонійне доповнення до чизкейка, мигдалевого пирога або сиру з блакитною пліснявою для створення контрастного поєднання, зупиніться на Asti.
+                </p>
+                <h2>Чому вигідно купити ігристе вино Entre в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Команда MAUDAU гарантує оригінальність кожної пляшки, адже українську продукцію часто підробляють. Доставлення можливе в будь-яку точку України завдяки співпраці з поштовими службами, проте жителі Києва, Дніпра та Львова також
+                    можуть скористатися кур’єрськими послугами. У тих же містах забрати замовлення самостійно можна в магазинах «Сільпо» — список локацій шукайте в розділі «Доставлення».
+                </p>
+                <p>
+                    Не втрачайте додаткову вигоду — приєднуйтесь до програм лояльності «Власний Рахунок» та WOW Club. Перша націлена на накопичення балобонусів з кожної покупки, а друга пропонує збільшений кешбек і безплатні доставлення для постійних
+                    клієнтів маркету алкогольних штук MAUDAU.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cointreau Royale" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cointreau-Royale-en.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cointreau Royale</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=entre">Ігристе вино Entre</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Cointreau L'Unique</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Cointreau Royale — це збалансована комбінація апельсинового лікеру і сухого ігристого вина. Лікер надає напою вираженого цитрусового профілю з легкою гіркуватістю, а вино додає кислотності та ігристої текстури. Підходить для подачі як аперитив або супроводу легких закусок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Cointreau Royale</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>90 мл ігристого вина Entre</li><li>30 мл лікеру Cointreau L'Unique</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих для подачі, наприклад, флюте або купе.</li><li>Налийте в келих 30 мл лікеру Cointreau L'Unique.</li><li>Акуратно долийте 90 мл охолодженого ігристого вина Entre.</li><li>Злегка перемішайте інгредієнти в келиху високою ложкою.</li><li>Прикрасьте коктейль апельсиновою цедрою перед подачею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sparkling Cosmopolitan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sparkling-Cosmopolitan-en.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sparkling Cosmopolitan</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=entre">Ігристе вино Entre</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Лікер Cointreau L'Unique</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li>Свіжий лаймовий сік</li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Sparkling Cosmopolitan поєднує класичні компоненти «Космополітену» з ігристим вином, що додає легкості та свіжості. Кислинки лаймового та журавлинного соків гармонійно доповнюють горілку й апельсиновий лікер Cointreau. Напій використовують як аперитив і легкий вечірній коктейль.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Sparkling Cosmopolitan</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл ігристого вина Entre</li><li>20 мл лікеру Cointreau L'Unique</li><li>15 мл журавлинного соку</li><li>15 мл свіжого лаймового соку</li><li>45 мл горілки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Спершу наповніть шейкер льодом у кубиках.</li><li>Влийте 45 мл горілки і 20 мл лікеру Cointreau L'Uniqu.</li><li>Додайте по 15 мл журавлинного і лаймового соку.</li><li>Ретельно струсіть інгредієнти до охолодження.</li><li>Процідіть суміш в охолоджений келих для шампанського або коктейльний келих.</li><li>Акуратно долийте 60 мл ігристого вина Entre.</li><li>Декоруйте напій цедрою лайма і свіжими ягодами журавлини.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sparkling Pomegranate Caipirinha" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sparkling-Pomegranate-Caipirinha-en.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sparkling Pomegranate Caipirinha</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li>Зерна граната</li><li>Лайм</li><li><a href="https://maudau.com.ua/category/soky/smak_25=hranat-8">Гранатовий сік</a></li><li><a href="https://maudau.com.ua/category/rom/product_class=kashasa">Кашаса</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=entre">Ігристе вино Entre</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Sparkling Pomegranate Caipirinha — це інтерпретація класичного коктейлю на основі кашаси, в якій фруктова частина посилена гранатом, а структура доповнена ігристим вином. Базові ноти кашаси поєднуються з помірною кислотністю лайма і м'якою терпкістю граната. Легка солодкість врівноважує смак, а карбонізоване вино надає напою об'єму та додаткової текстури.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Sparkling Pomegranate Caipirinha</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 ч. л. дрібного цукру</li><li>10 свіжих зерен граната</li><li>1/2 лайма, нарізаного на чверті</li><li>15 мл гранатового соку</li><li>60 мл кашаси</li><li>90 мл ігристого вина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Вкладіть четвертинки лайма, 1 ч. л. цукру і 10 зерен граната в склянку олд-фешн.</li><li>Роздавіть інгредієнти мадлером, щоб лайм пустив сік, а цукор розчинився.</li><li>Додайте 15 мл гранатового соку і 60 мл кашаси.</li><li>Потім наповніть склянку льодом.</li><li>Акуратно налийте 90 мл ігристого вина.</li><li>Перемішайте напій високою барною ложкою.</li><li>Прикрасьте скибочкою лайма і кількома гранатовими зернятками.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Calvados Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Calvados-Spritz-en.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Calvados Spritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=entre">Ігристе вино Entre</a></li><li><a href="https://maudau.com.ua/product/liker-st-germain-20-07-l">Лікер бузини St-Germain</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Содова</a></li><li>Лимон</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Calvados Spritz — елегантний твіст із фруктовим характером і освіжальним посмаком. Яблучні ноти кальвадосу гармоніюють із квітковою солодкістю лікеру бузини, створюючи збалансовану композицію. Ігристе вино надає напою яскравої структури та свіжої кислинки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Calvados Spritz</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл кальвадосу (яблучного бренді)</li><li>45 мл лікеру бузини</li><li>90 мл ігристого вина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть келих для вина кубиками льоду.</li><li>Влийте по 45 мл кальвадосу та лікеру бузини.</li><li>Злегка перемішайте два напої, дозволяючи обмінятися смаками.</li><li>Потім акуратно додайте 90 мл ігристого вина.</li><li>Ще раз перемішайте коктейль барною ложкою.</li><li>Прикрасьте скибочкою яблука і гілочкою чебрецю.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="La Casona" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/La-Casona-en.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">La Casona</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/tekila/typ_4=aniekho-anejo-3">Текіла Patrón Añejo</a></li><li>Лікер Patrón Citrónge Orange</li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Біттер Angostura</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=peychauds">Біттер Peychaud's</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=entre">Ігристе вино Entre</a></li><li>Апельсин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    La Casona — коктейль із мексиканським характером. Ароматна текіла, пікантний лікер і гіркуватий біттер створюють напрочуд гармонійний союз. Кожна нота напою наповнена загадковими історіями, що залишають легкий слід напівсолодкого шампанського.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати La Casona</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл текіли Patrón Añejo</li><li>15 мл лікеру Patrón Citrónge Orange</li><li>5 мл біттеру Angostura</li><li>7 мл бітеру Peychaud's</li><li>90 мл охолодженого напівсолодкого ігристого вина (шампанського)</li><li>Довга апельсинова спіраль для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер із льодом налийте 30 мл текіли Patrón Añejo і 15 мл лікеру Patrón Citrónge Orange.</li><li>Додайте 7 мл біттеру Peychaud's і 5 мл Angostura.</li><li>Добре струсіть компоненти в шейкері до охолодження.</li><li>Процідіть суміш через сито в келих-флюте.</li><li>Акуратно долийте 90 мл напівсолодкого ігристого вина.</li><li>Прикрасьте коктейль довгою апельсиновою спіраллю.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">53.5-113 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">5.0-12.9 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

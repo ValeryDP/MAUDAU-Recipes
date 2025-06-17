@@ -1,0 +1,884 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Игристое вино мускат — ароматный полусладкий или сладкий напиток, изготовленный из ягод, принадлежащих к семейству Muscat. Его ценят за интенсивную фруктовую сладость, выгодно сочетающуюся со свежестью, — и все это при низком
+                    содержании алкоголя в пределах 7-7,5%.
+                </p>
+                <p>
+                    Мускатный виноград — один из старейших на планете, так как его возделывали еще в античные времена в Средиземноморье. Сегодня игристую продукцию с его добавлением производят преимущественно в Италии, особенно в Пьемонте, и Франции, а
+                    также в Молдове и Украине, где лозы дают хороший урожай из-за теплого климата.
+                </p>
+                <h2>Особенности мускатных сортов винограда</h2>
+                <p>«Мускат» относят к виду Vitis vinifera, то есть он пригоден для винификации. Семейство объединяет свыше 200 сортов. Ключевые представители:</p>
+                <ul>
+                    <li>Muscat Blanc a Petits Grains;</li>
+                    <li>Muscat of Alexandria;</li>
+                    <li>Muscat Ottonel.</li>
+                </ul>
+                <p>
+                    Конкретно эти сорта винограда известны по высокому содержанию монотерпенов — естественных ароматических соединений, придающих игристому вину мускат нотки абрикосов, персиков, апельсиновых цветков и мускуса. В отличие от других
+                    светлокожих ягод, эти природно обладают интенсивным ароматом, который только сильнее раскрывается в ходе ферментации.
+                </p>
+                <h3>В чем отличия «муската» от «москателя»</h3>
+                <p>С точки зрения ботаники, это один и тот же виноград. «Мускат» — привычное название для Франции и Италии, а «москатель» — для Испании и Португалии.</p>
+                <p>Несмотря на то, что это один и тот же сорт генетически, локальный климат и предпочитаемый метод виноделия непосредственно влияют на его вкус и аромат, а также сахаристость — крайне важный момент для последующего сбраживания.</p>
+                <h2>Как производят игристое вино мускат</h2>
+                <p>
+                    Большинство напитков изготавливают по методу «Шарма-Мартинотти». Это типичный не слишком затратный производственный процесс, согласно которому вторичная ферментация проходит в автоклавах — герметичных емкостях из нержавеющей стали.
+                    Это отличает его от другой традиционной техники, которая подразумевает повторное сбраживание в закупоренных бутылках. Речь идет о методе Champenoise.
+                </p>
+                <p>
+                    Технология Charmat — оптимальный вариант. В отличие от шампанского, мускат сохраняет первичные ароматы фруктов и цветов, исходящие от винограда. Это происходит из-за остановки брожения до того, как дрожжи полностью превратят сахар в
+                    спирт. После этого продукцию фильтруют и разливают под высоким давлением с целью сохранения пузырьков.
+                </p>
+                <h2>Вариации игристых вин мускат</h2>
+                <p>Продукцию выпускают под разными этикетками. Несколько известных региональных стилей:</p>
+                <ol>
+                    <li>
+                        Asti DOCG. Игристое вино на основе «москато бьянко» из Пьемонта (Италия). Его характеризует низкая карбонизация, сопоставимая с классом Spumante, а также выразительный вкус с нотками абрикосов, персиков и цветков апельсина. На
+                        финише хорошо ощущается яркая кислинка.
+                    </li>
+                    <li>Moscato d’Asti. Менее газированная версия — Frizzante. За счет этого вкус становится нежнее, если сравнивать с Asti DOCG. Объемная доля алкоголя редко превышает 5,5%.</li>
+                    <li>
+                        Fragolino. Не совсем игристое вино мускат, так как его производят из гибридного сорта винограда «изабелла». Однако в маркете алкогольных штук MAUDAU его относят к мускатным из-за ароматической сложности и схожего вкуса с нотками
+                        клубники.
+                    </li>
+                    <li>Moscatel Espumoso. Испанская версия покрепче — около 9–11%. Это все тот же сладкий и ароматный напиток, производимый в теплых винодельческих регионах вроде Валенсии.</li>
+                </ol>
+                <h2>Как выбрать игристое вино мускат</h2>
+                <p>Поскольку при заказе онлайн нельзя почувствовать аромат или вкус, обращайте внимание на важные нюансы:</p>
+                <ol>
+                    <li>Содержание алкоголя. Чем ниже крепость, тем отчетливее фруктово-цветочный шлейф.</li>
+                    <li>Сладость. В отличие от шампанского, Muscat от природы сладкий. Однако иногда виноделы продлевают ферментацию, производя более сухие стили.</li>
+                    <li>Классификация. Отметка по типу DOCG указывает на контролируемое происхождение и стабильное качество.</li>
+                    <li>Состав. Убедитесь, что это игристое вино на основе мускатного винограда, а не просто ароматизированный напиток.</li>
+                </ol>
+                <p>
+                    Качественное игристое вино мускат предлагают как лидеры продаж вроде Martini и Mondoro, так и менее известные торговые марки: Borgofulvia, Carlo Pellegrino и Morra. Учитывайте также объем, так как это влияет на цену. Бутылочка до
+                    375 мл — отличное дополнение к презенту, а магнум внесет разнообразие в алкогольное меню на празднике.
+                </p>
+                <h3>Стоимость в Украине</h3>
+                <p>
+                    Если шампанское обычно оценивают свыше 1000 грн за бутылку, то на мускат цена доступнее — порядка 150–350 грн. Все зависит от страны происхождения, способа изготовления, качестве сырья и установленных стандартов качества. Например,
+                    производство продукции DOCG строго регламентировано, что повышает ее стоимость, по сравнению с IGT.
+                </p>
+                <h2>Советы по подаче и сочетанию с едой</h2>
+                <p>
+                    Если решили купить не шампанское, а мускат, проводите дегустацию по тому же принципу — предварительно охладите бутылку до +6–8 °C, а затем разлейте ее содержимое по бокалам-тюльпанам для концентрации ароматов. Что касается
+                    гастрономического сопровождения, то:
+                </p>
+                <ul>
+                    <li>Asti и Moscato d’Asti лучше всего сочетаются со свежими фруктами и ягодами, а также десертами с их добавлением;</li>
+                    <li>Moscatel можно подать с орехами, сыром с голубой плесенью или пикантными блюдами из азиатской кухни;</li>
+                    <li>Fragolino позиционируют как замену десерту или сопровождение к нему, например, к темному шоколаду.</li>
+                </ul>
+                <h2>Почему выгодно купить игристое вино мускат в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас — алкогольная продукция исключительно оригинального происхождения по конкурентной стоимости. Добавьте к этому регулярные акции, скидки на оптовую покупку и две действительно выгодные программы лояльности. Доставка возможна в
+                    любую точку Украины, где функционирует отделение или точка выдачи «Укрпочты», «Новой Почты» или «Meest ПОЧТЫ». А жители Днепра, Львова и Киева могут воспользоваться услугами курьеров или забрать заказ самостоятельно в магазинах
+                    «Сільпо», найдя ближайшую локацию на карте в разделе «Доставка». Оплачивайте покупку игристых вин мускат на сайте или при получении — как удобно.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Great Heist" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Great-Heist.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Great Heist</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Биттер Angostura</a></li><li><a href="https://maudau.com.ua/ru/category/tekila/kolir_3=blanko-blanco-2">Текила Бланко</a></li><li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/sort_vynohradu=muskat-muscat">Игристое вино Muscat</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Cointreau L'Unique</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Great Heist — дерзкая комбинация бурбона, текилы Бланко, игристого вина Muscat и ликера Cointreau L'Unique. Интенсивный букет с пряными и сладкими нотками создает длительное послевкусие. При подаче напиток декорируют долькой апельсина и вишенкой на шпажке.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Great Heist</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 капли биттера Angostura</li><li>15 мл текилы Бланко</li><li>15 мл бурбона</li><li>60 мл игристого вина Muscat</li><li>20 мл ликера Cointreau L'Unique</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Соедините 2 капли биттера Angostura и 20 мл ликера Cointreau L'Unique в шейкере со льдом.</li><li>Добавьте по 15 мл текилы Бланко и бурбона.</li><li>Встряхните энергично до охлаждения.</li><li>Процедите через стрейнер в бокал-коллинз.</li><li>Медленно влейте 60 мл игристого вина Muscat.</li><li>Украсьте долькой апельсина и коктейльной вишней.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Royal Affair" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Royal-Affair.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Royal Affair</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Ароматный биттер Angostura</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=cointreau">Ликер Cointreau L'Unique</a></li><li>Огурец</li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/sort_vynohradu=muskat-muscat">Игристое вино Muscat</a></li><li>Свежий лимонный сок</li><li>Имбирь</li><li>Мята</li><li>Простой сироп</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Royal Affair — это невероятный коктейль, сочетающий множество компонентов: от ароматного биттера Angostura и ликера Cointreau L'Unique до сухого игристого вина Muscat и свежего лимонного сока. Богатый вкус и фруктовые оттенки создают роскошную композицию.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Royal Affair</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 капля ароматного биттера Angostura</li><li>45 мл ликера Cointreau L'Unique</li><li>2 ломтика огурца</li><li>90 мл сухого игристого вина Muscat</li><li>15 мл свежего лимонного сока</li><li>2 ломтика имбиря</li><li>1 веточка мяты</li><li>5 мл простого сиропа</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере разомните мадлером веточку мяты, а также по 2 ломтика огурца и имбиря.</li><li>Налейте 5 мл простого сиропа и 45 мл ликера Cointreau L'Unique.</li><li>Добавьте 15 мл свежего лимонного сока и каплю биттера Angostura.</li><li>Насыпьте лед в кубиках и тщательно встряхните.</li><li>Процедите через сито в охлажденный бокал-флюте.</li><li>Аккуратно долейте 90 мл сухого игристого вина Muscat.</li><li>Украсьте мятой и кружочком огурца.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cranberry Champagne" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cranberry-Champagne.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cranberry Champagne</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл-сек</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava">Сироп агавы</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/sort_vynohradu=muskat-muscat">Игристое вино Muscat</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Cranberry Champagne — это элегантный дуэт игристого вина и клюквенного сока. Легкая кислинка лайма добавляет свежесть, а водка — крепости. Красивый и ароматный напиток отличается ярким оттенком, подается в бокале для мартини с ягодами.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Cranberry Champagne</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл водки</li><li>15 мл трипл-сека</li><li>15 мл клюквенного сока</li><li>15 мл лаймового сока</li><li>сиропа агавы по вкусу</li><li>60 мл охлажденного игристого вина Muscat</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер влейте по 15 мл клюквенного и лаймового сока.</li><li>Добавьте 15 мл трипл-сека.</li><li>Налейте 45 мл водки, насыпьте кубики льда.</li><li>Встряхните до очень холодного состояния.</li><li>Добавьте немного сиропа агавы, если смесь покажется кислой.</li><li>Перелейте напиток через сито в охлажденный бокал для мартини.</li><li>Долейте 60 мл игристого вина Muscat.</li><li>Украсьте коктейль ягодами клюквы.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="AstiMIX Cocktails" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/AstiMIX-Cocktails.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">AstiMIX Cocktails</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Базилик</li><li>Розовый грейпфрут</li><li><a href="https://maudau.com.ua/ru/category/pryprava-perets/typ_268=sychuanskyi">Перец сычуаньский</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-bosio-asti-docg-dolce-millesimato-bile-solodke-75-075-l">Игристое вино Asti Dolce DOCG</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль AstiMIX Cocktails — пикантное сочетание игристого вина, розового грейпфрута, сычуаньского перца и базилика. Освежающий вкус с яркими нотами подходит для любого праздника. При подаче напиток украшают дольками цитруса.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить AstiMIX Cocktails</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>4 листа базилика</li><li>1 долька розового грейпфрута</li><li>щепотка перца сычуаньского</li><li>100–150 мл Asti DOCG для доливки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Положите в бокал 4 листа базилика и дольку розового грейпфрута.</li><li>Слегка подавите мадлером, чтобы высвободить ароматы.</li><li>Добавьте лед по желанию.</li><li>Осторожно влейте Asti DOCG до верха (примерно 100–150 мл).</li><li>Аккуратно перемешайте компоненты барной ложкой.</li><li>Перед подачей посыпьте щепоткой сычуаньского перца.</li><li>Украсьте грейпфрутовым слайсом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Thai Passion" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Thai-Passion.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Thai Passion</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/rom/kolir_2=bilyi-10">Белый ром</a></li><li>Томатный сироп</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=marakuia-7">Сок маракуйи</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-yhryste-bosio-asti-docg-secco-millesimato-bile-sukhe-115-075-l">Игристое вино Asti secco DOCG</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Thai Passion — экзотическая смесь сока маракуйи, лайма, томатного сиропа, белого рома и игристого вина. Тропические ноты и нежная текстура оставляют незабываемое послевкусие. Для эффектной подачи напиток украшают дольками маракуйи и лайма.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Thai Passion</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл белого рома</li><li>25 мл томатного сиропа</li><li>30 мл сока маракуйи</li><li>25 мл сока лайма</li><li>долить игристым вином Asti DOCG</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Добавьте 45 мл белого рома и 25 мл томатного сиропа в шейкер.</li><li>Влейте 30 мл сока маракуйи и 25 мл лаймового сока.</li><li>Киньте немного льда и хорошо встряхните компоненты.</li><li>Процедите через стрейнер в охлажденный высокий бокал.</li><li>Аккуратно долейте игристое вино Asti DOCG (до верха).</li><li>Украсьте напиток ломтиками цитруса и маракуйи.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Red hot veggie pepper" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Red-hot-veggie-pepper.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Red hot veggie pepper</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/smak_5=hostryi-perets">Перцовая водка</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Экстракт клубники</li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-truffle-hunter-leda-moscato-dasti-docg-bile-solodke-55-075-l">Игристое вино Moscato d’Asti DOCG</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    В коктейле Red Hot Veggie Pepper пикантно сочетаются все компоненты: лимонный сок, перцовая водка, сладкий сироп, экстракт клубники и игристое вино. Напиток запоминается ярким цитрусовым вкусом с жгучими нотами. Коктейль украшают слайсами чили и подают в охлажденном виде.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Red hot veggie pepper</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл перцовой водки</li><li>25 мл лимонного сока</li><li>20 мл сахарного сиропа</li><li>20 мл экстракта клубники</li><li>долить игристым вином Moscato d’Asti DOCG</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере соедините 45 мл перцовой водки и 25 мл лимонного сока.</li><li>Добавьте по 20 мл сахарного сиропа и экстракта клубники.</li><li>Положите лед и тщательно встряхните.</li><li>Пропустите смесь через сито в охлажденный бокал для коктейлей.</li><li>Осторожно влейте игристое вино Moscato d’Asti DOCG до верха.</li><li>Украсьте слайсом перчика-чили для пикантности.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">75-90 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">7-9 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

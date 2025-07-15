@@ -1,0 +1,851 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Вино веганське, якщо воно виготовлене без використання речовин тваринного походження на будь-якому етапі вініфікації. Хоча сам по собі виноград — це рослинний інгредієнт, для освітлення готового напою часто застосовують специфічні
+                    добавки. Виробники веганських вин замінюють їх мінеральними речовинами, а потім проставляють чітке маркування на етикетці, полегшуючи вибір покупцеві.
+                </p>
+                <h2>Особливості виготовлення веганських вин</h2>
+                <p>
+                    Виробництво не відрізняється від стандартного — аж до моменту освітлення. Це процес, під час якого видаляють небажані фарбувальні пігменти. Замість звичних освітлювачів на кшталт риб’ячого желатину винороби використовують активоване
+                    вугілля або гороховий білок. Ці речовини не менш ефективно зв’язують тверді частинки, забезпечуючи осадження без зміни смаку й аромату.
+                </p>
+                <h3>Типові інгредієнти тваринного походження у складі</h3>
+                <p>Поширені добавки:</p>
+                <ul>
+                    <li>ісінглесс — речовина з риб’ячого міхура, що нагадує клей;</li>
+                    <li>казеїн — молочний білок, застосовуваний під час ферментації для пом’якшення танінів;</li>
+                    <li>альбумін — яєчний білок, що зустрічається переважно в червоних винах;</li>
+                    <li>желатин — желювальний агент, який готують зі шкіри та кісток тварин.</li>
+                </ul>
+                <p>
+                    Вино веганське не містить цих добавок. Замість них, крім активованого вугілля і горохового білка, також використовують бентонітову глину. Це не впливає на смак, аромат і колір готового продукту, зате не порушує жоден із веганських
+                    принципів.
+                </p>
+                <h2>Бренди-виробники веганських вин на слуху</h2>
+                <p>Кілька поважних винокурень:</p>
+                <ol>
+                    <li>
+                        Neleman (Іспанія). Бренд спеціалізується на органічних і веганських сертифікованих винах, а також практикує стале виноградарство. Наприклад, ягоди на виноробню привозять на велосипедах. Серед улюблених сортів винограду —
+                        «темпранільо» та «шардоне».
+                    </li>
+                    <li>
+                        Redentore (Італія). Вино веганське від цього виробника — справжній витвір мистецтва, хоча б з огляду на вишуканий дизайн пляшки. Винороби практично не втручаються в процес вініфікації, виробляючи терруарно-виразну продукцію.
+                    </li>
+                    <li>
+                        Casa Solis (Чилі). Якщо перша торгова марка випускає виключно веганську алкогольну продукцію, то ця пропонує всього одну лінійку білих вин, але від того не менш якісну. Акцент — на яскравих фруктових смаках. Бренд зародився в
+                        Іспанії, але незабаром емігрував до Чилі разом із нащадками сім’ї засновника.
+                    </li>
+                    <li>Botter (Італія). Великий експортер зі веганським портфелем, що стрімко розширюється. Флагман — Na.Ti.Vo. Sangiovese Puglia IGT.</li>
+                </ol>
+                <h2>Вино веганське: асортимент у маркеті алкогольних штук MAUDAU</h2>
+                <p>
+                    У категорії представлені десятки напоїв від торгових марок з Італії, Іспанії, Франції та Нової Зеландії. Веганське вино можна купити з різним вмістом цукру — від сухого стилю до напівсолодкого. У нас до замовлення доступна пляшка
+                    для буденної вечері на кшталт Low Matter What Chardonnay від Cordier, а також Kylie Minogue Signature Sauvignon Blanc — елегантний варіант презенту, до створення якого причетна зірка світового рівня.
+                </p>
+                <h3>Скільки коштує веганське вино в Україні</h3>
+                <p>
+                    Ціна стартує від 144 грн і сягає кількох тисяч гривень. Хоча сертифікація трохи підвищує підсумковий цінник, пляшка якісного вина все одно перебуває в середньому ціновому діапазоні. Вартість постійно змінюється з урахуванням
+                    поточних акцій і знижок.
+                </p>
+                <h2>Чому вигідно купити вино веганське в інтернет-магазині MAUDAU</h2>
+                <p>Кожен товар — 100% оригінального походження. Доставлення виконують по всій Україні за сприяння популярних логістичних компаній. Щоб заощадити час, замовлення можна оплатити на сайті.</p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Vegan mulled wine" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vegan-mulled-wine.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Vegan mulled wine</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vyno-neleman-all-day-long-red-tempranillo-do-valencia-2022-chervone-sukhe-075-l">Вино Neleman All Day Long Red Tempranillo DO Valencia червоне</a></li><li>Червоне яблуко</li><li>Апельсини</li><li>Лимон</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=badian-2">Бодян</a></li><li><a href="https://maudau.com.ua/product/korytsia-palychky-cannamela-3-sht">Палички кориці</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Vegan mulled wine — ароматний напій з нотками кориці, цитрусів і спецій. Теплий, насичений коктейль чудово зігріває в холодну пору року і стає атрибутом затишних зимових вечорів.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Vegan mulled wine</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>750 мл веганського червоного вина</li><li>1 червоне яблуко</li><li>2 шт. апельсинів</li><li>½ шт. лимона</li><li>4 шт. гвоздики</li><li>1 шт. бодяну</li><li>1 паличка кориці</li><li>100 г дрібного цукру</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У велику каструлю вилийте 750 мл веганського червоного вина.</li><li>Додайте нарізане яблуко, кружальця апельсина, цитрусовий нектар і сік половини лимона.</li><li>Засипте 100 г дрібного цукру і спеції: 4 шт. гвоздики, 1 шт. бодяну, паличку кориці.</li><li>Поставте на слабкий вогонь і повільно підігрівайте, не доводячи до кипіння, щоб зберегти аромат і не випарувати алкоголь.</li><li>Накрийте кришкою і тримайте на мінімальній температурі близько 8–10 хвилин, щоб прянощі та фрукти віддали свої смаки.</li><li>Зніміть з вогню і дайте постояти ще 5–7 хвилин.</li><li>Процідіть напій через сито, розлийте по кружках або келихах.</li><li>Прикрасьте скибочкою цитруса і зірчастим анісом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pineapple Raspberry Wine Spritzer" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pineapple-Raspberry-Wine-Spritzer.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pineapple Raspberry Wine Spritzer</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Ананасовий сік</li><li>Свіжа або розморожена малина</li><li>Свіжий лаймовий сік</li><li><a href="https://maudau.com.ua/product/vyno-neleman-all-day-long-white-verdejo-do-valencia-2022-bile-sukhe-075-l">Вино Neleman All Day Long White Verdejo DO Valencia</a></li><li>Свіжа кінза</li><li>Свіже халапеньо</li><li><a href="https://maudau.com.ua/category/voda/vyd_133=sylnohazovana">Газована вода</a></li><li><a href="https://maudau.com.ua/product/steviia-betterstevia-now-foods-pidsolodzhuvach-z-nulovoiu-kaloriinistiu-oryhinalnyi-100-paketiv-100-h">Стевія</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Pineapple Raspberry Wine Spritze — це освіжальний коктейль з ананасовим соком, малиною і білим вином, який ідеально підходить для спекотних літніх днів. Легкий, фруктовий та ігристий напій дарує вибух смаків і позитивний настрій.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pineapple Raspberry Wine Spritzer</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>800 мл охолодженого ананасового соку</li><li>75 г свіжої або розмороженої малини</li><li>2 ст. л. свіжого лаймового соку</li><li>750 мл пляшка охолодженого білого вина</li><li>8 невеликих гілочок свіжої кінзи</li><li>4 тонких скибочки свіжого халапеньо (за бажанням)</li><li>295–355 мл охолодженої газованої води</li><li>стевія</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Злегка розімніть у великому глечику 75 г свіжої або розмороженої малини, щоб вона пустила сік.</li><li>Влийте 800 мл охолодженого ананасового соку, 2 ст. л. лаймового нектару і одну пляшку білого вина.</li><li>Добре перемішайте, всипте підсолоджувач з листя стевії — почніть із невеликої кількості та додавайте, поки напій не стане достатньо солодким.</li><li>Покладіть 8 гілочок кінзи і за бажанням 4 тонких скибочки халапеньо. Акуратно розмішайте.</li><li>Перед подачею налийте в келихи газовану воду, дозування регулюйте за своїм смаком для потрібного ступеня «шипучості».</li><li>Прикрасьте коктейль ягодами, листочками зелені або слайсом перцю.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sauvignon Blanc White Mojito" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sauvignon-Blanc-White-Mojito.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sauvignon Blanc White Mojito</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vyno-ara-single-estate-sauvignon-blanc-bile-sukhe-0-75-l">Веганське вино Sauvignon Blanc</a></li><li>Лайми</li><li>Лимонад</li><li>Мʼята</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Sauvignon Blanc White Mojito — бадьорий мікс з білим вином, м'ятою, лаймом і лимонадом. Легкий ароматний напій чудово втамовує спрагу і доповнює завзятий вайб дружніх посиденьок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Sauvignon Blanc White Mojito</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 пляшка білого вина Sauvignon Blanc</li><li>3 лайми</li><li>500 мл лимонаду</li><li>1 склянка м'яти</li><li>цукор до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У великий глечик покладіть скибочки лайму і одну склянку м'яти.</li><li>Додайте цукор і злегка розімніть суміш мадлером або ложкою, щоб цитрусові пустили сік, а листя віддали аромат.</li><li>Влийте пляшку білого вина Sauvignon Blanc і 500 мл лимонаду.</li><li>Перемішайте, накрийте і поставте в холодильник мінімум на 30–60 хвилин.</li><li>Прикрасьте коктейль скибочкою цитруса і м'ятою, подавайте з льодом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pinot Grigio Minty Sangria" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pinot-Grigio-Minty-Sangria.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pinot Grigio Minty Sangria</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vyno-lunaria-bucefalo-pinot-grigio-terre-di-chieti-bile-sukhe-0-75-l">Веганське вино Pinot Grigio</a></li><li>Лимон</li><li>Лайм</li><li>Листя мʼяти</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li><li><a href="https://maudau.com.ua/category/voda">Вода</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Прохолодний коктейль із листям м'яти, лаймом, білим вином і лимоном радує свіжістю і збалансованим смаком. Ідеально вписується в літню атмосферу відпочинку і релаксу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pinot Grigio Minty Sangria</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 пляшка вина Pinot Grigio</li><li>1 нарізаний лимон</li><li>1 нарізаний лайм</li><li>½ склянки листя м'яти</li><li>6 ст. л. цукру</li><li>6 ст. л. води</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У маленькій каструлі з'єднайте по 6 ст. л. цукру і води. Покладіть ½ склянки листя м'яти.</li><li>Доведіть до кипіння, потім зменшіть температуру і варіть 3 хвилини.</li><li>Зніміть з вогню, дайте настоятися 10–15 хвилин, процідіть і охолодіть.</li><li>У великий глечик викладіть нарізані лимон і лайм.</li><li>Додайте остиглий сироп. Влийте пляшку вина Pinot Grigio.</li><li>Перемішайте і поставте в холодильник мінімум на годину.</li><li>Подавайте коктейль з льодом, прикрасивши листочками м'яти і скибочкою цитруса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Citrusy Sauvignon Blanc" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Citrusy-Sauvignon-Blanc.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Citrusy Sauvignon Blanc</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vyno-ara-single-estate-sauvignon-blanc-bile-sukhe-0-75-l">Вино Ara Single Estate Sauvignon Blanc</a></li><li>Лавандово-лимонний сироп</li><li><a href="https://maudau.com.ua/category/soky/smak_25=hreipfrut-9">Грейпфрутовий сік</a></li><li>Гілочка лаванди</li><li>Лимонна цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Citrusy Sauvignon Blanc — ароматний напій на основі білого вина, з додаванням лавандово-лимонного сиропу і грейпфрутового соку. Легкий освіжальний коктейль з яскравими цитрусовими нотами рятує від спеки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Citrusy Sauvignon Blanc</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>250 мл вина Sauvignon Blanc</li><li>3 ст. л. лавандово-лимонного сиропу</li><li>2 ст. л. грейпфрутового соку</li><li>гілочка лаванди для прикрашання</li><li>лимонна цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У великий келих налийте 250 мл вина Sauvignon Blanc.</li><li>Додайте 3 ст. л. лавандово-лимонного сиропу і 2 ст. л. грейпфрутового соку.</li><li>Акуратно перемішайте високою барною ложкою.</li><li>За бажанням покладіть кілька кубиків льоду.</li><li>Прикрасьте коктейль гілочкою лаванди і цедрою цитруса, злегка скрутивши її, щоб виділився аромат.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Berry Sangria" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Berry-Sangria.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Berry Sangria</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vyno-lunaria-bucefalo-pinot-grigio-terre-di-chieti-bile-sukhe-0-75-l">Вино Lunaria Bucefalo Pinot Grigio Terre Di Chieti</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/product_brand=sprite">Лимонно-лаймова сода</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li>Лимони</li><li>Малина</li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яскравий коктейль із вином Pinot Grigio, ягодами малини та лимонно-лаймовою содою освіжає та радує насиченим смаком. Напій органічно вписується в розслаблену літню атмосферу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Berry Sangria</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 пляшка вина Pinot Grigio</li><li>375 мл лимонно-лаймової соди</li><li>375 мл лимонаду</li><li>2 нарізаних лимона</li><li>2 склянки малини</li><li>⅓ склянки цукру</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У великий глечик або графин висипте 2 чашки малини, 2 нарізаних лимона і ⅓ склянки цукру.</li><li>Акуратно розімніть ложкою або мадлером, щоб ягоди пустили сік і цукор почав розчинятися.</li><li>Додайте пляшку вина Pinot Grigio, а також по 375 мл лимонаду і содової.</li><li>Перемішайте і поставте в холодильник мінімум на 1 годину (краще на 2-3), щоб напій настоявся і охолов.</li><li>Подавайте з льодом, прикрасивши келих шматочками цитруса і ягодами.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">45-84 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0-0.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0-4.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

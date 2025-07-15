@@ -1,0 +1,811 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Игристое вино из Бордо — категория алкогольных напитков, произведенных в одном из самых престижных винодельческих регионов на юго-западе Франции. Хотя в этом месте рождаются лучшие тихие белые и розовые разливы, здесь также
+                    производят Cremant de Bordeaux — шампанское, отражающее местный терруар и доминирующий виноград.
+                </p>
+                <h3>Особенности игристых вин из Бордо</h3>
+                <p>Все сводится к:</p>
+                <ol>
+                    <li>Методу виноделия. Шампанские из Бордо, а точнее креманы, производят по традиционной технологии «Шампенуаз». Выдержка на осадке, как правило, длится не менее 12 месяцев.</li>
+                    <li>Стилю. В винодельческой зоне доминируют сухие и насыщенные выражения с тонким, но стойким перляжем.</li>
+                    <li>Сортовому составу. Виноделы делают акцент на местных сортах винограда, а не классическом трио.</li>
+                    <li>Цене. Шампанское из Бордо стоит гораздо дешевле, по сравнению с другими креманами. Например, за бутылку Chateau Haut-Mouleyre нужно заплатить порядка 875 грн.</li>
+                </ol>
+                <h2>Разнообразие игристых вин из Бордо</h2>
+                <p>
+                    Визитка винодельческого региона — Cremant de Bordeaux. Категория охватывает белые и розовые выражения, произведенные по традиционному методу шампанизации. Хотя официально это не шампанское, ощущения от употребления те же — с
+                    характерными поджаристыми нюансами, сопровождающими тонкие нотки цитрусовых и минералов.
+                </p>
+                <h3>Сорта винограда для шампанского из Бордо</h3>
+                <p>Выбор зависит от производимого стиля. Для белых игристых вин зачастую используют:</p>
+                <ul>
+                    <li>«семильон» — придает текстуру и повышает потенциал к выдержке;</li>
+                    <li>«совиньон-блан» — привносит освежающую кислинку;</li>
+                    <li>«мюскадель» и «уни-блан» — добавляют легкий цветочный шлейф.</li>
+                </ul>
+                <p>Ни один сорт винограда, как правило, не используют в чистом виде. Шампанское из Бордо зачастую состоит из смеси ягод. Для изготовления розовых игристых вин используют:</p>
+                <ul>
+                    <li>«мерло»;</li>
+                    <li>«каберне-фран»;</li>
+                    <li>«каберне-совиньон».</li>
+                </ul>
+                <p>Эти сорта демонстрируют разнообразную палитру виноградных сортов в Бордо, отличая ее от типичных смесей «шардоне» и «пино-нуар» в Шампани.</p>
+                <h2>Как выбрать игристое вино из Бордо</h2>
+                <p>
+                    Так как онлайн можно проверить не все, начинайте с изучения этикетки. Отдавайте предпочтение бутылкам от известных торговых марок вроде Pierlant и Lvdovicvs XIV с подробной информацией о годе сбора ягод и точно указанным составом.
+                    Если ищете шампанское из Бордо со сложной вкусо-ароматической композицией, остановитесь на напитках, выдержанных на осадке как минимум 12 месяцев.
+                </p>
+                <p>Описание к игристому вину, как и отзывы покупателей, гарантируют качество и помогут определиться с выбором. Если пока не нашли фаворита, остановитесь на лидерах продаж — самые продаваемые напитки возглавляют список.</p>
+                <p>
+                    На цену шампанского из Бордо влияет множество факторов — от репутации производителя до объема бутылки. Чтобы сэкономить, не обходите стороной товары по акции — их перечень постоянно меняется. Это хорошая возможность познакомиться с
+                    престижными домами шампанского.
+                </p>
+                <h2>Почему выгодно купить игристое вино из Бордо в интернет-магазине MAUDAU</h2>
+                <p>
+                    На страницах онлайн-каталога MAUDAU представлена только оригинальная алкогольная продукция. Каждый ценник — оправдан. Доставку выполняют в любую точку Украины благодаря сотрудничеству с тремя популярными логистическими компаниями.
+                    Для жителей Днепра, Львова и Киева также предусмотрены доставка курьером и самовывоз из магазинов «Сільпо». Рассчитаться за покупку можно на сайте, используя банковскую карточку, или наличными при получении. Для постоянных клиентов
+                    маркета алкогольных штук MAUDAU предусмотрена выгодная программа лояльности WOW Club, по условиям которой можно получить кешбэк или бесплатную доставку.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Пуччини (Puccini)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Puccini-bordo.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Пуччини (Puccini)</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-pierlant-brut-bile-briut-11-075-l-597012">Вино игристое Pierlant Brut</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=mandaryn-9">Мандариновый сок</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Puccini — легкий, изысканный напиток на основе мандаринового сока и белого игристого вина. Коктейль обладает освежающим вкусом с фруктовыми нотками, поэтому идеально подходит для аперитива или бранча. Подается охлажденным.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Пуччини (Puccini)</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл белого игристого вина</li><li>50 мл мандаринового сока</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал для подачи в морозилке (традиционно используется флюте).</li><li>Налейте 50 мл мандаринового сока.</li><li>Осторожно влейте 100 мл белого игристого вина.</li><li>Легко перемешайте барной ложечкой, чтобы сохранить пузырьки, и сразу подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Port of Call" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Port-of-Call-bordo.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Port of Call</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Апельсин</li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=portvein">Портвейн</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновые биттеры</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-lvdovicvs-xiv-brut-bile-briut-075-l">Игристое вино Lvdovicvs XIV Brut</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Port of Call — это изысканная смесь портвейна, апельсинового биттера и белого игристого вина. Коктейль запомнится глубоким и насыщенным вкусом с фруктово-цитрусовыми оттенками. Напиток подают в бокале со льдом, с декором из ягод и апельсина.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Port of Call</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 тонких ломтика апельсина</li><li>1 ст. л. портвейна</li><li>2 капли апельсиновых биттеров</li><li>100 мл белого игристого вина для доливания</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Положите 2 тонких ломтика цитруса в охлажденный бокал-рокс.</li><li>Добавьте 1 ст. л. портвейна и 2 капли апельсинового биттера.</li><li>Аккуратно долейте 100 мл белого игристого вина.</li><li>Осторожно перемешайте барной ложкой один раз, чтобы не разрушить пузырьки.</li><li>Декорируйте ягодами винограда и апельсиновым слайсом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tea Topper" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tea-Topper-bordo.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tea Topper</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/chai-2/aromat_3=hibiskus">Чай с гибискусом</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-lvdovicvs-xiv-demi-sec-bile-napivsukhe-075-l">Игристое вино Lvdovicvs XIV Demi-Sec</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=hibiskus-3">Сироп гибискуса</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Tea Topper — оригинальный микс, состоящий из сиропа, чая гибискуса, апельсинового сока и белого игристого вина. Пряный вкус с легкой кислинкой создает уютную атмосферу, а долька цитруса и цветы гармонично завершают композицию.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Tea Topper</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>240 мл воды</li><li>240 г сахара</li><li>4 пакетика чая с гибискусом</li><li>60 мл апельсинового сока (на бокал)</li><li>100 мл белого игристого вина (на бокал)</li><li>2-3 ст. л. сиропа из гибискуса (на бокал)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В кастрюле доведите до кипения 240 мл воды, всыпьте 240 г сахара.</li><li>Размешивайте и уваривайте до полного растворения.</li><li>Снимите с огня, добавьте 4 пакетика чая с гибискусом.</li><li>Накройте крышкой и оставьте настаиваться 15-20 минут.</li><li>Удалите заварку, дайте сиропу остыть.</li><li>Перелейте в банку или бутылку и храните в холодильнике.</li><li>В бокал налейте 60 мл апельсинового сока.</li><li>Положите 2–3 столовые ложки готового чайного сиропа.</li><li>Аккуратно долейте 100 мл белого игристого вина.</li><li>Украсьте напиток долькой апельсина и цветками гибискуса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sugar, Sugar" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sugar-Sugar-bordo.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sugar, Sugar</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Биттер Peychaud's</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-veuve-de-bort-blanc-de-blancs-bile-briut-0-75-l">Вино игристое Veuve de Bort Blanc de Blancs Brut</a></li><li>Лимон</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Sugar, Sugar — оригинальный коктейль на базе биттера Peychaud's, белого игристого вина и сахара. Композиция дарит сладкий и насыщенный вкус с приятным финишем. Как правило, напиток украшают цедрой лимона.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sugar, Sugar</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 кусочка сахара</li><li>3 капли биттера Peychaud's</li><li>100 мл белого игристого вина</li><li>цедра лимона для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Поместите 2 кусочка сахара в бокал.</li><li>Добавьте 3 капли биттера Peychaud's, оставьте чтобы кубики впитали аромат.</li><li>Аккуратно налейте 100 мл белого игристого вина.</li><li>Украсьте цедрой лимона, выжав немного масла в напиток, перед тем как опустить ее в стакан.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Ball Drop" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Ball-Drop-bordo.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Ball Drop</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновый ликер</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-pierlant-brut-bile-briut-11-075-l-597012">Вино игристое Pierlant Brut</a></li><li>Апельсин</li><li>Вишня мараскино</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Ball Drop — праздничное сочетание бурбона, апельсинового ликера и игристого белого вина. Коктейль имеет легкий и освежающий вкус с цитрусовыми нотками. Идеально подходит для новогодних праздников и веселых вечеринок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Ball Drop</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>22.5 мл бурбона</li><li>15 мл ликера с апельсиновым вкусом</li><li>100 мл игристого белого вина</li><li>цедра апельсина для украшения</li><li>вишня мараскино для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте 22.5 мл бурбона и 15 мл ликера с апельсиновым вкусом.</li><li>Добавьте кубики льда и хорошо встряхните.</li><li>Процедите смесь через сито в охлажденный коктейльный бокал.</li><li>Осторожно влейте 100 мл белого игристого вина.</li><li>Украсьте коктейль цедрой цитруса и вишней мараскино.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">70-80 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0-1 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

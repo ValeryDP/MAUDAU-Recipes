@@ -1,0 +1,802 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>Органічне ігристе вино — напій, вироблений із ягід, вирощених без застосування пестицидів, гербіцидів і хімічних добрив відповідно до міжнародних екологічних стандартів. Використання добавок під час вініфікації також обмежене.</p>
+                <p>Органічне шампанське виробляють за тим самим принципом, але в Шампані у Франції. Це підвищує кінцеву вартість продукції — через суворі правила під час виготовлення та певні кліматичні проблеми.</p>
+                <h3>Що особливого в органічних ігристих винах</h3>
+                <p>Ключові відмінності:</p>
+                <ul>
+                    <li>виноград вирощений без хімікатів;</li>
+                    <li>ягоди часто демонструють теруар;</li>
+                    <li>виноградники сприяють біорізноманіттю та родючості ґрунту;</li>
+                    <li>під час ферментації використовують тільки сертифіковані органічні добавки;</li>
+                    <li>виробничий процес зрозумілий і прозорий;</li>
+                    <li>допустима концентрація сульфітів знижена;</li>
+                    <li>на етикетках проставлено відповідне маркування на кшталт EU Organic або USDA Organic.</li>
+                </ul>
+                <h2>Як виникло органічне ігристе вино</h2>
+                <p>
+                    Рух набрав обертів у 1970-х роках, коли виникли побоювання з приводу впливу хімікатів на землю. Першими країнами, які адаптували виноградники до методів органічного землеробства, стали Італія, Німеччина та Франція. У 1990-х роках
+                    заснували перші офіційні органи сертифікації.
+                </p>
+                <p>Виробництво органічного шампанського регламентували пізніше, оскільки клімат регіону цьому не сприяв. Сьогодні такі будинки, як De Sousa та Agrapart &amp; Fils, є визнаними світовими лідерами.</p>
+                <h2>Як виробляють органічне ігристе вино</h2>
+                <p>Продукцію на кшталт Prosecco і Lambrusco виготовляють за методом Charmat. Технологія передбачає зброджування у великих сталевих місткостях, очищених спецзасобами.</p>
+                <p>Метод Champenoise, який лежить в основі виготовлення органічного шампанського, складніший і витратніший. Вторинна ферментація проходить у закоркованих пляшках, а рівень дріжджів і сульфітів контролюють на кожному етапі.</p>
+                <h3>Різниця між органічними та біодинамічними ігристими винами</h3>
+                <p>
+                    Якщо в першому напої немає залишків хімікатів, то другий, натхненний роботами Рудольфа Штайнера, відрізняється ще серйозніше. Виноградарство і процеси вініфікації засновані на місячних циклах, космічних ритмах і використанні
+                    спеціалізованих компостних препаратів. Біодинамічна сертифікація набагато суворіша, порівняно з органічною, оскільки відображає цілісний і духовний підхід до землеробства.
+                </p>
+                <h3>Відмінності органічного шампанського від натурального</h3>
+                <p>Останню продукцію маркують як PetNat. Категорія не має юридично закріпленого визначення, але зазвичай це означає мінімальне втручання: певний штам дріжджів, жодних добавок, включно із сульфітами, відсутність фільтрації.</p>
+                <h2>Як визначити органічне ігристе вино онлайн</h2>
+                <p>
+                    Обов’язково вивчіть опис або етикетку, щоб знайти логотип сертифікаційного органу. Уникайте неточних фраз на кшталт «екологічно чисте ігристе вино». Для повторної перевірки інформації про те, що під торговою маркою дійсно випускають
+                    органічну продукцію, можна скористатися відкритими базами даних.
+                </p>
+                <h2>Чому вигідно купити органічне ігристе вино в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Наша команда зробила все за вас, але спочатку — переконалася в оригінальності кожної пляшки, доступної до замовлення. За доставлення також не потрібно хвилюватися, адже з цим допоможуть логістичні компанії та кур’єри, які працюють у
+                    Львові, Дніпрі та Києві. Щоб прискорити шопінг, розрахуватися за покупку органічного шампанського можна на сайті. А регулярні акції та знижки допомагають економити.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Organic Lemon Rose Bellini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Organic-Lemon-Rose-Bellini-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Organic Lemon Rose Bellini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/osoblyvosti_18=orhanichne">Органічне шампанське</a></li><li>Горілка Fair Trade</li><li>Органічний лимонний сорбет</li><li>Органічна малина</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Organic Bellini — освіжальний коктейль із нотками органічного лимонного сорбету, горілки Fair Trade і шампанського. Напій має ніжний аромат і збалансований смак, тому ідеально підходить для теплих літніх вечорів.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Organic Lemon Rose Bellini</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл органічного шампанського</li><li>15 мл горілки Fair Trade</li><li>1 ст. л. органічного лимонного сорбету</li><li>2 шт. органічної малини</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Змішайте 1 ст. л. органічного лимонного сорбету і 15 мл горілки Fair Trade в шейкері з льодом.</li><li>Енергійно струсіть компоненти.</li><li>Додайте 120 мл шампанського і злегка розмішайте.</li><li>Процідіть через стрейнер в охолоджений келих-флюте.</li><li>Прикрасьте коктейль двома ягодами органічної малини.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="French Kiss" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/French-Kiss.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">French Kiss</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Аперитив Lillet</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/osoblyvosti_18=orhanichne">Органічне шампанське</a></li><li>Апельсинова цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Фруктовий, квітковий, цитрусовий і трохи солодкий — це все French Kiss. Ідеальний коктейль для подачі в особливі свята, особливо якщо ви відзначаєте їх із друзями та близькими. Цей ігристий напій з аперитивом Lillet і шампанським дуже смачний і простий у приготуванні.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати French Kiss</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл аперитиву Lillet</li><li>120 мл органічного шампанського</li><li>апельсинова цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих-флюте. Влийте в нього 30 мл аперитиву Lillet.</li><li>Акуратно долийте 120 мл органічного шампанського.</li><li>Обережно перемішайте барною ложкою, щоб зберегти шипучість.</li><li>Прикрасьте напій спіраллю з апельсинової цедри.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Orange and Champagne Granita" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Orange-and-Champagne-Granita.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Orange and Champagne Granita</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/osoblyvosti_18=orhanichne">Органічне шампанське</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor/osoblyvosti_215=orhanichnyi-4">Органічний цукор</a></li><li><a href="https://maudau.com.ua/category/med/osoblyvosti_275=orhanichnyi-5">Органічний мед</a></li><li>Свіжі листя базиліку</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Orange and Champagne Granita — фантастичний десерт-коктейль з апельсиновим соком, органічним шампанським і медом. Напій вирізняється унікальною текстурою і яскравим смаком, ідеально освіжає в спеку і підіймає настрій.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Orange and Champagne Granita</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>480 мл апельсинового соку</li><li>240 мл органічного шампанського</li><li>¼ склянки органічного цукру</li><li>¼ склянки органічного меду</li><li>листя свіжого базиліку для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Влийте 480 мл апельсинового соку в невелику каструлю.</li><li>Поставте на середній вогонь. Додайте по ¼ склянки цукру і меду.</li><li>Доведіть до кипіння, розмішуючи, поки цукор не розчиниться.</li><li>З'єднайте цукрово-цитрусову суміш з шампанським у квадратній формі для випікання.</li><li>Дайте охолонути до кімнатної температури — приблизно 30 хвилин.</li><li>Накрийте поліетиленовою плівкою і поставте в морозильник.</li><li>Періодично діставайте граніту і перемішуйте виделкою, щоб з'єднати кристали льоду з рідиною, що залишилася.</li><li>Перед подачею розкладіть по порційних чашках і прикрасьте листям свіжого базиліку.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Holiday Cranberry Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Holiday-Cranberry-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Holiday Cranberry Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Сироп журавлинний Torani</li><li>Свіжовичавлений лимонний сік</li><li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Світлий ром</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновий біттер</a></li><li><a href="https://maudau.com.ua/product/vyno-ihryste-mont-marcal-cava-brut-organic-guarda-bile-briut-0-75-l">Вино ігристе Mont Marcal Cava Brut Organic Guarda</a></li><li>Гранатові зерна</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Святковий журавлинний пунш з яскравим смаком ягід, цитрусових, рому і насиченими ароматами спецій. Освіжальний і простий у приготуванні напій створює теплу атмосферу і новорічний настрій.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Holiday Cranberry Punch</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>360 мл сиропу журавлинного Torani</li><li>180 мл свіжовичавленого лимонного соку</li><li>360 мл світлого рому</li><li>1 ч. л. апельсинового біттеру</li><li>1500 мл органічного ігристого вина білого брют</li><li>гранатові зерна для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У великому пуншевому глечику змішайте по 360 мл журавлинного сиропу Torani та світлого рому.</li><li>Додайте 180 мл свіжовичавленого лимонного соку і 1 ч. л. апельсинового біттеру.</li><li>Покладіть лід за бажанням і ретельно перемішайте.</li><li>Акуратно влийте 1500 мл органічного ігристого вина (білий брют), розмішайте барною ложкою.</li><li>Розлийте по келихах і прикрасьте кожну порцію гранатовими зернами.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pimm’s Royale" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pimms-Royale.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pimm’s Royale</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лікер Pimm's №1 Cup</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/osoblyvosti_18=orhanichne">Органічне шампанське</a></li><li>Огірок</li><li>Апельсин</li><li>Мʼята</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий і вишуканий коктейль із лікером Pimm's, органічним шампанським і цитрусовим посмаком. Напій подарує освіжальну солодкість і тонкий аромат, стане відмінним вибором для літніх вечірок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pimm’s Royale</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл лікеру Pimm's №1 Cup</li><li>120 мл органічного шампанського</li><li>огірок для прикрашання</li><li>апельсин для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть келих-флюте льодом наполовину.</li><li>Влийте 30 мл лікеру Pimm's №1 Cup.</li><li>Акуратно додайте 120 мл охолодженого органічного шампанського.</li><li>Прикрасьте коктейль скибочкою огірка, апельсина і гілочкою свіжої м'яти.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">45-79 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0-0.65 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

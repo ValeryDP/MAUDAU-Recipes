@@ -1,0 +1,1033 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Ігристе вино Moscato Bianco — ароматний напій, виготовлений із винограду сорту Muscat Blanc a Petits Grains. Його обирають не тільки завдяки насиченому квітковому аромату та природній солодкості, а й низькому вмісту алкоголю — в
+                    межах 5–7%.
+                </p>
+                <p>
+                    Іноді для опису цих ігристих вин використовують термін «шампанське москато» — він часто зустрічається в онлайн-каталогах. Однак важливо зазначити, що таке маркування заборонене не тільки законами Франції, а й усього ЄС. Це пов’язано
+                    з тим, що справжнє шампанське виробляють винятково з трьох виноградних сортів — «шардоне», «піно-нуар» і «піно-меньє».
+                </p>
+                <h2>Що особливого у винограді Moscato Bianco</h2>
+                <p>
+                    Крихітні ягоди золотисто-жовтого кольору з тонкою шкіркою — частина стародавнього сімейства Muscat, що об’єднує понад 200 сортів. Виноград Moscato Bianco, як і італійське шампанське з його додаванням, цінують за високий вміст цукру
+                    і яскраво виражену ароматику, яка відчувається без зброджування. А ще ягоди добре зберігають природну кислотність, вигідно балансуючи фруктову солодкість. Після ферментації у смаку відчуваються нотки абрикосів, персиків,
+                    апельсинових квіток і меду.
+                </p>
+                <p>Попри назву, виноград може змінювати колір. Якість і кількість врожаю безпосередньо залежать від умов вирощування і погоди, тому характеристики ягід відрізняються залежно від року збору.</p>
+                <h2>Як виникли сорт та ігристі вина Moscato Bianco</h2>
+                <p>
+                    Виноград, більш відомий як Muscat Blanc a Petits Grains, визнаний одним із найстаріших відомих у світі. Він виник у Стародавній Греції, але незабаром його почали вирощувати римляни. Саме вони привезли його до Франції, а потім і до
+                    Італії. У період Середньовіччя його повсюдно культивували в П’ємонті, де він став фірмовим сортом.
+                </p>
+                <p>
+                    Виробництво італійського шампанського москато задокументували ще в XIV столітті. Бум на це ігристе вино стався через 500 років, коли Карло Ганча освоїв метод шампанізації у Франції, а потім адаптував його до місцевого виноробства.
+                    Саме він стандартизував і комерціалізував виготовлення Asti Spumante і Moscato d’Asti, використавши ранні відомі методи ферментації в металевих резервуарах.
+                </p>
+                <h2>Moscato: як виробляють культове шампанське в італійському стилі</h2>
+                <p>
+                    Ігристе вино виготовляють за методом «Шарма-Мартінотті», роблячи акцент на яскравих фруктово-квіткових нотках. Згідно з танковою (резервуарною) технологією, вторинна ферментація відбувається в герметичних місткостях із неіржавної
+                    сталі. Бродіння зупиняють на ранній стадії за допомогою різкого зниження температури — це зберігає частину натурального виноградного цукру, який не встигли поглинути дріжджі. Результат такого процесу — природно ароматне і солодке
+                    ігристе вино з низьким вмістом алкоголю в межах 5–7%.
+                </p>
+                <h2>Різновиди ігристих вин Moscato Bianco</h2>
+                <p>
+                    На ринку зустрічаються два стилі — Asti Spumante і Moscato d’Asti. Перший — найпопулярніший. Його виробляють виключно в провінції Асті в П’ємонті. Це повністю ігристе вино міцністю 7–7.5%. За тонким перляжем ховаються нотки
+                    персиків, меду і білих квіток.
+                </p>
+                <p>Якщо Asti відносять до категорії Spumante, то Moscato d’Asti — напівігриста версія, відома як Frizzante. Оскільки об’ємна частка алкоголю зазвичай не перевищує 5.5%, фруктово-квітковий смак стає м’якшим і ніжнішим.</p>
+                <p>Обидва стилі не містять доданого цукру. Солодкість витягують виключно з винограду.</p>
+                <h2>Шампанське Moscato: ціна на італійський напій в Україні</h2>
+                <p>
+                    Середня вартість пляшки в Україні становить 250–450 грн. Найдешевше коштує невінтажна продукція. Вінтаж зустрічається рідко, але це чудовий варіант подарунка. У маркеті алкогольних штук MAUDAU також можна знайти напої в подарунковій
+                    упаковці в комплекті з келихами.
+                </p>
+                <p>
+                    На шампанське москато ціна знижується в момент розпродажів. Список акційних товарів постійно оновлюють. Тож якщо поки що пляшка здається надто дорогою, додайте її у «Вибране» і відстежуйте актуальні акції. На деякі позиції діє
+                    гуртова знижка при замовленні від трьох штук.
+                </p>
+                <p>Враховуйте, що більшість напоїв захищені статусом DOCG. Це істотно підвищує кінцеву ціну, адже продукція пропонує стабільну якість, бо вироблена відповідно до суворих правил.</p>
+                <h2>Що подати до шампанського москато з Італії</h2>
+                <p>Перед тим як перейти до дегустації, охолодіть пляшку до +6–8 °C. Це можна зробити, помістивши ігристе вино в холодильник або відерце з льодом. Останній варіант також допоможе підтримувати потрібну температуру під час святкування.</p>
+                <p>Щоб сконцентрувати аромат і вловити ніжні бульбашки, розливайте вміст пляшки по келихах-тюльпанах. Ще один варіант посуду — Flute.</p>
+                <p>Щодо гастрономічного поєднання, то Moscato — шампанське з Італії, до якого варто купити:</p>
+                <ul>
+                    <li>свіжі фрукти та ягоди, особливо диню та цитрусові;</li>
+                    <li>м’які сири на кшталт брі, рікотти та маскарпоне.</li>
+                </ul>
+                <p>Оскільки це солодке ігристе вино, його також можна подати до десерту. Чизкейк, тарт, панакота, медовик, сирники — варіантів безліч.</p>
+                <p>Головне правило — уникайте занадто гострих або пряних страв. Спеції можуть конфліктувати з природною фруктовою солодкістю.</p>
+                <p>Ігристе вино Moscato Bianco найкраще смакує під час бранчів і літніх пікніків на свіжому повітрі. Його також можна запропонувати як аперитив.</p>
+                <h2>Чому вигідно купити шампанське москато в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У нас представлена виключно оригінальна продукція з Італії за конкурентною вартістю. Замовлення доставляють по всій Україні в найкоротший термін за допомогою трьох поштових служб. Покупці зі Львова, Дніпра та Києва можуть
+                    скористатися кур’єрськими послугами. У тих же містах доступне самовивезення із супермаркетів «Сільпо» — список магазинів шукайте в розділі «Доставлення». Оплачуйте покупку товарів на сайті або після огляду на пошті — як зручно.
+                </p>
+                <p>Не втрачайте додаткову вигоду — просто реєструйтеся в програмах лояльності «Власний Рахунок» та WOW Club. Для цього достатньо вказати номер телефону.</p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Апельсиново-кокосова мімоза (Orange Coconut Mimosa)" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Orange-Coconut-Mimosa.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Апельсиново-кокосова мімоза (Orange Coconut Mimosa)</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li>Кокосовий екстракт</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Оригінальний твіст на класичну Мімозу на основі апельсинового соку та ігристого вина Moscato Bianco з додаванням кокосового екстракту. Коктейль демонструє баланс фруктової свіжості та тропічної м'якості. Ароматичні ноти цитрусового профілю доповнені легким відтінком кокоса. Легка газована структура напою підходить для подачі як аперитиву.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Апельсиново-кокосова мімоза (Orange Coconut Mimosa)</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл охолодженого апельсинового соку</li><li>1,3 мл кокосового екстракту</li><li>120 мл охолодженого ігристого вина Moscato Bianco</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в келих для шампанського 120 мл охолодженого апельсинового соку.</li><li>Додайте 1,3 мл кокосового екстракту і ретельно перемішайте барною ложкою.</li><li>Акуратно долийте 120 мл охолодженого ігристого вина Moscato Bianco.</li><li>Прикрасьте коктейль цедрою апельсина і стружкою кокоса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Mango Moscato Slushie" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Mango-Moscato-Slushie.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Mango Moscato Slushie</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Заморожене манго</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li><li><a href="https://maudau.com.ua/category/sil-tsukor">Цукор</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Mango Moscato Slushie — це солодкий заморожений коктейль на основі Moscato Bianco і манго. Має м'яку текстуру, виражений фруктовий профіль і збалансований смак між натуральною соковитістю манго і легкою винною кислинкою. Напій подають у форматі фроузен, найчастіше в спекотну пору року.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Mango Moscato Slushie</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>454 г замороженого манго</li><li>480 мл ігристого вина Moscato Bianco</li><li>1/3 склянки цукру</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Помістіть 454 г замороженого манго в чашу блендера.</li><li>Додайте 1/3 склянки цукру і 480 мл ігристого вина Moscato Bianco.</li><li>Збийте до отримання однорідної, густої текстури.</li><li>Перелийте напій в охолоджені келихи.</li><li>Подавайте відразу, прикрасивши шматочками манго і м'ятою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Evening Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Evening-Sour.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Evening Sour</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li>Простий сироп</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=bitteri">Біттер</a></li><li><a href="https://maudau.com.ua/category/horilka">Горілка</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=campari">Кампарі</a></li><li>Лимонна цедра</li><li><a href="https://maudau.com.ua/product/vyno-ihryste-castello-del-poggio-moscato-dasti-bile-5-075-l">Ігристе вино Moscato d’Asti</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Evening Sour поєднує елементи класичного сауера з ігристими нотами вина, що надає напою об'єм і свіжу текстуру. Горілка служить алкогольною основою, Кампарі вносить легку гіркоту, а цитрусові соки — тропічні відтінки, збалансовані простим сиропом. Завершує композицію фруктова газованість вина Moscato d'Asti.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Evening Sour</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл лимонного соку</li><li>15 мл лаймового соку</li><li>15 мл простого сиропу</li><li>3 мл біттеру</li><li>45 мл горілки</li><li>3,7 мл Кампарі</li><li>Лимонна цедра до смаку</li><li>Ігристе вино Moscato d’Asti для доливання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в шейкер по 15 лимонного і лаймового соків.</li><li>Додайте 15 простого сиропу і 45 мл горілки.</li><li>Влийте 3 мл біттеру і 3,7 мл Кампарі.</li><li>Насипте лід і добре струсіть шейкер до охолодження компонентів.</li><li>Процідіть напій через сито в охолоджений келих.</li><li>Долийте ігристе вино Moscato d’Asti до верху.</li><li>Прикрасьте коктейль цедрою лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Rock Candy Sparkler" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rock-Candy-Sparkler.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Rock Candy Sparkler</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Куантро</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/vyno-ihryste-castello-del-poggio-moscato-dasti-bile-5-075-l">Ігристе вино Moscato d’Asti</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Збалансований коктейль Rock Candy Sparkler органічно поєднує цитрусову свіжість лимонного соку та апельсинові ноти Cointreau, збагачені фруктовою палітрою Moscato d’Asti. Абсент додає анісових акцентів і підсилює ароматичну глибину. Напій подають як легкий аперитив перед основною трапезою.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Rock Candy Sparkler</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл Куантро</li><li>15 мл лимонного соку</li><li>120 мл ігристого вина Moscato d’Asti</li><li>Абсент до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері змішайте по 15 мл лікеру Куантро і лимонного соку.</li><li>Перелийте в охолоджений келих-флюте або купе.</li><li>Долийте 120 мл ігристого вина Moscato d’Asti.</li><li>Додайте абсент до смаку й акуратно перемішайте барною ложкою.</li><li>Подавайте коктейль без льоду.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Piedmontese Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Piedmontese-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Piedmontese Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li><li>Вермут Antica Formula</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=abrykosovyi-3">Абрикосовий лікер</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    The Piedmontese Cocktail поєднує солодкі винні ноти Moscato Bianco з пряною глибиною вермуту на основі трав і деревних акцентів. Абрикосовий лікер залишає приємний фруктовий посмак. Оригінальність букета досягається завдяки збалансованим пропорціям.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Piedmontese Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл ігристого вина Moscato Bianco</li><li>20 мл вермуту Antica Formula</li><li>1 барна ложка абрикосового лікеру</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть келих-рокс або олд-фешн кубиками льоду.</li><li>Влийте 20 мл вермуту Antica Formula.</li><li>Додайте 1 барну ложку абрикосового лікеру.</li><li>Перемішайте барною ложкою для рівномірного розподілу компонентів.</li><li>Акуратно долийте 50 мл охолодженого ігристого вина Moscato Bianco.</li><li>Прикрасьте коктейль цедрою апельсина і скибочкою абрикоса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Colombo Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Colombo-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Colombo Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li><li>Херес Tio Pepe</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=korytsia-7">Коричний сироп</a></li><li><a href="https://maudau.com.ua/category/tekila/kolir_3=blanko-blanco-2">Текіла Бланко</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    The Colombo Cocktail — це гармонійне поєднання сухого хересу та винної структури Moscato Bianco. Текіла додає характерні рослинні ноти, а коричний сироп підкреслює м'яку пряність. Баланс між кислотністю, солодкістю та помірною міцністю робить коктейль підхожим варіантом для подачі як аперитиву.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Colombo Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл ігристого вина Moscato Bianco</li><li>45 мл хересу Tio Pepe</li><li>5 мл коричного сиропу</li><li>15 мл текіли Бланко</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охолоджений шейкер налийте 15 мл текіли Бланко.</li><li>Потім додайте 45 мл хересу Tio Pepe і 5 мл коричного сиропу.</li><li>Наповніть шейкер льодом і енергійно струсіть.</li><li>Процідіть через стрейнер в келих для коктейлів.</li><li>Повільно долийте 45 мл ігристого вина Moscato Bianco.</li><li>Акуратно перемішайте напій барною ложкою.</li><li>За бажанням прикрасьте коктейль цитрусовою цедрою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Caterina Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Caterina-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Caterina Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=kalvados-2">Кальвадос</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=cointreau">Куантро</a></li><li>Шоколадний біттер Bob’s</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль The Caterina Cocktail поєднує насиченість фруктового кальвадосу, цитрусову гіркоту апельсинового лікеру і стриману пряність шоколадного біттеру. Легка солодкість Moscato Bianco завершує композицію, забезпечуючи гармонійний посмак і м'який ігристий смак.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Caterina Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл кальвадосу</li><li>20 мл ігристого вина Moscato Bianco</li><li>15 мл Куантро</li><li>1 мл шоколадного біттеру Bob’s</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У келих для змішування влийте 60 мл кальвадосу і 15 мл Куантро.</li><li>Додайте 1 мл шоколадного біттеру Bob’s.</li><li>Наповніть келих льодом і ретельно перемішайте компоненти методом стир.</li><li>Процідіть через барне сито в охолоджений коктейльний келих.</li><li>Акуратно долийте 20 мл ігристого вина Moscato Bianco.</li><li>Прикрасьте напій цедрою апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-14" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Moscardini Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Moscardini-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Moscardini Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Полуниця</li><li>Віскі Great King Street Compass Box</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Простий сироп</li><li><a href="https://maudau.com.ua/product/biter-free-brothers-grapefruit-17-015-l">Грейпфрутовий біттер</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    У коктейлі Moscardini органічно переплітаються ягідні ноти полуниці, кислинка лимона і ароматна насиченість купажованого віскі. Солодкість сиропу і свіжість ігристого вина Moscato Bianco фіналізуються легкою гіркотою грейпфрутового біттеру, формуючи оригінальний смаковий профіль.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup14" class="overlay add-popup">
+        <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Moscardini Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-14">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 шт. полуниці</li><li>35 мл віскі Great King Street Compass Box</li><li>25 мл ігристого вина Moscato Bianco</li><li>20 мл лимонного соку</li><li>10 мл простого сиропу</li><li>1 мл грейпфрутового біттеру</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Розімніть одну полуницю в шейкері.</li><li>Змішайте 35 мл віскі Great King Street Compass Box і 20 мл лимонного соку.</li><li>Додайте 10 мл простого сиропу і 1 мл грейпфрутового біттеру.</li><li>Наповніть шейкер льодом і ретельно струсіть.</li><li>Процідіть напій через стрейнер в охолоджений келих.</li><li>Долийте 25 мл ігристого вина Moscato Bianco до верху.</li><li>Акуратно перемішайте коктейль перед подачею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-16" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Minty Moscato Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Minty-Moscato-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Minty Moscato Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li>Свіжовичавлений апельсиновий сік</li><li>Мʼята</li><li>Лід</li><li>Апельсин</li><li>Полуниця</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Збалансований коктейль на основі Moscato Bianco доповнений апельсиновим лікером і свіжим цитрусовим соком. Легкі трав'яні відтінки м'яти поєднуються з фруктовою основою, підкреслюючи ігристий характер напою. Подається охолодженим, підходить для аперитивного формату і літніх сетів.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup16" class="overlay add-popup">
+        <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Minty Moscato Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-16">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл ігристого вина Moscato Bianco</li><li>30 мл апельсинового лікеру</li><li>30 мл свіжовичавленого апельсинового соку</li><li>1-2 гілочки м'яти</li><li>жменя льоду</li><li>1 скибочка апельсина для прикрашання</li><li>1 нарізана полуниця для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У хайбол або винний келих покладіть жменю льоду.</li><li>Додайте по 30 мл апельсинового лікеру і свіжовичавленого апельсинового соку.</li><li>Покладіть 1-2 гілочки м'яти, злегка притисніть зелень, щоб розкрити аромат.</li><li>Обережно долийте 120 мл ігристого вина Moscato Bianco.</li><li>Прикрасьте коктейль скибочкою апельсина і нарізаною полуницею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-18" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sparkling Spiced Pear Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sparkling-Spiced-Pear-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sparkling Spiced Pear Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/ihrysti-vyna/sort_vynohradu=moskato-b-janko-moscato-bianco">Ігристе вино Moscato Bianco</a></li><li>Простий сироп з імбиром, корицею і грушею</li><li>Маленькі груші в сиропі</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Sparkling Spiced Pear поєднує м'якість фруктового Moscato Bianco і теплоту спецій, що розкривається в імбирно-грушевому сиропі з акцентом кориці. Баланс між солодкістю і пряною структурою робить напій придатним для подачі в холодну пору року. Прикраса у вигляді груші додає візуальних акцентів і ароматичну глибину.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup18" class="overlay add-popup">
+        <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Sparkling Spiced Pear Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-18">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>750 мл ігристого вина Moscato Bianco</li><li>120 мл простого сиропу з імбиром, корицею і грушею</li><li>маленькі груші в сиропі для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в глечик 120 мл простого сиропу з імбиром, корицею і грушею.</li><li>Повільно долийте 750 мл ігристого вина Moscato Bianco.</li><li>Акуратно перемішайте високою барною ложкою, зберігаючи бульбашки.</li><li>Подавайте напій порційно, добре охолодженим.</li><li>Прикрасьте кожен коктейль маленькими грушами в сиропі.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">68-160 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0-0.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">6.5-13.7 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

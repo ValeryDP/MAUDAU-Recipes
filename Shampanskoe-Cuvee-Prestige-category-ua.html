@@ -1,0 +1,805 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Ігристе вино та шампанське Cuvee Prestige — категорія алкоголю найвищої якості, виробленого престижною виноробнею чи домом шампанських вин із використанням винограду з найкращих класифікованих виноградників. Таку продукцію неодмінно
+                    маркують як вінтажну, оскільки її виробляють у виняткові роки. Купажі також довше витримують на осаді, а на піку зрілості вираз демонструє фірмовий стиль маєтку.
+                </p>
+                <p>
+                    Зважайте, що це не юридична категорія, а скоріше присвоєний виробником статус, що свідчить про престиж, багаторічну майстерність і високі стандарти. Якщо говорити про шампанське кюве де престиж, то в Шампані класифікація
+                    виноградників базується на Echelle des Crus — системі оцінювання якості виноградних лоз, що історично склалася. За межами цього регіону список факторів, що впливають, розширюється. Класифікація може залежати від ґрунту,
+                    мікроклімату, репутації виноробні.
+                </p>
+                <h3>Що особливого в продукції Cuvee Prestige</h3>
+                <p>Престижні кюве виділяються завдяки кільком важливим характеристикам:</p>
+                <ul>
+                    <li>виняткова якість виноградників — найчастіше Grand Cru або еквівалентний статус в інших країнах;</li>
+                    <li>виноград, зібраний тільки вручну, що гарантує якість кожної ягоди;</li>
+                    <li>тривала витримка на дріжджовому осаді, яка часто триває 6–10 років;</li>
+                    <li>застосування виключно традиційного методу Champenoise, що надає кюве глибину і багатошаровий аромат;</li>
+                    <li>виробництво в обмеженій кількості, часто у зв’язку з особливими подіями в країні або в історії виноробні;</li>
+                    <li>розкішне пакування — важча скляна пляшка та елегантна етикетка з детальною інформацією.</li>
+                </ul>
+                <p>Отже, продукція кюве де престиж — флагманська. Це пояснює її високу ціну, яка нерідко обчислюється кількома тисячами гривень.</p>
+                <h2>Асортимент ігристих вин Cuvee Prestige</h2>
+                <p>Кілька легендарних найменувань:</p>
+                <ol>
+                    <li>Champagne. Категорія ігристих вин, що поклали початок цьому терміну. Зразки для наслідування виробляють Bernard Remy, Armand de Brignac і JM Gobillard &amp; Fils.</li>
+                    <li>Cremant. Кюве престиж, випущене за межами Шампані, що істотно знижує підсумковий цінник. Один із прикладів — Cremant de Loire від Blanc Foussy. Ціна за 0.75 літра становить лише 500 грн.</li>
+                    <li>
+                        Franciacorta. Італійська відповідь шампанському Cuvee de Prestige, вироблена за методом шампанізації, тобто із вторинною витримкою в закоркованих пляшках. Якщо ексклюзивне ігристе вино у Франції підпадає під статус AOC/AOP, то в
+                        Італії його маркують як DOCG.
+                    </li>
+                </ol>
+                <h2>Як обрати продукцію кюве де престиж онлайн</h2>
+                <p>
+                    Шукайте визнаних виробників, інформацію про рік урожаю, нотатки про тривалість витримки на осаді та рекомендації щодо поєднання з їжею. Спирайтеся на описи напоїв та відгуки покупців, а не тільки на зовнішній вигляд пляшки.
+                    Престижне ігристе вино сміливо демонструє свій статус, а на етикетці чітко позначено місце розташування виноградника.
+                </p>
+                <h2>Чому вигідно купити ігристе вино і шампанське Cuvee Prestige в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У нас — тільки оригінальна алкогольна продукція за конкурентною вартістю. Оскільки ціна на продукцію кюве де престиж доволі висока, акції та знижки допоможуть заощадити. За доставлення не потрібно хвилюватися — з ним допоможуть
+                    компанії-перевізники, а також кур’єри в Києві, Дніпрі та Львові. Якщо хочете забрати замовлення самостійно, це можна зробити в магазинах «Сільпо» в деяких містах. Оплатити покупку найкомфортніше на сайті, але розрахуватися можна і
+                    при отриманні.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Silver Daisy" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Silver-Daisy.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Silver Daisy</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li><a href="https://maudau.com.ua/product/liker-joseph-cartron-curacao-orange-kiurasao-oranzh-35-07-l">Кюрасао Orange</a></li><li><a href="https://maudau.com.ua/category/rom/kolir_2=bilyi-10">Світлий ром</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Біттер Ангостура</a></li><li><a href="https://maudau.com.ua/product/shampanske-bernard-remy-prestige12-075-l-alr16103">Шампанське Bernard Remy Prestige</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Silver Daisy поєднує міцний витриманий ром, цитрусову свіжість лайму та апельсинові ноти кюрасао. Помірна солодкість сиропу та легка пряність біттеру врівноважуються охолодженим шампанським, що надає напою фінальної сухості. Формат подачі підкреслює лаконічність і органічність коктейлю.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Silver Daisy</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>7 мл цукрового сиропу</li><li>22 мл свіжого соку лайму</li><li>15 мл кюрасао Orange</li><li>45 мл злегка рому (витриманого)</li><li>2 краплі біттеру Ангостура</li><li>60 мл охолодженого сухого шампанського</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері з'єднайте 7 мл цукрового сиропу і 22 мл свіжого соку лайму.</li><li>Додайте 15 мл кюрасао Orange, 45 мл рому і 2 краплі біттеру Ангостура.</li><li>Наповніть шейкер льодом і добре струсіть.</li><li>Процідіть напій через стрейнер в келих-флюте або купе.</li><li>Обережно долийте 60 мл охолодженого сухого шампанського.</li><li>За бажанням прикрасьте коктейль цедрою апельсина або лайму.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Prestige Bellini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Prestige-Bellini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Prestige Bellini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/shampanske-bernard-remy-prestige12-075-l-alr16103">Ігристе вино Champagne Prestige Bernard REMY</a></li><li>Білі персики</li><li><a href="https://maudau.com.ua/product/liker-merlet-creme-de-peche-de-vigne-18-07-l-489022">Лікер Crème de pêche</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Prestige Bellini — це інтерпретація класичного ігристого аперитиву з додаванням білого персика і лікеру Crème de pêche. Шампанське надає композиції текстурну легкість та ігристу динаміку. Персиковий профіль вносить м'яку фруктову насиченість, зберігаючи баланс між кислотністю і солодкістю.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Prestige Bellini</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120–150 мл холодного шампанського</li><li>1 білий персик</li><li>10 мл Crème de pêche</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Очистіть білий персик від шкірки і кісточки.</li><li>Подрібніть м'якоту в пюре за допомогою блендера до однорідної текстури.</li><li>Перелийте персикове пюре в охолоджений келих для шампанського.</li><li>Потім додайте 10 мл лікеру Crème de pêche.</li><li>Акуратно долийте 120–150 мл холодного шампанського.</li><li>Злегка перемішайте коктейль барною ложкою перед подачею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Happy New Year Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Happy-New-Year-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Happy New Year Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/brendi-i-koniak/product_class=brendi">Бренді</a></li><li><a href="https://maudau.com.ua/product/portvein-saint-clair-porto-ruby-do-19-075-l-764538">Рубіновий портвейн</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/klasyfikatsiia_3=kiuve-prestyzh-cuvee-prestige">Шампанське Cuvee Prestige</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    The Happy New Year Cocktail — святковий напій з яскравим цитрусовим смаком апельсинового соку, ігристим шампанським і легкою солодкістю бренді. Створює веселу розслаблену атмосферу, тому чудово підходить для новорічних вечірок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Happy New Year Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл бренді</li><li>22 мл рубінового портвейну</li><li>22 мл апельсинового соку</li><li>120 мл шампанського</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть шейкер кубиками льоду.</li><li>Додайте по 22 мл рубінового портвейну і апельсинового соку.</li><li>Влийте 45 мл бренді. Добре струсіть до охолодження.</li><li>Процідіть суміш через сито в коктейльний келих-флюте.</li><li>Акуратно долийте 120 мл шампанського, щоб зберегти бульбашки.</li><li>Прикрасьте напій скибочкою і цедрою цитруса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Kir Imperial Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kir-Imperial-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Kir Imperial Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=malyna-43">Малиновий лікер</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/klasyfikatsiia_3=kiuve-prestyzh-cuvee-prestige">Шампанське Cuvee Prestige</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Kir Imperial — простий коктейль на основі шампанського та малинового лікеру. Має насичений смак і фруктовий аромат, чудово підходить для урочистих моментів і романтичних зустрічей.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Kir Imperial Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл малинового лікеру</li><li>120 мл шампанського</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть коктейльний келих у морозилці (зазвичай використовують флюте).</li><li>Налийте 15 мл малинового лікеру на дно келиха.</li><li>Обережно додайте 120 мл шампанського доверху.</li><li>Не перемішуйте напій — ягідний лікер сам красиво розподілиться, створюючи гарний градієнт.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="St. Germain Champagne Cocktail Recipe" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/St-Germain-Champagne-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">St. Germain Champagne Cocktail Recipe</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лікер бузини St. Germain</li><li><a href="https://maudau.com.ua/product/shampanske-bernard-remy-prestige12-075-l-alr16103">Шампанське Bernard Remy Prestige</a></li><li>Лимонна цедра</li><li>Полуниця</li><li>Скибочки персика</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Унікальний напій із сухим шампанським і лікером St. Germain вирізняється невимушеним поєднанням цитрусових і солодких ноток. Це легкий, фруктовий і ароматний коктейль для особливих випадків і чарівних свят.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати St. Germain Champagne Cocktail Recipe</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл лікеру St. Germain</li><li>420 мл сухого шампанського</li><li>лимонна цедра для прикрашання</li><li>полуниця для прикрашання</li><li>персик для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келихи-флюте на чотири особи.</li><li>Влийте по 15 мл лікеру St. Germain в кожен келих.</li><li>Акуратно долийте по 105 мл сухого шампанського.</li><li>Прикрасьте всі порції окремо, використовуючи цедру лимона, шматочки полуниці та скибочки персика.</li><li>Закріпіть фруктовий декор на краю кожного флюте або опустіть в напій.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">67-84 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.6-1.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

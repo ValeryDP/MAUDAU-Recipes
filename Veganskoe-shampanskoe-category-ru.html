@@ -1,0 +1,969 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Веганское шампанское — игристое вино из французской Шампани, произведенное без использования каких-либо веществ животного происхождения в соответствии со строгими стандартами. Его готовят из знаменитой виноградной триады — смеси
+                    «шардоне» с «пино-нуар» и «пино-менье».
+                </p>
+                <p>Веганское игристое вино — более широкая категория, объединяющая множество виноградных сортов, наименований и торговых марок. Цена на эту продукцию намного ниже из-за простоты изготовления.</p>
+                <h2>Как производят веганское шампанское и другое игристое вино</h2>
+                <p>
+                    В процессе применяют одну из двух техник — Charmat или Champenoise. Первый метод предназначен для игристых вин, для которых важен свежий фруктово-цветочный аромат. Это бюджетная и менее энергозатратная техника. Вторая технология, то
+                    есть метод шампанизации, обязателен для веганского шампанского, так как подразумевает выдержку на дрожжах.
+                </p>
+                <p>
+                    Если напиток получил сертификацию от V-Label или The Vegan Society, это означает, что на всех этапах винификации, особенно в ходе осветления, не применяли вещества животного происхождения по типу желатина или казеина. Вместо этого
+                    используют активированный уголь, гороховый белок и бентонит.
+                </p>
+                <h2>Бренды-производители веганских игристых вин</h2>
+                <p>Несколько известных торговых марок:</p>
+                <ol>
+                    <li>
+                        Fidora (Италия). Хотя компания и не находится в Шампани, она производит Prosecco — ароматное игристое вино с яркой кислотностью и нотками зеленых яблок. В составе — только органически выращенный виноград, а для осветления
+                        используют бентонитовую глину.
+                    </li>
+                    <li>
+                        Corvezzo (Италия). Еще одна винокурня из Италии, специализирующаяся на веганских и органических напитках. Каждое игристое вино — легкое, фруктовое и цветочное. И что самое важное — стоит гораздо дешевле, по сравнению с веганским
+                        шампанским.
+                    </li>
+                    <li>
+                        MIM Natura (Испания). Кава, произведенная по традиционному методу. Бренд, основанный в 1980-х годах четырьмя лучшими друзьями и соседями, предлагает винтажную продукцию, которая станет хорошим подарком ценителю качественного
+                        алкоголя. Логотип с семенами, украшающий этикетку, символизирует единение людей, влюбленных в свое дело.
+                    </li>
+                </ol>
+                <h2>Ассортимент веганского шампанского и игристых вин в MAUDAU</h2>
+                <p>
+                    У нас представлены десятки напитков на разный вкус — от освежающих белых разливов до розовых купажей, окутывающих интенсивными фруктово-ягодными нотками. Определиться помогут отзывы покупателей, из которых можно почерпнуть
+                    информацию об общем профиле и доминантных вкусовых дескрипторах.
+                </p>
+                <p>А еще можно выбрать веганское игристое вино исходя из сладости, крепости или состава. Например, «мускат» придает ароматическую сложность, а «глера» — приятную кислинку.</p>
+                <h3>Цены на веганское игристое вино в Украине</h3>
+                <p>
+                    Стоимость определяют сложность производства, место изготовления и сама сертификация. Цены на просекко и каву в среднем стартуют от 400–600 грн, тогда как на шампанское достигают нескольких тысяч за бутылку. Поскольку маркет
+                    алкогольных штук MAUDAU предлагает регулярные акции и скидки, стоимость постоянно меняется.
+                </p>
+                <h2>Почему выгодно купить веганское шампанское и игристое вино в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждая бутылка, доступная к заказу на странице, гарантировано оригинальна. Доставку по всей Украине выполняют несколькими почтовыми службами. В некоторых городах также предусмотрен самовывоз из супермаркетов «Сільпо». Список
+                    актуальных локаций ищите в разделе «Доставка». Оплата покупок возможна как на сайте, так и после получения. У нас также действует выгодная программа лояльности WOW Club, предлагающая множество преимуществ для постоянных покупателей.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Plum Gin Sting" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Plum-Gin-Sting.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Plum Gin Sting</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Джин Sweet Potato Plum Gin</li><li>Свежевыжатый лимонный сок</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-fidora-prosecco-brut-spumante-bile-briut-075-l">Вино игристое Fidora Prosecco Brut Spumante</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Plum Gin Sting — простой в приготовлении коктейль с джином, сахарным сиропом, просекко и лимонным соком. Легкий фруктовый вкус с пряными нотками делает этот напиток идеальным выбором для уютных вечеров.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Plum Gin Sting</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл джина Sweet Potato Plum Gin</li><li>20 мл свежевыжатого лимонного сока</li><li>10 мл сахарного сиропа</li><li>просекко для доливки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте 40 мл джина Sweet Potato Plum Gin и 20 мл свежевыжатого лимонного сока.</li><li>Добавьте 10 мл сахарного сиропа и лед. Хорошенько встряхните в течение 10–15 секунд.</li><li>Процедите через сито в охлажденный коктейльный бокал.</li><li>Долейте просекко до верха, аккуратно перемешайте высокой ложкой.</li><li>Украсьте напиток долькой сливы или цедрой цитруса — по вкусу.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Vegan French 75" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vegan-French-75.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Vegan French 75</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/osoblyvosti_18=vehanske">Веганское шампанское</a></li><li><a href="https://maudau.com.ua/ru/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Сухой джин</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Апельсин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Vegan French 75 — освежающий твист на классический напиток, с нотками лимонного сока, веганского шампанского и сухого джина. Микс идеально подойдет для тех, кто ценит легкость и изысканный вкус.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Vegan French 75</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>180 мл веганского шампанского</li><li>45 мл сухого джина</li><li>10 мл лимонного сока</li><li>5 мл сахарного сиропа</li><li>долька апельсина для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте 45 мл сухого джина и 10 мл лимонного сока в шейкер с льдом.</li><li>Добавьте 5 мл сахарного сиропа, хорошо взболтайте в течение 15 секунд.</li><li>Процедите смесь через стрейнер в коктейльный бокал-флюте.</li><li>Аккуратно влейте 180 мл веганского шампанского.</li><li>Украсьте напиток долькой апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Hangmans blood" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hangmans-blood.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Hangmans blood</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/pyvo/typ_pyva_2=staut-2">Стаут</a></li><li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/category/rom">Ром</a></li><li><a href="https://maudau.com.ua/ru/category/viski">Виски</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak">Бренди</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/typ_vyna_2=portvein">Портвейн</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/osoblyvosti_18=vehanske">Веганское шампанское</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль Hangmans Blood — богатый алкогольный микс с насыщенным вкусом. Сочетает несколько видов спиртных напитков и бодрящих ингредиентов, оставляющих яркое запоминающееся послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Hangmans blood</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл охлажденного стаута</li><li>30 мл джина</li><li>30 мл рома</li><li>30 мл виски</li><li>30 мл бренди</li><li>30 мл портвейна</li><li>120 мл шампанского</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер или большой стакан с льдом влейте по 30 мл каждого крепкого напитка: стаута, джина, рома, виски, бренди и портвейна.</li><li>Аккуратно встряхните, чтобы ингредиенты немного охладились и соединились.</li><li>Отфильтруйте смесь в высокий бокал, например, хайбол.</li><li>Осторожно долейте 120 мл шампанского, чтобы сохранить шипучесть.</li><li>Слегка помешайте ложечкой или палочкой для коктейлей.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Raspberry fizz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-fizz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Raspberry fizz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-emulsiinyi-spicer-malynovyi-18-0-05-l">Малиновый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/osoblyvosti_18=vehanske">Веганское шампанское</a></li><li>Свежая малина</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Raspberry Fizz — тонизирующий напиток с ярким вкусом малинового ликера и нежной игристостью шампанского. Коктейль с легкой кислинкой идеально подходит и для зажигательных вечеринок, и для летнего релакса.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Raspberry fizz</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл малинового ликера</li><li>120 мл шампанского</li><li>свежая малина для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охлажденный бокал-флюте добавьте 30 мл малинового ликера.</li><li>Осторожно долейте 120 мл холодного шампанского, постарайтесь сохранить игристость.</li><li>Украсьте готовый коктейль свежими ягодами малины и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Vegan Alameda Buck ‘n’ Breck" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vegan-Alameda-Buck-n-Breck.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Vegan Alameda Buck ‘n’ Breck</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_class=absent">Абсент</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_class=kalvados-2">Грушевый бренди</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=peychauds">Биттер Peychaud’s</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/osoblyvosti_18=vehanske">Веганское игристое вино</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающий коктейль Vegan Alameda Buck ‘n’ Breck сочетает грушевые и пряные оттенки с нежными травяными нотами. Напиток придется по душе любителям фруктовых вкусов.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Vegan Alameda Buck ‘n’ Breck</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>несколько капель абсента для ароматизации бокала</li><li>сахар для покрытия края бокала</li><li>40 мл охлажденного грушевого бренди</li><li>6 капель биттера Peychaud’s</li><li>15 мл сахарного сиропа</li><li>150 мл веганского игристого вина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смочите ободок флюте каплями абсента, затем обмакните его в сахар, чтобы декорировать край стакана.</li><li>В подготовленный бокал добавьте 40 мл охлажденного грушевого бренди, 6 капель биттера Peychaud’s и 15 мл сиропа.</li><li>Сверху долейте 150 мл веганского игристого вина.</li><li>Перед подачей украсьте коктейль веточкой мяты и долькой груши.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Vegan Whiskey River" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vegan-Whiskey-River.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Vegan Whiskey River</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ananas-5">Ананасовый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/osoblyvosti_18=vehanske">Веганское игристое вино</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Микс Vegan Whiskey River — это гармоничное сочетание бурбона, ананасового сиропа и веганского игристого вина. Напиток отличается свежим и насыщенным вкусом, к тому же его можно приготовить всего за пару минут.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Vegan Whiskey River</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл бурбона</li><li>15 мл ананасового сиропа</li><li>180 мл веганского игристого вина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охлажденном бокале для шампанского смешайте 30 мл бурбона и 15 мл ананасового сиропа.</li><li>Аккуратно долейте 180 мл веганского игристого вина.</li><li>Декорируйте напиток долькой ананаса и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Vegan Kir Royale" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vegan-Kir-Royale.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Vegan Kir Royale</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-volare-creme-de-cassis-16-07-l">Крем-де-Кассис</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/osoblyvosti_18=vehanske">Веганское игристое вино</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Игристое вино и ягодный ликер — беспроигрышный вариант, а Vegan Kir Royale — это оригинальный коктейль с насыщенным вкусом черной смородины и искристой текстурой веганского вина. У напитка нежный и незабываемый аромат, чудесно дополняющий вкусовой букет.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Vegan Kir Royale</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл Крем-де-Кассис</li><li>180 мл веганского игристого вина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте 15 мл Крем-де-Кассис на дно охлажденного бокала-флюте.</li><li>Аккуратно долейте 180 мл веганского игристого вина, стараясь не вспенить напиток слишком сильно.</li><li>Не перемешивайте — коктейль должен иметь красивый градиент от темного основания к светлой верхушке.</li><li>По желанию украсьте напиток ягодами черной смородины на шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Elderflower Gin Fizz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Elderflower-Gin-Fizz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Elderflower Gin Fizz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-fidora-prosecco-brut-spumante-bile-briut-075-l">Вино игристое Fidora Prosecco Brut Spumante</a></li><li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=buzyna-6">Ликер с бузиной</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Листья мяты</li><li>Ломтики лимона</li><li>Ломтики лайма</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Elderflower Gin Fizz — освежающий цветочный напиток с нежным вкусом бузинного ликера, цитрусовыми нотами лимонного сока и легкой игристостью просекко. Коктейль символизирует беззаботное настроение летних дней.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Elderflower Gin Fizz</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>просекко для доливки</li><li>50 мл качественного джина</li><li>30 мл ликера с бузиной</li><li>15 мл лимонного сока</li><li>листья мяты для украшения</li><li>ломтики лимона для украшения</li><li>ломтики лайма для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте 50 мл качественного джина.</li><li>Добавьте 30 мл ликера с бузиной и 15 мл лимонного сока.</li><li>Насыпьте немного льда и активно встряхните.</li><li>Процедите в высокий охлажденный бокал-хайбол.</li><li>Долейте просекко до верха стакана, осторожно перемешайте коктейльной ложкой.</li><li>Украсьте ломтиками лимона и лайма, а также листьями свежей мяты.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Vegan Pink Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Vegan-Pink-Cocktail.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Vegan Pink Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-fidora-prosecco-brut-spumante-bile-briut-075-l">Вино игристое Fidora Prosecco Brut Spumante</a></li><li><a href="https://maudau.com.ua/ru/category/horilka">Водка</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Vegan Pink Cocktail — нежный коктейль с фруктовым вкусом и цитрусовыми оттенками. Отличается приятной кислинкой и ярким цветом, подходит для зажигательных вечеринок и уютных семейных посиделок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Vegan Pink Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>90 мл просекко</li><li>30 мл водки</li><li>30 мл грейпфрутового сока</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере смешайте по 30 мл водки и грейпфрутового сока со льдом.</li><li>Процедите через сито в охлажденный коктейльный бокал-купе.</li><li>Медленно и аккуратно долейте 90 мл просекко.</li><li>Осторожно перемешайте по кругу один раз.</li><li>Украсьте напиток долькой цитруса и веточкой розмарина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">45-84 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0-0.5 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0-4.2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

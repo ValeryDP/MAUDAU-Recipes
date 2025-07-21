@@ -1,0 +1,815 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Игристое вино SilverBreeze — категория универсальных и доступных по цене напитков, изготовленных по методу «Шарма-Мартинотти». Бренд фокусируется на классических вкусовых профилях — со сбалансированной сладостью и выразительными
+                    фруктовыми нотками.
+                </p>
+                <h2>Краткая история торговой марки «Сильвер Бриз»</h2>
+                <p>
+                    Игристое вино изготавливают на мощностях ООО «ЮГВИНПРОМ», расположенного в Одесской области. Производство контролируют на каждом этапе — от выращивания виноградных лоз до розлива на специализированно оборудованных автоматизированных
+                    линиях.
+                </p>
+                <h2>SilverBreeze: как производят украинское шампанское</h2>
+                <p>В основе — метод Charmat. Вторичная ферментация проходит в больших емкостях из нержавеющей стали, а не в отдельных бутылках, за счет чего сохраняется свежий фруктовый аромат.</p>
+                <p>
+                    Именно поэтому «Сильвер Бриз» — не совсем шампанское. И это связано не только с местом изготовления, но и с составом и применяемыми методами винификации. Поскольку резервуарный (танковый) метод быстрее и экономичнее, это снижает
+                    итоговый ценник.
+                </p>
+                <h2>Разновидности игристых вин SilverBreeze</h2>
+                <p>Под торговой маркой выпускают всего одну базовую линейку алкоголя. Серия состоит из четырех разливов, отличающихся по цвету, крепости и содержанию остаточного сахара. Это:</p>
+                <ol>
+                    <li>Брют. Самый сухой вариант в портфолио производителя. Это версия SilverBreeze, напоминающая шампанское за счет хрустящей кислотности с нотами зеленых яблок и цитрусовых.</li>
+                    <li>Белое полусухое. Это игристое вино немного мягче по вкусу. В нем хорошо ощущается фруктовая сладость, постепенно сменяющаяся цветочным послевкусием.</li>
+                    <li>Белое полусладкое. Округлое и ароматное игристое вино для тех, кто предпочитает наслаждаться пузырьками вместе с десертом или как полноценной заменой сладкому.</li>
+                    <li>
+                        Розе. Поскольку «Сильвер Бриз» позиционируют как бюджетную альтернативу шампанскому, в портфолио представлена традиционная розовая версия — с мягким ягодным ароматом и умеренной сладостью. Это игристое вино отлично подходит для
+                        летнего отдыха где-то на природе или на берегу Черного моря.
+                    </li>
+                </ol>
+                <h3>Шампанское «Сильвер Бриз»: цена в Украине</h3>
+                <p>
+                    Стандартная бутылка стоит порядка 200 грн — это одно из самых доступных игристых вин, представленных в онлайн-каталоге MAUDAU. Низкая цена обусловлена производством на месте, эффективной ферментацией по методу «Шарма-Мартинотти» и
+                    отлаженной логистикой.
+                </p>
+                <h2>Советы по подаче игристых вин SilverBreeze</h2>
+                <p>Чтобы подчеркнуть тонкий перляж и яркий фруктово-цветочный аромат, подавайте напитки охлажденными до +6–8 °C. Белое полусухое вино можно преподнести как аперитив.</p>
+                <p>
+                    Продукция также гармонично сочетается с легкими закусками по типу брускетт, мягких сливочных сыров и ломтиков черного хлеба с салом или сельдью. А еще к игристому вину можно предложить салат на основе листовой зелени и морепродуктов
+                    или нежирную птицу, запеченную на углях.
+                </p>
+                <h2>Почему выгодно купить украинское шампанское «Сильвер Бриз» в интернет-магазине MAUDAU</h2>
+                <p>
+                    Каждая бутылка — 100% оригинального происхождения. Оформить заказ на сайте легко с доставкой в любой населенный пункт Украины, где функционирует почтовое отделение «Укрпочты», «Новой Почты» или точка выдачи «Meest ПОЧТЫ». В Киеве,
+                    Львове и Днепре также доступны курьерская развозка и самовывоз из супермаркетов «Сільпо». На продукцию SilverBreeze, в отличие от шампанского, цена достаточно низкая. Несмотря на это, на товары в наличии регулярно распространяются
+                    акции и скидки. А дополнительная выгода гарантирована с программами лояльности «Власний Рахунок» и WOW Club.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Silver Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Silver-Spritz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Silver Spritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Патрон Сильвер</li><li>Клубничное пюре</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/napii-sokovyi-sandora-sytsiliiskyi-chervonyi-apelsyn-095-l-719492">Сок кровавого апельсина</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=silverbreeze">Игристое вино Silverbreeze</a></li><li>Кровавый апельсин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Silver Spritz — утонченный, искристый коктейль с цитрусовыми нотами лимонного сока, легкой сладостью сахарного сиропа и травяным ароматом текилы. Напиток идеально подходит для стильных вечеров и приятных летних моментов.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Silver Spritz</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл текилы Patrón Silver</li><li>30 мл клубничного пюре</li><li>22 мл лимонного сока</li><li>22 мл сахарного сиропа</li><li>15 мл сока кровавого апельсина</li><li>игристое вино для доливки</li><li>долька кровавого апельсина для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте 60 мл текилы Patrón Silver.</li><li>Добавьте 30 мл клубничного пюре и 15 мл сока кровавого апельсина.</li><li>Влейте по 22 мл лимонного напитка и сахарного сиропа.</li><li>Положите лед и энергично встряхните.</li><li>Дважды процедите через стрейнер в охлажденный бокал-рокс.</li><li>Долейте игристое вино до самого верха.</li><li>Украсьте напиток долькой цитруса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="White Christmas" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/White-Christmas-Silverbreeze.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">White Christmas</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Мята</li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-elderflower-buzyna-15-07-l">Ликер из цветков бузины</a></li><li><a href="https://maudau.com.ua/ru/product/perets-premia-rozhevyi-horoshok">Розовый перец</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-silverbreeze-10-135-075-l-478732">Вино игристое SilverBreeze</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль White Christmas — оригинальное сочетание ликера из цветков бузины, розовых перцев и белого вина. Напиток с мягким и сладким вкусом погружает в атмосферу зимней сказки. Для эффектной подачи напиток наливают в бокал с сахарной кромкой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить White Christmas</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>несколько листиков мяты</li><li>30 мл ликера из цветков бузины</li><li>несколько розовых перцев</li><li>100 мл игристого белого вина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Сделайте по краю коктейльного бокала сахарную кромку.</li><li>Уложите на дно и слегка раздавите мадлером несколько листиков мяты и розовый перец — это раскроет ароматы.</li><li>Добавьте 30 мл ликера из цветков бузины.</li><li>Аккуратно долейте 100 мл игристого белого вина.</li><li>Осторожно перемешайте высокой барной ложкой и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Коктейль Жак Ламелуаз" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kokteil-Zhak-Lameluaz-Silverbreeze.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Коктейль Жак Ламелуаз</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/liker-krupnik-malina-malyna-16-0-5-l">Малиновый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky">Ликер</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-silverbreeze-bile-napivsukhe-10-135-075-l-478729">Вино игристое SilverBreeze</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Жак Ламелуаз — это элегантный игристый коктейль с выразительным ягодно-цитрусовым профилем. Сладость малинового ликера уравновешивается апельсиновыми акцентами, а полусухое шампанское придает структуру и тонкую перляцию. Хороший выбор для аперитива или напитка к десертам.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Коктейль Жак Ламелуаз</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>20 мл малинового ликера</li><li>10 мл апельсинового ликера</li><li>150 мл полусухого шампанского</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охлажденный бокал-флюте налейте 20 мл малинового ликера.</li><li>Затем добавьте 10 мл апельсинового ликера.</li><li>Бережно долейте 150 мл полусухого шампанского, стараясь не вспенить напиток.</li><li>Не перемешивайте — пусть компоненты естественно смешаются в бокале.</li><li>Украсьте коктейль свежей малиной и цедрой апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Lavender Bubbly" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Lavender-Bubbly-Silverbreeze.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Lavender Bubbly</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=lavanda-4">Лавандовый сироп</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-silverbreeze-bile-napivsolodke-10-135-075-l-478730">Вино игристое SilverBreeze</a></li><li>Веточка лаванды</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Lavender Bubbly — это нежное дыхание весеннего утра на лавандовом поле. Цветочный сироп окутывает ароматом, а игристое шампанское приятно освежает. Вкус раскрывается постепенно, тонко, изящно, оставляя шлейф мечтательности и цветочной эйфории.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Lavender Bubbly</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>29 мл сиропа простой лаванды</li><li>Полусладкое шампанское долить до верха</li><li>Веточка лаванды для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте 29 мл сиропа простой лаванды в охлажденный бокал-флюте.</li><li>Аккуратно долейте полусладкое шампанское до верха.</li><li>Бережно перемешайте барной ложкой, чтобы густой сироп слегка распределился, но не разрушились пузырьки игристого.</li><li>Украсьте коктейль изящной веточкой свежей или сушеной лаванды.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Berries & Bubbles" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Berries_and_Bubbles-Silverbreeze.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Berries & Bubbles</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Свежие ягоды малины</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-elderflower-buzyna-15-07-l">Ликер из цветков бузины</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-silverbreeze-bile-napivsolodke-10-135-075-l-478730">Вино игристое SilverBreeze</a></li><li>Съедобные цветы</li><li>Съедобные золотые хлопья</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сочные ягоды коктейля Berries & Bubbles манят свежим вкусом, пузырьки дразнят рецепторы, аромат кружит голову. Оригинальный напиток чарует легкостью и притягательностью, превращая дегустацию в настоящее удовольствие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Berries & Bubbles</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>5-6 свежих ягод малин</li><li>15 мл лимонного сока</li><li>60 мл джина</li><li>30 мл ликера из цветков бузины</li><li>Полусладкое шампанское долить до верха</li><li>Съедобные цветы для украшения</li><li>Съедобные золотые хлопья для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Разомните мадлером 5-6 свежих ягод малины в шейкере, чтобы выпустить сок.</li><li>Налейте 15 мл лимонного сока, 60 мл джина и 30 мл ликера из цветков бузины.</li><li>Добавьте кубики льда и хорошо встряхните. шейкер.</li><li>Процедите напиток через двойное сито в бокал-флюте или купе.</li><li>Долейте полусладкое шампанское до верха.</li><li>Украсьте коктейль съедобными цветами и аккуратно посыпьте золотыми хлопьями.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">68-107.5 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.15-8 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,823 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Игристое вино Bernardi — напиток, который производят в стенах семейной винокурни, расположенной на холмах Конельяно-Вальдобьядене. Бренд гордится тем, что изготавливает каждую бутылку в одном месте — начиная от выращивания винограда
+                    и заканчивая разливом. Именно поэтому каждый купаж отражает локальный терруар. Компания практикует традиционные методы изготовления по типу метода «Шарма-Мартинотти», параллельно делая акцент на ведении устойчивого сельского
+                    хозяйства.
+                </p>
+                <h2>Как возникли винокурня и торговая марка Bernardi</h2>
+                <p>
+                    Бренд родился в 1960 году, когда Мансуэто Бернарди возвел винодельню на исторических холмах Рефронтоло, входящих в состав престижной зоны Conegliano-Valdobbiadene Prosecco Superiore DOCG. Поначалу это был один крохотный виноградник,
+                    который постепенно разросся в масштабное поместье.
+                </p>
+                <p>
+                    В 1970-х к отцу присоединились его сыновья — Пьерлуиджи и Адриано. Они регламентировали большинство процессов внутри винокурни, включая обрезку виноградных лоз, ручной сбор урожая и ферментацию по методу Charmat. Сейчас компанией
+                    управляют представители третьего поколения семьи Бернарди.
+                </p>
+                <h2>Разновидности игристых вин Bernardi</h2>
+                <p>Ключевое место в портфолио производителя занимает Prosecco. Выражения, представленные в маркете алкогольных штук MAUDAU:</p>
+                <ol>
+                    <li>
+                        Prosecco Valdobbiadene Superiore DOCG Millesimato Brut. Фирменное игристое вино из коллекции Mansueto. Это флагманский продукт с низким содержанием сахара — до 9 г/л. В основе — виноград «глера», который собирают исключительно
+                        вручную. Первичную и вторичную ферментации проводят в металлических танках при низкой температуре, что приводит к образованию тонкого, но стойкого перляжа. Вкус — мягкий и освежающий, с нотками белых персиков, груш и цитрусовых.
+                    </li>
+                    <li>
+                        Prosecco DOC Millesimato Brut Rose. Розовое игристое вино Bernardi, состоящее из 85% «глеры» и 15% «пино-нуар». Как и полагается, оно ферментировано в автоклаве. Благодаря низкому содержанию сахара (до 8 г/л) в нем хорошо
+                        ощущаются нотки лепестков роз, акации и цитрусовых, которые исходят от самого винограда.
+                    </li>
+                    <li>
+                        Prosecco DOC Biologico Extra Dry. Органическое игристое вино Bernardi на основе ягод, собранных на участке Alta Marca Trevigiana. Виноград выращивают без применения пестицидов и химических удобрений. Ягоды собирают в конце
+                        сентября. Как и два предыдущих стиля, это игристое вино проходит вторичную ферментацию в герметичных автоклавах при +15 °С, что обеспечивает округлый вкусовой профиль с яркими нотками зеленых яблок, груш и белых цветков.
+                        Применение искусственных добавок в ходе сбраживания запрещено. Содержание остаточного сахара на выходе составляет 14 г/л.
+                    </li>
+                </ol>
+                <p>Крепость представленных игристых вин одинаковая — порядка 11.5%. Объем бутылки стандартный — 0.75 л.</p>
+                <h3>Цены на игристое вино «Бернарди» в Украине</h3>
+                <p>
+                    Бутылка в среднем стоит 600–700 грн. Цена отображает статус DOC/DOCG, ручной сбор урожая, высокое качество сырья за счет самостоятельного выращивания, устойчивые методы виноделия и стабильное качество. Интернет-магазин MAUDAU
+                    предлагает скидку на оптовую покупку некоторых позиций — цена снижается при заказе от шести бутылок.
+                </p>
+                <h2>Рекомендации по употреблению игристых вин Bernardi</h2>
+                <p>
+                    Продукцию советуют подавать хорошо охлажденной — до +6–8 °C. Чтобы сохранить аромат и утонченность пузырьков, используйте узкий бокал для игристых вин по типу Flute. Каждый из напитков можно подавать как аперитив. Сочетания с едой
+                    зависят от стиля:
+                </p>
+                <ol>
+                    <li>Brut Mansueto. Прекрасно сочетается с нежирными закусками с овощами, сашими, устрицами и моллюсками.</li>
+                    <li>Brut Rose. Это игристое вино Bernardi подходит к легким блюдам из птицы, мягким сливочным сырам, копченому лососю. Его также можно выбрать в качестве сопровождения к первому блюду или не слишком сладкому десерту.</li>
+                    <li>Extra Dry Biologico. Органический напиток идеально дополнит простую еду: ассорти свежих овощей, рыбу или морепродукты на гриле, пасту с оливковым маслом.</li>
+                </ol>
+                <h2>Почему выгодно купить игристое вино Bernardi в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас представлена исключительно оригинальная продукция. Доставка по Украине возможна с помощью почтовых служб «Новая Почта», «Укрпочта» и «Meest ПОЧТА». При достижении определенной суммы заказа его доставят бесплатно. Покупатели из
+                    Киева, Днепра и Львова могут воспользоваться курьерскими услугами или забрать товар самостоятельно в магазинах «Сільпо» после подтверждения наличия. Список актуальных локаций в нужном городе можно найти на карте в разделе
+                    «Доставка». Действительно выгодная программа лояльности WOW Club предлагает множество преимуществ для постоянных покупателей, включая увеличенный кешбэк и бесплатную доставку.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Aperol Shpritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Aperol_Spritz-Bernardi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Aperol Shpritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-1-l-505492">Аперитив Aperol</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-bernardi-prosecco-doc-biologico-extra-dry-bile-ekstra-drai-075-l">Игристое вино Bernardi Prosecco DOC Biologico Extra Dry</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/vyd_133=sylnohazovana">Содовая</a></li><li>Апельсин</li><li>Лед в кубиках</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Aperol Spritz — самый популярный коктейль на основе аперитива Aperol. Его фирменная травяная горчинка идеально сочетается с просекко и цитрусовыми.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Aperol Shpritz</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл аперитива Апероль</li><li>100 мл просекко</li><li>20 мл содовой или тоника</li><li>30 г апельсина</li><li>лед в кубиках</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Положите в бокал кубики льда.</li><li>Налейте 100 мл просекко или другого сухого игристого вина.</li><li>Добавьте 100 мл Апероля.</li><li>Влейте содовую и перемешайте коктейльной ложечкой.</li><li>Украсьте ломтиком апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Шампань коктейль" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/champagne-cocktail-Bernardi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Шампань коктейль</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-bernardi-prosecco-valdobbiadene-superiore-docg-millesimato-brut-bile-briut-075-l">Игристое вино Bernardi Prosecco Valdobbiadene Superiore DOCG Millesimato Brut</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=hennessy">Коньяк Hennessy</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Ангостура биттер</a></li><li><a href="https://maudau.com.ua/ru/product/tsukor-premiia-demerara-trostynnyi-korychnevyi-presovanyi-250-h-840679">Тростниковый сахар в кубиках</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Шампань — пикантный многослойный напиток с фруктовыми нотками. Его вкус постепенно меняется: от кислинки просекко до сладко-горьковатого привкуса биттера с сахаром.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Шампань коктейль</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл просекко</li><li>30 мл коньяка Hennessy</li><li>3–5 капель биттера Ангостура</li><li>1 кубик тростникового сахара</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Положите кубик тростникового сахара в заранее охлажденный бокал-флюте.</li><li>Накапайте на сахар биттер Ангостура и подождите до полного впитывания.</li><li>Добавьте 30 мл коньяка Hennessy.</li><li>Долейте 120 мл просекко до краев, но аккуратно — будет много пены.</li><li>Не перемешивайте, чтобы вкус напитка постепенно менялся от просекко до подслащенного биттера.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Северное сияние" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Northern_Lights-Bernardi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Северное сияние</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-bernardi-prosecco-valdobbiadene-superiore-docg-millesimato-brut-bile-briut-075-l">Игристое вино Bernardi Prosecco Valdobbiadene Superiore DOCG Millesimato Brut</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/smak_5=hreipfrut-2">Грейпфрутовая водка</a></li><li>Розмарин</li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li>Лимонная цедра</li><li>Лед в кубиках</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Северное сияние — напиток с оригинальным названием и вкусом. Был новогодним вариантом, но сейчас его пьют независимо от времени года. Жестких пропорций нет, однако чаще всего водку и игристое миксуют в соотношении 1/3 или 1/4.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Северное сияние</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл просекко</li><li>40 мл грейпфрутовой водки</li><li>5 г розмарина</li><li>15 мл меда</li><li>лимонная цедра</li><li>лед в кубиках</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Положите в стакан для смешивания веточку розмарина и подавите барным пестиком.</li><li>Добавьте 15 мл меда и 40 мл грейпфрутовой водки.</li><li>Наполните стакан кубиками льда и аккуратно размешайте.</li><li>Перелейте напиток через барный стрейнер в охлажденный бокал.</li><li>Постоянно помешивая коктейльной ложкой, влейте тонкой струйкой 100 мл просекко.</li><li>Украсьте коктейль лимонной цедрой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Роял Дрим" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Royal_Dream-Bernardi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Роял Дрим</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-bernardi-prosecco-doc-biologico-extra-dry-bile-ekstra-drai-075-l">Игристое вино Bernardi Prosecco DOC Biologico Extra Dry</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=polunytsia-12">Клубничный сироп</a></li><li>Апельсин</li><li>Клубника</li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor/format_vypusku=rozsypnyi">Сахарный песок</a></li><li>Лед в кубиках</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Royal Dreams — необычный насыщенный напиток на основе просекко с клубничным сиропом и пюре. Характерное сочетание ягод и игристого вина придает ему незабываемый вкус и аромат.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Роял Дрим</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>200 мл просекко</li><li>20 мл клубничного сиропа</li><li>100 г клубники</li><li>2 г сахарного песка</li><li>кружок апельсина</li><li>кубики льда</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Сделайте на бокале-харрикейне каемку из сахара и полностью заполните его льдом.</li><li>Положите в блендер клубнику и 20 мл сиропа. Взбейте.</li><li>Перелейте пюре из блендера в бокал.</li><li>Налейте доверху просекко и аккуратно размешайте длинной ложкой.</li><li>Украсьте напиток кружком апельсина и половинками клубники на шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Hugo" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hugo.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Hugo</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn">Джин</a></li><li>Листья мяты</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=buzyna-2">Бузинный сироп</a></li><li>Лед</li><li><a href="https://maudau.com.ua/ru/product/napii-royal-club-sodova-voda-bezalkoholnyi-330-ml-439885">Содовая</a></li><li><a href="https://maudau.com.ua/ru/product/ihryste-vyno-bernardi-prosecco-doc-biologico-extra-dry-bile-ekstra-drai-075-l">Игристое вино Bernardi Prosecco DOC Biologico Extra Dry</a></li><li>Лайм</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Hugo — легкий, ароматный коктейль с нотами бузины, мяты, лайма и просекко. Напиток дарит свежесть и мягкую сладость, становится прекрасным дополнением к теплым летним вечерам.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Hugo</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>20 мл джина</li><li>небольшая горсть листьев мяты</li><li>1 веточка мяты для украшения</li><li>20 мл бузинного сиропа</li><li>лед по вкусу</li><li>25 мл содовой</li><li>120 мл просекко</li><li>1 долька лайма для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокал для вина или спритца положите небольшую горсть листьев мяты.</li><li>Слегка разомните их барной ложкой, чтобы высвободить аромат, но не травяную горечь.</li><li>Добавьте лед и 25 мл содовой.</li><li>Влейте по 20 мл джина и бузинного сиропа.</li><li>Аккуратно долейте 120 мл просекко, слегка перемешайте.</li><li>Готовый коктейль украсьте веточкой мяты и долькой лайма на краю стакана.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">68-83 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0-0.2 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">6.2-10 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

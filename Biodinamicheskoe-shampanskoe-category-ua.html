@@ -1,0 +1,805 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Біодинамічне шампанське — ігристе вино з Шампані, виготовлене відповідно до езотерико-екологічних принципів австрійського філософа і дослідника Рудольфа Штайнера, описаних 1924 року. Хоча його вініфікують за класичною технологією,
+                    втручання в процес мінімізовано, а виробництво дотримується місячного календаря і враховує космічні ритми. Компост для удобрення виноградних лоз також нестандартний — це так званий препарат, що складається з речовин, видобутих із
+                    рогів великої худоби.
+                </p>
+                <p>Біодинамічне ігристе вино слідує тим самим принципам, але його виробляють по всьому світу. Відповідну сертифікацію мають право присвоювати дві організації — Demeter і Biodyvin.</p>
+                <p>Біодинамічна алкогольна продукція — не юридично визначена категорія. Але все ж вона поступово набирає обертів на міжнародному рівні, підвищуючи ціну готової продукції.</p>
+                <h2>Як виробляють біодинамічне шампанське та інше ігристе вино</h2>
+                <p>Процес виготовлення суттєво відрізняється завдяки:</p>
+                <ul>
+                    <li>комплексному догляду за виноградником, оскільки його розглядають як взаємопов’язану екосистему;</li>
+                    <li>використанню кремнію і рогового гною відповідно до місячного і планетарного календарів;</li>
+                    <li>дотримання суворих органічних стандартів, які забороняють використання синтетичних пестицидів і хімічних добрив;</li>
+                    <li>ручному збиранню врожаю і роботі на виноградниках з упором на космічний ритм;</li>
+                    <li>використання певних штамів дріжджів і обмеженого вмісту сульфітів.</li>
+                </ul>
+                <p>Вважається, що біодинамічне шампанське, виготовлене з урахуванням цих принципів, найкраще відображає теруар. А ще такий підхід сприяє біорізноманіттю та родючості ґрунту.</p>
+                <h2>Бренди-виробники біодинамічної алкогольної продукції</h2>
+                <p>Кілька імен, що заслуговують на увагу:</p>
+                <ol>
+                    <li>Kafer. Бренд з Італії, що пропонує легке біле ігристе вино з тонкими фруктовими нотками і збалансованою кислинкою.</li>
+                    <li>Agrapart &amp; Fils. Дім шампанських вин з Авізе, заснований 1894 року. Бренд пропонує біодинамічне шампанське з багатою текстурою і складним смаком з відтінками кураги, груші та підсмажених горіхів.</li>
+                    <li>Lunaria. Італійська торгова марка, продукцію якої легко впізнати за пляшкою без типової передньої етикетки. До створення кожної пляшки причетні 35 виноробів, які 1964 року об’єдналися в Cantina Sociale di Orsogna.</li>
+                </ol>
+                <p>Якщо шукаєте саме біодинамічне шампанське, можна розглянути пропозиції від інших виробників:</p>
+                <ul>
+                    <li>De Sousa;</li>
+                    <li>Egly-Ouriet;</li>
+                    <li>Benoit Lahaye;</li>
+                    <li>Francoise Bedel;</li>
+                    <li>Лансон.</li>
+                </ul>
+                <p>Ігристе вино можна знайти практично в кожній країні Європи. Однак цей стиль особливо поширений в Італії, Іспанії та Франції.</p>
+                <h3>Вартість біодинамічних ігристих вин в Україні</h3>
+                <p>
+                    Ціни стартують від 400–500 грн за пляшку, але вартість шампанського набагато вища — близько 1500–3500 грн. Перехід на біодинамічне землеробство доволі витратний, що впливає на підсумковий цінник. Однак це ексклюзивний продукт, який
+                    часто випускають в обмеженій кількості, тому він точно заслуговує на місце в особистій колекції алкоголю.
+                </p>
+                <h2>Чому вигідно купити біодинамічне шампанське та ігристе вино в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У нас представлений тільки оригінальний алкоголь за конкурентною вартістю. Оформити замовлення можна з доставленням у будь-яку точку України — просто виберіть одну з відповідних поштових служб. Товар може привезти кур’єр у Києві,
+                    Дніпрі та Львові. Там же доступне самовивезення із магазинів «Сільпо». А для додаткової економії відстежуйте акції та знижки, а також приєднуйтесь до програми лояльності WOW Club.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Беліні" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Belini-bio.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Беліні</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/ihryste-vyno-fidora-prosecco-brut-spumante-bile-briut-075-l">Ігристе вино Fidora Prosecco Brut Spumante</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/fruktove-piure-monin-persyk-1-l">Персикове пюре</a></li><li>Персик</li><li>Лід у кубиках</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Белліні — це м'який солодкий коктейль з ігристого вина, сиропу та персикового пюре. Вживати напій краще відразу після приготування.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Беліні</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл просекко</li><li>10 мл цукрового сиропу</li><li>10 мл лимонного соку</li><li>20 г персикового пюре</li><li>10 г персика</li><li>лід у кубиках</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Покладіть в ємність для змішування 4 коктейльні ложки персикового пюре.</li><li>Додайте лимонний сік, цукровий сироп і половину просекко (50 мл).</li><li>Наповніть ємність кубиками льоду та розмішайте коктейльною ложечкою.</li><li>Перелийте напій через коктейльне ситечко у високий келих для шампанського.</li><li>Долийте другу половину просекко (50 мл) догори.</li><li>Прикрасьте келих часточкою персика.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Мартіні рояле" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Martini_Royale-bio.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Мартіні рояле</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/ihryste-vyno-fidora-prosecco-il-fondo-bile-sukhe-075-l">Ігристе вино Fidora Prosecco Il Fondo</a></li><li><a href="https://maudau.com.ua/category/vermuty/kolir_vyna=bile">Білий вермут</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li>Лайм</li><li>М'ята</li><li>Лід у кубиках</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Мартіні роялі — яскравий освіжальний тандем ігристого вина та білого вермуту. Лайм і м'ята залишають приємний післясмак із нотками цитруса і трав.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Мартіні рояле</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>100 мл просекко</li><li>100 мл білого вермуту</li><li>15 мл лаймового соку</li><li>20 г лайма</li><li>гілочка м'яти</li><li>кубики льоду</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть кулястий келих кубиками льоду на 2/3.</li><li>Налийте 100 мл білого вермуту та лаймовий сік.</li><li>Додайте 100 мл просекко та обережно розмішайте барною ложкою.</li><li>Опустіть у келих часточки лайма.</li><li>Струсіть гілочку м'яти і покладіть поверх напою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Френч 75" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/French_75-bio.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Френч 75</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/klasyfikatsiia_2=london-dry-gin">Лондонський сухий джин</a></li><li><a href="https://maudau.com.ua/product/ihryste-vyno-fidora-prosecco-brut-spumante-bile-briut-075-l">Ігристе вино Fidora Prosecco Brut Spumante</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Лід у кубиках</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Френч 75 — елегантний коктейль із кисло-солодким освіжальним смаком. Джин привносить у напій легкі ялівцеві нотки, а лимонний сік додає цитрусового відтінку.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Френч 75</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл сухого джину</li><li>60 мл просекко</li><li>15 мл цукрового сиропу</li><li>15 мл лимонного соку</li><li>лід у кубиках</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в шейкер 30 мл джину, лимонний сік і цукровий сироп.</li><li>Додайте кубики льоду та струсіть шейкер.</li><li>Перелийте через ситечко в келих для шампанського або коктейльну чарку.</li><li>Влийте просекко та акуратно перемішайте коктейльною ложкою.</li><li>За бажанням прикрасьте лимонною цедрою або коктейльною вишнею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Мімоза" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Mimosa-bio.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Мімоза</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/ihryste-vyno-fidora-prosecco-brut-spumante-bile-briut-075-l">Ігристе вино Fidora Prosecco Brut Spumante</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Простий цитрусовий коктейль на основі ігристого вина. Назва «Мімоза» навіяна золотисто-жовтим відтінком напою, що нагадує цю квітку.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Мімоза</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл просекко</li><li>50 мл апельсинового соку</li><li>1-2 часточки апельсина</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть високий келих льодом або в морозильній камері.</li><li>Налийте в охолоджену ємність 50 мл апельсинового соку.</li><li>Додайте 50 мл просекко до верху флюте.</li><li>Обережно перемішайте ложечкою із довгою ручкою.</li><li>Прикрасьте келих цедрою або часточками апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Россіні" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rossini-bio.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Россіні</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/ihryste-vyno-fidora-prosecco-il-fondo-bile-sukhe-075-l">Ігристе вино Fidora Prosecco Il Fondo</a></li><li><a href="https://maudau.com.ua/product/fruktove-piure-monin-polunytsia-1-l">Полуничне пюре</a></li><li>Лід у кубиках</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Россіні — коктейль із приємним ягідним смаком та оптимальним балансом солодкої та кислої частини. Названо на честь італійського композитора Россіні. Подається як літній десертний напій.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Россіні</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>120 мл просекко</li><li>50 г полуничного пюре або полуниці</li><li>5–7 г цукру (за бажанням)</li><li>кубики льоду</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Збийте у блендері полуничне пюре (або полуницю) з цукром.</li><li>Перекладіть суміш у склянку та додайте кубики льоду.</li><li>Долийте 120 мл просекко та розмішайте барною ложкою.</li><li>Пропустіть напій через стрейнер в охолоджений келих для шампанського.</li><li>Прикрасьте краї келиха ягідками полуниці.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">70-90 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0-2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

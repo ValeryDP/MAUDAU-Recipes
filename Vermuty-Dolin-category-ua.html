@@ -1,0 +1,995 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Вермут Dolin — ароматизоване кріплене вино, що походить із французького історичного регіону Савойя. В його основі — біле вино, настояне на ретельно підібраній суміші трав, квітів і спецій. Багато з них ростуть на навколишніх
+                    альпійських луках.
+                </p>
+                <p>
+                    Вермути «Долін» відомі своїм тонким сухим смаком з акцентом на натуральному ботанічному букеті. Вони захищені сертифікатом AOC, а точніше — Vermouth de Chambery. Це єдине найменування місця походження вермутів у Франції, що гарантує
+                    автентичність методів їхнього виготовлення та використання виключно регіональних компонентів.
+                </p>
+                <h2>Dolin Vermouth: історія та цікаві факти</h2>
+                <p>
+                    Бренд у 1821 році заснував Жозеф Шавасс, який на той час проживав у Шамбері. Він створив рецептуру, що поєднує біле вино з дикорослими рослинами з місцевих Альп. У 1843 році до нього приєднався його зять — Луї-Фердинанд Долін. Саме
+                    його ім’я носить бренд, оскільки той налагодив комерційне виробництво вермутів за рецептом тестя.
+                </p>
+                <p>Впродовж XIX століття торгову марку нагороджували всілякими медалями на міжнародних виставках. А продукцію постачали навіть до французького королівського двору.</p>
+                <p>Важливий момент в історії Dolin Vermouth настав в 1932 році після присвоєння йому статусу AOC. Примітно, що бренд досі залишається незалежним підприємством і використовує оригінальний рецепт.</p>
+                <h2>Як виробляють вермути «Долін»</h2>
+                <p>
+                    Ароматизований напій готують на основі білих вин, отриманих шляхом зброджування виноградного соку з ягід «уні блан» і «жакер». Їх зміцнюють нейтральним спиртом, а потім настоюють на рослинних компонентах, включно з полином, ісопом,
+                    тирличем, чебрецем і цедрою цитрусових. Трави мацерують у спирті окремо для збереження їхніх ароматичних характеристик.
+                </p>
+                <p>Після купажування вермут Dolin злегка підсолоджують для створення гармонійного смакового профілю і відправляють на короткочасну витримку. Після цього напій фільтрують і розливають.</p>
+                <p>Бренд не використовує карамель для фарбування. У складі також немає інших штучних добавок на кшталт ароматизаторів.</p>
+                <h2>Різновиди вермутів Dolin</h2>
+                <p>Основні продукти:</p>
+                <ol>
+                    <li>Rouge. Червоний вермут зі збалансованим смаком. У ньому ноти сухофруктів, гвоздики й апельсинової цедри поєднуються з легкою гіркуватістю. Цей вермут відмінно підходить для «Негроні» і «Мангеттена».</li>
+                    <li>Dry. Класичний Dolin Vermouth — сухий і свіжий, із нотами зелених яблук і альпійських лугових трав. Його можна не тільки пити, але і використовувати на кухні, наприклад, для ароматизації соусів.</li>
+                    <li>Blanc. М’який і злегка солодкий варіант із нотами квітів, свіжих трав і ванілі. Це один із найуніверсальніших стилів.</li>
+                    <li>Bitter. Аперитив яскраво-рубінового кольору з вираженою гіркуватістю. Смак — результат змішування ревеню, тирличу й апельсинової цедри. Це хороший варіант вермуту «Долін» для приготування «Спритца».</li>
+                    <li>Chamberyzette. Рідкісний фірмовий напій на основі Blanc і лікеру з лісової суниці. Це найароматніший фруктовий вираз у портфоліо виробника.</li>
+                </ol>
+                <h3>Dolin Vermouth: ціни в Україні</h3>
+                <p>
+                    Продукцію позиціюють як преміальну. Вартість становить близько 650 грн за пляшку обсягом 0.75 л. Лімітовані розливи типу Chamberyzette коштують дорожче через свою нішевість і рідкість. Ціни обумовлені ремісничим методом
+                    виготовлення, повністю натуральним складом та імпортними витратами.
+                </p>
+                <h2>Гастрономічна сумісність вермутів Dolin</h2>
+                <p>
+                    Продукція виробника гармонійно поєднується як з їжею, так і з іншим алкоголем. У чистому вигляді радять подавати стилі Dry і Blanc — як супровід до козячого сиру, копченої форелі, маринованих артишоків. Рожеву версію Dolin Vermouth
+                    можна поєднувати з в’яленим м’ясом, паштетом, темним шоколадом.
+                </p>
+                <p>Найгіркіший напій в асортименті маркету алкогольних виробів MAUDAU доповнять інтенсивно солоні закуски. Лімітований розлив Chamberyzette з його полуничним присмаком гармонійно поєднується зі свіжими фруктами.</p>
+                <p>Завжди подавайте вермут холодним при +6–8 °C у невеликих келихах. Відкриті пляшки зберігайте в холодильнику для збереження смаку й аромату.</p>
+                <h2>Чому вигідно купити Dolin Vermouth в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У нас — виключно оригінальна продукція, яку привозять безпосередньо з Франції. Попри це, ціна залишається конкурентною, а якість алкоголю підтверджена відгуками покупців. Завдяки співпраці з логістичними компаніями насолоджуватися
+                    Dolin Vermouth можна в будь-якому куточку України. Жителі Львова, Дніпра та Києва можуть оформити замовлення з доставленням кур’єром. Для постійних покупців передбачена додаткова вигода з програмою лояльності WOW Club, яка
+                    передбачає збільшений кешбек і приємні бонуси щомісяця.
+                </p>
+            </div>
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Libertine" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Libertine.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Libertine</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=zhytnii-rye">Житній віскі</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-rouge-chervonyi-solodkyi-16-075-l">Червоний вермут Dolin de Chambéry</a></li><li>Бенедиктин</li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Біттер Angostura</a></li><li>Апельсинова цедра</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль із виразним, пряним смаком. Сухість вермуту і глибина житнього віскі доповнюються солодкими і трав'яними нотами червоного вермуту і бенедиктину. Потім на тлі з'являється тонкий деревний акцент із теплим фінішем. Цей коктейль — вибір тих, хто любить насичені, але збалансовані композиції.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Libertine</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл житнього віскі</li><li>30 мл сухого вермуту Dolin de Chambéry</li><li>15 мл червоного вермуту Dolin de Chambéry</li><li>15 мл бенедиктину</li><li>1 крапля біттеру Angostura</li><li>лід для перемішування</li><li>апельсинова цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Підготуйте склянку для змішування, заповнивши її кубиками льоду до самого верху.</li><li>Влийте житній віскі 30 мл, сухий вермут Dolin de Chambery 30 мл, червоний вермут Dolin de Chambery 15 мл, бенедиктин 15 мл, капніть 1 краплю біттеру Angostura.</li><li>Розмішуйте барною ложкою за годинниковою стрілкою до повної стабілізації температури.</li><li>Паралельно охолодіть келих coupette, поставивши його в морозильник на 3 хвилини.</li><li>Перевірте текстуру суміші: якщо на поверхні утворилася легка масляниста плівка, можна проціджувати через стрейнер.</li><li>Перелийте в охолоджений келих.</li><li>Прикрасьте тонкою смужкою апельсинової цедри і вичавіть олії над коктейлем.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pay Per View" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pay-Per-View.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pay Per View</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-blanc-bilyi-solodkyi-16-075-l">Білий вермут Dolin de Chambéry</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-rouge-chervonyi-solodkyi-16-075-l">Червоний вермут Dolin de Chambéry</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Тростинний сироп</a></li><li>Лід</li><li><a href="https://maudau.com.ua/product/dobavka-fruktova-cherry-twig-kokteilna-vyshnia-315-h-859173">Коктейльна вишня</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Pay Per View — незвичайний коктейль з ухилом у вермутовий сет. Усі три типи вермуту з'єднуються з лаймом і тростинним сиропом, створюючи багатогранний, кисло-солодкий смак із пряним фоном. Щільний, терпкий, але при цьому освіжальний.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pay Per View</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>22 мл сухого вермуту Dolin de Chambéry</li><li>22 мл білого вермуту Dolin de Chambéry</li><li>22 мл червоного вермуту Dolin de Chambéry</li><li>22 мл соку лайма</li><li>7 мл тростинного сиропу</li><li>лід для струшування</li><li>коктейльна вишня для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер насипте лід до половини обсягу.</li><li>Влийте сухий вермут Dolin de Chambery 22 мл, білий вермут Dolin de Chambery 22 мл, червоний вермут Dolin de Chambery 22 мл, свіжовичавлений сік лайма 22 мл, тростинний сироп 7 мл.</li><li>Закрийте шейкер і струшуйте енергійно 12–15 секунд.</li><li>Відкрийте шейкер і процідіть через подвійне сито в попередньо охолоджений келих coupette.</li><li>Прикрасьте коктейльною вишнею, насадивши її на шпажку та розмістивши на краю келиха.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Yale Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Yale.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Yale Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Джин Hayman’s London Dry</li><li><a href="https://maudau.com.ua/product/liker-joseph-cartron-violette-fialka-20-07-l">Лікер Violette</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin</a></li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Біттер Angostura</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Yale Cocktail — чистий і сухий коктейль із квітковим відтінком і м'якою гіркуватістю. Джин і сухий вермут створюють основну структуру, а лікер Violette додає виражений аромат фіалки. Ідеальний для тих, хто цінує прозорі, строгі смаки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Yale Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл джину Hayman's London Dry</li><li>10 мл лікеру Violette</li><li>10 мл сухого вермуту Dolin</li><li>1 крапля біттеру Angostura</li><li>лід для перемішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заповніть склянку для змішування льодом доверху.</li><li>Влийте джин Hayman's London Dry 60 мл, лікер Violette 10 мл, сухий вермут Dolin 10 мл, капніть 1 краплю біттеру Angostura.</li><li>Перемішуйте барною ложкою впродовж 30 секунд.</li><li>Охолодіть келих Nick & Nora, поставивши його в морозильник на 3 хвилини.</li><li>Процідіть коктейль через стрейнер в охолоджений келих.</li><li>Відріжте тонку смужку шкірки зі сливи й опустіть всередину коктейлю.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Alpen Rose" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Alpen-Rose.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Alpen Rose</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li>Абрикосова настоянка Blume Marillen</li><li>Аперитив Cocchi Americano Rosa</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Лід</li><li>Грейпфрутова цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Alpen Rose — коктейль із вираженим абрикосовим смаком, в якому сухий вермут і аперитив Rosa створюють збалансовану структуру з м'якими квітковими і гіркуватими нотами без зайвої солодкості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Alpen Rose</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл сухого вермуту Dolin de Chambéry</li><li>30 мл абрикосової настоянки Blume Marillen</li><li>7 мл аперитиву Cocchi Americano Rosa</li><li>7 мл цукрового сиропу</li><li>лід для перемішування</li><li>грейпфрутова цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У склянку для змішування засипте лід до верху.</li><li>Влийте сухий вермут Dolin de Chambery 60 мл, абрикосову настоянку Blume Marillen 30 мл, аперитив Cocchi Americano Rosa 7 мл, цукровий сироп 7 мл.</li><li>Розмішуйте 25–30 секунд.</li><li>Підготуйте келих coupette: ретельно протріть стінки і поставте в морозильник на 4 хвилини.</li><li>Процідіть через стрейнер в охолоджений келих.</li><li>Зріжте грейпфрутову цедру без білої частини і покладіть її на поверхню коктейлю.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Atta Boy Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Atta-Boy.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Atta Boy Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Джин Hayman’s London Dry</li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li><a href="https://maudau.com.ua/product/syrop-monin-hrenadin-250-ml-3052910051389">Гренадин</a></li><li>Лід</li><li>Лимонна цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Atta Boy Cocktail — жорсткий і прямолінійний коктейль із джиновою основою, посиленою сухим вермутом, де кілька крапель гренадину додають лише відтінок ягідного фону без порушення сухої структури.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Atta Boy Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл джину Hayman's London Dry</li><li>30 мл сухого вермуту Dolin de Chambéry</li><li>4 краплі гренадину</li><li>лід для перемішування</li><li>лимонна цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть склянку для змішування кубиками льоду.</li><li>Влийте джин Hayman's London Dry 60 мл, сухий вермут Dolin de Chambery 30 мл, крапніть 4 краплі гренадину.</li><li>Перемішуйте ложкою 25–30 секунд, стежачи за щільністю.</li><li>Охолодіть келих coupette у морозилці.</li><li>Процідіть коктейль через стрейнер у цей келих.</li><li>Зріжте тонку смужку лимонної цедри, проведіть нею по ободу келиха і покладіть збоку на коктейль.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Future Perfect" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Future-Perfect.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Future Perfect</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-haymans-old-tom-gin-414-07-l-792647">Джин Hayman’s Old Tom</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-rouge-chervonyi-solodkyi-16-075-l">Червоний вермут Dolin de Chambéry</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сухий, збалансований коктейль з ясною зерновою основою і плавним переходом від пряних нот джину до глибокого винного фону червоного вермуту. Смак рівний, щільний, з легкою гіркуватістю у фіналі. Підійде тим, хто цінує чисту структуру без солодкості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Future Perfect</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл джину Hayman's Old Tom</li><li>30 мл сухого вермуту Dolin de Chambéry</li><li>30 мл червоного вермуту Dolin de Chambéry</li><li>лід для перемішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заповніть склянку для змішування кубиками льоду по самі вінця.</li><li>Влийте джин Hayman's Old Tom 30 мл, сухий вермут Dolin de Chambery 30 мл, червоний вермут Dolin de Chambery 30 мл.</li><li>Розмішуйте барною ложкою за годинниковою стрілкою не менше ніж 30 секунд, домагаючись гладкої текстури.</li><li>Паралельно охолодіть келих Nick & Nora, залишивши його в морозильнику на 3-4 хвилини.</li><li>Процідіть напій через стрейнер в охолоджений келих.</li><li>Подавайте без прикрас.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Autumn Sunset" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Autumn-Sunset.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Autumn Sunset</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/product/vermut-cocchi-storico-vermouth-di-torino-16-075-l">Вермут Cocchi di Torino Storico</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li>Лікер St. Elizabeth Allspice Dram</li><li>Бенедиктин</li><li>Лід</li><li>Апельсинова цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Теплий, насичений коктейль на основі бурбону з пряною і сухою структурою. Лікер Allspice Dram надає яскравого пряникового акценту, а вермути і бенедиктин створюють об'єм і трав'яну глибину. Смак складний, осінній, з повільним розкриттям.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Autumn Sunset</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл бурбону</li><li>15 мл вермуту Cocchi di Torino Storico</li><li>15 мл сухого вермуту Dolin de Chambéry</li><li>7 мл лікеру St. Elizabeth Allspice Dram</li><li>7 мл Бенедиктину</li><li>лід для перемішування</li><li>апельсинова цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У склянку для змішування насипте свіжий лід.</li><li>Влийте бурбон 45 мл, вермут Cocchi di Torino Storico 15 мл, сухий вермут Dolin de Chambery 15 мл, лікер Allspice Dram 7 мл, Бенедиктин 7 мл.</li><li>Розмішуйте барною ложкою.</li><li>Охолодіть келих coupette, помістивши в морозильну камеру.</li><li>Процідіть напій через стрейнер у келих.</li><li>Зріжте смужку апельсинової цедри і прикрасьте нею келих.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-14" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Aviators on Fire" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Aviators-on-Fire.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Aviators on Fire</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/brendi-i-koniak">Коньяк</a></li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li>Сухий кюрасао Ferrand</li><li>Лід</li><li>Апельсинова цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сухий, гірко-цитрусовий коктейль на основі коньяку і кюрасао з інтенсивним ароматом і високим вмістом спирту. Смак сильний, прямий, з пряною основою і теплим, злегка паленим цитрусовим шлейфом від обпаленої цедри.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup14" class="overlay add-popup">
+        <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Aviators on Fire</h2>
+            <a class="close add-id" href="#cocktail-item-14">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл коньяку</li><li>30 мл сухого вермуту Dolin de Chambéry</li><li>30 мл сухого кюрасао Ferrand</li><li>лід для перемішування</li><li>апельсинова цедра (обпалена) для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть склянку для змішування, прокрутивши в ній лід 10 секунд та зливши воду.</li><li>Влийте коньяк 30 мл, сухий вермут Dolin de Chambery 30 мл, сухий кюрасао Ferrand 30 мл.</li><li>Перемішуйте до однорідності</li><li>Зріжте смужку апельсинової цедри і злегка обпаліть її вогнем із зовнішнього боку.</li><li>Охолодіть келих Nick & Nora.</li><li>Процідіть напій через стрейнер у цей келих.</li><li>Прикрасьте коктейль обпаленою цедрою, поклавши її на край або опустивши в келих.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-16" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Careful Whisper" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Careful-Whisper.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Careful Whisper</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Cardamaro Vino Amaro</li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li><a href="https://maudau.com.ua/product/vermut-cocchi-storico-vermouth-di-torino-16-075-l">Вермут Cocchi di Torino Storico</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновий біттер</a></li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Біттер Angostura</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль із приглушеною, сухою структурою, де винні та трав'яні елементи складаються в рівну, гіркувату композицію. В основі — амаро Cardamaro і два вермути, посилені краплями біттеру. Смак землистий, стійкий, з довгим посмаком.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup16" class="overlay add-popup">
+        <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Careful Whisper</h2>
+            <a class="close add-id" href="#cocktail-item-16">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл Cardamaro Vino Amaro</li><li>30 мл сухого вермуту Dolin de Chambéry</li><li>30 мл вермуту Cocchi di Torino Storico</li><li>1 крапля апельсинового біттеру</li><li>1 крапля біттеру Angostura</li><li>лід для перемішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть склянку для змішування свіжим льодом.</li><li>Влийте Cardamaro 30 мл, сухий вермут Dolin de Chambery 30 мл, вермут Cocchi di Torino Storico 30 мл, капніть по 1 краплі апельсинового і класичного біттеру Angostura.</li><li>Перемішуйте барною ложкою.</li><li>Охолодіть келих Nick & Nora, помістивши в морозильну камеру на кілька хвилин.</li><li>Процідіть через стрейнер.</li><li>Подавайте без прикрас.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-18" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Catalan Cooler" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Catalan-Cooler.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Catalan Cooler</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Сухий вермут Dolin de Chambéry</a></li><li>Лікер Byrrh Grand Quinquina</li><li><a href="https://maudau.com.ua/product/napii-b-a-ser-h-sodova-200ml-fentimans">Содова вода</a></li><li>Лід</li><li>Лимонна цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Catalan Cooler — м'який, освіжальний коктейль із винною текстурою і пряно-трав'яною глибиною. Byrrh надає тілу округлості та легкої солодкості, вермут відповідає за суху основу, а содова витягує всі смаки на поверхню. Аромат чистий, цитрусово-трав'яний.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup18">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup18" class="overlay add-popup">
+        <a href="#cocktail-item-18" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Catalan Cooler</h2>
+            <a class="close add-id" href="#cocktail-item-18">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл сухого вермуту Dolin de Chambéry</li><li>30 мл лікеру Byrrh Grand Quinquina</li><li>90 мл содової води</li><li>лід у високу склянку</li><li>лимонна цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охолоджений хайболл викладіть три великі куби льоду, почекайте 15 секунд і злийте воду.</li><li>Змішайте окремо вермут Dolin de Chambery 60 мл і лікер Byrrh Grand Quinquina 30 мл у невеликому посуді та дайте настоятися 30 секунд.</li><li>Перелийте в келих.</li><li>Повільно влийте 90 мл сильногазованої содової по задній стороні барної ложки.</li><li>Розмішайте один раз знизу вгору.</li><li>Зріжте широку смужку лимонної цедри, скрутіть у спіраль і помістіть у центр напою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-18">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">120-150 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">17 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

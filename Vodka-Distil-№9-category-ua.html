@@ -1,0 +1,935 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Distil №9 — преміальна пшенична горілка з України, що виробляється на інноваційному заводі компанії Staritsky&amp;Levitsky у Львові. Назва — відсилання до номера тестової партії, яка найбільше припала до смаку дегустаторам на етапі
+                    розробки.
+                </p>
+                <p>Міцний спиртний напій — результат ретельно контрольованого процесу виготовлення в обмежених тиражах по 9 999 пляшок у кожній партії. Пшеницю вирощують місцеві фермери, а воду для розведення постачають із Карпатських гір.</p>
+                <h2>Коротка історія торгової марки Distil №9</h2>
+                <p>
+                    Перший випуск горілки відбувся в травні 2015 року — як логічне завершення багаторічних досліджень і напрацювань, спрямованих на переосмислення традиційних українських рецептів. Тоді міцний спиртний напій дебютував на виставці Imbibe
+                    в Лондоні, після чого його почали експортувати спершу до Великої Британії, а потім і до низки інших країн.
+                </p>
+                <p>
+                    Попри нетривалу історію існування, продукція виробника завоювала престижні нагороди на конкурсах Ukraine Wine &amp; Spirits Awards 2023 і Ukrainian Craft Spirits Awards 2022. Бренд також розробив кілька авторських коктейлів із
+                    використанням ароматизованих розливів «Дистил №9». Рецепти оприлюднили і продегустували в рамках освітніх барних сесій для привернення уваги до міксології, що проводилися в Києві, Одесі та Лондоні в період з 2016 по 2018 рік. А не
+                    так давно компанія оголосила конкурс творчих барменів — The Art of №9. Ця подія привернула увагу багатьох ентузіастів.
+                </p>
+                <h2>Як виробляють горілку «Дистил номер 9»</h2>
+                <p>Ключові етапи:</p>
+                <ol>
+                    <li>Підготовка сировини. Пшеницю затирають і зброджують із метою вилучення природних цукрів.</li>
+                    <li>Дистиляція. Distil №9 — горілка, яку переганяють п’ять разів, з кожним разом видаляючи все більше небажаних домішок і підвищуючи чистоту кінцевого продукту.</li>
+                    <li>Фільтрація. Додатковий чотириступеневий етап очищення. Спочатку спирт пропускають через березове вугілля, а потім — через гірський кришталь. Це надає дистиляту кришталево прозорий колір і нейтральний смак.</li>
+                    <li>Відстоювання. Витримка в місткостях із неіржавної сталі впродовж 28–35 днів призводить до збалансованого смаково-ароматичного профілю.</li>
+                </ol>
+                <p>
+                    За такою схемою виробляють класичну горілку «Дистил №9». Більшість етапів виконують вручну. У портфоліо виробника також представлені ароматизовані напої. Процес їхнього виготовлення включає додатковий етап настоювання (мацерації) на
+                    натуральних рослинних екстрактах і зборах:
+                </p>
+                <ul>
+                    <li>карпатських травах;</li>
+                    <li>ванілі;</li>
+                    <li>манго;</li>
+                    <li>маракуї;</li>
+                    <li>чорній смородині;</li>
+                    <li>журавлині;</li>
+                    <li>грейпфруті;</li>
+                    <li>цитроні.</li>
+                </ul>
+                <p>Міцність неароматизованої версії становить 40%. Вміст алкоголю в розливах з добавками знижено до 38%.</p>
+                <h2>Скільки коштує продукція «Дистил №9» в Україні</h2>
+                <p>Пляшка горілки обійдеться в 320–450 грн за 0.7 літра. Ціна трохи вища, порівняно з пропозиціями від конкурентних торгових марок, але це легко пояснити:</p>
+                <ul>
+                    <li>дрібносерійне крафтове виробництво з ретельним контролем на кожному етапі;</li>
+                    <li>багаторазова перегонка і багатоступенева дистиляція;</li>
+                    <li>використання чистої та демінералізованої джерельної води;</li>
+                    <li>елегантний зовнішній вигляд пляшок, що робить їх відмінним подарунком із будь-якого приводу.</li>
+                </ul>
+                <p>На ціну Distil №9 також впливає обраний обсяг. Бренд пропонує три формати:</p>
+                <ul>
+                    <li>0.5 л;</li>
+                    <li>0.7 л;</li>
+                    <li>1 л.</li>
+                </ul>
+                <h2>Гастрономічна сумісність «Дистіл номер 9»</h2>
+                <p>
+                    Подавайте міцний спиртний напій охолодженим до мінусових температур у вузьких чарках на короткій ніжці — це запобіжить нагріванню від рук. Хоча крафтовою горілкою радять насолоджуватися без добавок, її можна використовувати в
+                    коктейлях на кшталт «Сексу на пляжі» або «Блакитної лагуни».
+                </p>
+                <p>
+                    Класичними українськими закусками, які вигідно підкреслять смак і аромат «Дистил №9», вважають мариновані овочі, асорті копченостей, житній хліб із часником. Якщо віддаєте перевагу сучасній європейській кухні, зупиніться на севіче,
+                    канапе з травами і лимоном, запеченому сибасі з цитрусовим соусом.
+                </p>
+                <h2>Чому вигідно купити Distil №9 в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожна пляшка — гарантовано оригінальна. Це, як і відмінна якість самої продукції, підтверджують численні позитивні відгуки покупців. Замовлення, яке можна оформити за 5–10 хвилин завдяки структурованому онлайн-каталогу, привезуть у
+                    будь-який куточок України, де працює відділення «Укрпошти», «Нової Пошти» або пункт видачі «Meest ПОШТИ». Якщо замовляєте горілку «Дистил номер 9» у Львові, Дніпрі або Києві, можете забрати її самостійно з деяких магазинів «Сільпо»
+                    або скористатися послугами кур’єрів. При досягненні певної суми замовлення доставлення оплатить маркет алкогольних штук MAUDAU. Додаткову вигоду забезпечують програми лояльності, а також постійні акції та знижки.
+                </p>
+            </div>
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Herbal Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Herbal-Sour.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Herbal Sour</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/nastoianka-distil-9-herbal-38-05l">Горілка Distil №9 Herbal</a></li><li><a href="https://maudau.com.ua/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Яєчний білок</li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Біттер Ангостура</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Herbal Sour — насичений, кисло-пряний коктейль зі щільною білковою структурою і трав'яною базою. Горілка з ботанічним профілем поєднується з бурбоном, утворюючи щільне тіло. Фінал злегка маслянистий, але з освіжальною кислинкою.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Herbal Sour</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл горілки Distil №9 Herbal</li><li>30 мл бурбону</li><li>25 мл лимонного соку</li><li>15 мл цукрового сиропу</li><li>25 мл яєчного білка</li><li>1 крапля біттеру Ангостура</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер без льоду налийте горілку Distil №9 Herbal 30 мл, бурбон 30 мл, лимонний сік 25 мл, цукровий сироп 15 мл, яєчний білок 25 мл.</li><li>Збивайте в суху 12 секунд до збільшення об'єму.</li><li>Додайте лід дрібної фракції та струшуйте енергійно 15 секунд.</li><li>Процідіть через подвійне сито в охолоджений келих типу sour glass.</li><li>Дайте коктейлю стабілізуватися 10 секунд.</li><li>Капніть біттер Angostura в центр і розподіліть шпажкою для візуального акценту.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Passion Bramble" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Passion-Bramble.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Passion Bramble</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/horilka-distil-9-maracuya-40-0-5-l">Горілка Distil №9 Maracuya</a></li><li>Ягоди ожини</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Passion Bramble — свіжий, кислотно-фруктовий коктейль з яскравим тілом і оксамитовою ягідною текстурою. Поєднання горілки з маракуєю, лимона та ожини дає соковиту першу хвилю смаку, а солодкість сиропу збалансує цю кислоту.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Passion Bramble</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл горілки Distil №9 Maracuya</li><li>4-5 ягід ожини</li><li>25 мл лимонного соку</li><li>20 мл цукрового сиропу</li><li>лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У металевому шейкері потовчіть мадлером 4 свіжі ягоди ожини до кашки.</li><li>Влийте горілку Distil №9 Maracuya 50 мл, лимонний сік 25 мл, цукровий сироп 20 мл.</li><li>Додайте лід кубиками і струсіть 12 секунд.</li><li>Процідіть через подвійне сито в рокс-глас, заповнений кришеним льодом.</li><li>Залиште на 30 секунд.</li><li>Викладіть зверху 1 цілу ягоду і влийте трохи свіжого соку маракуї.</li><li>Подавайте з трубочкою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Herbal Negroni" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Herbal-Negroni.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Herbal Negroni</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/nastoianka-distil-9-herbal-38-05l">Горілка Distil №9 Herbal</a></li><li>Лікер Luxardo Bitter Bianco</li><li><a href="https://maudau.com.ua/product/vermut-dolin-dry-bilyi-sukhyi-175-075-l">Білий сухий вермут</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль із прямим, холодним смаком і впевненою гіркуватістю. Горілка з настояними травами задає чисту і злегка пряну основу, світлий біттер додає щільну гіркуватість, а білий вермут з'єднує все в суху, трохи мінеральну структуру без зайвих нюансів.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Herbal Negroni</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл горілки Distil №9 Herbal</li><li>30 мл лікеру Luxardo Bitter Bianco</li><li>30 мл білого сухого вермуту</li><li>лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Змішайте горілку Distil №9 Herbal 30 мл, вермут 30 мл і Luxardo Bitter Bianco 30 мл.</li><li>Залиште цю суміш настоятися в прохолодному місці на 2 хвилини.</li><li>Додайте туди 2 великих шматки льоду і розмішуйте 20 секунд.</li><li>Процідіть суміш у заздалегідь підготовлений рокс-глас на лід.</li><li>Залиште коктейль для настоювання приблизно на 15 секунд.</li><li>Прикрасьте довгою смужкою шкірки грейпфрута, злегка вичавивши олії.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tropical Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tropical-Sour.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tropical Sour</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/horilka-distil-9-mango-40-0-5-l">Горілка Distil №9 Mango</a></li><li><a href="https://maudau.com.ua/category/dytiachi-piure/smak=mango">Пюре манго</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=lemonhrass">Сироп із лемонграсу</a></li><li>Яєчний білок</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Tropical Sour — кисло-фруктовий коктейль із густою м'якотою та стабільною піною. Смак починається з насиченого манго, далі йде лимонна свіжість, а лемонграс залишає довгий цитрусовий посмак із холодною свіжістю. Білок не пом'якшує коктейль, а утримує все в смаковому балансі.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Tropical Sour</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл горілки Distill №9 Mango</li><li>25 г пюре манго</li><li>25 мл лимонного соку</li><li>20 мл сиропу з лемонграсу</li><li>25 мл яєчного білка</li><li>лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Змішайте горілку Distil №9 Mango 50 мл і пюре манго 25 г до однорідності.</li><li>Додайте лимонний сік 25 мл, сироп із лемонграсу 20 мл, яєчний білок 25 мл.</li><li>Зробіть сухе збивання 15 секунд, потім додайте лід і повторіть 15 секунд.</li><li>Процідіть у високий охолоджений келих через подвійне сито.</li><li>Дайте постояти 20 секунд до стабілізації піни.</li><li>Капніть на піну 2 краплі пюре манго й акуратно розмажте паличкою по колу.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Kyiv Mule" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Kyiv-Mule.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Kyiv Mule</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/horilka-distil-9-tsytron-0-5-l-38">Горілка Distil №9 Citron</a></li><li>Лайм</li><li><a href="https://maudau.com.ua/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Імбирний ель</a></li><li>Свіжий імбир</li><li><a href="https://maudau.com.ua/product/bitter-angostura-bitter-447-02-l-726850">Біттер Angostura</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Kyiv Mule — насичений гострий коктейль із лаймовим фронтом і пряною гостротою свіжого імбиру. Енергійний, дзвінкий смак зі справжньою натуральною основою. Чудово підійде тим, хто любить контраст холоду і тепла.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Kyiv Mule</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл горілки Distill №9 Citron</li><li>50 г лайма (приблизно ½, нарізаного скибочками або кубиками)</li><li>125 мл імбирного елю</li><li>5 мл свіжого тертого або віджатого імбиру</li><li>1 крапля біттеру Angostura</li><li>лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У металевий кухоль викладіть половину лайма, нарізану шматочками.</li><li>Розімніть мадлером, щоб виділився сік та олії.</li><li>Додайте свіжонатертий імбир 5 мл і горілку Distil №9 Citron 50 мл.</li><li>Всипте крупний лід на ¾ обсягу і перемішайте ложкою 4 оберти.</li><li>Долийте 125 мл імбирного елю до верху, уникаючи переливання.</li><li>Капніть 1 краплю біттеру Angostura зверху.</li><li>Прикрасьте кільцем лайма на обідку. Подавайте з короткою трубочкою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Big Lebowski" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Big-Lebowski.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Big Lebowski</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/horilka-distil-9-salted-karamel-38-0-5l">Горілка Distil №9 Salted Karamel</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=solona-karamel-6">Сироп солоної карамелі</a></li><li><a href="https://maudau.com.ua/category/vershky">Вершки</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Насичений, вершковий коктейль із м'яким кавово-карамельним профілем. Спочатку відчувається солонувата нота горілки і сиропу, потім йде солодка текстура вершків, і тільки потім розкривається щільне кавове тіло. Ідеальний для неспішного вечірнього сету.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Big Lebowski</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл горілки Distill №9 Salted Karamel</li><li>25 мл кавового лікеру</li><li>15 мл сиропу солоної карамелі</li><li>50 мл вершків</li><li>лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері розімніть вінчиком вершки 50 мл до легкої піни.</li><li>В окремому келиху змішайте горілку Distill №9 Salted Karamel 50 мл, кавовий лікер 25 мл, сироп солоної карамелі 15 мл.</li><li>Додайте лід середньої фракції та струсіть 10 секунд.</li><li>Процідіть суміш на крупний лід у келих рокс-глас.</li><li>Влийте збиті вершки по задній стороні барної ложки.</li><li>Подавайте і пийте не розмішуючи.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Berry Pie" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Berry-Pie.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Berry Pie</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/horilka-distil-9-zhuravlyna-0-5-l-38">Горілка Distil №9 Berry</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=kavovyi-2">Кавовий лікер</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=smorodyna-17">Чорносмородиновий лікер</a></li><li><a href="https://maudau.com.ua/category/vershky">Вершки</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=karamel-8">Карамельний сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Десертний коктейль із текстурою густого ягідного крему. В ароматі — кава та чорна смородина, а карамель завершує композицію легкою пряною тягучістю. Смак спочатку солодкий, потім смородиново-вершковий, з ледь помітною гіркуватістю лікеру.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Berry Pie</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл горілки №9 Berry</li><li>15 мл кавового лікеру</li><li>10 мл чорносмородинового лікеру</li><li>50 мл вершків</li><li>15 мл карамельного сиропу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У металевому шейкері збийте вершки 50 мл окремо, без льоду.</li><li>В іншому шейкері з'єднайте горілку №9 Berry 50 мл, кавовий лікер 15 мл, лікер чорної смородини 10 мл, сироп карамелі 15 мл.</li><li>Додайте лід, струсіть 12 секунд.</li><li>Процідіть через стрейнер у низький келих.</li><li>Зверху викладіть вершкову масу ложкою.</li><li>Прикрасьте дрібно натертою сушеною смородиною.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-14" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Distill Flower" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Distill-Flower.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Distill Flower</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/horilka-distil-9-chorna-smorodyna-0-5-l-38">Горілка Distil №9 Blackcurrant</a></li><li><a href="https://maudau.com.ua/product/liker-joseph-cartron-violette-fialka-20-07-l">Фіалковий лікер</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li><li>Чорниця</li><li>Чебрець</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий, ігристий коктейль з ароматом чорниці та квітковою свіжістю. Горілка на чорній смородині дає чисту ягідну основу, фіалковий лікер додає м'який квітковий акцент, а тонік підкреслює сухий, освіжальний профіль.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup14" class="overlay add-popup">
+        <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Distill Flower</h2>
+            <a class="close add-id" href="#cocktail-item-14">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл горілки Distil №9 Blackcurrant</li><li>15 мл фіалкового лікеру</li><li>125 мл тоніку</li><li>15 г чорниці</li><li>5 г чебрецю</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Потовчіть чорницю (15 г) мадлером у хайболі.</li><li>Додайте гілочку чебрецю, злегка притисніть ложкою.</li><li>Влийте горілку Distill №9 Blackcurrant 50 мл і фіалковий лікер 15 мл.</li><li>Додайте лід у 2 шари, по 3 куби кожен.</li><li>Долийте тонік 125 мл по ложці.</li><li>Перемішайте барною ложкою один раз від низу до верху.</li><li>Покладіть гілочку свіжого чебрецю зверху.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">231 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.15 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

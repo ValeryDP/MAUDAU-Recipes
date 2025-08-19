@@ -1,0 +1,821 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Tosti — известная итальянская винокурня, специализирующаяся на игристых винах, в частности Asti DOCG и Prosecco DOC. Производство сосредоточено в Канелли и Венето. Бренд сочетает многовековые методы винификации с современными
+                    трендами для создания доступных, но при этом качественных игристых вин. Продукцию выпускают под торговой маркой Tosti1820, отражающей богатое наследие семейной винодельни.
+                </p>
+                <h2>Краткий экскурс в историю торговой марки «Тости»</h2>
+                <p>
+                    Компания берет начало в 1820 году, а современную винокурню, приуроченную к этой дате, запустили в 2000 году. Инновационное предприятие расположено в Канелли — муниципалитете в Пьемонте с живописными ландшафтами вокруг, внесенными в
+                    список Всемирного наследия ЮНЕСКО.
+                </p>
+                <p>Продукцию Tosti легко узнать по бутылке с «пупком». Это выемка, защищенная международным патентом.</p>
+                <p>
+                    Виноград выращивают на 650 гектарах в самом сердце Канелли — за возделывание отвечают 500 фермерских семей. Когда приходит время, они собирают около 14 миллионов виноградных гроздей. Так как компания придерживается принципов
+                    органического земледелия, продукция получила сертификат EQUALITAS.
+                </p>
+                <p>Сейчас компанией руководит восьмое поколение семьи Боска — Джованни при поддержке Марии-Кристины Кастеллетта и сыновей Джулио и Гульельмо.</p>
+                <h2>Особенности производства игристых вин Tosti</h2>
+                <p>
+                    На винодельне применяют метод «Шарма-Мартинотти». В отличие от шампанского, для изготовления «Тости» муст, в основном полученный из ягод «глера» и «москато бьянко», мягко прессуют и сбраживают в прохладном месте для сохранения всех
+                    ароматических веществ, а затем повторно ферментируют в емкостях из нержавеющей стали.
+                </p>
+                <p>
+                    Специализированный штамм дрожжей, а также постоянный контроль над температурой и давлением, приводят к образованию мелких, но стойких пузырьков. Вторичное сбраживание останавливают на раннем этапе, что снижает содержание алкоголя и
+                    повышает естественную сладость.
+                </p>
+                <h2>Разновидности игристых вин «Тости»</h2>
+                <p>
+                    За два десятилетия своего существования компания серьезно расширила портфолио за счет линеек Seco и Organic. При этом представители семьи Боска сохраняют ценности ремесленного виноделия, включая ручной сбор урожая и ферментацию с
+                    минимальным вмешательством. Несколько культовых выражений Tosti:
+                </p>
+                <ol>
+                    <li>
+                        Asti DOCG. Игристое вино из 100% Moscato Bianco di Canelli. Свежий аромат с элегантными фруктовыми нотками плавно перетекает в тонкий вкус с балансом между сладостью и остротой. Тот же напиток, но в дизайнерской бутылке с
+                        тисненым логотипом — Asti DOCG Notte di Bollicine. Его отметили престижными наградами IWC и Decanter.
+                    </li>
+                    <li>Prosecco Rose DOC. Смесь «глеры» и «пино-нуар» с интенсивным сахарно-ягодным вкусом. На финише ощущаются нотки цитрусовых и лепестков роз. Просекко также доступно в белой версии, полностью изготовленной из ягод «глера».</li>
+                    <li>Moscato d’Asti. Органическое полуигристое вино Tosti с нотками персика, маракуйи и грейпфрута. Аромат исходит непосредственно от винограда, а применяемый резервуарный метод сбраживания лишь выгодно подчеркивает его.</li>
+                    <li>1820 Butterfly. Первое сухое Asti со сбалансированной кислотностью, стойкой кремовой пеной и нотками тропических фруктов.</li>
+                </ol>
+                <h3>Сколько стоит продукция Tosti в Украине</h3>
+                <p>
+                    Цены стартуют от 400 грн за бутылку. Они отражают статус DOCG, ручной сбор урожая, органическую сертификацию и новшества в плане стиля — как полусухая версия Asti. Разливы с декоративными этикетками по типу Notte di Bollicine стоят
+                    дороже, поскольку их позиционируют как подарок.
+                </p>
+                <p>Главное отличие от шампанского — игристыми винами Tosti можно наслаждаться в любое время без особого повода. Особенно, если заказать бутылку по скидке в маркете алкогольных штук MAUDAU.</p>
+                <h2>Гастрономическое сочетание игристых вин «Тости»</h2>
+                <p>Напитки советуют подавать хорошо охлажденными — при +4–8 °C. Игристое вино можно сочетать с закусками или преподнести как аперитив.</p>
+                <p>
+                    Асти гармонично сочетается с фруктовыми пирогами, панна-коттой, мороженым. Оно также подходит к легким кесо, намазкам с травами, запеченной рыбе. Игристое вино Tosti Moscato d’Asti лучше подать к легкому салату или десерту с
+                    добавлением рикотты и маскарпоне. Его советуют сочетать с нейтральными блюдами, чтобы не затмить ароматическую сложность. Розовое просекко — универсальное дополнение к закускам по типу копченого лосося, дыни в прошутто,
+                    средиземноморских морепродуктов.
+                </p>
+                <h2>Почему выгодно купить Tosti в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас представлена исключительно оригинальная продукция с доставкой по всей Украине. Курьеры работают в Киеве, Днепре и Львове — в тех же городах предусмотрен самовывоз из супермаркетов «Сільпо», если выбранный товар в наличии.
+                    Оплату заказа можно произвести на сайте или постфактум, а часть суммы можно оплатить баллобонусами, накопленными с помощью программы лояльности «Власний Рахунок».
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Strawberry Patch Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Strawberry-Patch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Strawberry Patch Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=limonchello">Лимончелло</a></li><li>Клубничный сорбет</li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-tosti-prosecco-rose-d-o-c-bile-ekstrasukhe-0-75-l-11">Вино игристое Tosti Prosecco Rose DOC</a></li><li>Базилик</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Strawberry Patch Cocktail — восхитительный и ароматный напиток с клубничным сорбетом, лимончелло и просекко. Коктейлю присущи сладкие оттенки и кислые нотки. Это прекрасный выбор для расслабленного отдыха на свежем воздухе.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Strawberry Patch Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>20 мл лимончелло</li><li>150 г клубничного сорбета</li><li>60 мл просекко</li><li>веточка базилика для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охлажденный коктейльный бокал выложите шарик клубничного сорбета (примерно 150 г).</li><li>Сверху влейте 20 мл лимончелло, дайте немного впитаться.</li><li>Долейте 60 мл просекко, но аккуратно — оно может слегка вспениться.</li><li>Украсьте бокал веточкой базилика и подавайте напиток.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Limoncello Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Limoncello-Spritz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Limoncello Spritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=limonchello">Лимончелло</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-ihryste-tosti-prosecco-rose-d-o-c-bile-ekstrasukhe-0-75-l-11">Вино игристое Tosti Prosecco Rose DOC</a></li><li><a href="https://maudau.com.ua/ru/product/napii-hazovanyi-milkis-250-ml-sodova">Содовая</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Тимьян</li><li>Лимон</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Limoncello Spritz — игристый летний коктейль с ярким лимонным вкусом и мягкой сладостью. Напиток гарантирует легкость и прохладу в жаркий день, к тому же поднимает настроение.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Limoncello Spritz</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл лимончелло</li><li>60 мл просекко</li><li>30 мл содовой</li><li>15 мл сахарного сиропа</li><li>веточка тимьяна для украшения</li><li>кольцо лимона для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните высокий винный бокал льдом.</li><li>Влейте 50 мл лимончелло и 15 мл сахарного сиропа.</li><li>Добавьте 60 мл просекко, затем аккуратно, тонкой струйкой долейте 30 мл содовой.</li><li>Осторожно перемешайте коктейль барной ложкой.</li><li>Украсьте напиток веточкой тимьяна и кольцом лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Red Ribbon" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Red-Ribbon.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Red Ribbon</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=campari">Кампари</a></li><li><a href="https://maudau.com.ua/ru/product/napii-sokovyi-sandora-sytsiliiskyi-chervonyi-apelsyn-095-l-719492">Сок кровавого апельсина</a></li><li><a href="https://maudau.com.ua/ru/product/nastoianka-angostura-orange-bitter-28-01-l-725705">Апельсиновый биттер</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=tosti">Игристое вино Tosti</a></li><li>Апельсин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Red Ribbon — яркий фруктовый коктейль с тонкими нотами Кампари и легкой кислинкой апельсинового биттера. Напиток прекрасно подходит для дружеских вечеринок и особенных моментов.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Red Ribbon</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 ст. л. Кампари</li><li>3 ст. л. сока кровавого апельсина</li><li>капля апельсинового биттера</li><li>игристое вино для доливки</li><li>долька апельсина для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте 1 ст. л. Кампари, 3 ст. л. сока кровавого апельсина и щепотку биттера в шейкере со льдом.</li><li>Процедите через сито в бокал для коктейлей.</li><li>Долейте игристое вино до желаемого объема.</li><li>Украсьте долькой цитруса на краю стакана или опустите ее внутрь.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Long Winter Snap" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Long-Winter-Snap.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Long Winter Snap</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=yabloko">Яблочный сок</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Корица</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=hvozdyka-3">Гвоздика</a></li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=imbyr-5">Имбирь</a></li><li>Красное яблоко</li><li>Зеленое яблоко</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=tosti">Игристое вино Tosti</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Long Winter Snap — насыщенный сезонный напиток с глубоким вкусом специй, фруктов и игристого вина. Коктейль создает уютную и согревающую атмосферу в холодные зимние вечера.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Long Winter Snap</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>2 ст. яблочного сока</li><li>щепотка корицы</li><li>щепотка гвоздики</li><li>щепотка имбиря</li><li>3 ст. л. смеси (после уваривания сока и приправ) на порцию</li><li>ломтики красного яблока</li><li>ломтики зеленого яблока</li><li>лимонный сок для обработки яблок</li><li>игристое вино по вкусу для доливки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В маленькой кастрюле смешайте 2 ст. яблочного сока с щепотками корицы, гвоздики и имбиря.</li><li>Доведите до кипения на среднем огне, затем уменьшите температуру.</li><li>Уварите смесь до объема одного стакана, чтобы она стала концентрированной и ароматной.</li><li>Остудите заготовку и храните в холодильнике.</li><li>Обмакните ломтики фруктов в лимонный сок, чтобы они не потемнели.</li><li>В бокал-рокс налейте 3 ст. л. охлажденного пряного микса.</li><li>Осторожно долейте игристое вино по вкусу.</li><li>Украсьте кусочками красного и зеленого яблока.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The First Flight" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-First-Flight.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The First Flight</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/viski/typ_napoiu_3=burbon-bourbon">Бурбон</a></li><li>Лимон</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=myhdal-5">Миндального сиропа</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Ангостура биттер</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_brand=tosti">Игристое вино Tosti</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    The First Flight — освежающий коктейль с цитрусовыми нотами лимонного сока, легкой сладостью бурбона и выразительным акцентом миндального сиропа. Напиток подходит для воскресного бранча и приятного общения с друзьями.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить The First Flight</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл бурбона</li><li>15 мл лимонного сока</li><li>15 мл миндального сиропа</li><li>1.8 мл ангостуры</li><li>игристое вино по вкусу для доливки</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере со льдом смешайте 30 мл бурбона и 1.8 мл ангостуры.</li><li>Влейте по 15 мл лимонного сока и миндального сиропа.</li><li>Тщательно встряхните в течение 10–15 секунд.</li><li>Процедите через стрейнер в охлажденный бокал-флюте.</li><li>Аккуратно долейте доверху игристое вино по вкусу.</li><li>По желанию украсьте напиток цедрой цитруса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">70-90 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0-2 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

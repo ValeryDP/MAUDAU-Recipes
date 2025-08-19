@@ -1,0 +1,822 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>«Галактіоні» — грузинський бренд ігристих вин, що випускає компанія Kakhetian Traditional Winemaking LTD. Виробництво налагоджено в Кахетії — в одному з найстаріших і найпрестижніших виноробних регіонів.</p>
+                <p>Названа на честь поета Галактіона Табідзе, продукція торгової марки відображає місцевий теруар. Ігристе вино виробляють переважно з місцевих сортів винограду за танковим (резервуарним) методом.</p>
+                <h2>Що відомо про походження торгової марки Galaktioni</h2>
+                <p>
+                    Бренд виник у результаті прагнення Kakhetian Traditional Winemaking LTD відродити багатовікову традицію виноробства в регіоні, роблячи акцент на вирощуванні автохтонних сортів винограду. Торгову марку зареєстрували на початку 2000-х
+                    років. Виробництво здійснюють на сході Грузії, використовуючи здебільшого місцеві ягоди, а саме «ркацителі», «цицка» та «цолікоурі».
+                </p>
+                <h2>Секрети виготовлення ігристих вин «Галактіоні»</h2>
+                <p>
+                    Продукцію виробляють за методом «Шарма-Мартінотті». Зібраний вручну виноград м’яко пресують, а муст зброджують за низьких температур. Повторну (вторинну) ферментацію проводять у тих самих місткостях із неіржавної сталі з метою
+                    збереження свіжих фруктових нот. Хоча ігристе вино Galaktioni іноді називають шампанським, це не зовсім коректно, щонайменше — через суттєву різницю в методах вініфікації.
+                </p>
+                <p>Щоб домогтися тонкого, але стійкого перляжу, винороби постійно контролюють тиск усередині резервуарів. Розлив виробляють на автоматизованих лініях, щоб уникнути втрати бульбашок.</p>
+                <h2>Різноманітність ігристих вин Galaktioni</h2>
+                <p>Бренд пропонує кілька основних стилів:</p>
+                <ol>
+                    <li>
+                        Біле напівсолодке Reserve. Ігристе вино виготовлене із суміші ягід, тому воно розкривається яскравими квітково-фруктовими нотами з легким трав’янистим посмаком. На фініші відчувається м’яка кремова солодкість, врівноважена
+                        цитрусовою кислотністю.
+                    </li>
+                    <li>Біле напівсухе Reserve. Збалансований напій із помірним вмістом залишкового цукру завдяки частковому подовженню етапу зброджування. На смак цей купаж нагадує легкий фруктовий мус зі злегка поколюючим посмаком.</li>
+                    <li>Брют Reserve. Ігристе вино «Галактіоні», яке найбільше нагадує шампанське. Яскрава стартова кислотність у поєднанні з цитрусовими нотками поступово перетікає в глибоку квітково-грушеву палітру ароматів.</li>
+                    <li>
+                        Рожеве напівсухе (Rose). Яскраве ігристе вино з нотами травневої троянди. Витончений смак із помірною танінною терпкістю чудово освіжає у спекотну погоду. Ніжно-рожевий колір — результат додавання соку з темношкірих сортів
+                        винограду.
+                    </li>
+                </ol>
+                <p>Бренд не експериментує зі стилями чи обсягом. Продукцію випускають у стандартних пляшках по 0.75 літра.</p>
+                <h3>Скільки коштує «Галактіоні» в Україні</h3>
+                <p>
+                    Вартість за пляшку не перевищує 340 грн — і вона додатково знижується під час розпродажів. При цьому ігристе вино пропонує суттєву цінність для покупця завдяки акценту на місцевих сортах винограду, відображенню локального теруару,
+                    свіжого фруктового профілю.
+                </p>
+                <p>
+                    На Galaktioni, на відміну від шампанського, ціна доволі низька, тож насолоджуватися якісними бульбашками можна не лише на свята, а й у звичайний день. Доступна вартість пов’язана не тільки із застосуванням методу Charmat, а й
+                    переважанням невінтажної продукції, тобто ягоди не збирають в один винятковий рік, як це часто роблять у Франції.
+                </p>
+                <h2>Що подати до ігристого вина Galaktioni</h2>
+                <p>Щоб насолодитися ароматом, подавайте напої охолодженими до +7–10 °C у келихах Flute. Поєднання з їжею залежать від обраного стилю:</p>
+                <ol>
+                    <li>Брют. Доповнить суші та сашимі, рибу і морепродукти з гриля, твердий сир, середземноморські мезе.</li>
+                    <li>Напівсухе ігристе вино. Подавайте його з нежирною свининою, овочами-гриль, курячим паштетом.</li>
+                    <li>
+                        Напівсолодке ігристе вино. Найкраще доповнення до фруктового салату, ягідного тарту, панакоти, морозива. А ще його можна подати зі злегка гострими стравами азійської кухні. За таким же принципом підбирають гастрономічний
+                        супровід до версії Rose.
+                    </li>
+                </ol>
+                <p>Ігристе вино Galaktioni можна дегустувати без закусок. У такому разі подавайте його як аперитив.</p>
+                <h2>Чому вигідно купити «Галактіоні» в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожна пляшка, яку можна замовити з доставленням по Україні, — оригінального походження. Це можливо завдяки співпраці з офіційними дистриб’юторами. Замовлення у Львові, Дніпрі та Києві можуть привезти кур’єри в обумовлений час. А ще
+                    в цих містах доступне самовивезення із магазинів «Сільпо». Список супермаркетів шукайте в розділі «Доставлення». Не забувайте про можливість накопичення балобонусів за допомогою програми «Власний Рахунок». Для постійних клієнтів
+                    маркету алкогольних штук MAUDAU діє система WOW Club, що передбачає збільшений кешбек і безплатне доставлення.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pomegranate Bellini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pomegranate-Bellini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pomegranate Bellini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/soky/smak_25=hranat-8">Гранатовий сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=galaktioni">Ігристе вино Galaktioni</a></li><li>Зерна граната</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Pomegranate Bellini — яскравий фруктовий коктейль із насиченим смаком гранатового соку. Напій поєднує легку солодкість і ніжну ігристість. Прекрасний вибір для романтичних зустрічей і особливих свят.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pomegranate Bellini</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл гранатового соку</li><li>120 мл ігристого вина для доливання</li><li>Зерна граната для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У келих для шампанського або флюте налийте 30 мл гранатового соку.</li><li>Акуратно влийте 120 мл ігристого вина, щоб зберегти шипучість.</li><li>Прикрасьте напій зернами граната, поклавши їх всередину склянки.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Festive French 75" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Festive-French-75.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Festive French 75</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn">Джин</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li>Простий сироп</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=galaktioni">Ігристе вино Galaktioni</a></li><li>Гілочка розмарину</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Festive French 75 — елегантний освіжальний твіст на класичний коктейль, з терпкими нотами журавлинного соку, легкою ігристістю вина і тонким ароматом джину. Напій створює святковий настрій і гарантує вишукану атмосферу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Festive French 75</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину</li><li>15 мл журавлинного соку</li><li>10 мл простого сиропу</li><li>60 мл ігристого вина</li><li>Гілочка розмарину для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері з льодом змішайте 45 мл джину і 15 мл журавлинного соку.</li><li>Додайте 10 мл простого сиропу, струсіть 15 секунд до охолодження.</li><li>Процідіть через стрейнер в келих для шампанського або флюте.</li><li>Повільно влийте 60 мл ігристого вина.</li><li>Прикрасьте гілочкою розмарину, злегка прихлопнувши її долонею, щоб посилити аромат.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Mulled Wine Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Mulled-Wine-Spritz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Mulled Wine Spritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Глінтвейн</li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=galaktioni">Ігристе вино Galaktioni</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/category/spetsii-ta-prypravy/vyd_110=badian-2">Бодян</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Mulled Wine Spritz — пряний ігристий коктейль з ароматом глінтвейну. Напій поєднує легку гіркуватість і цитрусовий посмак, ідеально доповнює вечори в колі друзів і близьких.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Mulled Wine Spritz</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл охолодженого глінтвейну</li><li>90 мл ігристого вина</li><li>скибочка апельсина для прикрашання</li><li>Бодян (зірчастий аніс) для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Приготуйте заздалегідь глінтвейн (із прянощами та апельсином), потім поставте в холодильник. Наповніть келих для спритца льодом.</li><li>Влийте 60 мл охолодженого глінтвейну.</li><li>Обережно долийте 90 мл ігристого вина.</li><li>Прикрасьте напій скибочкою цитруса і зірочкою бодяну.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Amaretto Fizz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Amaretto-Fizz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Amaretto Fizz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=amareto-3">Амаретто</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=galaktioni">Ігристе вино Galaktioni</a></li><li>Апельсинова цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    У легкому та ігристому коктейлі Amaretto Fizz присутні мигдальні нотки, цитрусова свіжість, приємна солодкість і шипуча текстура. Цей напій стане чудовим вибором для літнього настрою та веселого відпочинку.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Amaretto Fizz</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл амаретто</li><li>30 мл апельсинового соку</li><li>90 мл шампанського або ігристого вина</li><li>апельсинова цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері з льодом злегка збовтайте 60 мл амаретто і 30 мл апельсинового соку, щоб охолодити суміш.</li><li>Процідіть через сито у високий келих-флюте.</li><li>Акуратно долийте 90 мл шампанського або ігристого вина, намагаючись зберегти бульбашки.</li><li>Прикрасьте цедрою цитруса — скрутіть її в спіраль і покладіть на край склянки або опустіть всередину.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pornstar Martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pornstar-Martini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pornstar Martini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=vanil-14">Ванільний сироп</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=marakuiievyi">Лікер маракуї</a></li><li><a href="https://maudau.com.ua/category/horilka/smak_5=vanil-4">Ванільна горілка</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_brand=galaktioni">Ігристе вино Galaktioni</a></li><li>Маракуя</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Pornstar Martini — екзотичний і спокусливий коктейль з яскравим смаком. Напій поєднує фруктовий вайб лікеру маракуї, м'якість ванільної горілки і легку кислинку лаймового соку. Він підійде для літніх вечірок на березі моря.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pornstar Martini</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл лаймового соку</li><li>15 мл ванільного сиропу</li><li>15 мл лікеру маракуї</li><li>45 мл ванільної горілки</li><li>60 мл шампанського або ігристого вина</li><li>м'якота 1 маракуї</li><li>половина маракуї для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері з льодом з'єднайте по 15 мл лікеру маракуї, ванільного сиропу і лаймового соку.</li><li>Додайте 45 мл горілки і м'якоту маракуї.</li><li>Гарненько струсіть впродовж 10–15 секунд, щоб всі компоненти перемішалися.</li><li>Процідіть через сито в охолоджений келих-купе.</li><li>Прикрасьте напій половинкою маракуї — можна покласти скибочку в склянку.</li><li>Подавайте з чаркою шампанського або ігристого вина — традиційно її випивають перед коктейлем або після, щоб освіжити смак.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">70-79 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0.8 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

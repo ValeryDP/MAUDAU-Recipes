@@ -1,0 +1,851 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>Beefeater — класичний лондонський сухий джин, що вирізняється яскравим ялівцевим смаком, доповненим цитрусово-пряними нотами. Його виробляють у Лондоні, зберігаючи вірність оригінальному рецепту, створеному в XIX столітті.</p>
+                <p>
+                    «Біфітер» — один із небагатьох джинів у світі, який досі виготовляють у місці його походження. За більш ніж 150-річну історію продукцію виробника нагородили безліччю престижних відзнак, тож його цінують не лише прості споживачі, а й
+                    бармени по всьому світу.
+                </p>
+                <h2>Короткий екскурс в історію торгової марки Beefeater</h2>
+                <p>
+                    Компанію заснували 1863 року. Біля витоків — Джеймс Берроу, який спершу працював фармацевтом, а потім змінив рід діяльності після придбання винокурні Chelsea Distillery в Лондоні. За основу рецепта він узяв традиційний лондонський
+                    сухий стиль, доповнивши його ретельно підібраними рослинними компонентами. Назву джин Beefeater отримав на честь йоменів — церемоніальних стражників Тауера.
+                </p>
+                <p>
+                    У 1958 році винокурня переїхала до Кеннінгтона, де функціонує досі. Після цього до бренду прийшов міжнародний успіх. Зараз торгова марка належить холдингу Pernod Ricard, але це не заважає виробництву міцного спиртного напою за
+                    оригінальним рецептом Джеймса Берроу.
+                </p>
+                <h2>Як виробляють джин «Біфітер»</h2>
+                <p>В основі — нейтральний зерновий спирт, приготований із пшениці, вирощеної в Англії. Його настоюють на дев’яти рослинних компонентах, включно з:</p>
+                <ul>
+                    <li>ягодами ялівцю;</li>
+                    <li>корінням дягелю та ірису;</li>
+                    <li>насінням коріандру і дягеля;</li>
+                    <li>лакрицею;</li>
+                    <li>мигдалем;</li>
+                    <li>цедрою севільських лимонів і апельсинів.</li>
+                </ul>
+                <p>Ботанічний букет мацерують впродовж 24 годин. Це рідкісна практика серед виробників джину, але вона істотно полегшує подальше вилучення ароматичних речовин.</p>
+                <p>
+                    Джин Beefeater переганяють у традиційних мідних кубах. Це сприяє збереженню насиченого смаку рослинних компонентів і яскравого аромату. Рецепт практично не змінювали з XIX століття — це відрізняє продукцію виробника від м’якіших
+                    сучасних дистилятів.
+                </p>
+                <h2>Різновиди джину Beefeater</h2>
+                <p>
+                    Флагман — London Dry Gin, що володіє насиченим ялівцевим смаком з яскравими нотами цитрусової цедри і тонкими землистими нюансами прянощів. Це незамінна база для класичних коктейлів на кшталт «Джин-тоніка», «Мартіні» і «Тома
+                    Коллінза». Безалкогольна версія Beefeater відтворює аромат і смак класичного напою за допомогою вакуумної дистиляції, але не містить етанолу.
+                </p>
+                <p>Бренд також пропонує кілька ароматизованих лінійок:</p>
+                <ol>
+                    <li>Pink Strawberry. Джин «Біфітер» із натуральним полуничним смаком. За світло-рожевим відтінком ховається яскравий фруктовий аромат. Це чудовий варіант для літніх коктейлів.</li>
+                    <li>Blood Orange. Версія, настояна на цедрі червоного апельсина, завдяки чому має соковитий і пікантний смак із гірко-солодкими нотками. Цей ароматизований джин Beefeater можна пити соло або додати в авторський «Спритц».</li>
+                    <li>Grapefruit. Лімітована серія з різкою гіркуватістю та освіжальною кислотністю цитрусових. Це ще один варіант чудового аперитиву для літа.</li>
+                </ol>
+                <h3>Джин «Біфітер»: ціна в Україні</h3>
+                <p>За пляшку обсягом 0.7 літра потрібно заплатити близько 750–1000 грн. Ароматизовані версії коштують дешевше, оскільки їх розливають зі зниженим вмістом алкоголю.</p>
+                <p>
+                    На продукцію Beefeater ціна багато в чому залежить від обсягу та імпортних мит. Маркет алкогольних штук MAUDAU пропонує зробити гуртове замовлення — по шість пляшок у коробці. Це дає можливість суттєво заощадити, наприклад, під час
+                    підготовки до святкування. А ще можна дочекатися знижки на вподобаний стиль.
+                </p>
+                <h2>Як обрати джин Beefeater онлайн</h2>
+                <p>Насамперед зверніть увагу на обсяг — бренд пропонує мініатюри по 50 мл і стандартні формати. Велика пляшка вигідна для частого вживання або свята, тоді як маленька підходить для дегустації або подарунка.</p>
+                <p>Вміст алкоголю в напоях також відрізняється. Що вища міцність, то насиченіший смак. Але оскільки ароматизовані версії часто розраховані на приготування коктейлів, об’ємна частка алкоголю в них знижена.</p>
+                <p>Прийняти рішення, який купити джин «Біфітер», допоможуть відгуки покупців. Продукцію також можна згрупувати за новизною або популярністю.</p>
+                <p>А якщо хочете заощадити, відберіть виключно товари зі знижкою. Врахуйте, що список спецпропозицій постійно змінюється, тому вподобану пляшку можна додати у «Вибране» і дочекатися акції на неї.</p>
+                <h2>Рекомендації щодо вживання джину «Біфітер»</h2>
+                <p>
+                    Міцний спиртний напій краще подавати охолодженим до +6–8 °C. Підтримувати температуру в склянці допоможе лід. Якщо вирішили подавати джин без добавок, прикрасьте келих з огляду на обраний стиль. Наприклад, Pink Strawberry можна
+                    подавати з полуницею.
+                </p>
+                <p>
+                    Що стосується поєднання із закусками, то краще зупинитися на легких стравах на кшталт салатів із цитрусовою вінегретною заправкою та смаженої нежирної риби. До порції джину «Біфітер» також можна запропонувати м’які сири, оливки,
+                    канапе з мікрогріном.
+                </p>
+                <p>Уникайте занадто солодких або гострих поєднань, які можуть суперечити рослинному характеру цього алкоголю. Ароматизовані версії, своєю чергою, добре поєднуються з десертами, наприклад, лимонним тартом або ягідним мусом.</p>
+                <h2>Чому вигідно купити джин Beefeater в інтернет-магазині MAUDAU</h2>
+                <p>Кожна пляшка — гарантовано оригінального походження. Наша команда співпрацює виключно з офіційними дистриб’юторами, тому ціна залишається конкурентною. А додаткову вигоду забезпечують програми лояльності.</p>
+                <p>
+                    Оформити замовлення можна з доставленням у будь-яку точку України завдяки співпраці з «Укрпоштою», «Новою Поштою» та «Meest ПОШТОЮ». По Києву, включно з передмістям, Дніпру та Львову замовлення доставляють кур’єри. У тих же містах
+                    джин «Біфітер» можна забрати самостійно в супермаркетах «Сільпо». Список магазинів для самовивезення шукайте в розділі «Доставлення», скориставшись інтерактивною картою.
+                </p>
+            </div>
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Clover Club" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Dzhin-Beefeater.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Clover Club</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-beefeater-40-07-l-840708">Джин Beefeater London Dry</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=malyna-9">Малиновий сироп</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li><li>Яєчний білок</li><li>Свіжа малина</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Класика довоєнної ери з яскраво вираженим малиновим профілем, щільною оксамитовою текстурою і сухим фоном джину. Цей коктейль вимагає уваги до техніки, особливо під час роботи з яєчним білком. Підходить як впевнений початок вечора!
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Clover Club</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Beefeater London Dry</li><li>15 мл лимонного соку</li><li>15 мл малинового сиропу</li><li>5 мл сухого вермуту</li><li>1 яєчний білок</li><li>3 свіжі малини</li><li>лід для змішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в шейкер джин, лимонний сік, малиновий сироп і сухий вермут.</li><li>Додайте яєчний білок.</li><li>Виконайте сухий шейк.</li><li>Додайте лід і повторно струсіть впродовж 10–12 секунд.</li><li>Через подвійний стрейнер перелийте суміш в охолоджений келих купе.</li><li>Прикрасити трьома свіжими ягодами малини на шпажці.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Bee’s Knees" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bees-Knees.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Bee’s Knees</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-beefeater-40-07-l-840708">Джин Beefeater London Dry</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Медовий сироп</a></li><li>Лимонна цедра</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Bee's Knees — яскравий, але не зухвалий на смак коктейль. Медовий сироп і лимонний сік у ньому вибудовують простий і гармонійний профіль, який підкреслює сухий джин. Швидкий, прямий, але завжди доречний!
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Bee’s Knees</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Beefeater London Dry</li><li>25 мл лимонного соку</li><li>15 мл медового сиропу</li><li>лимонна цедра для прикрашання</li><li>лід для змішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер влийте 50 мл джину Beefeater London Dry.</li><li>Додайте 25 мл свіжого лимонного соку та 15 мл медового сиропу.</li><li>Покладіть великі кубики льоду й енергійно струсіть 10–12 секунд.</li><li>Відфільтруйте через стрейнер у попередньо охолоджений келих купе.</li><li>Зріжте довгу стрічку лимонної цедри.</li><li>Проведіть цедрою по краю келиха, потім згорніть і покладіть у центр.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pomegranate Bramble" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pomegranate-Bramble.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pomegranate Bramble</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-beefeater-40-07-l-840708">Джин Beefeater London Dry</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/product/liker-joseph-cartron-creme-de-mure-des-roncieres-18-07-l">Лікер Joseph Cartron Creme De Mure</a></li><li>Ожина</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сучасна варіація на тему Bramble з додаванням гранатової терпкості. Вирізняється щільною ягідною основою, пронизливою кислотністю і складним посмаком. Особливо добре розкривається на подрібненому льоду.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pomegranate Bramble</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Beefeater London Dry</li><li>25 мл лимонного соку</li><li>15 мл цукрового сиропу</li><li>15 мл лікеру Joseph Cartron Creme De Mure</li><li>ожина до смаку</li><li>лід для змішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер налийте 50 мл джину Beefeater London Dry.</li><li>Додайте 25 мл лимонного соку та 15 мл цукрового сиропу.</li><li>Покладіть великий лід і струсіть 8–10 секунд.</li><li>Наповніть олд-фешн келих подрібненим льодом до верху.</li><li>Процідіть суміш через стрейнер на лід.</li><li>Повільно влийте 15 мл лікеру Joseph Cartron Creme De Mure поверх коктейлю.</li><li>Для прикрашання додайте кілька свіжих ягід ожини та лист м'яти.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Long Bramble" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Long-Bramble.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Long Bramble</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-beefeater-40-07-l-840708">Джин Beefeater London Dry</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li>Простий сироп</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=ozhyna-4">Сироп ожини</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=kholodnyi-chai-2">Холодний чай</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освіжальна варіація на класичну тему з холодним зеленим чаєм, де ожина з'єднується з цитрусовою кислотою і джином. Чай додає глибини і робить коктейль менш солодким при насиченому смаку. Підходить для денного формату та подачі в хайболі.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Long Bramble</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Beefeater London Dry</li><li>25 мл лимонного соку</li><li>15 мл простого сиропу</li><li>15 мл сиропу ожини</li><li>125 мл охолодженого зеленого чаю</li><li>лід у склянку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в шейкер джин, лимонний сік, простий сироп і сироп ожини.</li><li>Додайте кілька кубиків льоду і струсіть впродовж 10 секунд.</li><li>Наповніть хайбол подрібненим льодом на ⅔.</li><li>Процідіть суміш у келих через сито.</li><li>Додайте охолоджений зелений чай до краю келиха.</li><li>Перемішайте барною ложкою.</li><li>Додайте ще трохи льоду доверху.</li><li>Прикрасьте свіжою ожиною та гілочкою м'яти.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Gibson" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Gibson-bf.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Gibson</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-beefeater-40-07-l-840708">Джин Beefeater London Dry</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=sukhyi-dry">Сухий вермут</a></li><li>Лід</li><li>Коктейльна цибуля</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сухий лаконічний коктейль із категорії мартіні-стилю. Вирізняється характерною коктейльною цибулею, яка надає закусочного акценту і контрастує з ароматикою джину. Чудовий аперитив і вибір для тих, хто цінує класичну структуру напоїв.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Gibson</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Beefeater London Dry</li><li>5 мл сухого вермуту</li><li>лід для охолодження</li><li>коктейльна цибуля для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть змішувальну склянку кубиками льоду.</li><li>Налийте джин і сухий вермут.</li><li>Перемішайте барною ложкою 20–25 секунд до повної стабілізації температури.</li><li>Відфільтруйте напій через стрейнер в охолоджений келих для мартіні.</li><li>Додайте коктейльну цибулю на шпажці.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Beefeater Red Snapper" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Beefeater-Red-Snapper.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Beefeater Red Snapper</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-beefeater-40-07-l-840708">Джин Beefeater London Dry</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=tomat-6">Томатний сік</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=vustershyrskyi">Соус Вустершир</a></li><li><a href="https://maudau.com.ua/category/sousy/vyd_119=soievyi">Соєвий соус</a></li><li><a href="https://maudau.com.ua/category/sousy/product_brand=tabasco">Соус Табаско</a></li><li><a href="https://maudau.com.ua/product/perets-chornyi-melenyi-mriia-20-h-8058">Мелений чорний перець</a></li><li>Лимонний кружечок</li><li>Гілочка чебрецю</li><li>Стебло селери</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    У цьому коктейлі Джин-тонік зустрічає томатний мікс. Холодний, гострий, насичений — з фокусом на солоні та пряні ноти. Вирізняється м'якістю завдяки джину, на відміну від горілчаних аналогів.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Beefeater Red Snapper</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину London Dry</li><li>120 мл томатного соку</li><li>10 мл соусу Вустершир</li><li>5 мл соєвого соусу</li><li>табаско до смаку</li><li>мелений чорний перець до смаку</li><li>лимонне кружечко для прикрашання</li><li>гілочка чебрецю для прикрашання</li><li>стебло селери для прикрашання</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть хайбол кубиками льоду на ¾.</li><li>Налийте джин London Dry і томатний сік.</li><li>Додайте соус Вустершир і соєвий соус.</li><li>Додайте табаско і дрібку меленого чорного перцю.</li><li>Перемішайте ретельно барною ложкою від низу до верху.</li><li>Прикрасьте келих гілочкою чебрецю, лимонним кружечком і стеблом селери.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">221-228 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0-4.27 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

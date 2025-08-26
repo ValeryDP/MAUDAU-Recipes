@@ -1,0 +1,898 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Tanqueray — легендарный лондонский сухой джин, производимый на мощностях Diageo PLC. Он возник в Англии, но сейчас его перегоняют в Шотландии в старинном медном перегонном аппарате Old Tom, который чудом уцелел после авианалета на
+                    Блумсбери в 1941 году. Хотя крепкий спиртной напиток известен во всем мире, во многом — благодаря культовой темно-зеленой бутылке, основным рынком его сбыта служит США — на страну приходятся примерно 80% от всей экспортируемой
+                    продукции.
+                </p>
+                <h2>Как возник джин Tanqueray</h2>
+                <p>
+                    Компанию в 1830 году основал молодой предприниматель из семьи священнослужителей Чарльз Танкерей. Отступив от семейных традиций, он открыл крохотную винокурню в Блумсбери в Лондоне, где экспериментировал с растительными настоями.
+                    Постепенно он пришел к рецепту, который вскоре стал эталоном в отрасли, так как не содержал сахара.
+                </p>
+                <p>
+                    Спустя восемь лет на Вайн-стрит открылся первый розничный магазин, где можно было купить джин «Танкерей». После смерти основателя дело перешло к его сыну Чарльзу Во. Винокурню сильно повредили бомбардировщики в период Второй мировой
+                    войны, а единственный уцелевший перегонный аппарат вскоре перевезли в Камерон-Бридж в Шотландии.
+                </p>
+                <p>В конце XX века Tanqueray объединился с торговой маркой Gordon’s. Сейчас оба бренда принадлежат алкогольному гиганту Diageo.</p>
+                <h2>Особенности изготовления джина «Танкерей»</h2>
+                <p>
+                    Бренд применяет традиционный метод дистилляции в медных перегонных кубах. В основе — нейтральный зерновой спирт, который на втором этапе перегоняют с четырьмя растительными компонентами: ягодами можжевельника, кориандром, корнем
+                    дягиля и лакрицей. Растительный букет формирует фирменный сухой аромат с ярко выраженными смолистыми нотками.
+                </p>
+                <p>В составе джина «Танкерей» нет искусственных добавок или красителей. В рецептурах специальных разливов для придания яркости и сложности вкусу используют свежие цитрусовые, производя крепкий спиртной напиток малыми партиями.</p>
+                <h2>Ассортимент торговой марки Tanqueray</h2>
+                <p>
+                    Флагманский продукт — London Dry Gin. Его до сих пор готовят по оригинальному рецепту от 1830-го года и разливают при крепости 47,3%. Он подходит как для потягивания в чистом виде, так и приготовления классических коктейлей вроде
+                    «Мартини» или «Джин-тоника».
+                </p>
+                <p>
+                    Джин Tanqueray No Ten представили в 2000 году. В его состав, помимо основных растительных компонентов, вошли свежие цитрусовые, а именно грейпфрут, апельсин и лайм. Завершает композицию ромашка. Этот стиль посвящен медному
+                    перегонному кубу Still No. 10. За счет яркого аромата он отлично вписывается в рецепты цитрусовых коктейлей — как Southside и Gin Rickey.
+                </p>
+                <p>Бренд Tanqueray редко пополняет ассортимент новыми позициями, смещая акцент на классику и выверенный годами рецепт. Однако все же несколько ароматизированных выражений расширили портфолио производителя. Среди них стоит выделить:</p>
+                <ol>
+                    <li>
+                        Rangpur Lime. Один из первых ароматизированных джинов «Танкерей», представленный в 2006 году в Мэриленде, Делавэре и Вашингтоне. Он ароматизирован редким сортом лаймов Rangapur, что придает ему легкую кислинку и одновременно
+                        пикантность. На этапе финальной дистилляции в состав также внедряют имбирь и лавровый лист. Название — отсылка к городу Рангапур в Бангладеше, откуда происходит название редкого цитрусового плода.
+                    </li>
+                    <li>Flor de Sevilla. Версия, выпущенная в 2018 году. Изюминка — добавление горькой цедры севильских апельсинов. В этом джине гармонично сочетаются сладость и горечь, что придает миксам мармеладные нотки.</li>
+                    <li>
+                        Blackcurrant Royale. Еще один ароматизированный джин «Танкерей», выпущенный в 2021 году. Его характеризует насыщенный фруктовый вкус с нотами французской черной смородины, ванили и экзотических цветков. Глубокий фиолетовый цвет,
+                        дополненный интенсивным ягодным ароматом, идеально подходит для легких летних «Спритцев».
+                    </li>
+                </ol>
+                <p>В 2021 году также выпустили безалкогольную версию Tanqueray London Dry Gin. Целостность и сложность вкуса полностью сохранены, при этом дистилляцию проводят без выделения этанола.</p>
+                <p>В интернет-магазине MAUDAU также можно купить набор с джином «Танкерей». В состав входят газировка, сиропы и лимонный концентрат — для легкого приготовления освежающих коктейлей в домашних условиях.</p>
+                <h3>Продукция Tanqueray: цена в Украине</h3>
+                <p>
+                    Бутылка объемом 0,7 литра в среднем стоит 800–1000 грн. Цена отражает импортный статус, престиж торговой марки, высокое качество сырья. Ароматизированные версии стоят дороже из-за сезонности ингредиентов и изготовления в
+                    ограниченных количествах.
+                </p>
+                <h2>Как и с чем пить джин «Танкерей»</h2>
+                <p>
+                    Все стили лучше подавать охлажденными до +6–8 °C в стаканах со льдом. Флагманским продуктом можно наслаждаться без добавок. Например, его можно предложить как аперитив. А еще он подходит для классических коктейлей, тогда как
+                    ароматизированные версии можно преподнести к ассорти свежих фруктов.
+                </p>
+                <p>
+                    В качестве гастрономического сопровождения выбирайте легкие сыры, морепродукты, вяленое мясо, оливки. Джин Tanqueray с цитрусовым привкусом гармонично дополнит севиче, жареные креветки, а также курицу или индейку, запеченную с
+                    лимоном и травами. Чтобы не перебить богатый растительный аромат, избегайте слишком острых или сладких блюд.
+                </p>
+                <h2>Почему выгодно купить джин Tanqueray в интернет-магазине MAUDAU</h2>
+                <p>
+                    Маркет алкогольных штук реализует исключительно оригинальную продукцию. Для оформления заказа хватит 5–7 минут. После добавления алкоголя в корзину укажите контактную информацию и выберите подходящий вариант доставки. Среди
+                    возможных опций — доставка курьером в некоторых больших городах, в ближайшее отделение «Укрпочты», «Новой Почты» или точку выдачи «Meest ПОЧТЫ». Оплатить заказ можно онлайн на сайте или в момент его получения. Следите за скидками
+                    для дополнительной экономии. А поскольку «Танкерей» — джин, цена которого достаточно высокая, не забывайте о программах лояльности «Власний Рахунок» и WOW Club для накопления баллобонусов и начисления кешбэка.
+                </p>
+            </div>
+
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Singapore Sling" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Singapore-Sling-tq.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Singapore Sling</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/upakovka-dzhynu-tanqueray-london-dry-gin-47-3-4-2-l-0-7-l-kh-6-sht">Джин Tanqueray London Dry</a></li><li><a href="https://maudau.com.ua/ru/product/liker-bols-cherry-brandy-24-07-l-130241706-2">Вишневый бренди</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/syrop-monin-hrenadin-250-ml-3052910051389">Гренадин</a></li><li>Бенедиктин</li><li><a href="https://maudau.com.ua/ru/product/napii-hazovanyi-milkis-250-ml-sodova">Содовая вода</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Изначально созданный в начале XX века, этот коктейль развился в многослойный, фруктово-пряный лонг-дринк. Вариант с Tanqueray London Dry дает четкую ботаническую основу, которая хорошо держит сладость вишневого бренди и сложность травяного Бенедиктина.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Singapore Sling</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл джина Tanqueray London Dry</li><li>25 мл вишневого бренди</li><li>25 мл лимонного сока</li><li>10 мл гренадина</li><li>5 мл Бенедиктина</li><li>1 ст. л. содовой воды</li><li>лед для смешивания</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер джин Tanqueray London Dry, вишневый бренди, лимонный сок, Гренадин и Бенедиктин.</li><li>Добавьте лед и взбейте 10–12 секунд.</li><li>Процедите в хайбол со свежим льдом.</li><li>Добавьте столовую ложку содовой.</li><li>Аккуратно перемешайте.</li><li>Украсьте слайсом ананаса и коктейльной вишней.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tanqueray Rangpur Bees Kees" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tanqueray-Rangpur-Bees-Kees.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tanqueray Rangpur Bees Kees</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/napii-na-osnovi-dzhynu-tanqueray-rangpur-lime-41-3-0-7-l">Джин Tanqueray Rangpur Lime</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/med">Мед</a></li><li>Кусочек имбиря</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий вариант классики с цитрусовым джином на основе лаймов Рангпур. Имбирь добавляет остроты, а мед придает плотность и тягучесть текстуре. Коктейль насыщенный, с хорошо выраженной кислотой и теплым пряным послевкусием.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Tanqueray Rangpur Bees Kees</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Tanqueray Rangpur</li><li>30 мл лимонного сока</li><li>30 мл меда</li><li>кусочек имбиря</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 50 мл джина Tanqueray Rangpur, 30 мл лимонного сока и 30 мл жидкого мед.</li><li>Добавьте несколько тонких слайсов свежего имбиря.</li><li>Заполните шейкер кубиками льда.</li><li>Встряхните в течение 15 секунд.</li><li>Через двойной стрейнер процедите смесь в охлажденный бокал купе.</li><li>Украсьте цедрой лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Royale Clover" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Royale-Clover-tq.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Royale Clover</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-tanqueray-blackcurrant-royale-413-07-l">Джин Tanqueray Royale</a></li><li>Малина</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-marlborough-sun-sauvignon-blanc-bile-sukhe-13-075-l-5776">Сухое белое вино</a></li><li>Яичный белок</li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li>Свежая малина</li><li>Свежая мята</li><li>Съедобный золотой лист</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Гастрономичный твист на Clover Club, в котором используется Tanqueray Royale с выраженными ягодными нотами. Вино и малина усиливают фруктовый профиль, соль подчеркивает кисло-сладкий баланс. Очень нежный, но структурный коктейль с глубиной.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Royale Clover</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Tanqueray Royale</li><li>малина по вкусу</li><li>20 мл лимонного сока</li><li>сухое белое вино по вкусу</li><li>яичный белок или аквафаба по необходимости</li><li>щепотка соли</li><li>свежая малина для украшения</li><li>свежая мята для украшения</li><li>съедобный золотой лист для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 50 мл джина Tanqueray Royale и 20 мл свежевыжатого лимонного сока.</li><li>Добавьте щепотку соли.</li><li>Добавьте свежую малину (примерно 15–20 г), и слегка разомните ее мадлером.</li><li>Влейте 40–60 мл сухого белого вина.</li><li>Добавьте яичный белок или 30 мл аквафабы для создания пены.</li><li>Добавьте лед.</li><li>Выполните сухой шейк.</li><li>Добавьте лед в шейкер и встряхните повторно еще 12–15 секунд.</li><li>Через двойной стрейнер процедите коктейль в охлажденный бокал коктейльного типа.</li><li>Украсьте сверху свежими ягодами малины и веточкой мяты.</li><li>Завершите оформление съедобным золотым листом, аккуратно положив его на пену коктейля.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Tiny Ten" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Tiny-Ten.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Tiny Ten</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-tanqueray-no-ten-07-l-473-634648">Джин Tanqueray Nº TEN</a></li><li><a href="https://maudau.com.ua/ru/product/kordial-monin-paragone-timur-berry-485h">Грейпфрутовый кордиал</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna">Игристое вино</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Минималистичный аперитивный коктейль с ароматным Tanqueray Nº TEN. Грейпфрутовый кордиал и игристое вино придают легкость и утонченную цитрусовую горечь. Отличный вариант для начала вечера или легкой гастрономической подачи.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить The Tiny Ten</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Tanqueray Nº TEN</li><li>30 мл грейпфрутового кордиала</li><li>50 мл игристого вина</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в винный бокал 50 мл джина Tanqueray Nº TEN и 30 мл грейпфрутового кордиала.</li><li>Добавьте 3–4 крупных кубика льда.</li><li>По стенке ложки влейте 50 мл игристого вина.</li><li>Используя длинную барную ложку, аккуратно перемешайте коктейль снизу вверх.</li><li>Украсьте бокал спиралью цедры грейпфрута, предварительно сжав ее над бокалом для высвобождения эфирных масел.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="No. Ten Symphony" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/No-Ten-Symphony.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">No. Ten Symphony</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-tanqueray-no-ten-07-l-473-634648">Джин Tanqueray Nº TEN</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Вино Сотерн</li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=persykovyi-3">Персиковый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновый биттер</a></li><li>Цедра красного апельсина</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    No. Ten Symphony — сложный, гастрономический коктейль с акцентом на структуру. Танинное вино сотерн, персиковый ликер и биттер соединяются с цитрусовой базой, при этом джин Tanqueray Nº TEN выступает как шасси. Идеален для тех, кто ценит сложные коктейли.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить No. Ten Symphony</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>35 мл джина Tanqueray Nº TEN</li><li>20 мл лимонного сока</li><li>15 мл сахарного сиропа</li><li>7,5 мл вина Сотерн</li><li>7,5 мл персикового ликера</li><li>1 капля апельсинового биттера</li><li>1 ч. л. цедры красного апельсина</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 35 мл джина Tanqueray Nº TEN, 20 мл свежевыжатого лимонного сока и 15 мл сахарного сиропа.</li><li>Отмерьте 7,5 мл вина Сотерн и 7,5 мл персикового ликера, добавьте в шейкер.</li><li>Добавьте 1 каплю апельсинового биттера и 1 чайную ложку свеженатертой цедры красного апельсина.</li><li>Заполните шейкер кубиками льда.</li><li>Встряхните интенсивно в течение 15 секунд.</li><li>Через двойной стрейнер процедите напиток в охлажденный бокал купе.</li><li>Украсьте бокал микроцедрой красного апельсина по краю или слайсом апельсина на шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tanqueray Nº TEN Tom Collins" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tanqueray-N-TEN-Tom-Collins.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tanqueray Nº TEN Tom Collins</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-tanqueray-no-ten-07-l-473-634648">Джин Tanqueray Nº TEN</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/napii-hazovanyi-milkis-250-ml-sodova">Содовая</a></li><li><a href="https://maudau.com.ua/ru/category/fruktova-konservatsiia/typ_281=vyshnia-35">Вишня</a></li><li>Долька лимона</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Классический освежающий коктейль с акцентом на чистоту цитрусовых и сложность джина Tanqueray Nº TEN. Напиток легко адаптируется по сладости, отлично подходит для теплых дней, раскрывая тонкие травяные и фруктовые ноты джина.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Tanqueray Nº TEN Tom Collins</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Tanqueray Nº TEN</li><li>25 мл лимонного сока</li><li>сахарный сироп по вкусу</li><li>содовая по вкусу</li><li>1 вишня для украшения</li><li>1 долька лимона для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в хайбол 50 мл джина Tanqueray Nº TEN.</li><li>Отмерьте 25 мл свежевыжатого лимонного сока и добавьте в бокал.</li><li>Добавьте 10–15 мл сахарного сиропа по вкусу.</li><li>Заполните бокал крупными кубиками льда до ¾ объема.</li><li>Аккуратно долейте 100–120 мл содовой воды.</li><li>Барной ложкой перемешайте снизу вверх.</li><li>Украсьте бокал долькой лимона на краю.</li><li>Добавьте одну коктейльную вишню на шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tanqueray Nº TEN Pomegranate Sgroppino" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tanqueray-N-TEN-Pomegranate-Sgroppino.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tanqueray Nº TEN Pomegranate Sgroppino</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-tanqueray-no-ten-07-l-473-634648">Джин Tanqueray Nº TEN</a></li><li>Гранатовое сорбе</li><li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=rozheve">Розовый вермут</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li>Тертая апельсиновая цедра</li><li>Съедобный золотой листок</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Итальянский десертный коктейль с насыщенной ягодной кислинкой гранатового сорбе и ароматами Tanqueray Nº TEN. Легкость просекко и свежесть цитрусовых создают сложный, но воздушный профиль.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Tanqueray Nº TEN Pomegranate Sgroppino</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл джина Tanqueray Nº TEN</li><li>1 шарик гранатового сорбета</li><li>15 мл розового вермута</li><li>просекко по вкусу</li><li>тертая апельсиновая цедра по вкусу</li><li>съедобный золотой листок для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в бокал 25 мл джина Tanqueray Nº TEN.</li><li>Добавьте один шарик гранатового сорбе (~30 г).</li><li>Отмерьте 15 мл розового вермута и аккуратно влейте в бокал.</li><li>По стенкам стакана волейте 80–100 мл просекко, сохраняя газированность.</li><li>Теркой натрите цедру апельсина над напитком.</li><li>Перемешайте барной ложкой.</li><li>Украсьте съедобным золотым листком, аккуратно положив на поверхность.</li><li>При желании добавьте несколько кубиков льда.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">248-278 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

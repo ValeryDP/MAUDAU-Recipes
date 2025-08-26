@@ -1,0 +1,805 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    «Пісня» — украинская водка, сочетающая традиционную дистилляцию с современным брендингом для создания линейки доступных и узнаваемых крепких спиртных напитков. В составе — высококачественный зерновой спирт и очищенная артезианская
+                    вода.
+                </p>
+                <p>Фирменный стиль производителя, следуя из названия, основан на музыке. Именно поэтому каждый продукт в коллекции связан с конкретной музыкальной нотой, что придает ему уникальную эмоциональную и культурную изюминку.</p>
+                <h2>Особенности водки Pisnya</h2>
+                <p>Что отличает продукт от конкурентов, так это:</p>
+                <ul>
+                    <li>тематический нейминг;</li>
+                    <li>украинское происхождение;</li>
+                    <li>многоступенчатая фильтрация, гарантирующая мягкость;</li>
+                    <li>разнообразный ассортимент, включая классический дистиллят и ароматизированные версии;</li>
+                    <li>ориентация на современного потребителя;</li>
+                    <li>доступная цена.</li>
+                </ul>
+                <h2>«Пісня»: как производят эту водку</h2>
+                <p>
+                    Крепкий спиртной напиток изготавливают из высококачественного ректификованного зернового спирта (класса «Люкс») и очищенной воды, добываемой из подземных артезианских скважин. Первоначально на заводе смягчают воду, проводя
+                    фильтрацию через уголь и кварцевый песок. Затем с ее помощью разбавляют спирт, который впредь подвергают многоступенчатой угольной фильтрации для улучшения вкуса.
+                </p>
+                <p>
+                    Некоторые настойки, например, на цедре лайма или пивном сусле, готовят отдельно и добавляют в спиртовую основу непосредственно перед розливом. Затем водку охлаждают с целью стабилизации перед окончательной фильтрацией. Такая
+                    технология обеспечивает чистый нейтральный вкус классических сортов и четко выраженный аромат настоев.
+                </p>
+                <h2>Ассортимент водки Pisnya в MAUDAU</h2>
+                <p>В маркете алкогольных штук можно найти:</p>
+                <ol>
+                    <li>
+                        Do («Классическая»). Золотая «Пісня» — чистая, нейтральная и сбалансированная водка с мягким вкусом и минимальной алкогольной резкостью. Крепость стандартная — 40%. Отличный вариант для потягивания в чистом виде или в составе
+                        коктейлей.
+                    </li>
+                    <li>
+                        Re («Особая»). Версия, отличающаяся большей чистотой и мягкостью за счет прохождения дополнительной полирующей фильтрации. В составе по-прежнему нет ароматизаторов, а дистиллят разлит при стандартной крепости. Это вариант для
+                        тех, кто предпочитает деликатное послевкусие.
+                    </li>
+                    <li>
+                        Mi («Лаймовая»). Ароматизированная «Пісня» — водка с добавлением настойки на основе цедры лайма. За счет использования натурального сырья нет неприятного искусственного привкуса. Аромат — свежий и цитрусовый. Вкус — слегка
+                        терпкий. Содержание алкоголя снижено до 35%.
+                    </li>
+                    <li>
+                        Fa («На пиве»). Смелый и весьма необычный вариант для водки, приготовленный на основе настоя пивного сусла. Добавка придает крепкому спиртному напитку тонкий солодовый вкус, сопровождаемый легкой хмелевой горечью. Послевкусие —
+                        продолжительное, насыщенное, слегка землистое. Несмотря на то, что это ароматизированная водка, ее советуют подавать исключительно соло — в качестве сопровождения к сытным закускам.
+                    </li>
+                </ol>
+                <h2>Почему выгодно купить водку «Пісня» в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас представлена оригинальная алкогольная продукция по конкурентным ценам. Если хотите еще немного сэкономить, дождитесь скидки на понравившуюся водку. А еще не забывайте о программах лояльности «Власний Рахунок» и WOW Club.
+                    Последняя, например, предлагает увеличенный кешбэк для постоянных покупателей. Доставку водки «Пісня» можно организовать в любой населенный пункт Украины — с помощью логистических компаний «Новая почта», «Укрпочта» и «Meest ПОЧТА».
+                    Заказ во Львове, Днепре и Киеве, включая пригород, по желанию привезет курьер или его можно забрать самому в супермаркетах «Сільпо».
+                </p>
+            </div>
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Screwdriver Cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Screwdriver-pi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Screwdriver Cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лед дробленый</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=pisnya">Водка Pisnya</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Апельсиновые кружочки</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Простой и освежающий коктейль с ярко выраженным апельсиновым вкусом. Сладость сока смягчает водочную основу, делая напиток легким и питким. Универсален по подаче — подходит и для дневного употребления, и для позднего вечера.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Screwdriver Cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>лед дробленый по вкусу</li><li>45 мл водки</li><li>апельсиновый сок долить до верха</li><li>апельсиновые кружочки для подачи</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните высокий стакан (хайбол) дробленым льдом на 3/4 объема.</li><li>Влейте 45 мл водки.</li><li>Добавьте апельсиновый сок до верха, лучше использовать свежевыжатый.</li><li>Аккуратно перемешайте барной ложкой, поднимая жидкость снизу вверх.</li><li>Для подачи украсьте кружочком апельсина, уложенным на край стакана.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Midori Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Midori-Sour.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Midori Sour</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лед</li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=dynyi">Дынный ликер</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=pisnya">Водка Pisnya</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite">Спрайт</a></li><li>Лимонная цедра</li><li>Лаймовая цедра</li><li>Шарики дыни медовой</li><li><a href="https://maudau.com.ua/ru/product/dobavka-fruktova-cherry-twig-kokteilna-vyshnia-315-h-859173">Коктейльная вишня</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий, сладко-кислый коктейль с ароматом медовой дыни и цитрусовой свежестью. Хорошо сбалансирован между фруктовой легкостью и бодрящей кислинкой, подходит для летнего вечера или вечеринки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Midori Sour</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>лед по вкусу</li><li>60 мл дынного ликера</li><li>30 мл водки</li><li>15 мл лимонного сока</li><li>15 мл лаймового сока</li><li>90 мл лимонно-лаймовой газировки Спрайт</li><li>лимонная цедра для подачи</li><li>лаймовая цедра для подачи</li><li>шарики дыни медовой по желанию</li><li>коктейльная вишня по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте 60 мл дынного ликера и 30 мл водки.</li><li>Добавьте 15 мл лимонного и 15 мл лаймового сока.</li><li>Заполните шейкер кубиками льда на 2/3 и энергично взбивайте 15 секунд.</li><li>Процедите в бокал рокс или хайбол, наполненный свежим льдом.</li><li>Добавьте 90 мл спрайта, аккуратно перемешайте.</li><li>Украсьте цедрой лимона и лайма, по желанию добавьте дынные шарики и коктейльную вишню.</li><li>Подавайте сразу, с трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Boozy Sour Watermelon Slushies" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Boozy-Sour-Watermelon-Slushies.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Boozy Sour Watermelon Slushies</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/zhuvalni-tsukerky/product_brand=sour-patch-kids">Конфеты Sour Patch</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=pisnya">Водка Pisnya</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite">Спрайт</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li>Лед</li><li>Розовый пищевой краситель</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Фраппе-коктейль на основе водки и конфет со вкусом арбуза. Имеет сладко-кислый профиль с акцентом на детские вкусы и легкий алкогольный фон. Отличный вариант для летней вечеринки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Boozy Sour Watermelon Slushies</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл конфет Sour Patch со вкусом арбуза</li><li>240 мл водки</li><li>240 мл спрайта</li><li>240 мл лимонада</li><li>240 мл льда</li><li>розовый пищевой краситель по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Положите в блендер 60 г конфет Sour Patch со вкусом арбуза.</li><li>Добавьте 240 мл водки, 240 мл спрайта, 240 мл лимонада и 240 мл льда.</li><li>По желанию добавьте 1–2 капли розового пищевого красителя.</li><li>Измельчайте 20–30 секунд до однородной ледяной массы.</li><li>Проверьте консистенцию: при необходимости добавьте ещё льда или немного лимонада.</li><li>Разлейте по охлажденным бокалам, подавайте с короткой трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Layered Ombre Lemonade Drops" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Layered-Ombre-Lemonade-Drops.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Layered Ombre Lemonade Drops</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=pisnya">Водка Pisnya</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li>Замороженное манго</li><li>Клубника</li><li>Лед</li><li>Ломтики лимона</li><li>Клубника</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающий слоистый коктейль на основе лимонада и водки с фруктовыми слоями из манго и клубники. Сладкий, легкий и визуально эффектный — идеально подходит для подачи на больших мероприятиях.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Layered Ombre Lemonade Drops</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>180 мл водки (приблизительно на 10 порций)</li><li>720 мл лимонада</li><li>2 стакана замороженного манго</li><li>2 стакана нарезанной клубники</li><li>3 стакана льда</li><li>ломтики лимона для украшения</li><li>клубника для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В блендер положите 2 стакана замороженного манго, добавьте 90 мл лимонада и 90 мл водки.</li><li>Взбейте до густой однородной массы, добавьте лед.</li><li>Разлейте манговый слой на дно 10 охлажденных бокалов.</li><li>Вымойте блендер, затем взбейте клубнику с оставшимися 90 мл лимонада и 90 мл водки.</li><li>Аккуратно выложите клубничный слой поверх мангового, используя ложку.</li><li>Добавьте по 3–4 кубика льда сверху.</li><li>Украсьте долькой лимона и половинкой клубники на шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Bay Breeze" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bay-Breeze.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Bay Breeze</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Кубики льда</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=pisnya">Водка Pisnya</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=ananas-13">Ананасовый сок</a></li><li>Лаймовые кружочки</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий тропический коктейль с балансом сладости ананаса и кислоты клюквы. Прозрачный, освежающий напиток с чистым вкусом — отлично подходит для дневного отдыха или аперитива.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Bay Breeze</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>кубики льда по вкусу</li><li>60 мл водки</li><li>90 мл клюквенного сока</li><li>45 мл ананасового сока</li><li>2 кружочка лайма</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заполните хайбол кубиками льда доверху.</li><li>Влейте 60 мл водки.</li><li>Добавьте 90 мл клюквенного сока, затем 45 мл ананасового.</li><li>Аккуратно перемешайте снизу вверх, не вспенивая напиток.</li><li>Украсьте двумя тонкими кружочками лайма, уложенными на край стакана.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">234 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,920 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>Zubrowka — ароматизированная ржаная водка, которую производят на мощностях Polmos Bialystok в Польше. Для поляков это не просто крепкий спиртной напиток, а важная составляющая культурно-исторического наследия.</p>
+                <p>
+                    Бренд является частью крупного концерна Maspex Group. Флагманский продукт из портфолио производителя узнают по травинке, помещенной внутрь каждой бутылки. Это зубровка душистая (Hierochloe odorata), которой питаются зубры, что
+                    объясняет название травы и самой торговой марки.
+                </p>
+                <h2>Zubrowka: краткая историческая сводка</h2>
+                <p>
+                    Бренд имеет 600-летнюю историю, которая начинается после восхождения на трон Казимира Великого. Первый рецепт датирован XIV веком. Успех к дистилляту пришел после 1569 года, когда королевский двор регулярно гостил в охотничьих
+                    домиках в Беловежской пуще по пути на северо-восток.
+                </p>
+                <p>
+                    Польскую водку «Зубровка» официально зарегистрировали в 1784 году. Сегодня это самый известный ароматизированный спиртной напиток Польши. Продукт экспортируют в свыше 80 стран. Например, в Германии он известен как Grasovka, где его
+                    производят по традиционному рецепту, а в США вместо зубровки с 1999 года используют искусственный ароматизатор, поскольку ее ввоз в страну запрещен законом.
+                </p>
+                <h2>Особенности состава и изготовления водки Zubrowka</h2>
+                <p>Крепкий спиртной напиток производят из ржи. Зерно закупают у местных фермеров, проводя предварительную экспертизу почвы. Это гарантирует отменное качество готовой водки «Зубровка».</p>
+                <p>
+                    Процесс изготовления в среднем длится 44 дня. После 6-ступенчатой перегонки полученный дистиллят настаивают на растительной эссенции, приготовленной из зубровки душистой. Это специфическое многолетнее травянистое растение,
+                    произрастающее в Беловежской пуще — охраняемой зоне, где обитают дикие европейские зубры.
+                </p>
+                <p>Траву собирают представители 21 семьи с мая по сентябрь, однако особенно сочной она становится в июне. Сперва ее сушат на открытом воздухе, а затем связывают в пучки, которые развешивают над перегонным аппаратом.</p>
+                <p>
+                    В составе водки «Зубровка» содержится кумарин, который высвобождается в ходе мацерации. Это органическое химическое вещество придает дистилляту узнаваемый аромат с нотами сена, ванили и миндаля. Кумарин в основном используют для
+                    ароматизации выпечки и табачных изделий. Однако в случае с алкоголем, за счет горького привкуса он усиливает аппетит и улучшает переваривание пищи. А еще вещество способствует разрежению крови.
+                </p>
+                <p>
+                    После перегонки и настаивания водку Zubrowka разбавляют родниковой водой, которую поставляют из колодца на территории винокурни. Затем дистиллят пропускают через угольный фильтр, задерживающий нежелательные примеси по типу сивушных
+                    масел. После этого продукт готов к розливу.
+                </p>
+                <h2>Разновидности водки «Зубровка»</h2>
+                <p>В ассортименте производителя представлены несколько стилей:</p>
+                <ol>
+                    <li>
+                        Bison. Флагманский продукт крепостью 37,5%. Зеленовато-желтый оттенок подсказывает, что алкогольный напиток характеризует выразительный растительный привкус. Профиль — насыщенный, со сладковатыми ванильно-миндальными нотками и
+                        умеренной травянистой пикантностью.
+                    </li>
+                    <li>Biala. Неароматизированная пшеничная водка Zubrowka, прошедшая многократную перегонку и платиновую фильтрацию, что приводит к мягкому и чистому вкусу.</li>
+                    <li>Czarna. Еще одна пшеничная водка, которую подвергают угольно-дубовой фильтрации, что придает ей слегка терпкий вкус с акцентом на пряностях.</li>
+                    <li>Zlota. Ароматизированный алкогольный напиток, настоянный на дубовой коре и специях, что объясняет выразительный аромат с нотами ванили и чернослива. Содержание алкоголя — 37,5%.</li>
+                    <li>Rose. Вариант с самой низкой объемной долей алкоголя (30–32%), предназначенный для смешивания в коктейлях. Эту версию выпускают ограниченными партиями. Вкус — легкий и освежающий. Аромат — с нотками свежих лесных ягод.</li>
+                </ol>
+                <h3>Водка «Зубровка»: цена в Украине</h3>
+                <p>
+                    Продукцию реализуют в нескольких объемах — от 100 мл до одного литра. Некоторые разливы помещены в подарочную упаковку. Это непосредственно влияет на их конечную стоимость — как и актуальные спецпредложения от маркета алкогольных
+                    штук MAUDAU. Цену также повышают расходы на транспортировку и импортные пошлины, однако она остается доступной, ведь за 0,7 литра нужно заплатить порядка 150–250 грн.
+                </p>
+                <h2>Как и с чем пить водку Zubrowka</h2>
+                <p>
+                    Чтобы подчеркнуть чистый вкус и нейтральный аромат, дистиллят советуют подавать в маленьких рюмках хорошо охлажденным — в диапазоне от -5 до 0°C. Классическую версию обычно пьют в чистом виде или смешивают с яблочным соком. Такой
+                    заказ в польских барах называют шарлоткой, так как по вкусу микс напоминает этот домашний пирог.
+                </p>
+                <p>
+                    Классическая Zubrowka хорошо раскрывается и в коктейлях, поскольку не теряется на фоне остальных компонентов. Попробуйте сочетание с имбирным элем, сидром, тоником. В качестве безалкогольного дополнения выбирайте фреш из цитрусовых
+                    или ягодный ликер, например, из малины или ежевики.
+                </p>
+                <p>
+                    При составлении меню учитывайте выбранный стиль. Классическая версия хорошо смакует со ржаными тостами с сельдью, тогда как черная — с икрой. Ароматный пирог с яблоками или грушами, который ассоциируется с осенне-зимним периодом,
+                    дополнит Zubrowka Zlota. Для отдыха в жаркую погоду выберите Rose.
+                </p>
+                <h2>Почему выгодно купить водку «Зубровка» в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас можно заказать исключительно оригинальную продукцию с доставкой в любой населенный пункт Украины. С этим помогут популярные логистические компании, а именно «Новая Почта», «Укрпочта» и «Meest ПОЧТА». Если делаете заказ во
+                    Львове, Днепре или Киеве, его можно забрать самостоятельно в некоторых супермаркетах «Сільпо» или дождаться курьера. Чтобы еще немного сэкономить, регистрируйтесь в программах лояльности «Власний Рахунок» и WOW Club. Первая
+                    подразумевает накопление баллобонусов, которыми можно оплатить часть следующего заказа, а вторая гарантирует увеличенный кешбэк и бесплатную доставку для постоянных клиентов MAUDAU.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Apple Żu" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Apple-Zu.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Apple Żu</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=zubrowka">Водка Zubrowka</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=yabloko">Яблочный сок</a></li><li>Яблочные дольки</li><li><a href="https://maudau.com.ua/ru/category/spetsii-ta-prypravy/vyd_110=korytsia-6">Корица</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Apple Żu — пряный, сочный коктейль на яблочной основе с мягкой текстурой и ароматом свежих фруктов. Вкус легкий, кисло-сладкий, с теплотой корицы и естественной свежестью яблочного сока.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Apple Żu</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл водки Zubrowka</li><li>яблочный сок по вкусу</li><li>яблочные дольки по вкусу</li><li>молотая корица по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокал хайболл положите несколько долек зеленого яблока.</li><li>Присыпьте щепоткой молотой корицы и разомните мадлером.</li><li>Влейте водку Zubrowka 40 мл.</li><li>Добавьте лед на ¾ объема.</li><li>Долейте охлажденный яблочный сок до верха.</li><li>Размешайте 2 оборота барной ложкой.</li><li>Украсьте яблочным веером на шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Black Spice" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Black-Spice.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Black Spice</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=zubrowka">Водка Zubrowka</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=marakuia-3">Сироп маракуйи</a></li><li><a href="https://maudau.com.ua/ru/product/sous-chyli-yamchan-hostryi-200-h-30sht-yashch">Острый соус чили</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Black Spice — коктейль с ярким, сочным стартом и неожиданным пряным развитием. Сначала ощущается сладость маракуйи и мягкий апельсиновый сок, затем — короткая вспышка лимонной кислинки, а ближе к финалу вступает острота чили, которая задерживается в послевкусии.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Black Spice</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл водки Zubrowka (белой или черной)</li><li>10 мл лимонного сока</li><li>30 мл апельсинового сока</li><li>20 мл сиропа маракуйи</li><li>2 деша острого соуса чили</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере водку Zubrowka 40 мл, апельсиновый сок 30 мл, лимонный сок 10 мл, сироп маракуйи 20 мл.</li><li>Добавьте 2 деша чили-соуса и дайте настояться 30 секунд без льда.</li><li>После добавьте лед и встряхните энергично 10 секунд.</li><li>Процедите через стрейнер в высокий бокал с крупным льдом.</li><li>Украсьте слайсом чили или цедрой апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blackcurrant Collins" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blackcurrant-Collins.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blackcurrant Collins</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=zubrowka">Водка Zubrowka</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/varennia-dzhemy-ta-med/osnova_17=smorodyna-4">Джем из черной смородины</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2">Тоник</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Blackcurrant Collins — коктейль с выраженным ягодным вкусом, в котором сладость смородинового джема сталкивается с яркой кислотой лимона. Тоник дает легкую горечь и усиливает аромат, создавая ощущение глубины и свежести. Напиток не слишком легкий, но без тяжелого послевкусия.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blackcurrant Collins</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл водки Zubrowka (белой или черной)</li><li>20 мл лимонного сока</li><li>5 мл сахарного сиропа</li><li>2 барных ложки джема из черной смородины</li><li>тоник по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере джем из смородины (2 барные ложки), лимонный сок 20 мл, водку Zubrowka 40 мл, сахарный сироп 5 мл.</li><li>Встряхните без льда 5 секунд.</li><li>Добавьте лед и встряхните еще 10.</li><li>Процедите в хайболл, заполненный крупными кубами льда.</li><li>Долейте тоник по вкусу, перемешайте.</li><li>Украсьте сверху ложкой смородинового джема и долькой лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Black Coriande" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Black-Coriande.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Black Coriande</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=zubrowka">Водка Zubrowka</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=persykovyi-3">Персиковый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Сироп с кориандром</li><li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=sylnohazovana">Газированная вода</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сухой, травяной коктейль с мягкой кислинкой и чистым вкусом. Сироп на кориандре придает зеленый, пряный оттенок, а персиковый ликер добавляет немного мягкости. Газировка завершает композицию легкой горчинкой и свежестью. Вкус чистый с освежающим финишом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Black Coriande</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл водки Zubrowka (белой или черной)</li><li>10 мл персикового ликера</li><li>20 мл лимонного сока</li><li>10 мл сиропа с кориандром</li><li>газированная вода по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере соедините водку Zubrowka 40 мл, ликер персика 10 мл, лимонный сок 20 мл, сироп с кориандром 10 мл.</li><li>Добавьте лед и встряхните 12 секунд.</li><li>Процедите смесь в хайболл на лед средней фракции.</li><li>Долейте газированной воды до краев.</li><li>Перемешайте осторожно барной ложкой.</li><li>Украсьте свежим листом кориандра или засушенной долькой персика.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Żu Shot" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Zu-Shot.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Żu Shot</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=zubrowka">Водка Zubrowka</a></li><li>Яблоко</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Żu Shot — простой и крепкий шот, где яблоко работает не как украшение, а как контраст. Холодная водка сразу дает тепло в горле, а сладость и хруст яблока смягчают ощущение. Механика простая, но вкус сбалансирован.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Żu Shot</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл водки Zubrowka</li><li>кусочек яблока</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В стопку налейте водку Zubrowka 40 мл, охладив ее заранее.</li><li>Срежьте тонкий, острый кусочек зеленого яблока.</li><li>Подавайте вместе, без смешивания.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Polish Mule" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Polish-Mule.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Polish Mule</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=zubrowka">Водка Zubrowka</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/napii-fentimans-ginger-beer-zi-smakom-imbyru-bezalkoholnyi-275-ml-788637">Имбирное пиво</a></li><li>Свежий имбирь</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Polish Mule — коктейль с ярко выраженным имбирным характером. Сначала идет легкая цитрусовая кислинка, затем — жгучесть свежего имбиря, и только потом приходит округлая, нейтральная основа водки. Все вместе дает пряный и холодный эффект с бодрящим финалом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Polish Mule</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл водки Zubrowka (белой или черной)</li><li>лимонный сок по вкусу</li><li>имбирное пиво по вкусу</li><li>свежий имбирь по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В медную кружку разомните несколько долек лайма мадлером.</li><li>Добавьте водку Zubrowka 40 мл, сок лайма (по вкусу), свеженатертый имбирь (¼ ч.л.).</li><li>Выложите крупный лед до самого верха.</li><li>Долейте имбирного пива до краев.</li><li>Тщательно перемешайте барной ложкой снизу вверх.</li><li>Украсьте имбирным чипсом и цедрой лайма.</li><li>Подавайте в той же кружке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Zubroni" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Zubroni.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Zubroni</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/alkoholnyi-napii-zubrowka-zlota-375-07-l-598390">Водка Zubrowka Zlota</a></li><li><a href="https://maudau.com.ua/ru/product/biter-negroni-aperitivo-25-1-l">Красный итальянский биттер</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone">Красный вермут</a></li><li>Апельсин</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Zubroni — крепкий и горьковатый коктейль, построенный на равных долях водки, биттера и вермута. Вкус сложный: сначала сладость, потом горечь, затем древесный, теплый шлейф. Апельсиновая цедра завершает все резким ароматическим акцентом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Zubroni</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл водки Zubrowka Zlota</li><li>30 мл красного итальянского биттера</li><li>30 мл красного сладкого вермута</li><li>ломтик апельсина для декора</li><li>лед по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В стакане для смешивания соедините водку Zubrowka Zlota 40 мл, красный биттер 30 мл, красный сладкий вермут 30 мл.</li><li>Добавьте лед и перемешайте барной ложкой в течение 30 секунд.</li><li>Процедите в рокс-гласс на крупный прозрачный куб.</li><li>Срежьте толстую цедру апельсина, выжмите масла и положите в бокал.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">222 - 249 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.5-10.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

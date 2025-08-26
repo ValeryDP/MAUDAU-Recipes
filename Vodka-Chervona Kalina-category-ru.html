@@ -1,0 +1,791 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Водка «Червона Калина» — крепкий спиртной напиток из Украины, символизирующий чистоту, стойкость и национальную идентичность. Названная в честь растения с глубоким культурным и историческим значением, продукция производителя
+                    сочетает традиционную технологию дистилляции с современными стандартами качества.
+                </p>
+                <h2>Особенности водки «Червона Калина»</h2>
+                <p>Ключевые моменты:</p>
+                <ol>
+                    <li>Название и дизайн отсылают к культовой украинской песне «Ой, у лузі червона калина» — символу единства и патриотизма.</li>
+                    <li>Каждую бутылку изготавливают полностью в Украине — из местного высококачественного сырья.</li>
+                    <li>В составе — зерновой спирт класса «Люкс» и предварительно очищенная артезианская вода.</li>
+                    <li>Тройная фильтрация обеспечивает чистый и мягкий вкус — без посторонних примесей.</li>
+                </ol>
+                <p>А что еще важно, на водку «Червона Калина» цена весьма доступная, хотя она представляет премиальный сегмент алкоголя. Это связано с отсутствием необходимости уплаты налога на импорт.</p>
+                <p>Бренд также предлагает уникальные разливы, приуроченные к национальным праздникам. Это еще раз подчеркивает культурную значимость торговой марки.</p>
+                <h2>Как изготавливают водку «Червона Калина»</h2>
+                <p>
+                    Производство следует по строго регламентированному многоэтапному процессу. Сперва отборный зерновой спирт класса «Люкс» смешивают с артезианской водой из глубоких скважин. Полученную смесь пропускают через систему угольных и
+                    кварцевых фильтров, удаляя нежелательные примеси по типу сивушных масел, вызывающих похмелье. Для дополнительной мягкости водки «Червона Калина» проводят дополнительную фильтрацию с помощью частичек серебра и платины.
+                </p>
+                <p>Нужного вкуса добиваются посредством внедрения меда и глюкозы. Количество вспомогательных компонентов в составе зависит от производимого стиля. После стабилизации крепкий спиртной напиток разливают на автоматизированных линиях.</p>
+                <h2>Ассортимент водки «Червона Калина»</h2>
+                <p>В центре портфолио — версия «Украинская». Это флагманская водка с чистым вкусом и слегка сладковатым послевкусием, доступная в разных объемах. Рецептура содержит настой на основе меда и липы.</p>
+                <p>
+                    Водка «Зимняя» создана для холодных месяцев. Она отличается более насыщенным вкусом и согревающим послевкусием. Эту версию водки «Червона Калина» зачастую сопровождают сытными блюдами вроде вареников или запеченной картошки с мясом.
+                    Бренд также выпускает лимитированную серию «Зимняя особая» с добавлением экстрактов трав и специй с тонким ароматом.
+                </p>
+                <p>«Классическая» — самый универсальный вариант в ассортименте торговой марки. Дистиллят подходит как для потягивания в чистом виде, так и приготовления коктейлей.</p>
+                <p>
+                    А еще компания ежегодно выпускает серию ко Дню Независимости Украины. Бутылку украшает патриотический дизайн. Часть выручки от продажи партии направляют на помощь армии. Эту водку стоит выбрать в качестве подарка, так как линейка
+                    имеет особую коллекционную ценность.
+                </p>
+                <h2>Почему выгодно купить водку «Червона Калина» в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас представлена оригинальная продукция по конкурентным ценам, которые становятся еще выгоднее в момент распродаж. Отзывы покупателей помогут с принятием решения. Доставку выполняют в любую точку Украины с помощью одной из трех
+                    логистических компаний-партнеров, а в некоторых городах можно воспользоваться курьерскими услугами или забрать заказ из супермаркетов «Сільпо». Речь идет о Киеве, Днепре и Львове. Программы лояльности способствуют экономии, особенно
+                    WOW Club, предлагающий увеличенный кешбэк и бесплатную доставку для постоянных покупателей.
+                </p>
+            </div>
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Dalgona Martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Dalgona-Martini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Dalgona Martini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лед</li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=baileys">Бейлис</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=chervona-kalyna">Водка Червона Калина</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li><a href="https://maudau.com.ua/ru/category/kava/typ_86=rozchynna">Растворимый кофе</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающий, чуть дерзкий микс на базе свежевыжатого апельсина. Он не маскирует алкоголь, но и не перегружает — простой в исполнении, но выразительный во вкусе. Хорошо подходит для вечеринок и не требует спецоборудования.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Dalgona Martini</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>лед по вкусу</li><li>60 мл Бейлиса</li><li>60 мл водки Червона Калина</li><li>2 ст. л. сахара</li><li>2 ст. л. растворимого кофе</li><li>2 ст. л. холодной воды</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте 60 мл водки Червона Калина и 60 мл трипл-сек.</li><li>Выжмите сок из одного среднего апельсина, ориентируясь на 60–80 мл.</li><li>Добавьте апельсиновый сок к спиртному и насыпьте крупный лед.</li><li>Встряхните энергично в течение 10 секунд.</li><li>Перелейте через стрейнер смесь в бокал хайбол, наполненный кубиками льда.</li><li>Долейте Sprite до края бокала.</li><li>Перемешайте барной ложкой.</li><li>При желании добавьте 2–3 капли апельсиновой настойки на поверхность.</li><li>Украсьте тонким ломтиком апельсина, уложенным на край бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Honey Deuce" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Honey-Deuce.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Honey Deuce</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Дробленый лед</li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=chervona-kalyna">Водка Червона Калина</a></li><li><a href="https://maudau.com.ua/ru/product/liker-krupnik-malina-malyna-16-0-5-l">Малиновый ликер</a></li><li>Дыня</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Чистый, прямой коктейль с ярким клюквенным профилем и легкой кислинкой лайма. Не перегружен деталями, идеален в жаркий день или как универсальный вечерний лонгдринк. Один из тех напитков, что можно пить без усталости.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Honey Deuce</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>дробленый лед по вкусу</li><li>90 мл лимонада</li><li>37 мл водки Червона Калина</li><li>15 мл малинового ликера</li><li>медовая дыня для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните хайбол кубиками льда почти доверху.</li><li>Влейте 45 мл водки Червона Калина и 120 мл охлажденного клюквенного сока.</li><li>Добавьте 5–10 мл лаймового сока.</li><li>Перемешайте барной ложкой снизу вверх.</li><li>Украсьте долькой лайма, слегка сдавив ее над напитком для легкого цитрусового аромата.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Orange Crush" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Orange-Crush.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Orange Crush</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лед</li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=chervona-kalyna">Водка Червона Калина</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Трипл-сек</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/product_brand=sprite">Лимонно-лаймовая газировка Sprite</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновая настойка</a></li><li>Ломтик апельсина</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Это не коктейль, а целый десерт в бокале. Легкий, игристый, ванильно-апельсиновый пунш с акцентом на сливочную текстуру. Отличный выбор для летнего бранча или вечеринки — готовится порционно и эффектно выглядит на столе.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Orange Crush</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>лед по вкусу</li><li>60 мл водки Червона Калина</li><li>60 мл трипл-сек</li><li>сок 1 среднего апельсина (примерно 60-80 мл)</li><li>Sprite по вкусу</li><li>несколько капель апельсиновой настойки по желанию</li><li>ломтик апельсина для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В большой пунш-бол налейте 1,9 л охлажденного апельсинового сока.</li><li>Добавьте 480 мл водки Червона Калина, 1 л имбирного эля и 750 мл просекко.</li><li>Размешайте барной ложкой по кругу, не вспенивая.</li><li>Непосредственно перед подачей добавьте 950 мл мягкого ванильного мороженого — небольшими порциями, давая ему частично растаять.</li><li>Выложите на поверхность тонко нарезанный апельсин.</li><li>Подавайте в бокалах hurricane или в больших винных, наполняя до половины.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cape Codders" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cape-Codders-pi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cape Codders</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=chervona-kalyna">Водка Червона Калина</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li>Долька лайма</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Clover Club — один из немногих классических коктейлей, в котором малина и яичный белок звучат как нечто утонченное. Он воздушный, терпкий, чуть сухой и при этом текстурный. Идеален, когда хочется чего-то барного, но не перегруженного спиртом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Cape Codders</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл водки Червона Калина</li><li>120 мл клюквенного сока</li><li>лаймовый сок по вкусу по желанию</li><li>долька лайма для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокал положите лед.</li><li>Влейте в него 45 мл водки Червона Калина и 120 мл клюквенного сока.</li><li>Для вкуса можете добавить лаймовый сок.</li><li>Перемешайте, украсьте долькой лайма и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Creamsicle Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Creamsicle-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Creamsicle Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/horilka/product_brand=chervona-kalyna">Водка Червона Калина</a></li><li><a href="https://maudau.com.ua/ru/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Имбирный эль</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li>Ванильное мороженое</li><li>Апельсин</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сочный и насыщенный пунш выстроенный на сочетании цитрусов, ванили и легкой газировки. Мороженое добавляется прямо в пунш и постепенно тает, превращая напиток в кремовую, слегка пенистую смесь с отчетливой сладостью, свежестью и мягкой фруктовой кислинкой. Идеален для вечеринок!
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Creamsicle Punch</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1,9 л апельсинового сока</li><li>480 мл водки</li><li>1 л имбирного эля</li><li>750 мл просекко</li><li>950 мл ванильного мороженого</li><li>1 тонко нарезанный апельсин</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В большой пунш-бол налейте 1,9 л охлажденного апельсинового сока.</li><li>Добавьте 480 мл водки и 1 л имбирного эля, перемешайте.</li><li>Влейте 750 мл охлажденного просекко и аккуратно вмешайте его.</li><li>Добавьте 950 мл ванильного мороженого.</li><li>Сверху выложите тонкие дольки апельсина.</li><li>Перемешайте барной ложкой перед подачей.</li><li>Разливай в бокалы с небольшим количеством льда, по желанию добавляя шарик мороженого в каждый.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">224 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

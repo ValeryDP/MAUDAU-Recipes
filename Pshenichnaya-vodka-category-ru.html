@@ -1,0 +1,922 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Водка пшеничная — спирт, дистиллированный из пшеницы. Его ценят за нейтральный аромат и мягкий, слегка сливочный привкус. Крепкий спиртной напиток производят преимущественно в Швеции, Польше, Франции, Украине и США, то есть в
+                    странах с изобилием этой зерновой культуры.
+                </p>
+                <h3>Стандартное содержание алкоголя</h3>
+                <p>
+                    После многократной перегонки в вертикальных колоннах крепость достигает 95–97%. Объемную долю алкоголя постепенно снижают посредством разбавления предварительно подготовленной и очищенной водой, зачастую — родниковой. Типичная
+                    крепость в момент розлива составляет 40%.
+                </p>
+                <h2>Водка пшеничная: что известно о происхождении крепкого спиртного напитка</h2>
+                <p>Поначалу дистиллят перегоняли из картофеля, свеклы и винограда. Коммерческое производство водки из пшеницы началось в XIX веке — с целью смягчения вкуса и придания нежного аромата.</p>
+                <p>
+                    Первым производителем крепкого алкоголя на основе этой зерновой культуры считают Absolut — шведскую торговую марку, основанную в 1879 году. К концу XX века категорию признали золотым стандартом в отрасли, во многом — благодаря таким
+                    новаторам, как Grey Goose, решившим использовать озимую пшеницу и кустарные методы перегонки.
+                </p>
+                <h2>Как производят водку из пшеницы</h2>
+                <p>Процесс состоит из нескольких этапов:</p>
+                <ul>
+                    <li>измельчение пшеницы для высвобождения крахмала;</li>
+                    <li>затирание и сбраживание для превращения крахмалистых соединений в сахар;</li>
+                    <li>первичная перегонка, обычно осуществляемая в колоннах непрерывного действия;</li>
+                    <li>повторная многократная дистилляция для повышения крепости, а также удаления нежелательных примесей, особенно сивушных масел;</li>
+                    <li>фильтрация с применением угля, кварца или алмазов, а также частичек серебра, золота или платины;</li>
+                    <li>разбавление до нужной крепости.</li>
+                </ul>
+                <p>
+                    Если производят ароматизированную версию, дистиллят дополнительно настаивают на выбранных добавках. После этого водку пшеничную отстаивают. Это делают для баланса и прозрачности. Последний этап — розлив на автоматизированных линиях.
+                </p>
+                <h3>В чем отличие пшеничной водки от зерновой</h3>
+                <p>Разница кроется в составе. Если пшеничную водку производят исключительно из пшеницы разных сортов, то зерновую можно изготовить из любого злака, включая рожь, ячмень, кукурузу.</p>
+                <h2>Водка пшеничная: цена в Украине</h2>
+                <p>Стоимость зависит от:</p>
+                <ul>
+                    <li>качества сырья;</li>
+                    <li>количества циклов перегонки;</li>
+                    <li>метода и длительности фильтрации.</li>
+                </ul>
+                <p>Не последнюю роль играет репутация торговой марки. Дороже всего стоит продукция Stoli, Ora, Daucourt, Au — это премиальные производители. Цена на крафтовую продукцию, произведенную маленькими партиями, также повышается.</p>
+                <p>Средний ценовой диапазон представлен брендами Absolut, Nemiroff и Smirnoff. Заказать самую доступную водку пшеничную можно в украинских производителей: «Гетьман», «Козацька Рада», «Хлібний Дар».</p>
+                <p>
+                    Крепкое спиртное из Скандинавского полуострова стоит еще дороже из-за дополнительных расходов на транспортировку и импортных пошлин. Такая же ситуация с разливами из США и Японии. На цену также влияют необычный дизайн бутылок и
+                    наличие подарочной упаковки.
+                </p>
+                <h2>Как пить водку пшеничную</h2>
+                <p>
+                    Благодаря нейтральному аромату и чистому вкусу этим крепким спиртным напитком можно наслаждаться в чистом виде. Для этого хорошенько охладите бутылку — примерно до –5 °C. Подавайте дистиллят в узких стопках на ножке — так содержимое
+                    не будет греться в руках.
+                </p>
+                <p>
+                    Что касается закуски, то лучше всего остановиться на классических сочетаниях водки из пшеницы с соленьями, ржаным хлебом со сельдью, свежими овощами. Если ищете что-то посовременнее, подайте к рюмке закуску с лимоном и травами, суши
+                    или сашими, морепродукты с гриля.
+                </p>
+                <p>
+                    Пшеничную водку также используют в качестве основного компонента в коктейлях. Классика жанра — «Секс на пляже», «Голубая лагуна», «Кровавая Мэри», «Космополитен». Крепкий спиртной напиток хорошо сочетается с любым другим алкоголем —
+                    от вермутов и ликеров до текилы и рома, так что не отказывайтесь от экспериментов. Ну и не забывайте о знакомом всем тандеме — водке с апельсиновым соком. В барах такое сочетание именуют «Отверткой».
+                </p>
+                <h2>Почему выгодно купить пшеничную водку в интернет-магазине MAUDAU</h2>
+                <p>
+                    Несмотря на множество товаров в ассортименте, каждый из них — гарантировано оригинален. Благодаря продуманному онлайн-каталогу с удобной навигацией и несколькими фильтрами найти нужный товар и оформить заказ можно за 5–10 минут.
+                    Доставку выполняют по всей Украине, а для жителей Киева, Днепра и Львова предусмотрены курьерская развозка и самовывоз из некоторых супермаркетов «Сільпо». Дополнительную выгоду обеспечивают программы лояльности «Власний Рахунок» и
+                    WOW Club. Первая нацелена на накопление баллобонусов, которыми можно оплатить часть следующего заказа. А с WOW Club постоянные клиенты получают увеличенный кешбэк и бесплатную доставку.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="All You Can Wheat" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/All-You-Can-Wheat.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">All You Can Wheat</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/osnova_2=pshenytsia-3">Пшеничная водка</a></li><li>Oleo Saccharum из ананаса и лимона</li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=peychauds">Аперитив Peychaud’s</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/dytiachi-piure/smak=marakuja">Пюре маракуйи</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающий, сложный по структуре коктейль с выраженной кислотностью лимонного сока, насыщенной сладостью ананаса и плотной текстурой маракуйи. Пшеничная водка добавляет крепость, а аперитив Peychaud’s — мягкую горечь и анисово-пряную ноту. Вкус раскрывается послойно: от фруктового к сухому финишу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить All You Can Wheat</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл пшеничной водки</li><li>22 мл Oleo Saccharum из ананаса и лимона</li><li>15 мл аперитива Peychaud’s</li><li>15 мл лимонного сока</li><li>1 барная ложка пюре маракуйи</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Подготовьте бокал coupette и заполните кубиками льда.</li><li>В шейкере растолките мадлером 4 кубика свежего ананаса.</li><li>Добавьте 3 кольца лимонной цедры, 2 барные ложки сахара, перемешайте ложкой и закройте шейкер.</li><li>Оставьте на 10 минут для выделения oleo saccharum (сладкого сиропа).</li><li>Процедите через мелкое сито, отмерьте 22 мл и перелейте в чистый шейкер.</li><li>Добавьте 45 мл пшеничной водки, 15 мл аперитива Peychaud’s, 15 мл лимонного сока и 1 барную ложку пюре маракуйи.</li><li>Добавьте лед до ¾ объема шейкера и встряхивайте 15 секунд.</li><li>Удалите лед из бокала, процедите напиток через двойное сито.</li><li>Украсьте тонким слайсом ананаса и лимонной цедрой, закрепленной мини-прищепкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Beetopolitan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Beetopolitan.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Beetopolitan</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/osnova_2=pshenytsia-3">Пшеничная водка</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=buriak-7">Свекольный сок</a></li><li>Свекла</li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновый биттер</a></li><li>Лайм</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Густой, насыщенный по цвету и вкусу коктейль с выраженной свекольной основой, усиленной свежей клюквой и лаймом. Пшеничная водка сохраняет чистоту, а апельсиновый биттер завершает композицию легкой пряной нотой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Beetopolitan</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл пшеничной водки</li><li>30 мл свекольного сока</li><li>2 ломтика свеклы</li><li>2 капли апельсинового биттера</li><li>сок 1 свежего лайма</li><li>30 мл клюквенного сока</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал coupette, заполнив его кубиками льда.</li><li>В блендере измельчите 2 ломтика свеклы с 20 мл воды.</li><li>Процедите через сито с марлей, отмерьте 30 мл свежего свекольного сока.</li><li>В шейкер налейте 60 мл пшеничной водки, 30 мл свекольного сока, 30 мл клюквенного сока и сок 1 лайма.</li><li>Добавьте 2 капли апельсинового биттера.</li><li>Заполните шейкер крупным льдом, встряхивайте 15–18 секунд.</li><li>Удалите лед из бокала, процедите напиток через двойное сито.</li><li>Украсьте тонким слайсом свеклы и сухой клюквой на шпажке.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cran Holiday Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cran-Holiday-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cran Holiday Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/osnova_2=pshenytsia-3">Пшеничная водка</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=korytsia-7">Сироп Корица</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna">Шампанское</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-cannamela-3-sht">Палочки корицы</a></li><li>Клюква</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Форматный коктейль с насыщенным вкусом клюквы, мягким апельсином и выразительной корицей. Шампанское добавляет объема и легкой игристости, делая коктейль праздничным, но не приторным. Подходит как для бокального сета, так и для порционной подачи.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Cran Holiday Punch</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 бутылка пшеничной водки</li><li>600 мл клюквенного сока</li><li>1 стакан апельсинового сока</li><li>½ стакана коричного сиропа</li><li>1 бутылка шампанского</li><li>1 нарезанный апельсин</li><li>палочки корицы по вкусу</li><li>свежая клюква по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заполните пунш-бол кубиками льда и дайте постоять.</li><li>Нарежьте 1 апельсин кольцами, удалите косточки.</li><li>Смешайте в большой емкости 600 мл клюквенного сока, 1 стакан апельсинового сока и ½ стакана коричного сиропа.</li><li>Добавьте апельсиновые кольца, 3 палочки корицы и горсть свежей клюквы.</li><li>Влейте 1 бутылку пшеничной водки и перемешайте барной ложкой.</li><li>Удалите лед из пунш-бола, переложите смесь и добавьте бутылку охлажденного шампанского, вливая по стенке.</li><li>Подавайте в стаканах rocks со льдом, добавив дольку апельсина и 2–3 ягоды клюквы в каждый бокал.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Flatiron Flip" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Flatiron-Flip.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Flatiron Flip</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/osnova_2=pshenytsia-3">Пшеничная водка</a></li><li>Ликер Licor 43</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=lavanda-4">Сироп с лавандой</a></li><li><a href="https://maudau.com.ua/ru/category/vershky">Сливки</a></li><li>Куриное яйцо</li><li><a href="https://maudau.com.ua/ru/category/voda/vyd_133=sylnohazovana">Газированная вода</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сливочный, десертный коктейль с яичной текстурой, сладостью ликера и флористической нотой лаванды. Вкус плотный, гладкий, с долгим финишем и мягким прогревом от водки. Пена на поверхности придает дополнительную воздушность.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Flatiron Flip</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл пшеничной водки</li><li>30 мл ликера Licor 43</li><li>7 мл сиропа с лавандой</li><li>15 мл сливок</li><li>1 крупное яйцо</li><li>газированная вода по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал fizz, засыпав его кубиками льда.</li><li>В шейкере безо льда соедините 45 мл пшеничной водки, 30 мл Licor 43, 7 мл лавандового сиропа, 15 мл сливок и 1 крупное яйцо.</li><li>Встряхивайте в технике dry shake 20 секунд.</li><li>Добавьте крупный лед и повторите шейк 15 секунд.</li><li>Удалите лед из бокала, процедите напиток через двойное сито.</li><li>Оставьте 2 см до края для доливки.</li><li>Влейте 30–50 мл газированной воды тонкой струйкой по центру.</li><li>Украсьте щепоткой сушеной лаванды или стружкой мускатного ореха.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Green Machine" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Green-Machine.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Green Machine</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/osnova_2=pshenytsia-3">Пшеничная водка</a></li><li>Свежий сок огурца, капусты кейл, сельдерея и фенхеля</li><li>Сахарный сироп с медом</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li>Веточки мяты</li><li>Свежие ломтики огурца</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Свежий, растительный и легкий коктейль с выраженной огуречной и травяной основой. Холодный овощной сок делает вкус чистым, мята придает прохладу, а лайм добавляет цитрусовой резкости. Отличный вариант для дневного освежающего коктейля.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Green Machine</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл пшеничной водки</li><li>60 мл свежего сока огурца, капусты кейл, сельдерея и фенхеля</li><li>15 мл сахарного сиропа с медом</li><li>22 мл сока лайма</li><li>2 веточки мяты (1 веточку оставить для гарнира)</li><li>несколько ломтиков свежего огурца для гарнира</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал highball, засыпав его доверху льдом.</li><li>В соковыжималке отожмите 60 мл свежего сока из огурца, кейла, сельдерея и фенхеля.</li><li>В шейкере раздавите мадлером 1 веточку мяты.</li><li>Добавьте 45 мл пшеничной водки, 15 мл медового сиропа и 22 мл сока лайма.</li><li>Влейте свежевыжатый овощной сок, добавьте лед.</li><li>Встряхивайте 12–15 секунд.</li><li>Удалите лед из бокала, процедите напиток через двойное сито.</li><li>Добавьте свежие кубики льда, украсьте огуречными слайсами и веточкой мяты.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Raspberry Lemonade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-Lemonade.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Raspberry Lemonade</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/osnova_2=pshenytsia-3">Пшеничная водка</a></li>
+                    <li>Свежая малина</li>
+                    <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                    <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                    <li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий, насыщенный, но сбалансированный коктейль с выраженным вкусом свежей малины и лимонной кислотой. Прост в восприятии, но интересен по вкусу. От него во рту остается приятное ягодное послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Raspberry Lemonade</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл пшеничной водки</li><li>4 размятые ягоды малины</li><li>30 мл простого сиропа</li><li>15 мл лимонного сока</li><li>лед для смешивания</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал tumbler, засыпав кубиками льда.</li><li>В шейкере раздавите мадлером 4 свежие ягоды малины.</li><li>Добавьте 50 мл пшеничной водки, 30 мл простого сиропа и 15 мл лимонного сока.</li><li>Добавьте лед до ¾ и встряхивайте 15 секунд.</li><li>Удалите лед из бокала, процедите напиток через двойное сито.</li><li>Добавьте свежие кубики льда.</li><li>Украсьте малиной на шпажке и мятным листом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Summer Blues" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Summer-Blues.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Summer Blues</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/horilka/osnova_2=pshenytsia-3">Пшеничная водка</a></li>
+                    <li>Черника</li>
+                    <li>Мята</li>
+                    <li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                    <li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li>
+                    <li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий и освежающий коктейль с мягкой ягодной структурой. Черника и мята придают напитку прохладу, а лимон — яркость. Вкус мягкий, но не водянистый, с легкой кислинкой и фруктовым послевкусием.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Summer Blues</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл пшеничной водки</li><li>10 ягод черники</li><li>3-4 веточки мяты</li><li>15 мл простого сиропа</li><li>15 мл лимонного сока</li><li>лед для смешивания</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокале Collins смешайте 10 ягод черники и 3 веточки мяты, раздавите мадлером.</li><li>Добавьте 15 мл простого сиропа, 15 мл лимонного сока и 15 мл пшеничной водки.</li><li>Засыпьте лед и встряхните 10 секунд.</li><li>Удалите лед из бокала, процедите напиток через двойное сито.</li><li>Добавьте свежие кубики льда.</li><li>Украсьте мятой и 2 ягодами черники.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">221 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

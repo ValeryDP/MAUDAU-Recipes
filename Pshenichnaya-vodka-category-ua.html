@@ -1,0 +1,909 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Пшенична горілка — спирт, дистильований із пшениці. Його цінують за нейтральний аромат і м’який, злегка вершковий присмак. Міцний спиртний напій виробляють переважно у Швеції, Польщі, Франції, Україні та США, тобто в країнах із
+                    великою кількістю цієї зернової культури.
+                </p>
+                <h3>Стандартний вміст алкоголю</h3>
+                <p>
+                    Після багаторазової перегонки у вертикальних колонах міцність досягає 95–97%. Об’ємну частку алкоголю поступово знижують шляхом розведення попередньо підготовленою й очищеною водою, найчастіше — джерельною. Типова міцність у момент
+                    розливу становить 40%.
+                </p>
+                <h2>Пшенична горілка: що відомо про походження міцного спиртного напою</h2>
+                <p>Спочатку дистилят переганяли з картоплі, буряка і винограду. Комерційне виробництво горілки з пшениці почалося в XIX столітті — з метою пом’якшення смаку і додання ніжного аромату.</p>
+                <p>
+                    Першим виробником міцного алкоголю на основі цієї зернової культури вважають Absolut — шведську торгову марку, засновану в 1879 році. До кінця XX століття категорію визнали золотим стандартом в галузі, багато в чому — завдяки таким
+                    новаторам, як Grey Goose, які вирішили використовувати озиму пшеницю і кустарні методи перегонки.
+                </p>
+                <h2>Як виробляють горілку з пшениці</h2>
+                <p>Процес складається з декількох етапів:</p>
+                <ul>
+                    <li>подрібнення пшениці для вивільнення крохмалю;</li>
+                    <li>затирання і зброджування для перетворення крохмалистих сполук на цукор;</li>
+                    <li>первинна перегонка, зазвичай здійснювана в колонах безперервної дії;</li>
+                    <li>повторна багаторазова дистиляція для підвищення міцності, а також видалення небажаних домішок, особливо сивушних олив;</li>
+                    <li>фільтрація із застосуванням вугілля, кварцу або алмазів, а також частинок срібла, золота або платини;</li>
+                    <li>розбавлення до потрібної міцності.</li>
+                </ul>
+                <p>Якщо виробляють ароматизовану версію, дистилят додатково настоюють на обраних добавках. Після цього пшеничну горілку відстоюють. Це роблять для балансу і прозорості. Останній етап — розлив на автоматизованих лініях.</p>
+                <h3>У чому відмінність пшеничної горілки від зернової</h3>
+                <p>Різниця криється в складі. Якщо пшеничну горілку виробляють виключно з пшениці різних сортів, то зернову можна виготовити з будь-якого злаку, зокрема жита, ячменя, кукурудзи.</p>
+                <h2>Пшенична горілка: ціна в Україні</h2>
+                <p>Вартість залежить від:</p>
+                <ul>
+                    <li>якості сировини;</li>
+                    <li>кількості циклів перегонки;</li>
+                    <li>методу і тривалості фільтрації.</li>
+                </ul>
+                <p>Не останню роль відіграє репутація торгової марки. Найдорожчою є продукція Stoli, Ora, Daucourt, Au — це преміальні виробники. Ціна на крафтову продукцію, вироблену невеликими партіями, також підвищується.</p>
+                <p>Середній ціновий діапазон представлений брендами Absolut, Nemiroff і Smirnoff. Замовити найдоступнішу пшеничну горілку можна в українських виробників: «Гетьман», «Козацька Рада», «Хлібний Дар».</p>
+                <p>
+                    Міцний алкоголь зі Скандинавського півострова коштує ще дорожче через додаткові витрати на транспортування та імпортні мита. Така ж ситуація з розливами з США та Японії. На ціну також впливають незвичайний дизайн пляшок і наявність
+                    подарункової упаковки.
+                </p>
+                <h2>Як пити пшеничну горілку</h2>
+                <p>
+                    Завдяки нейтральному аромату і чистому смаку цим міцним спиртним напоєм можна насолоджуватися в чистому вигляді. Для цього добре охолодіть пляшку — приблизно до -5 °C. Подавайте дистилят у вузьких чарках на ніжці — так вміст не буде
+                    грітися в руках.
+                </p>
+                <p>
+                    Що стосується закуски, то найкраще зупинитися на класичних поєднаннях горілки з пшениці з соліннями, житнім хлібом з оселедцем, свіжими овочами. Якщо шукаєте щось сучасніше, подайте до чарки закуску з лимоном і травами, суші або
+                    сашимі, морепродукти з гриля.
+                </p>
+                <p>
+                    Пшеничну горілку також використовують як основний компонент у коктейлях. Класика жанру — «Секс на пляжі», «Блакитна лагуна», «Кривава Мері», «Космополітен». Міцний спиртний напій добре поєднується з будь-яким іншим алкоголем — від
+                    вермутів і лікерів до текіли і рому, так що не відмовляйтеся від експериментів. Ну і не забувайте про знайомий всім тандем — горілку з апельсиновим соком. У барах таке поєднання називають «Викруткою».
+                </p>
+                <h2>Чому вигідно купити пшеничну горілку в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Попри безліч товарів в асортименті, кожен з них — гарантовано оригінальний. Завдяки продуманому онлайн-каталогу зі зручною навігацією і декількома фільтрами знайти потрібний товар і оформити замовлення можна за 5–10 хвилин.
+                    Доставлення здійснюють по всій Україні, а для жителів Києва, Дніпра та Львова передбачене кур’єрське розвезення і самовивезення із деяких супермаркетів «Сільпо». Додаткову вигоду забезпечують програми лояльності «Власний Рахунок» і
+                    WOW Club. Перша націлена на накопичення балобонусів, якими можна оплатити частину наступного замовлення. А з WOW Club постійні клієнти отримують збільшений кешбек і безплатне доставлення.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="All You Can Wheat" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/All-You-Can-Wheat.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">All You Can Wheat</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/osnova_2=pshenytsia-3">Пшенична горілка</a></li><li>Oleo Saccharum із ананаса та лимона</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=peychauds">Аперитив Peychaud’s</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/dytiachi-piure/smak=marakuja">Пюре маракуї</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освіжальний, складний за структурою коктейль із вираженою кислотністю лимонного соку, насиченою солодкістю ананаса і щільною текстурою маракуї. Пшенична горілка додає міцності, а аперитив Peychaud's — м'яку гіркоту й анісово-пряну ноту. Смак розкривається пошарово: від фруктового до сухого фінішу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати All You Can Wheat</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл пшеничної горілки</li><li>22 мл Oleo Saccharum з ананаса та лимона</li><li>15 мл аперитиву Peychaud's</li><li>15 мл лимонного соку</li><li>1 барна ложка пюре маракуї</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Підготуйте келих coupette і заповніть кубиками льоду.</li><li>У шейкері потовчіть мадлером 4 кубики свіжого ананаса.</li><li>Додайте 3 кільця лимонної цедри, 2 барні ложки цукру, перемішайте ложкою і закрийте шейкер.</li><li>Залиште на 10 хвилин для виділення oleo saccharum (солодкого сиропу).</li><li>Процідіть через дрібне сито, відміряйте 22 мл і перелийте в чистий шейкер.</li><li>Додайте 45 мл пшеничної горілки, 15 мл аперитиву Peychaud's, 15 мл лимонного соку і 1 барну ложку пюре маракуї.</li><li>Додайте лід до ¾ обсягу шейкера і струшуйте 15 секунд.</li><li>Видаліть лід із келиха, процідіть напій через подвійне сито.</li><li>Прикрасьте тонким слайсом ананаса і лимонною цедрою, закріпленою мініприщіпкою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Beetopolitan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Beetopolitan.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Beetopolitan</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/osnova_2=pshenytsia-3">Пшенична горілка</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=buriak-7">Буряковий сік</a></li><li>Буряк</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновий біттер</a></li><li>Лайм</li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Густий, насичений за кольором і смаком коктейль із вираженою буряковою основою, посиленою свіжою журавлиною і лаймом. Пшенична горілка зберігає чистоту, а апельсиновий біттер завершує композицію легкою пряною нотою.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Beetopolitan</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл пшеничної горілки</li><li>30 мл бурякового соку</li><li>2 скибочки буряка</li><li>2 краплі апельсинового біттеру</li><li>сік 1 свіжого лайма</li><li>30 мл журавлинного соку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих coupette, заповнивши його кубиками льоду.</li><li>У блендері подрібніть 2 скибочки буряка з 20 мл води.</li><li>Процідіть через сито з марлею, відміряйте 30 мл свіжого бурякового соку.</li><li>У шейкер налийте 60 мл пшеничної горілки, 30 мл бурякового соку, 30 мл журавлинного соку і сік 1 лайма.</li><li>Додайте 2 краплі апельсинового біттеру.</li><li>Заповніть шейкер великим льодом, струшуйте 15–18 секунд.</li><li>Видаліть лід із келиха, процідіть напій через подвійне сито.</li><li>Прикрасьте тонким слайсом буряка і сухою журавлиною на шпажці.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cran Holiday Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cran-Holiday-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cran Holiday Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/osnova_2=pshenytsia-3">Пшенична горілка</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=apelsyn-27">Апельсиновий сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=korytsia-7">Сироп Кориця</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna">Шампанське</a></li><li>Апельсин</li><li><a href="https://maudau.com.ua/product/korytsia-palychky-cannamela-3-sht">Палички кориці</a></li><li>Журавлина</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Форматний коктейль із насиченим смаком журавлини, м'яким апельсином і виразною корицею. Шампанське додає обсягу та легкої ігристості, роблячи коктейль святковим, але не нудотним. Підходить як для келихового сету, так і для порційної подачі.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Cran Holiday Punch</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1 пляшка пшеничної горілки</li><li>600 мл журавлинного соку</li><li>1 склянка апельсинового соку</li><li>½ склянки коричного сиропу</li><li>1 пляшка шампанського</li><li>1 нарізаний апельсин</li><li>палички кориці до смаку</li><li>свіжа журавлина до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заповніть пунш-бол кубиками льоду і дайте постояти.</li><li>Наріжте 1 апельсин кільцями, видаліть кісточки.</li><li>Змішайте у великій місткості 600 мл журавлинного соку, 1 склянку апельсинового соку і ½ склянки коричного сиропу.</li><li>Додайте апельсинові кільця, 3 палички кориці та жменю свіжої журавлини.</li><li>Влийте 1 пляшку пшеничної горілки і перемішайте барною ложкою.</li><li>Видаліть лід із пунш-болу, перекладіть суміш і додайте пляшку охолодженого шампанського, вливаючи по стінці.</li><li>Подавайте в склянках rocks з льодом, додавши скибочку апельсина і 2-3 ягоди журавлини в кожен келих.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Flatiron Flip" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Flatiron-Flip.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Flatiron Flip</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/osnova_2=pshenytsia-3">Пшенична горілка</a></li><li>Лікер Licor 43</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=lavanda-4">Сироп із лаванди</a></li><li><a href="https://maudau.com.ua/category/vershky">Вершки</a></li><li>Куряче яйце</li><li><a href="https://maudau.com.ua/category/voda/vyd_133=sylnohazovana">Газована вода</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Вершковий, десертний коктейль з яєчною текстурою, солодкістю лікеру і флористичною нотою лаванди. Смак щільний, гладкий, із довгим фінішем і м'яким прогріванням від горілки. Піна на поверхні надає додаткової легкості.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Flatiron Flip</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл пшеничної горілки</li><li>30 мл лікеру Licor 43</li><li>7 мл сиропу з лавандою</li><li>15 мл вершків</li><li>1 велике яйце</li><li>газована вода до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих fizz, засипавши його кубиками льоду.</li><li>У шейкері без льоду з'єднайте 45 мл пшеничної горілки, 30 мл Licor 43, 7 мл лавандового сиропу, 15 мл вершків і 1 велике яйце.</li><li>Струшуйте в техніці dry shake 20 секунд.</li><li>Додайте великий лід і повторіть шейк 15 секунд.</li><li>Видаліть лід із келиха, процідіть напій через подвійне сито.</li><li>Залиште 2 см до краю для доливання.</li><li>Влийте 30–50 мл газованої води тонкою цівкою по центру.</li><li>Прикрасьте дрібкою сушеної лаванди або стружкою мускатного горіха.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Green Machine" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Green-Machine.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Green Machine</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/osnova_2=pshenytsia-3">Пшенична горілка</a></li><li>Свіжий сік огірка, капусти кейл, селери та фенхеля</li><li>Цукровий сироп із медом</li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li>Гілочки мʼяти</li><li>Свіжі скибочки огірка</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Свіжий, рослинний і легкий коктейль із вираженою огірковою та трав'яною основою. Холодний овочевий сік робить смак чистим, м'ята надає прохолоди, а лайм додає цитрусової різкості. Чудовий варіант для денного освіжального коктейлю.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Green Machine</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл пшеничної горілки</li><li>60 мл свіжого соку огірка, капусти кейл, селери та фенхеля</li><li>15 мл цукрового сиропу з медом</li><li>22 мл соку лайма</li><li>2 гілочки м'яти (1 гілочку залишити для гарніру)</li><li>кілька скибочок свіжого огірка для гарніру</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих highball, засипавши його доверху льодом.</li><li>У соковижималці вичавіть 60 мл свіжого соку з огірка, кейла, селери та фенхеля.</li><li>У шейкері роздушіть мадлером 1 гілочку м'яти.</li><li>Додайте 45 мл пшеничної горілки, 15 мл медового сиропу і 22 мл соку лайма.</li><li>Влийте свіжовичавлений овочевий сік, додайте лід.</li><li>Струшуйте 12–15 секунд.</li><li>Видаліть лід із келиха, процідіть напій через подвійне сито.</li><li>Додайте свіжі кубики льоду, прикрасьте огірковими слайсами та гілочкою м'яти.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Raspberry Lemonade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-Lemonade.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Raspberry Lemonade</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/osnova_2=pshenytsia-3">Пшенична горілка</a></li>
+                    <li>Свіжа малина</li>
+                    <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li>
+                    <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                    <li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яскравий, насичений, але збалансований коктейль із вираженим смаком свіжої малини та лимонною кислотою. Простий у сприйнятті, але цікавий на смак. Від нього в роті залишається приємний ягідний посмак.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Raspberry Lemonade</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл пшеничної горілки</li><li>4 розім'яті ягоди малини</li><li>30 мл простого сиропу</li><li>15 мл лимонного соку</li><li>лід для змішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охолодіть келих tumbler, засипавши кубиками льоду.</li><li>У шейкері розчавіть мадлером 4 свіжі ягоди малини.</li><li>Додайте 50 мл пшеничної горілки, 30 мл простого сиропу і 15 мл лимонного соку.</li><li>Додайте лід до ¾ і струшуйте 15 секунд.</li><li>Видаліть лід із келиха, процідіть напій через подвійне сито.</li><li>Додайте свіжі кубики льоду.</li><li>Прикрасьте малиною на шпажці та м'ятним листом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Summer Blues" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Summer-Blues.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Summer Blues</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/horilka/osnova_2=pshenytsia-3">Пшенична горілка</a></li>
+                    <li>Чорниця</li>
+                    <li>Мʼята</li>
+                    <li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li>
+                    <li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                    <li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий та освіжальний коктейль із м'якою ягідною структурою. Чорниця і м'ята надають напою прохолоди, а лимон — яскравості. Смак м'який, але не водянистий, з легкою кислинкою і фруктовим посмаком.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Summer Blues</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>15 мл пшеничної горілки</li><li>10 ягід чорниці</li><li>3-4 гілочки м'яти</li><li>15 мл простого сиропу</li><li>15 мл лимонного соку</li><li>лід для змішування</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У келиху Collins змішайте 10 ягід чорниці та 3 гілочки м'яти, розчавіть мадлером.</li><li>Додайте 15 мл простого сиропу, 15 мл лимонного соку і 15 мл пшеничної горілки.</li><li>Засипте лід і струсіть 10 секунд.</li><li>Видаліть лід із келиха, процідіть напій через подвійне сито.</li><li>Додайте свіжі кубики льоду.</li><li>Прикрасьте м'ятою та 2 ягодами чорниці.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">221 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

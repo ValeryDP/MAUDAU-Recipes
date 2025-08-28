@@ -1,0 +1,955 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Джин апельсиновый — категория крепкого алкоголя, в состав которого входят сок или цедра цитрусовых, полученные из плодов разных сортов. Зачастую апельсин служит основным растительным ингредиентом, который формирует типичный вкус и
+                    аромат напитка, но иногда его добавляют как вспомогательный компонент, лишь слегка усиливая общий профиль.
+                </p>
+                <p>Апельсиновый джин часто используют для придания свежей фруктовой нотки классическим коктейлям. Учитывая, что крепость ароматизированных версий часто ниже, по сравнению с классическими, их также подают как самостоятельный напиток.</p>
+                <h2>Как производят апельсиновый джин</h2>
+                <p>
+                    В основе — нейтральный зерновой спирт. Сперва его дистиллируют с традиционными растительными компонентами, включая можжевельник, кориандр и корень дягиля. Апельсины, как правило, добавляют в процессе настаивания — посредством
+                    мацерации (вымачивания) или паровой инфузии. Этот этап передует перегонке, поскольку дает возможность сохранить натуральные эфирные масла и насыщенный цитрусовый аромат.
+                </p>
+                <h2>Бренды-производители апельсинового джина</h2>
+                <p>Лидерами по продаже в маркете алкогольных штук MAUDAU считают:</p>
+                <ol>
+                    <li>Bombay Sapphire. Классический лондонский сухой джин от этого производителя наполнен апельсиновыми тонами, переплетенными с ароматами лимона и экзотических специй.</li>
+                    <li>
+                        Beefeater. Бренд представляет Англию. Особого внимания заслуживает версия Blood Orange, настоянная на кроваво-красных сицилийских апельсинах. В этом джине гармонично сочетаются ноты можжевельника с горько-сладким цитрусовым
+                        вкусом.
+                    </li>
+                    <li>Finsbury. Мягкий джин с ненавязчивым цитрусовым привкусом из Германии. Он слегка сладковатый, а послевкусие — чистое и стойкое.</li>
+                    <li>Wilmore. Еще один немецкий джин с отчетливым сухим апельсиновым финишем на основе секретной смеси специй. За счет яркого и стильного дизайна бутылка Wilmore станет прекрасным подарком.</li>
+                    <li>
+                        Hayman’s. Не совсем апельсиновый джин, так как в его состав входят кумкват и персидский лайм, а все это дополнено цедрой апельсинов. Это сбалансированный и ароматный напиток с достаточно высоким содержанием сахара, так как он
+                        олицетворяет стиль Old Tom.
+                    </li>
+                </ol>
+                <h3>Джин апельсиновый: цены в Украине</h3>
+                <p>
+                    Ценовой диапазон достаточно широкий — в среднем от 550 до 1000 грн за бутылку. При этом ароматизированная продукция зачастую стоит дешевле, чем традиционный лондонский сухой джин. На цену также влияет редкость использованного сорта
+                    апельсинов, например, плоды из Севильи ограничены сезоном, поэтому напитки с их добавлением изготавливают малыми партиями.
+                </p>
+                <h2>Рекомендации по употреблению апельсинового джина</h2>
+                <p>
+                    Крепкий спиртной напиток характеризует яркий пикантный аромат. Во вкусе доминируют сладко-горькие ноты, часто — в сочетании с легкими специями. Именно поэтому джин апельсиновый советуют подавать при +6–8 °C в бокалах Ballon или
+                    Highball. Лучшими ингредиентами для коктейлей считают тоник, газировку, фруктовый сок.
+                </p>
+                <p>В качестве закуски можно преподнести мягкий сыр по типу бри, вяленое мясо, цитрусовый сорбет. Этот стиль также хорошо сочетается с острыми блюдами, особенно из азиатской кухни, создавая баланс.</p>
+                <h2>Почему выгодно купить джин апельсиновый в интернет-магазине MAUDAU</h2>
+                <p>
+                    Несмотря на десятки товаров в категории, каждая бутылка — гарантировано оригинального происхождения. Регулярные скидки и акции способствуют экономии и знакомству с новыми торговыми марками. Оплатить покупку можно как на сайте, так и
+                    при получении, например, если хотите рассчитаться наличными. Джин апельсиновый можно купить с доставкой в любую точку Украины по почте. Некоторые товары доставляют бесплатно — без минимальной суммы заказа.
+                </p>
+            </div>
+
+
+
+
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blood Orange Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blood-Orange-Spritz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blood Orange Spritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Имбирный эль</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li>Кружочек красного апельсина</li><li>Веточка базилика</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сухой и освежающий коктейль на основе кампари, апельсинового сока и просеко. Горьковатая основа кампари уравновешивается яркой цитрусовой кислотностью, а пузырьки придают текстуре легкость и делают вкус более выразительным. Послевкусие остается чистым и фруктовым, без излишней сладости.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blood Orange Spritz</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Blood Orange</li><li>15 мл лаймового сока</li><li>50 мл имбирного эля</li><li>50 мл просекко или игристого вина</li><li>кружочек красного апельсина для украшения</li><li>веточка базилика для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите винный бокал, засыпав в него крупный лед на 1–2 минуты, затем удалите воду.</li><li>С помощью джиггера отмерьте 50 мл джина Beefeater Blood Orange и влейте в бокал.</li><li>Добавьте 15 мл лаймового сока и перемешайте барной ложкой.</li><li>Налейте 50 мл имбирного эля и 50 мл охлажденного просекко, вливая их по спинке ложки.</li><li>Добавьте еще несколько кубиков льда, если уровень жидкости опустился.</li><li>Вставьте кружочек красного апельсина сбоку и добавьте свежую веточку базилика.</li><li>Подавайте с трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blood Orange Negroni" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blood-Orange-Negroni.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blood Orange Negroni</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Итальянский биттер-аперитив</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=solodkyi-sweet">Сладкий вермут</a></li><li>Долька апельсина</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающе-пряный твист на классику, где джин Beefeater Blood Orange добавляет яркие цитрусовые нотки, а барная подача с крупным льдом и долькой апельсина превращает напиток в элегантное аперитивное удовольствие для вечернего ритуала.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blood Orange Negroni</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл джина Beefeater Blood Orange</li><li>30 мл итальянского биттера-аперитива</li><li>30 мл сладкого вермута</li><li>долька апельсина для украшения</li><li>лед для перемешивания</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охлажденный смесительный стакан насыпьте доверху кубики льда.</li><li>Влейте 30 мл джина Beefeater Blood Orange, 30 мл итальянского биттера-аперитива и 30 мл сладкого вермута.</li><li>Размешивайте барной ложкой 20–25 секунд.</li><li>Охладите бокал old fashioned и положите в него крупный ледяной шар.</li><li>Через стрейнер на шар процедите смесь.</li><li>Выжмите эфирные масла из дольки апельсина над напитком и вставьте ее в бокал срезом наружу.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Hot Blood Orange Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hot-Blood-Orange-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Hot Blood Orange Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/smak_24=med-25">Медовая вода</a></li><li><a href="https://maudau.com.ua/ru/category/voda">Вода</a></li><li>Анисовый ликер Перно</li><li>Свежий имбирь</li><li><a href="https://maudau.com.ua/ru/product/korytsia-palychky-tm-akura-20-h">Палочки корицы</a></li><li>Анис звездчатый</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Пряный зимний пунш на основе джина с цитрусовым профилем, сочетающий тепло специй и пикантную остроту имбиря. Идеален для сервировки в керамических кружках с декоративными палочками корицы и звездчатым анисом.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Hot Blood Orange Punch</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Blood Orange</li><li>20 мл лимонного сока</li><li>20 мл медовой воды</li><li>100 мл горячей воды</li><li>1 капля Перно</li><li>1 кусочек свежего имбиря</li><li>1 палочка корицы</li><li>звездчатый анис для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В небольшую кастрюлю налейте 100 мл горячей воды, добавьте 1 палочку корицы и кусочек свежего имбиря.</li><li>Поставьте на слабый огонь и томите 5 минут.</li><li>Снимите с огня, влейте 50 мл джина Beefeater Blood Orange, 20 мл лимонного сока и 20 мл медовой воды.</li><li>Добавьте 1 каплю Перно, тщательно размешайте ложкой.</li><li>Процедите горячую смесь через сито в предварительно подогретую термоемкость.</li><li>Разлейте половником по чашкам.</li><li>Украсьте звездчатым анисом и палочками корицы.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Orange Gin Espresso Martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Orange-Gin-Espresso-Martini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Orange Gin Espresso Martini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сироп из сахара Демерара</a></li><li><a href="https://maudau.com.ua/ru/category/kava/country_of_origin=kolumbija">Колумбийский кофе</a></li><li><a href="https://maudau.com.ua/ru/category/vershky">Сливки</a></li><li>Тертая апельсиновая цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркая интерпретация классического кофейного коктейля с нотами апельсина и бархатистыми сливками. Энергичный, выразительный, идеально подходит для сервировки в бокале купе с пышной кофейной пенкой и цедрой сверху.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Orange Gin Espresso Martini</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл джина Beefeater Blood Orange</li><li>10 мл сиропа из сахара Демерара</li><li>100 мл колумбийского кофе</li><li>10 мл двойных сливок</li><li>тертая апельсиновая цедра для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Приготовьте 100 мл свежезаваренного колумбийского эспрессо и охладите до комнатной температуры.</li><li>В шейкер налейте 30 мл джина Beefeater Blood Orange, 10 мл сиропа Демерара и охлажденный кофе.</li><li>Добавьте лед и энергично взбивайте 20 секунд до появления плотной пены.</li><li>Влейте по тыльной стороне ложки в шейкер 10 мл двойных сливок.</li><li>Встряхните 5 секунд.</li><li>Быстро процедите смесь через двойной стрейнер в охлажденный бокал купе.</li><li>Украсьте тертой апельсиновой цедрой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blood Orange Hot Chocolate" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blood-Orange-Hot-Chocolate.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blood Orange Hot Chocolate</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/kakao-hariachyi-shokolad-tsykorii">Какао-порошок</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Свежий имбирь</li><li><a href="https://maudau.com.ua/ru/category/vershky/vyd_122=zbyti">Взбитые сливки</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Blood Orange Hot Chocolate — утонченный согревающий напиток в барном стиле, где молочный шоколад соседствует с имбирной остротой и цитрусовой глубиной джина. Подается в прозрачных термобокалах, украшенных шапкой из взбитых сливок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blood Orange Hot Chocolate</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Blood Orange</li><li>250 мл молока</li><li>1 ч. л. какао-порошка</li><li>1 ч. л. сахара</li><li>небольшая горсть имбиря, нарезанного кубиками</li><li>взбитые сливки для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В сотейнике соедините 250 мл молока, 1 ч. л. какао-порошка, 1 ч. л. сахара и горсть кубиков имбиря.</li><li>Нагревайте смесь на медленном огне, постоянно помешивая венчиком до появления легкого пара.</li><li>Снимите с плиты, накройте крышкой и дайте настояться 3 минуты.</li><li>Процедите через сито, добавьте 50 мл джина Beefeater Blood Orange, быстро размешайте.</li><li>Перелейте в высокий термобокал, сверху выложите взбитые сливки при помощи барного шпателя.</li><li>Подавайте с десертной ложкой, пейте в горячем виде.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blood Orange Metropolitan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blood-Orange-Metropolitan.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blood Orange Metropolitan</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=zhuravlyna-13">Клюквенный сок</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_class=triple-sec">Апельсиновый ликер Трипл-Сек</a></li><li>Цедра апельсина</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    В этом коктейле клюквенная прохлада сталкивается с апельсиновой дерзостью, а лайм добавляет резкости — коктейль напоминает о красной помаде, бархатном кресле и вечернем свете. Он притягательный, яркий, но с хорошо сбалансированным характером.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blood Orange Metropolitan</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Blood Orange</li><li>20 мл лаймового сока</li><li>30 мл клюквенного сока</li><li>10 мл апельсинового ликера Трипл-Сек</li><li>апельсиновая цедра для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал мартини в морозильник на 5 минут.</li><li>В шейкер налейте 50 мл джина Beefeater Blood Orange, 20 мл лаймового сока, 30 мл клюквенного сока и 10 мл ликера Трипл-Сек.</li><li>Добавьте лед доверху, встряхните энергично 15 секунд.</li><li>Процедите двойным стрейном в подготовленный бокал.</li><li>Снимите тонкую полоску апельсиновой цедры ножом, скрутите ее над напитком для выделения масел и опустите внутрь.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Spicy Gin Margarita" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Spicy-Gin-Margarita.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Spicy Gin Margarita</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava">Сироп агавы</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li><a href="https://maudau.com.ua/ru/category/sousy/product_brand=tabasco">Соус Табаско</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Это не просто коктейль, а взрыв вкуса: сладость апельсина срывается в лаймовую кислоту и тут же вспыхивает перечной остротой. Он не о балансе — он о страсти и первой эмоции на кончике языка.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Spicy Gin Margarita</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Blood Orange</li><li>15 мл сиропа агавы</li><li>10 мл лаймового сока</li><li>15 мл апельсинового сока</li><li>2 капли соуса Табаско</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал типа маргарита, обмакнув его край в сок лайма и окунув в соль.</li><li>В шейкер влейте 50 мл джина Beefeater Blood Orange, 15 мл сиропа агавы, 10 мл сока лайма и 15 мл апельсинового сока.</li><li>Добавьте 2 капли соуса Табаско, затем насыпьте лед доверху.</li><li>Встряхивайте энергично 15–20 секунд.</li><li>Через стрейнер процедите напиток в подготовленный бокал.</li><li>Украсьте тонким слайсом апельсина.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blood Orange Gin & Tonic" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blood-Orange-Gin-Tonic.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blood Orange Gin & Tonic</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2">Тоник</a></li><li>Кружочек красного апельсина</li><li>Веточка базилика</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Blood Orange Gin & Tonic — простой по форме коктейль, но с неожиданной глубиной. Красный апельсин придает ему немного сладости, а базилик поднимает аромат в новый регистр. Это тот самый напиток, с которого начинается вечер!
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blood Orange Gin & Tonic</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Blood Orange</li><li>150 мл тоника</li><li>кружочек красного апельсина для украшения</li><li>веточка базилика для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал хайбол, заполнив его на 2 минуты льдом и слив воду.</li><li>Добавьте заново крупные кубики льда почти доверху.</li><li>Налейте 50 мл джина Beefeater Blood Orange на лед.</li><li>Аккуратно влейте 150 мл охлажденного тоника по барной ложке.</li><li>Барной ложкой сделайте легкое движение для перемешивания.</li><li>Украсьте кружочком красного апельсина, закрепив его на стенке бокала, и веточкой свежего базилика.</li><li>Подавайте с трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blood Orange Martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blood-Orange-Martini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blood Orange Martini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-blood-orange-375-07-l-822-409">Джин Beefeater Blood Orange</a></li><li><a href="https://maudau.com.ua/ru/product/vyno-kheres-valdespino-fino-leyenda-bile-sukhe-15-075-l">Херес Фино</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=solodkyi-sweet">Сладкий вермут</a></li><li><a href="https://maudau.com.ua/ru/category/nastoianky-balzamy-bittery/product_brand=angostura">Биттер Angostura</a></li><li>Цедра апельсина</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль с утонченным вкусом для тех, кто ценит сухие и насыщенные сочетания. Яркие ноты джина гармонируют с солоноватым оттенком хереса и глубиной сладкого вермута. Легкая горчинка биттера придает напитку строгость, а апельсиновая цедра — свежий акцент. Это идеальный выбор для вечернего настроения без лишней сладости!
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blood Orange Martini</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл джина Beefeater Blood Orange</li><li>20 мл хереса Фино</li><li>30 мл сладкого вермута</li><li>1 капля биттера Angostura</li><li>апельсиновая цедра для украшения</li><li>лед для перемешивания</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В смесительный стакан насыпьте кубики льда до верха.</li><li>Добавьте 30 мл джина Beefeater Blood Orange, 20 мл хереса Фино и 30 мл сладкого вермута.</li><li>Капните 1 каплю биттера Angostura, затем перемешайте барной ложкой до охлаждения.</li><li>Процедите через стрейнер в охлажденный бокал мартини.</li><li>Над бокалом отожмите масла из полоски апельсиновой цедры, протрите ею край бокала и бросьте внутрь.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">220-260 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

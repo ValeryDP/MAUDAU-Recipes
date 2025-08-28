@@ -1,0 +1,879 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Грейпфрутовый джин — разновидность крепкого спиртного напитка, в состав которого входит сок, цедра или натуральный экстракт грейпфрута. Хотя London Dry Gin часто содержит этот компонент для усиления цитрусовой остроты, зачастую
+                    добавку используют в ароматизированных версиях.
+                </p>
+                <p>
+                    К странам, особенно активно занимающимся производством грейпфрутового джина, относят Великобританию, Италию, Германию и Нидерланды, где многолетнее мастерство дистилляции сочетается с современными трендами в области вкусоароматики.
+                    На это напрямую влияет выбранный сорт плодов. Чаще всего используют Ruby Red, Flame и Foster.
+                </p>
+                <h2>Особенности вкуса и аромата грейпфрутового джина</h2>
+                <p>
+                    В центре — яркий цитрусовый аромат, дополненный базовыми смолистыми нотами можжевельника и пряностью кориандра. Вкус, как правило, свежий и терпкий, с легким сладковатым шлейфом. Послевкусие — освежающее, с длительной цитрусовой
+                    остротой, которая хорошо очищает небо и побуждает к следующему глотку.
+                </p>
+                <h2>Как производят джин с грейпфрутом</h2>
+                <p>В основе — нейтральный зерновой спирт. Его подвергают повторной перегонке с добавлением растительных компонентов, в частности — можжевельника, кориандра и корня дягиля.</p>
+                <p>
+                    Грейпфрут вводят в процессе мацерации — вымачивания кожуры или цедры в спирте. Второй вариант — проведение паровой инфузии, в ходе которой пары спирта проходят через ботанический сбор, подвешенный над перегонным кубом. Благодаря
+                    этому сохраняется максимум эфирных масел и естественных ароматических соединений.
+                </p>
+                <h2>Стоимость грейпфрутового джина в Украине</h2>
+                <p>
+                    В маркете алкогольных штук MAUDAU представлен алкоголь от торговых марок Finsbury, Whitley Neill, Malfy и Stirling. Цены варьируются от 600 до 1200 гривен за бутылку в зависимости от репутации производителя, крепости и качества
+                    использованного сырья. На них также влияют действующие акции и скидки от интернет-магазина MAUDAU.
+                </p>
+                <p>
+                    Например, Whitley Neill и Finsbury предлагают варианты по доступной стоимости, что не влияет на сбалансированность вкуса и аромата. Разливы в особых бутылках или упаковках стоят дороже. Один из примеров — Generous Purple из Франции.
+                    Дистиллят разлит по бутылкам необычной формы, полностью покрытых стильной дизайнерской этикеткой.
+                </p>
+                <h2>Как правильно пить джин с грейпфрутом</h2>
+                <p>
+                    Крепкий спиртной напиток лучше всего подавать хорошо охлажденным — до +6–8 °C. Классическая подача — в сочетании с тоником, долькой свежего грейпфрута и веточкой розмарина. Грейпфрутовому джину также найдется место в таких рецептах,
+                    как «Негрони» или «Спритц».
+                </p>
+                <p>
+                    Закуски должны быть легкими. Это может быть козий сыр, копченый лосось, креветки на гриле или оливки, маринованные в цитрусовых. Этот стиль также гармонично сочетается с острой азиатской кухней, уравновешивая вкусы. А еще его можно
+                    преподнести как аперитив, особенно в жаркую погоду.
+                </p>
+                <h2>Почему выгодно купить грейпфрутовый джин в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас — исключительно оригинальная алкогольная продукция. В ассортименте представлены как разливы от торговых марок на слуху, так и эксклюзивы вроде Kaikyo Distillery 135 East Hyogo и Kapriol Grapefruit &amp; Hibiscus. Доставку
+                    выполняют в любой населенный пункт Украины с функционирующим почтовым отделением. А покупатели из Киева, Днепра и Львова могут оформить заказ с доставкой курьером в нужное место или воспользоваться услугой самовывоза из магазинов
+                    «Сільпо». Оплачивать покупки легче всего на сайте, но предусмотрен и наложенный платеж — это особенно полезно, если заказываете редкий или дорогостоящий алкоголь.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Grapefruit Fizz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Grapefruit-Fizz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Grapefruit Fizz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn/smakaromat=hreipfrutovyi">Грейпфрутовый джин</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vyshnia-10">Вишневый сироп</a></li><li><a href="https://maudau.com.ua/ru/category/solodka-voda/typ_292=toniky-2">Тоник</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающий, слегка кисло-сладкий коктейль с грейпфрутовым джином и ярким вишневым акцентом. Легкий и воздушный, он создан для дневной дегустации и отлично сочетается с летней атмосферой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Grapefruit Fizz</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл грейпфрутового джина</li><li>15 мл лимонного сока</li><li>15 мл вишневого сиропа</li><li>90 мл тоника</li><li>лед по вкусу (для наполнения стакана)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите хайбол ледом и оставьте на минуту.</li><li>В шейкере смешайте 45 мл грейпфрутового джина, 15 мл лимонного сока и 15 мл вишневого сиропа.</li><li>Добавьте лед и встряхните в течение 10 секунд.</li><li>Выньте лед из бокала, процедите смесь через двойной стрейнер.</li><li>Добавьте в бокал крупные кубы льда.</li><li>Аккуратно влейте под углом 90 мл охлажденного тоника.</li><li>Перемешайте содержимое ложкой по спирали.</li><li>Украсьте грейпфрутовой цедрой и вишней.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pink Grapefruit Gimlet" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-Grapefruit-Gimlet.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pink Grapefruit Gimlet</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn/smakaromat=hreipfrutovyi">Грейпфрутовый джин</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Лед</li><li>Долька розового грейпфрута</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Чистая форма, четкие линии вкуса — цитрусовый гимлет с легкой горчинкой розового грейпфрута и освежающей кислотностью лайма. Отличный аперитив или вечерний сэт для тех, кто ценит структуру в коктейлях.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pink Grapefruit Gimlet</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл грейпфрутового джина</li><li>25 мл лаймового сока</li><li>20 мл сахарного сиропа</li><li>лед кубиками по желанию</li><li>1 долька розового грейпфрута</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите купе или коктейльную рюмку, поместив ее в морозильник.</li><li>В шейкере соедините 50 мл грейпфрутового джина, 25 мл свежего лаймового сока и 20 мл классического сахарного сиропа.</li><li>Добавьте лед и встряхивайте 12–15 секунд.</li><li>Процедите через двойной стрейнер в охлажденную рюмку.</li><li>Сбоку опустите дольку розового грейпфрута, частично погрузив ее в напиток.</li><li>Добавьте каплю грейпфрутовой эссенции на поверхность.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sbagliato Corretto" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sbagliato-Corretto.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sbagliato Corretto</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-malfy-rosa-sicilian-pink-grapefruit-41-07-l-786185">Джин Malfy Gin Rosa Pink Grapefruit</a></li><li>Лилле Розе</li><li><a href="https://maudau.com.ua/ru/product/aperytyv-aperol-aperetivo-11-07-l-700003">Итальянский биттер-аперитив</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li>Цедра розового грейпфрута</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сложный игристый коктейль с горько-сладкими нотами, приправленный итальянским биттером и травяным телом Лилле Розе. Это интерпретация Sbagliato с грейпфрутовым акцентом и легкой винной структурой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sbagliato Corretto</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Malfy Gin Rosa</li><li>25 мл Лилле Розе</li><li>10 мл итальянского биттера аперитива</li><li>75 мл просекко</li><li>цедра розового грейпфрута для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал рокс, заполнив его кубиками льда.</li><li>В смесительном стакане смешайте 50 мл Malfy Gin Rosa, 25 мл Lillet Rosé и 10 мл итальянского биттера.</li><li>Перемешайте барной ложкой в течение 10 секунд.</li><li>Процедите через стрейнер в подготовленный бокал со свежим крупным льдом.</li><li>Аккуратно долейте 75 мл просекко по стенке бокала.</li><li>Перемешайте снизу вверх барной ложкой.</li><li>Добавьте для украшения широкую ленту цедры розового грейпфрута, немного скрутив ее над напитком.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Amalfi Sunset Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Amalfi-Sunset-Spritz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Amalfi Sunset Spritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-malfy-rosa-sicilian-pink-grapefruit-41-07-l-786185">Джин Malfy Gin Rosa Pink Grapefruit</a></li><li><a href="https://maudau.com.ua/ru/product/napii-sp-aranciata-rossa-z-sokom-haz-z-b-0-33l">Sanpellegrino Aranciata Rossa</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li>Апельсиновый кружок</li><li>Веточка тимьяна</li><li>Ломтики клубники</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий изысканный коктейль, который итальянцы любят подавать в качестве аперитива перед ужином. Слегка уловимые фруктовые нотки ассоциируются с теплыми летними вечерами, апельсиновыми закатами на Средиземноморском побережье. Во вкусе присутсвует горечь и цитрусовая кислинка.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Amalfi Sunset Spritz</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>35 мл джина Malfy Gin Rosa</li><li>50 мл Sanpellegrino Aranciata Rossa</li><li>50 мл просекко</li><li>апельсиновый кружок для украшения</li><li>веточка тимьяна для украшения</li><li>ломтики клубники для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В большой винный бокал или для spritz'a насыпьте кубики льда, заполнив 2/3 его объема.</li><li>Влейте 35 мл джина Malfy Gin Rosa, 50 мл Sanpellegrino Aranciata Rossa и 50 мл просекко.</li><li>Порежьте апельсин кружочками и украсьте бокал.</li><li>Добавьте несколько ломтиков клубники и веточку тимьяна.</li><li>С помощью барной ложки аккуратно перемешайте коктейль, чтобы ингредиенты соеденились, но пузырьки газа остались внутри.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Blackberry Gin Bramble" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Blackberry-Gin-Bramble.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Blackberry Gin Bramble</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-whitley-neill-ozhyna-43-07-l">Джин Whitley Neill Blackberry</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava">Сироп агавы</a></li><li><a href="https://maudau.com.ua/ru/product/liker-joseph-cartron-creme-de-mure-des-roncieres-18-07-l">Ликер Creme De Mure</a></li><li>Ежевика</li><li>Лимонная долька</li><li>Кубики льда</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Классический shot, входящий в число коктейлей Международной ассоциации барменов. Главная его главная изюминка — ежевичные нотки во вкусе. Их приносит ароматизированный джин. Вкус получается освежающим, сбалансированным с приятной сладостью и легкой кислинкой. Он идеальный для теплого летнего вечера.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Blackberry Gin Bramble</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Whitley Neill Blackberry</li><li>25 мл лимонного сока</li><li>¾ ст. л. сиропа агавы</li><li>¾ ст. л. ликер Creme De Mure</li><li>ежевика по вкусу</li><li>долька лимона для украшения</li><li>кубики льда по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере 50 мл джина Whitley Neill Blackberry, 25 мл лимонного сока и ¾ ст. л. сиропа агавы.</li><li>В бокал типа «рос» бросьте немного кубиков льда и аккуратно вылейте сверху содержимое шейкера.</li><li>Добавьте ¾ ст. л. ликера Creme De Mure.</li><li>Бросьте неслолько ягод ежевики и положите дольку лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Gin Cooler" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Gin-Cooler.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Gin Cooler</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-tanqueray-no-ten-07-l-473-634648">Джин Tanqueray No. 10</a></li><li>Огурец</li><li>Свежий кориандр</li><li>Тоник Fever-Tree</li><li>Лайм</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Простой освежающий коктейль на основе джина и тоника. Это легкий дневной напиток, в котором едва ощущается алкоголь. Подходит для летнего отдыха благодаря приятной свежести и травянистому вкусу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Gin Cooler</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Tanqueray No. 10</li><li>2 см огурца, очищенного и нарезанного</li><li>1 ч. л. свежего кориандра</li><li>1 бутылка тоника Fever-Tree</li><li>½ лайма</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В высокий бокал хайбол положите кубики льда.</li><li>Добавьте их 50 мл джина Tanqueray No. 10.</li><li>Добавьте 1 бутылку тоника Fever-Tree, 1 ч.л. кориандра и аккуратно перемешайте.</li><li>Порежьте 2 см огурца дольками, положите 1/2 лайма для украшения.</li><li>Если нужен мягкий вкус — полейте сахарным сиропом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tanqueray No. Ten Grapefruit Collins" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tanqueray-No-Ten-Grapefruit-Collins.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tanqueray No. Ten Grapefruit Collins</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-tanqueray-no-ten-07-l-473-634648">Джин Tanqueray No. Ten</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Сок грейпфрута</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/sodova-franklin-sons-1886-02-l-45792">Содовая вода</a></li><li>Долька грейпфрута</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Вариация классического коктейля Tom Collins с добавлением премиального джина. Он насыщает напиток цитрусовой свежестью, ароматом можжевельника и ромашки. Легкая горчинка и приятная игристость делает его идеальнам для ярких летних вечеринок. Подойдет коктейль и для бранчей, аперитивов.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Tanqueray No. Ten Grapefruit Collins</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Tanqueray No. Ten</li><li>35 мл сока грейпфрута</li><li>15 мл сахарного сиропа</li><li>100 мл содовой воды</li><li>1 долька грейпфрута для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте 50 мл джина Tanqueray No. Te, 35 мл сока грейпфрута, 15 мл сахарного сиропа в шейкер и смешайте.</li><li>В бокал хайбол положите кубики льда.</li><li>Полейте их процеженной смесью из шейкера.</li><li>Добавьте 100 мл содовой воды.</li><li>Отрежьте дольку грейпфрута и украсьте коктейль.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">207-278 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0-0.57 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

@@ -1,0 +1,844 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Ирландский джин — категория крепкого алкоголя, известного ремесленным подходом к производству, использованием местных растений и чистейшей воды. Хотя стиль менее популярен в мире, по сравнению с британским, производители делают
+                    ставку на качество крафтового напитка и региональный колорит, часто добавляя дикие травы, цветы и фрукты, характерные исключительно для локального ландшафта. Ключевые регионы изготовления:
+                </p>
+                <ul>
+                    <li>графства Корк и Даун;</li>
+                    <li>Голуэй;</li>
+                    <li>Дублин.</li>
+                </ul>
+                <p>Среди самых известных брендов — Drumshanbo Gunpowder, Mil и Peaky Blinder. Уникальный ароматизированный разлив Method and Madness производит Plymouth Gin.</p>
+                <h2>Краткий экскурс в историю ирландского джина</h2>
+                <p>
+                    Производство этого крепкого алкоголя в стране довольно молодое, особенно по сравнению с виски. Хотя джин изредка перегоняли еще в начале XIX века, настоящий ренессанс состоялся примерно в 2010-х годах под влиянием движения крафтовых
+                    дистилляторов. В этом плане винокурню Dingle, запущенную в 2012 году, считают одной из первых.
+                </p>
+                <p>Наращивание масштабов изготовления ирландского джина связывают с ростом спроса на премиальный крепкий алкоголь. А еще этому способствовало повышенное внимание к коктейльной культуре.</p>
+                <h2>Особенности изготовления джина из Ирландии</h2>
+                <p>Крепкий спиртной напиток перегоняют в медных кубах Pot Still или колоннах. Основу всегда составляет нейтральный зерновой спирт. Растительные компоненты добавляют путем мацерации или проведения паровой инфузии.</p>
+                <p>
+                    Отличительной чертой ирландского джина считают частое использование дикорастущих местных растений, включая болотный мирт, вереск, ягоды рябины, бузину, морские водоросли и даже ганпаудер. Такой ботанический набор придает напитку
+                    травянистый, цветочный или землистый характер, отражающий терруар.
+                </p>
+                <p>Большинство производителей практикуют мелкосерийное производство. А для достижения максимальной чистоты алкоголя используют ледниковую или горную воду.</p>
+                <h2>Сколько стоит ирландский джин в Украине</h2>
+                <p>
+                    Цены колеблются в пределах 800–1500 грн за бутылку. Уникальные крафтовые продукты, такие как Drumshanbo и Ha’Penny, как правило, стоят дороже из-за небольших объемов изготовления и ценности использованных компонентов. Стоимость
+                    также отражает сложность ручного производства и немного повышается из-за импортных пошлин.
+                </p>
+                <h2>Советы по употреблению джина из Ирландии</h2>
+                <p>
+                    Алкоголь обладает сложным и богатым ароматом с нотами можжевельника и цитрусовых. Вкус — мягкий, свежий и многослойный. Это делает ирландский джин универсальным вариантом как для приготовления коктейлей, так и для употребления в
+                    чистом виде.
+                </p>
+                <p>Крепкий спиртной напиток советуют подавать охлажденным до +6–8 °C. Чтобы приготовить вкусный и простой микс, джин можно объединить с тоником или ликером из бузины. Рекомендуемые дополнения в плане еды:</p>
+                <ul>
+                    <li>козий сыр;</li>
+                    <li>копченый лосось;</li>
+                    <li>жареные овощи;</li>
+                    <li>курица под цитрусовой заправкой.</li>
+                </ul>
+                <p>Джин от ирландских торговых марок также хорошо сочетается с легкими блюдами на основе морепродуктов. При этом лучше избегать слишком острой или пряной пищи, чтобы не затмить яркий растительный аромат.</p>
+                <h2>Почему выгодно купить ирландский джин в интернет-магазине MAUDAU</h2>
+                <p>
+                    Прежде всего — из-за оригинальности каждой бутылки. Добавьте к списку преимуществ несколько способов оплаты и доставки, постоянные скидки и акции, а также две действительно выгодные программы лояльности. Например, с помощью
+                    «Власного Рахунку» легко накапливать баллобонусы, которыми можно оплатить часть следующего заказа. А еще у нас легко найти ирландский джин под любой запрос — как в качестве подарка опытному коллекционеру, так и для непринужденного
+                    вечера в кругу друзей.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Gunpowder of Middle Earth" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Gunpowder-of-Middle-Earth.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Gunpowder of Middle Earth</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-drumshanbo-gunpowder-irish-gin-43-07-l">Джин Drumshanbo Gunpowder Irish</a></li><li>Киви</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль с плотным цитрусовым вкусом и свежестью зелени. Киви придает текстуру и фруктовую кислинку, лимон усиливает резкость, а джин с восточными ботаникалами смыкает все в одно яркое, пронзительное звучание. Вкус свежий, с легкой кислинкой и мягким травяным шлейфом от джина.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Gunpowder of Middle Earth</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина Drumshanbo Gunpowder Irish</li><li>1/2 свежего киви, очищенного и нарезанного кубиками</li><li>15 мл лимонного сока</li><li>15 мл сахарного сиропа</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Очистите ½ киви, нарежьте мелкими кубиками и выложите в металлическую ступку.</li><li>Разомните мадлером до состояния густого пюре.</li><li>Процедите пюре через мелкое сито в шейкер, надавливая ложкой сверху.</li><li>В эту смесь добавьте лимонный сок 15 мл, сахарный сироп 15 мл и джин Drumshanbo Gunpowder Irish 45 мл.</li><li>Засыпьте лед в шейкер.</li><li>Закройте шейкер и встряхните энергично 12–15 секунд.</li><li>Процедите через двойное сито в охлажденный бокал типа sour glass.</li><li>При желании украсьте тонким ломтиком свежего киви, выложенным на край бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Spice Market" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Spice-Market.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Spice Market</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/chai-2/aromat_3=vanil-8">Ванильный чай</a></li><li><a href="https://maudau.com.ua/ru/product/dzhyn-drumshanbo-gunpowder-irish-gin-43-07-l">Джин Drumshanbo Gunpowder Irish</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-apricot-24-07-l-887823">Абрикосовый ликер</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=myhdal-5">Сироп Оргеат</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=prianyi-5">Пряный сироп</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Ароматный коктейль, в котором чай, специи, косточковые фрукты и орех объединяются в гладкую, мягкую композицию. Сначала чувствуются нотки абрикоса и ванили, потом проявляется миндальный оргеат и специи, а джин связывает все в пряное, теплое тело.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить The Spice Market</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл ванильного чая</li><li>30 мл джина Drumshanbo Gunpowder Irish</li><li>15 мл абрикосового ликера</li><li>1 барная ложка сиропа Оргеат</li><li>1 барная ложка пряного сиропа</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заварите ванильный чай двойной крепости (1 пакетик на 50 мл воды), остудите.</li><li>Отмерьте с помощью джиггера: чай 30 мл, джин Drumshanbo Gunpowder Irish 30 мл, абрикосовый ликер 15 мл, сироп оргеат 1 барная ложка, пряный сироп 1 барная ложка.</li><li>Добавьте в шейкер все ингредиенты.</li><li>Заполните шейкер крупным льдом, закройте и встряхните 12 секунд.</li><li>Процедите через стрейнер в бокал coupette, охлажденный заранее в морозильнике.</li><li>Ничем не украшайте и подавайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Curious Jackalope" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Curious-Jackalope.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Curious Jackalope</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-drumshanbo-gunpowder-irish-gin-43-07-l">Джин Drumshanbo Gunpowder Irish</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Грейпфрутовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Цитрусовый коктейль с чистым, прямым вкусом. Лайм и грейпфрут дают яркую кислоту без лишней резкости, а джин добавляет сухой травяной фон, не перебивая основу. Напиток получается легким и освежающим — отлично подойдет тем, кто не любит сладкие коктейли.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить The Curious Jackalope</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл джина Drumshanbo Gunpowder Irish</li><li>22 мл лаймового сока</li><li>22 мл грейпфрутового сока</li><li>7,5 мл сахарного сиропа</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В джиггере отмерьте джин 60 мл, лаймовый сок 22 мл, грейпфрутовый сок 22 мл, сахарный сироп 7,5 мл.</li><li>Перелейте в шейкер, добавьте лед кубиками.</li><li>Встряхните энергично 10 секунд.</li><li>Процедите через двойное сито в охлажденный коктейльный бокал.</li><li>Подавайте без украшений.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sardinian Bramble" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sardinian-Bramble.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sardinian Bramble</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-drumshanbo-gunpowder-irish-gin-sardinian-citrus-43-07-l">Джин Drumshanbo Gunpowder Irish Gin Sardinian Citrus</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Малина</li><li>Мята</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Кисло-сладкий коктейль с выраженным малиновым вкусом и освежающей лимонной кислотностью. Джин с цитрусовым профилем усиливает свежесть и делает вкус более сухим. Подойдет тем, кто любит легкие ягодные коктейли с кислинкой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sardinian Bramble</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина Drumshanbo Gunpowder Irish Gin Sardinian Citrus</li><li>30 мл лимонного сока</li><li>15 мл сахарного сиропа</li><li>5-6 ягод малины и дополнительно для украшения</li><li>мята для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере раздавите 5-6 свежих ягод малины мадлером до состояния пюре.</li><li>Добавьте 45 мл джина Drumshanbo Gunpowder Irish Gin Sardinian Citrus, 30 мл свежевыжатого лимонного сока, 15 мл сахарного сиропа.</li><li>Насыпьте крупный кубиковый лед и встряхивайте энергично 10–12 секунд.</li><li>Через двойной стрейнер процедите в охлажденный рокc-гласс, наполненный льдом.</li><li>Украсьте 2–3 свежими ягодами малины и небольшой веточкой мяты.</li><li>Подайте с короткой трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Drumshanbo Calling" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Drumshanbo-Calling.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Drumshanbo Calling</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-drumshanbo-gunpowder-irish-gin-43-07-l">Джин Drumshanbo Gunpowder Irish</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=sukhyi-dry">Сухой вермут</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=malyna-9">Малиновый сироп</a></li><li><a href="https://maudau.com.ua/ru/product/sodova-franklin-sons-1886-02-l-45792">Содовая вода</a></li><li>Красный грейпфрут</li><li>Мята</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Цитрусово-ягодный коктейль со структурой «джин сауэр», дополненный газированной текстурой и травяными акцентами вермута. Идеален для коктейльного вечера — звонкий, яркий и многослойный.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Drumshanbo Calling</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина Drumshanbo Gunpowder Irish</li><li>20 мл сухого вермута</li><li>20 мл лимонного сока</li><li>20 мл малинового сиропа</li><li>содовая вода по вкусу</li><li>кружочки красного грейпфрута для украшения</li><li>мята для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите винный бокал или хайбол, наполнив его льдом.</li><li>В шейкере соедините 45 мл джина Drumshanbo Gunpowder Irish, 20 мл сухого вермута, 20 мл лимонного сока и 20 мл малинового сиропа.</li><li>Добавьте крупный лед и взболтайте около 10–15 секунд.</li><li>Удалите лед из бокала, процедите напиток через двойной стрейнер.</li><li>Долейте охлажденной содовой воды (около 40–50 мл), перемешайте барной ложкой снизу вверх.</li><li>Добавьте лед до верха, предпочтительно сферический или крупнокусковой.</li><li>Украсьте слайсом красного грейпфрута, листом мяты и малиной на шпажке.</li><li>Подавайте с высокой трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sardinian Lemonade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sardinian-Lemonade.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sardinian Lemonade</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-drumshanbo-gunpowder-irish-gin-sardinian-citrus-43-07-l">Джин Drumshanbo Gunpowder Irish Gin Sardinian Citrus</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/product/napii-fentimans-ginger-beer-zi-smakom-imbyru-bezalkoholnyi-275-ml-788637">Имбирное пиво</a></li><li>Красный грейпфрут</li><li>Клубника</li><li>Мята</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Свежий и выразительный твист на классику с имбирным пивом, грейпфрутом и клубникой — это не просто летний рефрешер, а баланс кислинки, пряности и цитрусовой мягкости. Гроговый стиль подачи делает его универсальным выбором для позднего дня или бранча.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sardinian Lemonade</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Drumshanbo Gunpowder Irish Gin Sardinian Citrus</li><li>30 мл лимонного сока</li><li>имбирное пиво по вкусу</li><li>дольки красного грейпфрута для украшения</li><li>клубника по вкусу</li><li>мята для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите хайбол, заполнив его льдом на несколько минут.</li><li>В шейкере соедините 50 мл Drumshanbo Gunpowder Irish Gin Sardinian Citrus и 30 мл свежевыжатого лимонного сока.</li><li>Добавьте в шейкер 2–3 дольки клубники, предварительно слегка раздавленные мадлером, и несколько капель содовой.</li><li>Добавьте лед и энергично встряхните около 12 секунд.</li><li>Выньте лед из бокала, процедите смесь через двойной стрейнер в бокал.</li><li>Аккуратно долейте охлажденное имбирное пиво, соблюдая пропорцию 1:1 или 1:1,5.</li><li>Сверху добавьте лед в форме сфер.</li><li>Украсьте коктейль долькой красного грейпфрута, листиком мяты и слайсом клубники, зафиксировав шпажкой.</li><li>Подавайте с металлической трубочкой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">221-225 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

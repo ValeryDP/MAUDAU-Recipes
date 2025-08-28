@@ -1,0 +1,861 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Джин Stirling — міцний алкогольний напій, що виробляється в Нідерландах в стінах старовинної винокурні Boomsma, хоча назва натякає на шотландське походження. Продукт створили з метою внести новизну у виробництво класичного стилю —
+                    завдяки сміливим експериментам із рослинними інгредієнтами.
+                </p>
+                <h2>Як виробляють джин Stirling</h2>
+                <p>
+                    Міцний алкогольний напій виготовляють за допомогою подвійної перегонки в мідних кубах. Процес починається з оброблення нейтрального зернового спирту, до якого додають ретельно вивірений ботанічний букет, що складається з ягід
+                    ялівцю, коріандру, кардамону, дягелю та інших трав. Перед перегонкою джину Stirling компоненти або мацерують, або проводять парову інфузію — техніка залежить від виробленого стилю.
+                </p>
+                <p>Потім міцний спиртний напій фільтрують і витримують, щоб гарантувати збалансований смак. Нарешті дистилят розливають по фірмових рифлених пляшках, які легко впізнати на полиці магазину.</p>
+                <h2>Різновиди джину «Стирлінг»</h2>
+                <p>Асортимент виробника представлений двома стилями:</p>
+                <ol>
+                    <li>
+                        London Dry Gin. Джин Stirling з виразним ялівцевим смаком і сухим цитрусовим посмаком, що створює відчуття прохолоди після кожного ковтка. Дистилят доступний у двох варіантах міцності — 47% і 37,5%. Перший завдяки інтенсивному
+                        смаку найкраще підходить для змішування в коктейлях, а другий — легший і м'якший, тому його можна повільно потягувати в неформальній обставі.
+                    </li>
+                    <li>Pink Gin. Рожева версія, наповнена яскравими фруктово-квітковими нотами з тонким пряним фінішем. У носі добре відчуваються полуниця, грейпфрут і пелюстки троянд. У роті композицію завершує пікантність рожевого перцю.</li>
+                </ol>
+                <h2>Як вибрати джин Stirling онлайн</h2>
+                <p>Оскільки портфоліо виробника невелике, спирайтеся на бажаний спосіб подачі й обсяг пляшки. Наприклад, літр алкоголю внесе нотку веселощів в гучне святкування. Пляшка 0,5 літра — практичне доповнення до подарунка.</p>
+                <p>Маркет алкогольних виробів MAUDAU регулярно пропонує знижки на вибрані товари. Переконатися в якості продукції допоможуть відгуки інших покупців.</p>
+                <h3>Скільки коштує джин Stirling в Україні</h3>
+                <p>Пляшка, залежно від стилю, обсягу і вмісту алкоголю, коштує близько 500–700 грн. Це доступний за ціною напій — попри те, що за якістю він не поступається розливам дорожче.</p>
+                <h2>Як і з чим пити джин «Стирлінг»</h2>
+                <p>Міцний спиртний напій радять подавати охолодженим до +6–8 °C. Келих повинен бути доволі широким, щоб повною мірою насолодитися рослинним букетом.</p>
+                <p>
+                    Рекомендовані поєднання з їжею залежать від обраного стилю. Лондонський сухий джин Stirling можна подати з тоніком, лимонним твістом і гілочкою розмарину. Цей стиль добре поєднується з солоними закусками на кшталт оливок, м'ясним
+                    асорті, запеченою рибою.
+                </p>
+                <p>Рожевий джин «Стирлінг» дегустуйте зі свіжими ягодами і м'ятою, супроводжуючи льодом. Цей стиль стане гармонійним доповненням до м'якого сиру, легкого десерту, фруктового асорті.</p>
+                <h2>Чому вигідно купити джин Stirling в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Кожна пляшка — гарантовано оригінальна. Замовити джин можна в будь-яке місто України, вибравши відповідну поштову службу. З доставленням по Львову, Дніпру та Києву, зокрема передмістю, допоможуть кур'єри. А ще замовлення в цих
+                    містах можна забрати самостійно в супермаркетах «Сільпо». Програма лояльності WOW Club забезпечує постійним покупцям додаткову вигоду у вигляді збільшеного кешбеку на категорії, які можна самостійно вибирати щомісяця, і безплатних
+                    доставлень до 30 кг.
+                </p>
+                ​​
+            </div>
+
+
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Raspberry Mojito" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Raspberry-Mojito.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Raspberry Mojito</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Малина</li><li>Мʼята</li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/dzhyn/product_brand=stirling">Джин Stirling</a></li><li>Лікер Green Lady</li><li><a href="https://maudau.com.ua/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Імбирний ель</a></li><li>Подрібнений лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Raspberry Mojito — яскравий ягідний твіст на класичний мохіто з м'якою кислинкою малини і пряною свіжістю м'яти. Ідеальний літній варіант, у якому газованість імбирного елю надає коктейлю жвавості, а використання лікеру Green Lady додає глибини.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Raspberry Mojito</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>жменя малини</li><li>жменя м'яти</li><li>цукровий сироп до смаку</li><li>25 мл джину Stirling</li><li>25 мл лікеру Green Lady</li><li>100 мл імбирного елю</li><li>подрібнений лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер покладіть жменю свіжої малини та 6–8 листків м'яти.</li><li>Додайте 15 мл цукрового сиропу і ретельно роздушіть інгредієнти мадлером до стану пюре.</li><li>Влийте 25 мл джину Stirling і 25 мл лікеру Green Lady, потім засипте доверху подрібненим льодом.</li><li>Струшуйте енергійно 10 секунд.</li><li>Наповніть хайбол свіжим подрібненим льодом до країв.</li><li>Через подвійний стрейнер процідіть суміш у келих.</li><li>Додайте 100 мл імбирного елю й акуратно перемішайте барною ложкою від низу до верху.</li><li>Прикрасьте верхівку кількома ягодами малини і гілочкою м'яти.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tropical Pornstar Martini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tropical-Pornstar-Martini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tropical Pornstar Martini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Лікер Tropical Triumph</li><li><a href="https://maudau.com.ua/category/dzhyn/product_brand=stirling">Джин Stirling</a></li><li>Лікер Passoa</li><li><a href="https://maudau.com.ua/category/dytiachi-piure/smak=marakuja">Пюре маракуї</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Tropical Pornstar Martini — соковитий і насичений коктейль з екзотичною тропічною палітрою і шовковистою текстурою. Подається разом із шотом ігристого, який підсилює глибину фруктового смаку.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Tropical Pornstar Martini</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл лікеру Tropical Triumph</li><li>25 мл джину Stirling</li><li>25 мл лікеру Passoa</li><li>25 мл пюре маракуї</li><li>100 мл ананасового соку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть келих купе льодом і відставте в сторону.</li><li>У шейкер додайте 25 мл лікеру Tropical Triumph, 25 мл джину Stirling і 25 мл лікеру Passoa.</li><li>Потім влийте 25 мл пюре маракуї та 100 мл ананасового соку.</li><li>Додайте великий лід, закрийте шейкер і струшуйте щонайменше 15 секунд до охолодження і спінювання.</li><li>Приберіть лід із келиха, витріть краплі води з внутрішньої поверхні.</li><li>Через сито і стрейнер процідіть коктейль в охолоджений келих.</li><li>Подавайте додатково шот ігристого вина окремо збоку.</li><li>Прикрасьте поверхню напою половинкою маракуї та сушеним ананасом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Bloody Scotland" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bloody-Scotland.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Bloody Scotland</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/product_brand=stirling">Джин Stirling</a></li><li><a href="https://maudau.com.ua/product/syrop-chervonyi-apelsyn-1l-dzhyfard">Сироп кривавого апельсина</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li><a href="https://maudau.com.ua/product/sodova-franklin-sons-1886-02-l-45792">Содова вода</a></li><li>Журавлина</li><li>Апельсинова цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освіжальний коктейль із контрастною кислинкою та легкою терпкістю. Цей напій — збалансований мікс цитрусів і ягід із газованою основою. Добре підходить для раннього вечора, коли хочеться чогось легкого, але з характером.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Bloody Scotland</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл джину Stirling</li><li>25 мл сиропу кривавого апельсина</li><li>25 мл журавлинного соку</li><li>25 мл лаймового соку</li><li>содова вода до смаку</li><li>журавлина для прикрашання</li><li>апельсинова цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть хайбол великим кубиковим льодом на дві третини.</li><li>У шейкері змішайте 25 мл джину Stirling, 25 мл сиропу кривавого апельсина і 25 мл журавлинного соку.</li><li>Додайте 25 мл свіжовичавленого лаймового соку і 2-3 кубики льоду.</li><li>Струсіть шейкер енергійно впродовж 12 секунд.</li><li>Через подвійний стрейнер процідіть суміш у підготовлений келих.</li><li>Долийте содову воду до верху.</li><li>Барною ложкою перемішайте тільки верхню частину, не торкаючись дна.</li><li>Прикрасьте коктейль смужкою свіжої апельсинової цедри та кількома ягодами журавлини.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Classic Stirling G&T" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Classic-Stirling-G-T.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Classic Stirling G&T</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/product_brand=stirling">Джин Stirling</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li><li>Свіжий лист базиліку</li><li>Апельсинова цедра</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Лаконічний та освіжальний коктейль із впізнаваною гіркуватістю джину і тонкою цитрусовою лінією. Зберігає ботанічну структуру Stirling навіть у простому виконанні. Добре сприймається як легкий старт вечора або стабільна класика в спекотний день.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Classic Stirling G&T</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Stirling</li><li>150 мл тоніку</li><li>свіжий лист базиліку до смаку</li><li>апельсинова цедра для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заповніть хайбол великими кубиками льоду до самого верху.</li><li>Відміряйте 50 мл джину Stirling за допомогою джигера і влийте в келих.</li><li>Додайте 150 мл добре охолодженого тоніку, вливаючи по барній ложці.</li><li>Перемішайте один раз знизу вгору.</li><li>Злегка притисніть лист базиліку в долонях, щоб розкрити аромат, і помістіть у келих.</li><li>Зріжте довгу стрічку апельсинової цедри ножем для гарніру й опустіть по стінці скла.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Stirling Bramble" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Stirling-Bramble.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Stirling Bramble</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/product_brand=stirling">Джин Stirling</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Лікер Green Lady</li><li>Ожина</li><li>Свіжа мʼята</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сучасна версія класичного Bramble з додаванням пряних нот лікеру Green Lady і свіжої ягідної бази. Інтенсивний, кислий, з несподіваним трав'яним фінішем і багатошаровою текстурою. Підходить тим, хто полюбляє коктейлі з балансом між кислотою й ароматикою, без цукрового перенасичення.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Stirling Bramble</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл джину Stirling</li><li>30 мл лимонного соку</li><li>15 мл цукрового сиропу</li><li>15 мл лікеру Green Lady</li><li>ожина до смаку</li><li>свіжа м'ята до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В охолоджений шейкер влийте 60 мл джину Stirling, 30 мл лимонного соку та 15 мл цукрового сиропу.</li><li>Додайте лід і струшуйте 15 секунд.</li><li>Процідіть через сито в олд-фешен.</li><li>Обережно влийте 15 мл лікеру Green Lady по барній ложці.</li><li>Злегка розімніть мадлером кілька ягід ожини, помістіть їх у келих зверху.</li><li>Прикрасьте гілочкою свіжої м'яти, попередньо активувавши її аромат легким плесканням долоні.</li><li>Подавайте з трубочкою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Stirlingtini" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Stirlingtini.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Stirlingtini</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/product_brand=stirling">Джин Stirling</a></li><li>Лікер Red Cap</li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li><li>Свіжий базилік</li><li>Малина</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Соковитий, ароматний коктейль з акцентом на тропіки та зелень. Фруктова солодкість ананаса зустрічається з ягідною яскравістю і пряною свіжістю базиліку. Цей твіст на мартіні підкуповує не класичною строгістю, а відкритістю смаку і фактурною подачею.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Stirlingtini</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину Stirling</li><li>25 мл лікеру Red Cap</li><li>60 мл ананасового соку</li><li>свіжий базилік до смаку</li><li>малина до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер покладіть 3-4 аркуші свіжого базиліку та 2 ягоди малини.</li><li>Легко розімніть їх мадлером, не перетворюючи на кашу.</li><li>Додайте 45 мл джину Stirling, 25 мл лікеру Red Cap і 60 мл ананасового соку.</li><li>Заповніть шейкер льодом і струшуйте 12–15 секунд.</li><li>Процідіть суміш через подвійний стрейнер у заздалегідь охолоджений келих мартіні.</li><li>Для прикрашання насадіть малину і лист базиліку на шпажку, покладіть її на край келиха.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Spiced Winter Punch" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Spiced-Winter-Punch.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Spiced Winter Punch</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/product_brand=stirling">Джин Stirling</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=yabloko">Яблучний сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/product/napii-fentimans-ginger-beer-zi-smakom-imbyru-bezalkoholnyi-275-ml-788637">Імбирне пиво</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=prianyi-5">Пряний сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Пряний пунш для компанії, в якому поєднуються зігрівальні спеції, фруктова соковитість і легка газована текстура. Подається гарячим у чашах, з ароматом зимового саду та м'яким градусом. Ідеально підходить для вечірок і довгих застіль.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Spiced Winter Punch</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>700 мл джину Stirling</li><li>1 л каламутного яблучного соку</li><li>1 л лимонного соку</li><li>1 л імбирного пива</li><li>1 л пряного сиропу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Підготуйте великий сотейник або каструлю обсягом не менше ніж 5 літрів.</li><li>Влийте 700 мл джину Stirling, 1 літр каламутного яблучного соку та 1 літр лимонного соку.</li><li>Додайте 1 літр імбирного пива і 1 літр заздалегідь приготованого пряного сиропу на основі кориці, гвоздики, запашного перцю і мускату.</li><li>Поставте місткість на середній вогонь і прогрівайте, не доводячи до кипіння, підтримуючи 70–75 °C.</li><li>У процесі помішування використовуйте ложку з довгою ручкою.</li><li>Через 10 хвилин зніміть з вогню, дайте настоятися під кришкою ще 5–7 хвилин.</li><li>Подавайте в термокружках або товстостінних келихах, прикрасивши скибочками апельсина, паличками кориці або анісом.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">206 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

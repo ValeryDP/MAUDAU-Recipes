@@ -1,0 +1,854 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Джин зі смаком хвої у широкому сенсі відносять до різновиду цього міцного спиртного напою, в якому підкреслено сосново-смолисті нюанси ягід ялівцю — ключового рослинного компонента в стандартному ботанічному букеті. Іноді цей аромат
+                    підсилюють спеціально — за допомогою додавання настою або екстракту з шишок. Таку продукцію, як і раніше, класифікують як London Dry Gin або Flavored Gin.
+                </p>
+                <h3>Джин: особливості смаку і природа хвойного аромату</h3>
+                <p>Запах походить від ягід ялівцю. Аромат — доволі інтенсивний, з нотами сосни та смоли. А завдяки таким допоміжним рослинним добавкам, як цитрусова цедра, коріандр і корінь дягелю, з’являються нюанси м’яти і лугових трав.</p>
+                <p>Смак — освіжальний, що пояснюється природною гіркотою ялівцю. Посмак — чистий і тривалий.</p>
+                <h2>Як виготовляють джин із хвоєю</h2>
+                <p>
+                    Виробництво стандартизоване — на першому етапі дистиляції нейтральний зерновий спирт настоюють на рослинних компонентах за допомогою мацерації або парової інфузії, зберігаючи максимум ефірних олій. Додаткові інгредієнти на кшталт
+                    есенції з молодих шишок вводять під час вторинної перегонки. Це посилює смолистий профіль, але не руйнує класичну смако-ароматичну композицію. Після дистиляції міцний спиртний напій фільтрують і розливають.
+                </p>
+                <h2>Бренди-виробники джину із запахом хвої</h2>
+                <p>Безліч виразів London Dry Gin має природний смолистий аромат. Серед відомих брендів:</p>
+                <ol>
+                    <li>Beefeater. Рецептура об’єднує дев’ять рослинних компонентів, включно з ялівцем і цедрою цитрусових, що призводить до яскраво вираженого хвойного профілю з освіжальною кислинкою.</li>
+                    <li>Tanqueray. Один із найвиразніших джинів із хвоєю — це класичний London Dry Gin.</li>
+                    <li>Bombay Sapphire. Лісовий характер м’якший, оскільки в складі також присутні бузина і коріандр.</li>
+                </ol>
+                <p>Традиційну продукцію також пропонують Finsbury, Gordon’s, Wilmore. Якщо потрібен оригінальний подарунок, придивіться до крафтових розливів від Opivm і Greater Than.</p>
+                <h3>Скільки коштує джин зі смаком хвої в Україні</h3>
+                <p>Ціни коливаються в межах 700–1300 грн за пляшку обсягом 0.7 л. Вартість залежить від престижності виробника, міцності, рідкості використаних рослинних компонентів. Крафтова та монокомпонентна продукція коштує дорожче.</p>
+                <h2>Як і з чим пити джин із запахом хвої</h2>
+                <p>
+                    Подавайте напої охолодженими до +6–8 °C у келихах-балонах. Найпростіше підкреслити сосновий характер, змішавши джин з тоніком і доповнивши суміш грейпфрутом і розмарином. При цьому використовуйте лише кілька кубиків льоду — щоб
+                    надмірно не розбавляти мікс. Джин із запахом хвої також додасть родзинки класичним коктейлям на кшталт «Мартіні».
+                </p>
+                <p>Що стосується закусок, то поєднуйте міцний спиртний напій із копченою рибою, горіхами, оливками, твердими витриманими сирами. Легка гіркуватість також чудово доповнить злегка пікантну кухню.</p>
+                <h2>Чому вигідно купити джин зі смаком хвої в інтернет-магазині MAUDAU</h2>
+                <p>
+                    В онлайн-каталозі MAUDAU представлена виключно оригінальна продукція за конкурентними цінами. Вартість додатково знижується під час розпродажів, а деякі товари можна замовити гуртом зі знижкою. Продукція доступна як у пляшках, так і
+                    подарункових упаковках. Джин із хвойними нотками можна купити з доставленням поштовими службами в будь-яку точку України — просто виберіть одну з логістичних компаній, а саме «Укрпошту», «Нову Пошту» або «Meest ПОШТУ». Оплату
+                    найзручніше здійснити на сайті, але це можна зробити і постфактум, наприклад, якщо хочете розрахуватися готівкою.
+                </p>
+            </div>
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="London Bow Tie" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/London-Bow-Tie.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">London Bow Tie</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/smakaromat=khvoinyi">Джин із хвойним смаком</a></li><li>Віскі Deer Camp Straight Bourbon</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=myhdal-5">Мигдалевий сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Приємне поєднання цитрусових і трав навіюють атмосферу лондонських пабів. Джин з віскі та лимонним соком — чоловіча брутальність, пом'якшена мигдалевим сиропом, що надає напою м'якості та солодкості. Підходить любителям балансу, стилю та елегантності.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати London Bow Tie</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл джину з хвойним смаком</li><li>30 мл віскі Deer Camp Straight Bourbon</li><li>30 мл лимонного соку</li><li>30 мл мигдалевого сиропу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер покладіть лід і влийте всі компоненти.</li><li>Ретельно збовтайте та перелийте напій у келих.</li><li>Для прикрашання можна використовувати апельсинову цедру.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Boozy Cucumber" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Boozy-Cucumber.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Boozy Cucumber</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/smakaromat=khvoinyi">Джин із хвойним смаком</a></li><li>Огірок</li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Сік лайма</a></li><li><a href="https://maudau.com.ua/product/sodova-franklin-sons-1886-02-l-45792">Содова вода</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Хвойні нотки джину, підкреслені свіжістю огірка і кислинкою лайма, дарують незабутні відчуття свіжості та легкості. Спекотний літній день заграє іншими барвами після дегустації цього коктейлю.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Boozy Cucumber</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину з хвойним смаком</li><li>3 кружечки огірка</li><li>сік ½ лайма</li><li>содова вода для доливання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У келих покладіть кубики льоду.</li><li>Зверху влийте 45 мл джину з хвойним смаком.</li><li>Видавіть сік із половини лайма і наповніть келих содовою.</li><li>Покладіть 3 кружальця огірка і насолоджуйтеся напоєм.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pink Panther" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-Panther.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pink Panther</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/smakaromat=khvoinyi">Джин із хвойним смаком</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=zhuravlyna-13">Журавлинний сік</a></li><li>Тонік Fever Tree Elderflower</li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Гармонійне поєднання журавлини та апельсинового лікеру не залишить байдужим. Джин із хвойними нотками додає родзинки у смаку. Коктейль підійде для вечірок або як десертний напій.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pink Panther</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину з хвойним смаком</li><li>45 мл журавлинного соку</li><li>30 мл тоніку Fever Tree Elderflower</li><li>22 мл апельсинового лікеру</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Покладіть у шейкер лід.</li><li>Додайте 45 мл джину з хвойним смаком, 45 мл журавлинного соку, 30 мл тоніку Fever Tree Elderflower і 22 мл апельсинового лікеру.</li><li>Збовтайте, перелийте в келих і прикрасьте за бажанням.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Bee's Knees" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Bees-Knees.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Bee's Knees</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/smakaromat=khvoinyi">Джин із хвойним смаком</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=med-14">Медовий сироп</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Простота й елегантність — так можна описати коктейль, популярний ще за часів Сухого закону в США. Медові ноти балансують із цитрусовою кислинкою і міцністю джину, створюючи легку і теплу атмосферу. Підходить і для вечірніх зустрічей, і для ранкових бранчів.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Bee's Knees</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл джину з хвойним смаком</li><li>22 мл лимонного соку</li><li>22 мл медового сиропу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть шейкер льодом.</li><li>Влийте туди 60 мл джину з хвойним смаком, 22 мл лимонного соку, 22 мл медового сиропу.</li><li>Збовтайте, перелийте в келих і прикрасьте, за бажанням, лимонними скибочками.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Green with Envy" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Green-with-Envy.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Green with Envy</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/smakaromat=khvoinyi">Джин із хвойним смаком</a></li><li>Огірок</li><li>Листя мʼяти</li><li>Лайм</li><li><a href="https://maudau.com.ua/product/napii-fentimans-ginger-beer-zi-smakom-imbyru-bezalkoholnyi-275-ml-788637">Імбирне пиво</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Хвойний джин і м'ята - приємне пряне поєднання підкреслене цитрусовою кислинкою. Огірок додає свіжості. Особливу родзинку в смаку вносить солодке імбирне пиво. Виходить апетитний коктейль яскраво зеленого кольору, який стане справжньою окрасою літньої вечірки або приємних посиденьок на свіжому повітрі.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Green with Envy</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джина з хвойним смаком</li><li>2-3 кружальця огірка</li><li>3 листки м'яти</li><li>½ лайма</li><li>імбирне пиво за смаком</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Влийте в шейкер 45 мл джина та імбирне пиво за смаком.</li><li>Видавіть сік половини лайма.</li><li>За бажанням додайте лід і ретельно збовтайте.</li><li>Перелийте у високу склянку, покладіть 2-3 шматочки огірка, 3 листки м'яти.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pucker Up!" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pucker-Up.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pucker Up!</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/smakaromat=khvoinyi">Джин із хвойним смаком</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=hreipfrut-9">Сік грейпфрута</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=laim-4">Лаймовий сироп</a></li><li>Тонік Sparkling Pink Grapefruit Fever-Tree</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яскравий, незабутній коктейль із приємною цитрусовою кислинкою, хвойним ароматом і візуальною привабливістю. Підійде любителям не надто солодких напоїв з освіжальним характером.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Pucker Up!</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину з хвойним смаком</li><li>45 мл соку грейпфрута</li><li>1 ч. л. лаймового сиропу</li><li>тонік Sparkling Pink Grapefruit Fever-Tree до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері змішайте 45 мл джину з хвойним смаком, 45 мл соку грейпфрута, 1 ч. л. лаймового сиропу і тонік Sparkling Pink Grapefruit Fever-Tree. За бажанням додайте лід.</li><li>Ретельно збовтайте і перелийте в коктейльний келих.</li><li>Прикрасьте за бажанням.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="The Shillelagh" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/The-Shillelagh.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">The Shillelagh</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/category/dzhyn/smakaromat=khvoinyi">Джин із хвойним смаком</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_class=limonchello">Лимончелло</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=laim-4">Лаймовий сироп</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=laim-9">Лаймовий сік</a></li><li>Огірок</li><li>Листя базиліку</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Мікс хвойних нот, солодкості лимончелло, освіжальної цитрусової кислинки і приємних трав'яних відтінків створює незабутні враження після дегустації. Завдяки яскравому зовнішньому вигляду і багатогранності аромату коклейль впишеться в атмосферу пляжної вечірки, теплих дружніх посиденьок. Підійде і як аперитив перед вечерею.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати The Shillelagh</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину з хвойним смаком</li><li>22 мл лимончелло</li><li>22 мл лаймового сиропу</li><li>7 мл лаймового соку</li><li>2-3 кружальця огірка</li><li>3 листочки базиліку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер покладіть 2-3 скибочки огірка та 3 листочки базиліку.</li><li>Акуратно помніть їх барним товкачем.</li><li>Влийте 45 мл джину з хвойним смаком.</li><li>Слідом додайте 22 мл лимончелло, 22 мл лаймового сиропу і 7 мл свіжого лаймового соку.</li><li>Наповніть шейкер льодом і енергійно перемішайте до охолодження напою. Процідіть суміш в охолоджений келих (highball або coupe).</li><li>Прикрасьте листочками базиліку, смужкою огірка або скибочкою лайма.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">221-278 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0-3.1 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

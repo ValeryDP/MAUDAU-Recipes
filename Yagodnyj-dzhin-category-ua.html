@@ -1,0 +1,778 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Ягідний джин — ароматизована версія класичного міцного спиртного напою, настояного на натуральних або штучних інгредієнтах. На відміну від традиційного London Dry Gin, у якому акцент зроблено на ягодах ялівцю та цитрусових, ця
+                    версія огортає ароматами малини, ожини, чорниці та смородини. Це й надає напою впізнаваного кольору залежно від використаних добавок — яскраво-рожевого або темно-фіолетового.
+                </p>
+                <h2>Як виробляють ягідний джин</h2>
+                <p>
+                    Основу становить нейтральний зерновий спирт, який спершу переганяють із натуральними рослинними інгредієнтами, включно з ялівцем, цедрою цитрусових, коріандром і коренем дягелю. На другому етапі дистиляції додають ягоди — у вигляді
+                    соку, настою або екстракту. Час і спосіб впровадження добавок визначають, наскільки вираженим вийде фруктовий смак. Іноді до складу додатково вводять підсолоджувачі.
+                </p>
+                <h2>Бренди-виробники джину з ягодами на слуху</h2>
+                <p>Високоякісну продукцію пропонують:</p>
+                <ol>
+                    <li>
+                        Spicer. Український крафтовий бренд, який використовує локальну сировину та унікальні рецептури, що призводить до створення яскравого алкоголю. До замовлення доступні як окремі пляшки, так і набори з мініатюрами для знайомства з
+                        різними стилями — чудовий варіант подарунка.
+                    </li>
+                    <li>Hvoya. Ще один український ягідний джин, який виробляють у гущі карпатських лісів. У складі — добірна полуниця і малина. Композицію доповнюють пелюстки троянд, мармелад, лимонник та імбир.</li>
+                    <li>Hayman’s. Британський бренд, що робить ставку на традиційну технологію перегонки, тому продукцію характеризує тільки тонкий ягідний шлейф на фініші.</li>
+                    <li>Rammstein. Ягідний джин від культового німецького рок-гурту з насиченим смако-ароматичним букетом. Родзинка — яскрава дизайнерська пляшка.</li>
+                    <li>Whitley Neill. Один із найпопулярніших виробників ароматизованих джинів із Великої Британії. Бренд пропонує кілька варіантів смаку, включно з малиновим і ожиновим.</li>
+                    <li>Giro. Бренд з Іспанії, що спеціалізується на коктейльних міксерах. Хоча на джин від цієї торгової марки ціна вельми доступна, це не впливає на збалансованість смаку й аромату.</li>
+                </ol>
+                <h3>Скільки коштує ягідний джин в Україні</h3>
+                <p>
+                    Ціни коливаються в межах 600–1200 грн за пляшку — все залежить від торгової марки, вмісту алкоголю та складу. Наприклад, розливи на натуральних ягодах коштують дорожче, ніж на штучних ароматизаторах. Найвищими імпортними митами
+                    обкладають продукцію з Великої Британії та країн Західної Європи — це також впливає на кінцеву вартість. А ще в ціноутворенні враховують обсяг і дизайн пляшки.
+                </p>
+                <h2>Як і з чим пити джин з ягодами</h2>
+                <p>
+                    Міцний спиртний напій перед подачею охолоджують до +6–8 °C. Його можна пити в чистому вигляді, з льодом або використовувати як основу для освіжальних коктейлів — Berry Gin Fizz, Berry Collins, Mint Spritz. Ягідний джин добре
+                    поєднується з тоніком, лимонадом, сухим ігристим вином, солодкими лікерами.
+                </p>
+                <p>Як закуску можна запропонувати м’який сир, темний шоколад, ягідно-фруктовий десерт, наприклад, чизкейк, тарт або панакоту. А ще він доповнить смажену птицю, прошуто, канапе з брі.</p>
+                <h2>Чому вигідно купити ягідний джин в інтернет-магазині MAUDAU</h2>
+                <p>
+                    Насамперед — через оригінальність алкогольної продукції. А ще її можна замовити з доставленням у будь-яку точку України, де функціонує поштове відділення. Економити на купівлі алкоголю допомагають акції, знижки та програми
+                    лояльності. Наприклад, за допомогою WOW Club постійні покупці отримують збільшений кешбек у категоріях, які щомісяця обирають самі. А «Власний Рахунок» дає можливість накопичувати балобонуси та оплачувати ними частину будь-якого
+                    замовлення.
+                </p>
+            </div>
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tanqueray Blackcurrant Royale French 75" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tanqueray-Blackcurrant-Royale-French-75.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tanqueray Blackcurrant Royale French 75</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-tanqueray-blackcurrant-royale-413-07-l">Джин Tanqueray Blackcurrant Royale</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna">Ігристе вино</a></li><li>Цедра лимона</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Розкішний фіолетово-рожевий коктейль на основі ягідного джину. У нього збалансований смак із глибокими нотами чорної смородини, ванілі, ялівцю та легкими квітковими відтінками. Ідеальний в охолодженому вигляді для створення святкового настрою в спекотний літній день.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Tanqueray Blackcurrant Royale French 75</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл Tanqueray Blackcurrant Royale</li><li>30 мл лимонного соку</li><li>30 мл цукрового сиропу</li><li>50 мл ігристого вина</li><li>цедра лимону для прикрашання</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налийте в шейкер 50 мл Tanqueray Blackcurrant Royale, 30 мл лимонного соку, 30 мл цукрового сиропу та перемішайте.</li><li>Перелийте в келих для шампанського.</li><li>Додайте 50 мл ігристого і прикрасьте лимонною цедрою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Tanqueray Blackcurrant Royale and Lemonade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Tanqueray-Blackcurrant-Royale-and-Lemonade.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Tanqueray Blackcurrant Royale and Lemonade</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-tanqueray-blackcurrant-royale-413-07-l">Джин Tanqueray Blackcurrant Royale</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li>Темні ягоди</li><li>Скибочка лимона</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий коктейль для любителів міцного алкоголю, пом'якшеного солодкістю фруктів. У ньому балансує смак чорної смородини та цитрусові нотки. Доповнений освіжальним лимонадом, дарує відчуття свята. Ідеальний для релаксу у вечірній час.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Tanqueray Blackcurrant Royale and Lemonade</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл Tanqueray Blackcurrant Royale</li><li>150 мл лимонаду</li><li>жменя темних ягід</li><li>1 скибочка лимона</li><li>лід до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Високу склянку або келих наповніть наполовину або по вінця, залежно від бажаної свіжості напою.</li><li>Влийте 50 мл Tanqueray Blackcurrant Royale і слідом — 150 мл лимонаду.</li><li>Барною ложкою або коктельною паличкою перемішайте інгредієнти.</li><li>Прикрасьте жменею темних ягід і скибочкою лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Apple & Red Berries Gin & Tonic" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Apple-Red-Berries-Gin-Tonic.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Apple & Red Berries Gin & Tonic</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-whitley-neill-apple-berry-41-3-0-7-l">Джин Whitley Neill Apple and Red Berries</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/typ_292=toniky-2">Тонік</a></li><li>Полуниця</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Фруктова версія класичного джин-тоніку. Приємний баланс цитрусової свіжості та ягідної солодкості створюють легку, грайливу атмосферу. Виходить універсальний напій для приємного відпочинку в спекотні літні дні, чи то пікнік, чи то пляжна вечірка з друзями.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Apple & Red Berries Gin & Tonic</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Whitley Neill Apple and Red Berries</li><li>тонік до смаку</li><li>полуниця до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Високу склянку наповніть льодом.</li><li>Влийте 50 мл джину Whitley Neill Apple and Red Berries і тонік до смаку.</li><li>Додайте полуницю і злегка перемішайте.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Black Cherry Spritz" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Black-Cherry-Spritz.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Black Cherry Spritz</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-whitley-neill-black-cherry-41-3-0-7-l">Джин Whitley Neill Black Cherry</a></li><li><a href="https://maudau.com.ua/category/solodka-voda/smak_24=lymonad">Лимонад</a></li><li><a href="https://maudau.com.ua/category/ihrysti-vyna/product_class=prosekko-prosecco">Просеко</a></li><li>Вишня</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий, злегка кислуватий коктейль із вираженим смаком чорної вишні та приємним алкогольним посмаком. Яскравий колір, фруктова насиченість створюють атмосферу веселощів. Підходить для літніх зустрічей або аперитиву перед вечерею.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Black Cherry Spritz</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джину Whitley Neill Black Cherry</li><li>50 мл лимонаду</li><li>25 мл просеко</li><li>вишня до смаку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У келих для шампанського або винний покладіть кубики льоду.</li><li>Поверх влийте 50 мл джину Whitley Neill Black Cherry.</li><li>Потім акуратно додайте 25 мл просеко і злегка перемішайте.</li><li>Долийте 50 мл лимонаду і прикрасьте зверху вишнею.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Jasmin" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Jasmin-yd.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Jasmin</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/dzhyn-himbrimi-winterbird-edition-40-07-l">Джин Himbrimi Winterbird</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=campari">Кампарі</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/smakaromat_3=apelsynovyi-2">Апельсиновий лікер</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль із приємним квітковим букетом і цитрусовою свіжістю. Його оцінять любителі ароматних напоїв із ніжним смаком. Жасминовий лікер дає коктейлю глибину, яка розкривається на тлі кислинки лимона.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Jasmin</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл джину Himbrimi Winterbird</li><li>22,5 мл Кампарі</li><li>10 мл апельсинового лікеру</li><li>15 мл лимонного соку</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наповніть шейкер льодом.</li><li>По черзі додайте 45 мл джину Himbrimi Winterbird, 22,5 мл Кампарі, 10 мл апельсинового лікеру, 15 мл лимонного соку.</li><li>Перемішайте барною ложкою.</li><li>Перелийте в келих і прикрасьте за бажанням.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">220-280 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">0-12.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

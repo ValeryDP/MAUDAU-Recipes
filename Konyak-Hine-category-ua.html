@@ -1,0 +1,972 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Опис</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепти</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Харчова цінність</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Hine — престижний французький коньячний дім, розташований у місті Жарнак у Шаранті. Компанію вважають найстарішою в регіоні. Бренд спеціалізується на випуску міцного алкоголю категорії Fine Champagne. Це означає, що коньячні спирти
+                    постачають виключно з двох найкращих крю — Grande Champagne і Petite Champagne.
+                </p>
+                <h2>Коротка історія коньячного дому Hine</h2>
+                <p>
+                    Офіційним роком народження компанії вважають 1763 рік, коли в Жарнаку емігрант-гугенот Джеймс Деламен заснував винокурню Delamain &amp; Ranson. 1791 року Томас Гайн, який проживав на той час із сім’єю в Дорсеті (Англія), за бажанням
+                    батька-негоціанта прибув до Франції, щоб вивчати коньячну справу. Через п’ять років він одружився з Франсуазою-Елізабет Деламен, після чого став повноправним бізнес-партнером її батька. Після смерті чоловіка теща передала кермо
+                    влади саме зятю Томасу, а не одному з рідних синів. Так 1817 року виникла компанія Thomas Hine &amp; Co. Акцент молодий підприємець змістив на якість, а не на кількість продукції, що випускається.
+                </p>
+                <p>На жаль, Томас передчасно помер від пневмонії 1822 року у віці 47 років. Після цього справа перейшла до його сина — Томаса-Жоржа Гайна.</p>
+                <p>Емблемою торгової марки досі слугує олень, що лежить і озирається назад. Тварина символізує відданість французькій землі, але водночас підкреслює міцний зв’язок із рідною для засновника компанії країною — Англією.</p>
+                <p>Бренд є частиною холдингу LVMH. Нащадки засновника зберігали право власності на торгову марку до 2013 року, поки компанію не поглинув концерн EDV SAS. Однак це не вплинуло на якість алкоголю, що випускається.</p>
+                <h3>«Хайн»: нагороди компанії та конкретних розливів</h3>
+                <p>
+                    1859 року будинок коньячних спиртів став першим у світі, кого відзначили міжнародною нагородою у Сент-Луїсі (США). У 1962 році ордер підписала сама королева Єлизавета II. Відтоді компанія Hine — єдиний виробник коньяку у світі,
+                    відзначений честю постачати міцне спиртне до королівського двору. Особливий статус закріплений за брендом досі — його оновлюють кожні п’ять років.
+                </p>
+                <p>
+                    2023 року «Хайн» увійшов до сотні найкращих світових брендів, що займаються випуском преміальних вин і міцних спиртних напоїв за версією премії Luxury Lifestyle Awards. А фірмовому купажу Hine Rare, раніше відомому як Rare &amp;
+                    Delicate і створеному 1989 року представником шостого покоління сім’ї Бернардом, присудили подвійне золото на WSWA 2021 і одну з найвищих оцінок від Wine Enthusiast.
+                </p>
+                <h2>Особливості виготовлення коньяку «Хайн»</h2>
+                <p>Бренд суворо контролює кожен етап — від виноградника до пляшки. Компанія володіє 120 гектарами виноградних плантацій у найпрестижніших виноробних зонах, співпрацюючи з більш ніж 50 місцевими фермерами.</p>
+                <p>
+                    Для виготовлення коньяку Hine використовують тільки виноград «уні-блан», вирощений на крейдяно-вапнякових ґрунтах. Більшість спиртів у складі купажу належать до категорії Fine Champagne, тобто щонайменше 50% ягід постачають із
+                    Гранд-Шампані.
+                </p>
+                <p>Компанія витримує коньячну продукцію в дрібнозернистих бочках із французького дуба в льохах на глибині близько двох метрів під землею на березі річки Шаранта. Це забезпечує достатню вологість і повільне рівномірне дозрівання.</p>
+                <p>Коньячний дім Hine також практикує так звану ранню витримку, коли бочки одразу після перегонки доставляють у вологі льохи Брістоля в Англії. Це призводить до розвитку елегантних цитрусово-квіткових ноток.</p>
+                <p>Купажуванням керує Ерік Форже. Майстер приділяє особливу увагу ароматичному балансу і збереженню яскравих фруктових нот.</p>
+                <h2>Колекція коньяків Hine</h2>
+                <p>Базовий варіант — H VSOP. Його можна пити без добавок або змішувати в коктейлях. У смаку відчуваються нотки абрикоса й акації, що змінюються пікантним шлейфом білого перцю. В ароматі домінують нюанси меду та ірисів.</p>
+                <p>
+                    Другий за популярністю варіант — Rare VSOP. Це купаж, що складається з більш ніж 20 коньячних спиртів Fine Champagne. Наймолодший витриманий чотири роки, а найстаріший — понад 10. Аромат наповнений абрикосом, динею, апельсином,
+                    імбиром. Як завершення — легкий дубовий вплив.
+                </p>
+                <p>Кілька інших розливів Hine, що заслуговують на увагу:</p>
+                <ol>
+                    <li>Early Landed 1984 Grande Champagne. Вінтажний коньяк, частково витриманий в Англії. Акцент — на ароматах цитрусової цедри.</li>
+                    <li>Cigar Reserve XO Premier Cru Grande Champagne. Купаж, який створили для поєднання з преміальними сигарами. Це насичений, пряний і збалансований коньяк «Хайн» — з нотами інжиру, шкіри, тютюну і тонкими дубовими танінами.</li>
+                    <li>
+                        Antique XO. Ще один вираз на основі ягід із Гранд-Шампані. Це зрілий коньяк глибокого бурштинового кольору з багатошаровим ароматом айви, сухофруктів, меду і спецій. Посмак — довгий і виразний, з тонкими нюансами лісового
+                        горіха.
+                    </li>
+                </ol>
+                <p>
+                    Кожна пляшка відображає філософію будинку Hine, де акцент зроблено на ретельному купажуванні, увазі до ароматичних компонентів і повазі до теруару. Елегантна пляшка у формі графина, розроблена для випусків Rare і XO, поєднує
+                    позачасову привабливість кришталю з вишуканою естетикою гранованого скла.
+                </p>
+                <h3>Коньяк «Хайн»: ціни в Україні</h3>
+                <p>
+                    Вартість стартує від 1500–1800 грн за наймолодший розлив — VSOP. Рідкісні вирази з тим же терміном дозрівання коштують ще дорожче — понад 3000 грн. А основу асортименту становить унікальна вінтажна продукція — вартість однієї пляшки
+                    нерідко сягає кількох тисяч гривень.
+                </p>
+                <p>Hine — коньяк за доволі високою ціною, що насамперед відображає спеціалізацію будинку на вишуканих витриманих купажах. На вартість також впливають дрібносерійне виробництво та імпортні мита.</p>
+                <h2>Рекомендації щодо дегустації французького коньяку Hine</h2>
+                <p>
+                    Щоб повною мірою оцінити міцний спиртний напій, подавайте його при +15–18 °C у сніфтерах або келихах-тюльпанах. Почніть знайомство з торговою маркою з H by Hine VSOP — легкого цитрусово-квіткового вираження для вживання соло або з
+                    льодом.
+                </p>
+                <p>
+                    Якщо підносите до столу рідкісні купажі на кшталт Cigar, дайте коньяку «Хайн» трохи подихати. Міцний сорт гармонійно поєднується з темним шоколадом, витриманими сирами на кшталт конте або парміджано-реджано, преміальними сигарами.
+                    Ним також можна насолоджуватися як дижестивом — достатньо кількох ковтків.
+                </p>
+                <p>Купити вінтажний коньяк «Хайн», як Early Landed, найкраще для вживання в чистому вигляді. Його дегустують за кімнатної температури та поєднують із мигдалевим печивом чи сухофруктами.</p>
+                <p>Більшість пляшок становлять особливу колекційну цінність. Зберігайте їх у вертикальному положенні в прохолодному темному місці.</p>
+                <h2>Чому вигідно купити коньяк Hine в інтернет-магазині MAUDAU</h2>
+                <p>
+                    У нас — гарантовано оригінальна продукція, що вкрай важливо, враховуючи високу вартість алкоголю від цього виробника. До того ж доступні варіанти як у склі, так і в подарункових упаковках. Оплатити покупку можна після отримання. При
+                    цьому найзручніше розрахуватися на сайті. Продукцію Hine можна купити з доставленням у будь-яку точку України завдяки співпраці з транспортними компаніями «Укрпошта», «Нова Пошта» і «Meest ПОШТА». Це безплатно при замовленні на
+                    певну суму.
+                </p>
+            </div>
+
+
+
+
+
+            
+        </div>
+
+
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-0" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="HineBall" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/HineBall.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">HineBall</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine</a></li><li><a href="https://maudau.com.ua/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Імбирний ель</a></li><li>Апельсинова цедра</li><li>Свіжий імбир</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий напій, що поєднує розкіш коньяку Hine і яскраві цитрусові нотки. Він такий приємний, як промені сонця, що минає, свіжий і повітряний, як літні вечори. У кожному ковтку — гармонія смаків і легка іскристість.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup0">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup0" class="overlay add-popup">
+        <a href="#cocktail-item-0" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати HineBall</h2>
+            <a class="close add-id" href="#cocktail-item-0">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл коньяку Hine</li><li>250 мл імбирного елю</li><li>апельсинова цедра для прикрашання</li><li>шматочок свіжого імбиру для прикрашання</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У високу склянку з льодом налийте 50 мл коньяку Hine.</li><li>Додайте 250 мл імбирного елю й акуратно перемішайте.</li><li>Прикрасьте апельсиновою цедрою, скибочкою імбиру.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-0">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-2" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Hine Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hine-Sour.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Hine Sour</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li>Яєчний білок</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль із характером і особливою родзинкою. Яєчний білок робить його м'яким, шовковистим і формує на поверхні красиву пінку. Кислинка лимона надає йому свіжості, а цукровий сироп врівноважує загальну смакову палітру. Його подають у низьких келихах, щоб підкреслити естетичність.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup2">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="overlay add-popup">
+        <a href="#cocktail-item-2" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Hine Sour</h2>
+            <a class="close add-id" href="#cocktail-item-2">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл коньяку Hine</li><li>15 мл лимонного соку</li><li>15 мл цукрового сиропу</li><li>1 яєчний білок або аквафаба (веганська заміна)</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер влийте 40 мл коньяку Hine, 15 мл лимонного соку, 15 мл цукрового сиропу, 1 яєчний білок або аквафабу (веганська заміна).</li><li>Потрясіть впродовж 10–15 секунд, щоб вийшла гарна піна.</li><li>Додайте лід і знову потрясіть 10–15 секунд.</li><li>Процідіть в охолоджений келих (coupe або old fashioned).</li><li>Можна прикрасити лимонною цедрою.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-2">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-4" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Cognac Manhattan" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Cognac-Manhattan.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Cognac Manhattan</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine</a></li><li><a href="https://maudau.com.ua/category/vermuty/solodkist_6=solodkyi-sweet">Солодкий вермут</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_class=bitteri">Біттер</a></li><li>Вишні Luxardo</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Напій для справжніх поціновувачів класики з вишуканим акцентом. Він глибокий, багатогранний, зі складною палітрою смаку. Міцність коньяку плавно поєднується з м'якістю вермуту, відтіняючись біттером. Кожен ковток розкриватиме коктейль із нового боку.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup4">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="overlay add-popup">
+        <a href="#cocktail-item-4" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Cognac Manhattan</h2>
+            <a class="close add-id" href="#cocktail-item-4">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>55 мл коньяку Hine</li><li>80 мл солодкого вермуту</li><li>3 деша біттеру</li><li>1 вишня Luxardo</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>За допомогою шейкера змішайте 55 мл коньяку Hine, 80 мл солодкого вермуту, 3 деша біттеру.</li><li>Додайте лід і знову струсіть.</li><li>Охолодіть келих для мартіні та процідіть у нього вміст шейкера.</li><li>Зверху покладіть 1 вишню Luxardo.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-4">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-6" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="On The Rocks" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/On-The-Rocks.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">On The Rocks</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-rare-vsop-fine-champagne-v-podarunkovii-korobtsi-40-07-l">Коньяк Hine Rare</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    У цьому коктейлі нічого зайвого — тільки міцний алкоголь і лід, який охолоджує і дає змогу відчути весь характер Hine Rara. У ньому ідеально балансують фруктові та деревні нотки, відчуваються квіткові відтінки, ваніль і прянощі.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup6">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="overlay add-popup">
+        <a href="#cocktail-item-6" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати On The Rocks</h2>
+            <a class="close add-id" href="#cocktail-item-6">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл коньяку Hine</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У склянку для віскі киньте кілька кубиків льоду.</li><li>Влийте 40 мл коньяку Hine.</li><li>Злегка перемішайте, тримаючи склянку в руці, щоб лід почав танути, охолоджувати напій і розкривати його смак.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-6">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-8" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Hoi Polloi" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Hoi-Polloi.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Hoi Polloi</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine H</a></li><li><a href="https://maudau.com.ua/product/viski-wild-turkey-rye-405-07-l-687869">Житній віскі Wild Turkey</a></li><li>Білий крем де какао Marie Brizard</li><li><a href="https://maudau.com.ua/category/soky/smak_25=ananas-13">Ананасовий сік</a></li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Цукровий сироп</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Ароматичний біттер Angostura</a></li><li>Скибочка ананаса</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Теплі ноти коньяку стикаються з ароматним житнім віскі та біттером Angostura, формуючи перше враження про коктейль. Слідом вступають у роль цитрусові ноти, що дарують свіжість і білий крем де какао, що вносить відчуття м'якості. Біттер залишає приємний ароматичний посмак, що демонструє глибину і складність напою.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup8">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="overlay add-popup">
+        <a href="#cocktail-item-8" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Hoi Polloi</h2>
+            <a class="close add-id" href="#cocktail-item-8">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл коньяку Hine H</li><li>15 мл житнього віскі Wild Turkey</li><li>15 мл білого крем де какао Marie Brizard</li><li>30 мл ананасового соку</li><li>22 мл лимонного соку</li><li>15 мл цукрового сиропу</li><li>1 крапля ароматичного біттеру Angostura</li><li>скибочка ананаса для прикрашання</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Заповніть шейкер льодом.</li><li>Влийте 30 мл коньяку Hine H, 15 мл житнього віскі Wild Turkey, 15 мл білого крем де какао Marie Brizard, 30 мл ананасового соку, 22 мл лимонного соку, 15 мл цукрового сиропу.</li><li>Збовтайте компоненти.</li><li>Підготуйте келих, покладіть у нього кілька кубиків льоду і процідіть напій.</li><li>Додайте 1 краплю ароматичного біттеру Angostura.</li><li>Зверху покладіть скибочку ананаса.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-8">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-10" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Jarnac Shrub" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Jarnac-Shrub.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Jarnac Shrub</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine H</a></li><li><a href="https://maudau.com.ua/product/vermut-carpano-antica-formula-165-1-l-847745">Вермут Carpano Antica Formula</a></li><li>Вишневий шраб Toby's</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/smak_5=pomaranch">Апельсиновий біттер</a></li><li>Коньячні вишні</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль із багатим, складним смаком, що поєднує елегантність елітного коньяку, вишуканість вермуту та яскравість вишневого шраба. Алкоголь створює основу з глибоким і насиченим смаком. Шраб додає яскравості та свіжості, біттер — цитрусовий акцент. З кожним ковтком багатство і багатошаровість смаку розкривається по-новому.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup10">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup10" class="overlay add-popup">
+        <a href="#cocktail-item-10" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Jarnac Shrub</h2>
+            <a class="close add-id" href="#cocktail-item-10">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл коньяку Hine H</li><li>30 мл вермуту Carpano Antica Formula</li><li>30 мл вишневого шраба Toby's</li><li>1 крапля апельсинового біттеру</li><li>3 коньячні вишні для прикрашання</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкер покладіть лід і влийте 60 мл коньяку Hine H, 30 мл вермуту Carpano Antica Formula, 30 мл вишневого шраба Toby's, 1 краплю апельсинового біттеру.</li><li>Потрясіть, поки не відчуєте, що вміст шейкера охолодився.</li><li>Охолодіть келих для коктейлів або мартіні та процідіть у нього напій.</li><li>Зверху покладіть коньячні вишні.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-10">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-12" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Martica" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Martica.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Martica</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine H</a></li><li><a href="https://maudau.com.ua/product/rom-appleton-estate-signature-blend-40-07-l-759526">Ром Appleton Estate Signature Blend</a></li><li><a href="https://maudau.com.ua/product/vermut-carpano-antica-formula-165-1-l-847745">Вермут Carpano Antica Formula</a></li><li>Лікер Luxardo Maraschino Originale</li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Ароматичний біттер Angostura</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коньяк і ром — основа коктейлю, яка наділяє його теплими деревними і м'якими пряними нотками. Вермут робить палітру ароматів глибокою. Фруктову свіжість дарує лікер, а біттер завершує загальну картину виразною пряністю, що довго лишається на язиці. Такий коктейль — вірний супутник яскравих вечірок.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup12">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup12" class="overlay add-popup">
+        <a href="#cocktail-item-12" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Martica</h2>
+            <a class="close add-id" href="#cocktail-item-12">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл коньяку Hine H</li><li>30 мл рому Appleton Estate Signature Blend</li><li>22 мл вермуту Carpano Antica Formula</li><li>7 мл лікеру Luxardo Maraschino Originale</li><li>1 крапля ароматичного біттеру Angostura</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері з льодом змішайте 30 мл коньяку Hine H, 30 мл рому Appleton Estate Signature Blend, 22 мл вермуту Carpano Antica Formula, 7 мл лікеру Luxardo Maraschino Originale, 1 краплю ароматичного біттеру Angostura.</li><li>Збовтайте до охолодження.</li><li>Перелийте в холодний келих, прикрасьте за бажанням.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-12">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-14" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sade's Taboo" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sade-Taboo.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sade's Taboo</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine H</a></li><li>Вино Cocchi Americano</li><li><a href="https://maudau.com.ua/product/vermut-dolin-rouge-chervonyi-solodkyi-16-075-l">Вермут Dolin Rouge</a></li><li>Грейпфрутовий біттер Bittermens Hopped</li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Глибокий смак елітного коньяку лягає в основу напою, надаючи йому м'яких вершкових нот із відтінком сухофруктів. Поверх нього накладаються яскраві смаки вермуту та вина, створюючи ідеальний баланс, гармонію та свіжість. Біттер підкреслює цитрусову свіжість, гіркуватість і пікантність.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup14">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup14" class="overlay add-popup">
+        <a href="#cocktail-item-14" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Sade's Taboo</h2>
+            <a class="close add-id" href="#cocktail-item-14">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл коньяку Hine H</li><li>22 мл вина Cocchi Americano</li><li>22 мл вермуту Dolin Rouge</li><li>1 крапля грейпфрутового біттеру Bittermens Hopped</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У шейкері змішайте 60 мл коньяку Hine H, 22 мл вина Cocchi Americano, 22 мл вермуту Dolin Rouge, 1 краплю грейпфрутового біттеру Bittermens Hopped. Додайте лід за бажанням.</li><li>Ретельно збовтайте, щоб охолодити напій.</li><li>Перелийте вміст у келих і насолоджуйтеся коктейлем.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-14">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-16" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Snake Hips Swizzle" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Snake-Hips-Swizzle.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Snake Hips Swizzle</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/product/koniak-hine-h-by-hine-vsop-fine-champagne-40-005-l">Коньяк Hine H</a></li><li><a href="https://maudau.com.ua/category/likery-i-nalyvky/product_brand=grand-marnier">Лікер Grand Marnier</a></li><li>Кремовий херес Morenita</li><li><a href="https://maudau.com.ua/category/soky/smak_25=lymon-17">Лимонний сік</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=klen-2">Кленовий сироп</a></li><li><a href="https://maudau.com.ua/category/syropy-i-topinhy/smak_12=korytsia-7">Сироп із корицею</a></li><li><a href="https://maudau.com.ua/category/nastoianky-balzamy-bittery/product_brand=angostura">Ароматичний біттер Angostura</a></li><li>Лід</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Елегантні деревні ноти, фруктова свіжість і квіткова солодкість елітного коньяку підкреслюються кремовим хересом, роблячи їх глибшими. Лікер і лимонний сік дарують цитрусову свіжість і легку кислинку. Клиновий і коричний сиропи додають пряність. Біттер завершує все багатогранність смакової палітри, балансуючи її приємною гіркуватістю.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup16">Як приготувати?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup16" class="overlay add-popup">
+        <a href="#cocktail-item-16" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Як приготувати Snake Hips Swizzle</h2>
+            <a class="close add-id" href="#cocktail-item-16">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл коньяку Hine H</li><li>7 мл лікеру Grand Marnier</li><li>15 мл кремового хересу Morenita</li><li>15 мл лимонного соку</li><li>15 мл кленового сиропу</li><li>1 ч. л. сиропу з корицею</li><li>2 краплі ароматичного біттеру Angostura</li><li>лід за бажанням</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготування:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>У склянку для свізла покладіть лід.</li><li>У шейкері змішайте 45 мл коньяку Hine H, 7 мл лікеру Grand Marnier, 15 мл кремового хересу Morenita, 15 мл лимонного соку, 15 мл кленового сиропу, 1 ч. л. сиропу з корицею.</li><li>Перелийте в склянку і додайте 2 краплі ароматичного бітеру Angostura.</li><li>Перемішайте ложкою або свізером і прикрасьте за бажанням.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-16">Закрити</a>
+            </div>
+        </div>
+    </div>
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Харчова цінність на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорійність</div>
+                <div class="nutrion-facts-row__value">225 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Білки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жири</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Вуглеводи</div>
+                <div class="nutrion-facts-row__value">3.31 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

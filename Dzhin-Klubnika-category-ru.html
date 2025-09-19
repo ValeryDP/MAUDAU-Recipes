@@ -1,0 +1,947 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Джин с клубникой — ароматизированный напиток, настоянный на натуральных или искусственных ароматизаторах. Он стал особенно популярен в последнее время благодаря своему фруктовому профилю, привлекательному внешнему виду и
+                    универсальности применения. Дистиллят часто ассоциируют с летними напитками и легкими аперитивами.
+                </p>
+                <h2>Как производят джин с клубникой</h2>
+                <p>
+                    Основу крепкого спиртного напитка составляет нейтральный зерновой спирт, перегнанный с использованием традиционных растительных компонентов, включая можжевельник, кориандр и цитрусовую цедру. После дистилляции его смешивают с
+                    экстрактом, соком или натуральным клубничным ароматизатором. Иногда ягоды замачивают в спирте, чтобы сохранить естественный вкус и цвет.
+                </p>
+                <p>В отличие от сухого лондонского джина, изготовление клубничного строго не регламентируют. Это дает возможность производителю регулировать сладость производимой продукции.</p>
+                <h2>Особенности вкуса и аромата джина с клубникой</h2>
+                <p>
+                    На первом плане — сочный аромат спелых ягод, часто с мягкими цветочными или цитрусовыми нотами. Вкус — легкий, слегка сладковатый и округлый. Свежесть клубники уравновешивают сухость ягод можжевельника и пикантность цитрусовой
+                    цедры. Послевкусие — фруктовое и долго сохраняющееся на языке.
+                </p>
+                <h3>Всегда ли розовый джин — клубничный</h3>
+                <p>Не всегда, поскольку розоватый оттенок также могут придавать сицилийский апельсин, грейпфрут, гранат, малина, красная смородина, ревень и лепестки роз. Бюджетную продукцию зачастую вовсе окрашивают искусственно.</p>
+                <h2>Джин клубничный: цена в Украине</h2>
+                <p>
+                    Стоимость колеблется в пределах 600–1100 грн — в зависимости от торговой марки, страны происхождения и использованных ингредиентов. На цену также влияет крепость. Зачастую ароматизированные версии разливают при 37,5%, но встречаются
+                    варианты с повышенным содержанием алкоголя.
+                </p>
+                <p>
+                    Премиальный клубничный джин предлагают купить Opivm и Whitley Neill. Первый бренд выпускает еще и крафтовую продукцию, которая станет отличным подарком по любому поводу. Более доступный по цене алкоголь, который подходит как для
+                    смешивания в коктейлях, так и подачи соло, предлагают торговые марки на слуху вроде Beefeater и Gordon’s.
+                </p>
+                <h2>Как пьют джин с клубникой</h2>
+                <p>
+                    Крепким спиртным напитком наслаждаются разными способами. Например, подают со льдом или охлажденным до +6–8 °C. Часто на основе клубничного джина готовят классический микс — с тоником и свежей мятой. Его также можно интегрировать в
+                    ряд освежающих вариаций хорошо знакомых коктейлей: Strawberry Gin Mojito, Pink Gin Spritz, Berry Collins. Это отличный вариант для любого варианта времяпровождения летом — будь то пикник или романтический ужин.
+                </p>
+                <p>
+                    Если хотите приготовить авторский коктейль, объедините клубничный джин с сухим игристым вином вроде просекко и фруктово-ягодным ликером, например, лимонным. В качестве закуски предложите твердый сыр, вяленое мясо, нарезку сезонных
+                    фруктов. Этот ароматизированный джин также гармонично сочетается с десертами и основными блюдами с мясом, например, курицей в бальзамической глазури или уткой под ягодным соусом.
+                </p>
+                <h2>Почему выгодно купить джин с клубникой в интернет-магазине MAUDAU</h2>
+                <p>
+                    У нас доступна к заказу исключительно оригинальная алкогольная продукция по конкурентным ценам. Чтобы убедиться в качестве и соответствии крепкого спиртного напитка заявлениям производителя, обратите внимание на продукцию с
+                    отзывами. Для дополнительной выгоды можно отобрать только товары со скидкой. Доставку осуществляют по всей Украине по почте, а жители некоторых городов могут воспользоваться курьерскими услугами.
+                </p>
+            </div>
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pink Strawberry Bramble" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-Strawberry-Bramble.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pink Strawberry Bramble</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-pink-375-07-l-768944">Джин Beefeater Pink Strawberry</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/liker-joseph-cartron-creme-de-mure-des-roncieres-18-07-l">Ликер Creme De Mure</a></li><li>Веточка мяты</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий ягодный коктейль с приятной сладостью, легкой цитрусовой кислинкой и мягким клубничным вкусом. Относится к числу классических коктейлей новой эры в списке IBA. Это универсальный напиток, которым можно наслаждаться в любое время дня.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pink Strawberry Bramble</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Pink Strawberry</li><li>20 мл лимонного сока</li><li>5 мл сахарного сиропа</li><li>10 мл ликера Creme De Mure</li><li>веточка мяты для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере смешайте 50 мл джина Beefeater Pink Strawberry, 20 мл лимонного сока, 5 мл сахарного сиропа.</li><li>Вылейте смесь в бокал, наполненный льдом.</li><li>Плавно влейте 10 мл ликера Creme De Mure и дождитесь, пока он опустится.</li><li>Добавьте веточку мяты для красоты.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pink French 75" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-French-75.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pink French 75</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-pink-375-07-l-768944">Джин Beefeater Pink Strawberry</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-elderflower-buzyna-15-07-l">Ликер бузины</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna/product_class=prosekko-prosecco">Просекко</a></li><li>Малина</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий коктель для праздничного настроения. В новой вариации розовый джин, легкие фруктовые и цветочные нотки во вкусе и красивый праздничный цвет делают напиток более мягким и освежающим.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pink French 75</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл джина Beefeater Pink Strawberry</li><li>15 мл ликера бузины</li><li>просекко по вкусу</li><li>малина для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте с помощью шейкера 30 мл джина Beefeater Pink Strawberry и 15 мл ликера бузины.</li><li>Перелейте в бокал для шампанского и добавьте просекко по вкусу.</li><li>Украсьте малиной и добавьте несколько кубиков льда, если нужна приятная свежесть.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pink Floradora" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-Floradora.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pink Floradora</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-pink-375-07-l-768944">Джин Beefeater Pink Strawberry</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=imbyr-6">Имбирный сироп</a></li><li><a href="https://maudau.com.ua/ru/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Имбирный эль</a></li><li>Размятая малина</li><li>Долька лайма</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Легкий коктейль c красивым розовым оттенком подчеркивает атмосферу праздника. Ягодная сладость, цитрусовая кислинка и бодрящие имбирные нотки — все, что нужно, чтобы ярко завершить летний день. Свежесть и приятный аромат оставят неизгладимое впечатление о праздничном вечере.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pink Floradora</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Pink Strawberry</li><li>20 мл лаймового сока</li><li>10 мл имбирного сиропа</li><li>имбирный эль по вкусу</li><li>размятая малина по желанию</li><li>долька лайма для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наберите кубики льда в высокий бокал.</li><li>С помощью шейкера смешайте 50 мл джина Beefeater Pink Strawberry, 20 мл лаймового сока, 10 мл имбирного сиропа.</li><li>Полученную жидкость процедите на лед.</li><li>Сверху полейте имбирным элем.</li><li>Добавьте немного размятой малины и повесьте дольку лайма на край бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Strawberry Gin & Milk" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Strawberry-Gin-Milk.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Strawberry Gin & Milk</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-pink-375-07-l-768944">Джин Beefeater Pink Strawberry</a></li><li><a href="https://maudau.com.ua/ru/category/dytiachi-piure/smak=polunicja">Клубничное пюре</a></li><li><a href="https://maudau.com.ua/ru/category/moloko">Молоко</a></li><li><a href="https://maudau.com.ua/ru/category/shokolad/vyd_shokoladu=bilyi-8">Белый шоколад</a></li><li><a href="https://maudau.com.ua/ru/category/kukhonna-sil">Соль</a></li><li><a href="https://maudau.com.ua/ru/category/zefir-ta-marshmelou/smak_11=polunytsia-11">Клубничное маршмеллоу</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Оригинальный благородный напиток, сочетающий мягкость молока, крепость джина и яркость вкуса клубники. Его можно назвать взослой версией молочного коктейля. Подходит для создания праздничного настроения жаркими летними вечерами или для придания встрече романтического характера.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Strawberry Gin & Milk</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Pink Strawberry</li><li>50 мл клубничного пюре</li><li>200 мл молока или молочного заменителя</li><li>6 г мелко нарезанного белого шоколада</li><li>щепотка соли</li><li>шпажка с двумя поджаренными маршмеллоу для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 50 мл джина Beefeater Pink Strawberry, 50 мл клубничного пюре, 200 мл молока или молочного заменителя, щепотку соли.</li><li>Добавьте лед и тщательно взбейте.</li><li>Охладите высокий бокал и процедите в него напиток.</li><li>Для украшения используйте 6 г шоколадной стружки и шпажку с поджаренным маршмеллоу.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pink Strawberry Ginita" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pink-Strawberry-Ginita.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pink Strawberry Ginita</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-pink-375-07-l-768944">Джин Beefeater Pink Strawberry</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Клубника</li><li>Листья базилика</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Романтичный, освежающий, как летний морской бриз, игристый коктейль. Придаст любой вечеринке и пикнику атмосферу праздника. Свежий вкус с цитрусовыми нотками и ягодным ароматом делают его идеальным для утоления жажды в летнее время.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pink Strawberry Ginita</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>60 мл джина Beefeater Pink Strawberry</li><li>20 мл лимонного сока</li><li>15 мл сахарного сиропа</li><li>7 ягод клубники</li><li>листья базилика для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В бокал налейте 60 мл джина Beefeater Pink Strawberry, 20 мл лимонного сока, 15 мл сахарного сиропа и перемешайте.</li><li>Бросьте кубики льда и положите 7 ягод клубники для украшения.</li><li>Можно добавить листья базилика.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Pinklet" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Pinklet.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Pinklet</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/dzhyn-beefeater-pink-375-07-l-768944">Джин Beefeater Pink Strawberry</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Лаймовый сок</a></li><li><a href="https://maudau.com.ua/ru/category/sil-tsukor">Сахар</a></li><li>Клубника</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Нежный коктейль, волнующий, как настоящая леди в розовом. Этот напиток был известен еще до Первой мировой войны. Он вскруживал голову всем дамам на вечеринках, так как пьется легко благодаря сладковатому вкусу с фруктовыми нотками.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Pinklet</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл джина Beefeater Pink Strawberry</li><li>20 мл лаймового сока</li><li>10 мл сахара</li><li>клубника, разрезанная пополам, для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Наполните бокал кубиками льда и влейте 50 мл джина Beefeater Pink Strawberry.</li><li>Добавьте 10 мл сахара (сиропа).</li><li>С помощью барной ложки перемешайте.</li><li>Добавьте 20 мл лаймового сока.</li><li>Сверху положите разрезанную пополам клубнику.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Strawberry Valentine’s Day cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Strawberry-Valentines-Day.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Strawberry Valentine’s Day cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn/smakaromat=polunychnyi-2">Джин с клубникой</a></li><li><a href="https://maudau.com.ua/ru/product/tonik-franklin-sons-z-revenem-ta-hibiskusom-bezalkoholnyi-02-l-45794">Тоник с гибискусом</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=hreipfrut-9">Сок грейпфрута</a></li><li>Шпажка с лепестками роз</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Нежний, с мягким сливочным вкусом и бархатисной текстурой, он окутывает влюбленных романтической атмосферой. Красивый розовый оттенок придает встрече праздничного настроения. Во вкусе идеально балансирует крепость алкоголя, сладость ягод и нежность молока.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Strawberry Valentine’s Day cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл клубничного джина</li><li>120 мл тоника с гибискусом</li><li>20-30 мл сока грейпфрута</li><li>шпажка с лепестками роз для украшения</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Смешайте в шейкере 50 мл клубничного джина, 120 мл тоника с гибискусом, 20–30 мл сока грейпфрута и лед по желанию.</li><li>Взбейте все.</li><li>Процедите в охлажденный бокал и украсьте шпажкой с лепесткамии роз.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Strawberry Lemonade" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Strawberry-Lemonade.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Strawberry Lemonade</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn/smakaromat=polunychnyi-2">Джин с клубникой</a></li><li><a href="https://maudau.com.ua/ru/product/hazovanyi-orhanichnyi-napii-naturfrisk-apelsinbrus-025-l">Натуральный лимонад</a></li><li>Клубника</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Яркий коктейль с приятной цитрусовой кислинкой и легкой фруктовой сладостью. Отлично освежает в летнее время. Красивый розовый цвет создает атмосферу праздника. Поэтому коктейль подходит для пляжных вечеринок и посиделок больших компаний.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Strawberry Lemonade</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл клубничного джина</li><li>180 мл премиального натурального лимонада</li><li>свежая нарезанная клубника по вкусу</li><li>много льда кубиками</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В высокий бокал типа highball или коллинз положите лед доверху.</li><li>Влейте 45 мл клубничного джина и 180 мл премиального натурального лимонада.</li><li>Украсьте порезанной свежей клубникой (2-3 ломтика достаточно).</li><li>Перемешайте барной ложкой и наслаждайтесь.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-17" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Strawberry Sangria" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Strawberry-Sangria.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Strawberry Sangria</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/dzhyn/smakaromat=polunychnyi-2">Джин с клубникой</a></li><li><a href="https://maudau.com.ua/ru/category/vyno/kolir_vyna=rozheve">Розовое вино</a></li><li><a href="https://maudau.com.ua/ru/product/lymonad-natakhtari-lymon-laim">Лимонад с лаймом</a></li><li>Клубника</li><li>Лимон</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Освежающий фруктовый коктейль на основе вина с небольшим количеством крепкого алкоголя. Для приятного вкуса добавляют клубнику и цитрусовые. Получается нежный коктейль с ярким выраженным вкусом и ягодной свежестью — идеальный для приятного завершения летнего дня.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup17">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup17" class="overlay add-popup">
+        <a href="#cocktail-item-17" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Strawberry Sangria</h2>
+            <a class="close add-id" href="#cocktail-item-17">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>150 мл клубничного джина</li><li>750 мл легкого розового вина</li><li>260–360 мл лимонада с лаймом по вкусу</li><li>свежая нарезанная клубника по вкусу</li><li>дольки свежего лимона по вкусу</li><li>много льда кубиками</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Порежьте свежую клубнику и лимон.</li><li>Добавьте их в большой кувшин.</li><li>Влейте 750 мл розового вина, 150 мл клубничного джина.</li><li>Перемешайте и поставьте в холодильник на час, лучше на 3–4, чтобы напиток настоялся.</li><li>Перед подачей долейте 260–360 мл лимонада с лаймом.</li><li>Добавьте лед.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-17">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">220-243 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0-7 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

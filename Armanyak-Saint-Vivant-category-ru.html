@@ -1,0 +1,892 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    Арманьяк Saint Vivant — классический подвид виноградного бренди, производимый в Гаскони на юго-западе Франции. Крепкий спиртной напиток, известный по насыщенному вкусу и яркому фруктово-цветочному аромату, разливают в стеклянные
+                    бутылки с тонким изогнутым горлышком и рельефным гербом.
+                </p>
+                <h2>Краткий экскурс в историю арманьяка Saint Vivant</h2>
+                <p>
+                    Бренд в 1559 году основал дворянин Виван де ла Саль, проживавший на то время в коммуне Кондом-ан-Арманьяк, входящей в регион Нижний Арманьяк. В 1975 году поместье выкупила компания La Martiniquaise, существенно расширив рынок сбыта,
+                    но оставив в приоритете традиционный метод изготовления.
+                </p>
+                <h2>Как производят арманьяк Saint Vivant</h2>
+                <p>Продукцию готовят посредством традиционной непрерывной (колонной) дистилляции. В составе — преимущественно местный виноград, включая «уни-блан», «фоль-бланш» и «бако».</p>
+                <p>После дистилляции каждый о-де-ви, то есть коньячный спирт, выдерживают по отдельности в дубовых бочках не менее 12 месяцев — это минимум для категории VS.</p>
+                <p>
+                    Выдержка Saint Vivant проходит во влажных погребах Гаскони, что способствует постепенному развитию ключевых вкусо-ароматических характеристик. Древесину, как правило, предварительно обжигают — это придает готовому напитку нотки
+                    ванили, карамели, чернослива, кожи и табака.
+                </p>
+                <h2>Ассортимент арманьяков «Сент Вивант»</h2>
+                <p>Основные выражения:</p>
+                <ol>
+                    <li>
+                        VS (Very Special). Самый молодой арманьяк, выдержанный 12 месяцев. Он раскрывается ароматами садовых фруктов, миндаля, ванили и легких пряностей, поэтому отлично подходит как для медленного потягивания, так и для смешивания.
+                    </li>
+                    <li>
+                        VSOP (Very Superior Old Pale). Арманьяк «Сент Вивант» с выдержкой от четырех лет. Удостоенный двойной золотой награды на SIP Awards 2021, а также недавних медалей на World Armagnac Awards и San Francisco Spirit Competition, в
+                        нем сделан акцент на сочетании ароматов груши, яблока, корицы, кофе, шоколада с умеренным древесным шлейфом.
+                    </li>
+                    <li>Saint Vivant Napoleon. Более насыщенный и пряный купаж с нотами темных фруктов с акцентом на вяленых сливах и ароматом бахура. Древесное влияние более выражено, но не настолько сильно, как в версии XO (Extra Old).</li>
+                </ol>
+                <h3>Арманьяк «Сент Вивант»: цена в Украине</h3>
+                <p>Минимальная стоимость колеблется в пределах 1700 грн за бутылку. Разливы с продолжительной выдержкой стоят дороже — порядка 2200 грн. Цену также повышают импортные пошлины.</p>
+                <h2>Рекомендации по употреблению арманьяка «Сент Вивант»</h2>
+                <p>Прежде всего охладите бутылку до +15–18 °C. Для раскрытия сложных ароматов лучше всего подходит бокал-тюльпан.</p>
+                <p>
+                    Легкую и свежую версию VS можно подавать соло или с несколькими каплями воды. Купаж постарше, то есть Saint Vivant VSOP, предлагает более насыщенные ноты сухофруктов и пряностей, из-за чего выгодно дополнит любой коктейль. Самую
+                    дорогую версию Napoleon лучше всего подавать с темным шоколадом, миндальным печеньем, твердыми выдержанными сырами. В качестве дижестива сочетайте арманьяк с кофе или десертом.
+                </p>
+                <h2>Почему выгодно купить Saint Vivant в интернет-магазине MAUDAU</h2>
+                <p>
+                    Первое и самое главное преимущество — гарантированная оригинальность каждой бутылки. Доставку выполняют несколькими способами, включая курьерскую по Львову, Днепру и Киеву, а также пригороду. Оплачивайте покупку на сайте или
+                    оформляйте наложенный платеж — как удобно. На Saint Vivant цена становится ниже во время распродаж. При этом список спецпредложений от MAUDAU постоянно меняется, что дает возможность познакомиться с разными выражениями из
+                    ассортимента производителя. А экономить помогают программы лояльности «Власний Рахунок» и WOW Club.
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sparkling Gascony" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sparkling-Gascony.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sparkling Gascony</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/smakaromat_3=polunychnyi">Ликер из клубники</a></li><li><a href="https://maudau.com.ua/ru/category/ihrysti-vyna">Шампанское</a></li><li>Цедра лайма</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль сочетает теплые, насыщенные ноты арманьяка с яркой сладостью клубничного ликера. Легкие пузырьки шампанского придают напитку свежесть и легкость, а цедра лайма — свежий цитрусовый аромат и легкую горчинку. В итоге получается освежающий и элегантный напиток.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sparkling Gascony</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл арманьяка</li><li>20 мл клубничного ликера</li><li>150 мл шампанского</li><li>1 полоска цедры лайма для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите флейту для шампанского и поставьте ее в морозильник.</li><li>Вмешайте арманьяк и клубничный ликер в стакане для смешивания с льдом, не разбавляя слишком сильно.</li><li>Процедите в охлажденный бокал, затем аккуратно долейте шампанское по барной ложке, чтобы сохранить игристость.</li><li>Выжмите масла из цедры лайма над напитком, проведите цедрой по ободку бокала и уложите ее внутрь.</li><li>Подавайте сразу.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Bastille" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Bastille.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Bastille</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li>Ароматизированное вино Лилле Блан</li><li>Ликер Бенедиктин D.O.M.</li><li>Биттер из черного грецкого ореха</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сложный и ароматный коктейль, в котором мягкость арманьяка сочетается с выразительностью цветочных и травяных нот вина Лилле Блан, а ликер Бенедиктин придает богатую пряность. Акцент биттера из черного грецкого ореха добавляет легкую горчинку и глубину вкуса.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Bastille</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл арманьяка</li><li>22,5 мл ароматизированного вина Лилле Блан</li><li>22,5 мл ликера Бенедиктин D.O.M.</li><li>1,8 мл биттера из черного грецкого ореха</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите mixing glass, заполнив его льдом.</li><li>Влейте 45 мл арманьяка, 22,5 мл ароматизированного вина Лилле Блан и 22,5 мл ликера Бенедиктин D.O.M.</li><li>Добавьте 1,8 мл биттера из черного грецкого ореха.</li><li>Перемешайте барной ложкой в течение 20 секунд.</li><li>Процедите напиток через стрейнер в охлажденный бокал олд-фэшн с крупными кубиками льда.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Patrician" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Patrician.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Patrician</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=amaro">Ликер Амаро</a></li><li><a href="https://maudau.com.ua/ru/product/liker-de-kuyper-creme-de-cacao-dark-kakao-temnyi-20-07-l">Ликер De Kuyper Creme de Cacao</a></li><li>Ликер Фернет Бранка</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Коктейль с насыщенным вкусом, где сладость шоколадного ликера Creme de Cacao сочетается с горчинкой и пряными оттенками амаро и Фернет Бранки. Арманьяк придает глубину и фруктовую базу, делая напиток плотным и богатым. Это вариант для тех, кто любит сложные и выразительные сочетания в бокале.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Patrician</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл арманьяка</li><li>22,5 мл ликера амаро</li><li>15 мл коричневого ликера De Kuyper Creme de Cacao</li><li>7,5 мл ликера Фернет Бранка</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите рокс бокал, поставив его в морозильник.</li><li>В стакане для смешивания соедините 45 мл арманьяка, 22,5 мл амаро, 15 мл ликера Creme de Cacao и 7,5 мл ликера Фернет Бранка.</li><li>Добавьте крупный лед и размешайте.</li><li>Процедите через стрейнер в охлажденный бокал безо льда.</li><li>Украсьте цедрой апельсина, выжав масла над поверхностью напитка.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Intercontinental" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Intercontinental.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Intercontinental</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=amaro">Ликер Amaro</a></li><li>Ликер Luxardo Maraschino</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сложный, глубокий и благородный коктейль с горьковато-фруктовым профилем. Арманьяк задает основу, амаро придает травяную структуру, а Maraschino — сладковатую миндальную ноту с вишневым оттенком.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Intercontinental</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл арманьяка</li><li>22,5 мл ликера амаро</li><li>10 мл ликера Luxardo Maraschino</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В смесительный стакан влейте 30 мл арманьяка, добавьте 22,5 мл ликера амаро и 10 мл Maraschino Luxardo.</li><li>Наполните стакан крупными кубиками льда доверху.</li><li>Перемешивайте барной ложкой.</li><li>Предварительно охладите бокал типа Nick & Nora, оставив его в морозильнике на 5 минут.</li><li>Отфильтруйте коктейль через стрейнер в охлажденный бокал.</li><li>Выжгите эфирные масла из цедры апельсина над бокалом, затем протрите ею ободок.</li><li>Цедру можно положить в бокал или убрать.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sherry Valance" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sherry-Valance.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sherry Valance</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/kheres-emilio-lustau-manzanilla-papirusa-bile-sukhe-15-075-l-8000013918989">Херес Lustau Manzanilla Papirusa</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=myhdal-5">Миндальный сироп</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=apelsyn-27">Апельсиновый сок</a></li><li>Биттер Пейшо</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Утонченный и многослойный коктейль на основе хереса, где миндальная нота и арманьяк плавно сливаются с кисло-фруктовой палитрой. Сложный, но не тяжелый, он раскрывается в балансе цитрусов и специй, оставляя мягкое винное послевкусие.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sherry Valance</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл хереса Lustau Manzanilla Papirusa</li><li>15 мл арманьяка</li><li>15 мл миндального сиропа</li><li>15 мл лимонного сока</li><li>15 мл апельсинового сока</li><li>2,7 мл биттера Пейшо</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Влейте в шейкер 45 мл хереса Lustau Manzanilla Papirusa, 15 мл арманьяка, 15 мл миндального сиропа, 15 мл лимонного сока и 15 мл свежевыжатого апельсинового сока.</li><li>С помощью барной пипетки капните 2,7 мл биттера Peychaud’s.</li><li>Наполните шейкер доверху кубиками льда и встряхните энергично в течение 10–12 секунд.</li><li>Процедите коктейль через двойное сито в заранее охлажденный бокал типа купе-гласс.</li><li>Свежий лист базилика слегка обожгите зажигалкой.</li><li>Украсьте коктейль этим листом, уложив его по центру.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Claudine cocktail" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Claudine.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Claudine cocktail</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/solodkist_6=sukhyi-dry">Сухой вермут</a></li><li><a href="https://maudau.com.ua/ru/category/vermuty/kolir_vyna=chervone">Красный вермут</a></li><li>Ароматизированное вино аперитив Byrrh</li><li><a href="https://maudau.com.ua/ru/product/nastoianka-angostura-orange-bitter-28-01-l-725705">Апельсиновый биттер Angostura</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Сдержанный и утонченный коктейль с мягкой винной текстурой и приглушенной фруктовой сладостью. Арманьяк формирует глубокую основу, а вермуты и Byrrh раскрывают нюансы пряных трав, сушеных фруктов и горького цитруса.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Claudine cocktail</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл арманьяка</li><li>10 мл сухого вермута</li><li>10 мл красного вермута</li><li>10 мл ароматизированного вина аперитив Byrrh</li><li>0,9 мл апельсинового биттера Angostura</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Охладите бокал Nick & Nora в морозильной камере.</li><li>В смесительный стакан налейте 40 мл арманьяка, 10 мл сухого вермута, 10 мл красного сладкого вермута, 10 мл ароматизированного аперитива Byrrh и 0,9 мл апельсинового биттера Angostura.</li><li>Заполните смесительный стакан кубиками льда до верха и перемешивайте около 15 секунд.</li><li>Отфильтруйте через стрейнер в бокал.</li><li>Украшения не требуется.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Saz with a Sting" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Saz-with-a-Sting.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Saz with a Sting</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/category/rom/country_of_origin=jamajka">Ямайский ром</a></li><li><a href="https://maudau.com.ua/ru/product/viski-rittenhouse-rye-50-075-l-809809">Ржаной виски крепостью 50%</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li>Ликер Giffard Menthe Pastille</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Насыщенный и необычный коктейль, в котором сочетаются крепость выдержанного рома, пряные ноты ржаного виски и свежесть мятного ликера. Арманьяк добавляет глубину и фруктовые оттенки, создавая многослойный, сбалансированный вкус с яркой мятной свежестью и мягким согревающим послевкусием.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Saz with a Sting</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>5 мл ямайского выдержанного блендового рома</li><li>25 мл ржаного виски (50% алкоголя)</li><li>25 мл арманьяка</li><li>25 мл мятного ликера Giffard Menthe Pastille</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В смесительный стакан влейте 5 мл ямайского выдержанного блендового рома, 25 мл ржаного виски с крепостью 50%, 25 мл арманьяка и 25 мл мятного ликера Giffard Menthe Pastille.</li><li>Заполните стакан льдом до краев.</li><li>Аккуратно перемешайте все барной ложкой.</li><li>Процедите коктейль через стрейнер в заранее охлажденный олд-фэшн бокал с крупными кубиками льда.</li><li>Украсьте цедрой лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="La Luna" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/La-Luna.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">La Luna</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li>Абсент La Fée Parisienne</li><li><a href="https://maudau.com.ua/ru/product/rom-bacardi-gran-reserva-8-rokiv-vytrymky-40-07-l-759519">Ром Bacardi выдержкой 8 лет</a></li><li><a href="https://maudau.com.ua/ru/category/brendi-i-koniak/product_brand=saint-vivant">Арманьяк Saint Vivant</a></li><li><a href="https://maudau.com.ua/ru/product/kheres-emilio-lustau-pedro-ximenez-san-emilio-bile-solodke-17-075-l-8000013919003">Херес Lustau San Emilio Pedro Ximénez</a></li><li>Ликер Бенедиктин D.O.M.</li><li>Солевой раствор</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль объединяет богатство выдержанного рома и глубокие сладкие ноты хереса с тонкой пряностью абсента и изысканным ароматом ликера Бенедиктин D.O.M. Солевой раствор придает напитку необычную мягкость и балансирует сладость, создавая сложный, бархатистый профиль с легкой минеральной свежестью.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить La Luna</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>1,25 мл абсента La Fée Parisienne</li><li>45 мл рома Bacardi 8 лет</li><li>15 мл арманьяка</li><li>15 мл хереса Lustau San Emilio Pedro Ximénez</li><li>10 мл ликера Бенедиктин D.O.M.</li><li>1,8 мл солевого раствора 4:1 (20 г морской соли на 80 г воды)</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В смесительный стакан влейте 1,25 мл абсента La Fée Parisienne, 45 мл рома Bacardi 8 лет, 15 мл арманьяка, 15 мл хереса Lustau San Emilio Pedro Ximénez и 10 мл ликера Бенедиктин D.O.M.</li><li>Подготовьте 1,8 мл солевого раствора (соотношение 4:1 — 20 г морской соли на 80 г воды) и влейте его в туда же.</li><li>Заполните стакан льдом.</li><li>Перемешайте все ингредиенты барной ложкой.</li><li>Процедите коктейль через стрейнер в охлажденный олд-фэшн бокал с крупными кубиками льда.</li><li>Украсьте тонкой цедрой лимона, перед тем выжав ее над напитком.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">240 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>

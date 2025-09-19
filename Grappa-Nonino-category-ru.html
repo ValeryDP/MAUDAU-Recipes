@@ -1,0 +1,891 @@
+<style>
+
+    .cocktails-wrapper {
+        max-width: 1056px;
+        position: relative;
+        padding-top: 76px;
+        margin-top:  -60px;
+    }
+    
+    .cocktail-header {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 24px 0 16px;
+    }
+
+    .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+
+
+    .tabset .tab-panel {
+    display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+    }
+
+    .tabset label {
+    position: relative;
+    display: inline-block;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 0px 0px 12px;
+    margin-right: 1.5rem;
+    margin-bottom: -2px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    }
+
+    input:focus-visible + label {
+    outline: 2px solid rgba(0,102,204,1);
+    border-radius: 3px;
+
+    }
+
+    
+    .tabset > input:focus + label,
+    .tabset > input:checked + label {
+        color: #0273c9;
+        border-color: #0273c9;
+    }
+
+    .tabset > label:hover {
+        opacity: 0.8;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+    background: #06c;
+    }
+
+    .tab-panel {
+    padding: 24px 0;
+    }
+
+    .tabset {
+    max-width: 65em;
+    }
+
+    .cocktail-card__img img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+
+    .cocktail-card {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #e9ebee60;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 30px;
+}
+
+.cocktail-card__img {
+    width: 25%;
+    min-width: 200px;
+    
+}
+
+.cocktail-card__description {
+    width: 75%;
+    padding-left: 20px;
+}
+
+.cocktale-name {
+    color: #3B3B48;
+    text-align: left;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.description-ingredients {
+    margin: 8px 0 16px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.cocktail-card__description ul.description-ingredients {
+    padding-left: 0;
+}
+
+.description-ingredients li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    padding-right: 12px;
+    margin-left: 16px;
+}
+
+.description-ingredients li a {
+    color: #027BCE;
+    text-decoration: none;
+} 
+
+.description-text {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.popup-cocktail-header {
+    color: #3B3B48;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px;
+    padding: 16px 42px 16px 24px;
+    border-bottom: 1px solid #E9EBEE;
+}
+
+.popup-cocktail-content  {
+    padding: 24px;
+}
+.popup-cocktail-content ul {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+
+.popup-cocktail-content ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0 !important;
+    list-style-position: inside !important;
+}
+
+.popup-cocktail-content ol li {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0 !important;
+}
+
+.popup-cocktail-content ol li::before {
+    margin-left: auto !important;
+}
+
+.popup-cocktail-content ul li::marker, .cocktail-card__description .description-ingredients li::marker {
+    margin: 0 8px 0 0 !important;
+}
+
+.popup-cocktail-content ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-cocktail-content ul li a{
+    color: #027BCE;
+    text-decoration: none;
+}
+
+.popup-cocktail-content p {
+    color: #3B3B48;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.popup-cocktail-content p span.cocktail-accent{
+    color: #1d1d1e;
+}
+
+
+
+    .pop-button {
+        color: #027BCE;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    }
+
+    .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+    }
+
+    .popup-area-close {
+        width: 100vw;
+        height: 100vh;
+        z-index: 1001;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: auto;
+    }
+
+    .popup {
+    margin: 4% auto;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 750px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 1050;
+
+    max-height: 90%;
+    overflow: auto;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 200ms;
+    font-size: 34px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #8f9bab;
+    }
+
+    .popup .close-popbtn {
+        display: block;
+        color: #371f5e;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        transition: all 200ms;
+        text-decoration: none;
+        border-radius: 4px;
+        background: #a4ffb8;
+        padding: 13px;
+    }
+
+    .popup .close:hover,
+    .popup .close-popbtn:hover {
+        opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .cocktails-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+
+
+    @media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .cocktail-card {
+        flex-direction: column;
+
+    }
+    .cocktail-card__img {
+        width: 50%;
+        margin-bottom: 24px;
+    }
+
+    .cocktail-card__description {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .description-ingredients li {
+        line-height: 1.2;
+    }
+
+}
+
+.anchor-wrapper {
+        padding-top: 76px;
+        margin-top:  -60px;
+        padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+        .anchor-wrapper {
+            padding-top: 60px;
+            margin-top: -44px;
+        }
+}
+
+.nutrion-facts-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nutrion-facts-row__char {
+    display: flex;
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#8f9bab;
+}
+
+.nutrion-facts-row__char::after {
+    display: inline-flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #e9ebee;
+    margin-left: 1rem;
+    content: "";
+    position: relative;
+    top: -4px;
+}
+
+.nutrion-facts-row__value {
+    display: flex;
+    flex: 2 1 0%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color:#3b3b48;
+    white-space: nowrap;
+}
+
+
+.anchor-wrapper:last-child .cocktail-card {
+    border-bottom: none;
+    padding-bottom: 14px;
+}
+
+@media screen and (max-width: 435px) {
+    .tabset label {
+        position: relative;
+        display: block;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1.35;
+        padding: 12px 0;
+        margin-bottom: -2px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-color: transparent;
+    }
+    .tabset label:first-child {
+        padding: 0 0 12px;
+    }
+    .cocktails-wrapper {
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+#product_text-description .css-qx9h31 h2, #product_text-description .css-qx9h31 h3 {
+    margin-top: 0.75em;
+}
+
+.cocktail-card__img.white-img-bg {
+    background: radial-gradient(circle closest-side, #fff 80%, #F6F6F6 110%, #aaa 250%);
+    border-radius: 4px;
+}
+
+.cocktail-card__img.white-img-bg img {
+    mix-blend-mode: multiply;
+}
+
+</style>
+
+<div id="cocktails-rich-section" class="cocktails-wrapper">
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab1" aria-controls="product_text-description" checked>
+    <label for="tab1">Описание</label>
+
+    <input type="radio" name="tabset" id="tab2" aria-controls="product_coctails-description">
+    <label for="tab2">Рецепты</label>
+
+    <input type="radio" name="tabset" id="tab3" aria-controls="product_nutrition-facts">
+    <label for="tab3">Пищевая ценность</label>
+
+    
+    <div class="tab-panels">
+        <div id="product_text-description" class="tab-panel">
+            <div class="md-css-qx9h31">
+                <p>
+                    «Нонино» — граппа, созданная из выжимок, то есть из кожицы, косточек и гребней, оставшихся из винограда после виноделия. Рецепт — отражение многолетних традиций региона Фриули. Бренд славится тем, что производит множество интересных
+                    стилей — от свежедистиллированной версии Tradizionale до винтажных разливов, заслуживающих места в любой коллекции крепкого алкоголя.
+                </p>
+                <h2>История появления граппы Nonino</h2>
+                <p>
+                    Винокурню в 1897 году основал Орацио Нонино в деревне Ронки-ди-Перкото во Фриули. Однако трансформация из крохотного семейного бизнеса в мощный международный бренд состоялась только в конце XX века. Это произошло в 1973 году, когда
+                    Бенито Нонино и его жена Джанола успешно перегнали первую моносортовую граппу Monovitigno из винограда «пиколит». А спустя 11 лет они создали уникальный дистиллят из цельного винограда, который после одобрения регулирующих органов
+                    назвали UE.
+                </p>
+                <p>При этом бренд Nonino известен не только производством крепкого спиртного. В 1975 году Джанола учредила Международную литературную премию, призванную поддерживать фриульскую культуру.</p>
+                <h2>«Нонино»: как производят эту граппу</h2>
+                <p>
+                    Крепкий спиртной напиток изготавливают посредством кустарной перегонки в медных кубах. Свежие выжимки из красных или белых местных сортов винограда быстро ферментируют и дистиллируют в течение нескольких часов после сбора урожая,
+                    чтобы сохранить чистоту аромата.
+                </p>
+                <p>
+                    Перегонка граппы Nonino прерывистая, но ее тщательно контролируют. Так называемые «головы» и «хвосты» отбрасывают, сохраняя только «сердца». Некоторые сорта выдерживают в металлических емкостях (как Alla Ruta), а резервные разливы
+                    созревают в дубовых бочках. Выдержка длится несколько лет, что придает каждому дистилляту глубину и сложность.
+                </p>
+                <h2>Разновидности граппы Nonino</h2>
+                <p>Портфолио производителя довольно обширное:</p>
+                <ol>
+                    <li>Tradizionale. Крепкая прозрачная граппа с ярко выраженным фруктовым ароматом.</li>
+                    <li>Optima. Еще один базовый вариант, но с кратковременной выдержкой в дубе, что привносит в аромат нотки ванили.</li>
+                    <li>Grappa il Moscato. Один из самых нежных разливов на основе ягод «москато бьянко». Он немного напоминает десертное вино — с тонами лепестков роз и ванильным завершением.</li>
+                    <li>Vuisinar. Граппа Nonino, изготовленная исключительно из красных виноградных выжимок и выдержана до трех лет в бочках из вишневого дуба, что смягчает ее вкус.</li>
+                    <li>Antica Cuvee и Vendemmia Riserva di Annata. Резерв одного урожая с продолжительной выдержкой в дубе. Это насыщенный и структурированный напиток с нотами ванили, сухофруктов и специй.</li>
+                    <li>Alla Ruta. Ароматизированный продукт «Нонино», настоянный на руте обыкновенной. Бренд самостоятельно выращивает эту траву. Вкус — землистый, слегка горьковатый.</li>
+                </ol>
+                <h3>Стоимость Nonino в Украине</h3>
+                <p>Цена стартует от 1500 грн без учета акций от маркета алкогольных штук MAUDAU. Чем дольше срок созревания, тем дороже продукт.</p>
+                <h2>Рекомендации по употреблению продукции «Нонино»</h2>
+                <p>
+                    Граппу советуют подавать при +12–14 °C в качестве дижестива. На родине, то есть в Италии, ее часто сочетают с эспрессо и пьют в первой половине дня — такую подачу называют Caffe Corretto. Кристально прозрачную граппу рекомендуют
+                    смешивать в коктейлях, а выдержанными версиями лучше наслаждаться медленно, давая возможность раскрыться фруктово-дубовым нюансам. Ароматизированная версия, наполненная тонами луговых трав, гармонично сочетается со
+                    средиземноморскими блюдами.
+                </p>
+                <h2>Почему выгодно купить Nonino в интернет-магазине MAUDAU</h2>
+                <p>Прежде всего — из-за оригинальности каждой бутылки. Добавьте к списку преимуществ акции и скидки, а также несколько вариантов оплаты и доставки.</p>
+            </div>
+
+
+
+
+
+
+
+            
+            
+        </div>
+
+        <div id="product_coctails-description" class="tab-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="cocktail-item-1" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Giannola 38" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Giannola-38.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Giannola 38</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-grappa-moscato-41-07-l-21411">Граппа Nonino Monovitigno Moscato</a></li><li>Херес Tio Pepe Fino</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп</a></li><li>Ликер Chartreuse зеленый</li><li>Лимонная цедра</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Giannola 38 — это гармония тонких вкусов, где в основе лежит фруктовая граппа с приятной сладостью, херес отвечает за орехово-ванильные нотки и обеспечивает контраст между различными вкусами. Лимонный сок освежает, балансирует сладость легкой кислинкой. Ликер раскрывает богатсво и сложность напитка, внося травяные и пряные нотки.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup1">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay add-popup">
+        <a href="#cocktail-item-1" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Giannola 38</h2>
+            <a class="close add-id" href="#cocktail-item-1">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл граппы Nonino Monovitigno Moscato</li><li>15 мл хереса Tio Pepe Fino</li><li>15 мл лимонного сока</li><li>15 мл сахарного сиропа</li><li>1 барная ложка зеленого ликера Chartreuse</li><li>1 большой кубик или шар льда</li><li>цедра лимона для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкер налейте 45 мл граппы Nonino Monovitigno Moscato, 15 мл хереса Tio Pepe Fino, 15 мл лимонного сока, 15 мл сахарного сиропа и 1 барную ложку зеленого ликера Chartreuse.</li><li>Серху уложите лед и хорошо встряхните до охлаждения.</li><li>Процедите в охлажденный коктейльный бокал, украсьте цедрой лимона.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-1">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-3" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Italiano" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Italiano.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Italiano</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-grappa-moscato-41-07-l-21411">Граппа Nonino Monovitigno Moscato</a></li><li>Кордиал Neroli Cordial</li><li><a href="https://maudau.com.ua/ru/product/napii-royal-club-imbyrnyi-el-bezalkoholnyi-330-ml-439883">Имбирный эль</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Тонкие ноты муската граппы соеденяются со свежим, чуть горьковатым вкусом кордиала, перенося в атмосферу солнечной Италии. Весь шарм напитка заключается в идеальном балансе пикантности, пряности свежести. Это коктейль — спутник хорошего настроения в течение всего дня.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup3">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="overlay add-popup">
+        <a href="#cocktail-item-3" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Italiano</h2>
+            <a class="close add-id" href="#cocktail-item-3">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>25 мл граппы Nonino Monovitigno Moscato</li><li>15 мл кордиала Neroli Cordial</li><li>85 мл имбирного эля</li><li>крупный лед по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В стакан со льдом налейте 25 мл граппы Nonino Monovitigno Moscato, 15 мл кордиала Neroli Cordial и 85 мл имбирного эля.</li><li>Осторожно перемешайте.</li><li>Можно украсить апельсиновой цедрой.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-3">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-5" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Nonino Espresso" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Nonino-Espresso.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Nonino Espresso</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-alla-ruta-43-0-7-l-v-korobtsi">Граппа NONINO 43°</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=vanil-14">Ванильный сироп</a></li><li>Кофе эспрессо</li><li><a href="https://maudau.com.ua/ru/category/vershky">Сливки</a></li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Крепкий коктейль на основе итальянской граппы с изысканным вкусом и приятной мягкостью, несмотря на высокий градус (43°). Ванильный сироп смягчает его, добавляя сладости и легкого кремового оттенка. Кофе делает вкус более насыщенным. Сливки придают приятную кремовую текстуру и завершают коктельный букет.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup5">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="overlay add-popup">
+        <a href="#cocktail-item-5" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Nonino Espresso</h2>
+            <a class="close add-id" href="#cocktail-item-5">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>10 мл граппы NONINO 43°</li><li>10 мл ванильного сиропа</li><li>20 мл горячего кофе эспрессо</li><li>сливки или взбитое молоко для молочной пены по вкусу</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>В шейкере смешайте 10 мл граппы NONINO 43°, 10 мл ванильного сиропа, 20 мл горячего эспрессо.</li><li>Доверху наполните льдом и встряхните энергично, чтобы охладить все ингредиенты.</li><li>Процедите в охлажденный бокал.</li><li>Аккуратно полейте сливками, чтобы они легли красивым слоем.</li><li>Можно взбить молочную пену.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-5">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-7" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Nonino Sour" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Nonino-Sour.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Nonino Sour</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-traditional-41-1-l-1396">Граппа NONINO 41°</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=trostynnyi-tsukor">Сахарный сироп из тростникового сахара</a></li><li>Яичный белок</li><li>Лед</li><li>Лимон</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    В коктейле Nonino Sour крепость граппы оттеняется свжестью и кислинкой лимона, а яичный белок придает мягкости. Такое сочетание смогут оценить гурманы, любители чего-то необычного, неординарного. В коктейле идеально балансируют крепость, свежесть и сладость, подчеркнутые элегантной текстурой.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup7">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="overlay add-popup">
+        <a href="#cocktail-item-7" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Nonino Sour</h2>
+            <a class="close add-id" href="#cocktail-item-7">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>50 мл граппы NONINO 41° или Grappa Nonino Vendemmia</li><li>20 мл лимонного сока</li><li>15 мл жидкого тростникового сахарного сиропа</li><li>несколько капель яичного белка</li><li>лед по вкусу</li><li>долька лимона для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Влейте в шейкер 50 мл граппы NONINO 41° или Grappa Nonino Vendemmia, 20 мл лимонного сока, 15 мл жидкого тростникового сахарного сиропа и немного яичного белка (несколько капель).</li><li>Добавьте лед и взбейте до охлаждения.</li><li>Процедите в охлажденный бокал.</li><li>Подавайте с лимонной долькой на краю бокала.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-7">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-9" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Rosina Ferrario No. 203" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Rosina-Ferrario-No-203.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Rosina Ferrario No. 203</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-grappa-moscato-41-07-l-21411">Граппа Nonino Monovitigno Moscato</a></li><li><a href="https://maudau.com.ua/ru/product/liker-stambecco-maraschino-cherry-amaro-35-07-l">Ликер Maraschino</a></li><li><a href="https://maudau.com.ua/ru/product/liker-joseph-cartron-violette-fialka-20-07-l">Ликер Violette</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=lymon-17">Лимонный сок</a></li><li>Яичный белок</li><li>Лед</li><li>Фиалка</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Комбинация нежной граппы, уникальных ликеров, цитрусовых нот и мягкости яичного белка создают утонченный коктейль с экзотическими ароматами. Ликер Violette отвечает за красивый фиолетовый цвет. Завершает этот коктейльный шедевр яичный белок и его приятная шелковистая текстура и красивая пенка.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup9">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="overlay add-popup">
+        <a href="#cocktail-item-9" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Rosina Ferrario No. 203</h2>
+            <a class="close add-id" href="#cocktail-item-9">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>45 мл граппы Nonino Monovitigno Moscato</li><li>15 мл ликера Maraschino</li><li>15 мл ликера Violette</li><li>15 мл лимонного сока</li><li>несколько капель яичного белка (или аквафабы)</li><li>кубики льда по вкусу</li><li>фиалка для украшения</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Шейкер наполните льдом и добавьте 45 мл граппы Nonino Monovitigno Moscato, 15 мл ликера Maraschino, 15 мл ликера Violette, 15 мл лимонного сока, несколько капель яичного белка (или аквафабы).</li><li>Тщательно потрясите, чтобы взбить красивую пену и охладить напиток.</li><li>В подготовленный бокал процедите содержимое шейкера.</li><li>Положите цветок фиалки для украшения.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-9">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-11" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Silent Cellar" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Silent-Cellar.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Silent Cellar</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-riserva-antica-cuvee-43-07-l-27490">Граппа Nonino Riserva AnticaCuvée</a></li><li><a href="https://maudau.com.ua/ru/product/kheres-valdespino-oloroso-leyenda-bile-sukhe-18-075-l-25269">Херес Oloroso</a></li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=klen-2">Кленовый сироп</a></li><li>Верджус</li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Этот коктейль для тех, кто хочет насладиться тишиной, спокойствием и прочувствовать богатсво аромата и вкуса напитка. Вся его глубина кроется в многослойной граппе, раскрывающейся благодаря Верджусу и хересу.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup11">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup11" class="overlay add-popup">
+        <a href="#cocktail-item-11" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Silent Cellar</h2>
+            <a class="close add-id" href="#cocktail-item-11">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл граппы Nonino Riserva AnticaCuvée</li><li>40 мл хереса Oloroso</li><li>10 мл кленового сиропа</li><li>5 мл верджуса (сока недозрелого винограда)</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>С помощью шейкера взбейте лед и 30 мл граппы Nonino Riserva AnticaCuvée, 40 мл хереса Oloroso, 10 мл кленового сиропа, 5 мл верджуса (сока недозрелого винограда).</li><li>В бокал добавьте несколько кубиков льда и процедите в него напиток.</li><li>По желанию можете украсить цедрой или травами.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-11">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-13" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Sophisticated Lady" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Sophisticated-Lady.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Sophisticated Lady</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-grappa-moscato-41-07-l-21411">Граппа Nonino Monovitigno Moscato</a></li><li><a href="https://maudau.com.ua/ru/category/likery-i-nalyvky/product_brand=st-germain">Ликер St. Germain</a></li><li>Порошок лакрицы</li><li>Сухая лаванда</li><li><a href="https://maudau.com.ua/ru/category/syropy-i-topinhy/smak_12=ahava">Сироп агавы</a></li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Флорально-пряный коктейль на граппе с оттенками лакрицы, лаванды и бузины. Лайм и сироп агавы добавляют баланс, сохраняя напиток свежим и ярким. Элегантный, глубокий, подходит для медленного завершения насыщенного вечера.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup13">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup13" class="overlay add-popup">
+        <a href="#cocktail-item-13" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Sophisticated Lady</h2>
+            <a class="close add-id" href="#cocktail-item-13">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>40 мл граппы Nonino Monovitigno Moscato</li><li>15 мл ликера St. Germain</li><li>1 ч. л. лакрицы</li><li>1 ч. л. сухой лаванды</li><li>15 мл сиропа агавы</li><li>20 мл сока лайма</li><li>лед по желанию</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в шейкер 40 мл граппы Nonino Monovitigno Moscato, 15 мл ликёра St. Germain, 15 мл сиропа агавы и 20 мл сока лайма.</li><li>Добавьте 1 ч. л. лакрицы и 1 ч. л. сухой лаванды.</li><li>Добавьте лед и встряхните в течение 15 секунд.</li><li>Процедите через двойной стрейнер в охлажденный коктейльный бокал.</li><li>Украсьте цветком лаванды и цедрой лайма.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-13">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cocktail-item-15" class="anchor-wrapper add-id">
+        <div class="cocktail-card">
+            <div class="cocktail-card__img">
+                <img class="add-photo" alt="Speranza" src="https://photo.maudau.com.ua/Landing/cocktails/recipes/Speranza.webp">
+            </div>
+            <div class="cocktail-card__description">
+                <h2 class="cocktale-name add-name">Speranza</h2>
+                <ul class="description-ingredients add-ingr-new">
+                    <li><a href="https://maudau.com.ua/ru/product/hrappa-nonino-traditional-41-1-l-1396">Граппа Nonino 41°</a></li><li>Ликер Acqua Bianca</li><li>Кордиал из зеленого перца и кориандра</li><li><a href="https://maudau.com.ua/ru/category/soky/smak_25=laim-9">Сок лайма</a></li><li>Лед</li>
+                </ul>
+                <div class="description-text a add-descr">
+                    Минималистичный, но выразительный шорт-дринк с растительными и пряными акцентами. Контраст между граппой и кордиалом из зеленого перца делает его интересным выбором для ценителей.
+                </div>
+                <a class="pop-button add-how-text add-popup" href="#popup15">Как приготовить?</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup15" class="overlay add-popup">
+        <a href="#cocktail-item-15" class="popup-area-close add-id"></a>
+        <div class="popup">
+            <h2 class="popup-cocktail-header add-how-text">Как приготовить Speranza</h2>
+            <a class="close add-id" href="#cocktail-item-15">&times;</a>
+            <div class="popup-cocktail-content">
+                <ul class="add-ingr-second">
+                    <li>30 мл граппы Nonino 41°</li><li>20 мл ликера Acqua Bianca</li><li>20 мл кордиала из зеленого перца и кориандра</li><li>15 мл сока лайма</li><li>1 кубик льда</li>
+                </ul>
+                <p>
+                    <span class="cocktail-accent add-prepare">Приготовление:</span>
+                </p>
+                <ol class="add-how-make">
+                    <li>Налейте в бокал рокс 30 мл граппы Nonino 41°, 20 мл ликёра Acqua Bianca, 20 мл кордиала из зеленого перца с кориандром и 15 мл сока лайма.</li><li>Добавьте один крупный кубик льда.</li><li>Аккуратно перемешайте ложкой.</li><li>Украсьте каплей оливкового масла и листьями микрозелени.</li>
+                </ol>
+                
+                <a class="close-popbtn add-close add-id" href="#cocktail-item-15">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+
+
+
+
+
+
+        </div>
+
+        <div id="product_nutrition-facts" class="tab-panel">
+            <h2>Пищевая ценность на 100&nbsp;г</h2>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Калорийность</div>
+                <div class="nutrion-facts-row__value">220-240 ккал</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Белки</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Жиры</div>
+                <div class="nutrion-facts-row__value">0 г</div>
+            </div>
+            <div class="nutrion-facts-row">
+                <div class="nutrion-facts-row__char">Углеводы</div>
+                <div class="nutrion-facts-row__value">0.5 г</div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
